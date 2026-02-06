@@ -186,7 +186,7 @@ function LessonDetail() {
   const quizOptions = useMemo(() => {
     if (!content || !lesson) return [];
     return generateQuizOptions(content.english, lesson.content);
-  }, [content?.english, currentIndex, lesson?.content]);
+  }, [content, lesson, currentIndex]);
 
   if (loading) {
     return <div className="loading">Loading lesson...</div>;
