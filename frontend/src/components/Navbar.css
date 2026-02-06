@@ -1,0 +1,267 @@
+.navbar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border-light);
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+/* Brand / Logo */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.brand-logo {
+  height: 48px;
+  width: auto;
+}
+
+/* Stats in navbar (Duolingo style) */
+.nav-stats {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border-radius: 12px;
+  background: var(--bg-secondary);
+  transition: transform 0.2s ease;
+}
+
+.stat-item:hover {
+  transform: scale(1.05);
+}
+
+.stat-icon {
+  font-size: 1rem;
+}
+
+.stat-value {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.stat-item.streak {
+  background: rgba(255, 150, 0, 0.12);
+}
+
+.stat-item.streak .stat-value {
+  color: var(--streak-orange);
+}
+
+.stat-item.xp {
+  background: var(--primary-light);
+}
+
+.stat-item.xp .stat-value {
+  color: var(--primary);
+}
+
+.stat-item.hearts {
+  background: rgba(255, 75, 75, 0.1);
+}
+
+.stat-item.hearts .stat-value {
+  color: var(--heart-red);
+}
+
+/* Guest Banner */
+.guest-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, var(--primary-light), rgba(255, 107, 53, 0.15));
+  border-radius: 20px;
+  border: 1px dashed var(--primary);
+}
+
+.guest-icon {
+  font-size: 1.1rem;
+}
+
+.guest-text {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--primary);
+}
+
+/* Navigation Menu */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 4px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin: 0;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-icon {
+  font-size: 1.1rem;
+}
+
+.nav-link:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.nav-link.active {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+/* Admin Link */
+.nav-admin {
+  color: var(--accent-purple);
+}
+
+.nav-admin:hover {
+  background: rgba(165, 96, 232, 0.1);
+  color: var(--accent-purple);
+}
+
+.nav-admin.active {
+  background: rgba(165, 96, 232, 0.15);
+  color: var(--accent-purple);
+}
+
+/* Logout Button */
+.btn-logout {
+  color: var(--text-muted);
+}
+
+.btn-logout:hover {
+  background: rgba(255, 75, 75, 0.1);
+  color: var(--accent-red);
+}
+
+/* Auth Button (Login) */
+.btn-auth {
+  color: var(--text-secondary);
+}
+
+.btn-auth:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+/* Signup Button */
+.btn-signup {
+  background: var(--primary) !important;
+  color: white !important;
+  padding: 10px 20px !important;
+  border-radius: 12px;
+  font-weight: 700;
+  box-shadow: 0 3px 0 var(--primary-dark);
+  transition: all 0.2s ease;
+}
+
+.btn-signup:hover {
+  background: var(--primary-hover) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 var(--primary-dark);
+}
+
+.btn-signup:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 0 var(--primary-dark);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .nav-stats {
+    display: none;
+  }
+
+  .guest-banner {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 0 16px;
+    height: 56px;
+  }
+
+  .brand-logo {
+    height: 40px;
+  }
+
+  .nav-menu {
+    gap: 2px;
+  }
+
+  .nav-link {
+    padding: 8px 12px;
+  }
+
+  .nav-text {
+    display: none;
+  }
+
+  .nav-icon {
+    font-size: 1.25rem;
+  }
+
+  .btn-signup {
+    padding: 8px 14px !important;
+  }
+
+  .btn-signup .nav-text {
+    display: inline;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-link {
+    padding: 8px;
+  }
+
+  .btn-signup {
+    padding: 8px 12px !important;
+    font-size: 0.8rem;
+  }
+}

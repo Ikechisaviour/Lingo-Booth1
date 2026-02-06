@@ -1,0 +1,545 @@
+.progress-container {
+  padding: 32px 0 60px;
+  min-height: calc(100vh - 64px);
+}
+
+/* Header */
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.header-content h1 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.header-content p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+}
+
+/* Achievement Banner */
+.achievement-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, var(--primary) 0%, #ff8c5a 100%);
+  color: white;
+  margin-bottom: 28px;
+  padding: 24px 28px;
+}
+
+.achievement-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.achievement-icon {
+  font-size: 2.5rem;
+}
+
+.achievement-text h3 {
+  color: white;
+  font-size: 1.15rem;
+  margin-bottom: 4px;
+}
+
+.achievement-text p {
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+.achievement-text strong {
+  font-weight: 700;
+}
+
+.achievement-xp {
+  text-align: right;
+}
+
+.xp-amount {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 800;
+}
+
+.xp-label {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.stat-card {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid var(--border-light);
+  transition: all 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.stat-icon {
+  font-size: 1.75rem;
+  margin-bottom: 12px;
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.stat-count {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--stat-color);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.stat-bar {
+  height: 6px;
+  background: var(--stat-bg);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.stat-bar-fill {
+  height: 100%;
+  background: var(--stat-color);
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+/* Mastery Section */
+.mastery-section {
+  margin-bottom: 28px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.section-header h2 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.mastery-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chart-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.chart-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 120px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.chart-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.chart-bar-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chart-bar {
+  flex: 1;
+  height: 16px;
+  background: var(--border-light);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.chart-bar-fill {
+  height: 100%;
+  border-radius: 8px;
+  transition: width 0.5s ease;
+}
+
+.chart-value {
+  min-width: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Skills Section */
+.skills-section {
+  margin-bottom: 28px;
+}
+
+.skills-section h2 {
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.skill-card {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  border: 1px solid var(--border-light);
+  transition: all 0.2s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--skill-color);
+}
+
+.skill-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.skill-icon {
+  font-size: 2rem;
+}
+
+.skill-card h3 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Progress Ring */
+.skill-progress-ring {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 12px;
+}
+
+.skill-progress-ring svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.ring-bg {
+  fill: none;
+  stroke: var(--border-light);
+  stroke-width: 8;
+}
+
+.ring-fill {
+  fill: none;
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dasharray 0.5s ease;
+}
+
+.ring-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.ring-percent {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.skill-activities {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Struggling Section */
+.struggling-section {
+  margin-bottom: 28px;
+}
+
+.struggling-section h2 {
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+}
+
+.success-banner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.success-icon {
+  font-size: 2.5rem;
+}
+
+.success-text h3 {
+  color: #16a34a;
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.success-text p {
+  color: #15803d;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.area-card {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid var(--border-light);
+  border-left: 4px solid var(--accent-red);
+}
+
+.area-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.area-header h3 {
+  font-size: 1.05rem;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.area-badge {
+  background: rgba(255, 75, 75, 0.1);
+  color: var(--accent-red);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.area-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.area-stat {
+  text-align: center;
+}
+
+.area-stat-value {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.area-stat-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.area-tip {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: #fef3c7;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.tip-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.area-tip p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #92400e;
+}
+
+/* Tips Section */
+.tips-section h2 {
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.tip-card {
+  text-align: center;
+  padding: 20px;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.tip-card:hover {
+  background: var(--primary-light);
+}
+
+.tip-emoji {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.tip-card h4 {
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.tip-card p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tips-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .progress-container {
+    padding: 20px 0 40px;
+  }
+
+  .progress-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-content h1 {
+    font-size: 1.75rem;
+  }
+
+  .achievement-banner {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .achievement-content {
+    flex-direction: column;
+  }
+
+  .achievement-xp {
+    text-align: center;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .chart-label {
+    min-width: 90px;
+    font-size: 0.9rem;
+  }
+
+  .areas-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .area-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .tips-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tips-grid {
+    grid-template-columns: 1fr;
+  }
+}
