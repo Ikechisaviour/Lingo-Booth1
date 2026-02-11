@@ -1,11 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { userService } from '../services/api';
 import './Navbar.css';
 
 function Navbar({ onLogout, isGuest, onGuestExit, userRole }) {
   const navigate = useNavigate();
   const location = useLocation();
   const username = localStorage.getItem('username');
+  const userId = localStorage.getItem('userId');
+  const [activityState, setActivityState] = useState(null);
+
+  // Fetch activity state on mount and when location changes
+  useEffect(() => {
+    if (!userId || isGuest) return;
+    userService.getActivityState(userId).then(res => {
+      if (res.data && res.data.activityType) {
+        setActivityState(res.data);
+      } else {
+        setActivityState(null);
+      }
+    }).catch(() => setActivityState(null));
+  }, [userId, isGuest, location.pathname]);
+
+  const getContinueLink = () => {
+    if (!activityState) return null;
+    if (activityState.activityType === 'lesson' && activityState.lesson) {
+      return `/lessons/${activityState.lesson._id}`;
+    }
+    if (activityState.activityType === 'flashcard') {
+      return '/flashcards';
+    }
+    return null;
+  };
+
+  const getContinueLabel = () => {
+    if (!activityState) return '';
+    if (activityState.activityType === 'lesson' && activityState.lesson) {
+      return activityState.lesson.title;
+    }
+    return 'Flashcards';
+  };
 
   const handleLogout = () => {
     onLogout();
@@ -51,6 +85,14 @@ function Navbar({ onLogout, isGuest, onGuestExit, userRole }) {
               <span className="stat-value">5</span>
             </div>
           </div>
+        )}
+
+        {/* Continue Button - only show for authenticated users with activity */}
+        {!isGuest && activityState && getContinueLink() && (
+          <Link to={getContinueLink()} className="nav-continue-btn" title={`Continue: ${getContinueLabel()}`}>
+            <span className="continue-icon">&#9654;</span>
+            <span className="continue-text">Continue</span>
+          </Link>
         )}
 
         {/* Guest Banner */}

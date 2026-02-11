@@ -287,9 +287,88 @@
   border-color: var(--primary);
 }
 
-.coming-soon {
+/* Voice Settings */
+.voice-description {
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+}
+
+.voice-no-voices {
   color: var(--text-muted);
   font-style: italic;
+  padding: 16px;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+}
+
+.voice-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.voice-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--bg-secondary);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.voice-option:hover {
+  background: var(--border-light);
+}
+
+.voice-option-selected {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+.voice-option-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.voice-option-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.voice-option-lang {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.voice-preview-btn {
+  padding: 6px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.voice-preview-btn:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.voice-check {
+  font-size: 1.2rem;
+  color: var(--primary);
+  font-weight: 700;
 }
 
 /* Account Section */

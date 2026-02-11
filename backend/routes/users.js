@@ -19,7 +19,7 @@ router.get('/:userId', async (req, res) => {
 // Update user profile
 router.put('/:userId', async (req, res) => {
   try {
-    const { username } = req.body;
+    const { username, preferredVoice } = req.body;
 
     // Check if username is already taken by another user
     if (username) {
@@ -32,9 +32,13 @@ router.put('/:userId', async (req, res) => {
       }
     }
 
+    const updateData = {};
+    if (username) updateData.username = username;
+    if (preferredVoice !== undefined) updateData.preferredVoice = preferredVoice;
+
     const user = await User.findByIdAndUpdate(
       req.params.userId,
-      { username },
+      updateData,
       { new: true }
     ).select('-password');
 
@@ -70,6 +74,46 @@ router.put('/:userId/password', async (req, res) => {
     await user.save();
 
     res.json({ message: 'Password updated successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+});
+
+// Save activity state (for cross-device resume)
+router.put('/:userId/activity-state', async (req, res) => {
+  try {
+    const { activityType, lessonId, lessonIndex, flashcardIndex } = req.body;
+    const update = {
+      lastActivityType: activityType,
+      lastLessonId: activityType === 'lesson' ? lessonId : null,
+      lastLessonIndex: lessonIndex || 0,
+      lastFlashcardIndex: flashcardIndex || 0,
+    };
+    const user = await User.findByIdAndUpdate(req.params.userId, update, { new: true }).select('-password');
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.json(user);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+});
+
+// Get activity state
+router.get('/:userId/activity-state', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId)
+      .select('lastActivityType lastLessonId lastLessonIndex lastFlashcardIndex')
+      .populate('lastLessonId', 'title category');
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.json({
+      activityType: user.lastActivityType,
+      lesson: user.lastLessonId,
+      lessonIndex: user.lastLessonIndex,
+      flashcardIndex: user.lastFlashcardIndex,
+    });
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: error.message });
   }

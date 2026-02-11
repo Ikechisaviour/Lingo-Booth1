@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { lessonService, progressService } from '../services/api';
+import { lessonService, progressService, userService } from '../services/api';
 import speechService from '../services/speechService';
 import './LessonDetail.css';
 
@@ -19,10 +19,51 @@ function LessonDetail() {
   const [isCorrect, setIsCorrect] = useState(false);
   const [showExplanation, setShowExplanation] = useState(false);
 
+  const saveTimerRef = useRef(null);
+  const userId = localStorage.getItem('userId');
+
+  const saveActivityState = useCallback((index) => {
+    if (!userId || !id) return;
+    if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
+    saveTimerRef.current = setTimeout(() => {
+      userService.saveActivityState(userId, {
+        activityType: 'lesson',
+        lessonId: id,
+        lessonIndex: index,
+      }).catch(err => console.error('Failed to save activity state:', err));
+    }, 500);
+  }, [userId, id]);
+
   useEffect(() => {
     fetchLesson();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
+
+  // Restore position from server
+  useEffect(() => {
+    if (!userId || !lesson) return;
+    userService.getActivityState(userId).then(res => {
+      const state = res.data;
+      if (state.activityType === 'lesson' && state.lesson && state.lesson._id === id && state.lessonIndex > 0) {
+        setCurrentIndex(Math.min(state.lessonIndex, lesson.content.length - 1));
+      }
+    }).catch(() => {});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userId, lesson, id]);
+
+  // Save position on index change
+  useEffect(() => {
+    if (lesson) {
+      saveActivityState(currentIndex);
+    }
+  }, [currentIndex, lesson, saveActivityState]);
+
+  // Cleanup timer on unmount
+  useEffect(() => {
+    return () => {
+      if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
+    };
+  }, []);
 
   // Auto-read Korean text twice when content changes
   useEffect(() => {
@@ -164,7 +205,6 @@ function LessonDetail() {
   };
 
   const handleComplete = async () => {
-    const userId = localStorage.getItem('userId');
     try {
       await progressService.recordProgress({
         userId,
@@ -174,6 +214,14 @@ function LessonDetail() {
         score: 100,
         isCorrect: true,
       });
+      // Clear activity state on completion
+      if (userId) {
+        await userService.saveActivityState(userId, {
+          activityType: null,
+          lessonId: null,
+          lessonIndex: 0,
+        }).catch(() => {});
+      }
       navigate('/lessons');
     } catch (err) {
       console.error('Error recording progress:', err);

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { progressService } from '../services/api';
 import './ProgressPage.css';
 
@@ -6,6 +7,7 @@ function ProgressPage() {
   const [progress, setProgress] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [selectedMastery, setSelectedMastery] = useState(null);
 
   const userId = localStorage.getItem('userId');
 
@@ -37,11 +39,18 @@ function ProgressPage() {
   }
 
   const masteryStats = [
-    { status: 'Mastered', count: progress.mastered, color: 'var(--mastered)', icon: '🏆', bgColor: 'rgba(88, 204, 2, 0.1)' },
-    { status: 'Comfortable', count: progress.comfortable, color: 'var(--comfortable)', icon: '😊', bgColor: 'rgba(255, 200, 0, 0.1)' },
-    { status: 'Learning', count: progress.learning, color: 'var(--learning)', icon: '📚', bgColor: 'rgba(28, 176, 246, 0.1)' },
-    { status: 'Struggling', count: progress.struggling, color: 'var(--struggling)', icon: '💪', bgColor: 'rgba(255, 75, 75, 0.1)' },
+    { status: 'Mastered', key: 'mastered', count: progress.mastered, color: 'var(--mastered)', icon: '🏆', bgColor: 'rgba(88, 204, 2, 0.1)', areas: progress.masteredAreas || [] },
+    { status: 'Comfortable', key: 'comfortable', count: progress.comfortable, color: 'var(--comfortable)', icon: '😊', bgColor: 'rgba(255, 200, 0, 0.1)', areas: progress.comfortableAreas || [] },
+    { status: 'Learning', key: 'learning', count: progress.learning, color: 'var(--learning)', icon: '📚', bgColor: 'rgba(28, 176, 246, 0.1)', areas: progress.learningAreas || [] },
+    { status: 'Struggling', key: 'struggling', count: progress.struggling, color: 'var(--struggling)', icon: '💪', bgColor: 'rgba(255, 75, 75, 0.1)', areas: progress.strugglingAreas || [] },
   ];
+
+  const formatCategory = (cat) => {
+    if (!cat) return 'General';
+    return cat.charAt(0).toUpperCase() + cat.slice(1).replace('-', ' ');
+  };
+
+  const needsPractice = (status) => ['struggling', 'learning'].includes(status);
 
   const skillStats = progress.skillStats || {};
   const totalItems = progress.mastered + progress.comfortable + progress.learning + progress.struggling || 1;
@@ -87,8 +96,9 @@ function ProgressPage() {
           {masteryStats.map((stat, idx) => (
             <div
               key={idx}
-              className="stat-card"
+              className={`stat-card stat-card-clickable ${selectedMastery === stat.key ? 'stat-card-selected' : ''}`}
               style={{ '--stat-color': stat.color, '--stat-bg': stat.bgColor }}
+              onClick={() => setSelectedMastery(selectedMastery === stat.key ? null : stat.key)}
             >
               <div className="stat-icon">{stat.icon}</div>
               <div className="stat-info">
@@ -101,9 +111,77 @@ function ProgressPage() {
                   style={{ width: `${(stat.count / totalItems) * 100}%` }}
                 ></div>
               </div>
+              <span className="stat-expand-hint">
+                {selectedMastery === stat.key ? 'Click to collapse' : 'Click to view'}
+              </span>
             </div>
           ))}
         </div>
+
+        {/* Mastery Detail Panel */}
+        {selectedMastery && (
+          <div className="mastery-detail-panel card">
+            <div className="mastery-detail-header">
+              <h2>
+                {masteryStats.find(s => s.key === selectedMastery)?.icon}{' '}
+                {masteryStats.find(s => s.key === selectedMastery)?.status} Activities
+              </h2>
+              <button className="btn-close-panel" onClick={() => setSelectedMastery(null)}>
+                ✕
+              </button>
+            </div>
+            {(() => {
+              const areas = masteryStats.find(s => s.key === selectedMastery)?.areas || [];
+              if (areas.length === 0) {
+                return <p className="no-activities">No activities in this category yet.</p>;
+              }
+              return (
+                <div className="mastery-detail-list">
+                  {areas.map((area, idx) => (
+                    <div key={idx} className="mastery-detail-item">
+                      <div className="detail-item-info">
+                        <div className="detail-item-title">
+                          {area.lessonId?.title || formatCategory(area.category)}
+                        </div>
+                        <div className="detail-item-meta">
+                          <span className="detail-category">{formatCategory(area.category)}</span>
+                          {area.lessonId?.difficulty && (
+                            <span className={`detail-difficulty detail-difficulty-${area.lessonId.difficulty}`}>
+                              {area.lessonId.difficulty}
+                            </span>
+                          )}
+                          <span className="detail-skill">{area.skillType}</span>
+                        </div>
+                      </div>
+                      <div className="detail-item-stats">
+                        <span className="detail-score">{area.score}%</span>
+                        <span className="detail-attempts">{area.attemptCount} attempts</span>
+                      </div>
+                      {area.lessonId && needsPractice(selectedMastery) && (
+                        <Link
+                          to={`/lessons/${area.lessonId._id}`}
+                          className="btn-practice"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          Practice
+                        </Link>
+                      )}
+                      {area.lessonId && !needsPractice(selectedMastery) && (
+                        <Link
+                          to={`/lessons/${area.lessonId._id}`}
+                          className="btn-review"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          Review
+                        </Link>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              );
+            })()}
+          </div>
+        )}
 
         {/* Mastery Breakdown */}
         <div className="card mastery-section">

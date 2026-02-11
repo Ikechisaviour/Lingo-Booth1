@@ -24,22 +24,22 @@ router.get('/summary/:userId', async (req, res) => {
     const struggling = await Progress.find({
       userId,
       masteryStatus: 'struggling',
-    });
+    }).populate('lessonId', 'title category difficulty');
 
     const learning = await Progress.find({
       userId,
       masteryStatus: 'learning',
-    });
+    }).populate('lessonId', 'title category difficulty');
 
     const comfortable = await Progress.find({
       userId,
       masteryStatus: 'comfortable',
-    });
+    }).populate('lessonId', 'title category difficulty');
 
     const mastered = await Progress.find({
       userId,
       masteryStatus: 'mastered',
-    });
+    }).populate('lessonId', 'title category difficulty');
 
     const skillStats = {};
     ['listening', 'speaking', 'reading', 'writing'].forEach(skill => {
@@ -58,6 +58,9 @@ router.get('/summary/:userId', async (req, res) => {
       comfortable: comfortable.length,
       mastered: mastered.length,
       strugglingAreas: struggling,
+      learningAreas: learning,
+      comfortableAreas: comfortable,
+      masteredAreas: mastered,
       skillStats,
     });
   } catch (error) {

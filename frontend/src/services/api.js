@@ -61,6 +61,10 @@ export const userService = {
     api.put(`/users/${userId}/password`, data),
   deleteAccount: (userId) =>
     api.delete(`/users/${userId}`),
+  saveActivityState: (userId, data) =>
+    api.put(`/users/${userId}/activity-state`, data),
+  getActivityState: (userId) =>
+    api.get(`/users/${userId}/activity-state`),
 };
 
 export const adminService = {

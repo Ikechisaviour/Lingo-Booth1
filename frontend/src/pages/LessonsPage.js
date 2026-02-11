@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { lessonService } from '../services/api';
+import { lessonService, progressService } from '../services/api';
 import './LessonsPage.css';
 
 function LessonsPage() {
@@ -8,11 +8,36 @@ function LessonsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [filter, setFilter] = useState({ category: '', difficulty: '' });
+  const [progressMap, setProgressMap] = useState({});
+
+  const userId = localStorage.getItem('userId');
 
   useEffect(() => {
     fetchLessons();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter]);
+
+  // Fetch user progress to build lessonId → score map
+  useEffect(() => {
+    if (!userId) return;
+    progressService.getProgress(userId).then(res => {
+      const map = {};
+      res.data.forEach(p => {
+        const lid = p.lessonId?._id || p.lessonId;
+        if (lid) {
+          if (!map[lid]) map[lid] = [];
+          map[lid].push(p.score || 0);
+        }
+      });
+      // Average scores per lesson
+      const avgMap = {};
+      Object.keys(map).forEach(lid => {
+        const scores = map[lid];
+        avgMap[lid] = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length);
+      });
+      setProgressMap(avgMap);
+    }).catch(() => {});
+  }, [userId]);
 
   const fetchLessons = async () => {
     try {
@@ -168,7 +193,7 @@ function LessonsPage() {
                         />
                         <path
                           className="progress-fill"
-                          strokeDasharray={`${index % 100}, 100`}
+                          strokeDasharray={`${progressMap[lesson._id] || 0}, 100`}
                           d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                           style={{ stroke: getDifficultyColor(lesson.difficulty) }}
                         />

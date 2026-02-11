@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { userService, progressService } from '../services/api';
+import speechService from '../services/speechService';
 import './ProfilePage.css';
 
 function ProfilePage({ onLogout }) {
@@ -17,6 +18,8 @@ function ProfilePage({ onLogout }) {
     confirmPassword: '',
   });
   const [saveMessage, setSaveMessage] = useState('');
+  const [availableVoices, setAvailableVoices] = useState([]);
+  const [selectedVoice, setSelectedVoice] = useState(localStorage.getItem('preferredVoice') || '');
   const navigate = useNavigate();
 
   const userId = localStorage.getItem('userId');
@@ -24,6 +27,21 @@ function ProfilePage({ onLogout }) {
   useEffect(() => {
     fetchUserData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Load available Korean voices
+  useEffect(() => {
+    const loadVoices = () => {
+      const koreanVoices = speechService.getKoreanVoices();
+      if (koreanVoices.length > 0) {
+        setAvailableVoices(koreanVoices);
+      }
+    };
+    loadVoices();
+    // Voices may load asynchronously
+    if (window.speechSynthesis.onvoiceschanged !== undefined) {
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
   }, []);
 
   const fetchUserData = async () => {
@@ -85,6 +103,21 @@ function ProfilePage({ onLogout }) {
       setError('');
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to change password');
+    }
+  };
+
+  const handleVoiceChange = async (voiceName) => {
+    setSelectedVoice(voiceName);
+    speechService.setVoice(voiceName);
+    // Preview the voice
+    speechService.speak('안녕하세요');
+    // Save to backend
+    try {
+      await userService.updateProfile(userId, { preferredVoice: voiceName || null });
+      setSaveMessage('Voice updated successfully!');
+      setTimeout(() => setSaveMessage(''), 3000);
+    } catch (err) {
+      console.error('Failed to save voice preference:', err);
     }
   };
 
@@ -302,8 +335,48 @@ function ProfilePage({ onLogout }) {
               </div>
 
               <div className="card">
-                <h2>Preferences</h2>
-                <p className="coming-soon">More settings coming soon...</p>
+                <h2>Voice Settings</h2>
+                <p className="voice-description">
+                  Choose a Korean voice for pronunciation. Your selection syncs across devices.
+                </p>
+                {availableVoices.length === 0 ? (
+                  <p className="voice-no-voices">
+                    No Korean voices available on this device. Try using Chrome or Edge for more voice options.
+                  </p>
+                ) : (
+                  <div className="voice-selector">
+                    {availableVoices.map((voice) => (
+                      <div
+                        key={voice.name}
+                        className={`voice-option ${selectedVoice === voice.name ? 'voice-option-selected' : ''}`}
+                        onClick={() => handleVoiceChange(voice.name)}
+                      >
+                        <div className="voice-option-info">
+                          <span className="voice-option-name">{voice.name}</span>
+                          <span className="voice-option-lang">{voice.lang}</span>
+                        </div>
+                        <button
+                          className="voice-preview-btn"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            const prevVoice = speechService.getSelectedVoiceName();
+                            speechService.setVoice(voice.name);
+                            speechService.speak('안녕하세요');
+                            // Restore previous voice if not selecting
+                            if (selectedVoice !== voice.name) {
+                              setTimeout(() => speechService.setVoice(prevVoice), 100);
+                            }
+                          }}
+                        >
+                          Preview
+                        </button>
+                        {selectedVoice === voice.name && (
+                          <span className="voice-check">&#10003;</span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           )}

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { flashcardService, progressService } from '../services/api';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { flashcardService, progressService, userService } from '../services/api';
 import speechService from '../services/speechService';
 import './FlashcardsPage.css';
 
@@ -21,10 +21,48 @@ function FlashcardsPage() {
   const [currentCardShowsKorean, setCurrentCardShowsKorean] = useState(true);
 
   const userId = localStorage.getItem('userId');
+  const saveTimerRef = useRef(null);
+
+  const saveActivityState = useCallback((index) => {
+    if (!userId) return;
+    if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
+    saveTimerRef.current = setTimeout(() => {
+      userService.saveActivityState(userId, {
+        activityType: 'flashcard',
+        flashcardIndex: index,
+      }).catch(err => console.error('Failed to save activity state:', err));
+    }, 500);
+  }, [userId]);
 
   useEffect(() => {
     fetchFlashcards();
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Restore flashcard position from server
+  useEffect(() => {
+    if (!userId || flashcards.length === 0) return;
+    userService.getActivityState(userId).then(res => {
+      const state = res.data;
+      if (state.activityType === 'flashcard' && state.flashcardIndex > 0) {
+        setCurrentIndex(Math.min(state.flashcardIndex, flashcards.length - 1));
+      }
+    }).catch(() => {});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userId, flashcards.length]);
+
+  // Save position on index change
+  useEffect(() => {
+    if (flashcards.length > 0) {
+      saveActivityState(currentIndex);
+    }
+  }, [currentIndex, flashcards.length, saveActivityState]);
+
+  // Cleanup timer on unmount
+  useEffect(() => {
+    return () => {
+      if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
+    };
   }, []);
 
   const fetchFlashcards = async () => {

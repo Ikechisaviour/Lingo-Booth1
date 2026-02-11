@@ -25,6 +25,9 @@ function LoginPage({ setIsAuthenticated, setIsGuest }) {
       localStorage.setItem('userId', response.data.user.id);
       localStorage.setItem('username', response.data.user.username);
       localStorage.setItem('userRole', response.data.user.role || 'user');
+      if (response.data.user.preferredVoice) {
+        localStorage.setItem('preferredVoice', response.data.user.preferredVoice);
+      }
       localStorage.removeItem('guestMode');
       setIsGuest(false);
       setIsAuthenticated(true);

@@ -21,6 +21,17 @@ class SpeechService {
   initializeVoices() {
     this.voices = this.synth.getVoices();
 
+    // Check if user has a saved preference
+    const savedVoiceName = localStorage.getItem('preferredVoice');
+    if (savedVoiceName) {
+      const savedVoice = this.voices.find(v => v.name === savedVoiceName);
+      if (savedVoice) {
+        this.koreanVoice = savedVoice;
+        this.isInitialized = true;
+        return;
+      }
+    }
+
     // Find Korean voice (ko-KR)
     this.koreanVoice = this.voices.find(voice =>
       voice.lang === 'ko-KR' || voice.lang.startsWith('ko')
@@ -33,6 +44,30 @@ class SpeechService {
     }
 
     this.isInitialized = true;
+  }
+
+  /**
+   * Set the preferred voice by name
+   * @param {string} voiceName - The name of the voice to use
+   */
+  setVoice(voiceName) {
+    if (!voiceName) {
+      localStorage.removeItem('preferredVoice');
+      this.initializeVoices();
+      return;
+    }
+    const voice = this.voices.find(v => v.name === voiceName);
+    if (voice) {
+      this.koreanVoice = voice;
+      localStorage.setItem('preferredVoice', voiceName);
+    }
+  }
+
+  /**
+   * Get the currently selected voice name
+   */
+  getSelectedVoiceName() {
+    return this.koreanVoice?.name || null;
   }
 
   /**

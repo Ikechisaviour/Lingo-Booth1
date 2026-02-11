@@ -46,6 +46,7 @@ function App() {
             onLogout={handleLogout}
             isGuest={isGuest}
             onGuestExit={handleGuestExit}
+            userRole={localStorage.getItem('userRole')}
           />
         )}
         <Routes>

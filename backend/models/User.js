@@ -49,6 +49,28 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: null,
   },
+  lastActivityType: {
+    type: String,
+    enum: ['lesson', 'flashcard', null],
+    default: null,
+  },
+  lastLessonId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Lesson',
+    default: null,
+  },
+  lastLessonIndex: {
+    type: Number,
+    default: 0,
+  },
+  lastFlashcardIndex: {
+    type: Number,
+    default: 0,
+  },
+  preferredVoice: {
+    type: String,
+    default: null,
+  },
   createdAt: {
     type: Date,
     default: Date.now,
