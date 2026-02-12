@@ -4,13 +4,25 @@ import { lessonService, progressService, userService } from '../services/api';
 import speechService from '../services/speechService';
 import './LessonDetail.css';
 
+const shuffleArray = (arr) => {
+  const shuffled = [...arr];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
+
 function LessonDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [lesson, setLesson] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [orderMode, setOrderMode] = useState('sequential');
+  const [orderMap, setOrderMap] = useState([]);
+  const [stepPosition, setStepPosition] = useState(0);
+  const [studyMode, setStudyMode] = useState('default');
   const [showTranslation, setShowTranslation] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [showQuiz, setShowQuiz] = useState(false);
@@ -22,7 +34,9 @@ function LessonDetail() {
   const saveTimerRef = useRef(null);
   const userId = localStorage.getItem('userId');
 
-  const saveActivityState = useCallback((index) => {
+  const currentIndex = orderMap.length > 0 ? orderMap[stepPosition] : 0;
+
+  const saveActivityState = useCallback((index, mode, map) => {
     if (!userId || !id) return;
     if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
     saveTimerRef.current = setTimeout(() => {
@@ -30,6 +44,8 @@ function LessonDetail() {
         activityType: 'lesson',
         lessonId: id,
         lessonIndex: index,
+        orderMode: mode,
+        orderMap: map,
       }).catch(err => console.error('Failed to save activity state:', err));
     }, 500);
   }, [userId, id]);
@@ -39,24 +55,39 @@ function LessonDetail() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
-  // Restore position from server
+  // Initialize orderMap when lesson loads
   useEffect(() => {
-    if (!userId || !lesson) return;
+    if (!lesson) return;
+    const sequentialMap = lesson.content.map((_, i) => i);
+    setOrderMap(sequentialMap);
+  }, [lesson]);
+
+  // Restore position and order from server
+  useEffect(() => {
+    if (!userId || !lesson || orderMap.length === 0) return;
     userService.getActivityState(userId).then(res => {
       const state = res.data;
-      if (state.activityType === 'lesson' && state.lesson && state.lesson._id === id && state.lessonIndex > 0) {
-        setCurrentIndex(Math.min(state.lessonIndex, lesson.content.length - 1));
+      if (state.activityType === 'lesson' && state.lesson && state.lesson._id === id) {
+        // Restore order mode and map if saved
+        if (state.orderMode === 'random' && state.orderMap && state.orderMap.length === lesson.content.length) {
+          setOrderMode('random');
+          setOrderMap(state.orderMap);
+        }
+        if (state.lessonIndex > 0) {
+          const restoredPosition = Math.min(state.lessonIndex, lesson.content.length - 1);
+          setStepPosition(restoredPosition);
+        }
       }
     }).catch(() => {});
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userId, lesson, id]);
+  }, [userId, lesson, id, orderMap.length]);
 
-  // Save position on index change
+  // Save position on step change
   useEffect(() => {
-    if (lesson) {
-      saveActivityState(currentIndex);
+    if (lesson && orderMap.length > 0) {
+      saveActivityState(stepPosition, orderMode, orderMap);
     }
-  }, [currentIndex, lesson, saveActivityState]);
+  }, [stepPosition, orderMode, orderMap, lesson, saveActivityState]);
 
   // Cleanup timer on unmount
   useEffect(() => {
@@ -65,24 +96,20 @@ function LessonDetail() {
     };
   }, []);
 
-  // Auto-read Korean text twice when content changes
+  // Auto-read Korean text twice when content changes (not in reading mode)
   useEffect(() => {
+    if (studyMode === 'reading') return;
     const currentContent = lesson?.content?.[currentIndex];
     if (currentContent?.korean) {
-      // First reading - immediate
       speechService.speak(currentContent.korean);
-
-      // Second reading - after 3 seconds
       const timer = setTimeout(() => {
         speechService.speak(currentContent.korean);
       }, 3000);
-
-      // Cleanup function to cancel the timeout if content changes
       return () => {
         clearTimeout(timer);
       };
     }
-  }, [lesson, currentIndex]);
+  }, [lesson, currentIndex, studyMode]);
 
   const fetchLesson = async () => {
     try {
@@ -99,12 +126,10 @@ function LessonDetail() {
   };
 
   const generateQuizOptions = (correctAnswer, allContent) => {
-    // Get other English translations from the lesson
     const otherAnswers = allContent
       .filter(item => item.english !== correctAnswer && item.english)
       .map(item => item.english);
 
-    // Create a pool of wrong answers
     const wrongAnswers = [];
     const commonWrongAnswers = [
       'Thank you very much',
@@ -124,16 +149,11 @@ function LessonDetail() {
       'Do you speak English?',
     ];
 
-    // First, try to use other answers from the lesson
     if (otherAnswers.length >= 4) {
-      // Shuffle and pick 4 random wrong answers from lesson
       const shuffled = otherAnswers.sort(() => Math.random() - 0.5);
       wrongAnswers.push(...shuffled.slice(0, 4));
     } else {
-      // Use all available from lesson
       wrongAnswers.push(...otherAnswers);
-
-      // Fill remaining with common wrong answers
       const remaining = 4 - wrongAnswers.length;
       const availableCommon = commonWrongAnswers.filter(
         ans => ans !== correctAnswer && !wrongAnswers.includes(ans)
@@ -142,22 +162,39 @@ function LessonDetail() {
       wrongAnswers.push(...shuffledCommon.slice(0, remaining));
     }
 
-    // Combine correct answer with wrong answers and shuffle
     const allOptions = [correctAnswer, ...wrongAnswers];
     return allOptions.sort(() => Math.random() - 0.5);
   };
 
+  const handleOrderToggle = (mode) => {
+    if (mode === orderMode || !lesson) return;
+
+    setOrderMode(mode);
+
+    if (mode === 'random') {
+      const indices = lesson.content.map((_, i) => i);
+      setOrderMap(shuffleArray(indices));
+    } else {
+      const sequential = lesson.content.map((_, i) => i);
+      setOrderMap(sequential);
+    }
+
+    setStepPosition(0);
+    setShowTranslation(false);
+    resetQuiz();
+  };
+
   const handleNext = () => {
-    if (currentIndex < lesson.content.length - 1) {
-      setCurrentIndex(currentIndex + 1);
+    if (stepPosition < orderMap.length - 1) {
+      setStepPosition(stepPosition + 1);
       setShowTranslation(false);
       resetQuiz();
     }
   };
 
   const handlePrev = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
+    if (stepPosition > 0) {
+      setStepPosition(stepPosition - 1);
       setShowTranslation(false);
       resetQuiz();
     }
@@ -178,8 +215,7 @@ function LessonDetail() {
     setIsCorrect(correct);
     setShowExplanation(true);
 
-    // Auto-advance to next question after 2 seconds if correct
-    if (correct && currentIndex < lesson.content.length - 1) {
+    if (correct && stepPosition < orderMap.length - 1) {
       setTimeout(() => {
         handleNext();
       }, 2000);
@@ -199,7 +235,6 @@ function LessonDetail() {
     } else {
       setIsSpeaking(true);
       speechService.speak(text);
-      // Reset speaking state after speech completes
       setTimeout(() => setIsSpeaking(false), 3000);
     }
   };
@@ -214,12 +249,13 @@ function LessonDetail() {
         score: 100,
         isCorrect: true,
       });
-      // Clear activity state on completion
       if (userId) {
         await userService.saveActivityState(userId, {
           activityType: null,
           lessonId: null,
           lessonIndex: 0,
+          orderMode: null,
+          orderMap: [],
         }).catch(() => {});
       }
       navigate('/lessons');
@@ -229,7 +265,6 @@ function LessonDetail() {
   };
 
   // Memoize quiz options to prevent reshuffling on re-render
-  // Must be called before any early returns (React hooks rule)
   const content = lesson?.content?.[currentIndex];
   const quizOptions = useMemo(() => {
     if (!content || !lesson) return [];
@@ -251,35 +286,95 @@ function LessonDetail() {
     );
   }
 
+  const isLastStep = stepPosition === orderMap.length - 1;
+
   return (
     <div className="lesson-detail-container">
       <div className="container">
         <div className="lesson-header">
           <h1>{lesson.title}</h1>
-          <p className="lesson-progress">
-            Item {currentIndex + 1} of {lesson.content.length}
-          </p>
+
+          <div className="order-selector">
+            <span className="order-label">Order:</span>
+            <div className="order-options">
+              <button
+                className={`order-btn ${orderMode === 'sequential' ? 'active' : ''}`}
+                onClick={() => handleOrderToggle('sequential')}
+              >
+                Sequential
+              </button>
+              <button
+                className={`order-btn ${orderMode === 'random' ? 'active' : ''}`}
+                onClick={() => handleOrderToggle('random')}
+              >
+                Random
+              </button>
+            </div>
+          </div>
+
+          <div className="order-selector">
+            <span className="order-label">Mode:</span>
+            <div className="order-options">
+              <button
+                className={`order-btn ${studyMode === 'default' ? 'active' : ''}`}
+                onClick={() => setStudyMode('default')}
+              >
+                Default
+              </button>
+              <button
+                className={`order-btn ${studyMode === 'reading' ? 'active' : ''}`}
+                onClick={() => setStudyMode('reading')}
+              >
+                Reading
+              </button>
+              <button
+                className={`order-btn ${studyMode === 'listening' ? 'active' : ''}`}
+                onClick={() => setStudyMode('listening')}
+              >
+                Listening
+              </button>
+            </div>
+          </div>
+
         </div>
 
         <div className="lesson-content-card">
           <div className="content-item">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-              <h2 style={{ margin: 0 }}>Korean: {content.korean}</h2>
-              <button
-                className="btn btn-primary"
-                onClick={() => handleSpeak(content.korean)}
-                title="Listen to pronunciation"
-                style={{ padding: '5px 15px', fontSize: '20px' }}
-              >
-                {isSpeaking ? '🔇' : '🔊'}
-              </button>
-            </div>
-            <p className="romanization">Romanization: {content.romanization}</p>
-
-            {content.audioUrl && (
-              <div className="audio-player">
-                <audio controls src={content.audioUrl} style={{ marginTop: '10px' }} />
+            {studyMode === 'listening' ? (
+              <div style={{ textAlign: 'center', padding: '20px 0' }}>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => handleSpeak(content.korean)}
+                  title="Listen to pronunciation"
+                  style={{ padding: '15px 30px', fontSize: '32px', borderRadius: '50%' }}
+                >
+                  {isSpeaking ? '🔇' : '🔊'}
+                </button>
+                <p style={{ color: '#888', marginTop: '10px' }}>Listen and select the correct answer</p>
               </div>
+            ) : (
+              <>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
+                  <h2 style={{ margin: 0 }}>Korean: {content.korean}</h2>
+                  {studyMode === 'default' && (
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => handleSpeak(content.korean)}
+                      title="Listen to pronunciation"
+                      style={{ padding: '5px 15px', fontSize: '20px' }}
+                    >
+                      {isSpeaking ? '🔇' : '🔊'}
+                    </button>
+                  )}
+                </div>
+                <p className="romanization">Romanization: {content.romanization}</p>
+
+                {studyMode === 'default' && content.audioUrl && (
+                  <div className="audio-player">
+                    <audio controls src={content.audioUrl} style={{ marginTop: '10px' }} />
+                  </div>
+                )}
+              </>
             )}
 
             {/* Quiz Section */}
@@ -300,7 +395,9 @@ function LessonDetail() {
                   backgroundColor: '#f9f9f9'
                 }}>
                   <h3 style={{ marginTop: 0, marginBottom: '15px' }}>
-                    What does "{content.korean}" mean?
+                    {studyMode === 'listening'
+                      ? 'What does the audio mean?'
+                      : `What does "${content.korean}" mean?`}
                   </h3>
 
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -450,7 +547,7 @@ function LessonDetail() {
             <button
               className="btn btn-primary"
               onClick={handlePrev}
-              disabled={currentIndex === 0}
+              disabled={stepPosition === 0}
             >
               ← Previous
             </button>
@@ -459,12 +556,12 @@ function LessonDetail() {
               <div
                 className="progress-fill"
                 style={{
-                  width: `${((currentIndex + 1) / lesson.content.length) * 100}%`,
+                  width: `${((stepPosition + 1) / lesson.content.length) * 100}%`,
                 }}
               />
             </span>
 
-            {currentIndex === lesson.content.length - 1 ? (
+            {isLastStep ? (
               <button className="btn btn-success" onClick={handleComplete}>
                 Complete Lesson ✓
               </button>

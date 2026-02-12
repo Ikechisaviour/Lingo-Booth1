@@ -20,6 +20,53 @@
   font-size: 1rem;
 }
 
+/* Order mode toggle */
+.order-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 12px 0;
+}
+
+.order-label {
+  font-weight: 600;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.order-options {
+  display: flex;
+  gap: 8px;
+}
+
+.order-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #888;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.order-btn:hover {
+  border-color: #667eea;
+  color: #667eea;
+}
+
+.order-btn.active {
+  background: #667eea;
+  border-color: #667eea;
+  color: white;
+  box-shadow: 0 3px 0 #5a6fd6;
+}
+
 .lesson-content-card {
   background: white;
   border-radius: 10px;
@@ -128,6 +175,11 @@
 }
 
 @media (max-width: 768px) {
+  .order-selector {
+    flex-direction: column;
+    gap: 8px;
+  }
+
   .lesson-content-card {
     padding: 20px;
   }
