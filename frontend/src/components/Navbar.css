@@ -92,27 +92,27 @@
   align-items: center;
   gap: 6px;
   padding: 8px 16px;
-  background: var(--accent-green, #58cc02);
+  background: #1cb0f6;
   color: white;
   border-radius: 12px;
   text-decoration: none;
   font-weight: 700;
   font-size: 0.9rem;
-  box-shadow: 0 3px 0 rgba(69, 163, 2, 0.8);
+  box-shadow: 0 3px 0 rgba(24, 143, 200, 0.8);
   transition: all 0.2s ease;
   white-space: nowrap;
 }
 
 .nav-continue-btn:hover {
-  background: #46a302;
+  background: #1899d6;
   transform: translateY(-2px);
-  box-shadow: 0 5px 0 rgba(69, 163, 2, 0.8);
+  box-shadow: 0 5px 0 rgba(24, 143, 200, 0.8);
   color: white;
 }
 
 .nav-continue-btn:active {
   transform: translateY(1px);
-  box-shadow: 0 2px 0 rgba(69, 163, 2, 0.8);
+  box-shadow: 0 2px 0 rgba(24, 143, 200, 0.8);
 }
 
 .continue-icon {
