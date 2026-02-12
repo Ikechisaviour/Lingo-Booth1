@@ -258,6 +258,15 @@ function ProfilePage({ onLogout }) {
                 </div>
               </div>
 
+              <div className="card">
+                <h2>Session</h2>
+                <p className="card-description">Manage your current session</p>
+                <button className="btn btn-outline" onClick={handleLogout}>
+                  <span className="btn-icon">👋</span>
+                  Logout
+                </button>
+              </div>
+
               <div className="card stats-card">
                 <h2>Learning Statistics</h2>
                 <div className="stats-grid">
@@ -384,15 +393,6 @@ function ProfilePage({ onLogout }) {
           {/* Account Tab */}
           {activeTab === 'account' && (
             <div className="account-section">
-              <div className="card">
-                <h2>Session</h2>
-                <p className="card-description">Manage your current session</p>
-                <button className="btn btn-outline" onClick={handleLogout}>
-                  <span className="btn-icon">👋</span>
-                  Logout
-                </button>
-              </div>
-
               <div className="card danger-zone">
                 <h2>Danger Zone</h2>
                 <p className="card-description">
