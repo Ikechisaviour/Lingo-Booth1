@@ -69,24 +69,6 @@ function Navbar({ onLogout, isGuest, onGuestExit, userRole }) {
           <img src="/images/logo.png" alt="Lingo Booth" className="brand-logo" />
         </Link>
 
-        {/* Stats - only show for authenticated users */}
-        {!isGuest && (
-          <div className="nav-stats">
-            <div className="stat-item streak">
-              <span className="stat-icon">🔥</span>
-              <span className="stat-value">6</span>
-            </div>
-            <div className="stat-item xp">
-              <span className="stat-icon">⚡</span>
-              <span className="stat-value">339</span>
-            </div>
-            <div className="stat-item hearts">
-              <span className="stat-icon">❤️</span>
-              <span className="stat-value">5</span>
-            </div>
-          </div>
-        )}
-
         {/* Continue Button - only show for authenticated users with activity */}
         {!isGuest && activityState && getContinueLink() && (
           <Link to={getContinueLink()} className="nav-continue-btn" title={`Continue: ${getContinueLabel()}`}>
