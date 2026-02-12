@@ -149,12 +149,6 @@ function Navbar({ onLogout, isGuest, onGuestExit, userRole }) {
                   <span className="nav-text">{username || 'Profile'}</span>
                 </Link>
               </li>
-              <li className="nav-item">
-                <button className="nav-link btn-logout" onClick={handleLogout}>
-                  <span className="nav-icon">👋</span>
-                  <span className="nav-text">Logout</span>
-                </button>
-              </li>
             </>
           )}
         </ul>
