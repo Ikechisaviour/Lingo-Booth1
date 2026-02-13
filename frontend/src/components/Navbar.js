@@ -9,8 +9,9 @@ function Navbar({ onLogout, isGuest, onGuestExit, userRole }) {
   const username = localStorage.getItem('username');
   const userId = localStorage.getItem('userId');
   const [activityState, setActivityState] = useState(null);
+  const [totalXP, setTotalXP] = useState(null);
 
-  // Fetch activity state on mount and when location changes
+  // Fetch activity state and XP on mount and when location changes
   useEffect(() => {
     if (!userId || isGuest) return;
     userService.getActivityState(userId).then(res => {
@@ -20,6 +21,12 @@ function Navbar({ onLogout, isGuest, onGuestExit, userRole }) {
         setActivityState(null);
       }
     }).catch(() => setActivityState(null));
+
+    userService.getProfile(userId).then(res => {
+      if (res.data && res.data.totalXP !== undefined) {
+        setTotalXP(res.data.totalXP);
+      }
+    }).catch(() => {});
   }, [userId, isGuest, location.pathname]);
 
   const getContinueLink = () => {
@@ -105,12 +112,12 @@ function Navbar({ onLogout, isGuest, onGuestExit, userRole }) {
             </Link>
           </li>
 
-          {/* Progress - only for authenticated users */}
+          {/* Progress / XP - only for authenticated users */}
           {!isGuest && (
             <li className="nav-item">
-              <Link to="/progress" className={`nav-link ${isActive('/progress') ? 'active' : ''}`}>
+              <Link to="/progress" className={`nav-link nav-xp ${isActive('/progress') ? 'active' : ''}`}>
                 <span className="nav-icon">📊</span>
-                <span className="nav-text">Progress</span>
+                <span className="nav-text">{totalXP !== null ? <>{totalXP}<span className="xp-suffix"> XP</span></> : 'Progress'}</span>
               </Link>
             </li>
           )}

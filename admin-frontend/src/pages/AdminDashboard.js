@@ -82,6 +82,18 @@ function AdminDashboard() {
     }
   };
 
+  const handleResetRateLimit = async (user) => {
+    try {
+      await adminService.resetRateLimit(user._id);
+      setUsers(users.map(u =>
+        u._id === user._id ? { ...u, rateLimitHits: 0, lastRateLimited: null } : u
+      ));
+      showSuccess(`Rate limit counter reset for ${user.username}`);
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to reset rate limit');
+    }
+  };
+
   const handlePromoteToAdmin = async (user) => {
     if (window.confirm(`Promote ${user.username} to admin? They will have full access to this dashboard.`)) {
       try {
@@ -122,7 +134,8 @@ function AdminDashboard() {
     const matchesFilter = filterStatus === 'all' ||
       (filterStatus === 'active' && user.status === 'active') ||
       (filterStatus === 'suspended' && user.status === 'suspended') ||
-      (filterStatus === 'admin' && user.role === 'admin');
+      (filterStatus === 'admin' && user.role === 'admin') ||
+      (filterStatus === 'ratelimited' && (user.rateLimitHits || 0) > 0);
     return matchesSearch && matchesFilter;
   });
 
@@ -231,6 +244,17 @@ function AdminDashboard() {
                     <span className="stat-number">{stats.overview.suspendedUsers}</span>
                     <span className="stat-label">Suspended</span>
                     <span className="stat-sub">Accounts blocked</span>
+                  </div>
+                </div>
+
+                <div className="stat-card large info">
+                  <div className="stat-icon-wrapper">
+                    <span className="stat-emoji">&#x26A0;&#xFE0F;</span>
+                  </div>
+                  <div className="stat-details">
+                    <span className="stat-number">{stats.overview.totalRateLimitHits || 0}</span>
+                    <span className="stat-label">Rate Limit Hits</span>
+                    <span className="stat-sub">{stats.overview.usersRateLimited || 0} users affected</span>
                   </div>
                 </div>
               </div>
@@ -363,6 +387,12 @@ function AdminDashboard() {
                   >
                     Admins ({users.filter(u => u.role === 'admin').length})
                   </button>
+                  <button
+                    className={`filter-pill ${filterStatus === 'ratelimited' ? 'active' : ''}`}
+                    onClick={() => setFilterStatus('ratelimited')}
+                  >
+                    Rate Limited ({users.filter(u => (u.rateLimitHits || 0) > 0).length})
+                  </button>
                 </div>
               </div>
 
@@ -378,6 +408,7 @@ function AdminDashboard() {
                         <th>Last Login</th>
                         <th>Logins</th>
                         <th>Time Spent</th>
+                        <th>Rate Limits</th>
                         <th>Joined</th>
                         <th>Actions</th>
                       </tr>
@@ -409,6 +440,14 @@ function AdminDashboard() {
                           <td className="date-cell">{formatDate(user.lastLogin)}</td>
                           <td className="center-cell">{user.loginCount || 0}</td>
                           <td className="center-cell">{formatTimeSpent(user.totalTimeSpent)}</td>
+                          <td className="center-cell">
+                            <span className={`rate-limit-count ${(user.rateLimitHits || 0) > 0 ? 'has-hits' : ''}`}>
+                              {user.rateLimitHits || 0}
+                            </span>
+                            {user.lastRateLimited && (
+                              <div className="rate-limit-date">{formatDate(user.lastRateLimited)}</div>
+                            )}
+                          </td>
                           <td className="date-cell">{formatDate(user.createdAt)}</td>
                           <td>
                             <div className="actions-cell">
@@ -445,6 +484,15 @@ function AdminDashboard() {
                                   >
                                     🗑️
                                   </button>
+                                  {(user.rateLimitHits || 0) > 0 && (
+                                    <button
+                                      className="action-btn reset-rate"
+                                      onClick={() => handleResetRateLimit(user)}
+                                      title="Reset rate limit counter"
+                                    >
+                                      &#x21BB;
+                                    </button>
+                                  )}
                                 </>
                               )}
                               {user.role === 'admin' && (

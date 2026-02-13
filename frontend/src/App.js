@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import React, { useEffect, useCallback } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import LessonsPage from './pages/LessonsPage';
@@ -11,6 +11,22 @@ import LessonDetail from './pages/LessonDetail';
 import ProfilePage from './pages/ProfilePage';
 import AdminDashboard from './pages/AdminDashboard';
 import './App.css';
+
+// Listens for mid-session suspension and redirects to login
+function SuspensionListener({ onSuspended }) {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const handler = () => {
+      onSuspended();
+      navigate('/login', { state: { suspended: true } });
+    };
+    window.addEventListener('accountSuspended', handler);
+    return () => window.removeEventListener('accountSuspended', handler);
+  }, [navigate, onSuspended]);
+
+  return null;
+}
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = React.useState(
@@ -30,6 +46,11 @@ function App() {
     setIsGuest(false);
   };
 
+  const handleSuspended = useCallback(() => {
+    setIsAuthenticated(false);
+    setIsGuest(false);
+  }, []);
+
   const handleGuestExit = () => {
     localStorage.removeItem('guestMode');
     setIsGuest(false);
@@ -40,6 +61,7 @@ function App() {
 
   return (
     <Router>
+      <SuspensionListener onSuspended={handleSuspended} />
       <div className="App">
         {canAccessApp && (
           <Navbar

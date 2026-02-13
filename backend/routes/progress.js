@@ -2,12 +2,13 @@ const express = require('express');
 const router = express.Router();
 const Progress = require('../models/Progress');
 const { verifyToken, isOwner } = require('../middleware/auth');
+const { checkInactivityPenalty } = require('../middleware/xpPenalty');
 
 // All progress routes require authentication
 router.use(verifyToken);
 
 // Get progress for user (only own progress or admin)
-router.get('/user/:userId', isOwner('userId'), async (req, res) => {
+router.get('/user/:userId', isOwner('userId'), checkInactivityPenalty(), async (req, res) => {
   try {
     const { userId } = req.params;
     const progress = await Progress.find({ userId });
@@ -19,7 +20,7 @@ router.get('/user/:userId', isOwner('userId'), async (req, res) => {
 });
 
 // Get progress summary (only own summary or admin)
-router.get('/summary/:userId', isOwner('userId'), async (req, res) => {
+router.get('/summary/:userId', isOwner('userId'), checkInactivityPenalty(), async (req, res) => {
   try {
     const { userId } = req.params;
 

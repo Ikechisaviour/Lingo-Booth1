@@ -1,11 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { userService } from '../services/api';
 import './HomePage.css';
 
 function HomePage() {
   const navigate = useNavigate();
   const userRole = localStorage.getItem('userRole');
+  const userId = localStorage.getItem('userId');
   const isAdmin = userRole === 'admin';
+  const [xpStats, setXpStats] = useState(null);
+
+  const fetchXpStats = useCallback(async () => {
+    if (!userId) return;
+    try {
+      const res = await userService.getXpStats(userId);
+      setXpStats(res.data);
+    } catch (err) {
+      console.error('Failed to fetch XP stats:', err);
+    }
+  }, [userId]);
+
+  useEffect(() => {
+    fetchXpStats();
+    const interval = setInterval(fetchXpStats, 60000);
+    return () => clearInterval(interval);
+  }, [fetchXpStats]);
+
+  const formatTimeAgo = (dateStr) => {
+    if (!dateStr) return 'Never';
+    const diff = Date.now() - new Date(dateStr).getTime();
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    const days = Math.floor(hours / 24);
+    if (days > 0) return `${days}d ${hours % 24}h ago`;
+    if (hours > 0) return `${hours}h ago`;
+    const mins = Math.floor(diff / (1000 * 60));
+    return `${mins}m ago`;
+  };
 
   const features = [
     {
@@ -194,6 +224,83 @@ function HomePage() {
               View League
             </button>
           </div>
+
+          {/* XP Tracker Card */}
+          {xpStats && (
+            <div className={`card sidebar-card xp-tracker-card ${xpStats.status}`}>
+              <div className="card-header">
+                <span className="card-icon">
+                  {xpStats.status === 'decaying' ? '📉' : xpStats.status === 'grace' ? '⏳' : '✨'}
+                </span>
+                <h3>XP Tracker</h3>
+                <span className={`xp-status-badge ${xpStats.status}`}>
+                  {xpStats.status === 'decaying' ? 'Decaying' : xpStats.status === 'grace' ? 'Grace Period' : 'Safe'}
+                </span>
+              </div>
+
+              <div className="xp-tracker-total">
+                <span className="xp-tracker-number">{xpStats.totalXP}</span>
+                <span className="xp-tracker-label">Total XP</span>
+              </div>
+
+              <div className="xp-tracker-details">
+                <div className="xp-detail-row">
+                  <span className="xp-detail-label">Last answered</span>
+                  <span className="xp-detail-value">{formatTimeAgo(xpStats.lastAnsweredAt)}</span>
+                </div>
+                {xpStats.status !== 'safe' && (
+                  <>
+                    <div className="xp-detail-row">
+                      <span className="xp-detail-label">
+                        {xpStats.status === 'grace' ? 'Decay starts in' : 'Next decay in'}
+                      </span>
+                      <span className="xp-detail-value">
+                        {xpStats.hoursUntilDecay != null ? `${xpStats.hoursUntilDecay}h` : '—'}
+                      </span>
+                    </div>
+                    <div className="xp-detail-row">
+                      <span className="xp-detail-label">Daily loss rate</span>
+                      <span className="xp-detail-value">{xpStats.decayRate}%</span>
+                    </div>
+                  </>
+                )}
+              </div>
+
+              {xpStats.projections.length > 0 && xpStats.status !== 'safe' && (
+                <div className="xp-projection-chart">
+                  <div className="xp-projection-header">
+                    <span className="xp-projection-title">30-day projection</span>
+                  </div>
+                  <div className="xp-projection-bars">
+                    {xpStats.projections
+                      .filter((_, i) => i % 3 === 0 || i === 29)
+                      .map((p) => {
+                        const maxXP = xpStats.totalXP || 1;
+                        const height = Math.max(2, (p.xp / maxXP) * 100);
+                        return (
+                          <div key={p.day} className="xp-bar-group">
+                            <div className="xp-bar-container">
+                              <div
+                                className="xp-bar"
+                                style={{ height: `${height}%` }}
+                                title={`Day ${p.day}: ${p.xp} XP`}
+                              ></div>
+                            </div>
+                            <span className="xp-bar-label">{p.day}d</span>
+                          </div>
+                        );
+                      })}
+                  </div>
+                </div>
+              )}
+
+              {xpStats.status === 'decaying' && (
+                <div className="xp-tracker-warning">
+                  Answer a question to stop the decay!
+                </div>
+              )}
+            </div>
+          )}
 
           {/* Pro Promo Card */}
           <div className="card sidebar-card promo-card">

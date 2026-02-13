@@ -150,7 +150,7 @@ function ProfilePage({ onLogout }) {
     });
   };
 
-  const totalXP = progress ? progress.mastered * 10 + progress.comfortable * 5 + progress.learning * 2 : 0;
+  const totalXP = user?.totalXP || 0;
 
   return (
     <div className="profile-container">
@@ -393,6 +393,26 @@ function ProfilePage({ onLogout }) {
           {/* Account Tab */}
           {activeTab === 'account' && (
             <div className="account-section">
+              <div className="card danger-zone">
+                <h2>Reset Progress</h2>
+                <p className="card-description">
+                  Reset your XP and answer history. Your XP will go back to 0 and all questions will award full points again.
+                </p>
+                <button className="btn btn-danger" onClick={async () => {
+                  if (window.confirm('Are you sure you want to reset your XP and answer history? Your XP will go back to 0.')) {
+                    try {
+                      await userService.resetXP(userId);
+                      setUser({ ...user, totalXP: 0 });
+                      setSaveMessage('XP and answer history reset successfully!');
+                      setTimeout(() => setSaveMessage(''), 3000);
+                    } catch (err) {
+                      setError(err.response?.data?.message || 'Failed to reset XP');
+                    }
+                  }
+                }}>
+                  Reset XP & History
+                </button>
+              </div>
               <div className="card danger-zone">
                 <h2>Danger Zone</h2>
                 <p className="card-description">

@@ -54,6 +54,20 @@ router.get('/stats', async (req, res) => {
     ]);
     const totalLogins = loginStats ? loginStats.totalLogins : 0;
 
+    // Rate limit stats
+    const [rateLimitStats] = await User.aggregate([
+      { $match: { rateLimitHits: { $gt: 0 } } },
+      {
+        $group: {
+          _id: null,
+          totalRateLimitHits: { $sum: '$rateLimitHits' },
+          usersRateLimited: { $sum: 1 },
+        },
+      },
+    ]);
+    const totalRateLimitHits = rateLimitStats ? rateLimitStats.totalRateLimitHits : 0;
+    const usersRateLimited = rateLimitStats ? rateLimitStats.usersRateLimited : 0;
+
     // User growth data (last 7 days)
     const userGrowth = [];
     for (let i = 6; i >= 0; i--) {
@@ -89,6 +103,8 @@ router.get('/stats', async (req, res) => {
         totalFlashcards,
         totalProgress,
         totalLogins,
+        totalRateLimitHits,
+        usersRateLimited,
       },
       activity: {
         activeUsersToday,
@@ -253,6 +269,29 @@ router.put('/users/:userId/role', async (req, res) => {
     });
   } catch (error) {
     console.error('Admin update role error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Reset a user's rate limit counter
+router.put('/users/:userId/reset-rate-limit', async (req, res) => {
+  try {
+    const user = await User.findByIdAndUpdate(
+      req.params.userId,
+      { $set: { rateLimitHits: 0, lastRateLimited: null } },
+      { new: true }
+    ).select('-password');
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.json({
+      message: `Rate limit counter reset for ${user.username}`,
+      user,
+    });
+  } catch (error) {
+    console.error('Admin reset rate limit error:', error);
     res.status(500).json({ message: 'Server error' });
   }
 });

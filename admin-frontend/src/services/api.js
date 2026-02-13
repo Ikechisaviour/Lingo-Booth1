@@ -34,6 +34,8 @@ export const adminService = {
     api.put(`/admin/users/${userId}/role`, { role }),
   deleteUser: (userId) =>
     api.delete(`/admin/users/${userId}`),
+  resetRateLimit: (userId) =>
+    api.put(`/admin/users/${userId}/reset-rate-limit`),
 };
 
 export default api;

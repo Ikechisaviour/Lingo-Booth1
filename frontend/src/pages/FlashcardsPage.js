@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { flashcardService, progressService, userService } from '../services/api';
 import speechService from '../services/speechService';
 import './FlashcardsPage.css';
@@ -19,7 +20,10 @@ function FlashcardsPage() {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [displayMode, setDisplayMode] = useState('korean');
   const [currentCardShowsKorean, setCurrentCardShowsKorean] = useState(true);
+  const [continuePrompt, setContinuePrompt] = useState(null);
+  const [readyToSave, setReadyToSave] = useState(false);
 
+  const navigate = useNavigate();
   const userId = localStorage.getItem('userId');
   const saveTimerRef = useRef(null);
 
@@ -39,24 +43,37 @@ function FlashcardsPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Restore flashcard position from server
+  // Restore flashcard position from server or show continue prompt for lesson in progress
   useEffect(() => {
     if (!userId || flashcards.length === 0) return;
     userService.getActivityState(userId).then(res => {
       const state = res.data;
       if (state.activityType === 'flashcard' && state.flashcardIndex > 0) {
         setCurrentIndex(Math.min(state.flashcardIndex, flashcards.length - 1));
+        setReadyToSave(true);
+      } else if (state.activityType === 'lesson' && state.lesson && state.lessonIndex > 0) {
+        // Lesson in progress - show continue prompt (don't enable saving yet)
+        setContinuePrompt({
+          lessonId: state.lesson._id,
+          lessonTitle: state.lesson.title || 'Untitled Lesson',
+          lessonIndex: state.lessonIndex,
+          activityType: 'lesson',
+        });
+      } else {
+        setReadyToSave(true);
       }
-    }).catch(() => {});
+    }).catch(() => {
+      setReadyToSave(true);
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId, flashcards.length]);
 
-  // Save position on index change
+  // Save position on index change (only after activity state check completes)
   useEffect(() => {
-    if (flashcards.length > 0) {
+    if (flashcards.length > 0 && readyToSave) {
       saveActivityState(currentIndex);
     }
-  }, [currentIndex, flashcards.length, saveActivityState]);
+  }, [currentIndex, flashcards.length, saveActivityState, readyToSave]);
 
   // Cleanup timer on unmount
   useEffect(() => {
@@ -125,6 +142,11 @@ function FlashcardsPage() {
         score: 80,
         isCorrect: true,
       });
+
+      // Award XP for correct flashcard
+      if (userId) {
+        userService.awardXP(userId, { flashcardId: flashcard._id, basePoints: 2 }).catch(() => {});
+      }
 
       const updatedFlashcards = [...flashcards];
       updatedFlashcards[currentIndex] = {
@@ -196,6 +218,22 @@ function FlashcardsPage() {
     return filled + empty;
   };
 
+  const handleContinueExisting = () => {
+    navigate(`/lessons/${continuePrompt.lessonId}`);
+    setContinuePrompt(null);
+  };
+
+  const handleStartNew = async () => {
+    if (userId) {
+      await userService.saveActivityState(userId, {
+        activityType: 'flashcard',
+        flashcardIndex: 0,
+      }).catch(() => {});
+    }
+    setContinuePrompt(null);
+    setReadyToSave(true);
+  };
+
   if (loading) {
     return <div className="loading">Loading flashcards...</div>;
   }
@@ -209,6 +247,22 @@ function FlashcardsPage() {
 
   return (
     <div className="flashcards-container">
+      {continuePrompt && (
+        <div className="continue-modal-overlay">
+          <div className="continue-modal">
+            <h3>Activity In Progress</h3>
+            <p>You have <strong>"{continuePrompt.lessonTitle}"</strong> in progress (question {continuePrompt.lessonIndex + 1}). Would you like to continue it or start flashcards?</p>
+            <div className="continue-modal-actions">
+              <button className="btn btn-primary" onClick={handleContinueExisting}>
+                Continue Lesson
+              </button>
+              <button className="btn btn-secondary" onClick={handleStartNew}>
+                Start Flashcards
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="container">
         {/* Header */}
         <div className="flashcards-header">

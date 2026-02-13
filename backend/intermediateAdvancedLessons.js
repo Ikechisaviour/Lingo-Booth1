@@ -1,14 +1,15 @@
 // Real Korean vocabulary for intermediate and advanced lessons
 // This will replace the programmatically generated placeholder content
 
-const createContentItem = (korean, romanization, english, type = 'word', example = '', exampleEnglish = '') => ({
+const createContentItem = (korean, romanization, english, type = 'word', example = '', exampleEnglish = '', breakdown = null) => ({
   type,
   korean,
   romanization,
   english,
   pronunciation: romanization,
   example: example || korean,
-  exampleEnglish: exampleEnglish || english
+  exampleEnglish: exampleEnglish || english,
+  ...(breakdown ? { breakdown } : {}),
 });
 
 // DAILY LIFE - INTERMEDIATE: Daily Activities & Schedules
@@ -31,7 +32,7 @@ const dailyLifeIntermediate = [
   createContentItem('현재', 'hyeonjae', 'Present', 'word', '현재를 즐겨요', 'I enjoy the present'),
 
   // Time management
-  createContentItem('시간 관리', 'sigan gwalli', 'Time management', 'word', '시간 관리가 중요해요', 'Time management is important'),
+  createContentItem('시간 관리', 'sigan gwalli', 'Time management', 'word', '시간 관리가 중요해요', 'Time management is important', [{ korean: '시간', english: 'time' }, { korean: '관리', english: 'management' }]),
   createContentItem('효율적', 'hyoyuljeok', 'Efficient', 'word', '효율적으로 일해요', 'I work efficiently'),
   createContentItem('빠르다', 'ppareuda', 'To be fast', 'word', '빨리 끝내요', 'I finish quickly'),
   createContentItem('느리다', 'neurida', 'To be slow', 'word', '천천히 해요', 'I do it slowly'),
@@ -46,8 +47,8 @@ const dailyLifeIntermediate = [
   createContentItem('활동', 'hwaldong', 'Activity', 'word', '다양한 활동을 해요', 'I do various activities'),
   createContentItem('운동하다', 'undonghada', 'To exercise', 'word', '매일 운동해요', 'I exercise every day'),
   createContentItem('독서', 'dokseo', 'Reading', 'word', '독서를 즐겨요', 'I enjoy reading'),
-  createContentItem('음악 감상', 'eumak gamsang', 'Music appreciation', 'word', '음악 감상을 좋아해요', 'I like listening to music'),
-  createContentItem('영화 관람', 'yeonghwa gwallam', 'Movie watching', 'word', '영화 관람을 해요', 'I watch movies'),
+  createContentItem('음악 감상', 'eumak gamsang', 'Music appreciation', 'word', '음악 감상을 좋아해요', 'I like listening to music', [{ korean: '음악', english: 'music' }, { korean: '감상', english: 'appreciation' }]),
+  createContentItem('영화 관람', 'yeonghwa gwallam', 'Movie watching', 'word', '영화 관람을 해요', 'I watch movies', [{ korean: '영화', english: 'movie' }, { korean: '관람', english: 'viewing' }]),
   createContentItem('산책', 'sanchaek', 'Walk/Stroll', 'word', '공원에서 산책해요', 'I take a walk in the park'),
   createContentItem('조깅', 'joging', 'Jogging', 'word', '아침에 조깅해요', 'I jog in the morning'),
   createContentItem('수영', 'suyeong', 'Swimming', 'word', '수영을 배워요', 'I learn swimming'),
@@ -160,7 +161,7 @@ const dailyLifeAdvanced = [
 
   // Lifestyle choices
   createContentItem('라이프스타일', 'raipeuseutail', 'Lifestyle', 'word', '건강한 라이프스타일이에요', 'It\'s a healthy lifestyle'),
-  createContentItem('삶의 방식', 'salmui bangsik', 'Way of life', 'word', '삶의 방식을 바꿔요', 'I change my way of life'),
+  createContentItem('삶의 방식', 'salmui bangsik', 'Way of life', 'word', '삶의 방식을 바꿔요', 'I change my way of life', [{ korean: '삶의', english: 'of life' }, { korean: '방식', english: 'way/method' }]),
   createContentItem('가치관', 'gachigwan', 'Values', 'word', '가치관이 중요해요', 'Values are important'),
   createContentItem('신념', 'sinnyeom', 'Belief', 'word', '신념을 가져요', 'I have beliefs'),
   createContentItem('철학', 'cheolhak', 'Philosophy', 'word', '인생 철학이 있어요', 'I have a life philosophy'),
@@ -368,9 +369,9 @@ const foodIntermediate = [
   createContentItem('포장', 'pojang', 'Takeout/Packaging', 'word', '포장해 주세요', 'Please pack it to go'),
   createContentItem('배달', 'baedal', 'Delivery', 'word', '배달 돼요?', 'Do you deliver?'),
   createContentItem('테이크아웃', 'teikeuaus', 'Takeout', 'word', '테이크아웃으로 주세요', 'Please give me takeout'),
-  createContentItem('먹고 가다', 'meokgo gada', 'To dine in', 'word', '먹고 갈게요', 'I\'ll dine in'),
+  createContentItem('먹고 가다', 'meokgo gada', 'To dine in', 'word', '먹고 갈게요', 'I\'ll dine in', [{ korean: '먹고', english: 'eat and' }, { korean: '가다', english: 'go (dine in)' }]),
   createContentItem('남기다', 'namgida', 'To leave behind', 'word', '남겼어요', 'I left some'),
-  createContentItem('다 먹다', 'da meokda', 'To finish eating', 'word', '다 먹었어요', 'I finished eating'),
+  createContentItem('다 먹다', 'da meokda', 'To finish eating', 'word', '다 먹었어요', 'I finished eating', [{ korean: '다', english: 'all' }, { korean: '먹다', english: 'to eat' }]),
   createContentItem('배부르다', 'baebureuda', 'To be full', 'word', '배불러요', 'I\'m full'),
   createContentItem('배고프다', 'baegopeuda', 'To be hungry', 'word', '아직 배고파요', 'I\'m still hungry'),
   createContentItem('목마르다', 'mongmareuda', 'To be thirsty', 'word', '목말라요', 'I\'m thirsty'),
@@ -381,11 +382,11 @@ const foodIntermediate = [
 const foodAdvanced = [
   // Traditional Korean dishes
   createContentItem('한식', 'hansik', 'Korean food', 'word', '한식을 좋아해요', 'I like Korean food'),
-  createContentItem('전통 음식', 'jeontong eumsik', 'Traditional food', 'word', '전통 음식을 먹어요', 'I eat traditional food'),
-  createContentItem('궁중 요리', 'gungjung yori', 'Royal court cuisine', 'word', '궁중 요리예요', 'It\'s royal court cuisine'),
-  createContentItem('향토 음식', 'hyangto eumsik', 'Local food', 'word', '향토 음식이에요', 'It\'s local food'),
-  createContentItem('계절 음식', 'gyejeol eumsik', 'Seasonal food', 'word', '계절 음식이에요', 'It\'s seasonal food'),
-  createContentItem('발효 식품', 'balhyo sikpum', 'Fermented food', 'word', '김치는 발효 식품이에요', 'Kimchi is a fermented food'),
+  createContentItem('전통 음식', 'jeontong eumsik', 'Traditional food', 'word', '전통 음식을 먹어요', 'I eat traditional food', [{ korean: '전통', english: 'traditional' }, { korean: '음식', english: 'food' }]),
+  createContentItem('궁중 요리', 'gungjung yori', 'Royal court cuisine', 'word', '궁중 요리예요', 'It\'s royal court cuisine', [{ korean: '궁중', english: 'royal court' }, { korean: '요리', english: 'cuisine' }]),
+  createContentItem('향토 음식', 'hyangto eumsik', 'Local food', 'word', '향토 음식이에요', 'It\'s local food', [{ korean: '향토', english: 'local/regional' }, { korean: '음식', english: 'food' }]),
+  createContentItem('계절 음식', 'gyejeol eumsik', 'Seasonal food', 'word', '계절 음식이에요', 'It\'s seasonal food', [{ korean: '계절', english: 'seasonal' }, { korean: '음식', english: 'food' }]),
+  createContentItem('발효 식품', 'balhyo sikpum', 'Fermented food', 'word', '김치는 발효 식품이에요', 'Kimchi is a fermented food', [{ korean: '발효', english: 'fermented' }, { korean: '식품', english: 'food product' }]),
   createContentItem('장류', 'jangnyu', 'Fermented sauces', 'word', '장류가 중요해요', 'Fermented sauces are important'),
   createContentItem('된장', 'doenjang', 'Soybean paste', 'word', '된장찌개를 끓여요', 'I make doenjang stew'),
   createContentItem('고추장', 'gochujang', 'Red chili paste', 'word', '고추장을 넣어요', 'I add gochujang'),
@@ -473,7 +474,7 @@ const foodAdvanced = [
   createContentItem('그릇', 'geureut', 'Bowl/Dish', 'word', '그릇을 들지 않아요', 'I don\'t lift the bowl'),
   createContentItem('공기', 'gonggi', 'Rice bowl', 'word', '공기에 담아요', 'I serve it in a rice bowl'),
   createContentItem('건배', 'geonbae', 'Cheers/Toast', 'word', '건배해요', 'I make a toast'),
-  createContentItem('나눠 먹다', 'nanwo meokda', 'To share food', 'word', '나눠 먹어요', 'We share food')
+  createContentItem('나눠 먹다', 'nanwo meokda', 'To share food', 'word', '나눠 먹어요', 'We share food', [{ korean: '나눠', english: 'share/divide' }, { korean: '먹다', english: 'to eat' }])
 ];
 
 // TRAVEL - INTERMEDIATE: Public Transportation

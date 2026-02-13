@@ -71,6 +71,26 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: null,
   },
+  totalXP: {
+    type: Number,
+    default: 0,
+  },
+  lastAnsweredAt: {
+    type: Date,
+    default: null,
+  },
+  penaltyIntervalsApplied: {
+    type: Number,
+    default: 0,
+  },
+  rateLimitHits: {
+    type: Number,
+    default: 0,
+  },
+  lastRateLimited: {
+    type: Date,
+    default: null,
+  },
   createdAt: {
     type: Date,
     default: Date.now,

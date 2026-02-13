@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { authService } from '../services/api';
 import './Auth.css';
 
@@ -7,7 +7,12 @@ function LoginPage({ setIsAuthenticated, setIsGuest }) {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [suspended, setSuspended] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Check if user was redirected here after mid-session suspension
+  const wasSuspendedMidSession = location.state?.suspended;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,7 +38,16 @@ function LoginPage({ setIsAuthenticated, setIsGuest }) {
       setIsAuthenticated(true);
       navigate('/');
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed');
+      if (err.response?.status === 403 && err.response?.data?.reason) {
+        setSuspended({
+          message: err.response.data.message,
+          reason: err.response.data.reason,
+        });
+        setError('');
+      } else {
+        setError(err.response?.data?.message || 'Login failed');
+        setSuspended(null);
+      }
     } finally {
       setLoading(false);
     }
@@ -56,6 +70,25 @@ function LoginPage({ setIsAuthenticated, setIsGuest }) {
         <img src="/images/logo.png" alt="Lingo Booth" className="auth-logo" />
         <h1>Welcome Back!</h1>
         <p className="auth-subtitle">Continue your Korean learning journey</p>
+
+        {wasSuspendedMidSession && !suspended && (
+          <div className="suspended-notice">
+            <div className="suspended-icon">&#x1F6AB;</div>
+            <h3>Account Suspended</h3>
+            <p>Your account has been suspended. You have been logged out.</p>
+            <p className="suspended-contact">Please contact support for more information.</p>
+          </div>
+        )}
+
+        {suspended && (
+          <div className="suspended-notice">
+            <div className="suspended-icon">&#x1F6AB;</div>
+            <h3>Account Suspended</h3>
+            <p>{suspended.message}</p>
+            <p className="suspended-reason"><strong>Reason:</strong> {suspended.reason}</p>
+            <p className="suspended-contact">If you believe this is a mistake, please contact support.</p>
+          </div>
+        )}
 
         {error && <div className="error">{error}</div>}
 

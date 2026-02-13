@@ -177,6 +177,47 @@
   font-size: 0.9rem;
 }
 
+/* Suspended Account Notice */
+.suspended-notice {
+  background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
+  border: 2px solid #e53e3e;
+  border-radius: 14px;
+  padding: 24px 20px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.suspended-icon {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.suspended-notice h3 {
+  color: #c53030;
+  font-size: 1.2rem;
+  margin: 0 0 8px;
+}
+
+.suspended-notice p {
+  color: #742a2a;
+  font-size: 0.9rem;
+  margin: 4px 0;
+  line-height: 1.5;
+}
+
+.suspended-reason {
+  background: rgba(197, 48, 48, 0.08);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-top: 10px !important;
+}
+
+.suspended-contact {
+  color: var(--text-muted) !important;
+  font-size: 0.82rem !important;
+  margin-top: 12px !important;
+}
+
 /* Responsive */
 @media (max-width: 480px) {
   .auth-card {

@@ -7,14 +7,15 @@ const realLessons = require('./intermediateAdvancedLessons');
 const sentenceLessons = require('./sentenceLessons');
 
 // Helper function to create content items
-const createContentItem = (korean, romanization, english, type = 'word', example = '', exampleEnglish = '') => ({
+const createContentItem = (korean, romanization, english, type = 'word', example = '', exampleEnglish = '', breakdown = null) => ({
   type,
   korean,
   romanization,
   english,
   pronunciation: romanization,
   example: example || korean,
-  exampleEnglish: exampleEnglish || english
+  exampleEnglish: exampleEnglish || english,
+  ...(breakdown ? { breakdown } : {}),
 });
 
 const lessons = [
@@ -29,12 +30,12 @@ const lessons = [
       // Basic greetings
       createContentItem('안녕하세요', 'annyeonghaseyo', 'Hello', 'word', '안녕하세요, 만나서 반갑습니다', 'Hello, nice to meet you'),
       createContentItem('안녕', 'annyeong', 'Hi (informal)', 'word', '안녕, 잘 지냈어?', 'Hi, how have you been?'),
-      createContentItem('안녕히 가세요', 'annyeonghi gaseyo', 'Goodbye (to person leaving)', 'sentence', '안녕히 가세요, 조심히 가세요', 'Goodbye, go safely'),
-      createContentItem('안녕히 계세요', 'annyeonghi gyeseyo', 'Goodbye (when you leave)', 'sentence', '안녕히 계세요, 다음에 봐요', 'Goodbye, see you next time'),
-      createContentItem('잘 가', 'jal ga', 'Bye (informal)', 'word', '잘 가, 내일 봐', 'Bye, see you tomorrow'),
-      createContentItem('또 봐요', 'tto bwayo', 'See you again', 'sentence', '또 봐요, 좋은 하루 되세요', 'See you again, have a nice day'),
-      createContentItem('나중에 봐요', 'najunge bwayo', 'See you later', 'sentence', '나중에 봐요', 'See you later'),
-      createContentItem('내일 봐요', 'naeil bwayo', 'See you tomorrow', 'sentence', '내일 봐요', 'See you tomorrow'),
+      createContentItem('안녕히 가세요', 'annyeonghi gaseyo', 'Goodbye (to person leaving)', 'sentence', '안녕히 가세요, 조심히 가세요', 'Goodbye, go safely', [{ korean: '안녕히', english: 'peacefully' }, { korean: '가세요', english: 'please go' }]),
+      createContentItem('안녕히 계세요', 'annyeonghi gyeseyo', 'Goodbye (when you leave)', 'sentence', '안녕히 계세요, 다음에 봐요', 'Goodbye, see you next time', [{ korean: '안녕히', english: 'peacefully' }, { korean: '계세요', english: 'please stay' }]),
+      createContentItem('잘 가', 'jal ga', 'Bye (informal)', 'word', '잘 가, 내일 봐', 'Bye, see you tomorrow', [{ korean: '잘', english: 'well' }, { korean: '가', english: 'go' }]),
+      createContentItem('또 봐요', 'tto bwayo', 'See you again', 'sentence', '또 봐요, 좋은 하루 되세요', 'See you again, have a nice day', [{ korean: '또', english: 'again' }, { korean: '봐요', english: 'see' }]),
+      createContentItem('나중에 봐요', 'najunge bwayo', 'See you later', 'sentence', '나중에 봐요', 'See you later', [{ korean: '나중에', english: 'later' }, { korean: '봐요', english: 'see' }]),
+      createContentItem('내일 봐요', 'naeil bwayo', 'See you tomorrow', 'sentence', '내일 봐요', 'See you tomorrow', [{ korean: '내일', english: 'tomorrow' }, { korean: '봐요', english: 'see' }]),
 
       // Thanking
       createContentItem('감사합니다', 'gamsahamnida', 'Thank you', 'word', '도와주셔서 감사합니다', 'Thank you for helping me'),
@@ -53,23 +54,23 @@ const lessons = [
       createContentItem('실례합니다', 'sillyehamnida', 'Excuse me', 'word', '실례합니다, 지나가겠습니다', 'Excuse me, I\'m passing through'),
 
       // Introductions
-      createContentItem('만나서 반갑습니다', 'mannaseo bangapseumnida', 'Nice to meet you', 'sentence', '처음 뵙겠습니다. 만나서 반갑습니다', 'How do you do. Nice to meet you'),
+      createContentItem('만나서 반갑습니다', 'mannaseo bangapseumnida', 'Nice to meet you', 'sentence', '처음 뵙겠습니다. 만나서 반갑습니다', 'How do you do. Nice to meet you', [{ korean: '만나서', english: 'having met' }, { korean: '반갑습니다', english: 'glad/happy' }]),
       createContentItem('반가워요', 'bangawoyo', 'Nice to meet you (casual)', 'sentence', '반가워요', 'Nice to meet you'),
-      createContentItem('처음 뵙겠습니다', 'cheoeum boepgetseumnida', 'How do you do (first meeting)', 'sentence', '처음 뵙겠습니다', 'How do you do'),
-      createContentItem('제 이름은', 'je ireumeun', 'My name is', 'sentence', '제 이름은 김민수입니다', 'My name is Kim Minsu'),
-      createContentItem('이름이 뭐예요?', 'ireumi mwoyeyo?', 'What is your name?', 'sentence', '이름이 뭐예요?', 'What is your name?'),
-      createContentItem('성함이 어떻게 되세요?', 'seonghami eotteoke doeseyo?', 'What is your name? (formal)', 'sentence', '성함이 어떻게 되세요?', 'What is your name?'),
+      createContentItem('처음 뵙겠습니다', 'cheoeum boepgetseumnida', 'How do you do (first meeting)', 'sentence', '처음 뵙겠습니다', 'How do you do', [{ korean: '처음', english: 'first time' }, { korean: '뵙겠습니다', english: 'I humbly meet you' }]),
+      createContentItem('제 이름은', 'je ireumeun', 'My name is', 'sentence', '제 이름은 김민수입니다', 'My name is Kim Minsu', [{ korean: '제', english: 'my (humble)' }, { korean: '이름은', english: 'name (topic)' }]),
+      createContentItem('이름이 뭐예요?', 'ireumi mwoyeyo?', 'What is your name?', 'sentence', '이름이 뭐예요?', 'What is your name?', [{ korean: '이름이', english: 'name (subject)' }, { korean: '뭐예요', english: 'what is' }]),
+      createContentItem('성함이 어떻게 되세요?', 'seonghami eotteoke doeseyo?', 'What is your name? (formal)', 'sentence', '성함이 어떻게 되세요?', 'What is your name?', [{ korean: '성함이', english: 'name (honorific, subject)' }, { korean: '어떻게', english: 'how' }, { korean: '되세요', english: 'is it (honorific)' }]),
       createContentItem('저는', 'jeoneun', 'I am / As for me', 'word', '저는 학생입니다', 'I am a student'),
       createContentItem('나는', 'naneun', 'I (informal)', 'word', '나는 한국 사람이야', 'I am Korean'),
 
       // How are you
-      createContentItem('어떻게 지내세요?', 'eotteoke jinaeseyo?', 'How are you?', 'sentence', '요즘 어떻게 지내세요?', 'How have you been lately?'),
-      createContentItem('잘 지내요?', 'jal jinaeyo?', 'How are you? (casual)', 'sentence', '잘 지내요?', 'How are you?'),
+      createContentItem('어떻게 지내세요?', 'eotteoke jinaeseyo?', 'How are you?', 'sentence', '요즘 어떻게 지내세요?', 'How have you been lately?', [{ korean: '어떻게', english: 'how' }, { korean: '지내세요', english: 'are you doing (honorific)' }]),
+      createContentItem('잘 지내요?', 'jal jinaeyo?', 'How are you? (casual)', 'sentence', '잘 지내요?', 'How are you?', [{ korean: '잘', english: 'well' }, { korean: '지내요', english: 'are you doing' }]),
       createContentItem('어떠세요?', 'eotteoseyo?', 'How is it? / How are you?', 'sentence', '요즘 어떠세요?', 'How is it lately?'),
-      createContentItem('잘 지내요', 'jal jinaeyo', 'I\'m doing well', 'sentence', '네, 잘 지내요', 'Yes, I\'m doing well'),
-      createContentItem('잘 지냈어요', 'jal jinaesseoyo', 'I\'ve been well', 'sentence', '잘 지냈어요, 고마워요', 'I\'ve been well, thanks'),
+      createContentItem('잘 지내요', 'jal jinaeyo', 'I\'m doing well', 'sentence', '네, 잘 지내요', 'Yes, I\'m doing well', [{ korean: '잘', english: 'well' }, { korean: '지내요', english: 'doing' }]),
+      createContentItem('잘 지냈어요', 'jal jinaesseoyo', 'I\'ve been well', 'sentence', '잘 지냈어요, 고마워요', 'I\'ve been well, thanks', [{ korean: '잘', english: 'well' }, { korean: '지냈어요', english: 'have been doing' }]),
       createContentItem('괜찮아요', 'gwaenchanayo', 'I\'m okay', 'sentence', '괜찮아요', 'I\'m okay'),
-      createContentItem('그냥 그래요', 'geunyang geuraeyo', 'So-so / Just okay', 'sentence', '그냥 그래요', 'Just okay'),
+      createContentItem('그냥 그래요', 'geunyang geuraeyo', 'So-so / Just okay', 'sentence', '그냥 그래요', 'Just okay', [{ korean: '그냥', english: 'just' }, { korean: '그래요', english: 'like that / so-so' }]),
       createContentItem('좋아요', 'johayo', 'Good / I\'m good', 'sentence', '아주 좋아요', 'Very good'),
 
       // Basic questions
@@ -81,24 +82,24 @@ const lessons = [
 
       // Please
       createContentItem('주세요', 'juseyo', 'Please give me', 'word', '물 좀 주세요', 'Please give me some water'),
-      createContentItem('해 주세요', 'hae juseyo', 'Please do it', 'sentence', '천천히 해 주세요', 'Please do it slowly'),
+      createContentItem('해 주세요', 'hae juseyo', 'Please do it', 'sentence', '천천히 해 주세요', 'Please do it slowly', [{ korean: '해', english: 'do' }, { korean: '주세요', english: 'please give (do for me)' }]),
       createContentItem('도와주세요', 'dowajuseyo', 'Please help me', 'sentence', '도와주세요', 'Please help me'),
-      createContentItem('가르쳐 주세요', 'gareuchyeo juseyo', 'Please teach me', 'sentence', '한국어를 가르쳐 주세요', 'Please teach me Korean'),
+      createContentItem('가르쳐 주세요', 'gareuchyeo juseyo', 'Please teach me', 'sentence', '한국어를 가르쳐 주세요', 'Please teach me Korean', [{ korean: '가르쳐', english: 'teach' }, { korean: '주세요', english: 'please give (do for me)' }]),
 
       // Basic courtesy
       createContentItem('수고하세요', 'sugohaseyo', 'Thank you for your work / Good luck', 'sentence', '오늘도 수고하세요', 'Thank you for your work today too'),
       createContentItem('조심하세요', 'josimhaseyo', 'Be careful / Take care', 'sentence', '조심하세요', 'Be careful'),
-      createContentItem('안녕히 주무세요', 'annyeonghi jumuseyo', 'Good night', 'sentence', '안녕히 주무세요', 'Good night'),
-      createContentItem('잘 자요', 'jal jayo', 'Sleep well (casual)', 'sentence', '잘 자요', 'Sleep well'),
-      createContentItem('좋은 아침이에요', 'joeun achimieyo', 'Good morning', 'sentence', '좋은 아침이에요', 'Good morning'),
-      createContentItem('좋은 하루 되세요', 'joeun haru doeseyo', 'Have a good day', 'sentence', '좋은 하루 되세요', 'Have a good day'),
-      createContentItem('즐거운 주말 보내세요', 'jeulgeoun jumal bonaeseyo', 'Have a great weekend', 'sentence', '즐거운 주말 보내세요', 'Have a great weekend'),
+      createContentItem('안녕히 주무세요', 'annyeonghi jumuseyo', 'Good night', 'sentence', '안녕히 주무세요', 'Good night', [{ korean: '안녕히', english: 'peacefully' }, { korean: '주무세요', english: 'please sleep (honorific)' }]),
+      createContentItem('잘 자요', 'jal jayo', 'Sleep well (casual)', 'sentence', '잘 자요', 'Sleep well', [{ korean: '잘', english: 'well' }, { korean: '자요', english: 'sleep' }]),
+      createContentItem('좋은 아침이에요', 'joeun achimieyo', 'Good morning', 'sentence', '좋은 아침이에요', 'Good morning', [{ korean: '좋은', english: 'good' }, { korean: '아침이에요', english: 'it is morning' }]),
+      createContentItem('좋은 하루 되세요', 'joeun haru doeseyo', 'Have a good day', 'sentence', '좋은 하루 되세요', 'Have a good day', [{ korean: '좋은', english: 'good' }, { korean: '하루', english: 'day' }, { korean: '되세요', english: 'please have / become' }]),
+      createContentItem('즐거운 주말 보내세요', 'jeulgeoun jumal bonaeseyo', 'Have a great weekend', 'sentence', '즐거운 주말 보내세요', 'Have a great weekend', [{ korean: '즐거운', english: 'enjoyable' }, { korean: '주말', english: 'weekend' }, { korean: '보내세요', english: 'please spend' }]),
 
       // Nationalities & Origins
-      createContentItem('한국 사람', 'hanguk saram', 'Korean person', 'word', '저는 한국 사람입니다', 'I am Korean'),
-      createContentItem('미국 사람', 'miguk saram', 'American person', 'word', '저는 미국 사람입니다', 'I am American'),
-      createContentItem('어디에서 왔어요?', 'eodieseo wasseoyo?', 'Where are you from?', 'sentence', '어디에서 왔어요?', 'Where are you from?'),
-      createContentItem('어느 나라 사람이에요?', 'eoneu nara saramieyo?', 'What nationality are you?', 'sentence', '어느 나라 사람이에요?', 'What nationality are you?'),
+      createContentItem('한국 사람', 'hanguk saram', 'Korean person', 'word', '저는 한국 사람입니다', 'I am Korean', [{ korean: '한국', english: 'Korea' }, { korean: '사람', english: 'person' }]),
+      createContentItem('미국 사람', 'miguk saram', 'American person', 'word', '저는 미국 사람입니다', 'I am American', [{ korean: '미국', english: 'America' }, { korean: '사람', english: 'person' }]),
+      createContentItem('어디에서 왔어요?', 'eodieseo wasseoyo?', 'Where are you from?', 'sentence', '어디에서 왔어요?', 'Where are you from?', [{ korean: '어디에서', english: 'from where' }, { korean: '왔어요', english: 'did you come' }]),
+      createContentItem('어느 나라 사람이에요?', 'eoneu nara saramieyo?', 'What nationality are you?', 'sentence', '어느 나라 사람이에요?', 'What nationality are you?', [{ korean: '어느', english: 'which' }, { korean: '나라', english: 'country' }, { korean: '사람이에요', english: 'person are you' }]),
 
       // Occupations
       createContentItem('학생', 'haksaeng', 'Student', 'word', '저는 학생입니다', 'I am a student'),
@@ -174,7 +175,7 @@ const lessons = [
       createContentItem('오랜만이에요', 'oraenmanieyo', 'Long time no see (casual)', 'sentence', '오랜만이에요', 'Long time no see'),
       createContentItem('오랜만', 'oraenman', 'Long time (informal)', 'word', '정말 오랜만이야', 'It\'s been a long time'),
       createContentItem('수고하셨습니다', 'sugohasyeotseumnida', 'Thank you for your hard work', 'sentence', '오늘도 수고하셨습니다', 'Thank you for your hard work today'),
-      createContentItem('수고 많으셨어요', 'sugo manheusyeosseoyo', 'You worked hard', 'sentence', '오늘 수고 많으셨어요', 'You worked hard today'),
+      createContentItem('수고 많으셨어요', 'sugo manheusyeosseoyo', 'You worked hard', 'sentence', '오늘 수고 많으셨어요', 'You worked hard today', [{ korean: '수고', english: 'hard work' }, { korean: '많으셨어요', english: 'you did a lot of (honorific)' }]),
       createContentItem('고생하셨어요', 'gosaenghasyeosseoyo', 'You\'ve been through a lot', 'sentence', '고생하셨어요', 'You\'ve been through a lot'),
       createContentItem('애쓰셨어요', 'aesseusyeosseoyo', 'You worked hard / Thanks for your effort', 'sentence', '정말 애쓰셨어요', 'You really worked hard'),
 
@@ -186,32 +187,32 @@ const lessons = [
       createContentItem('가능하시면', 'ganeunghasimyeon', 'If possible', 'sentence', '가능하시면 연락 주세요', 'If possible, please contact me'),
 
       // Expressing gratitude
-      createContentItem('감사의 말씀 드립니다', 'gamsaui malsseum deurimnida', 'I express my gratitude', 'sentence', '진심으로 감사의 말씀 드립니다', 'I sincerely express my gratitude'),
-      createContentItem('정말 감사합니다', 'jeongmal gamsahamnida', 'Thank you very much', 'sentence', '도와주셔서 정말 감사합니다', 'Thank you very much for helping'),
-      createContentItem('대단히 감사합니다', 'daedanhi gamsahamnida', 'Thank you very much', 'sentence', '대단히 감사합니다', 'Thank you very much'),
-      createContentItem('너무 고마워요', 'neomu gomawoyo', 'Thank you so much', 'sentence', '너무 고마워요', 'Thank you so much'),
-      createContentItem('신세 졌습니다', 'sinse jyeotseumnida', 'I\'m indebted to you', 'sentence', '정말 신세 졌습니다', 'I\'m really indebted to you'),
+      createContentItem('감사의 말씀 드립니다', 'gamsaui malsseum deurimnida', 'I express my gratitude', 'sentence', '진심으로 감사의 말씀 드립니다', 'I sincerely express my gratitude', [{ korean: '감사의', english: 'of gratitude' }, { korean: '말씀', english: 'words (honorific)' }, { korean: '드립니다', english: 'I humbly give' }]),
+      createContentItem('정말 감사합니다', 'jeongmal gamsahamnida', 'Thank you very much', 'sentence', '도와주셔서 정말 감사합니다', 'Thank you very much for helping', [{ korean: '정말', english: 'really' }, { korean: '감사합니다', english: 'thank you' }]),
+      createContentItem('대단히 감사합니다', 'daedanhi gamsahamnida', 'Thank you very much', 'sentence', '대단히 감사합니다', 'Thank you very much', [{ korean: '대단히', english: 'greatly' }, { korean: '감사합니다', english: 'thank you' }]),
+      createContentItem('너무 고마워요', 'neomu gomawoyo', 'Thank you so much', 'sentence', '너무 고마워요', 'Thank you so much', [{ korean: '너무', english: 'so much' }, { korean: '고마워요', english: 'thankful' }]),
+      createContentItem('신세 졌습니다', 'sinse jyeotseumnida', 'I\'m indebted to you', 'sentence', '정말 신세 졌습니다', 'I\'m really indebted to you', [{ korean: '신세', english: 'debt/favor' }, { korean: '졌습니다', english: 'I have incurred' }]),
 
       // Apologizing (advanced)
-      createContentItem('대단히 죄송합니다', 'daedanhi joesonghamnida', 'I\'m very sorry', 'sentence', '대단히 죄송합니다', 'I\'m very sorry'),
-      createContentItem('진심으로 사과드립니다', 'jinsimeuro sagwadeurimnida', 'I sincerely apologize', 'sentence', '진심으로 사과드립니다', 'I sincerely apologize'),
-      createContentItem('제 잘못입니다', 'je jalmositseumnida', 'It\'s my fault', 'sentence', '제 잘못입니다', 'It\'s my fault'),
-      createContentItem('용서해 주세요', 'yongseohae juseyo', 'Please forgive me', 'sentence', '용서해 주세요', 'Please forgive me'),
+      createContentItem('대단히 죄송합니다', 'daedanhi joesonghamnida', 'I\'m very sorry', 'sentence', '대단히 죄송합니다', 'I\'m very sorry', [{ korean: '대단히', english: 'very much' }, { korean: '죄송합니다', english: 'I am sorry' }]),
+      createContentItem('진심으로 사과드립니다', 'jinsimeuro sagwadeurimnida', 'I sincerely apologize', 'sentence', '진심으로 사과드립니다', 'I sincerely apologize', [{ korean: '진심으로', english: 'sincerely' }, { korean: '사과드립니다', english: 'I humbly apologize' }]),
+      createContentItem('제 잘못입니다', 'je jalmositseumnida', 'It\'s my fault', 'sentence', '제 잘못입니다', 'It\'s my fault', [{ korean: '제', english: 'my (humble)' }, { korean: '잘못입니다', english: 'it is a fault/mistake' }]),
+      createContentItem('용서해 주세요', 'yongseohae juseyo', 'Please forgive me', 'sentence', '용서해 주세요', 'Please forgive me', [{ korean: '용서해', english: 'forgive' }, { korean: '주세요', english: 'please (do for me)' }]),
       createContentItem('실례했습니다', 'sillyehaetseumnida', 'I was rude / Excuse me', 'sentence', '실례했습니다', 'Excuse me'),
 
       // Concern and care
       createContentItem('괜찮으세요?', 'gwaenchaneuseyo?', 'Are you okay?', 'sentence', '괜찮으세요?', 'Are you okay?'),
-      createContentItem('몸 조심하세요', 'mom josimhaseyo', 'Take care of your health', 'sentence', '몸 조심하세요', 'Take care of your health'),
+      createContentItem('몸 조심하세요', 'mom josimhaseyo', 'Take care of your health', 'sentence', '몸 조심하세요', 'Take care of your health', [{ korean: '몸', english: 'body/health' }, { korean: '조심하세요', english: 'please be careful' }]),
       createContentItem('건강하세요', 'geonganghaseyo', 'Stay healthy', 'sentence', '건강하세요', 'Stay healthy'),
-      createContentItem('무리하지 마세요', 'murihaji maseyo', 'Don\'t overdo it', 'sentence', '무리하지 마세요', 'Don\'t overdo it'),
-      createContentItem('편히 쉬세요', 'pyeonhi swiseyo', 'Rest comfortably', 'sentence', '편히 쉬세요', 'Rest comfortably'),
+      createContentItem('무리하지 마세요', 'murihaji maseyo', 'Don\'t overdo it', 'sentence', '무리하지 마세요', 'Don\'t overdo it', [{ korean: '무리하지', english: 'overdo it' }, { korean: '마세요', english: 'please don\'t' }]),
+      createContentItem('편히 쉬세요', 'pyeonhi swiseyo', 'Rest comfortably', 'sentence', '편히 쉬세요', 'Rest comfortably', [{ korean: '편히', english: 'comfortably' }, { korean: '쉬세요', english: 'please rest' }]),
 
       // Encouragement
       createContentItem('힘내세요', 'himnaeseyo', 'Cheer up / Keep it up', 'sentence', '힘내세요', 'Cheer up'),
       createContentItem('화이팅', 'hwaiting', 'Fighting / You can do it', 'word', '화이팅!', 'You can do it!'),
-      createContentItem('잘 될 거예요', 'jal doel geoyeyo', 'It will be okay', 'sentence', '걱정하지 마세요. 잘 될 거예요', 'Don\'t worry. It will be okay'),
-      createContentItem('할 수 있어요', 'hal su isseoyo', 'You can do it', 'sentence', '당신은 할 수 있어요', 'You can do it'),
-      createContentItem('걱정하지 마세요', 'geokjeonghaji maseyo', 'Don\'t worry', 'sentence', '걱정하지 마세요', 'Don\'t worry'),
+      createContentItem('잘 될 거예요', 'jal doel geoyeyo', 'It will be okay', 'sentence', '걱정하지 마세요. 잘 될 거예요', 'Don\'t worry. It will be okay', [{ korean: '잘', english: 'well' }, { korean: '될 거예요', english: 'it will become/be' }]),
+      createContentItem('할 수 있어요', 'hal su isseoyo', 'You can do it', 'sentence', '당신은 할 수 있어요', 'You can do it', [{ korean: '할 수', english: 'ability to do' }, { korean: '있어요', english: 'there is/can' }]),
+      createContentItem('걱정하지 마세요', 'geokjeonghaji maseyo', 'Don\'t worry', 'sentence', '걱정하지 마세요', 'Don\'t worry', [{ korean: '걱정하지', english: 'worry' }, { korean: '마세요', english: 'please don\'t' }]),
 
       // Congratulations
       createContentItem('축하합니다', 'chukahamnida', 'Congratulations', 'sentence', '졸업을 축하합니다', 'Congratulations on your graduation'),
@@ -225,66 +226,66 @@ const lessons = [
       createContentItem('힘드시겠어요', 'himdeuisigesseoyo', 'It must be hard', 'sentence', '많이 힘드시겠어요', 'It must be very hard'),
 
       // Welcoming
-      createContentItem('어서 오세요', 'eoseo oseyo', 'Welcome', 'sentence', '어서 오세요', 'Welcome'),
+      createContentItem('어서 오세요', 'eoseo oseyo', 'Welcome', 'sentence', '어서 오세요', 'Welcome', [{ korean: '어서', english: 'quickly/come on' }, { korean: '오세요', english: 'please come' }]),
       createContentItem('환영합니다', 'hwanyeonghamnida', 'Welcome (formal)', 'sentence', '환영합니다', 'Welcome'),
-      createContentItem('오신 것을 환영합니다', 'osin geoseul hwanyeonghamnida', 'We welcome your visit', 'sentence', '오신 것을 환영합니다', 'We welcome your visit'),
+      createContentItem('오신 것을 환영합니다', 'osin geoseul hwanyeonghamnida', 'We welcome your visit', 'sentence', '오신 것을 환영합니다', 'We welcome your visit', [{ korean: '오신 것을', english: 'your coming/visit' }, { korean: '환영합니다', english: 'we welcome' }]),
 
       // Seasonal greetings
-      createContentItem('새해 복 많이 받으세요', 'saehae bok manhi badeuseyo', 'Happy New Year', 'sentence', '새해 복 많이 받으세요', 'Happy New Year'),
-      createContentItem('즐거운 크리스마스 보내세요', 'jeulgeoun keuriseumaseu bonaeseyo', 'Merry Christmas', 'sentence', '즐거운 크리스마스 보내세요', 'Merry Christmas'),
-      createContentItem('추석 잘 보내세요', 'chuseok jal bonaeseyo', 'Have a good Chuseok', 'sentence', '추석 잘 보내세요', 'Have a good Chuseok'),
+      createContentItem('새해 복 많이 받으세요', 'saehae bok manhi badeuseyo', 'Happy New Year', 'sentence', '새해 복 많이 받으세요', 'Happy New Year', [{ korean: '새해', english: 'new year' }, { korean: '복', english: 'blessings/fortune' }, { korean: '많이', english: 'a lot' }, { korean: '받으세요', english: 'please receive' }]),
+      createContentItem('즐거운 크리스마스 보내세요', 'jeulgeoun keuriseumaseu bonaeseyo', 'Merry Christmas', 'sentence', '즐거운 크리스마스 보내세요', 'Merry Christmas', [{ korean: '즐거운', english: 'joyful/merry' }, { korean: '크리스마스', english: 'Christmas' }, { korean: '보내세요', english: 'please spend/have' }]),
+      createContentItem('추석 잘 보내세요', 'chuseok jal bonaeseyo', 'Have a good Chuseok', 'sentence', '추석 잘 보내세요', 'Have a good Chuseok', [{ korean: '추석', english: 'Chuseok' }, { korean: '잘', english: 'well' }, { korean: '보내세요', english: 'please spend/have' }]),
 
       // Age and asking personal info
-      createContentItem('나이가 어떻게 되세요?', 'naiga eotteoke doeseyo?', 'How old are you?', 'sentence', '실례지만 나이가 어떻게 되세요?', 'Excuse me, but how old are you?'),
-      createContentItem('몇 살이에요?', 'myeot sarieyo?', 'How old are you?', 'sentence', '몇 살이에요?', 'How old are you?'),
-      createContentItem('직업이 뭐예요?', 'jigeobi mwoyeyo?', 'What is your job?', 'sentence', '직업이 뭐예요?', 'What is your job?'),
-      createContentItem('무슨 일 하세요?', 'museun il haseyo?', 'What do you do?', 'sentence', '무슨 일 하세요?', 'What do you do?'),
-      createContentItem('어디에 사세요?', 'eodie saseyo?', 'Where do you live?', 'sentence', '어디에 사세요?', 'Where do you live?'),
-      createContentItem('고향이 어디예요?', 'gohyangi eodiyeyo?', 'Where is your hometown?', 'sentence', '고향이 어디예요?', 'Where is your hometown?'),
+      createContentItem('나이가 어떻게 되세요?', 'naiga eotteoke doeseyo?', 'How old are you?', 'sentence', '실례지만 나이가 어떻게 되세요?', 'Excuse me, but how old are you?', [{ korean: '나이가', english: 'age (subject)' }, { korean: '어떻게', english: 'how' }, { korean: '되세요?', english: 'is it? (polite)' }]),
+      createContentItem('몇 살이에요?', 'myeot sarieyo?', 'How old are you?', 'sentence', '몇 살이에요?', 'How old are you?', [{ korean: '몇', english: 'how many' }, { korean: '살이에요?', english: 'years old?' }]),
+      createContentItem('직업이 뭐예요?', 'jigeobi mwoyeyo?', 'What is your job?', 'sentence', '직업이 뭐예요?', 'What is your job?', [{ korean: '직업이', english: 'job/occupation (subject)' }, { korean: '뭐예요?', english: 'what is?' }]),
+      createContentItem('무슨 일 하세요?', 'museun il haseyo?', 'What do you do?', 'sentence', '무슨 일 하세요?', 'What do you do?', [{ korean: '무슨', english: 'what kind of' }, { korean: '일', english: 'work' }, { korean: '하세요?', english: 'do you do? (polite)' }]),
+      createContentItem('어디에 사세요?', 'eodie saseyo?', 'Where do you live?', 'sentence', '어디에 사세요?', 'Where do you live?', [{ korean: '어디에', english: 'where (at)' }, { korean: '사세요?', english: 'do you live? (polite)' }]),
+      createContentItem('고향이 어디예요?', 'gohyangi eodiyeyo?', 'Where is your hometown?', 'sentence', '고향이 어디예요?', 'Where is your hometown?', [{ korean: '고향이', english: 'hometown (subject)' }, { korean: '어디예요?', english: 'where is?' }]),
 
       // Making suggestions
       createContentItem('어때요?', 'eottaeyo?', 'How about it?', 'sentence', '같이 가는 게 어때요?', 'How about going together?'),
       createContentItem('어떠세요?', 'eotteoseyo?', 'How about it? (formal)', 'sentence', '내일 만나시는 게 어떠세요?', 'How about meeting tomorrow?'),
-      createContentItem('같이 갈까요?', 'gachi galkkayo?', 'Shall we go together?', 'sentence', '같이 갈까요?', 'Shall we go together?'),
+      createContentItem('같이 갈까요?', 'gachi galkkayo?', 'Shall we go together?', 'sentence', '같이 갈까요?', 'Shall we go together?', [{ korean: '같이', english: 'together' }, { korean: '갈까요?', english: 'shall we go?' }]),
       createContentItem('할까요?', 'halkkayo?', 'Shall we do it?', 'sentence', '뭐 먹을까요?', 'What shall we eat?'),
 
       // Agreement and disagreement
       createContentItem('동의합니다', 'donguihamnida', 'I agree', 'sentence', '완전히 동의합니다', 'I completely agree'),
-      createContentItem('그렇게 생각해요', 'geureoke saenggakaeyo', 'I think so', 'sentence', '저도 그렇게 생각해요', 'I think so too'),
-      createContentItem('그럴 수도 있어요', 'geureol sudo isseoyo', 'That could be', 'sentence', '그럴 수도 있어요', 'That could be'),
+      createContentItem('그렇게 생각해요', 'geureoke saenggakaeyo', 'I think so', 'sentence', '저도 그렇게 생각해요', 'I think so too', [{ korean: '그렇게', english: 'like that/so' }, { korean: '생각해요', english: 'I think' }]),
+      createContentItem('그럴 수도 있어요', 'geureol sudo isseoyo', 'That could be', 'sentence', '그럴 수도 있어요', 'That could be', [{ korean: '그럴 수도', english: 'that possibility also' }, { korean: '있어요', english: 'there is/exists' }]),
       createContentItem('확실해요', 'hwaksilhaeyo', 'I\'m sure', 'sentence', '확실해요', 'I\'m sure'),
-      createContentItem('그렇지 않아요', 'geureochi anayo', 'That\'s not right', 'sentence', '그렇지 않아요', 'That\'s not right'),
+      createContentItem('그렇지 않아요', 'geureochi anayo', 'That\'s not right', 'sentence', '그렇지 않아요', 'That\'s not right', [{ korean: '그렇지', english: 'like that' }, { korean: '않아요', english: 'is not' }]),
 
       // Preferences
       createContentItem('좋아해요', 'johahaeyo', 'I like it', 'sentence', '저는 커피를 좋아해요', 'I like coffee'),
       createContentItem('싫어해요', 'sireohaeyo', 'I don\'t like it', 'sentence', '저는 매운 음식을 싫어해요', 'I don\'t like spicy food'),
-      createContentItem('관심 있어요', 'gwansim isseoyo', 'I\'m interested', 'sentence', '한국 문화에 관심 있어요', 'I\'m interested in Korean culture'),
+      createContentItem('관심 있어요', 'gwansim isseoyo', 'I\'m interested', 'sentence', '한국 문화에 관심 있어요', 'I\'m interested in Korean culture', [{ korean: '관심', english: 'interest' }, { korean: '있어요', english: 'there is/I have' }]),
       createContentItem('별로예요', 'byeolloyeyo', 'Not really / Not particularly', 'sentence', '별로예요', 'Not really'),
 
       // Talking about weather
-      createContentItem('날씨가 좋아요', 'nalssiga johayo', 'The weather is nice', 'sentence', '오늘 날씨가 좋아요', 'The weather is nice today'),
-      createContentItem('날씨가 나빠요', 'nalssiga nappayo', 'The weather is bad', 'sentence', '오늘 날씨가 나빠요', 'The weather is bad today'),
+      createContentItem('날씨가 좋아요', 'nalssiga johayo', 'The weather is nice', 'sentence', '오늘 날씨가 좋아요', 'The weather is nice today', [{ korean: '날씨가', english: 'weather (subject)' }, { korean: '좋아요', english: 'is good/nice' }]),
+      createContentItem('날씨가 나빠요', 'nalssiga nappayo', 'The weather is bad', 'sentence', '오늘 날씨가 나빠요', 'The weather is bad today', [{ korean: '날씨가', english: 'weather (subject)' }, { korean: '나빠요', english: 'is bad' }]),
       createContentItem('덥네요', 'deopneyo', 'It\'s hot', 'sentence', '오늘 정말 덥네요', 'It\'s really hot today'),
       createContentItem('춥네요', 'chupneyo', 'It\'s cold', 'sentence', '오늘 춥네요', 'It\'s cold today'),
-      createContentItem('비가 와요', 'biga wayo', 'It\'s raining', 'sentence', '밖에 비가 와요', 'It\'s raining outside'),
-      createContentItem('눈이 와요', 'nuni wayo', 'It\'s snowing', 'sentence', '눈이 와요', 'It\'s snowing'),
+      createContentItem('비가 와요', 'biga wayo', 'It\'s raining', 'sentence', '밖에 비가 와요', 'It\'s raining outside', [{ korean: '비가', english: 'rain (subject)' }, { korean: '와요', english: 'comes/is coming' }]),
+      createContentItem('눈이 와요', 'nuni wayo', 'It\'s snowing', 'sentence', '눈이 와요', 'It\'s snowing', [{ korean: '눈이', english: 'snow (subject)' }, { korean: '와요', english: 'comes/is coming' }]),
 
       // Expressing feelings
-      createContentItem('기분이 좋아요', 'gibuni johayo', 'I feel good', 'sentence', '오늘 기분이 좋아요', 'I feel good today'),
-      createContentItem('기분이 안 좋아요', 'gibuni an johayo', 'I don\'t feel good', 'sentence', '오늘 기분이 안 좋아요', 'I don\'t feel good today'),
+      createContentItem('기분이 좋아요', 'gibuni johayo', 'I feel good', 'sentence', '오늘 기분이 좋아요', 'I feel good today', [{ korean: '기분이', english: 'feeling/mood (subject)' }, { korean: '좋아요', english: 'is good' }]),
+      createContentItem('기분이 안 좋아요', 'gibuni an johayo', 'I don\'t feel good', 'sentence', '오늘 기분이 안 좋아요', 'I don\'t feel good today', [{ korean: '기분이', english: 'feeling/mood (subject)' }, { korean: '안 좋아요', english: 'is not good' }]),
       createContentItem('행복해요', 'haengbokhaeyo', 'I\'m happy', 'sentence', '정말 행복해요', 'I\'m really happy'),
       createContentItem('슬퍼요', 'seulpeoyo', 'I\'m sad', 'sentence', '슬퍼요', 'I\'m sad'),
-      createContentItem('화가 나요', 'hwaga nayo', 'I\'m angry', 'sentence', '화가 나요', 'I\'m angry'),
+      createContentItem('화가 나요', 'hwaga nayo', 'I\'m angry', 'sentence', '화가 나요', 'I\'m angry', [{ korean: '화가', english: 'anger (subject)' }, { korean: '나요', english: 'comes out/arises' }]),
       createContentItem('피곤해요', 'pigonhaeyo', 'I\'m tired', 'sentence', '너무 피곤해요', 'I\'m so tired'),
       createContentItem('지루해요', 'jiruhaeyo', 'I\'m bored', 'sentence', '지루해요', 'I\'m bored'),
       createContentItem('걱정돼요', 'geokjeongdwaeyo', 'I\'m worried', 'sentence', '걱정돼요', 'I\'m worried'),
 
       // Making phone calls
       createContentItem('여보세요', 'yeoboseyo', 'Hello (on phone)', 'word', '여보세요, 김민수입니다', 'Hello, this is Kim Minsu'),
-      createContentItem('전화 주셔서 감사합니다', 'jeonhwa jusyeoseo gamsahamnida', 'Thank you for calling', 'sentence', '전화 주셔서 감사합니다', 'Thank you for calling'),
-      createContentItem('다시 전화할게요', 'dasi jeonhwahalgeyo', 'I\'ll call again', 'sentence', '나중에 다시 전화할게요', 'I\'ll call again later'),
-      createContentItem('메시지 남겨 주세요', 'mesiji namgyeo juseyo', 'Please leave a message', 'sentence', '메시지 남겨 주세요', 'Please leave a message'),
-      createContentItem('통화 중이에요', 'tonghwa jungieyo', 'The line is busy', 'sentence', '통화 중이에요', 'The line is busy'),
+      createContentItem('전화 주셔서 감사합니다', 'jeonhwa jusyeoseo gamsahamnida', 'Thank you for calling', 'sentence', '전화 주셔서 감사합니다', 'Thank you for calling', [{ korean: '전화', english: 'phone call' }, { korean: '주셔서', english: 'for giving/doing' }, { korean: '감사합니다', english: 'thank you' }]),
+      createContentItem('다시 전화할게요', 'dasi jeonhwahalgeyo', 'I\'ll call again', 'sentence', '나중에 다시 전화할게요', 'I\'ll call again later', [{ korean: '다시', english: 'again' }, { korean: '전화할게요', english: 'I will call' }]),
+      createContentItem('메시지 남겨 주세요', 'mesiji namgyeo juseyo', 'Please leave a message', 'sentence', '메시지 남겨 주세요', 'Please leave a message', [{ korean: '메시지', english: 'message' }, { korean: '남겨', english: 'leave' }, { korean: '주세요', english: 'please (do for me)' }]),
+      createContentItem('통화 중이에요', 'tonghwa jungieyo', 'The line is busy', 'sentence', '통화 중이에요', 'The line is busy', [{ korean: '통화 중이에요', english: 'is in the middle of a call' }]),
 
       // Time expressions
       createContentItem('오전', 'ojeon', 'Morning / AM', 'word', '오전 10시', '10 AM'),
@@ -320,24 +321,24 @@ const lessons = [
     category: 'greetings',
     difficulty: 'advanced',
     content: [
-      createContentItem('뵙게 되어 영광입니다', 'boepge doeeo yeonggwangimnida', 'It\'s an honor to meet you', 'sentence', '뵙게 되어 영광입니다', 'It\'s an honor to meet you'),
-      createContentItem('오랫동안 기다려 왔습니다', 'oraetdongan gidaryeo watseumnida', 'I\'ve been looking forward to this for a long time', 'sentence', '이 만남을 오랫동안 기다려 왔습니다', 'I\'ve been looking forward to this meeting for a long time'),
-      createContentItem('귀한 시간 내주셔서 감사합니다', 'gwihan sigan naejusyeoseo gamsahamnida', 'Thank you for your precious time', 'sentence', '귀한 시간 내주셔서 감사합니다', 'Thank you for your precious time'),
-      createContentItem('번거롭게 해드려 죄송합니다', 'beongeoreopge haedeuryeo joesonghamnida', 'I\'m sorry to trouble you', 'sentence', '번거롭게 해드려 죄송합니다', 'I\'m sorry to trouble you'),
-      createContentItem('폐를 끼쳐 드려 죄송합니다', 'pyereul kkichyeo deuryeo joesonghamnida', 'I apologize for causing you trouble', 'sentence', '폐를 끼쳐 드려 죄송합니다', 'I apologize for causing you trouble'),
+      createContentItem('뵙게 되어 영광입니다', 'boepge doeeo yeonggwangimnida', 'It\'s an honor to meet you', 'sentence', '뵙게 되어 영광입니다', 'It\'s an honor to meet you', [{ korean: '뵙게 되어', english: 'to come to meet (humble)' }, { korean: '영광입니다', english: 'it is an honor' }]),
+      createContentItem('오랫동안 기다려 왔습니다', 'oraetdongan gidaryeo watseumnida', 'I\'ve been looking forward to this for a long time', 'sentence', '이 만남을 오랫동안 기다려 왔습니다', 'I\'ve been looking forward to this meeting for a long time', [{ korean: '오랫동안', english: 'for a long time' }, { korean: '기다려 왔습니다', english: 'have been waiting' }]),
+      createContentItem('귀한 시간 내주셔서 감사합니다', 'gwihan sigan naejusyeoseo gamsahamnida', 'Thank you for your precious time', 'sentence', '귀한 시간 내주셔서 감사합니다', 'Thank you for your precious time', [{ korean: '귀한 시간', english: 'precious time' }, { korean: '내주셔서', english: 'for giving/sparing' }, { korean: '감사합니다', english: 'thank you' }]),
+      createContentItem('번거롭게 해드려 죄송합니다', 'beongeoreopge haedeuryeo joesonghamnida', 'I\'m sorry to trouble you', 'sentence', '번거롭게 해드려 죄송합니다', 'I\'m sorry to trouble you', [{ korean: '번거롭게', english: 'troublesomely' }, { korean: '해드려', english: 'for causing (humble)' }, { korean: '죄송합니다', english: 'I\'m sorry' }]),
+      createContentItem('폐를 끼쳐 드려 죄송합니다', 'pyereul kkichyeo deuryeo joesonghamnida', 'I apologize for causing you trouble', 'sentence', '폐를 끼쳐 드려 죄송합니다', 'I apologize for causing you trouble', [{ korean: '폐를', english: 'trouble/burden' }, { korean: '끼쳐 드려', english: 'for causing (humble)' }, { korean: '죄송합니다', english: 'I\'m sorry' }]),
 
       // Business formalities
-      createContentItem('명함을 주고받다', 'myeonghameul jugobatda', 'To exchange business cards', 'sentence', '먼저 명함을 주고받겠습니다', 'Let\'s exchange business cards first'),
-      createContentItem('명함 받으시겠습니까?', 'myeongham badeusigetsseumnikka?', 'Would you like my card?', 'sentence', '명함 받으시겠습니까?', 'Would you like my card?'),
-      createContentItem('앞으로 잘 부탁드립니다', 'apeuro jal butakdeurimnida', 'I look forward to working with you', 'sentence', '앞으로 잘 부탁드립니다', 'I look forward to working with you'),
-      createContentItem('귀사의 발전을 기원합니다', 'gwisaui baljeon-eul giwonhamnida', 'I wish your company prosperity', 'sentence', '귀사의 발전을 기원합니다', 'I wish your company prosperity'),
-      createContentItem('성원에 감사드립니다', 'seongwone gamsadeurimnida', 'Thank you for your support', 'sentence', '많은 성원에 감사드립니다', 'Thank you for your great support'),
+      createContentItem('명함을 주고받다', 'myeonghameul jugobatda', 'To exchange business cards', 'sentence', '먼저 명함을 주고받겠습니다', 'Let\'s exchange business cards first', [{ korean: '명함을', english: 'business cards' }, { korean: '주고받다', english: 'to exchange' }]),
+      createContentItem('명함 받으시겠습니까?', 'myeongham badeusigetsseumnikka?', 'Would you like my card?', 'sentence', '명함 받으시겠습니까?', 'Would you like my card?', [{ korean: '명함', english: 'business card' }, { korean: '받으시겠습니까?', english: 'would you like to receive?' }]),
+      createContentItem('앞으로 잘 부탁드립니다', 'apeuro jal butakdeurimnida', 'I look forward to working with you', 'sentence', '앞으로 잘 부탁드립니다', 'I look forward to working with you', [{ korean: '앞으로', english: 'going forward' }, { korean: '잘', english: 'well' }, { korean: '부탁드립니다', english: 'I humbly ask/request' }]),
+      createContentItem('귀사의 발전을 기원합니다', 'gwisaui baljeon-eul giwonhamnida', 'I wish your company prosperity', 'sentence', '귀사의 발전을 기원합니다', 'I wish your company prosperity', [{ korean: '귀사의', english: 'your company\'s (honorific)' }, { korean: '발전을', english: 'prosperity/development' }, { korean: '기원합니다', english: 'I wish/pray for' }]),
+      createContentItem('성원에 감사드립니다', 'seongwone gamsadeurimnida', 'Thank you for your support', 'sentence', '많은 성원에 감사드립니다', 'Thank you for your great support', [{ korean: '성원에', english: 'for your support' }, { korean: '감사드립니다', english: 'I humbly thank you' }]),
 
       // Formal meetings
-      createContentItem('회의 시작하겠습니다', 'hoeui sijakhagetseumnida', 'Let\'s start the meeting', 'sentence', '지금부터 회의 시작하겠습니다', 'Let\'s start the meeting now'),
-      createContentItem('의견을 말씀해 주시기 바랍니다', 'uigyeoneul malssumhae jusigi baramnida', 'Please share your opinion', 'sentence', '여러분의 의견을 말씀해 주시기 바랍니다', 'Please share your opinions'),
-      createContentItem('검토해 보시겠습니까?', 'geomtohae bosigetsseumnikka?', 'Would you like to review it?', 'sentence', '먼저 검토해 보시겠습니까?', 'Would you like to review it first?'),
-      createContentItem('결정을 내려야 합니다', 'gyeoljeongeul naeryeoya hamnida', 'We need to make a decision', 'sentence', '오늘 결정을 내려야 합니다', 'We need to make a decision today'),
+      createContentItem('회의 시작하겠습니다', 'hoeui sijakhagetseumnida', 'Let\'s start the meeting', 'sentence', '지금부터 회의 시작하겠습니다', 'Let\'s start the meeting now', [{ korean: '회의', english: 'meeting' }, { korean: '시작하겠습니다', english: 'let\'s begin' }]),
+      createContentItem('의견을 말씀해 주시기 바랍니다', 'uigyeoneul malssumhae jusigi baramnida', 'Please share your opinion', 'sentence', '여러분의 의견을 말씀해 주시기 바랍니다', 'Please share your opinions', [{ korean: '의견을', english: 'your opinion' }, { korean: '말씀해 주시기', english: 'please share (honorific)' }, { korean: '바랍니다', english: 'I request/hope' }]),
+      createContentItem('검토해 보시겠습니까?', 'geomtohae bosigetsseumnikka?', 'Would you like to review it?', 'sentence', '먼저 검토해 보시겠습니까?', 'Would you like to review it first?', [{ korean: '검토해', english: 'review' }, { korean: '보시겠습니까?', english: 'would you like to try?' }]),
+      createContentItem('결정을 내려야 합니다', 'gyeoljeongeul naeryeoya hamnida', 'We need to make a decision', 'sentence', '오늘 결정을 내려야 합니다', 'We need to make a decision today', [{ korean: '결정을', english: 'a decision' }, { korean: '내려야 합니다', english: 'must make/reach' }]),
 
       // Honorific expressions
       createContentItem('계시다', 'gyesida', 'To be (honorific)', 'word', '사장님이 계십니까?', 'Is the president here?'),
@@ -349,88 +350,88 @@ const lessons = [
       createContentItem('뵙다', 'boepda', 'To see/meet (humble)', 'word', '내일 뵙겠습니다', 'I will see you tomorrow'),
 
       // Expressing deep gratitude
-      createContentItem('진심으로 감사드립니다', 'jinsimeuro gamsadeurimnida', 'I sincerely thank you', 'sentence', '진심으로 감사드립니다', 'I sincerely thank you'),
-      createContentItem('깊이 감사드립니다', 'gipi gamsadeurimnida', 'I deeply thank you', 'sentence', '깊이 감사드립니다', 'I deeply thank you'),
-      createContentItem('은혜를 잊지 않겠습니다', 'eunhyereul itji anketseumnida', 'I won\'t forget your kindness', 'sentence', '은혜를 잊지 않겠습니다', 'I won\'t forget your kindness'),
+      createContentItem('진심으로 감사드립니다', 'jinsimeuro gamsadeurimnida', 'I sincerely thank you', 'sentence', '진심으로 감사드립니다', 'I sincerely thank you', [{ korean: '진심으로', english: 'sincerely' }, { korean: '감사드립니다', english: 'I humbly thank you' }]),
+      createContentItem('깊이 감사드립니다', 'gipi gamsadeurimnida', 'I deeply thank you', 'sentence', '깊이 감사드립니다', 'I deeply thank you', [{ korean: '깊이', english: 'deeply' }, { korean: '감사드립니다', english: 'I humbly thank you' }]),
+      createContentItem('은혜를 잊지 않겠습니다', 'eunhyereul itji anketseumnida', 'I won\'t forget your kindness', 'sentence', '은혜를 잊지 않겠습니다', 'I won\'t forget your kindness', [{ korean: '은혜를', english: 'your kindness/grace' }, { korean: '잊지 않겠습니다', english: 'I will not forget' }]),
       createContentItem('보답하겠습니다', 'bodapagetseumnida', 'I will repay you', 'sentence', '꼭 보답하겠습니다', 'I will surely repay you'),
 
       // Deep apologies
-      createContentItem('심려를 끼쳐 드려 죄송합니다', 'simnyeoreul kkichyeo deuryeo joesonghamnida', 'I\'m sorry for causing you concern', 'sentence', '심려를 끼쳐 드려 죄송합니다', 'I\'m sorry for causing you concern'),
-      createContentItem('불편을 드려 죄송합니다', 'bulpyeoneul deuryeo joesonghamnida', 'I apologize for the inconvenience', 'sentence', '불편을 드려 죄송합니다', 'I apologize for the inconvenience'),
-      createContentItem('용서를 구합니다', 'yongseoreul guhamnida', 'I ask for forgiveness', 'sentence', '용서를 구합니다', 'I ask for forgiveness'),
-      createContentItem('변명의 여지가 없습니다', 'byeonmyeongui yeojiga eopseumnida', 'There\'s no excuse', 'sentence', '변명의 여지가 없습니다', 'There\'s no excuse'),
+      createContentItem('심려를 끼쳐 드려 죄송합니다', 'simnyeoreul kkichyeo deuryeo joesonghamnida', 'I\'m sorry for causing you concern', 'sentence', '심려를 끼쳐 드려 죄송합니다', 'I\'m sorry for causing you concern', [{ korean: '심려를', english: 'worry/concern' }, { korean: '끼쳐 드려', english: 'for causing (humble)' }, { korean: '죄송합니다', english: 'I\'m sorry' }]),
+      createContentItem('불편을 드려 죄송합니다', 'bulpyeoneul deuryeo joesonghamnida', 'I apologize for the inconvenience', 'sentence', '불편을 드려 죄송합니다', 'I apologize for the inconvenience', [{ korean: '불편을', english: 'inconvenience' }, { korean: '드려', english: 'for giving/causing (humble)' }, { korean: '죄송합니다', english: 'I\'m sorry' }]),
+      createContentItem('용서를 구합니다', 'yongseoreul guhamnida', 'I ask for forgiveness', 'sentence', '용서를 구합니다', 'I ask for forgiveness', [{ korean: '용서를', english: 'forgiveness' }, { korean: '구합니다', english: 'I ask for/seek' }]),
+      createContentItem('변명의 여지가 없습니다', 'byeonmyeongui yeojiga eopseumnida', 'There\'s no excuse', 'sentence', '변명의 여지가 없습니다', 'There\'s no excuse', [{ korean: '변명의', english: 'of excuse' }, { korean: '여지가', english: 'room/space' }, { korean: '없습니다', english: 'there is none' }]),
 
       // Formal requests
       createContentItem('부디', 'budi', 'Please (formal)', 'word', '부디 양해해 주시기 바랍니다', 'Please understand'),
-      createContentItem('삼가 부탁드립니다', 'samga butakdeurimnida', 'I humbly request', 'sentence', '삼가 부탁드립니다', 'I humbly request'),
-      createContentItem('고려해 주시기 바랍니다', 'goryeohae jusigi baramnida', 'Please consider', 'sentence', '긍정적으로 고려해 주시기 바랍니다', 'Please consider positively'),
-      createContentItem('협조해 주시면 감사하겠습니다', 'hyeopjohae jusimyeon gamsahagetseumnida', 'I would appreciate your cooperation', 'sentence', '협조해 주시면 감사하겠습니다', 'I would appreciate your cooperation'),
+      createContentItem('삼가 부탁드립니다', 'samga butakdeurimnida', 'I humbly request', 'sentence', '삼가 부탁드립니다', 'I humbly request', [{ korean: '삼가', english: 'humbly/respectfully' }, { korean: '부탁드립니다', english: 'I request (humble)' }]),
+      createContentItem('고려해 주시기 바랍니다', 'goryeohae jusigi baramnida', 'Please consider', 'sentence', '긍정적으로 고려해 주시기 바랍니다', 'Please consider positively', [{ korean: '고려해', english: 'consider' }, { korean: '주시기 바랍니다', english: 'please do (honorific request)' }]),
+      createContentItem('협조해 주시면 감사하겠습니다', 'hyeopjohae jusimyeon gamsahagetseumnida', 'I would appreciate your cooperation', 'sentence', '협조해 주시면 감사하겠습니다', 'I would appreciate your cooperation', [{ korean: '협조해 주시면', english: 'if you cooperate (honorific)' }, { korean: '감사하겠습니다', english: 'I would be grateful' }]),
 
       // Condolences
-      createContentItem('삼가 고인의 명복을 빕니다', 'samga goinui myeongbogeul bimnida', 'May the deceased rest in peace', 'sentence', '삼가 고인의 명복을 빕니다', 'May the deceased rest in peace'),
-      createContentItem('조의를 표합니다', 'jouireul pyohamnida', 'I express my condolences', 'sentence', '조의를 표합니다', 'I express my condolences'),
-      createContentItem('위로의 말씀을 드립니다', 'wiroui malsseumeul deurimnida', 'I offer my condolences', 'sentence', '위로의 말씀을 드립니다', 'I offer my condolences'),
+      createContentItem('삼가 고인의 명복을 빕니다', 'samga goinui myeongbogeul bimnida', 'May the deceased rest in peace', 'sentence', '삼가 고인의 명복을 빕니다', 'May the deceased rest in peace', [{ korean: '삼가', english: 'humbly/respectfully' }, { korean: '고인의', english: 'the deceased\'s' }, { korean: '명복을', english: 'peaceful rest in afterlife' }, { korean: '빕니다', english: 'I pray for' }]),
+      createContentItem('조의를 표합니다', 'jouireul pyohamnida', 'I express my condolences', 'sentence', '조의를 표합니다', 'I express my condolences', [{ korean: '조의를', english: 'condolences' }, { korean: '표합니다', english: 'I express' }]),
+      createContentItem('위로의 말씀을 드립니다', 'wiroui malsseumeul deurimnida', 'I offer my condolences', 'sentence', '위로의 말씀을 드립니다', 'I offer my condolences', [{ korean: '위로의', english: 'of consolation' }, { korean: '말씀을', english: 'words (honorific)' }, { korean: '드립니다', english: 'I offer (humble)' }]),
 
       // Celebrations (formal)
-      createContentItem('경사를 축하드립니다', 'gyeongsareul chukadeurimnida', 'Congratulations on your celebration', 'sentence', '경사를 축하드립니다', 'Congratulations on your celebration'),
-      createContentItem('영광스러운 날을 축하합니다', 'yeonggwangseureon nareul chukahamnida', 'Congratulations on this glorious day', 'sentence', '영광스러운 날을 축하합니다', 'Congratulations on this glorious day'),
-      createContentItem('무궁한 발전을 기원합니다', 'mugunghan baljeoneul giwonhamnida', 'I wish you endless development', 'sentence', '무궁한 발전을 기원합니다', 'I wish you endless development'),
+      createContentItem('경사를 축하드립니다', 'gyeongsareul chukadeurimnida', 'Congratulations on your celebration', 'sentence', '경사를 축하드립니다', 'Congratulations on your celebration', [{ korean: '경사를', english: 'the celebration/joyous occasion' }, { korean: '축하드립니다', english: 'I congratulate (humble)' }]),
+      createContentItem('영광스러운 날을 축하합니다', 'yeonggwangseureon nareul chukahamnida', 'Congratulations on this glorious day', 'sentence', '영광스러운 날을 축하합니다', 'Congratulations on this glorious day', [{ korean: '영광스러운', english: 'glorious' }, { korean: '날을', english: 'day' }, { korean: '축하합니다', english: 'congratulations' }]),
+      createContentItem('무궁한 발전을 기원합니다', 'mugunghan baljeoneul giwonhamnida', 'I wish you endless development', 'sentence', '무궁한 발전을 기원합니다', 'I wish you endless development', [{ korean: '무궁한', english: 'endless/infinite' }, { korean: '발전을', english: 'development/progress' }, { korean: '기원합니다', english: 'I wish/pray for' }]),
 
       // Ceremonies and events
-      createContentItem('개회사를 드리겠습니다', 'gaehoesareul deurigetseumnida', 'I will give the opening speech', 'sentence', '개회사를 드리겠습니다', 'I will give the opening speech'),
-      createContentItem('폐회를 선언합니다', 'pyehoereul seoneonhamnida', 'I declare the closing', 'sentence', '이것으로 폐회를 선언합니다', 'With this, I declare the closing'),
-      createContentItem('건배를 제의합니다', 'geonbaereul jeuihamnida', 'I propose a toast', 'sentence', '건배를 제의합니다', 'I propose a toast'),
-      createContentItem('박수를 부탁드립니다', 'baksureul butakdeurimnida', 'Please give a round of applause', 'sentence', '큰 박수를 부탁드립니다', 'Please give a big round of applause'),
+      createContentItem('개회사를 드리겠습니다', 'gaehoesareul deurigetseumnida', 'I will give the opening speech', 'sentence', '개회사를 드리겠습니다', 'I will give the opening speech', [{ korean: '개회사를', english: 'opening speech' }, { korean: '드리겠습니다', english: 'I will give (humble)' }]),
+      createContentItem('폐회를 선언합니다', 'pyehoereul seoneonhamnida', 'I declare the closing', 'sentence', '이것으로 폐회를 선언합니다', 'With this, I declare the closing', [{ korean: '폐회를', english: 'the closing' }, { korean: '선언합니다', english: 'I declare' }]),
+      createContentItem('건배를 제의합니다', 'geonbaereul jeuihamnida', 'I propose a toast', 'sentence', '건배를 제의합니다', 'I propose a toast', [{ korean: '건배를', english: 'a toast' }, { korean: '제의합니다', english: 'I propose' }]),
+      createContentItem('박수를 부탁드립니다', 'baksureul butakdeurimnida', 'Please give a round of applause', 'sentence', '큰 박수를 부탁드립니다', 'Please give a big round of applause', [{ korean: '박수를', english: 'applause' }, { korean: '부탁드립니다', english: 'please (humble request)' }]),
 
       // Invitations (formal)
-      createContentItem('초대에 응해 주셔서 감사합니다', 'chodaee eunghae jusyeoseo gamsahamnida', 'Thank you for accepting the invitation', 'sentence', '초대에 응해 주셔서 감사합니다', 'Thank you for accepting the invitation'),
-      createContentItem('참석해 주시기 바랍니다', 'chamseokae jusigi baramnida', 'Please attend', 'sentence', '꼭 참석해 주시기 바랍니다', 'Please be sure to attend'),
-      createContentItem('광림하여 주시면 감사하겠습니다', 'gwangnimhayeo jusimyeon gamsahagetseumnida', 'We would appreciate your presence', 'sentence', '광림하여 주시면 감사하겠습니다', 'We would appreciate your presence'),
+      createContentItem('초대에 응해 주셔서 감사합니다', 'chodaee eunghae jusyeoseo gamsahamnida', 'Thank you for accepting the invitation', 'sentence', '초대에 응해 주셔서 감사합니다', 'Thank you for accepting the invitation', [{ korean: '초대에', english: 'to the invitation' }, { korean: '응해 주셔서', english: 'for accepting (honorific)' }, { korean: '감사합니다', english: 'thank you' }]),
+      createContentItem('참석해 주시기 바랍니다', 'chamseokae jusigi baramnida', 'Please attend', 'sentence', '꼭 참석해 주시기 바랍니다', 'Please be sure to attend', [{ korean: '참석해', english: 'attend' }, { korean: '주시기 바랍니다', english: 'please do (honorific request)' }]),
+      createContentItem('광림하여 주시면 감사하겠습니다', 'gwangnimhayeo jusimyeon gamsahagetseumnida', 'We would appreciate your presence', 'sentence', '광림하여 주시면 감사하겠습니다', 'We would appreciate your presence', [{ korean: '광림하여 주시면', english: 'if you grace us with your presence' }, { korean: '감사하겠습니다', english: 'I would be grateful' }]),
 
       // Professional courtesy
       createContentItem('실례지만', 'sillyejiman', 'Excuse me, but', 'word', '실례지만 여쭤봐도 될까요?', 'Excuse me, but may I ask?'),
       createContentItem('송구스럽지만', 'songguseureopjiman', 'I\'m sorry to bother you, but', 'word', '송구스럽지만 부탁이 있습니다', 'I\'m sorry to bother you, but I have a request'),
-      createContentItem('주제넘은 말씀이지만', 'jujeneobeun malsseumijiman', 'This may be presumptuous, but', 'sentence', '주제넘은 말씀이지만', 'This may be presumptuous, but'),
-      createContentItem('감히 말씀드리자면', 'gamhi malsseumdeurijamyeon', 'If I may dare to say', 'sentence', '감히 말씀드리자면', 'If I may dare to say'),
+      createContentItem('주제넘은 말씀이지만', 'jujeneobeun malsseumijiman', 'This may be presumptuous, but', 'sentence', '주제넘은 말씀이지만', 'This may be presumptuous, but', [{ korean: '주제넘은', english: 'presumptuous' }, { korean: '말씀이지만', english: 'words/remark, but' }]),
+      createContentItem('감히 말씀드리자면', 'gamhi malsseumdeurijamyeon', 'If I may dare to say', 'sentence', '감히 말씀드리자면', 'If I may dare to say', [{ korean: '감히', english: 'daringly' }, { korean: '말씀드리자면', english: 'if I may say (humble)' }]),
 
       // Business negotiations
-      createContentItem('재고해 보시겠습니까?', 'jaegohae bosigetsseumnikka?', 'Would you reconsider?', 'sentence', '다시 한 번 재고해 보시겠습니까?', 'Would you reconsider once more?'),
-      createContentItem('조정이 가능하십니까?', 'jojeongi ganeunghashipnikka?', 'Is adjustment possible?', 'sentence', '가격 조정이 가능하십니까?', 'Is price adjustment possible?'),
-      createContentItem('타협점을 찾아야 합니다', 'tahyeopjeomdareul chajaya hamnida', 'We need to find a compromise', 'sentence', '타협점을 찾아야 합니다', 'We need to find a compromise'),
-      createContentItem('검토 후 연락드리겠습니다', 'geomto hu yeonrakdeurigetseumnida', 'I will contact you after review', 'sentence', '검토 후 연락드리겠습니다', 'I will contact you after review'),
+      createContentItem('재고해 보시겠습니까?', 'jaegohae bosigetsseumnikka?', 'Would you reconsider?', 'sentence', '다시 한 번 재고해 보시겠습니까?', 'Would you reconsider once more?', [{ korean: '재고해', english: 'reconsider' }, { korean: '보시겠습니까?', english: 'would you like to try?' }]),
+      createContentItem('조정이 가능하십니까?', 'jojeongi ganeunghashipnikka?', 'Is adjustment possible?', 'sentence', '가격 조정이 가능하십니까?', 'Is price adjustment possible?', [{ korean: '조정이', english: 'adjustment' }, { korean: '가능하십니까?', english: 'is it possible? (honorific)' }]),
+      createContentItem('타협점을 찾아야 합니다', 'tahyeopjeomdareul chajaya hamnida', 'We need to find a compromise', 'sentence', '타협점을 찾아야 합니다', 'We need to find a compromise', [{ korean: '타협점을', english: 'a compromise' }, { korean: '찾아야 합니다', english: 'we must find' }]),
+      createContentItem('검토 후 연락드리겠습니다', 'geomto hu yeonrakdeurigetseumnida', 'I will contact you after review', 'sentence', '검토 후 연락드리겠습니다', 'I will contact you after review', [{ korean: '검토 후', english: 'after review' }, { korean: '연락드리겠습니다', english: 'I will contact you (humble)' }]),
 
       // Expressing opinions formally
       createContentItem('소견으로는', 'sogyeoneuro-neun', 'In my opinion', 'word', '제 소견으로는', 'In my opinion'),
       createContentItem('사료됩니다', 'saryodoeemnida', 'It is thought / considered', 'word', '적절하다고 사료됩니다', 'It is considered appropriate'),
-      createContentItem('제안하는 바입니다', 'jeanhaneun baimnida', 'This is what I propose', 'sentence', '이것이 제안하는 바입니다', 'This is what I propose'),
-      createContentItem('견해를 밝히자면', 'gyeonhaereul balkhijamyeon', 'To express my view', 'sentence', '제 견해를 밝히자면', 'To express my view'),
+      createContentItem('제안하는 바입니다', 'jeanhaneun baimnida', 'This is what I propose', 'sentence', '이것이 제안하는 바입니다', 'This is what I propose', [{ korean: '제안하는', english: 'proposing' }, { korean: '바입니다', english: 'this is what (formal)' }]),
+      createContentItem('견해를 밝히자면', 'gyeonhaereul balkhijamyeon', 'To express my view', 'sentence', '제 견해를 밝히자면', 'To express my view', [{ korean: '견해를', english: 'my view/opinion' }, { korean: '밝히자면', english: 'to express/reveal' }]),
 
       // Agreement in business
-      createContentItem('전적으로 동의합니다', 'jeonjeogeuro donguihamnida', 'I completely agree', 'sentence', '전적으로 동의합니다', 'I completely agree'),
-      createContentItem('이의가 없습니다', 'uiga eopseumnida', 'I have no objection', 'sentence', '이의가 없습니다', 'I have no objection'),
+      createContentItem('전적으로 동의합니다', 'jeonjeogeuro donguihamnida', 'I completely agree', 'sentence', '전적으로 동의합니다', 'I completely agree', [{ korean: '전적으로', english: 'completely/entirely' }, { korean: '동의합니다', english: 'I agree' }]),
+      createContentItem('이의가 없습니다', 'uiga eopseumnida', 'I have no objection', 'sentence', '이의가 없습니다', 'I have no objection', [{ korean: '이의가', english: 'objection' }, { korean: '없습니다', english: 'there is none' }]),
       createContentItem('찬성합니다', 'chanseonghamnida', 'I agree / I\'m in favor', 'sentence', '찬성합니다', 'I\'m in favor'),
       createContentItem('승인하겠습니다', 'seunginhagesseumnida', 'I will approve', 'sentence', '승인하겠습니다', 'I will approve'),
 
       // Disagreement (polite)
       createContentItem('유감스럽게도', 'yugamseureopgedo', 'Unfortunately / Regrettably', 'word', '유감스럽게도 동의할 수 없습니다', 'Unfortunately, I cannot agree'),
-      createContentItem('다소 의견이 다릅니다', 'daso uigyeoni dareubnida', 'My opinion differs somewhat', 'sentence', '다소 의견이 다릅니다', 'My opinion differs somewhat'),
-      createContentItem('재고가 필요하다고 봅니다', 'jaegoga piryohadago bomnida', 'I think reconsideration is needed', 'sentence', '재고가 필요하다고 봅니다', 'I think reconsideration is needed'),
+      createContentItem('다소 의견이 다릅니다', 'daso uigyeoni dareubnida', 'My opinion differs somewhat', 'sentence', '다소 의견이 다릅니다', 'My opinion differs somewhat', [{ korean: '다소', english: 'somewhat' }, { korean: '의견이', english: 'opinion' }, { korean: '다릅니다', english: 'differs' }]),
+      createContentItem('재고가 필요하다고 봅니다', 'jaegoga piryohadago bomnida', 'I think reconsideration is needed', 'sentence', '재고가 필요하다고 봅니다', 'I think reconsideration is needed', [{ korean: '재고가', english: 'reconsideration' }, { korean: '필요하다고', english: 'is needed (quotative)' }, { korean: '봅니다', english: 'I think/believe' }]),
 
       // Expressing hope
-      createContentItem('바라마지 않습니다', 'baramaji anseumnida', 'I sincerely hope', 'sentence', '성공하시기를 바라마지 않습니다', 'I sincerely hope you succeed'),
-      createContentItem('기대하고 있습니다', 'gidaehago itseumnida', 'I\'m looking forward to', 'sentence', '좋은 결과를 기대하고 있습니다', 'I\'m looking forward to good results'),
+      createContentItem('바라마지 않습니다', 'baramaji anseumnida', 'I sincerely hope', 'sentence', '성공하시기를 바라마지 않습니다', 'I sincerely hope you succeed', [{ korean: '바라마지', english: 'sincerely hope/wish' }, { korean: '않습니다', english: '(emphatic continuation)' }]),
+      createContentItem('기대하고 있습니다', 'gidaehago itseumnida', 'I\'m looking forward to', 'sentence', '좋은 결과를 기대하고 있습니다', 'I\'m looking forward to good results', [{ korean: '기대하고', english: 'expecting' }, { korean: '있습니다', english: 'am (ongoing)' }]),
       createContentItem('기원합니다', 'giwonhamnida', 'I wish / I pray', 'sentence', '건강하시기를 기원합니다', 'I wish you good health'),
 
       // Closing remarks
       createContentItem('마지막으로', 'majimageuro', 'Finally / Lastly', 'word', '마지막으로 감사 인사를 드립니다', 'Finally, I express my thanks'),
       createContentItem('결론적으로', 'gyeollonjeogeuro', 'In conclusion', 'word', '결론적으로 말씀드리면', 'In conclusion'),
       createContentItem('요약하자면', 'yoyaghajamyeon', 'To summarize', 'word', '요약하자면', 'To summarize'),
-      createContentItem('이상으로 마치겠습니다', 'isangeuro machigetseumnida', 'I will conclude with this', 'sentence', '이상으로 발표를 마치겠습니다', 'I will conclude my presentation with this'),
+      createContentItem('이상으로 마치겠습니다', 'isangeuro machigetseumnida', 'I will conclude with this', 'sentence', '이상으로 발표를 마치겠습니다', 'I will conclude my presentation with this', [{ korean: '이상으로', english: 'with this' }, { korean: '마치겠습니다', english: 'I will conclude' }]),
 
       // Expressions of humility
       createContentItem('부족하지만', 'bujokajiman', 'Though I\'m lacking', 'word', '부족하지만 열심히 하겠습니다', 'Though I\'m lacking, I will do my best'),
       createContentItem('미흡하지만', 'miheupajiman', 'Though inadequate', 'word', '미흡하지만 최선을 다하겠습니다', 'Though inadequate, I will do my best'),
-      createContentItem('과분한 칭찬입니다', 'gwabunhan chingchanimnida', 'You praise me too much', 'sentence', '과분한 칭찬입니다', 'You praise me too much'),
+      createContentItem('과분한 칭찬입니다', 'gwabunhan chingchanimnida', 'You praise me too much', 'sentence', '과분한 칭찬입니다', 'You praise me too much', [{ korean: '과분한', english: 'undeserved/excessive' }, { korean: '칭찬입니다', english: 'it is praise' }]),
       createContentItem('송구스럽습니다', 'songguseureopseumnida', 'I\'m very sorry / I feel ashamed', 'sentence', '송구스럽습니다', 'I\'m very sorry'),
 
       // Sophisticated time expressions
@@ -447,24 +448,24 @@ const lessons = [
 
       // Complex courtesy phrases
       createContentItem('염치불구하고', 'yeomchibulguhago', 'Shamelessly / Presumptuously', 'word', '염치불구하고 부탁드립니다', 'I presumptuously ask this favor'),
-      createContentItem('누를 끼치다', 'nureul kkichida', 'To cause trouble', 'sentence', '누를 끼쳐 죄송합니다', 'I\'m sorry for causing trouble'),
-      createContentItem('신세를 지다', 'sinsereul jida', 'To be indebted', 'sentence', '큰 신세를 졌습니다', 'I am greatly indebted'),
-      createContentItem('배려해 주시다', 'baeryeohae jusida', 'To be considerate', 'sentence', '배려해 주셔서 감사합니다', 'Thank you for your consideration'),
+      createContentItem('누를 끼치다', 'nureul kkichida', 'To cause trouble', 'sentence', '누를 끼쳐 죄송합니다', 'I\'m sorry for causing trouble', [{ korean: '누를', english: 'trouble/disgrace' }, { korean: '끼치다', english: 'to cause' }]),
+      createContentItem('신세를 지다', 'sinsereul jida', 'To be indebted', 'sentence', '큰 신세를 졌습니다', 'I am greatly indebted', [{ korean: '신세를', english: 'a debt of gratitude' }, { korean: '지다', english: 'to bear/owe' }]),
+      createContentItem('배려해 주시다', 'baeryeohae jusida', 'To be considerate', 'sentence', '배려해 주셔서 감사합니다', 'Thank you for your consideration', [{ korean: '배려해', english: 'being considerate' }, { korean: '주시다', english: 'to do for someone (honorific)' }]),
 
       // Additional formal business expressions
       createContentItem('하명하시다', 'hamyeonghashida', 'To command / To order (very respectful)', 'word', '하명하신 대로 하겠습니다', 'I will do as you command'),
       createContentItem('지시하시다', 'jishihashida', 'To instruct (honorific)', 'word', '지시하신 사항을 확인했습니다', 'I confirmed what you instructed'),
       createContentItem('승낙하시다', 'seungnakhashida', 'To consent (honorific)', 'word', '승낙해 주셔서 감사합니다', 'Thank you for consenting'),
-      createContentItem('양해를 구하다', 'yanghaereul guhada', 'To ask for understanding', 'sentence', '양해를 구합니다', 'I ask for your understanding'),
-      createContentItem('관대하게 봐주시다', 'gwandaehage bwajusida', 'To look upon generously', 'sentence', '관대하게 봐주시기 바랍니다', 'Please look upon this generously'),
-      createContentItem('각별히 부탁드리다', 'gakbyeolhi butakdeurida', 'To especially request', 'sentence', '각별히 부탁드립니다', 'I especially request this'),
-      createContentItem('면목이 없다', 'myeonmogi eopda', 'To have no face / To be ashamed', 'sentence', '면목이 없습니다', 'I am ashamed'),
-      createContentItem('더할 나위 없이', 'deohal nawi eopsi', 'Extremely / Couldn\'t be better', 'word', '더할 나위 없이 감사합니다', 'I am extremely grateful'),
+      createContentItem('양해를 구하다', 'yanghaereul guhada', 'To ask for understanding', 'sentence', '양해를 구합니다', 'I ask for your understanding', [{ korean: '양해를', english: 'understanding' }, { korean: '구하다', english: 'to ask for/seek' }]),
+      createContentItem('관대하게 봐주시다', 'gwandaehage bwajusida', 'To look upon generously', 'sentence', '관대하게 봐주시기 바랍니다', 'Please look upon this generously', [{ korean: '관대하게', english: 'generously' }, { korean: '봐주시다', english: 'to look upon (honorific)' }]),
+      createContentItem('각별히 부탁드리다', 'gakbyeolhi butakdeurida', 'To especially request', 'sentence', '각별히 부탁드립니다', 'I especially request this', [{ korean: '각별히', english: 'especially/particularly' }, { korean: '부탁드리다', english: 'to request (humble)' }]),
+      createContentItem('면목이 없다', 'myeonmogi eopda', 'To have no face / To be ashamed', 'sentence', '면목이 없습니다', 'I am ashamed', [{ korean: '면목이', english: 'face/dignity' }, { korean: '없다', english: 'to have none' }]),
+      createContentItem('더할 나위 없이', 'deohal nawi eopsi', 'Extremely / Couldn\'t be better', 'word', '더할 나위 없이 감사합니다', 'I am extremely grateful', [{ korean: '더할 나위', english: 'room for more' }, { korean: '없이', english: 'without' }]),
       createContentItem('황송하다', 'hwangsonghada', 'To be honored beyond measure', 'word', '황송하게도 상을 받았습니다', 'I was honored beyond measure to receive an award'),
       createContentItem('망극하다', 'manggeukada', 'To be extremely grateful / overwhelmed', 'word', '망극한 은혜입니다', 'It is an overwhelming kindness'),
       createContentItem('경청하다', 'gyeongcheonghada', 'To listen attentively', 'word', '경청해 주셔서 감사합니다', 'Thank you for listening attentively'),
       createContentItem('숙고하다', 'sukgohada', 'To consider deeply', 'word', '숙고해 보겠습니다', 'I will consider it deeply'),
-      createContentItem('헤아려 주시다', 'hearyeo jusida', 'To understand / To sympathize', 'sentence', '마음을 헤아려 주셔서 감사합니다', 'Thank you for understanding my heart')
+      createContentItem('헤아려 주시다', 'hearyeo jusida', 'To understand / To sympathize', 'sentence', '마음을 헤아려 주셔서 감사합니다', 'Thank you for understanding my heart', [{ korean: '헤아려', english: 'understanding/considering' }, { korean: '주시다', english: 'to do for someone (honorific)' }])
     ]
   },
 

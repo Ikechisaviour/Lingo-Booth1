@@ -2,7 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
+const jwt = require('jsonwebtoken');
 require('dotenv').config();
+const User = require('./models/User');
 
 const app = express();
 
@@ -19,16 +21,40 @@ app.options('*', cors(corsOptions));
 app.use(express.json({ limit: '1mb' }));
 
 // Rate limiting
+const trackRateLimitHit = async (req) => {
+  try {
+    const authHeader = req.header('Authorization');
+    if (!authHeader) return;
+    const token = authHeader.replace('Bearer ', '');
+    if (!token) return;
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    if (decoded && decoded.userId) {
+      await User.findByIdAndUpdate(decoded.userId, {
+        $inc: { rateLimitHits: 1 },
+        $set: { lastRateLimited: new Date() },
+      });
+    }
+  } catch (err) {
+    // Token invalid/expired or DB error - silently ignore
+  }
+};
+
 const generalLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 200,
-  message: { message: 'Too many requests, please try again later' },
+  max: 1000,
+  handler: async (req, res, next, options) => {
+    await trackRateLimitHit(req);
+    res.status(options.statusCode).json({ message: 'Too many requests, please try again later' });
+  },
 });
 
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 20,
-  message: { message: 'Too many authentication attempts, please try again later' },
+  handler: async (req, res, next, options) => {
+    await trackRateLimitHit(req);
+    res.status(options.statusCode).json({ message: 'Too many authentication attempts, please try again later' });
+  },
 });
 
 app.use('/api/', generalLimiter);

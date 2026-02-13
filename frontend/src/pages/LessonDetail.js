@@ -12,8 +12,9 @@ function LessonDetail() {
   const [error, setError] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showTranslation, setShowTranslation] = useState(false);
+  const [translationPeeked, setTranslationPeeked] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
-  const [showQuiz, setShowQuiz] = useState(true);
+  const [showQuiz, setShowQuiz] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [quizAttempted, setQuizAttempted] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
@@ -24,10 +25,20 @@ function LessonDetail() {
   const [orderMap, setOrderMap] = useState([]);
   const [stepPosition, setStepPosition] = useState(0);
 
+  // Track quiz performance for progress scoring
+  const [quizCorrect, setQuizCorrect] = useState(0);
+  const [quizTotal, setQuizTotal] = useState(0);
+  const [visitedItems, setVisitedItems] = useState(new Set([0]));
+
   // Study mode: 'default', 'reading', or 'listening'
   const [studyMode, setStudyMode] = useState('default');
   const [showRomanization, setShowRomanization] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+
+  // Continue prompt when existing activity is in progress
+  const [continuePrompt, setContinuePrompt] = useState(null);
+  // Block saving until we've checked for existing activity (prevents overwriting saved position)
+  const [readyToSave, setReadyToSave] = useState(false);
 
   const categories = [
     { value: 'daily-life', label: 'Daily Life' },
@@ -87,36 +98,90 @@ function LessonDetail() {
   }, [orderMap, stepPosition]);
 
   useEffect(() => {
+    setStepPosition(0);
+    setQuizCorrect(0);
+    setQuizTotal(0);
+    setVisitedItems(new Set([0]));
+    setReadyToSave(false);
+    setContinuePrompt(null);
     fetchLesson();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
-  // Restore position from server
+  // Restore position from server or show continue prompt for different lesson
   useEffect(() => {
     if (!userId || !lesson) return;
     userService.getActivityState(userId).then(res => {
       const state = res.data;
-      if (state.activityType === 'lesson' && state.lesson && state.lesson._id === id && state.lessonIndex > 0) {
-        setCurrentIndex(Math.min(state.lessonIndex, lesson.content.length - 1));
+      if (state.activityType === 'lesson' && state.lesson && state.lessonIndex > 0) {
+        if (state.lesson._id === id) {
+          // Same lesson - restore position via stepPosition so counter stays in sync
+          const restoredStep = Math.min(state.lessonIndex, lesson.content.length - 1);
+          setStepPosition(restoredStep);
+          setVisitedItems(new Set(Array.from({ length: restoredStep + 1 }, (_, i) => i)));
+          setReadyToSave(true);
+        } else {
+          // Different lesson in progress - show continue prompt (don't enable saving yet)
+          setContinuePrompt({
+            lessonId: state.lesson._id,
+            lessonTitle: state.lesson.title || 'Untitled Lesson',
+            lessonIndex: state.lessonIndex,
+            activityType: 'lesson',
+          });
+        }
+      } else if (state.activityType === 'flashcard' && state.flashcardIndex > 0) {
+        // Flashcard activity in progress - show continue prompt (don't enable saving yet)
+        setContinuePrompt({
+          activityType: 'flashcard',
+          flashcardIndex: state.flashcardIndex,
+        });
+      } else {
+        // No existing activity - safe to save immediately
+        setReadyToSave(true);
       }
-    }).catch(() => {});
+    }).catch(() => {
+      setReadyToSave(true);
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId, lesson, id]);
 
-  // Save position on index change
+  // Save position on index change (only after activity state check completes)
   useEffect(() => {
-    if (lesson) {
+    if (lesson && readyToSave) {
       saveActivityState(currentIndex);
     }
-  }, [currentIndex, lesson, saveActivityState]);
+  }, [currentIndex, lesson, saveActivityState, readyToSave]);
 
-  // Cleanup timers on unmount
+  // Keep refs for unmount progress save (avoid stale closures)
+  const progressRef = useRef({ quizCorrect: 0, quizTotal: 0, visitedSize: 1, totalItems: 0, lesson: null, studyMode: 'default' });
+  useEffect(() => {
+    progressRef.current = { quizCorrect, quizTotal, visitedSize: visitedItems.size, totalItems: lesson?.content?.length || 0, lesson, studyMode };
+  }, [quizCorrect, quizTotal, visitedItems, lesson, studyMode]);
+
+  // Cleanup timers and save partial progress on unmount
   useEffect(() => {
     return () => {
       if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
       if (autoAdvanceRef.current) clearTimeout(autoAdvanceRef.current);
+      // Save partial progress when leaving the lesson
+      const { quizCorrect: qc, quizTotal: qt, visitedSize, totalItems, lesson: les, studyMode: sm } = progressRef.current;
+      if (userId && les && visitedSize > 1) {
+        const completionPct = (visitedSize / (totalItems || 1)) * 100;
+        const quizPct = qt > 0 ? (qc / qt) * 100 : 0;
+        const score = qt > 0 ? Math.round(completionPct * 0.4 + quizPct * 0.6) : Math.round(completionPct);
+        const skillType = sm === 'listening' ? 'listening' : 'reading';
+        progressService.recordProgress({
+          userId,
+          lessonId: id,
+          skillType,
+          category: les.category,
+          score,
+          isCorrect: score >= 70,
+        }).catch(() => {});
+      }
     };
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
 
   // Auto-read Korean text when content changes
   // Default: auto-play twice | Listening: auto-play twice | Reading: no auto-play
@@ -199,8 +264,11 @@ function LessonDetail() {
   const handleNext = () => {
     if (stepPosition < orderMap.length - 1) {
       if (autoAdvanceRef.current) clearTimeout(autoAdvanceRef.current);
-      setStepPosition(stepPosition + 1);
+      const nextStep = stepPosition + 1;
+      setStepPosition(nextStep);
+      setVisitedItems(prev => new Set(prev).add(orderMap[nextStep]));
       setShowTranslation(false);
+      setTranslationPeeked(false);
       setShowRomanization(false);
       resetQuiz();
     }
@@ -211,6 +279,7 @@ function LessonDetail() {
       if (autoAdvanceRef.current) clearTimeout(autoAdvanceRef.current);
       setStepPosition(stepPosition - 1);
       setShowTranslation(false);
+      setTranslationPeeked(false);
       setShowRomanization(false);
       resetQuiz();
     }
@@ -220,6 +289,7 @@ function LessonDetail() {
     setOrderMode(mode);
     setStepPosition(0);
     setShowTranslation(false);
+    setTranslationPeeked(false);
     setShowRomanization(false);
     resetQuiz();
   };
@@ -278,12 +348,31 @@ function LessonDetail() {
     setShowExplanation(false);
   };
 
+  // XP points per difficulty level
+  const xpPointsMap = { beginner: 2, intermediate: 3, advanced: 4, sentences: 5 };
+
   const handleAnswerSelect = (answer) => {
     setSelectedAnswer(answer);
     setQuizAttempted(true);
     const correct = answer === content.english;
     setIsCorrect(correct);
     setShowExplanation(true);
+
+    // Track quiz performance for progress
+    setQuizTotal(prev => prev + 1);
+    if (correct) {
+      setQuizCorrect(prev => prev + 1);
+      // Award XP - server checks peek cooldown (24h) and repeat-answer
+      if (userId && lesson?.difficulty) {
+        const points = xpPointsMap[lesson.difficulty] || 2;
+        userService.awardXP(userId, { lessonId: id, contentIndex: currentIndex, basePoints: points }).catch(() => {});
+      }
+    } else {
+      // Wrong answer triggers same 24-hour cooldown as translation peek
+      if (userId && id) {
+        userService.recordPeek(userId, { lessonId: id, contentIndex: currentIndex }).catch(() => {});
+      }
+    }
 
     // Auto-advance to next question after 2 seconds if correct
     if (correct && stepPosition < orderMap.length - 1) {
@@ -312,16 +401,40 @@ function LessonDetail() {
     }
   };
 
-  const handleComplete = async () => {
+  // Calculate progress score: weighted blend of completion % and quiz accuracy
+  const calculateScore = (completed = false) => {
+    const totalItems = lesson?.content?.length || 1;
+    const completionPct = completed ? 100 : (visitedItems.size / totalItems) * 100;
+    if (quizTotal === 0) {
+      // No quizzes attempted - score based on completion only
+      return Math.round(completionPct);
+    }
+    const quizPct = (quizCorrect / quizTotal) * 100;
+    // 40% completion weight + 60% quiz accuracy weight
+    return Math.round(completionPct * 0.4 + quizPct * 0.6);
+  };
+
+  const saveProgress = async (completed = false) => {
+    if (!userId || !lesson) return;
+    const score = calculateScore(completed);
+    const skillType = studyMode === 'listening' ? 'listening' : 'reading';
     try {
       await progressService.recordProgress({
         userId,
         lessonId: id,
-        skillType: 'reading',
+        skillType,
         category: lesson.category,
-        score: 100,
-        isCorrect: true,
+        score,
+        isCorrect: score >= 70,
       });
+    } catch (err) {
+      console.error('Error recording progress:', err);
+    }
+  };
+
+  const handleComplete = async () => {
+    try {
+      await saveProgress(true);
       // Clear activity state on completion
       if (userId) {
         await userService.saveActivityState(userId, {
@@ -336,14 +449,36 @@ function LessonDetail() {
     }
   };
 
+  const handleContinueExisting = () => {
+    if (continuePrompt.activityType === 'flashcard') {
+      navigate('/flashcards');
+    } else {
+      navigate(`/lessons/${continuePrompt.lessonId}`);
+    }
+    setContinuePrompt(null);
+  };
+
+  const handleStartNew = async () => {
+    // Clear old activity state and start this lesson fresh
+    if (userId) {
+      await userService.saveActivityState(userId, {
+        activityType: 'lesson',
+        lessonId: id,
+        lessonIndex: 0,
+      }).catch(() => {});
+    }
+    setContinuePrompt(null);
+    setReadyToSave(true);
+  };
+
   // Memoize quiz options to prevent reshuffling on re-render
   // Must be called before any early returns (React hooks rule)
   const content = lesson?.content?.[currentIndex];
   const quizOptions = useMemo(() => {
     if (!content || !lesson) return [];
     return generateQuizOptions(content.english, lesson.content);
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- regenerate only when currentIndex changes
-  }, [currentIndex, generateQuizOptions]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- regenerate when currentIndex or lesson changes
+  }, [currentIndex, lesson, generateQuizOptions]);
 
   if (loading) {
     return <div className="loading">Loading lesson...</div>;
@@ -362,6 +497,26 @@ function LessonDetail() {
 
   return (
     <div className="lesson-detail-container">
+      {continuePrompt && (
+        <div className="continue-modal-overlay">
+          <div className="continue-modal">
+            <h3>Activity In Progress</h3>
+            {continuePrompt.activityType === 'flashcard' ? (
+              <p>You have a flashcard session in progress. Would you like to continue it or start this lesson?</p>
+            ) : (
+              <p>You have <strong>"{continuePrompt.lessonTitle}"</strong> in progress (question {continuePrompt.lessonIndex + 1}). Would you like to continue it or start this lesson?</p>
+            )}
+            <div className="continue-modal-actions">
+              <button className="btn btn-primary" onClick={handleContinueExisting}>
+                {continuePrompt.activityType === 'flashcard' ? 'Continue Flashcards' : 'Continue Previous Lesson'}
+              </button>
+              <button className="btn btn-secondary" onClick={handleStartNew}>
+                Start This Lesson
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="container">
         <div className="lesson-header">
           <h1>{lesson.title}</h1>
@@ -675,7 +830,14 @@ function LessonDetail() {
 
           <button
             className="btn btn-secondary"
-            onClick={() => setShowTranslation(!showTranslation)}
+            onClick={() => {
+              setShowTranslation(!showTranslation);
+              setTranslationPeeked(true);
+              // Record peek on server for 2-minute cooldown (persists across sessions)
+              if (!showTranslation && userId && id) {
+                userService.recordPeek(userId, { lessonId: id, contentIndex: currentIndex }).catch(() => {});
+              }
+            }}
             style={{ marginTop: '20px' }}
           >
             {showTranslation ? 'Hide Translation' : 'Word(s) Translation'}
@@ -694,7 +856,7 @@ function LessonDetail() {
                   ))}
                 </div>
               )}
-              {content.example && !content.breakdown && !(lesson.category === 'daily-life' && content.korean.trim().split(/\s+/).length === 1) && (
+              {content.example && !content.breakdown && lesson.difficulty === 'sentences' && (
                 <div className="example">
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <p style={{ margin: 0 }}><strong>Example:</strong> {content.example}</p>

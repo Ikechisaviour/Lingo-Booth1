@@ -188,6 +188,20 @@
   color: var(--primary);
 }
 
+/* XP Nav Link */
+.nav-xp .nav-text {
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.nav-xp:hover .nav-text {
+  color: var(--primary);
+}
+
+.nav-xp.active .nav-text {
+  color: var(--primary);
+}
+
 /* Admin Link */
 .nav-admin {
   color: var(--accent-purple);
@@ -288,6 +302,19 @@
 
   .nav-icon {
     font-size: 1.25rem;
+  }
+
+  .nav-xp .nav-text {
+    display: inline;
+    font-size: 0.85rem;
+  }
+
+  .nav-xp .nav-icon {
+    display: none;
+  }
+
+  .nav-xp .xp-suffix {
+    display: none;
   }
 
   .btn-signup {

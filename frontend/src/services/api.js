@@ -14,6 +14,26 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+// Detect mid-session suspension: when a logged-in user's API call returns 403 "Account suspended"
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (
+      error.response?.status === 403 &&
+      error.response?.data?.message === 'Account suspended' &&
+      localStorage.getItem('token')
+    ) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('userId');
+      localStorage.removeItem('username');
+      localStorage.removeItem('userRole');
+      localStorage.removeItem('guestMode');
+      window.dispatchEvent(new CustomEvent('accountSuspended'));
+    }
+    return Promise.reject(error);
+  }
+);
+
 export const authService = {
   register: (username, email, password) =>
     api.post('/auth/register', { username, email, password }),
@@ -65,6 +85,16 @@ export const userService = {
     api.put(`/users/${userId}/activity-state`, data),
   getActivityState: (userId) =>
     api.get(`/users/${userId}/activity-state`),
+  addXP: (userId, points) =>
+    api.post(`/users/${userId}/xp`, { points }),
+  awardXP: (userId, data) =>
+    api.post(`/users/${userId}/award-xp`, data),
+  recordPeek: (userId, data) =>
+    api.post(`/users/${userId}/peek`, data),
+  resetXP: (userId) =>
+    api.post(`/users/${userId}/reset-xp`),
+  getXpStats: (userId) =>
+    api.get(`/users/${userId}/xp-stats`),
 };
 
 export const adminService = {
