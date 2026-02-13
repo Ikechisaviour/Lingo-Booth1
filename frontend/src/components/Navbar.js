@@ -29,6 +29,17 @@ function Navbar({ onLogout, isGuest, onGuestExit, userRole }) {
     }).catch(() => {});
   }, [userId, isGuest, location.pathname]);
 
+  // Listen for XP updates from awardXP calls
+  useEffect(() => {
+    const handleXpUpdate = (e) => {
+      if (e.detail && e.detail.totalXP !== undefined) {
+        setTotalXP(e.detail.totalXP);
+      }
+    };
+    window.addEventListener('xpUpdated', handleXpUpdate);
+    return () => window.removeEventListener('xpUpdated', handleXpUpdate);
+  }, []);
+
   const getContinueLink = () => {
     if (!activityState) return null;
     if (activityState.activityType === 'lesson' && activityState.lesson) {

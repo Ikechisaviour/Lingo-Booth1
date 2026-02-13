@@ -88,7 +88,10 @@ export const userService = {
   addXP: (userId, points) =>
     api.post(`/users/${userId}/xp`, { points }),
   awardXP: (userId, data) =>
-    api.post(`/users/${userId}/award-xp`, data),
+    api.post(`/users/${userId}/award-xp`, data).then(res => {
+      window.dispatchEvent(new CustomEvent('xpUpdated', { detail: res.data }));
+      return res;
+    }),
   recordPeek: (userId, data) =>
     api.post(`/users/${userId}/peek`, data),
   resetXP: (userId) =>
