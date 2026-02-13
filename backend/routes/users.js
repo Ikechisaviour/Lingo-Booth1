@@ -82,14 +82,12 @@ router.put('/:userId/password', async (req, res) => {
 // Save activity state (for cross-device resume)
 router.put('/:userId/activity-state', async (req, res) => {
   try {
-    const { activityType, lessonId, lessonIndex, flashcardIndex, orderMode, orderMap } = req.body;
+    const { activityType, lessonId, lessonIndex, flashcardIndex } = req.body;
     const update = {
       lastActivityType: activityType,
       lastLessonId: activityType === 'lesson' ? lessonId : null,
       lastLessonIndex: lessonIndex || 0,
       lastFlashcardIndex: flashcardIndex || 0,
-      lastOrderMode: orderMode || null,
-      lastOrderMap: orderMap || [],
     };
     const user = await User.findByIdAndUpdate(req.params.userId, update, { new: true }).select('-password');
     if (!user) {
@@ -105,7 +103,7 @@ router.put('/:userId/activity-state', async (req, res) => {
 router.get('/:userId/activity-state', async (req, res) => {
   try {
     const user = await User.findById(req.params.userId)
-      .select('lastActivityType lastLessonId lastLessonIndex lastFlashcardIndex lastOrderMode lastOrderMap')
+      .select('lastActivityType lastLessonId lastLessonIndex lastFlashcardIndex')
       .populate('lastLessonId', 'title category');
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
@@ -115,8 +113,6 @@ router.get('/:userId/activity-state', async (req, res) => {
       lesson: user.lastLessonId,
       lessonIndex: user.lastLessonIndex,
       flashcardIndex: user.lastFlashcardIndex,
-      orderMode: user.lastOrderMode,
-      orderMap: user.lastOrderMap,
     });
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: error.message });

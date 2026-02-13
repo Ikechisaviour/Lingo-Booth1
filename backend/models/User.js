@@ -67,15 +67,6 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  lastOrderMode: {
-    type: String,
-    enum: ['sequential', 'random', null],
-    default: null,
-  },
-  lastOrderMap: {
-    type: [Number],
-    default: [],
-  },
   preferredVoice: {
     type: String,
     default: null,
