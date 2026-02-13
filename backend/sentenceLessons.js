@@ -1,14 +1,15 @@
 // Sentence-based lessons for all categories
 // These are Q&A style sentences in Korean
 
-const createContentItem = (korean, romanization, english, type = 'sentence', example = '', exampleEnglish = '') => ({
+const createContentItem = (korean, romanization, english, type = 'sentence', example = '', exampleEnglish = '', breakdown = null) => ({
   type,
   korean,
   romanization,
   english,
   pronunciation: romanization,
   example: example || korean,
-  exampleEnglish: exampleEnglish || english
+  exampleEnglish: exampleEnglish || english,
+  ...(breakdown ? { breakdown } : {}),
 });
 
 // GREETINGS - Sentences (Q&A format)
@@ -126,117 +127,569 @@ const greetingsSentences = [
 
 // DAILY LIFE - Sentences
 const dailyLifeSentences = [
-  ['아침에 몇 시에 일어나요?', 'Achime myeot sie ireonayo?', 'What time do you wake up in the morning?'],
-  ['보통 7시에 일어나요.', 'Botong 7sie ireonayo.', 'I usually wake up at 7 o\'clock.'],
-  ['아침은 뭐 먹어요?', 'Achimeun mwo meogeoyo?', 'What do you eat for breakfast?'],
-  ['보통 빵하고 커피를 먹어요.', 'Botong ppanghago keopireul meogeoyo.', 'I usually eat bread and coffee.'],
-  ['출근 시간이 언제예요?', 'Chulgeun sigani eonjeyeyo?', 'When is your work start time?'],
-  ['9시에 출근해요.', '9sie chulgeunhaeyo.', 'I start work at 9 o\'clock.'],
-  ['어떻게 출근해요?', 'Eotteoke chulgeunhaeyo?', 'How do you commute to work?'],
-  ['지하철로 출근해요.', 'Jihacheolro chulgeunhaeyo.', 'I commute by subway.'],
-  ['점심은 어디서 먹어요?', 'Jeomsimeun eodiseo meogeoyo?', 'Where do you eat lunch?'],
-  ['회사 근처 식당에서 먹어요.', 'Hoesa geuncheo sikdangeseo meogeoyo.', 'I eat at a restaurant near the office.'],
-  ['퇴근 시간이 언제예요?', 'Toegeun sigani eonjeyeyo?', 'When do you finish work?'],
-  ['6시에 퇴근해요.', '6sie toegeunhaeyo.', 'I finish work at 6 o\'clock.'],
-  ['퇴근 후에 뭐 해요?', 'Toegeun hue mwo haeyo?', 'What do you do after work?'],
-  ['보통 집에 가서 쉬어요.', 'Botong jibe gaseo swieoyo.', 'I usually go home and rest.'],
-  ['저녁은 몇 시에 먹어요?', 'Jeonyeogeun myeot sie meogeoyo?', 'What time do you eat dinner?'],
-  ['7시쯤 먹어요.', '7sijjeum meogeoyo.', 'I eat around 7 o\'clock.'],
-  ['저녁 식사는 누가 준비해요?', 'Jeonyeok siksaneun nuga junbihaeyo?', 'Who prepares dinner?'],
-  ['제가 직접 요리해요.', 'Jega jikjeop yorihaeyo.', 'I cook it myself.'],
-  ['요리하는 것을 좋아해요?', 'Yorihaneun geoseul joahaeyo?', 'Do you like cooking?'],
-  ['네, 요리하는 것을 좋아해요.', 'Ne, yorihaneun geoseul joahaeyo.', 'Yes, I like cooking.'],
-  ['보통 몇 시에 자요?', 'Botong myeot sie jayo?', 'What time do you usually go to bed?'],
-  ['11시쯤 자요.', '11sijjeum jayo.', 'I go to bed around 11 o\'clock.'],
-  ['잠은 잘 자요?', 'Jameun jal jayo?', 'Do you sleep well?'],
-  ['네, 보통 잘 자요.', 'Ne, botong jal jayo.', 'Yes, I usually sleep well.'],
-  ['주말에는 뭐 해요?', 'Jumareneun mwo haeyo?', 'What do you do on weekends?'],
-  ['친구들을 만나거나 집에서 쉬어요.', 'Chingudeureul mannageona jibeseo swieoyo.', 'I meet friends or rest at home.'],
-  ['집안일은 언제 해요?', 'Jibanireun eonje haeyo?', 'When do you do housework?'],
-  ['주말에 해요.', 'Jumare haeyo.', 'I do it on weekends.'],
-  ['빨래는 얼마나 자주 해요?', 'Ppallaeneun eolmana jaju haeyo?', 'How often do you do laundry?'],
-  ['일주일에 한 번 해요.', 'Iljuire han beon haeyo.', 'I do it once a week.'],
-  ['청소는 얼마나 자주 해요?', 'Cheongsoneun eolmana jaju haeyo?', 'How often do you clean?'],
-  ['일주일에 두 번 정도 해요.', 'Iljuire du beon jeongdo haeyo.', 'I do it about twice a week.'],
-  ['장은 어디서 봐요?', 'Jangeun eodiseo bwayo?', 'Where do you go grocery shopping?'],
-  ['근처 마트에서 봐요.', 'Geuncheo mateu eseo bwayo.', 'I shop at a nearby mart.'],
-  ['장은 얼마나 자주 봐요?', 'Jangeun eolmana jaju bwayo?', 'How often do you go grocery shopping?'],
-  ['일주일에 한 번 봐요.', 'Iljuire han beon bwayo.', 'I go once a week.'],
-  ['운동은 언제 해요?', 'Undongeun eonje haeyo?', 'When do you exercise?'],
-  ['저녁에 운동해요.', 'Jeonyeoge undonghaeyo.', 'I exercise in the evening.'],
-  ['무슨 운동을 해요?', 'Museun undongeul haeyo?', 'What exercise do you do?'],
-  ['조깅을 해요.', 'Joggingeul haeyo.', 'I go jogging.'],
-  ['일주일에 몇 번 운동해요?', 'Iljuire myeot beon undonghaeyo?', 'How many times a week do you exercise?'],
-  ['일주일에 세 번 정도 해요.', 'Iljuire se beon jeongdo haeyo.', 'I do it about three times a week.'],
-  ['취미가 뭐예요?', 'Chwimiga mwoyeyo?', 'What is your hobby?'],
-  ['책 읽는 것을 좋아해요.', 'Chaek ingneun geoseul joahaeyo.', 'I like reading books.'],
-  ['무슨 책을 좋아해요?', 'Museun chaekeul joahaeyo?', 'What kind of books do you like?'],
-  ['소설을 좋아해요.', 'Soseoreul joahaeyo.', 'I like novels.'],
-  ['영화는 자주 봐요?', 'Yeonghwaneun jaju bwayo?', 'Do you often watch movies?'],
-  ['네, 영화를 자주 봐요.', 'Ne, yeonghwareul jaju bwayo.', 'Yes, I watch movies often.'],
-  ['무슨 영화를 좋아해요?', 'Museun yeonghwareul joahaeyo?', 'What kind of movies do you like?'],
-  ['액션 영화를 좋아해요.', 'Aeksyeon yeonghwareul joahaeyo.', 'I like action movies.'],
-  ['음악을 자주 들어요?', 'Eumagul jaju deureoyo?', 'Do you often listen to music?'],
-  ['네, 매일 들어요.', 'Ne, maeil deureoyo.', 'Yes, I listen every day.'],
-  ['무슨 음악을 좋아해요?', 'Museun eumagul joahaeyo?', 'What kind of music do you like?'],
-  ['케이팝을 좋아해요.', 'Keipapeul joahaeyo.', 'I like K-pop.'],
-  ['게임을 해요?', 'Geimeul haeyo?', 'Do you play games?'],
-  ['네, 가끔 해요.', 'Ne, gakkeum haeyo.', 'Yes, I play sometimes.'],
-  ['무슨 게임을 해요?', 'Museun geimeul haeyo?', 'What games do you play?'],
-  ['RPG 게임을 해요.', 'RPG geimeul haeyo.', 'I play RPG games.'],
-  ['TV는 자주 봐요?', 'TVneun jaju bwayo?', 'Do you often watch TV?'],
-  ['아니요, 잘 안 봐요.', 'Aniyo, jal an bwayo.', 'No, I don\'t watch it much.'],
-  ['무슨 프로그램을 좋아해요?', 'Museun peurogeuraemeul joahaeyo?', 'What programs do you like?'],
-  ['예능 프로그램을 좋아해요.', 'Yeneung peurogeuraemeul joahaeyo.', 'I like variety shows.'],
-  ['여행을 자주 가요?', 'Yeohaengeul jaju gayo?', 'Do you travel often?'],
-  ['일년에 한두 번 정도 가요.', 'Ilnyeone handu beon jeongdo gayo.', 'I go about once or twice a year.'],
-  ['어디로 여행 가고 싶어요?', 'Eodiro yeohaeng gago sipeoyo?', 'Where do you want to travel?'],
-  ['제주도에 가고 싶어요.', 'Jejudoe gago sipeoyo.', 'I want to go to Jeju Island.'],
-  ['반려동물이 있어요?', 'Ballyeodongmuri isseoyo?', 'Do you have a pet?'],
-  ['네, 고양이가 있어요.', 'Ne, goyangiga isseoyo.', 'Yes, I have a cat.'],
-  ['이름이 뭐예요?', 'Ireumi mwoyeyo?', 'What is its name?'],
-  ['이름은 나비예요.', 'Ireumeun nabiyeyo.', 'Its name is Nabi.'],
-  ['스트레스 받을 때 뭐 해요?', 'Seuteureseu badeul ttae mwo haeyo?', 'What do you do when you are stressed?'],
-  ['음악을 듣거나 산책을 해요.', 'Eumagul deutgeona sanchaegeul haeyo.', 'I listen to music or go for a walk.'],
-  ['카페에 자주 가요?', 'Kapee jaju gayo?', 'Do you often go to cafes?'],
-  ['네, 일주일에 두세 번 가요.', 'Ne, iljuire duse beon gayo.', 'Yes, I go two or three times a week.'],
-  ['무슨 커피를 좋아해요?', 'Museun keopireul joahaeyo?', 'What kind of coffee do you like?'],
-  ['아메리카노를 좋아해요.', 'Amerikanoreul joahaeyo.', 'I like Americano.'],
-  ['술을 자주 마셔요?', 'Sureul jaju masyeoyo?', 'Do you often drink alcohol?'],
-  ['가끔 친구들하고 마셔요.', 'Gakkeum chingudeurhago masyeoyo.', 'I sometimes drink with friends.'],
-  ['무슨 술을 좋아해요?', 'Museun sureul joahaeyo?', 'What kind of alcohol do you like?'],
-  ['맥주를 좋아해요.', 'Maekjureul joahaeyo.', 'I like beer.'],
-  ['담배를 피워요?', 'Dambaereul piwoyo?', 'Do you smoke?'],
-  ['아니요, 안 피워요.', 'Aniyo, an piwoyo.', 'No, I don\'t smoke.'],
-  ['건강을 위해 뭐 해요?', 'Geongangeul wihae mwo haeyo?', 'What do you do for your health?'],
-  ['운동하고 건강한 음식을 먹어요.', 'Undonghago geongganghan eumsigeul meogeoyo.', 'I exercise and eat healthy food.'],
-  ['병원에 자주 가요?', 'Byeongwone jaju gayo?', 'Do you often go to the hospital?'],
-  ['아니요, 건강해서 잘 안 가요.', 'Aniyo, geongganghaeseo jal an gayo.', 'No, I am healthy so I don\'t go often.'],
-  ['약은 잘 먹어요?', 'Yageun jal meogeoyo?', 'Do you take medicine regularly?'],
-  ['아니요, 특별히 먹는 약은 없어요.', 'Aniyo, teukbyeolhi meongneun yageun eopseoyo.', 'No, I don\'t take any medicine in particular.'],
-  ['알레르기가 있어요?', 'Allerugiga isseoyo?', 'Do you have allergies?'],
-  ['아니요, 없어요.', 'Aniyo, eopseoyo.', 'No, I don\'t.'],
-  ['잠을 잘 자요?', 'Jameul jal jayo?', 'Do you sleep well?'],
-  ['네, 보통 잘 자요.', 'Ne, botong jal jayo.', 'Yes, I usually sleep well.'],
-  ['꿈을 자주 꿔요?', 'Kkumeul jaju kkwoyo?', 'Do you often dream?'],
-  ['가끔 꿔요.', 'Gakkeum kkwoyo.', 'I dream sometimes.'],
-  ['악몽을 꾸는 적 있어요?', 'Angmongeul kkuneun jeok isseoyo?', 'Have you ever had nightmares?'],
-  ['가끔 있어요.', 'Gakkeum isseoyo.', 'Sometimes I do.'],
-  ['아침형 인간이에요, 저녁형 인간이에요?', 'Achimhyeong inganieyo, jeonyeokhyeong inganieyo?', 'Are you a morning person or evening person?'],
-  ['저녁형 인간이에요.', 'Jeonyeokhyeong inganieyo.', 'I am an evening person.'],
-  ['낮잠을 자요?', 'Natjameul jayo?', 'Do you take naps?'],
-  ['주말에 가끔 자요.', 'Jumare gakkeum jayo.', 'I sometimes do on weekends.'],
-  ['커피를 많이 마셔요?', 'Keopireul mani masyeoyo?', 'Do you drink a lot of coffee?'],
-  ['네, 하루에 두세 잔 마셔요.', 'Ne, harue duse jan masyeoyo.', 'Yes, I drink two or three cups a day.'],
-  ['물은 많이 마셔요?', 'Mureun mani masyeoyo?', 'Do you drink a lot of water?'],
-  ['네, 하루에 2리터 정도 마셔요.', 'Ne, harue 2riteo jeongdo masyeoyo.', 'Yes, I drink about 2 liters a day.'],
-  ['간식을 자주 먹어요?', 'Gansigeul jaju meogeoyo?', 'Do you often eat snacks?'],
-  ['가끔 먹어요.', 'Gakkeum meogeoyo.', 'I eat them sometimes.'],
-  ['무슨 간식을 좋아해요?', 'Museun gansigeul joahaeyo?', 'What snacks do you like?'],
-  ['과자를 좋아해요.', 'Gwajareul joahaeyo.', 'I like cookies.'],
-  ['다이어트를 해요?', 'Daieteureul haeyo?', 'Are you on a diet?'],
-  ['아니요, 지금은 안 해요.', 'Aniyo, jigeumeun an haeyo.', 'No, I am not right now.'],
-].map(([k, r, e]) => createContentItem(k, r, e, 'sentence', k, e));
+  // Morning routine
+  ['아침에 몇 시에 일어나요?', 'Achime myeot sie ireonayo?', 'What time do you wake up in the morning?', [
+    { korean: '아침에', english: 'in the morning' },
+    { korean: '몇 시에', english: 'at what time' },
+    { korean: '일어나요?', english: 'do you wake up?' },
+  ]],
+  ['보통 7시에 일어나요.', 'Botong 7sie ireonayo.', 'I usually wake up at 7 o\'clock.', [
+    { korean: '보통', english: 'usually' },
+    { korean: '7시에', english: 'at 7 o\'clock' },
+    { korean: '일어나요', english: 'I wake up' },
+  ]],
+  ['아침은 뭐 먹어요?', 'Achimeun mwo meogeoyo?', 'What do you eat for breakfast?', [
+    { korean: '아침은', english: 'for breakfast' },
+    { korean: '뭐', english: 'what' },
+    { korean: '먹어요?', english: 'do you eat?' },
+  ]],
+  ['보통 빵하고 커피를 먹어요.', 'Botong ppanghago keopireul meogeoyo.', 'I usually eat bread and coffee.', [
+    { korean: '보통', english: 'usually' },
+    { korean: '빵하고', english: 'bread and' },
+    { korean: '커피를', english: 'coffee' },
+    { korean: '먹어요', english: 'I eat' },
+  ]],
+
+  // Work routine
+  ['출근 시간이 언제예요?', 'Chulgeun sigani eonjeyeyo?', 'When is your work start time?', [
+    { korean: '출근 시간이', english: 'work start time' },
+    { korean: '언제예요?', english: 'when is it?' },
+  ]],
+  ['9시에 출근해요.', '9sie chulgeunhaeyo.', 'I start work at 9 o\'clock.', [
+    { korean: '9시에', english: 'at 9 o\'clock' },
+    { korean: '출근해요', english: 'I go to work' },
+  ]],
+  ['어떻게 출근해요?', 'Eotteoke chulgeunhaeyo?', 'How do you commute to work?', [
+    { korean: '어떻게', english: 'how' },
+    { korean: '출근해요?', english: 'do you commute?' },
+  ]],
+  ['지하철로 출근해요.', 'Jihacheolro chulgeunhaeyo.', 'I commute by subway.', [
+    { korean: '지하철로', english: 'by subway' },
+    { korean: '출근해요', english: 'I commute' },
+  ]],
+  ['점심은 어디서 먹어요?', 'Jeomsimeun eodiseo meogeoyo?', 'Where do you eat lunch?', [
+    { korean: '점심은', english: 'lunch' },
+    { korean: '어디서', english: 'where' },
+    { korean: '먹어요?', english: 'do you eat?' },
+  ]],
+  ['회사 근처 식당에서 먹어요.', 'Hoesa geuncheo sikdangeseo meogeoyo.', 'I eat at a restaurant near the office.', [
+    { korean: '회사 근처', english: 'near the office' },
+    { korean: '식당에서', english: 'at a restaurant' },
+    { korean: '먹어요', english: 'I eat' },
+  ]],
+  ['퇴근 시간이 언제예요?', 'Toegeun sigani eonjeyeyo?', 'When do you finish work?', [
+    { korean: '퇴근 시간이', english: 'finish work time' },
+    { korean: '언제예요?', english: 'when is it?' },
+  ]],
+  ['6시에 퇴근해요.', '6sie toegeunhaeyo.', 'I finish work at 6 o\'clock.', [
+    { korean: '6시에', english: 'at 6 o\'clock' },
+    { korean: '퇴근해요', english: 'I finish work' },
+  ]],
+  ['퇴근 후에 뭐 해요?', 'Toegeun hue mwo haeyo?', 'What do you do after work?', [
+    { korean: '퇴근 후에', english: 'after work' },
+    { korean: '뭐', english: 'what' },
+    { korean: '해요?', english: 'do you do?' },
+  ]],
+  ['보통 집에 가서 쉬어요.', 'Botong jibe gaseo swieoyo.', 'I usually go home and rest.', [
+    { korean: '보통', english: 'usually' },
+    { korean: '집에 가서', english: 'go home and' },
+    { korean: '쉬어요', english: 'rest' },
+  ]],
+
+  // Evening and dinner
+  ['저녁은 몇 시에 먹어요?', 'Jeonyeogeun myeot sie meogeoyo?', 'What time do you eat dinner?', [
+    { korean: '저녁은', english: 'dinner' },
+    { korean: '몇 시에', english: 'at what time' },
+    { korean: '먹어요?', english: 'do you eat?' },
+  ]],
+  ['7시쯤 먹어요.', '7sijjeum meogeoyo.', 'I eat around 7 o\'clock.', [
+    { korean: '7시쯤', english: 'around 7 o\'clock' },
+    { korean: '먹어요', english: 'I eat' },
+  ]],
+  ['저녁 식사는 누가 준비해요?', 'Jeonyeok siksaneun nuga junbihaeyo?', 'Who prepares dinner?', [
+    { korean: '저녁 식사는', english: 'dinner' },
+    { korean: '누가', english: 'who' },
+    { korean: '준비해요?', english: 'prepares?' },
+  ]],
+  ['제가 직접 요리해요.', 'Jega jikjeop yorihaeyo.', 'I cook it myself.', [
+    { korean: '제가', english: 'I' },
+    { korean: '직접', english: 'myself / directly' },
+    { korean: '요리해요', english: 'cook' },
+  ]],
+  ['요리하는 것을 좋아해요?', 'Yorihaneun geoseul joahaeyo?', 'Do you like cooking?', [
+    { korean: '요리하는 것을', english: 'cooking' },
+    { korean: '좋아해요?', english: 'do you like?' },
+  ]],
+  ['네, 요리하는 것을 좋아해요.', 'Ne, yorihaneun geoseul joahaeyo.', 'Yes, I like cooking.', [
+    { korean: '네', english: 'yes' },
+    { korean: '요리하는 것을', english: 'cooking' },
+    { korean: '좋아해요', english: 'I like' },
+  ]],
+
+  // Sleep routine
+  ['보통 몇 시에 자요?', 'Botong myeot sie jayo?', 'What time do you usually go to bed?', [
+    { korean: '보통', english: 'usually' },
+    { korean: '몇 시에', english: 'at what time' },
+    { korean: '자요?', english: 'do you sleep?' },
+  ]],
+  ['11시쯤 자요.', '11sijjeum jayo.', 'I go to bed around 11 o\'clock.', [
+    { korean: '11시쯤', english: 'around 11 o\'clock' },
+    { korean: '자요', english: 'I sleep' },
+  ]],
+  ['잠은 잘 자요?', 'Jameun jal jayo?', 'Do you sleep well?', [
+    { korean: '잠은', english: 'sleep' },
+    { korean: '잘', english: 'well' },
+    { korean: '자요?', english: 'do you sleep?' },
+  ]],
+  ['네, 보통 잘 자요.', 'Ne, botong jal jayo.', 'Yes, I usually sleep well.', [
+    { korean: '네', english: 'yes' },
+    { korean: '보통', english: 'usually' },
+    { korean: '잘 자요', english: 'I sleep well' },
+  ]],
+
+  // Weekend activities
+  ['주말에는 뭐 해요?', 'Jumareneun mwo haeyo?', 'What do you do on weekends?', [
+    { korean: '주말에는', english: 'on weekends' },
+    { korean: '뭐', english: 'what' },
+    { korean: '해요?', english: 'do you do?' },
+  ]],
+  ['친구들을 만나거나 집에서 쉬어요.', 'Chingudeureul mannageona jibeseo swieoyo.', 'I meet friends or rest at home.', [
+    { korean: '친구들을 만나거나', english: 'meet friends or' },
+    { korean: '집에서', english: 'at home' },
+    { korean: '쉬어요', english: 'rest' },
+  ]],
+
+  // Housework
+  ['집안일은 언제 해요?', 'Jibanireun eonje haeyo?', 'When do you do housework?', [
+    { korean: '집안일은', english: 'housework' },
+    { korean: '언제', english: 'when' },
+    { korean: '해요?', english: 'do you do?' },
+  ]],
+  ['주말에 해요.', 'Jumare haeyo.', 'I do it on weekends.', [
+    { korean: '주말에', english: 'on weekends' },
+    { korean: '해요', english: 'I do it' },
+  ]],
+  ['빨래는 얼마나 자주 해요?', 'Ppallaeneun eolmana jaju haeyo?', 'How often do you do laundry?', [
+    { korean: '빨래는', english: 'laundry' },
+    { korean: '얼마나 자주', english: 'how often' },
+    { korean: '해요?', english: 'do you do?' },
+  ]],
+  ['일주일에 한 번 해요.', 'Iljuire han beon haeyo.', 'I do it once a week.', [
+    { korean: '일주일에', english: 'in a week' },
+    { korean: '한 번', english: 'once' },
+    { korean: '해요', english: 'I do it' },
+  ]],
+  ['청소는 얼마나 자주 해요?', 'Cheongsoneun eolmana jaju haeyo?', 'How often do you clean?', [
+    { korean: '청소는', english: 'cleaning' },
+    { korean: '얼마나 자주', english: 'how often' },
+    { korean: '해요?', english: 'do you do?' },
+  ]],
+  ['일주일에 두 번 정도 해요.', 'Iljuire du beon jeongdo haeyo.', 'I do it about twice a week.', [
+    { korean: '일주일에', english: 'in a week' },
+    { korean: '두 번 정도', english: 'about twice' },
+    { korean: '해요', english: 'I do it' },
+  ]],
+
+  // Grocery shopping
+  ['장은 어디서 봐요?', 'Jangeun eodiseo bwayo?', 'Where do you go grocery shopping?', [
+    { korean: '장은', english: 'grocery shopping' },
+    { korean: '어디서', english: 'where' },
+    { korean: '봐요?', english: 'do you do?' },
+  ]],
+  ['근처 마트에서 봐요.', 'Geuncheo mateu eseo bwayo.', 'I shop at a nearby mart.', [
+    { korean: '근처', english: 'nearby' },
+    { korean: '마트에서', english: 'at the mart' },
+    { korean: '봐요', english: 'I shop' },
+  ]],
+  ['장은 얼마나 자주 봐요?', 'Jangeun eolmana jaju bwayo?', 'How often do you go grocery shopping?', [
+    { korean: '장은', english: 'grocery shopping' },
+    { korean: '얼마나 자주', english: 'how often' },
+    { korean: '봐요?', english: 'do you do?' },
+  ]],
+  ['일주일에 한 번 봐요.', 'Iljuire han beon bwayo.', 'I go once a week.', [
+    { korean: '일주일에', english: 'in a week' },
+    { korean: '한 번', english: 'once' },
+    { korean: '봐요', english: 'I go' },
+  ]],
+
+  // Exercise
+  ['운동은 언제 해요?', 'Undongeun eonje haeyo?', 'When do you exercise?', [
+    { korean: '운동은', english: 'exercise' },
+    { korean: '언제', english: 'when' },
+    { korean: '해요?', english: 'do you do?' },
+  ]],
+  ['저녁에 운동해요.', 'Jeonyeoge undonghaeyo.', 'I exercise in the evening.', [
+    { korean: '저녁에', english: 'in the evening' },
+    { korean: '운동해요', english: 'I exercise' },
+  ]],
+  ['무슨 운동을 해요?', 'Museun undongeul haeyo?', 'What exercise do you do?', [
+    { korean: '무슨', english: 'what kind of' },
+    { korean: '운동을', english: 'exercise' },
+    { korean: '해요?', english: 'do you do?' },
+  ]],
+  ['조깅을 해요.', 'Joggingeul haeyo.', 'I go jogging.', [
+    { korean: '조깅을', english: 'jogging' },
+    { korean: '해요', english: 'I do' },
+  ]],
+  ['일주일에 몇 번 운동해요?', 'Iljuire myeot beon undonghaeyo?', 'How many times a week do you exercise?', [
+    { korean: '일주일에', english: 'in a week' },
+    { korean: '몇 번', english: 'how many times' },
+    { korean: '운동해요?', english: 'do you exercise?' },
+  ]],
+  ['일주일에 세 번 정도 해요.', 'Iljuire se beon jeongdo haeyo.', 'I do it about three times a week.', [
+    { korean: '일주일에', english: 'in a week' },
+    { korean: '세 번 정도', english: 'about three times' },
+    { korean: '해요', english: 'I do it' },
+  ]],
+
+  // Hobbies - Reading
+  ['취미가 뭐예요?', 'Chwimiga mwoyeyo?', 'What is your hobby?', [
+    { korean: '취미가', english: 'hobby' },
+    { korean: '뭐예요?', english: 'what is it?' },
+  ]],
+  ['책 읽는 것을 좋아해요.', 'Chaek ingneun geoseul joahaeyo.', 'I like reading books.', [
+    { korean: '책 읽는 것을', english: 'reading books' },
+    { korean: '좋아해요', english: 'I like' },
+  ]],
+  ['무슨 책을 좋아해요?', 'Museun chaekeul joahaeyo?', 'What kind of books do you like?', [
+    { korean: '무슨', english: 'what kind of' },
+    { korean: '책을', english: 'books' },
+    { korean: '좋아해요?', english: 'do you like?' },
+  ]],
+  ['소설을 좋아해요.', 'Soseoreul joahaeyo.', 'I like novels.', [
+    { korean: '소설을', english: 'novels' },
+    { korean: '좋아해요', english: 'I like' },
+  ]],
+
+  // Hobbies - Movies
+  ['영화는 자주 봐요?', 'Yeonghwaneun jaju bwayo?', 'Do you often watch movies?', [
+    { korean: '영화는', english: 'movies' },
+    { korean: '자주', english: 'often' },
+    { korean: '봐요?', english: 'do you watch?' },
+  ]],
+  ['네, 영화를 자주 봐요.', 'Ne, yeonghwareul jaju bwayo.', 'Yes, I watch movies often.', [
+    { korean: '네', english: 'yes' },
+    { korean: '영화를', english: 'movies' },
+    { korean: '자주', english: 'often' },
+    { korean: '봐요', english: 'I watch' },
+  ]],
+  ['무슨 영화를 좋아해요?', 'Museun yeonghwareul joahaeyo?', 'What kind of movies do you like?', [
+    { korean: '무슨', english: 'what kind of' },
+    { korean: '영화를', english: 'movies' },
+    { korean: '좋아해요?', english: 'do you like?' },
+  ]],
+  ['액션 영화를 좋아해요.', 'Aeksyeon yeonghwareul joahaeyo.', 'I like action movies.', [
+    { korean: '액션 영화를', english: 'action movies' },
+    { korean: '좋아해요', english: 'I like' },
+  ]],
+
+  // Hobbies - Music
+  ['음악을 자주 들어요?', 'Eumagul jaju deureoyo?', 'Do you often listen to music?', [
+    { korean: '음악을', english: 'music' },
+    { korean: '자주', english: 'often' },
+    { korean: '들어요?', english: 'do you listen?' },
+  ]],
+  ['네, 매일 들어요.', 'Ne, maeil deureoyo.', 'Yes, I listen every day.', [
+    { korean: '네', english: 'yes' },
+    { korean: '매일', english: 'every day' },
+    { korean: '들어요', english: 'I listen' },
+  ]],
+  ['무슨 음악을 좋아해요?', 'Museun eumagul joahaeyo?', 'What kind of music do you like?', [
+    { korean: '무슨', english: 'what kind of' },
+    { korean: '음악을', english: 'music' },
+    { korean: '좋아해요?', english: 'do you like?' },
+  ]],
+  ['케이팝을 좋아해요.', 'Keipapeul joahaeyo.', 'I like K-pop.', [
+    { korean: '케이팝을', english: 'K-pop' },
+    { korean: '좋아해요', english: 'I like' },
+  ]],
+
+  // Hobbies - Games
+  ['게임을 해요?', 'Geimeul haeyo?', 'Do you play games?', [
+    { korean: '게임을', english: 'games' },
+    { korean: '해요?', english: 'do you play?' },
+  ]],
+  ['네, 가끔 해요.', 'Ne, gakkeum haeyo.', 'Yes, I play sometimes.', [
+    { korean: '네', english: 'yes' },
+    { korean: '가끔', english: 'sometimes' },
+    { korean: '해요', english: 'I do' },
+  ]],
+  ['무슨 게임을 해요?', 'Museun geimeul haeyo?', 'What games do you play?', [
+    { korean: '무슨', english: 'what kind of' },
+    { korean: '게임을', english: 'games' },
+    { korean: '해요?', english: 'do you play?' },
+  ]],
+  ['RPG 게임을 해요.', 'RPG geimeul haeyo.', 'I play RPG games.', [
+    { korean: 'RPG 게임을', english: 'RPG games' },
+    { korean: '해요', english: 'I play' },
+  ]],
+
+  // Hobbies - TV
+  ['TV는 자주 봐요?', 'TVneun jaju bwayo?', 'Do you often watch TV?', [
+    { korean: 'TV는', english: 'TV' },
+    { korean: '자주', english: 'often' },
+    { korean: '봐요?', english: 'do you watch?' },
+  ]],
+  ['아니요, 잘 안 봐요.', 'Aniyo, jal an bwayo.', 'No, I don\'t watch it much.', [
+    { korean: '아니요', english: 'no' },
+    { korean: '잘 안', english: 'not much' },
+    { korean: '봐요', english: 'I watch' },
+  ]],
+  ['무슨 프로그램을 좋아해요?', 'Museun peurogeuraemeul joahaeyo?', 'What programs do you like?', [
+    { korean: '무슨', english: 'what kind of' },
+    { korean: '프로그램을', english: 'programs' },
+    { korean: '좋아해요?', english: 'do you like?' },
+  ]],
+  ['예능 프로그램을 좋아해요.', 'Yeneung peurogeuraemeul joahaeyo.', 'I like variety shows.', [
+    { korean: '예능 프로그램을', english: 'variety shows' },
+    { korean: '좋아해요', english: 'I like' },
+  ]],
+
+  // Travel
+  ['여행을 자주 가요?', 'Yeohaengeul jaju gayo?', 'Do you travel often?', [
+    { korean: '여행을', english: 'travel' },
+    { korean: '자주', english: 'often' },
+    { korean: '가요?', english: 'do you go?' },
+  ]],
+  ['일년에 한두 번 정도 가요.', 'Ilnyeone handu beon jeongdo gayo.', 'I go about once or twice a year.', [
+    { korean: '일년에', english: 'in a year' },
+    { korean: '한두 번 정도', english: 'about once or twice' },
+    { korean: '가요', english: 'I go' },
+  ]],
+  ['어디로 여행 가고 싶어요?', 'Eodiro yeohaeng gago sipeoyo?', 'Where do you want to travel?', [
+    { korean: '어디로', english: 'where to' },
+    { korean: '여행', english: 'travel' },
+    { korean: '가고 싶어요?', english: 'do you want to go?' },
+  ]],
+  ['제주도에 가고 싶어요.', 'Jejudoe gago sipeoyo.', 'I want to go to Jeju Island.', [
+    { korean: '제주도에', english: 'to Jeju Island' },
+    { korean: '가고 싶어요', english: 'I want to go' },
+  ]],
+
+  // Pets
+  ['반려동물이 있어요?', 'Ballyeodongmuri isseoyo?', 'Do you have a pet?', [
+    { korean: '반려동물이', english: 'pet' },
+    { korean: '있어요?', english: 'do you have?' },
+  ]],
+  ['네, 고양이가 있어요.', 'Ne, goyangiga isseoyo.', 'Yes, I have a cat.', [
+    { korean: '네', english: 'yes' },
+    { korean: '고양이가', english: 'a cat' },
+    { korean: '있어요', english: 'I have' },
+  ]],
+  ['이름이 뭐예요?', 'Ireumi mwoyeyo?', 'What is its name?', [
+    { korean: '이름이', english: 'name' },
+    { korean: '뭐예요?', english: 'what is it?' },
+  ]],
+  ['이름은 나비예요.', 'Ireumeun nabiyeyo.', 'Its name is Nabi.', [
+    { korean: '이름은', english: 'the name' },
+    { korean: '나비예요', english: 'is Nabi' },
+  ]],
+
+  // Stress management
+  ['스트레스 받을 때 뭐 해요?', 'Seuteureseu badeul ttae mwo haeyo?', 'What do you do when you are stressed?', [
+    { korean: '스트레스 받을 때', english: 'when stressed' },
+    { korean: '뭐', english: 'what' },
+    { korean: '해요?', english: 'do you do?' },
+  ]],
+  ['음악을 듣거나 산책을 해요.', 'Eumagul deutgeona sanchaegeul haeyo.', 'I listen to music or go for a walk.', [
+    { korean: '음악을 듣거나', english: 'listen to music or' },
+    { korean: '산책을 해요', english: 'go for a walk' },
+  ]],
+
+  // Cafes and beverages
+  ['카페에 자주 가요?', 'Kapee jaju gayo?', 'Do you often go to cafes?', [
+    { korean: '카페에', english: 'to cafes' },
+    { korean: '자주', english: 'often' },
+    { korean: '가요?', english: 'do you go?' },
+  ]],
+  ['네, 일주일에 두세 번 가요.', 'Ne, iljuire duse beon gayo.', 'Yes, I go two or three times a week.', [
+    { korean: '네', english: 'yes' },
+    { korean: '일주일에', english: 'in a week' },
+    { korean: '두세 번', english: 'two or three times' },
+    { korean: '가요', english: 'I go' },
+  ]],
+  ['무슨 커피를 좋아해요?', 'Museun keopireul joahaeyo?', 'What kind of coffee do you like?', [
+    { korean: '무슨', english: 'what kind of' },
+    { korean: '커피를', english: 'coffee' },
+    { korean: '좋아해요?', english: 'do you like?' },
+  ]],
+  ['아메리카노를 좋아해요.', 'Amerikanoreul joahaeyo.', 'I like Americano.', [
+    { korean: '아메리카노를', english: 'Americano' },
+    { korean: '좋아해요', english: 'I like' },
+  ]],
+
+  // Alcohol
+  ['술을 자주 마셔요?', 'Sureul jaju masyeoyo?', 'Do you often drink alcohol?', [
+    { korean: '술을', english: 'alcohol' },
+    { korean: '자주', english: 'often' },
+    { korean: '마셔요?', english: 'do you drink?' },
+  ]],
+  ['가끔 친구들하고 마셔요.', 'Gakkeum chingudeurhago masyeoyo.', 'I sometimes drink with friends.', [
+    { korean: '가끔', english: 'sometimes' },
+    { korean: '친구들하고', english: 'with friends' },
+    { korean: '마셔요', english: 'I drink' },
+  ]],
+  ['무슨 술을 좋아해요?', 'Museun sureul joahaeyo?', 'What kind of alcohol do you like?', [
+    { korean: '무슨', english: 'what kind of' },
+    { korean: '술을', english: 'alcohol' },
+    { korean: '좋아해요?', english: 'do you like?' },
+  ]],
+  ['맥주를 좋아해요.', 'Maekjureul joahaeyo.', 'I like beer.', [
+    { korean: '맥주를', english: 'beer' },
+    { korean: '좋아해요', english: 'I like' },
+  ]],
+
+  // Smoking
+  ['담배를 피워요?', 'Dambaereul piwoyo?', 'Do you smoke?', [
+    { korean: '담배를', english: 'cigarettes' },
+    { korean: '피워요?', english: 'do you smoke?' },
+  ]],
+  ['아니요, 안 피워요.', 'Aniyo, an piwoyo.', 'No, I don\'t smoke.', [
+    { korean: '아니요', english: 'no' },
+    { korean: '안 피워요', english: 'I don\'t smoke' },
+  ]],
+
+  // Health
+  ['건강을 위해 뭐 해요?', 'Geongangeul wihae mwo haeyo?', 'What do you do for your health?', [
+    { korean: '건강을 위해', english: 'for health' },
+    { korean: '뭐', english: 'what' },
+    { korean: '해요?', english: 'do you do?' },
+  ]],
+  ['운동하고 건강한 음식을 먹어요.', 'Undonghago geongganghan eumsigeul meogeoyo.', 'I exercise and eat healthy food.', [
+    { korean: '운동하고', english: 'exercise and' },
+    { korean: '건강한 음식을', english: 'healthy food' },
+    { korean: '먹어요', english: 'I eat' },
+  ]],
+  ['병원에 자주 가요?', 'Byeongwone jaju gayo?', 'Do you often go to the hospital?', [
+    { korean: '병원에', english: 'to the hospital' },
+    { korean: '자주', english: 'often' },
+    { korean: '가요?', english: 'do you go?' },
+  ]],
+  ['아니요, 건강해서 잘 안 가요.', 'Aniyo, geongganghaeseo jal an gayo.', 'No, I am healthy so I don\'t go often.', [
+    { korean: '아니요', english: 'no' },
+    { korean: '건강해서', english: 'because I\'m healthy' },
+    { korean: '잘 안 가요', english: 'I don\'t go often' },
+  ]],
+  ['약은 잘 먹어요?', 'Yageun jal meogeoyo?', 'Do you take medicine regularly?', [
+    { korean: '약은', english: 'medicine' },
+    { korean: '잘', english: 'regularly' },
+    { korean: '먹어요?', english: 'do you take?' },
+  ]],
+  ['아니요, 특별히 먹는 약은 없어요.', 'Aniyo, teukbyeolhi meongneun yageun eopseoyo.', 'No, I don\'t take any medicine in particular.', [
+    { korean: '아니요', english: 'no' },
+    { korean: '특별히', english: 'in particular' },
+    { korean: '먹는 약은', english: 'medicine I take' },
+    { korean: '없어요', english: 'there is none' },
+  ]],
+  ['알레르기가 있어요?', 'Allerugiga isseoyo?', 'Do you have allergies?', [
+    { korean: '알레르기가', english: 'allergies' },
+    { korean: '있어요?', english: 'do you have?' },
+  ]],
+  ['아니요, 없어요.', 'Aniyo, eopseoyo.', 'No, I don\'t.', [
+    { korean: '아니요', english: 'no' },
+    { korean: '없어요', english: 'I don\'t have' },
+  ]],
+
+  // Sleep quality
+  ['잠을 잘 자요?', 'Jameul jal jayo?', 'Do you sleep well?', [
+    { korean: '잠을', english: 'sleep' },
+    { korean: '잘', english: 'well' },
+    { korean: '자요?', english: 'do you sleep?' },
+  ]],
+  ['네, 보통 잘 자요.', 'Ne, botong jal jayo.', 'Yes, I usually sleep well.', [
+    { korean: '네', english: 'yes' },
+    { korean: '보통', english: 'usually' },
+    { korean: '잘 자요', english: 'I sleep well' },
+  ]],
+  ['꿈을 자주 꿔요?', 'Kkumeul jaju kkwoyo?', 'Do you often dream?', [
+    { korean: '꿈을', english: 'dreams' },
+    { korean: '자주', english: 'often' },
+    { korean: '꿔요?', english: 'do you dream?' },
+  ]],
+  ['가끔 꿔요.', 'Gakkeum kkwoyo.', 'I dream sometimes.', [
+    { korean: '가끔', english: 'sometimes' },
+    { korean: '꿔요', english: 'I dream' },
+  ]],
+  ['악몽을 꾸는 적 있어요?', 'Angmongeul kkuneun jeok isseoyo?', 'Have you ever had nightmares?', [
+    { korean: '악몽을', english: 'nightmares' },
+    { korean: '꾸는 적', english: 'ever had' },
+    { korean: '있어요?', english: 'have you?' },
+  ]],
+  ['가끔 있어요.', 'Gakkeum isseoyo.', 'Sometimes I do.', [
+    { korean: '가끔', english: 'sometimes' },
+    { korean: '있어요', english: 'I do / there is' },
+  ]],
+  ['아침형 인간이에요, 저녁형 인간이에요?', 'Achimhyeong inganieyo, jeonyeokhyeong inganieyo?', 'Are you a morning person or evening person?', [
+    { korean: '아침형 인간이에요', english: 'a morning person' },
+    { korean: '저녁형 인간이에요?', english: 'an evening person?' },
+  ]],
+  ['저녁형 인간이에요.', 'Jeonyeokhyeong inganieyo.', 'I am an evening person.', [
+    { korean: '저녁형', english: 'evening type' },
+    { korean: '인간이에요', english: 'I am a person' },
+  ]],
+  ['낮잠을 자요?', 'Natjameul jayo?', 'Do you take naps?', [
+    { korean: '낮잠을', english: 'naps' },
+    { korean: '자요?', english: 'do you take?' },
+  ]],
+  ['주말에 가끔 자요.', 'Jumare gakkeum jayo.', 'I sometimes do on weekends.', [
+    { korean: '주말에', english: 'on weekends' },
+    { korean: '가끔', english: 'sometimes' },
+    { korean: '자요', english: 'I sleep' },
+  ]],
+
+  // Beverages
+  ['커피를 많이 마셔요?', 'Keopireul mani masyeoyo?', 'Do you drink a lot of coffee?', [
+    { korean: '커피를', english: 'coffee' },
+    { korean: '많이', english: 'a lot' },
+    { korean: '마셔요?', english: 'do you drink?' },
+  ]],
+  ['네, 하루에 두세 잔 마셔요.', 'Ne, harue duse jan masyeoyo.', 'Yes, I drink two or three cups a day.', [
+    { korean: '네', english: 'yes' },
+    { korean: '하루에', english: 'in a day' },
+    { korean: '두세 잔', english: 'two or three cups' },
+    { korean: '마셔요', english: 'I drink' },
+  ]],
+  ['물은 많이 마셔요?', 'Mureun mani masyeoyo?', 'Do you drink a lot of water?', [
+    { korean: '물은', english: 'water' },
+    { korean: '많이', english: 'a lot' },
+    { korean: '마셔요?', english: 'do you drink?' },
+  ]],
+  ['네, 하루에 2리터 정도 마셔요.', 'Ne, harue 2riteo jeongdo masyeoyo.', 'Yes, I drink about 2 liters a day.', [
+    { korean: '네', english: 'yes' },
+    { korean: '하루에', english: 'in a day' },
+    { korean: '2리터 정도', english: 'about 2 liters' },
+    { korean: '마셔요', english: 'I drink' },
+  ]],
+
+  // Snacks and diet
+  ['간식을 자주 먹어요?', 'Gansigeul jaju meogeoyo?', 'Do you often eat snacks?', [
+    { korean: '간식을', english: 'snacks' },
+    { korean: '자주', english: 'often' },
+    { korean: '먹어요?', english: 'do you eat?' },
+  ]],
+  ['가끔 먹어요.', 'Gakkeum meogeoyo.', 'I eat them sometimes.', [
+    { korean: '가끔', english: 'sometimes' },
+    { korean: '먹어요', english: 'I eat' },
+  ]],
+  ['무슨 간식을 좋아해요?', 'Museun gansigeul joahaeyo?', 'What snacks do you like?', [
+    { korean: '무슨', english: 'what kind of' },
+    { korean: '간식을', english: 'snacks' },
+    { korean: '좋아해요?', english: 'do you like?' },
+  ]],
+  ['과자를 좋아해요.', 'Gwajareul joahaeyo.', 'I like cookies.', [
+    { korean: '과자를', english: 'cookies' },
+    { korean: '좋아해요', english: 'I like' },
+  ]],
+  ['다이어트를 해요?', 'Daieteureul haeyo?', 'Are you on a diet?', [
+    { korean: '다이어트를', english: 'diet' },
+    { korean: '해요?', english: 'are you doing?' },
+  ]],
+  ['아니요, 지금은 안 해요.', 'Aniyo, jigeumeun an haeyo.', 'No, I am not right now.', [
+    { korean: '아니요', english: 'no' },
+    { korean: '지금은', english: 'right now' },
+    { korean: '안 해요', english: 'I\'m not doing' },
+  ]],
+].map(([k, r, e, b]) => createContentItem(k, r, e, 'sentence', k, e, b));
 
 // FOOD - Sentences
 const foodSentences = [

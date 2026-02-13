@@ -4,10 +4,20 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
+const JWT_SECRET = process.env.JWT_SECRET;
+
 // Register
 router.post('/register', async (req, res) => {
   try {
     const { username, email, password } = req.body;
+
+    if (!username || !email || !password) {
+      return res.status(400).json({ message: 'All fields are required' });
+    }
+
+    if (password.length < 6) {
+      return res.status(400).json({ message: 'Password must be at least 6 characters' });
+    }
 
     let user = await User.findOne({ $or: [{ email }, { username }] });
     if (user) {
@@ -30,7 +40,7 @@ router.post('/register', async (req, res) => {
 
     const token = jwt.sign(
       { userId: user._id },
-      process.env.JWT_SECRET || 'secret_key',
+      JWT_SECRET,
       { expiresIn: '7d' }
     );
 
@@ -45,7 +55,8 @@ router.post('/register', async (req, res) => {
       },
     });
   } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
+    console.error('Registration error:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
@@ -54,9 +65,13 @@ router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
 
+    if (!email || !password) {
+      return res.status(400).json({ message: 'Email and password are required' });
+    }
+
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ message: 'User not found' });
+      return res.status(400).json({ message: 'Invalid credentials' });
     }
 
     // Check if user is suspended
@@ -69,7 +84,7 @@ router.post('/login', async (req, res) => {
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid password' });
+      return res.status(400).json({ message: 'Invalid credentials' });
     }
 
     // Update login tracking
@@ -80,7 +95,7 @@ router.post('/login', async (req, res) => {
 
     const token = jwt.sign(
       { userId: user._id },
-      process.env.JWT_SECRET || 'secret_key',
+      JWT_SECRET,
       { expiresIn: '7d' }
     );
 
@@ -96,7 +111,8 @@ router.post('/login', async (req, res) => {
       },
     });
   } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
+    console.error('Login error:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
@@ -105,41 +121,25 @@ router.post('/activity', async (req, res) => {
   try {
     const { userId, timeSpent } = req.body; // timeSpent in minutes
 
+    if (!userId) {
+      return res.status(400).json({ message: 'userId is required' });
+    }
+
     const user = await User.findById(userId);
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
 
     user.lastActive = new Date();
-    if (timeSpent) {
+    if (timeSpent && typeof timeSpent === 'number' && timeSpent > 0) {
       user.totalTimeSpent = (user.totalTimeSpent || 0) + timeSpent;
     }
     await user.save();
 
     res.json({ message: 'Activity tracked' });
   } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
-  }
-});
-
-// DEV ONLY: Make user admin by email
-router.post('/make-admin', async (req, res) => {
-  try {
-    const { email } = req.body;
-
-    const user = await User.findOneAndUpdate(
-      { email },
-      { role: 'admin' },
-      { new: true }
-    ).select('-password');
-
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
-    }
-
-    res.json({ message: `${user.username} is now an admin`, user });
-  } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
+    console.error('Activity tracking error:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 

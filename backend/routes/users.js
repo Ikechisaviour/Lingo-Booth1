@@ -2,9 +2,13 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
+const { verifyToken, isOwner } = require('../middleware/auth');
 
-// Get user profile
-router.get('/:userId', async (req, res) => {
+// All user routes require authentication + ownership check
+router.use(verifyToken);
+
+// Get user profile (only own profile or admin)
+router.get('/:userId', isOwner('userId'), async (req, res) => {
   try {
     const user = await User.findById(req.params.userId).select('-password');
     if (!user) {
@@ -12,12 +16,13 @@ router.get('/:userId', async (req, res) => {
     }
     res.json(user);
   } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
+    console.error('Get profile error:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
-// Update user profile
-router.put('/:userId', async (req, res) => {
+// Update user profile (only own profile or admin)
+router.put('/:userId', isOwner('userId'), async (req, res) => {
   try {
     const { username, preferredVoice } = req.body;
 
@@ -48,14 +53,23 @@ router.put('/:userId', async (req, res) => {
 
     res.json(user);
   } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
+    console.error('Update profile error:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
-// Change password
-router.put('/:userId/password', async (req, res) => {
+// Change password (only own account)
+router.put('/:userId/password', isOwner('userId'), async (req, res) => {
   try {
     const { currentPassword, newPassword } = req.body;
+
+    if (!currentPassword || !newPassword) {
+      return res.status(400).json({ message: 'Current and new password are required' });
+    }
+
+    if (newPassword.length < 6) {
+      return res.status(400).json({ message: 'New password must be at least 6 characters' });
+    }
 
     const user = await User.findById(req.params.userId);
     if (!user) {
@@ -75,12 +89,13 @@ router.put('/:userId/password', async (req, res) => {
 
     res.json({ message: 'Password updated successfully' });
   } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
+    console.error('Change password error:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
-// Save activity state (for cross-device resume)
-router.put('/:userId/activity-state', async (req, res) => {
+// Save activity state (only own state)
+router.put('/:userId/activity-state', isOwner('userId'), async (req, res) => {
   try {
     const { activityType, lessonId, lessonIndex, flashcardIndex } = req.body;
     const update = {
@@ -95,12 +110,13 @@ router.put('/:userId/activity-state', async (req, res) => {
     }
     res.json(user);
   } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
+    console.error('Save activity state error:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
-// Get activity state
-router.get('/:userId/activity-state', async (req, res) => {
+// Get activity state (only own state)
+router.get('/:userId/activity-state', isOwner('userId'), async (req, res) => {
   try {
     const user = await User.findById(req.params.userId)
       .select('lastActivityType lastLessonId lastLessonIndex lastFlashcardIndex')
@@ -115,12 +131,13 @@ router.get('/:userId/activity-state', async (req, res) => {
       flashcardIndex: user.lastFlashcardIndex,
     });
   } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
+    console.error('Get activity state error:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
-// Delete user account
-router.delete('/:userId', async (req, res) => {
+// Delete user account (only own account or admin)
+router.delete('/:userId', isOwner('userId'), async (req, res) => {
   try {
     const user = await User.findByIdAndDelete(req.params.userId);
     if (!user) {
@@ -128,7 +145,8 @@ router.delete('/:userId', async (req, res) => {
     }
     res.json({ message: 'Account deleted successfully' });
   } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
+    console.error('Delete account error:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 

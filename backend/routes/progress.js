@@ -1,20 +1,25 @@
 const express = require('express');
 const router = express.Router();
 const Progress = require('../models/Progress');
+const { verifyToken, isOwner } = require('../middleware/auth');
 
-// Get progress for user
-router.get('/user/:userId', async (req, res) => {
+// All progress routes require authentication
+router.use(verifyToken);
+
+// Get progress for user (only own progress or admin)
+router.get('/user/:userId', isOwner('userId'), async (req, res) => {
   try {
     const { userId } = req.params;
     const progress = await Progress.find({ userId });
     res.json(progress);
   } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
+    console.error('Get progress error:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
-// Get progress summary (struggling areas)
-router.get('/summary/:userId', async (req, res) => {
+// Get progress summary (only own summary or admin)
+router.get('/summary/:userId', isOwner('userId'), async (req, res) => {
   try {
     const { userId } = req.params;
 
@@ -64,15 +69,15 @@ router.get('/summary/:userId', async (req, res) => {
       skillStats,
     });
   } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
+    console.error('Get progress summary error:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
-// Record progress
+// Record progress (atomic upsert to prevent race conditions)
 router.post('/', async (req, res) => {
   try {
     const {
-      userId,
       lessonId,
       skillType,
       category,
@@ -80,46 +85,46 @@ router.post('/', async (req, res) => {
       isCorrect,
     } = req.body;
 
-    let progress = await Progress.findOne({
-      userId,
-      lessonId,
-      skillType,
-      category,
-    });
-
-    if (!progress) {
-      progress = new Progress({
-        userId,
-        lessonId,
-        skillType,
-        category,
-        score,
-      });
-    } else {
-      progress.score = score;
-      progress.attemptCount += 1;
-      if (isCorrect) {
-        progress.correctAttempts += 1;
-      }
-    }
+    const userId = req.userId;
 
     // Determine mastery status based on score
+    let masteryStatus;
     if (score >= 90) {
-      progress.masteryStatus = 'mastered';
+      masteryStatus = 'mastered';
     } else if (score >= 70) {
-      progress.masteryStatus = 'comfortable';
+      masteryStatus = 'comfortable';
     } else if (score >= 50) {
-      progress.masteryStatus = 'learning';
+      masteryStatus = 'learning';
     } else {
-      progress.masteryStatus = 'struggling';
+      masteryStatus = 'struggling';
     }
 
-    progress.timestamp = new Date();
-    await progress.save();
+    const progress = await Progress.findOneAndUpdate(
+      { userId, lessonId, skillType, category },
+      {
+        $set: {
+          score,
+          masteryStatus,
+          timestamp: new Date(),
+        },
+        $inc: {
+          attemptCount: 1,
+          ...(isCorrect ? { correctAttempts: 1 } : {}),
+        },
+        $setOnInsert: {
+          userId,
+          lessonId,
+          skillType,
+          category,
+        },
+      },
+      { new: true, upsert: true }
+    );
 
     res.status(201).json(progress);
   } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
+    console.error('Record progress error:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 

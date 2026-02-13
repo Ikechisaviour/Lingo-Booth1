@@ -28,6 +28,10 @@ const lessonSchema = new mongoose.Schema({
     audioUrl: String,
     example: String,
     exampleEnglish: String,
+    breakdown: [{
+      korean: String,
+      english: String,
+    }],
   }],
   createdAt: {
     type: Date,

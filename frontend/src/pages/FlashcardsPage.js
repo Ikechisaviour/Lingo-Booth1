@@ -140,6 +140,7 @@ function FlashcardsPage() {
         setCurrentCardShowsKorean(determineCardDisplay());
       }
     } catch (err) {
+      setError('Failed to record answer. Please try again.');
       console.error('Error:', err);
     }
   };
@@ -171,11 +172,13 @@ function FlashcardsPage() {
         setCurrentCardShowsKorean(determineCardDisplay());
       }
     } catch (err) {
+      setError('Failed to record answer. Please try again.');
       console.error('Error:', err);
     }
   };
 
   const handleDelete = async (id) => {
+    if (!window.confirm('Are you sure you want to delete this flashcard?')) return;
     try {
       await flashcardService.deleteFlashcard(id);
       setFlashcards(flashcards.filter((fc) => fc._id !== id));
@@ -198,6 +201,11 @@ function FlashcardsPage() {
   }
 
   const current = flashcards[currentIndex];
+
+  if (!loading && flashcards.length > 0 && !current) {
+    setCurrentIndex(0);
+    return <div className="loading">Loading...</div>;
+  }
 
   return (
     <div className="flashcards-container">

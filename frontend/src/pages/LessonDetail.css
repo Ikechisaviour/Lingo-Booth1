@@ -7,6 +7,7 @@
 .lesson-header {
   text-align: center;
   margin-bottom: 30px;
+  position: relative;
 }
 
 .lesson-header h1 {
@@ -15,9 +16,49 @@
   margin-bottom: 10px;
 }
 
+/* Settings toggle button - hidden on desktop */
+.settings-toggle-btn {
+  display: none;
+}
+
+/* Settings panel - always visible on desktop */
+.lesson-settings-panel {
+  margin-bottom: 16px;
+}
+
 .lesson-progress {
-  color: #888;
-  font-size: 1rem;
+  color: #4a90d9;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Lesson Navigation Dropdowns */
+.lesson-nav-dropdowns {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.lesson-dropdown {
+  padding: 8px 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background: white;
+  color: #444;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s ease;
+  appearance: auto;
+}
+
+.lesson-dropdown:hover,
+.lesson-dropdown:focus {
+  border-color: #667eea;
 }
 
 .lesson-content-card {
@@ -76,6 +117,35 @@
   font-size: 1.3rem;
 }
 
+.breakdown {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.breakdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  border-radius: 8px;
+  padding: 8px 14px;
+  border: 1px solid #c8e6c9;
+}
+
+.breakdown-korean {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.breakdown-english {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 2px;
+}
+
 .example {
   background: white;
   padding: 15px;
@@ -127,9 +197,158 @@
   background-color: #388E3C;
 }
 
+/* Order & Study Mode Selectors */
+.order-selector,
+.study-mode-selector {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  background: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.order-label {
+  font-weight: 600;
+  color: #555;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.order-options {
+  display: flex;
+  gap: 8px;
+}
+
+.order-btn {
+  padding: 8px 18px;
+  border: 2px solid #e0e0e0;
+  border-radius: 20px;
+  background: white;
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.order-btn:hover {
+  border-color: #667eea;
+  color: #667eea;
+}
+
+.order-btn.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: transparent;
+}
+
+/* Reading Mode - Romanization Toggle */
+.btn-romanization-toggle {
+  padding: 6px 14px;
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  background: #f5f5f5;
+  color: #666;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 8px;
+}
+
+.btn-romanization-toggle:hover {
+  background: #e8e8e8;
+  border-color: #999;
+}
+
+/* Listening Mode */
+.listening-mode-prompt {
+  text-align: center;
+  padding: 30px 20px;
+  margin-bottom: 10px;
+}
+
+.listen-again-btn {
+  font-size: 1.2rem !important;
+  padding: 15px 30px !important;
+}
+
+.listening-hint {
+  color: #888;
+  margin-top: 12px;
+  font-size: 0.95rem;
+}
+
+/* Mobile */
 @media (max-width: 768px) {
+  .lesson-detail-container {
+    padding: 20px 0;
+  }
+
+  .lesson-header h1 {
+    font-size: 1.4rem;
+    margin-bottom: 0;
+  }
+
+  .lesson-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    margin-bottom: 16px;
+  }
+
+  /* Show settings toggle on mobile */
+  .settings-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    background: white;
+    font-size: 1.3rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  }
+
+  .settings-toggle-btn:hover {
+    border-color: #667eea;
+  }
+
+  /* Collapse settings panel on mobile */
+  .lesson-settings-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    margin-bottom: 0;
+  }
+
+  .lesson-settings-panel.open {
+    max-height: 500px;
+    margin-bottom: 16px;
+  }
+
+  .lesson-nav-dropdowns {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .lesson-dropdown {
+    width: 100%;
+  }
+
   .lesson-content-card {
     padding: 20px;
+  }
+
+  .content-item h2 {
+    font-size: 1.5rem;
   }
 
   .navigation-buttons {
@@ -146,7 +365,21 @@
     margin-top: 10px;
   }
 
-  .content-item h2 {
-    font-size: 1.5rem;
+  .order-selector,
+  .study-mode-selector {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 10px 15px;
+  }
+
+  .order-options {
+    width: 100%;
+  }
+
+  .order-btn {
+    flex: 1;
+    text-align: center;
+    padding: 8px 12px;
   }
 }

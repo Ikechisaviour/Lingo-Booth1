@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
 const User = require('../models/User');
 const Lesson = require('../models/Lesson');
 const Flashcard = require('../models/Flashcard');
@@ -14,15 +15,19 @@ router.use(isAdmin);
 router.get('/stats', async (req, res) => {
   try {
     // Basic counts
-    const totalUsers = await User.countDocuments();
-    const totalLessons = await Lesson.countDocuments();
-    const totalFlashcards = await Flashcard.countDocuments();
-    const totalProgress = await Progress.countDocuments();
+    const [totalUsers, totalLessons, totalFlashcards, totalProgress] = await Promise.all([
+      User.countDocuments(),
+      Lesson.countDocuments(),
+      Flashcard.countDocuments(),
+      Progress.countDocuments(),
+    ]);
 
     // User status counts
-    const activeUsers = await User.countDocuments({ status: 'active' });
-    const suspendedUsers = await User.countDocuments({ status: 'suspended' });
-    const adminCount = await User.countDocuments({ role: 'admin' });
+    const [activeUsers, suspendedUsers, adminCount] = await Promise.all([
+      User.countDocuments({ status: 'active' }),
+      User.countDocuments({ status: 'suspended' }),
+      User.countDocuments({ role: 'admin' }),
+    ]);
 
     // Time-based stats
     const now = new Date();
@@ -30,19 +35,24 @@ router.get('/stats', async (req, res) => {
     const lastMonth = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
     const last24Hours = new Date(now.getTime() - 24 * 60 * 60 * 1000);
 
-    const newUsersLastWeek = await User.countDocuments({ createdAt: { $gte: lastWeek } });
-    const newUsersLastMonth = await User.countDocuments({ createdAt: { $gte: lastMonth } });
-    const activeUsersToday = await User.countDocuments({ lastActive: { $gte: last24Hours } });
-    const activeUsersThisWeek = await User.countDocuments({ lastActive: { $gte: lastWeek } });
+    const [newUsersLastWeek, newUsersLastMonth, activeUsersToday, activeUsersThisWeek] = await Promise.all([
+      User.countDocuments({ createdAt: { $gte: lastWeek } }),
+      User.countDocuments({ createdAt: { $gte: lastMonth } }),
+      User.countDocuments({ lastActive: { $gte: last24Hours } }),
+      User.countDocuments({ lastActive: { $gte: lastWeek } }),
+    ]);
 
-    // Average time spent calculation
-    const usersWithTime = await User.find({ totalTimeSpent: { $gt: 0 } });
-    const totalTimeAll = usersWithTime.reduce((sum, user) => sum + (user.totalTimeSpent || 0), 0);
-    const avgTimeSpent = usersWithTime.length > 0 ? Math.round(totalTimeAll / usersWithTime.length) : 0;
+    // Use aggregation for time/login stats instead of loading all users
+    const [timeStats] = await User.aggregate([
+      { $match: { totalTimeSpent: { $gt: 0 } } },
+      { $group: { _id: null, totalTime: { $sum: '$totalTimeSpent' }, count: { $sum: 1 } } },
+    ]);
+    const avgTimeSpent = timeStats ? Math.round(timeStats.totalTime / timeStats.count) : 0;
 
-    // Total logins
-    const allUsers = await User.find();
-    const totalLogins = allUsers.reduce((sum, user) => sum + (user.loginCount || 0), 0);
+    const [loginStats] = await User.aggregate([
+      { $group: { _id: null, totalLogins: { $sum: '$loginCount' } } },
+    ]);
+    const totalLogins = loginStats ? loginStats.totalLogins : 0;
 
     // User growth data (last 7 days)
     const userGrowth = [];
@@ -91,7 +101,8 @@ router.get('/stats', async (req, res) => {
       recentActiveUsers,
     });
   } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
+    console.error('Admin stats error:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
@@ -103,7 +114,8 @@ router.get('/users', async (req, res) => {
       .sort({ createdAt: -1 });
     res.json(users);
   } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
+    console.error('Admin get users error:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
@@ -116,8 +128,10 @@ router.get('/users/:userId', async (req, res) => {
     }
 
     // Get user's progress stats
-    const progressCount = await Progress.countDocuments({ userId: req.params.userId });
-    const flashcardCount = await Flashcard.countDocuments({ userId: req.params.userId });
+    const [progressCount, flashcardCount] = await Promise.all([
+      Progress.countDocuments({ userId: req.params.userId }),
+      Flashcard.countDocuments({ userId: req.params.userId }),
+    ]);
 
     res.json({
       user,
@@ -127,7 +141,8 @@ router.get('/users/:userId', async (req, res) => {
       }
     });
   } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
+    console.error('Admin get user error:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
@@ -135,6 +150,12 @@ router.get('/users/:userId', async (req, res) => {
 router.put('/users/:userId/suspend', async (req, res) => {
   try {
     const { reason } = req.body;
+
+    // Sanitize reason (strip HTML tags)
+    const sanitizedReason = reason
+      ? String(reason).replace(/<[^>]*>/g, '').substring(0, 500)
+      : 'Suspended by administrator';
+
     const user = await User.findById(req.params.userId);
 
     if (!user) {
@@ -153,7 +174,7 @@ router.put('/users/:userId/suspend', async (req, res) => {
 
     user.status = 'suspended';
     user.suspendedAt = new Date();
-    user.suspendReason = reason || 'Suspended by administrator';
+    user.suspendReason = sanitizedReason;
     await user.save();
 
     res.json({
@@ -168,7 +189,8 @@ router.put('/users/:userId/suspend', async (req, res) => {
       }
     });
   } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
+    console.error('Admin suspend user error:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
@@ -196,7 +218,8 @@ router.put('/users/:userId/unsuspend', async (req, res) => {
       }
     });
   } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
+    console.error('Admin unsuspend user error:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
@@ -229,12 +252,14 @@ router.put('/users/:userId/role', async (req, res) => {
       user
     });
   } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
+    console.error('Admin update role error:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
-// Delete a user
+// Delete a user (with transaction for data consistency)
 router.delete('/users/:userId', async (req, res) => {
+  const session = await mongoose.startSession();
   try {
     const user = await User.findById(req.params.userId);
 
@@ -252,16 +277,18 @@ router.delete('/users/:userId', async (req, res) => {
       return res.status(400).json({ message: 'Cannot delete an admin account' });
     }
 
-    // Delete user's related data
-    await Progress.deleteMany({ userId: req.params.userId });
-    await Flashcard.deleteMany({ userId: req.params.userId });
-
-    // Delete the user
-    await User.findByIdAndDelete(req.params.userId);
+    await session.withTransaction(async () => {
+      await Progress.deleteMany({ userId: req.params.userId }, { session });
+      await Flashcard.deleteMany({ userId: req.params.userId }, { session });
+      await User.findByIdAndDelete(req.params.userId, { session });
+    });
 
     res.json({ message: `User ${user.username} and all associated data deleted successfully` });
   } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
+    console.error('Admin delete user error:', error);
+    res.status(500).json({ message: 'Server error' });
+  } finally {
+    session.endSession();
   }
 });
 

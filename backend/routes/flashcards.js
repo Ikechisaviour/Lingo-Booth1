@@ -1,25 +1,34 @@
 const express = require('express');
 const router = express.Router();
 const Flashcard = require('../models/Flashcard');
+const { verifyToken, isOwner } = require('../middleware/auth');
 
-// Get flashcards for user
-router.get('/user/:userId', async (req, res) => {
+// All flashcard routes require authentication
+router.use(verifyToken);
+
+// Get flashcards for user (only own flashcards or admin)
+router.get('/user/:userId', isOwner('userId'), async (req, res) => {
   try {
     const { userId } = req.params;
     const flashcards = await Flashcard.find({ userId });
     res.json(flashcards);
   } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
+    console.error('Get flashcards error:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
-// Create flashcard
+// Create flashcard (uses authenticated user's ID)
 router.post('/', async (req, res) => {
   try {
-    const { userId, korean, english, romanization, audioUrl, category } = req.body;
+    const { korean, english, romanization, audioUrl, category } = req.body;
+
+    if (!korean || !english) {
+      return res.status(400).json({ message: 'Korean and English fields are required' });
+    }
 
     const flashcard = new Flashcard({
-      userId,
+      userId: req.userId,
       korean,
       english,
       romanization,
@@ -30,11 +39,12 @@ router.post('/', async (req, res) => {
     await flashcard.save();
     res.status(201).json(flashcard);
   } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
+    console.error('Create flashcard error:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
-// Update flashcard (mark correct/incorrect)
+// Update flashcard (mark correct/incorrect) - verify ownership
 router.put('/:id', async (req, res) => {
   try {
     const { isCorrect } = req.body;
@@ -42,6 +52,11 @@ router.put('/:id', async (req, res) => {
 
     if (!flashcard) {
       return res.status(404).json({ message: 'Flashcard not found' });
+    }
+
+    // Verify ownership
+    if (flashcard.userId.toString() !== req.userId && req.user.role !== 'admin') {
+      return res.status(403).json({ message: 'Access denied' });
     }
 
     if (isCorrect) {
@@ -57,20 +72,29 @@ router.put('/:id', async (req, res) => {
 
     res.json(flashcard);
   } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
+    console.error('Update flashcard error:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
-// Delete flashcard
+// Delete flashcard - verify ownership
 router.delete('/:id', async (req, res) => {
   try {
-    const flashcard = await Flashcard.findByIdAndDelete(req.params.id);
+    const flashcard = await Flashcard.findById(req.params.id);
     if (!flashcard) {
       return res.status(404).json({ message: 'Flashcard not found' });
     }
+
+    // Verify ownership
+    if (flashcard.userId.toString() !== req.userId && req.user.role !== 'admin') {
+      return res.status(403).json({ message: 'Access denied' });
+    }
+
+    await Flashcard.findByIdAndDelete(req.params.id);
     res.json({ message: 'Flashcard deleted' });
   } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
+    console.error('Delete flashcard error:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 

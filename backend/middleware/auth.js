@@ -1,6 +1,12 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET) {
+  console.error('FATAL: JWT_SECRET environment variable is not set');
+  process.exit(1);
+}
+
 // Verify JWT token
 const verifyToken = async (req, res, next) => {
   try {
@@ -10,12 +16,16 @@ const verifyToken = async (req, res, next) => {
       return res.status(401).json({ message: 'No token, authorization denied' });
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'secret_key');
+    const decoded = jwt.verify(token, JWT_SECRET);
     req.userId = decoded.userId;
 
     const user = await User.findById(decoded.userId).select('-password');
     if (!user) {
       return res.status(401).json({ message: 'User not found' });
+    }
+
+    if (user.status === 'suspended') {
+      return res.status(403).json({ message: 'Account suspended' });
     }
 
     req.user = user;
@@ -34,4 +44,14 @@ const isAdmin = (req, res, next) => {
   }
 };
 
-module.exports = { verifyToken, isAdmin };
+// Check if user is accessing their own resource
+const isOwner = (paramName = 'userId') => (req, res, next) => {
+  const resourceUserId = req.params[paramName] || req.body.userId;
+  if (req.user.role === 'admin' || req.userId === resourceUserId) {
+    next();
+  } else {
+    res.status(403).json({ message: 'Access denied. You can only access your own resources.' });
+  }
+};
+
+module.exports = { verifyToken, isAdmin, isOwner };
