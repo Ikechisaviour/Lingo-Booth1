@@ -21,10 +21,13 @@ const checkInactivityPenalty = (paramName = 'userId') => {
       const userId = req.params[paramName];
       if (!userId) return next();
 
-      const user = await User.findById(userId).select('totalXP lastAnsweredAt penaltyIntervalsApplied');
+      const user = await User.findById(userId).select('totalXP lastAnsweredAt penaltyIntervalsApplied xpDecayEnabled');
       if (!user) return next();
 
       req.xpPenalty = 0;
+
+      // Skip decay if user has it disabled
+      if (!user.xpDecayEnabled) return next();
 
       if (user.lastAnsweredAt && user.totalXP > 0) {
         const idleMs = Date.now() - new Date(user.lastAnsweredAt).getTime();

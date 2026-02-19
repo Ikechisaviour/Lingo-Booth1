@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
-import { authService } from '../services/api';
+import { authService, guestXPHelper } from '../services/api';
 import './Auth.css';
 
 function LoginPage({ setIsAuthenticated, setIsGuest }) {
@@ -25,15 +25,18 @@ function LoginPage({ setIsAuthenticated, setIsGuest }) {
     setLoading(true);
 
     try {
-      const response = await authService.login(formData.email, formData.password);
+      const guestXP = guestXPHelper.get();
+      const response = await authService.login(formData.email, formData.password, guestXP);
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('userId', response.data.user.id);
       localStorage.setItem('username', response.data.user.username);
       localStorage.setItem('userRole', response.data.user.role || 'user');
+      localStorage.setItem('xpDecayEnabled', String(!!response.data.user.xpDecayEnabled));
       if (response.data.user.preferredVoice) {
         localStorage.setItem('preferredVoice', response.data.user.preferredVoice);
       }
       localStorage.removeItem('guestMode');
+      guestXPHelper.clear();
       setIsGuest(false);
       setIsAuthenticated(true);
       navigate('/');

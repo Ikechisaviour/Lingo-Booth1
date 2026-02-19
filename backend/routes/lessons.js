@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const Lesson = require('../models/Lesson');
-const { verifyToken, isAdmin } = require('../middleware/auth');
+const { verifyToken, optionalAuth, isAdmin } = require('../middleware/auth');
 
 const VALID_CATEGORIES = ['daily-life', 'business', 'travel', 'greetings', 'food', 'shopping', 'healthcare'];
 const VALID_DIFFICULTIES = ['beginner', 'intermediate', 'advanced', 'sentences'];
 
-// Get all lessons (authenticated users only)
-router.get('/', verifyToken, async (req, res) => {
+// Get all lessons (public — guests and authenticated users)
+router.get('/', optionalAuth, async (req, res) => {
   try {
     const { category, difficulty } = req.query;
     let filter = {};
@@ -27,8 +27,8 @@ router.get('/', verifyToken, async (req, res) => {
   }
 });
 
-// Get single lesson (authenticated users only)
-router.get('/:id', verifyToken, async (req, res) => {
+// Get single lesson (public — guests and authenticated users)
+router.get('/:id', optionalAuth, async (req, res) => {
   try {
     const lesson = await Lesson.findById(req.params.id);
     if (!lesson) {

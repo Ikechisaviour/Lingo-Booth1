@@ -17,6 +17,11 @@
   height: 64px;
 }
 
+/* Challenge Mode — green accent navbar */
+.navbar.challenge-active {
+  border-bottom: 2px solid #58cc02;
+}
+
 /* Brand / Logo */
 .navbar-brand {
   display: flex;
@@ -225,6 +230,15 @@
 .btn-logout:hover {
   background: rgba(255, 75, 75, 0.1);
   color: var(--accent-red);
+}
+
+/* Guest XP display */
+.guest-xp {
+  cursor: default;
+}
+
+.guest-xp .nav-text {
+  color: var(--streak-orange);
 }
 
 /* Auth Button (Login) */

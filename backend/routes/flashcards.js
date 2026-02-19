@@ -1,9 +1,27 @@
 const express = require('express');
 const router = express.Router();
 const Flashcard = require('../models/Flashcard');
+const flashcardData = require('../flashcardData');
 const { verifyToken, isOwner } = require('../middleware/auth');
 
-// All flashcard routes require authentication
+// --- Public routes (no auth required) ---
+
+// Guest flashcards — returns default vocabulary set (read-only)
+router.get('/guest', (req, res) => {
+  const guestCards = flashcardData.map((card, i) => ({
+    _id: `guest-${i}`,
+    korean: card.korean,
+    english: card.english,
+    romanization: card.romanization,
+    category: card.category,
+    masteryLevel: 0,
+    correctCount: 0,
+    incorrectCount: 0,
+  }));
+  res.json(guestCards);
+});
+
+// --- Authenticated routes ---
 router.use(verifyToken);
 
 // Get flashcards for user (only own flashcards or admin)

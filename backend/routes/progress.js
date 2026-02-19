@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const Progress = require('../models/Progress');
+const User = require('../models/User');
+const { getTodayUTC } = require('../utils/dateHelpers');
 const { verifyToken, isOwner } = require('../middleware/auth');
 const { checkInactivityPenalty } = require('../middleware/xpPenalty');
 
@@ -121,6 +123,15 @@ router.post('/', async (req, res) => {
       },
       { new: true, upsert: true }
     );
+
+    // Increment daily high-score lessons quest counter for Challenge Mode users
+    if (score >= 80 && userId) {
+      const today = getTodayUTC();
+      await User.updateOne(
+        { _id: userId, xpDecayEnabled: true, questResetDate: today },
+        { $inc: { dailyHighScoreLessons: 1 } }
+      );
+    }
 
     res.status(201).json(progress);
   } catch (error) {

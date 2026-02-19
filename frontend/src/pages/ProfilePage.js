@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { userService, progressService } from '../services/api';
 import speechService from '../services/speechService';
 import './ProfilePage.css';
@@ -9,7 +9,11 @@ function ProfilePage({ onLogout }) {
   const [progress, setProgress] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [activeTab, setActiveTab] = useState('profile');
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState(() => {
+    const params = new URLSearchParams(location.search);
+    return params.get('tab') || 'profile';
+  });
   const [isEditing, setIsEditing] = useState(false);
   const [editData, setEditData] = useState({ username: '' });
   const [passwordData, setPasswordData] = useState({
@@ -20,6 +24,9 @@ function ProfilePage({ onLogout }) {
   const [saveMessage, setSaveMessage] = useState('');
   const [availableVoices, setAvailableVoices] = useState([]);
   const [selectedVoice, setSelectedVoice] = useState(localStorage.getItem('preferredVoice') || '');
+  const [xpDecayEnabled, setXpDecayEnabled] = useState(false);
+  const [showModeConfirm, setShowModeConfirm] = useState(null); // 'enable' or 'disable'
+  const [modeLoading, setModeLoading] = useState(false);
   const navigate = useNavigate();
 
   const userId = localStorage.getItem('userId');
@@ -54,6 +61,13 @@ function ProfilePage({ onLogout }) {
       setUser(userResponse.data);
       setProgress(progressResponse.data);
       setEditData({ username: userResponse.data.username });
+      const isChallenge = !!userResponse.data.xpDecayEnabled;
+      setXpDecayEnabled(isChallenge);
+      // Sync localStorage & App theme in case session predates the login fix
+      if (localStorage.getItem('xpDecayEnabled') !== String(isChallenge)) {
+        localStorage.setItem('xpDecayEnabled', String(isChallenge));
+        window.dispatchEvent(new CustomEvent('xpModeChanged', { detail: { enabled: isChallenge } }));
+      }
       setError('');
     } catch (err) {
       setError('Failed to load profile');
@@ -118,6 +132,27 @@ function ProfilePage({ onLogout }) {
       setTimeout(() => setSaveMessage(''), 3000);
     } catch (err) {
       console.error('Failed to save voice preference:', err);
+    }
+  };
+
+  const handleModeToggle = async (enable) => {
+    try {
+      setModeLoading(true);
+      const res = await userService.toggleXpDecay(userId, enable);
+      setXpDecayEnabled(res.data.xpDecayEnabled);
+      setUser({ ...user, totalXP: res.data.totalXP, xpDecayEnabled: res.data.xpDecayEnabled });
+      localStorage.setItem('xpDecayEnabled', String(res.data.xpDecayEnabled));
+      // Notify App.js / Navbar about mode change
+      window.dispatchEvent(new CustomEvent('xpModeChanged', { detail: { enabled: res.data.xpDecayEnabled } }));
+      // Notify XP display if XP changed (OFF → ON wipes XP)
+      window.dispatchEvent(new CustomEvent('xpUpdated', { detail: { totalXP: res.data.totalXP } }));
+      setShowModeConfirm(null);
+      setSaveMessage(enable ? 'Challenge Mode enabled! XP has been reset.' : 'Switched to Relaxed Mode. Your XP is preserved.');
+      setTimeout(() => setSaveMessage(''), 4000);
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to change XP mode');
+    } finally {
+      setModeLoading(false);
     }
   };
 
@@ -387,6 +422,101 @@ function ProfilePage({ onLogout }) {
                   </div>
                 )}
               </div>
+
+              {/* XP Mode */}
+              <div className="card">
+                <h2>XP Mode</h2>
+                <p className="voice-description">
+                  Choose how your XP system works. Challenge Mode adds XP decay for inactivity.
+                </p>
+                <div className="xp-mode-selector">
+                  <div
+                    className={`xp-mode-option ${!xpDecayEnabled ? 'active' : ''}`}
+                    onClick={() => xpDecayEnabled && setShowModeConfirm('disable')}
+                  >
+                    <div className="xp-mode-icon">🌿</div>
+                    <div className="xp-mode-info">
+                      <span className="xp-mode-name">Relaxed Mode</span>
+                      <span className="xp-mode-desc">No XP decay. Learn at your own pace.</span>
+                    </div>
+                    {!xpDecayEnabled && <span className="voice-check">&#10003;</span>}
+                  </div>
+                  <div
+                    className={`xp-mode-option challenge ${xpDecayEnabled ? 'active' : ''}`}
+                    onClick={() => !xpDecayEnabled && setShowModeConfirm('enable')}
+                  >
+                    <div className="xp-mode-icon">🔥</div>
+                    <div className="xp-mode-info">
+                      <span className="xp-mode-name">Challenge Mode</span>
+                      <span className="xp-mode-desc">XP decays after 48h of inactivity. Stay sharp!</span>
+                    </div>
+                    {xpDecayEnabled && <span className="voice-check">&#10003;</span>}
+                  </div>
+                </div>
+              </div>
+
+              {/* Mode Confirmation Modal */}
+              {showModeConfirm && (
+                <div className="decay-confirm-overlay" onClick={() => !modeLoading && setShowModeConfirm(null)}>
+                  <div className="decay-confirm-modal" onClick={(e) => e.stopPropagation()}>
+                    {showModeConfirm === 'enable' ? (
+                      <>
+                        <div className="decay-confirm-icon">⚠️</div>
+                        <h3>Switch to Challenge Mode?</h3>
+                        <p className="decay-confirm-warning warning-red">
+                          Switching to Challenge Mode will <strong>reset your XP to 0</strong>. Your learning history
+                          will be preserved, but you'll start earning XP from scratch.
+                        </p>
+                        <p className="decay-confirm-detail">
+                          In Challenge Mode, your XP decays by 15% per day after 48 hours of inactivity.
+                          Only answering questions resets the timer.
+                        </p>
+                        <div className="decay-confirm-actions">
+                          <button
+                            className="btn btn-danger"
+                            onClick={() => handleModeToggle(true)}
+                            disabled={modeLoading}
+                          >
+                            {modeLoading ? 'Switching...' : 'Reset XP & Enable Challenge Mode'}
+                          </button>
+                          <button
+                            className="btn btn-outline"
+                            onClick={() => setShowModeConfirm(null)}
+                            disabled={modeLoading}
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="decay-confirm-icon">💡</div>
+                        <h3>Switch to Relaxed Mode?</h3>
+                        <p className="decay-confirm-warning warning-yellow">
+                          Your current XP will be <strong>preserved</strong> in Relaxed Mode. However, if you switch
+                          back to Challenge Mode in the future, your XP will be wiped to 0.
+                        </p>
+                        <div className="decay-confirm-actions">
+                          <button
+                            className="btn btn-primary"
+                            onClick={() => handleModeToggle(false)}
+                            disabled={modeLoading}
+                          >
+                            {modeLoading ? 'Switching...' : 'Switch to Relaxed Mode'}
+                          </button>
+                          <button
+                            className="btn btn-outline"
+                            onClick={() => setShowModeConfirm(null)}
+                            disabled={modeLoading}
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
           )}
 

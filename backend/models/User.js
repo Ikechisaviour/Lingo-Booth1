@@ -83,6 +83,25 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  xpDecayEnabled: {
+    type: Boolean,
+    default: false,
+  },
+  // === Streak ===
+  currentStreak: { type: Number, default: 0 },
+  longestStreak: { type: Number, default: 0 },
+  lastStudyDate: { type: String, default: null },
+  streakHistory: { type: [Boolean], default: [false, false, false, false, false, false, false] },
+  streakWeekStart: { type: String, default: null },
+  // === Daily Quests ===
+  dailyXpEarned: { type: Number, default: 0 },
+  dailyHighScoreLessons: { type: Number, default: 0 },
+  dailyTimeSpent: { type: Number, default: 0 },
+  questResetDate: { type: String, default: null },
+  dailyQuestXpClaimed: { type: [String], default: [] },
+  // === Weekly Leaderboard ===
+  weeklyXP: { type: Number, default: 0 },
+  weekResetDate: { type: String, default: null },
   rateLimitHits: {
     type: Number,
     default: 0,
@@ -96,5 +115,8 @@ const userSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
+
+// Index for leaderboard queries
+userSchema.index({ xpDecayEnabled: 1, weekResetDate: 1, weeklyXP: -1 });
 
 module.exports = mongoose.model('User', userSchema);

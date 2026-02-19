@@ -316,3 +316,11 @@ input:focus, textarea:focus, select:focus {
 .mb-4 { margin-bottom: 16px; }
 .gap-2 { gap: 8px; }
 .gap-4 { gap: 16px; }
+
+/* ===== Challenge Mode — Green Theme ===== */
+.App.challenge-theme {
+  --primary: #58cc02;
+  --primary-hover: #46a302;
+  --primary-light: rgba(88, 204, 2, 0.1);
+  --primary-dark: #3d8a02;
+}

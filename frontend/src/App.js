@@ -1,5 +1,6 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { guestXPHelper } from './services/api';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import LessonsPage from './pages/LessonsPage';
@@ -28,13 +29,97 @@ function SuspensionListener({ onSuspended }) {
   return null;
 }
 
+function GuestSignupPrompt({ onClose, onGuestExit }) {
+  const navigate = useNavigate();
+  const guestXP = guestXPHelper.get();
+
+  const handleSignUp = () => {
+    onClose();
+    if (onGuestExit) onGuestExit();
+    navigate('/register');
+  };
+
+  const handleLogin = () => {
+    onClose();
+    if (onGuestExit) onGuestExit();
+    navigate('/login');
+  };
+
+  return (
+    <div className="guest-prompt-overlay">
+      <div className="guest-prompt-modal">
+        <button className="guest-prompt-close" onClick={onClose} aria-label="Close">&times;</button>
+        <div className="guest-prompt-icon">🎓</div>
+        <h2>You're doing great!</h2>
+        {guestXP > 0 && (
+          <p className="guest-prompt-xp">You've earned <strong>{guestXP} XP</strong> so far!</p>
+        )}
+        <p className="guest-prompt-message">
+          Create a free account to <strong>save your score</strong> and keep your progress safe. Without an account, your XP will be lost when you leave.
+        </p>
+        <ul className="guest-prompt-benefits">
+          <li>Save your XP and learning progress permanently</li>
+          <li>Track your scores across lessons and flashcards</li>
+          <li>Pick up right where you left off</li>
+          <li>Access your stats and achievements</li>
+        </ul>
+        <div className="guest-prompt-actions">
+          <button className="btn btn-primary guest-prompt-signup" onClick={handleSignUp}>
+            Sign Up Free
+          </button>
+          <button className="btn btn-outline guest-prompt-login" onClick={handleLogin}>
+            Already have an account? Login
+          </button>
+        </div>
+        <button className="guest-prompt-dismiss" onClick={onClose}>
+          Continue as guest
+        </button>
+      </div>
+    </div>
+  );
+}
+
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = React.useState(
+  const [isAuthenticated, setIsAuthenticated] = useState(
     !!localStorage.getItem('token')
   );
-  const [isGuest, setIsGuest] = React.useState(
+  const [isGuest, setIsGuest] = useState(
     localStorage.getItem('guestMode') === 'true'
   );
+  const [challengeMode, setChallengeMode] = useState(
+    localStorage.getItem('xpDecayEnabled') === 'true'
+  );
+  const [showGuestPrompt, setShowGuestPrompt] = useState(false);
+
+  // Guest signup prompt — first after 5 min, then every 30 min
+  useEffect(() => {
+    if (!isGuest) {
+      setShowGuestPrompt(false);
+      return;
+    }
+    let repeatTimer = null;
+    const firstTimer = setTimeout(() => {
+      setShowGuestPrompt(true);
+      repeatTimer = setInterval(() => {
+        setShowGuestPrompt(true);
+      }, 30 * 60 * 1000);
+    }, 5 * 60 * 1000);
+    return () => {
+      clearTimeout(firstTimer);
+      if (repeatTimer) clearInterval(repeatTimer);
+    };
+  }, [isGuest]);
+
+  // Listen for mode changes from ProfilePage
+  useEffect(() => {
+    const handleModeChange = (e) => {
+      const enabled = !!e.detail?.enabled;
+      setChallengeMode(enabled);
+      localStorage.setItem('xpDecayEnabled', String(enabled));
+    };
+    window.addEventListener('xpModeChanged', handleModeChange);
+    return () => window.removeEventListener('xpModeChanged', handleModeChange);
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -42,8 +127,10 @@ function App() {
     localStorage.removeItem('username');
     localStorage.removeItem('userRole');
     localStorage.removeItem('guestMode');
+    localStorage.removeItem('xpDecayEnabled');
     setIsAuthenticated(false);
     setIsGuest(false);
+    setChallengeMode(false);
   };
 
   const handleSuspended = useCallback(() => {
@@ -62,13 +149,20 @@ function App() {
   return (
     <Router>
       <SuspensionListener onSuspended={handleSuspended} />
-      <div className="App">
+      <div className={`App${challengeMode ? ' challenge-theme' : ''}`}>
         {canAccessApp && (
           <Navbar
             onLogout={handleLogout}
             isGuest={isGuest}
             onGuestExit={handleGuestExit}
             userRole={localStorage.getItem('userRole')}
+            challengeMode={challengeMode}
+          />
+        )}
+        {showGuestPrompt && isGuest && (
+          <GuestSignupPrompt
+            onClose={() => setShowGuestPrompt(false)}
+            onGuestExit={handleGuestExit}
           />
         )}
         <Routes>

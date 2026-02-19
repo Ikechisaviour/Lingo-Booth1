@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { flashcardService, progressService, userService } from '../services/api';
+import { flashcardService, progressService, userService, guestXPHelper } from '../services/api';
 import speechService from '../services/speechService';
 import './FlashcardsPage.css';
 
@@ -25,6 +25,7 @@ function FlashcardsPage() {
 
   const navigate = useNavigate();
   const userId = localStorage.getItem('userId');
+  const isGuest = localStorage.getItem('guestMode') === 'true';
   const saveTimerRef = useRef(null);
 
   const saveActivityState = useCallback((index) => {
@@ -45,7 +46,10 @@ function FlashcardsPage() {
 
   // Restore flashcard position from server or show continue prompt for lesson in progress
   useEffect(() => {
-    if (!userId || flashcards.length === 0) return;
+    if (!userId || flashcards.length === 0) {
+      if (flashcards.length > 0) setReadyToSave(true);
+      return;
+    }
     userService.getActivityState(userId).then(res => {
       const state = res.data;
       if (state.activityType === 'flashcard' && state.flashcardIndex > 0) {
@@ -85,7 +89,9 @@ function FlashcardsPage() {
   const fetchFlashcards = async () => {
     try {
       setLoading(true);
-      const response = await flashcardService.getFlashcards(userId);
+      const response = userId
+        ? await flashcardService.getFlashcards(userId)
+        : await flashcardService.getGuestFlashcards();
       setFlashcards(response.data);
       setError('');
     } catch (err) {
@@ -133,19 +139,19 @@ function FlashcardsPage() {
   const handleCorrect = async () => {
     try {
       const flashcard = flashcards[currentIndex];
-      await flashcardService.updateFlashcard(flashcard._id, { isCorrect: true });
 
-      await progressService.recordProgress({
-        userId,
-        skillType: 'reading',
-        category: flashcard.category,
-        score: 80,
-        isCorrect: true,
-      });
-
-      // Award XP for correct flashcard
       if (userId) {
+        await flashcardService.updateFlashcard(flashcard._id, { isCorrect: true });
+        await progressService.recordProgress({
+          userId,
+          skillType: 'reading',
+          category: flashcard.category,
+          score: 80,
+          isCorrect: true,
+        });
         userService.awardXP(userId, { flashcardId: flashcard._id, basePoints: 2 }).catch(() => {});
+      } else if (isGuest) {
+        guestXPHelper.add(1);
       }
 
       const updatedFlashcards = [...flashcards];
@@ -170,15 +176,17 @@ function FlashcardsPage() {
   const handleIncorrect = async () => {
     try {
       const flashcard = flashcards[currentIndex];
-      await flashcardService.updateFlashcard(flashcard._id, { isCorrect: false });
 
-      await progressService.recordProgress({
-        userId,
-        skillType: 'reading',
-        category: flashcard.category,
-        score: 40,
-        isCorrect: false,
-      });
+      if (userId) {
+        await flashcardService.updateFlashcard(flashcard._id, { isCorrect: false });
+        await progressService.recordProgress({
+          userId,
+          skillType: 'reading',
+          category: flashcard.category,
+          score: 40,
+          isCorrect: false,
+        });
+      }
 
       const updatedFlashcards = [...flashcards];
       updatedFlashcards[currentIndex] = {
@@ -270,9 +278,11 @@ function FlashcardsPage() {
             <h1>Practice <span className="text-accent">Flashcards</span></h1>
             <p>Master vocabulary with spaced repetition</p>
           </div>
-          <button className="btn btn-primary" onClick={() => setShowForm(!showForm)}>
-            {showForm ? 'Cancel' : '+ Add Flashcard'}
-          </button>
+          {!isGuest && (
+            <button className="btn btn-primary" onClick={() => setShowForm(!showForm)}>
+              {showForm ? 'Cancel' : '+ Add Flashcard'}
+            </button>
+          )}
         </div>
 
         {/* Display Mode Selector */}
@@ -476,9 +486,11 @@ function FlashcardsPage() {
                 </button>
               </div>
 
-              <button className="btn-delete-card" onClick={() => handleDelete(current._id)}>
-                Delete this card
-              </button>
+              {!isGuest && (
+                <button className="btn-delete-card" onClick={() => handleDelete(current._id)}>
+                  Delete this card
+                </button>
+              )}
             </div>
 
             {/* Sidebar - Card List */}

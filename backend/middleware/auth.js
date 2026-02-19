@@ -35,6 +35,25 @@ const verifyToken = async (req, res, next) => {
   }
 };
 
+// Optional auth — attaches user if token present, but allows guests through
+const optionalAuth = async (req, res, next) => {
+  try {
+    const token = req.header('Authorization')?.replace('Bearer ', '');
+    if (!token) return next(); // No token = guest, allow through
+
+    const decoded = jwt.verify(token, JWT_SECRET);
+    req.userId = decoded.userId;
+
+    const user = await User.findById(decoded.userId).select('-password');
+    if (user && user.status !== 'suspended') {
+      req.user = user;
+    }
+  } catch (_) {
+    // Invalid token — treat as guest
+  }
+  next();
+};
+
 // Check if user is admin
 const isAdmin = (req, res, next) => {
   if (req.user && req.user.role === 'admin') {
@@ -54,4 +73,4 @@ const isOwner = (paramName = 'userId') => (req, res, next) => {
   }
 };
 
-module.exports = { verifyToken, isAdmin, isOwner };
+module.exports = { verifyToken, optionalAuth, isAdmin, isOwner };

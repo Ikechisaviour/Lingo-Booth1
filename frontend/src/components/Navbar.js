@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { userService } from '../services/api';
+import { userService, guestXPHelper } from '../services/api';
 import './Navbar.css';
 
-function Navbar({ onLogout, isGuest, onGuestExit, userRole }) {
+function Navbar({ onLogout, isGuest, onGuestExit, userRole, challengeMode }) {
   const navigate = useNavigate();
   const location = useLocation();
   const username = localStorage.getItem('username');
@@ -11,7 +11,29 @@ function Navbar({ onLogout, isGuest, onGuestExit, userRole }) {
   const [activityState, setActivityState] = useState(null);
   const [totalXP, setTotalXP] = useState(null);
 
-  // Fetch activity state and XP on mount and when location changes
+  // Fetch XP once on mount (subsequent updates via xpUpdated event)
+  useEffect(() => {
+    if (isGuest) {
+      setTotalXP(guestXPHelper.get());
+      return;
+    }
+    if (!userId) return;
+    userService.getProfile(userId).then(res => {
+      if (res.data && res.data.totalXP !== undefined) {
+        setTotalXP(res.data.totalXP);
+      }
+      // Sync challenge mode theme with DB state
+      if (res.data && res.data.xpDecayEnabled !== undefined) {
+        const isChallenge = !!res.data.xpDecayEnabled;
+        if (localStorage.getItem('xpDecayEnabled') !== String(isChallenge)) {
+          localStorage.setItem('xpDecayEnabled', String(isChallenge));
+          window.dispatchEvent(new CustomEvent('xpModeChanged', { detail: { enabled: isChallenge } }));
+        }
+      }
+    }).catch(() => {});
+  }, [userId, isGuest]);
+
+  // Refresh activity state on route changes (lightweight call)
   useEffect(() => {
     if (!userId || isGuest) return;
     userService.getActivityState(userId).then(res => {
@@ -21,15 +43,9 @@ function Navbar({ onLogout, isGuest, onGuestExit, userRole }) {
         setActivityState(null);
       }
     }).catch(() => setActivityState(null));
-
-    userService.getProfile(userId).then(res => {
-      if (res.data && res.data.totalXP !== undefined) {
-        setTotalXP(res.data.totalXP);
-      }
-    }).catch(() => {});
   }, [userId, isGuest, location.pathname]);
 
-  // Listen for XP updates from awardXP calls
+  // Listen for XP updates from awardXP calls and mode changes
   useEffect(() => {
     const handleXpUpdate = (e) => {
       if (e.detail && e.detail.totalXP !== undefined) {
@@ -81,7 +97,7 @@ function Navbar({ onLogout, isGuest, onGuestExit, userRole }) {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <nav className="navbar">
+    <nav className={`navbar${challengeMode ? ' challenge-active' : ''}`}>
       <div className="navbar-container">
         <Link to="/" className="navbar-brand">
           <img src="/images/logo.png" alt="Lingo Booth" className="brand-logo" />
@@ -123,8 +139,17 @@ function Navbar({ onLogout, isGuest, onGuestExit, userRole }) {
             </Link>
           </li>
 
-          {/* Progress / XP - only for authenticated users */}
-          {!isGuest && (
+          {/* Progress / XP */}
+          {isGuest ? (
+            totalXP > 0 && (
+              <li className="nav-item">
+                <span className="nav-link nav-xp guest-xp">
+                  <span className="nav-icon">⭐</span>
+                  <span className="nav-text">{totalXP}<span className="xp-suffix"> XP</span></span>
+                </span>
+              </li>
+            )
+          ) : (
             <li className="nav-item">
               <Link to="/progress" className={`nav-link nav-xp ${isActive('/progress') ? 'active' : ''}`}>
                 <span className="nav-icon">📊</span>

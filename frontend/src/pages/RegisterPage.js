@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { authService } from '../services/api';
+import { authService, guestXPHelper } from '../services/api';
 import './Auth.css';
 
 function RegisterPage({ setIsAuthenticated, setIsGuest }) {
@@ -24,16 +24,20 @@ function RegisterPage({ setIsAuthenticated, setIsGuest }) {
     setLoading(true);
 
     try {
+      const guestXP = guestXPHelper.get();
       const response = await authService.register(
         formData.username,
         formData.email,
-        formData.password
+        formData.password,
+        guestXP
       );
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('userId', response.data.user.id);
       localStorage.setItem('username', response.data.user.username);
       localStorage.setItem('userRole', response.data.user.role || 'user');
+      localStorage.setItem('xpDecayEnabled', 'false');
       localStorage.removeItem('guestMode');
+      guestXPHelper.clear();
       if (setIsGuest) setIsGuest(false);
       setIsAuthenticated(true);
       navigate('/');

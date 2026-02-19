@@ -790,3 +790,8 @@
     height: 32px;
   }
 }
+
+/* Challenge Theme overrides */
+.challenge-theme .user-avatar-sm {
+  background: linear-gradient(135deg, #58cc02 0%, #7ed957 100%);
+}

@@ -757,3 +757,8 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Challenge Theme overrides */
+.challenge-theme .achievement-banner {
+  background: linear-gradient(135deg, #58cc02 0%, #7ed957 100%);
+}

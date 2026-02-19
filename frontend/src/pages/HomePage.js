@@ -9,6 +9,10 @@ function HomePage() {
   const userId = localStorage.getItem('userId');
   const isAdmin = userRole === 'admin';
   const [xpStats, setXpStats] = useState(null);
+  const [gamification, setGamification] = useState(null);
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
+  const [leaderboard, setLeaderboard] = useState([]);
+  const [claimingQuest, setClaimingQuest] = useState(null);
 
   const fetchXpStats = useCallback(async () => {
     if (!userId) return;
@@ -20,11 +24,50 @@ function HomePage() {
     }
   }, [userId]);
 
+  const fetchGamification = useCallback(async () => {
+    if (!userId) return;
+    try {
+      const res = await userService.getGamificationStats(userId);
+      setGamification(res.data);
+    } catch (err) {
+      console.error('Failed to fetch gamification stats:', err);
+    }
+  }, [userId]);
+
   useEffect(() => {
     fetchXpStats();
-    const interval = setInterval(fetchXpStats, 60000);
+    fetchGamification();
+    const interval = setInterval(() => {
+      fetchXpStats();
+      fetchGamification();
+    }, 60000);
     return () => clearInterval(interval);
-  }, [fetchXpStats]);
+  }, [fetchXpStats, fetchGamification]);
+
+  const handleClaimQuest = async (questId) => {
+    if (!userId || claimingQuest) return;
+    setClaimingQuest(questId);
+    try {
+      const res = await userService.claimQuestReward(userId, questId);
+      window.dispatchEvent(new CustomEvent('xpUpdated', { detail: { totalXP: res.data.totalXP } }));
+      await fetchGamification();
+    } catch (err) {
+      console.error('Failed to claim quest:', err);
+    } finally {
+      setClaimingQuest(null);
+    }
+  };
+
+  const handleViewLeaderboard = async () => {
+    if (!userId) return;
+    try {
+      const res = await userService.getLeaderboard(userId);
+      setLeaderboard(res.data);
+      setShowLeaderboard(true);
+    } catch (err) {
+      console.error('Failed to fetch leaderboard:', err);
+    }
+  };
 
   const formatTimeAgo = (dateStr) => {
     if (!dateStr) return 'Never';
@@ -61,11 +104,8 @@ function HomePage() {
     },
   ];
 
-  const dailyQuests = [
-    { icon: '⚡', task: 'Earn 20 XP', progress: 0, total: 20 },
-    { icon: '🎯', task: 'Score 80%+ in 2 lessons', progress: 0, total: 2 },
-    { icon: '⏱️', task: 'Study for 15 minutes', progress: 0, total: 15 },
-  ];
+  const questIcons = { xp: '⚡', lessons: '🎯', time: '⏱️' };
+  const leagueBadges = { bronze: '🥉', silver: '🥈', gold: '🥇', diamond: '💎' };
 
   return (
     <div className="home-container">
@@ -157,84 +197,111 @@ function HomePage() {
 
         {/* Sidebar - Duolingo style gamification */}
         <aside className="sidebar">
-          {/* Streak Card */}
-          <div className="card sidebar-card streak-card">
-            <div className="card-header">
-              <span className="card-icon">🔥</span>
-              <h3>Day Streak</h3>
-            </div>
-            <div className="streak-display">
-              <span className="streak-number">6</span>
-              <span className="streak-label">days</span>
-            </div>
-            <div className="streak-calendar">
-              {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((day, i) => (
-                <div key={i} className={`calendar-day ${i < 6 ? 'active' : ''}`}>
-                  {i < 6 ? '🔥' : day}
+          {/* Gamification Cards — Challenge Mode only */}
+          {gamification && gamification.challengeMode ? (
+            <>
+              {/* Streak Card */}
+              <div className="card sidebar-card streak-card">
+                <div className="card-header">
+                  <span className="card-icon">🔥</span>
+                  <h3>Day Streak</h3>
                 </div>
-              ))}
-            </div>
-          </div>
+                <div className="streak-display">
+                  <span className="streak-number">{gamification.streak.current}</span>
+                  <span className="streak-label">day{gamification.streak.current !== 1 ? 's' : ''}</span>
+                </div>
+                <div className="streak-calendar">
+                  {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((day, i) => (
+                    <div key={i} className={`calendar-day ${gamification.streak.history[i] ? 'active' : ''}`}>
+                      {gamification.streak.history[i] ? '🔥' : day}
+                    </div>
+                  ))}
+                </div>
+              </div>
 
-          {/* Daily Quests Card */}
-          <div className="card sidebar-card quests-card">
-            <div className="card-header">
-              <span className="card-icon">🎯</span>
-              <h3>Daily Quests</h3>
-            </div>
-            <ul className="quests-list">
-              {dailyQuests.map((quest, index) => (
-                <li key={index} className="quest-item">
-                  <span className="quest-icon">{quest.icon}</span>
-                  <div className="quest-info">
-                    <span className="quest-task">{quest.task}</span>
-                    <div className="quest-progress">
-                      <div
-                        className="quest-progress-fill"
-                        style={{ width: `${(quest.progress / quest.total) * 100}%` }}
-                      ></div>
+              {/* Daily Quests Card */}
+              <div className="card sidebar-card quests-card">
+                <div className="card-header">
+                  <span className="card-icon">🎯</span>
+                  <h3>Daily Quests</h3>
+                </div>
+                <ul className="quests-list">
+                  {gamification.quests.map((quest) => (
+                    <li key={quest.id} className={`quest-item ${quest.completed ? 'completed' : ''}`}>
+                      <span className="quest-icon">{questIcons[quest.id]}</span>
+                      <div className="quest-info">
+                        <span className="quest-task">{quest.task}</span>
+                        <div className="quest-progress">
+                          <div
+                            className="quest-progress-fill"
+                            style={{ width: `${(quest.progress / quest.total) * 100}%` }}
+                          ></div>
+                        </div>
+                      </div>
+                      {quest.claimed ? (
+                        <span className="quest-claimed">✓</span>
+                      ) : quest.completed ? (
+                        <button
+                          className="btn-claim"
+                          onClick={() => handleClaimQuest(quest.id)}
+                          disabled={claimingQuest === quest.id}
+                        >
+                          +{quest.bonusXP} XP
+                        </button>
+                      ) : (
+                        <span className="quest-count">{quest.progress}/{quest.total}</span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* League Card */}
+              <div className="card sidebar-card league-card">
+                <div className="card-header">
+                  <span className="card-icon">🏆</span>
+                  <h3>{gamification.league.name} League</h3>
+                </div>
+                <div className="league-info">
+                  <div className="league-rank">
+                    <span className="rank-badge">{leagueBadges[gamification.league.badge]}</span>
+                    <div className="rank-details">
+                      <span className="rank-position">#{gamification.league.rank}</span>
+                      <span className="rank-label">Your rank</span>
                     </div>
                   </div>
-                  <span className="quest-count">{quest.progress}/{quest.total}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* League Card */}
-          <div className="card sidebar-card league-card">
-            <div className="card-header">
-              <span className="card-icon">🏆</span>
-              <h3>Gold League</h3>
-            </div>
-            <div className="league-info">
-              <div className="league-rank">
-                <span className="rank-badge">🥇</span>
-                <div className="rank-details">
-                  <span className="rank-position">#9</span>
-                  <span className="rank-label">Your rank</span>
+                  <div className="league-xp">
+                    <span className="xp-value">{gamification.league.weeklyXP} XP</span>
+                    <span className="xp-label">this week</span>
+                  </div>
                 </div>
+                <button className="btn btn-outline btn-sm" style={{ width: '100%' }} onClick={handleViewLeaderboard}>
+                  View League
+                </button>
               </div>
-              <div className="league-xp">
-                <span className="xp-value">127 XP</span>
-                <span className="xp-label">this week</span>
-              </div>
+            </>
+          ) : gamification && !gamification.challengeMode && userId ? (
+            /* Teaser Card — Relaxed Mode users */
+            <div className="card sidebar-card teaser-card">
+              <div className="teaser-lock">🔒</div>
+              <h3>Unlock Streaks, Quests & Leagues</h3>
+              <p>Enable Challenge Mode to track your streak, complete daily quests, and compete on the leaderboard!</p>
+              <button className="btn btn-primary btn-sm" style={{ width: '100%' }} onClick={() => navigate('/profile?tab=settings')}>
+                Enable Challenge Mode
+              </button>
             </div>
-            <button className="btn btn-outline btn-sm" style={{ width: '100%' }}>
-              View League
-            </button>
-          </div>
+          ) : null}
 
           {/* XP Tracker Card */}
           {xpStats && (
             <div className={`card sidebar-card xp-tracker-card ${xpStats.status}`}>
               <div className="card-header">
                 <span className="card-icon">
-                  {xpStats.status === 'decaying' ? '📉' : xpStats.status === 'grace' ? '⏳' : '✨'}
+                  {xpStats.status === 'off' ? '🌿' : xpStats.status === 'decaying' ? '📉' : xpStats.status === 'grace' ? '⏳' : '✨'}
                 </span>
                 <h3>XP Tracker</h3>
                 <span className={`xp-status-badge ${xpStats.status}`}>
-                  {xpStats.status === 'decaying' ? 'Decaying' : xpStats.status === 'grace' ? 'Grace Period' : 'Safe'}
+                  {xpStats.status === 'off' ? 'Relaxed' : xpStats.status === 'decaying' ? 'Decaying' : xpStats.status === 'grace' ? 'Intense' : 'Safe'}
                 </span>
               </div>
 
@@ -248,7 +315,7 @@ function HomePage() {
                   <span className="xp-detail-label">Last answered</span>
                   <span className="xp-detail-value">{formatTimeAgo(xpStats.lastAnsweredAt)}</span>
                 </div>
-                {xpStats.status !== 'safe' && (
+                {xpStats.status !== 'safe' && xpStats.status !== 'off' && (
                   <>
                     <div className="xp-detail-row">
                       <span className="xp-detail-label">
@@ -265,34 +332,6 @@ function HomePage() {
                   </>
                 )}
               </div>
-
-              {xpStats.projections.length > 0 && xpStats.status !== 'safe' && (
-                <div className="xp-projection-chart">
-                  <div className="xp-projection-header">
-                    <span className="xp-projection-title">30-day projection</span>
-                  </div>
-                  <div className="xp-projection-bars">
-                    {xpStats.projections
-                      .filter((_, i) => i % 3 === 0 || i === 29)
-                      .map((p) => {
-                        const maxXP = xpStats.totalXP || 1;
-                        const height = Math.max(2, (p.xp / maxXP) * 100);
-                        return (
-                          <div key={p.day} className="xp-bar-group">
-                            <div className="xp-bar-container">
-                              <div
-                                className="xp-bar"
-                                style={{ height: `${height}%` }}
-                                title={`Day ${p.day}: ${p.xp} XP`}
-                              ></div>
-                            </div>
-                            <span className="xp-bar-label">{p.day}d</span>
-                          </div>
-                        );
-                      })}
-                  </div>
-                </div>
-              )}
 
               {xpStats.status === 'decaying' && (
                 <div className="xp-tracker-warning">
@@ -341,6 +380,32 @@ function HomePage() {
           )}
         </aside>
       </div>
+
+      {/* Leaderboard Modal */}
+      {showLeaderboard && (
+        <div className="leaderboard-overlay" onClick={() => setShowLeaderboard(false)}>
+          <div className="leaderboard-modal" onClick={(e) => e.stopPropagation()}>
+            <button className="leaderboard-close" onClick={() => setShowLeaderboard(false)}>&times;</button>
+            <h2>Weekly Leaderboard</h2>
+            <p className="leaderboard-subtitle">Top Challenge Mode learners this week</p>
+            {leaderboard.length === 0 ? (
+              <p className="leaderboard-empty">No activity this week yet. Be the first!</p>
+            ) : (
+              <div className="leaderboard-list">
+                {leaderboard.map((entry) => (
+                  <div key={entry.rank} className={`leaderboard-entry ${entry.isCurrentUser ? 'current-user' : ''}`}>
+                    <span className="lb-rank">
+                      {entry.rank === 1 ? '🥇' : entry.rank === 2 ? '🥈' : entry.rank === 3 ? '🥉' : `#${entry.rank}`}
+                    </span>
+                    <span className="lb-username">{entry.username}{entry.isCurrentUser ? ' (You)' : ''}</span>
+                    <span className="lb-xp">{entry.weeklyXP} XP</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

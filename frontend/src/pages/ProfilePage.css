@@ -371,6 +371,143 @@
   font-weight: 700;
 }
 
+/* XP Mode Selector */
+.xp-mode-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.xp-mode-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: var(--bg-secondary);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.xp-mode-option:hover {
+  background: var(--border-light);
+}
+
+.xp-mode-option.active {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+.xp-mode-option.challenge.active {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+.xp-mode-icon {
+  font-size: 1.75rem;
+  flex-shrink: 0;
+}
+
+.xp-mode-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.xp-mode-name {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.xp-mode-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* Mode Confirmation Modal */
+.decay-confirm-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+.decay-confirm-modal {
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 32px;
+  max-width: 440px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.decay-confirm-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.decay-confirm-modal h3 {
+  font-size: 1.25rem;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+.decay-confirm-warning {
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.decay-confirm-warning.warning-red {
+  background: rgba(255, 75, 75, 0.1);
+  color: var(--accent-red);
+  border: 1px solid rgba(255, 75, 75, 0.2);
+}
+
+.decay-confirm-warning.warning-yellow {
+  background: rgba(255, 193, 7, 0.12);
+  color: #b8860b;
+  border: 1px solid rgba(255, 193, 7, 0.25);
+}
+
+.decay-confirm-detail {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.decay-confirm-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.decay-confirm-actions .btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 0.95rem;
+}
+
 /* Account Section */
 .account-section {
   display: grid;
@@ -477,4 +614,9 @@
   .tab-btn .tab-icon + span {
     display: none;
   }
+}
+
+/* Challenge Theme overrides */
+.challenge-theme .profile-avatar {
+  background: linear-gradient(135deg, #58cc02 0%, #7ed957 100%);
 }

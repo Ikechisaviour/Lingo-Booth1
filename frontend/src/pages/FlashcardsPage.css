@@ -466,3 +466,9 @@
     gap: 10px;
   }
 }
+
+/* Challenge Theme overrides */
+.challenge-theme .flashcard-face.front {
+  background: linear-gradient(135deg, #58cc02 0%, #7ed957 100%);
+  box-shadow: 0 8px 0 #3d8a02, 0 16px 40px rgba(88, 204, 2, 0.2);
+}

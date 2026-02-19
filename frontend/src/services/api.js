@@ -4,6 +4,7 @@ const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5002/api';
 
 const api = axios.create({
   baseURL: API_URL,
+  timeout: 15000, // 15-second timeout to avoid hanging requests
 });
 
 api.interceptors.request.use((config) => {
@@ -14,10 +15,25 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// Detect mid-session suspension: when a logged-in user's API call returns 403 "Account suspended"
+// Retry logic for network errors and 5xx server errors
 api.interceptors.response.use(
   (response) => response,
-  (error) => {
+  async (error) => {
+    const config = error.config;
+    // Only retry GET requests, max 2 retries
+    if (
+      config &&
+      !config._retryCount &&
+      config.method === 'get' &&
+      (!error.response || error.response.status >= 500)
+    ) {
+      config._retryCount = (config._retryCount || 0) + 1;
+      if (config._retryCount <= 2) {
+        await new Promise((r) => setTimeout(r, config._retryCount * 500));
+        return api(config);
+      }
+    }
+    // Detect mid-session suspension
     if (
       error.response?.status === 403 &&
       error.response?.data?.message === 'Account suspended' &&
@@ -34,11 +50,24 @@ api.interceptors.response.use(
   }
 );
 
+// Guest XP helpers — stored in localStorage, transferred on signup/login
+export const guestXPHelper = {
+  get: () => parseInt(localStorage.getItem('guestXP') || '0', 10),
+  add: (points = 1) => {
+    const current = parseInt(localStorage.getItem('guestXP') || '0', 10);
+    const updated = current + points;
+    localStorage.setItem('guestXP', String(updated));
+    window.dispatchEvent(new CustomEvent('xpUpdated', { detail: { totalXP: updated, isGuest: true } }));
+    return updated;
+  },
+  clear: () => localStorage.removeItem('guestXP'),
+};
+
 export const authService = {
-  register: (username, email, password) =>
-    api.post('/auth/register', { username, email, password }),
-  login: (email, password) =>
-    api.post('/auth/login', { email, password }),
+  register: (username, email, password, guestXP) =>
+    api.post('/auth/register', { username, email, password, guestXP }),
+  login: (email, password, guestXP) =>
+    api.post('/auth/login', { email, password, guestXP }),
   trackActivity: (userId, timeSpent) =>
     api.post('/auth/activity', { userId, timeSpent }),
 };
@@ -55,6 +84,8 @@ export const lessonService = {
 export const flashcardService = {
   getFlashcards: (userId) =>
     api.get(`/flashcards/user/${userId}`),
+  getGuestFlashcards: () =>
+    api.get('/flashcards/guest'),
   createFlashcard: (flashcardData) =>
     api.post('/flashcards', flashcardData),
   updateFlashcard: (id, data) =>
@@ -98,6 +129,14 @@ export const userService = {
     api.post(`/users/${userId}/reset-xp`),
   getXpStats: (userId) =>
     api.get(`/users/${userId}/xp-stats`),
+  toggleXpDecay: (userId, enabled) =>
+    api.put(`/users/${userId}/xp-decay-mode`, { enabled }),
+  getGamificationStats: (userId) =>
+    api.get(`/users/${userId}/gamification-stats`),
+  claimQuestReward: (userId, questId) =>
+    api.post(`/users/${userId}/claim-quest-reward`, { questId }),
+  getLeaderboard: (userId) =>
+    api.get(`/users/${userId}/leaderboard`),
 };
 
 export const adminService = {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { lessonService, progressService, userService } from '../services/api';
+import { lessonService, progressService, userService, guestXPHelper } from '../services/api';
 import speechService from '../services/speechService';
 import './LessonDetail.css';
 
@@ -366,6 +366,8 @@ function LessonDetail() {
       if (userId && lesson?.difficulty) {
         const points = xpPointsMap[lesson.difficulty] || 2;
         userService.awardXP(userId, { lessonId: id, contentIndex: currentIndex, basePoints: points }).catch(() => {});
+      } else if (!userId) {
+        guestXPHelper.add(1);
       }
     } else {
       // Wrong answer triggers same 24-hour cooldown as translation peek

@@ -9,7 +9,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 // Register
 router.post('/register', async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    const { username, email, password, guestXP } = req.body;
 
     if (!username || !email || !password) {
       return res.status(400).json({ message: 'All fields are required' });
@@ -24,10 +24,14 @@ router.post('/register', async (req, res) => {
       return res.status(400).json({ message: 'User already exists' });
     }
 
+    // New accounts default to decay off, so guest XP can be applied
+    const transferXP = (typeof guestXP === 'number' && guestXP > 0) ? Math.floor(guestXP) : 0;
+
     user = new User({
       username,
       email,
       password,
+      totalXP: transferXP,
       loginCount: 1,
       lastLogin: new Date(),
       lastActive: new Date(),
@@ -53,6 +57,7 @@ router.post('/register', async (req, res) => {
         role: user.role,
         status: user.status,
       },
+      guestXPTransferred: transferXP,
     });
   } catch (error) {
     console.error('Registration error:', error);
@@ -63,7 +68,7 @@ router.post('/register', async (req, res) => {
 // Login
 router.post('/login', async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password, guestXP } = req.body;
 
     if (!email || !password) {
       return res.status(400).json({ message: 'Email and password are required' });
@@ -87,6 +92,13 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
+    // Transfer guest XP only if decay is off (Relaxed Mode)
+    let guestXPTransferred = 0;
+    if (typeof guestXP === 'number' && guestXP > 0 && !user.xpDecayEnabled) {
+      guestXPTransferred = Math.floor(guestXP);
+      user.totalXP = (user.totalXP || 0) + guestXPTransferred;
+    }
+
     // Update login tracking
     user.loginCount = (user.loginCount || 0) + 1;
     user.lastLogin = new Date();
@@ -108,7 +120,9 @@ router.post('/login', async (req, res) => {
         role: user.role,
         status: user.status,
         preferredVoice: user.preferredVoice,
+        xpDecayEnabled: !!user.xpDecayEnabled,
       },
+      guestXPTransferred,
     });
   } catch (error) {
     console.error('Login error:', error);
@@ -133,6 +147,10 @@ router.post('/activity', async (req, res) => {
     user.lastActive = new Date();
     if (timeSpent && typeof timeSpent === 'number' && timeSpent > 0) {
       user.totalTimeSpent = (user.totalTimeSpent || 0) + timeSpent;
+      // Track daily time spent for Challenge Mode quests
+      if (user.xpDecayEnabled) {
+        user.dailyTimeSpent = (user.dailyTimeSpent || 0) + timeSpent;
+      }
     }
     await user.save();
 
