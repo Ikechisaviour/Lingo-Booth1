@@ -1,18 +1,21 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { userService } from '../services/api';
+import { userService, lessonService } from '../services/api';
 import './HomePage.css';
 
 function HomePage() {
   const navigate = useNavigate();
   const userRole = localStorage.getItem('userRole');
   const userId = localStorage.getItem('userId');
+  const username = localStorage.getItem('username');
   const isAdmin = userRole === 'admin';
+  const isGuest = localStorage.getItem('guestMode') === 'true';
   const [xpStats, setXpStats] = useState(null);
   const [gamification, setGamification] = useState(null);
   const [showLeaderboard, setShowLeaderboard] = useState(false);
   const [leaderboard, setLeaderboard] = useState([]);
   const [claimingQuest, setClaimingQuest] = useState(null);
+  const [lastActivity, setLastActivity] = useState(null);
 
   const fetchXpStats = useCallback(async () => {
     if (!userId) return;
@@ -37,12 +40,30 @@ function HomePage() {
   useEffect(() => {
     fetchXpStats();
     fetchGamification();
+    if (userId) {
+      userService.getActivityState(userId).then(res => {
+        const state = res.data;
+        if (state.activityType === 'lesson' && state.lesson) {
+          setLastActivity({
+            type: 'lesson',
+            title: state.lesson.title || 'Untitled Lesson',
+            lessonId: state.lesson._id,
+            index: state.lessonIndex || 0,
+          });
+        } else if (state.activityType === 'flashcard' && state.flashcardIndex > 0) {
+          setLastActivity({
+            type: 'flashcard',
+            index: state.flashcardIndex,
+          });
+        }
+      }).catch(() => {});
+    }
     const interval = setInterval(() => {
       fetchXpStats();
       fetchGamification();
     }, 60000);
     return () => clearInterval(interval);
-  }, [fetchXpStats, fetchGamification]);
+  }, [fetchXpStats, fetchGamification, userId]);
 
   const handleClaimQuest = async (questId) => {
     if (!userId || claimingQuest) return;
@@ -80,119 +101,119 @@ function HomePage() {
     return `${mins}m ago`;
   };
 
-  const features = [
-    {
-      icon: '📚',
-      title: 'Lessons',
-      description: 'Structured lessons with audio pronunciation for real conversations',
-      color: '#58cc02',
-      action: () => navigate('/lessons'),
-    },
-    {
-      icon: '🎴',
-      title: 'Flashcards',
-      description: 'Master vocabulary with spaced repetition learning',
-      color: '#1cb0f6',
-      action: () => navigate('/flashcards'),
-    },
-    {
-      icon: '📊',
-      title: 'Progress',
-      description: 'Track your skills in Listening, Speaking, Reading & Writing',
-      color: '#a560e8',
-      action: () => navigate('/progress'),
-    },
-  ];
+  const isReturningUser = userId && (lastActivity || xpStats);
 
   const questIcons = { xp: '⚡', lessons: '🎯', time: '⏱️' };
   const leagueBadges = { bronze: '🥉', silver: '🥈', gold: '🥇', diamond: '💎' };
+
+  const handleContinue = () => {
+    if (!lastActivity) return;
+    if (lastActivity.type === 'lesson') {
+      navigate(`/lessons/${lastActivity.lessonId}`);
+    } else {
+      navigate('/flashcards');
+    }
+  };
+
+  const handleStartLearning = async () => {
+    try {
+      const res = await lessonService.getLessons();
+      const lessons = res.data;
+      if (!lessons.length) { navigate('/lessons'); return; }
+      const diffOrder = ['beginner', 'intermediate', 'advanced', 'sentences'];
+      const catOrder = ['daily-life', 'business', 'travel', 'greetings', 'food', 'shopping', 'healthcare'];
+      const sorted = [...lessons].sort((a, b) => {
+        const dd = diffOrder.indexOf(a.difficulty) - diffOrder.indexOf(b.difficulty);
+        if (dd !== 0) return dd;
+        return catOrder.indexOf(a.category) - catOrder.indexOf(b.category);
+      });
+      const ids = sorted.map(l => l._id);
+      sessionStorage.setItem('lessonPlaylist', JSON.stringify({
+        type: 'start-all',
+        lessonIds: ids,
+        currentIndex: 0,
+        totalCount: ids.length,
+      }));
+      navigate(`/lessons/${ids[0]}`);
+    } catch {
+      navigate('/lessons');
+    }
+  };
 
   return (
     <div className="home-container">
       <div className="container home-layout">
         {/* Main Content */}
         <main className="main-content">
-          {/* Hero Section - Babbel style */}
+          {/* Hero Section */}
           <section className="hero-section">
             <div className="hero-content">
-              <h1>
-                Which <span className="text-accent">Korean</span> skill do you want to learn?
-              </h1>
-              <p className="hero-subtitle">
-                Personalized lessons, interactive flashcards, and progress tracking — designed for real conversations.
-              </p>
-              <div className="hero-actions">
-                <button className="btn btn-primary btn-lg" onClick={() => navigate('/lessons')}>
-                  Start learning
-                </button>
-                <button className="btn btn-outline btn-lg" onClick={() => navigate('/flashcards')}>
-                  Practice flashcards
-                </button>
-              </div>
-            </div>
-            <div className="hero-visual">
-              <div className="hero-card">
-                <div className="hero-card-icon">🇰🇷</div>
-                <span className="hero-card-text">한국어</span>
-              </div>
-            </div>
-          </section>
-
-          {/* Quick Stats Banner */}
-          <section className="stats-banner">
-            <div className="stat-pill">
-              <span className="stat-icon">🎓</span>
-              <span>Over <strong>50+ lessons</strong> available</span>
-            </div>
-          </section>
-
-          {/* Features Grid - Babbel card style */}
-          <section className="features-section">
-            <h2>The effective way to learn <span className="text-accent">Korean</span> online</h2>
-            <div className="features-grid">
-              {features.map((feature, index) => (
-                <div
-                  key={index}
-                  className="feature-card"
-                  onClick={feature.action}
-                  style={{ '--accent-color': feature.color }}
-                >
-                  <div className="feature-icon-wrapper">
-                    <span className="feature-icon">{feature.icon}</span>
+              {isReturningUser ? (
+                <>
+                  <h1>
+                    Welcome back{username ? `, ${username}` : ''}
+                  </h1>
+                  <p className="hero-subtitle">
+                    {lastActivity
+                      ? lastActivity.type === 'lesson'
+                        ? `You were studying "${lastActivity.title}".`
+                        : 'You were practicing flashcards.'
+                      : 'Ready for your next session?'}
+                  </p>
+                  {lastActivity && (
+                    <div className="hero-actions">
+                      <button className="btn btn-primary btn-lg" onClick={handleContinue}>
+                        Continue {lastActivity.type === 'lesson' ? 'Lesson' : 'Flashcards'} →
+                      </button>
+                    </div>
+                  )}
+                </>
+              ) : (
+                <>
+                  <h1>
+                    Learn <span className="text-accent">Korean</span> for real conversations
+                  </h1>
+                  <p className="hero-subtitle">
+                    Structured lessons, interactive flashcards, and progress tracking — all with native audio.
+                  </p>
+                  <div className="hero-actions">
+                    <button className="btn btn-primary btn-lg" onClick={isGuest ? handleStartLearning : () => navigate('/register')}>
+                      {isGuest ? 'Start learning' : 'Get started free'}
+                    </button>
                   </div>
-                  <h3>{feature.title}</h3>
-                  <p>{feature.description}</p>
-                  <span className="feature-arrow">→</span>
-                </div>
-              ))}
+                </>
+              )}
             </div>
           </section>
 
-          {/* Learning Path Preview */}
-          <section className="path-preview">
-            <h2>Your learning <span className="text-accent">path</span></h2>
-            <div className="path-container">
-              <div className="path-node completed">
-                <div className="node-circle">✓</div>
-                <span className="node-label">Greetings</span>
+          {/* Quick Actions */}
+          <section className="quick-actions">
+            <div className="quick-action" onClick={() => navigate('/lessons')}>
+              <span className="quick-action-icon">📚</span>
+              <div className="quick-action-text">
+                <strong>Lessons</strong>
+                <span>Audio-based conversations</span>
               </div>
-              <div className="path-line"></div>
-              <div className="path-node current">
-                <div className="node-circle pulse">📖</div>
-                <span className="node-label">Daily Life</span>
+              <span className="quick-action-arrow">→</span>
+            </div>
+            <div className="quick-action" onClick={() => navigate('/flashcards')}>
+              <span className="quick-action-icon">🎴</span>
+              <div className="quick-action-text">
+                <strong>Flashcards</strong>
+                <span>Vocabulary practice</span>
               </div>
-              <div className="path-line inactive"></div>
-              <div className="path-node locked">
-                <div className="node-circle">🔒</div>
-                <span className="node-label">Travel</span>
+              <span className="quick-action-arrow">→</span>
+            </div>
+            <div className="quick-action" onClick={() => navigate('/progress')}>
+              <span className="quick-action-icon">📊</span>
+              <div className="quick-action-text">
+                <strong>Progress</strong>
+                <span>Track your skills</span>
               </div>
-              <div className="path-line inactive"></div>
-              <div className="path-node locked">
-                <div className="node-circle">🔒</div>
-                <span className="node-label">Business</span>
-              </div>
+              <span className="quick-action-arrow">→</span>
             </div>
           </section>
+
         </main>
 
         {/* Sidebar - Duolingo style gamification */}
@@ -301,7 +322,7 @@ function HomePage() {
                 </span>
                 <h3>XP Tracker</h3>
                 <span className={`xp-status-badge ${xpStats.status}`}>
-                  {xpStats.status === 'off' ? 'Relaxed' : xpStats.status === 'decaying' ? 'Decaying' : xpStats.status === 'grace' ? 'Intense' : 'Safe'}
+                  {xpStats.status === 'off' ? 'RELAXED' : 'INTENSE'}
                 </span>
               </div>
 
@@ -340,16 +361,6 @@ function HomePage() {
               )}
             </div>
           )}
-
-          {/* Pro Promo Card */}
-          <div className="card sidebar-card promo-card">
-            <div className="promo-badge">PRO</div>
-            <h3>Try Lingo Booth Pro</h3>
-            <p>No ads, unlimited practice, and personalized learning!</p>
-            <button className="btn btn-primary btn-sm" style={{ width: '100%' }}>
-              Try 1 Week Free
-            </button>
-          </div>
 
           {/* Admin Card - Only visible to admins */}
           {isAdmin && (

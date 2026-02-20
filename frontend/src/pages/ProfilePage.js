@@ -36,19 +36,15 @@ function ProfilePage({ onLogout }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Load available Korean voices
+  // Load available Korean voices from Edge TTS
   useEffect(() => {
-    const loadVoices = () => {
-      const koreanVoices = speechService.getKoreanVoices();
+    const loadVoices = async () => {
+      const koreanVoices = await speechService.getKoreanVoices();
       if (koreanVoices.length > 0) {
         setAvailableVoices(koreanVoices);
       }
     };
     loadVoices();
-    // Voices may load asynchronously
-    if (window.speechSynthesis.onvoiceschanged !== undefined) {
-      window.speechSynthesis.onvoiceschanged = loadVoices;
-    }
   }, []);
 
   const fetchUserData = async () => {
@@ -396,8 +392,8 @@ function ProfilePage({ onLogout }) {
                         onClick={() => handleVoiceChange(voice.name)}
                       >
                         <div className="voice-option-info">
-                          <span className="voice-option-name">{voice.name}</span>
-                          <span className="voice-option-lang">{voice.lang}</span>
+                          <span className="voice-option-name">{voice.displayName || voice.name}</span>
+                          <span className="voice-option-lang">{voice.lang}{voice.gender ? ` · ${voice.gender}` : ''}</span>
                         </div>
                         <button
                           className="voice-preview-btn"

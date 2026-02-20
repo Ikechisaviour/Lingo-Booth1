@@ -139,6 +139,13 @@ export const userService = {
     api.get(`/users/${userId}/leaderboard`),
 };
 
+export const ttsService = {
+  speak: (text, lang, voice, rate) =>
+    api.post('/tts', { text, lang, voice, rate }, { responseType: 'blob' }),
+  getVoices: (lang) =>
+    api.get('/tts/voices', { params: lang ? { lang } : {} }),
+};
+
 export const adminService = {
   getStats: () =>
     api.get('/admin/stats'),

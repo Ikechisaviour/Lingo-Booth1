@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { lessonService, progressService } from '../services/api';
 import './LessonsPage.css';
 
@@ -9,8 +9,16 @@ function LessonsPage() {
   const [error, setError] = useState('');
   const [filter, setFilter] = useState({ category: '', difficulty: '' });
   const [progressMap, setProgressMap] = useState({});
+  const [customizeMode, setCustomizeMode] = useState(false);
+  const [selectedLessons, setSelectedLessons] = useState([]);
 
+  const navigate = useNavigate();
   const userId = localStorage.getItem('userId');
+
+  // Clear any active playlist when arriving on LessonsPage
+  useEffect(() => {
+    sessionStorage.removeItem('lessonPlaylist');
+  }, []);
 
   useEffect(() => {
     fetchLessons();
@@ -80,6 +88,64 @@ function LessonsPage() {
     return diff ? diff.color : '#58cc02';
   };
 
+  const difficultyOrder = ['beginner', 'intermediate', 'advanced', 'sentences'];
+  const categoryOrder = ['daily-life', 'business', 'travel', 'greetings', 'food', 'shopping', 'healthcare'];
+
+  const buildStartAllPlaylist = (lessonList) => {
+    const sorted = [...lessonList].sort((a, b) => {
+      const diffA = difficultyOrder.indexOf(a.difficulty);
+      const diffB = difficultyOrder.indexOf(b.difficulty);
+      if (diffA !== diffB) return diffA - diffB;
+      const catA = categoryOrder.indexOf(a.category);
+      const catB = categoryOrder.indexOf(b.category);
+      return catA - catB;
+    });
+    return sorted.map(l => l._id);
+  };
+
+  const handleStartAll = () => {
+    const ids = buildStartAllPlaylist(lessons);
+    if (ids.length === 0) return;
+    const playlist = {
+      type: 'start-all',
+      lessonIds: ids,
+      currentIndex: 0,
+      totalCount: ids.length,
+    };
+    sessionStorage.setItem('lessonPlaylist', JSON.stringify(playlist));
+    navigate(`/lessons/${ids[0]}`);
+  };
+
+  const handleToggleCustomize = () => {
+    if (customizeMode) {
+      setSelectedLessons([]);
+    }
+    setCustomizeMode(!customizeMode);
+  };
+
+  const handleCardClick = (e, lessonId) => {
+    if (!customizeMode) return;
+    e.preventDefault();
+    setSelectedLessons(prev => {
+      if (prev.includes(lessonId)) {
+        return prev.filter(id => id !== lessonId);
+      }
+      return [...prev, lessonId];
+    });
+  };
+
+  const handleStartCustom = () => {
+    if (selectedLessons.length === 0) return;
+    const playlist = {
+      type: 'custom',
+      lessonIds: selectedLessons,
+      currentIndex: 0,
+      totalCount: selectedLessons.length,
+    };
+    sessionStorage.setItem('lessonPlaylist', JSON.stringify(playlist));
+    navigate(`/lessons/${selectedLessons[0]}`);
+  };
+
   return (
     <div className="lessons-container">
       <div className="container">
@@ -143,6 +209,51 @@ function LessonsPage() {
 
         {error && <div className="error">{error}</div>}
 
+        {/* Start All Banner - shown when both filters are "All" and not in customize mode */}
+        {!loading && lessons.length > 0 && filter.category === '' && filter.difficulty === '' && !customizeMode && (
+          <div className="playlist-action-bar">
+            <div className="playlist-action-info">
+              <span className="playlist-action-icon">🎯</span>
+              <div>
+                <strong>Study All {lessons.length} Lessons</strong>
+                <p>Beginner → Intermediate → Advanced → Sentences, across all categories</p>
+              </div>
+            </div>
+            <button className="btn btn-primary playlist-start-btn" onClick={handleStartAll}>
+              Start All →
+            </button>
+          </div>
+        )}
+
+        {/* Customize Path Toolbar */}
+        {!loading && lessons.length > 0 && (
+          <div className="customize-toolbar">
+            <button
+              className={`btn ${customizeMode ? 'btn-active' : 'btn-outline'} customize-toggle-btn`}
+              onClick={handleToggleCustomize}
+            >
+              {customizeMode ? '✕ Exit Customize' : '✏️ Customize Path'}
+            </button>
+            {customizeMode && (
+              <>
+                {selectedLessons.length > 0 && (
+                  <button className="btn btn-primary playlist-start-btn" onClick={handleStartCustom}>
+                    Start Custom Path ({selectedLessons.length} lessons) →
+                  </button>
+                )}
+                {selectedLessons.length > 0 && (
+                  <button className="btn btn-outline" onClick={() => setSelectedLessons([])}>
+                    Clear Selection
+                  </button>
+                )}
+                {selectedLessons.length === 0 && (
+                  <span className="customize-hint">Click cards to select lessons in your desired order</span>
+                )}
+              </>
+            )}
+          </div>
+        )}
+
         {loading ? (
           <div className="loading">Loading lessons...</div>
         ) : lessons.length === 0 ? (
@@ -159,51 +270,63 @@ function LessonsPage() {
           </div>
         ) : (
           <div className="lessons-grid">
-            {lessons.map((lesson, index) => (
-              <Link to={`/lessons/${lesson._id}`} key={lesson._id} className="lesson-card">
-                <div className="card-header-row">
-                  <div
-                    className="lesson-icon"
-                    style={{ background: `${getDifficultyColor(lesson.difficulty)}20` }}
-                  >
-                    <span>{getCategoryIcon(lesson.category)}</span>
+            {lessons.map((lesson, index) => {
+              const selIdx = selectedLessons.indexOf(lesson._id);
+              const isSelected = selIdx !== -1;
+              return (
+                <Link
+                  to={`/lessons/${lesson._id}`}
+                  key={lesson._id}
+                  className={`lesson-card${customizeMode && isSelected ? ' selected' : ''}`}
+                  onClick={(e) => handleCardClick(e, lesson._id)}
+                >
+                  {customizeMode && isSelected && (
+                    <span className="selection-badge">{selIdx + 1}</span>
+                  )}
+                  <div className="card-header-row">
+                    <div
+                      className="lesson-icon"
+                      style={{ background: `${getDifficultyColor(lesson.difficulty)}20` }}
+                    >
+                      <span>{getCategoryIcon(lesson.category)}</span>
+                    </div>
+                    <span
+                      className="difficulty-badge"
+                      style={{ background: getDifficultyColor(lesson.difficulty) }}
+                    >
+                      {lesson.difficulty}
+                    </span>
                   </div>
-                  <span
-                    className="difficulty-badge"
-                    style={{ background: getDifficultyColor(lesson.difficulty) }}
-                  >
-                    {lesson.difficulty}
-                  </span>
-                </div>
-                <h3>{lesson.title}</h3>
-                <p className="lesson-category">
-                  {lesson.category.charAt(0).toUpperCase() + lesson.category.slice(1).replace('-', ' ')}
-                </p>
-                <div className="lesson-footer">
-                  <div className="lesson-meta">
-                    <span className="meta-icon">📝</span>
-                    <span>{lesson.content.length} items</span>
-                  </div>
-                  <div className="lesson-progress">
-                    <div className="progress-ring">
-                      <svg viewBox="0 0 36 36">
-                        <path
-                          className="progress-bg"
-                          d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                        />
-                        <path
-                          className="progress-fill"
-                          strokeDasharray={`${progressMap[lesson._id] || 0}, 100`}
-                          d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                          style={{ stroke: getDifficultyColor(lesson.difficulty) }}
-                        />
-                      </svg>
+                  <h3>{lesson.title}</h3>
+                  <p className="lesson-category">
+                    {lesson.category.charAt(0).toUpperCase() + lesson.category.slice(1).replace('-', ' ')}
+                  </p>
+                  <div className="lesson-footer">
+                    <div className="lesson-meta">
+                      <span className="meta-icon">📝</span>
+                      <span>{lesson.content.length} items</span>
+                    </div>
+                    <div className="lesson-progress">
+                      <div className="progress-ring">
+                        <svg viewBox="0 0 36 36">
+                          <path
+                            className="progress-bg"
+                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                          />
+                          <path
+                            className="progress-fill"
+                            strokeDasharray={`${progressMap[lesson._id] || 0}, 100`}
+                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                            style={{ stroke: getDifficultyColor(lesson.difficulty) }}
+                          />
+                        </svg>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="card-hover-arrow">→</div>
-              </Link>
-            ))}
+                  <div className="card-hover-arrow">→</div>
+                </Link>
+              );
+            })}
           </div>
         )}
       </div>

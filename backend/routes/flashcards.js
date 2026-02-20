@@ -14,7 +14,7 @@ router.get('/guest', (req, res) => {
     english: card.english,
     romanization: card.romanization,
     category: card.category,
-    masteryLevel: 0,
+    masteryLevel: 3,
     correctCount: 0,
     incorrectCount: 0,
   }));
@@ -82,7 +82,7 @@ router.put('/:id', async (req, res) => {
       flashcard.masteryLevel = Math.min(flashcard.masteryLevel + 1, 5);
     } else {
       flashcard.incorrectCount += 1;
-      flashcard.masteryLevel = Math.max(flashcard.masteryLevel - 1, 0);
+      flashcard.masteryLevel = Math.max(flashcard.masteryLevel - 1, 1);
     }
 
     flashcard.lastReviewedAt = new Date();

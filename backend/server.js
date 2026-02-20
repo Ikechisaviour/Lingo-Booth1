@@ -72,6 +72,7 @@ app.use('/api/flashcards', require('./routes/flashcards'));
 app.use('/api/progress', require('./routes/progress'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/admin', require('./routes/admin'));
+app.use('/api/tts', require('./routes/tts'));
 
 // Health check
 app.get('/health', (req, res) => {

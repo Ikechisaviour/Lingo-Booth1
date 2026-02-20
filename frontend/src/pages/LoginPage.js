@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
-import { authService, guestXPHelper } from '../services/api';
+import { authService, userService, guestXPHelper } from '../services/api';
 import './Auth.css';
 
 function LoginPage({ setIsAuthenticated, setIsGuest }) {
@@ -39,7 +39,22 @@ function LoginPage({ setIsAuthenticated, setIsGuest }) {
       guestXPHelper.clear();
       setIsGuest(false);
       setIsAuthenticated(true);
-      navigate('/');
+
+      // Redirect to last activity if available, otherwise home
+      const uid = response.data.user.id;
+      try {
+        const actRes = await userService.getActivityState(uid);
+        const state = actRes.data;
+        if (state.activityType === 'lesson' && state.lesson?._id) {
+          navigate(`/lessons/${state.lesson._id}`);
+        } else if (state.activityType === 'flashcard' && state.flashcardIndex > 0) {
+          navigate('/flashcards');
+        } else {
+          navigate('/');
+        }
+      } catch {
+        navigate('/');
+      }
     } catch (err) {
       if (err.response?.status === 403 && err.response?.data?.reason) {
         setSuspended({

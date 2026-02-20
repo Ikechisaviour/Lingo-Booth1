@@ -33,12 +33,15 @@ function LessonDetail() {
   // Study mode: 'default', 'reading', or 'listening'
   const [studyMode, setStudyMode] = useState('default');
   const [showRomanization, setShowRomanization] = useState(false);
-  const [showSettings, setShowSettings] = useState(false);
+  const [showSettingsPanel, setShowSettingsPanel] = useState(false);
 
   // Continue prompt when existing activity is in progress
   const [continuePrompt, setContinuePrompt] = useState(null);
   // Block saving until we've checked for existing activity (prevents overwriting saved position)
   const [readyToSave, setReadyToSave] = useState(false);
+
+  // Playlist state
+  const [playlist, setPlaylist] = useState(null);
 
   const categories = [
     { value: 'daily-life', label: 'Daily Life' },
@@ -59,6 +62,7 @@ function LessonDetail() {
 
   const saveTimerRef = useRef(null);
   const autoAdvanceRef = useRef(null);
+  const settingsPanelRef = useRef(null);
   const userId = localStorage.getItem('userId');
 
   const saveActivityState = useCallback((index) => {
@@ -105,6 +109,25 @@ function LessonDetail() {
     setReadyToSave(false);
     setContinuePrompt(null);
     fetchLesson();
+
+    // Read playlist from sessionStorage
+    try {
+      const stored = sessionStorage.getItem('lessonPlaylist');
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (parsed.lessonIds && parsed.lessonIds[parsed.currentIndex] === id) {
+          setPlaylist(parsed);
+        } else {
+          // URL mismatch — user navigated away, clear playlist
+          sessionStorage.removeItem('lessonPlaylist');
+          setPlaylist(null);
+        }
+      } else {
+        setPlaylist(null);
+      }
+    } catch {
+      setPlaylist(null);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
@@ -197,6 +220,18 @@ function LessonDetail() {
       return () => clearTimeout(timer);
     }
   }, [lesson, currentIndex, studyMode]);
+
+  // Close settings panel on outside click
+  useEffect(() => {
+    if (!showSettingsPanel) return;
+    const handleClickOutside = (e) => {
+      if (settingsPanelRef.current && !settingsPanelRef.current.contains(e.target)) {
+        setShowSettingsPanel(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [showSettingsPanel]);
 
   const fetchLesson = async () => {
     try {
@@ -445,6 +480,18 @@ function LessonDetail() {
           lessonIndex: 0,
         }).catch(() => {});
       }
+
+      // Advance playlist if active
+      if (playlist && playlist.currentIndex < playlist.totalCount - 1) {
+        const nextIndex = playlist.currentIndex + 1;
+        const updated = { ...playlist, currentIndex: nextIndex };
+        sessionStorage.setItem('lessonPlaylist', JSON.stringify(updated));
+        navigate(`/lessons/${playlist.lessonIds[nextIndex]}`);
+        return;
+      }
+
+      // Last lesson in playlist or no playlist — go back to lessons list
+      sessionStorage.removeItem('lessonPlaylist');
       navigate('/lessons');
     } catch (err) {
       console.error('Error recording progress:', err);
@@ -521,98 +568,39 @@ function LessonDetail() {
       )}
       <div className="container">
         <div className="lesson-header">
-          <h1>{lesson.title}</h1>
-          <p className="lesson-progress">
-            {stepPosition + 1} / {lesson.content.length}
-          </p>
-          <button
-            className="settings-toggle-btn"
-            onClick={() => setShowSettings(!showSettings)}
-            aria-label="Toggle settings"
-          >
-            {showSettings ? '✕' : '⚙'}
-          </button>
+          <div className="header-content">
+            <h1>{lesson.title}</h1>
+          </div>
+          <div className="header-actions">
+            <p className="lesson-progress">{stepPosition + 1} / {lesson.content.length}</p>
+            <button
+              className={`header-tool-btn ${orderMode === 'random' ? 'active' : ''}`}
+              title={orderMode === 'random' ? 'Sequential' : 'Shuffle'}
+              onClick={() => handleOrderToggle(orderMode === 'random' ? 'sequential' : 'random')}
+            >
+              <span className="tool-icon">🔀</span>
+              <span className="tool-label">{orderMode === 'random' ? 'Shuffled' : 'Shuffle'}</span>
+            </button>
+          </div>
         </div>
 
-        {/* Settings Panel - always visible on desktop, collapsible on mobile */}
-        <div className={`lesson-settings-panel ${showSettings ? 'open' : ''}`}>
-          <div className="lesson-nav-dropdowns">
-            <select
-              className="lesson-dropdown"
-              value={lesson.category || ''}
-              onChange={(e) => handleCategoryChange(e.target.value)}
-            >
-              {categories.map(cat => (
-                <option
-                  key={cat.value}
-                  value={cat.value}
-                  disabled={cat.value === lesson.category}
-                >
-                  {cat.label}
-                </option>
-              ))}
-            </select>
-            <select
-              className="lesson-dropdown"
-              value={lesson.difficulty || ''}
-              onChange={(e) => handleDifficultyChange(e.target.value)}
-            >
-              {difficulties.map(diff => (
-                <option
-                  key={diff.value}
-                  value={diff.value}
-                  disabled={diff.value === lesson.difficulty}
-                >
-                  {diff.label}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* Order Mode Selector */}
-          <div className="order-selector">
-            <span className="order-label">Order:</span>
-            <div className="order-options">
-              <button
-                className={`order-btn ${orderMode === 'sequential' ? 'active' : ''}`}
-                onClick={() => handleOrderToggle('sequential')}
-              >
-                Sequential
-              </button>
-              <button
-                className={`order-btn ${orderMode === 'random' ? 'active' : ''}`}
-                onClick={() => handleOrderToggle('random')}
-              >
-                Random
-              </button>
+        {/* Playlist Progress Bar */}
+        {playlist && (
+          <div className="playlist-progress-bar-container">
+            <div className="playlist-progress-label">
+              {playlist.type === 'start-all' ? 'All Lessons Path' : 'Custom Path'}
+              <span className="playlist-progress">
+                Lesson {playlist.currentIndex + 1} of {playlist.totalCount}
+              </span>
+            </div>
+            <div className="playlist-progress-bar">
+              <div
+                className="playlist-progress-fill"
+                style={{ width: `${((playlist.currentIndex + 1) / playlist.totalCount) * 100}%` }}
+              />
             </div>
           </div>
-
-          {/* Study Mode Selector */}
-          <div className="study-mode-selector">
-            <span className="order-label">Study Mode:</span>
-            <div className="order-options">
-              <button
-                className={`order-btn ${studyMode === 'default' ? 'active' : ''}`}
-                onClick={() => setStudyMode('default')}
-              >
-                Default
-              </button>
-              <button
-                className={`order-btn ${studyMode === 'reading' ? 'active' : ''}`}
-                onClick={() => setStudyMode('reading')}
-              >
-                Reading
-              </button>
-              <button
-                className={`order-btn ${studyMode === 'listening' ? 'active' : ''}`}
-                onClick={() => setStudyMode('listening')}
-              >
-                Listening
-              </button>
-            </div>
-          </div>
-        </div>
+        )}
 
         <div className="lesson-content-card">
           <div className="content-item">
@@ -629,7 +617,7 @@ function LessonDetail() {
               </div>
             ) : studyMode === 'reading' ? (
               <>
-                <h2 style={{ marginBottom: '10px' }}>Korean: {content.korean}</h2>
+                <h2 className="content-heading">Korean: {content.korean}</h2>
                 <button
                   className="btn-romanization-toggle"
                   onClick={() => setShowRomanization(!showRomanization)}
@@ -642,13 +630,12 @@ function LessonDetail() {
               </>
             ) : (
               <>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-                  <h2 style={{ margin: 0 }}>Korean: {content.korean}</h2>
+                <div className="korean-text-row">
+                  <h2>Korean: {content.korean}</h2>
                   <button
-                    className="btn btn-primary"
+                    className="btn btn-primary speak-btn-lesson"
                     onClick={() => handleSpeak(content.korean)}
                     title="Listen to pronunciation"
-                    style={{ padding: '5px 15px', fontSize: '20px' }}
                   >
                     {isSpeaking ? '🔇' : '🔊'}
                   </button>
@@ -659,83 +646,90 @@ function LessonDetail() {
 
             {content.audioUrl && (
               <div className="audio-player">
-                <audio controls src={content.audioUrl} style={{ marginTop: '10px' }} />
+                <audio controls src={content.audioUrl} />
+              </div>
+            )}
+
+            {/* Translation Section */}
+            <button
+              className="btn btn-secondary translation-toggle-btn"
+              onClick={() => {
+                setShowTranslation(!showTranslation);
+                setTranslationPeeked(true);
+                if (!showTranslation && userId && id) {
+                  userService.recordPeek(userId, { lessonId: id, contentIndex: currentIndex }).catch(() => {});
+                }
+              }}
+            >
+              {showTranslation ? 'Hide Translation' : 'Word(s) Translation'}
+            </button>
+
+            {showTranslation && (
+              <div className="translation">
+                <h3>{content.korean} — {content.english}</h3>
+                {content.breakdown && content.breakdown.length > 0 && (
+                  <div className="breakdown">
+                    {content.breakdown.map((part, i) => (
+                      <div key={i} className="breakdown-item">
+                        <span className="breakdown-korean">{part.korean}</span>
+                        <span className="breakdown-english">{part.english}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+                {content.example && !content.breakdown && lesson.difficulty === 'sentences' && (
+                  <div className="example">
+                    <div className="example-row">
+                      <p className="example-text"><strong>Example:</strong> {content.example}</p>
+                      <button
+                        className="btn btn-primary speak-btn-small"
+                        onClick={() => handleSpeak(content.example)}
+                        title="Listen to example"
+                      >
+                        🔊
+                      </button>
+                    </div>
+                    <p><strong>Translation:</strong> {content.exampleEnglish}</p>
+                  </div>
+                )}
               </div>
             )}
 
             {/* Quiz Section */}
-            <div style={{ marginTop: '20px', marginBottom: '20px' }}>
+            <div className="quiz-section">
               <button
-                className="btn btn-primary"
+                className="btn btn-primary quiz-toggle-btn"
                 onClick={() => setShowQuiz(!showQuiz)}
-                style={{ width: '100%', marginBottom: '15px' }}
               >
                 {showQuiz ? '🔼 Hide Quiz' : '🔽 Test Your Knowledge'}
               </button>
 
               {showQuiz && (
-                <div style={{
-                  border: '2px solid #e0e0e0',
-                  borderRadius: '8px',
-                  padding: '20px',
-                  backgroundColor: '#f9f9f9'
-                }}>
-                  <h3 style={{ marginTop: 0, marginBottom: '15px' }}>
+                <div className="quiz-container">
+                  <h3 className="quiz-question">
                     {studyMode === 'listening'
                       ? 'What did you hear?'
                       : `What does "${content.korean}" mean?`}
                   </h3>
 
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  <div className="quiz-options">
                     {quizOptions.map((option, index) => {
                       const isSelected = selectedAnswer === option;
                       const isCorrectAnswer = option === content.english;
 
-                      let buttonStyle = {
-                        padding: '12px 20px',
-                        textAlign: 'left',
-                        border: '2px solid #ddd',
-                        borderRadius: '6px',
-                        backgroundColor: 'white',
-                        cursor: quizAttempted && !isCorrect ? 'pointer' : (quizAttempted ? 'not-allowed' : 'pointer'),
-                        fontSize: '16px',
-                        transition: 'all 0.3s',
-                      };
-
+                      let optionClass = 'quiz-option';
                       if (quizAttempted) {
-                        if (isSelected) {
-                          if (isCorrect) {
-                            buttonStyle.backgroundColor = '#4CAF50';
-                            buttonStyle.color = 'white';
-                            buttonStyle.borderColor = '#4CAF50';
-                          } else {
-                            buttonStyle.backgroundColor = '#f44336';
-                            buttonStyle.color = 'white';
-                            buttonStyle.borderColor = '#f44336';
-                          }
-                        } else if (isCorrectAnswer && !isCorrect) {
-                          buttonStyle.backgroundColor = '#e8f5e9';
-                          buttonStyle.borderColor = '#4CAF50';
-                          buttonStyle.color = '#2e7d32';
-                        }
+                        if (isSelected && isCorrect) optionClass += ' quiz-option-correct';
+                        else if (isSelected && !isCorrect) optionClass += ' quiz-option-incorrect';
+                        else if (isCorrectAnswer && !isCorrect) optionClass += ' quiz-option-reveal';
                       }
 
                       return (
                         <button
                           key={index}
+                          className={optionClass}
                           onClick={() => !quizAttempted || !isCorrect ? handleAnswerSelect(option) : null}
                           disabled={quizAttempted && isCorrect}
-                          style={buttonStyle}
-                          onMouseEnter={(e) => {
-                            if (!quizAttempted) {
-                              e.target.style.backgroundColor = '#f0f0f0';
-                            }
-                          }}
-                          onMouseLeave={(e) => {
-                            if (!quizAttempted) {
-                              e.target.style.backgroundColor = 'white';
-                            }
-                          }}
                         >
                           {String.fromCharCode(65 + index)}. {option}
                           {quizAttempted && isSelected && isCorrect && ' ✓'}
@@ -746,22 +740,16 @@ function LessonDetail() {
                     })}
                   </div>
 
-                  {/* Feedback and Explanation */}
                   {showExplanation && (
-                    <div style={{
-                      marginTop: '20px',
-                      padding: '15px',
-                      borderRadius: '6px',
-                      backgroundColor: isCorrect ? '#e8f5e9' : '#ffebee'
-                    }}>
+                    <div className={`quiz-feedback ${isCorrect ? 'quiz-feedback-correct' : 'quiz-feedback-incorrect'}`}>
                       {isCorrect ? (
                         <div>
-                          <h4 style={{ color: '#2e7d32', marginTop: 0 }}>✓ Correct!</h4>
-                          <p style={{ margin: '10px 0' }}>
+                          <h4 className="quiz-feedback-title correct">✓ Correct!</h4>
+                          <p className="quiz-feedback-text">
                             <strong>Explanation:</strong> "{content.korean}" ({content.romanization}) means "{content.english}".
                           </p>
                           {content.example && (
-                            <p style={{ margin: '10px 0' }}>
+                            <p className="quiz-feedback-text">
                               <strong>Example usage:</strong><br />
                               Korean: {content.example}<br />
                               English: {content.exampleEnglish}
@@ -770,25 +758,21 @@ function LessonDetail() {
                         </div>
                       ) : (
                         <div>
-                          <h4 style={{ color: '#c62828', marginTop: 0 }}>✗ Incorrect</h4>
-                          <p style={{ margin: '10px 0' }}>
+                          <h4 className="quiz-feedback-title incorrect">✗ Incorrect</h4>
+                          <p className="quiz-feedback-text">
                             <strong>Correct Answer:</strong> "{content.english}"
                           </p>
-                          <p style={{ margin: '10px 0' }}>
+                          <p className="quiz-feedback-text">
                             <strong>Explanation:</strong> "{content.korean}" ({content.romanization}) means "{content.english}".
                           </p>
                           {content.example && (
-                            <p style={{ margin: '10px 0' }}>
+                            <p className="quiz-feedback-text">
                               <strong>Example usage:</strong><br />
                               Korean: {content.example}<br />
                               English: {content.exampleEnglish}
                             </p>
                           )}
-                          <button
-                            className="btn btn-primary"
-                            onClick={handleTryAgain}
-                            style={{ marginTop: '10px' }}
-                          >
+                          <button className="btn btn-primary quiz-try-again" onClick={handleTryAgain}>
                             Try Again
                           </button>
                         </div>
@@ -813,15 +797,15 @@ function LessonDetail() {
             <span className="progress-bar">
               <div
                 className="progress-fill"
-                style={{
-                  width: `${((stepPosition + 1) / orderMap.length) * 100}%`,
-                }}
+                style={{ width: `${((stepPosition + 1) / orderMap.length) * 100}%` }}
               />
             </span>
 
             {stepPosition === orderMap.length - 1 ? (
               <button className="btn btn-success" onClick={handleComplete}>
-                Complete Lesson ✓
+                {playlist && playlist.currentIndex < playlist.totalCount - 1
+                  ? 'Next Lesson →'
+                  : 'Complete Lesson ✓'}
               </button>
             ) : (
               <button className="btn btn-primary" onClick={handleNext}>
@@ -829,57 +813,107 @@ function LessonDetail() {
               </button>
             )}
           </div>
+        </div>
 
+        {/* Bottom Settings Panel */}
+        <div className="lesson-settings-wrapper" ref={settingsPanelRef}>
           <button
-            className="btn btn-secondary"
-            onClick={() => {
-              setShowTranslation(!showTranslation);
-              setTranslationPeeked(true);
-              // Record peek on server for 2-minute cooldown (persists across sessions)
-              if (!showTranslation && userId && id) {
-                userService.recordPeek(userId, { lessonId: id, contentIndex: currentIndex }).catch(() => {});
-              }
-            }}
-            style={{ marginTop: '20px' }}
+            className={`sidebar-toggle ${showSettingsPanel ? 'sidebar-toggle-open' : ''}`}
+            onClick={() => setShowSettingsPanel(!showSettingsPanel)}
+            title="Lesson Settings"
           >
-            {showTranslation ? 'Hide Translation' : 'Word(s) Translation'}
+            <span className="sidebar-toggle-icon">{showSettingsPanel ? '✕' : '☰'}</span>
+            <span className="sidebar-toggle-label">{showSettingsPanel ? 'Close' : 'Study Mode & Settings'}</span>
           </button>
 
-          {showTranslation && (
-            <div className="translation">
-              <h3>{content.korean} — {content.english}</h3>
-              {content.breakdown && content.breakdown.length > 0 && (
-                <div className="breakdown">
-                  {content.breakdown.map((part, i) => (
-                    <div key={i} className="breakdown-item">
-                      <span className="breakdown-korean">{part.korean}</span>
-                      <span className="breakdown-english">{part.english}</span>
-                    </div>
+          {showSettingsPanel && (
+            <div className="lesson-settings-panel-content">
+              {/* Study Style Selector */}
+              <div className="sidebar-mode-selector">
+                <span className="mode-label">Study Style:</span>
+                <div className="mode-options">
+                  <button
+                    className={`mode-btn ${studyMode === 'default' ? 'active' : ''}`}
+                    onClick={() => setStudyMode('default')}
+                  >
+                    <span className="mode-icon">📖🔊</span> Both
+                  </button>
+                  <button
+                    className={`mode-btn ${studyMode === 'reading' ? 'active' : ''}`}
+                    onClick={() => setStudyMode('reading')}
+                  >
+                    <span className="mode-icon">📖</span> Reading
+                  </button>
+                  <button
+                    className={`mode-btn ${studyMode === 'listening' ? 'active' : ''}`}
+                    onClick={() => setStudyMode('listening')}
+                  >
+                    <span className="mode-icon">🔊</span> Listening
+                  </button>
+                </div>
+              </div>
+
+              {/* Order Selector */}
+              <div className="sidebar-mode-selector">
+                <span className="mode-label">Order:</span>
+                <div className="mode-options">
+                  <button
+                    className={`mode-btn ${orderMode === 'sequential' ? 'active' : ''}`}
+                    onClick={() => handleOrderToggle('sequential')}
+                  >
+                    Sequential
+                  </button>
+                  <button
+                    className={`mode-btn ${orderMode === 'random' ? 'active' : ''}`}
+                    onClick={() => handleOrderToggle('random')}
+                  >
+                    Random
+                  </button>
+                </div>
+              </div>
+
+              {/* Category Navigation */}
+              <div className="sidebar-mode-selector">
+                <span className="mode-label">Category:</span>
+                <div className="mode-options mode-options-wrap">
+                  {categories.map(cat => (
+                    <button
+                      key={cat.value}
+                      className={`mode-btn ${lesson.category === cat.value ? 'active' : ''}`}
+                      onClick={() => handleCategoryChange(cat.value)}
+                      disabled={lesson.category === cat.value}
+                    >
+                      {cat.label}
+                    </button>
                   ))}
                 </div>
-              )}
-              {content.example && !content.breakdown && lesson.difficulty === 'sentences' && (
-                <div className="example">
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <p style={{ margin: 0 }}><strong>Example:</strong> {content.example}</p>
+              </div>
+
+              {/* Difficulty Navigation */}
+              <div className="sidebar-mode-selector">
+                <span className="mode-label">Difficulty:</span>
+                <div className="mode-options mode-options-wrap">
+                  {difficulties.map(diff => (
                     <button
-                      className="btn btn-primary"
-                      onClick={() => handleSpeak(content.example)}
-                      title="Listen to example"
-                      style={{ padding: '3px 10px', fontSize: '16px' }}
+                      key={diff.value}
+                      className={`mode-btn ${lesson.difficulty === diff.value ? 'active' : ''}`}
+                      onClick={() => handleDifficultyChange(diff.value)}
+                      disabled={lesson.difficulty === diff.value}
                     >
-                      🔊
+                      {diff.label}
                     </button>
-                  </div>
-                  <p><strong>Translation:</strong> {content.exampleEnglish}</p>
+                  ))}
                 </div>
-              )}
+              </div>
             </div>
           )}
         </div>
 
-        <button className="btn" onClick={() => navigate('/lessons')}>
-          ← Back to Lessons
+        <button className="btn" onClick={() => {
+          sessionStorage.removeItem('lessonPlaylist');
+          navigate('/lessons');
+        }}>
+          {playlist ? '✕ Exit Playlist' : '← Back to Lessons'}
         </button>
       </div>
     </div>
