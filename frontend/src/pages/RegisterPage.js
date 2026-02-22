@@ -19,11 +19,15 @@ function RegisterPage({ setIsAuthenticated, setIsGuest }) {
     setFormData({ ...formData, [name]: value });
   };
 
+  // Only show password match feedback once the user has started typing in confirmPassword
+  const confirmTouched = formData.confirmPassword.length > 0;
+  const passwordsMatch = formData.password === formData.confirmPassword;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
-    if (formData.password !== formData.confirmPassword) {
+    if (!passwordsMatch) {
       setError('Passwords do not match');
       return;
     }
@@ -113,8 +117,21 @@ function RegisterPage({ setIsAuthenticated, setIsGuest }) {
               placeholder="Re-enter your password"
               required
             />
+            {confirmTouched && (
+              <p style={{
+                marginTop: '6px',
+                fontSize: '0.85rem',
+                color: passwordsMatch ? '#16a34a' : '#dc2626',
+              }}>
+                {passwordsMatch ? '✓ Passwords match' : '✗ Passwords do not match'}
+              </p>
+            )}
           </div>
-          <button type="submit" className="btn btn-primary" disabled={loading}>
+          <button
+            type="submit"
+            className="btn btn-primary"
+            disabled={loading || (confirmTouched && !passwordsMatch)}
+          >
             {loading ? 'Creating account...' : 'Sign Up'}
           </button>
         </form>
