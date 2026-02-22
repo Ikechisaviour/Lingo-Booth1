@@ -2,9 +2,14 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const crypto = require('crypto');
+const { Resend } = require('resend');
 const User = require('../models/User');
 
 const JWT_SECRET = process.env.JWT_SECRET;
+const resend = new Resend(process.env.RESEND_API_KEY);
+const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';
+const EMAIL_FROM = process.env.EMAIL_FROM || 'Lingo Booth <noreply@lingobooth.com>';
 
 // Register
 router.post('/register', async (req, res) => {
@@ -27,14 +32,19 @@ router.post('/register', async (req, res) => {
     // New accounts default to decay off, so guest XP can be applied
     const transferXP = (typeof guestXP === 'number' && guestXP > 0) ? Math.floor(guestXP) : 0;
 
+    // Generate a secure email verification token (expires in 24 hours)
+    const verificationToken = crypto.randomBytes(32).toString('hex');
+
     user = new User({
       username,
       email,
       password,
       totalXP: transferXP,
-      loginCount: 1,
-      lastLogin: new Date(),
+      loginCount: 0,
       lastActive: new Date(),
+      emailVerified: false,
+      verificationToken,
+      verificationTokenExpires: new Date(Date.now() + 24 * 60 * 60 * 1000),
     });
 
     const salt = await bcrypt.genSalt(10);
@@ -42,25 +52,60 @@ router.post('/register', async (req, res) => {
 
     await user.save();
 
-    const token = jwt.sign(
-      { userId: user._id },
-      JWT_SECRET,
-      { expiresIn: '7d' }
-    );
-
-    res.status(201).json({
-      token,
-      user: {
-        id: user._id,
-        username: user.username,
-        email: user.email,
-        role: user.role,
-        status: user.status,
-      },
-      guestXPTransferred: transferXP,
+    // Send verification email via Resend
+    const verifyUrl = `${FRONTEND_URL}/verify-email?token=${verificationToken}`;
+    await resend.emails.send({
+      from: EMAIL_FROM,
+      to: email,
+      subject: 'Verify your Lingo Booth email',
+      html: `
+        <div style="font-family:sans-serif;max-width:480px;margin:auto;padding:32px;">
+          <h2 style="color:#ff6b35;">Welcome to Lingo Booth, ${username}!</h2>
+          <p>Click the button below to verify your email and activate your account.</p>
+          <a href="${verifyUrl}"
+             style="display:inline-block;margin:24px 0;padding:14px 28px;background:#ff6b35;color:#fff;border-radius:8px;text-decoration:none;font-weight:700;">
+            Verify Email
+          </a>
+          <p style="color:#888;font-size:0.85rem;">This link expires in 24 hours. If you didn't create an account, you can ignore this email.</p>
+        </div>
+      `,
     });
+
+    res.status(201).json({ message: 'Registration successful. Please check your email to verify your account.' });
   } catch (error) {
     console.error('Registration error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Verify email
+router.get('/verify-email', async (req, res) => {
+  try {
+    const { token } = req.query;
+
+    if (!token) {
+      return res.status(400).json({ message: 'Verification token is required' });
+    }
+
+    const user = await User.findOne({
+      verificationToken: token,
+      verificationTokenExpires: { $gt: new Date() },
+    });
+
+    if (!user) {
+      return res.status(400).json({ message: 'Invalid or expired verification link' });
+    }
+
+    user.emailVerified = true;
+    user.verificationToken = null;
+    user.verificationTokenExpires = null;
+    user.loginCount = 1;
+    user.lastLogin = new Date();
+    await user.save();
+
+    res.json({ message: 'Email verified successfully' });
+  } catch (error) {
+    console.error('Email verification error:', error);
     res.status(500).json({ message: 'Server error' });
   }
 });
@@ -77,6 +122,11 @@ router.post('/login', async (req, res) => {
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(400).json({ message: 'Invalid credentials' });
+    }
+
+    // Block login for accounts pending email verification
+    if (user.emailVerified === false) {
+      return res.status(403).json({ message: 'Please verify your email before logging in. Check your inbox for the verification link.' });
     }
 
     // Check if user is suspended

@@ -114,6 +114,18 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  emailVerified: {
+    type: Boolean,
+    default: false,
+  },
+  verificationToken: {
+    type: String,
+    default: null,
+  },
+  verificationTokenExpires: {
+    type: Date,
+    default: null,
+  },
 });
 
 // Index for leaderboard queries

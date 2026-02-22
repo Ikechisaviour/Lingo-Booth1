@@ -11,6 +11,7 @@ import RegisterPage from './pages/RegisterPage';
 import LessonDetail from './pages/LessonDetail';
 import ProfilePage from './pages/ProfilePage';
 import AdminDashboard from './pages/AdminDashboard';
+import VerifyEmailPage from './pages/VerifyEmailPage';
 import './App.css';
 
 // Listens for mid-session suspension and redirects to login
@@ -189,6 +190,9 @@ function App() {
               )
             }
           />
+
+          {/* Email verification — always public */}
+          <Route path="/verify-email" element={<VerifyEmailPage />} />
 
           {/* Main App Routes - Accessible by authenticated users and guests */}
           <Route
