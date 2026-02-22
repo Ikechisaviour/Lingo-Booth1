@@ -19,6 +19,12 @@ function RegisterPage({ setIsAuthenticated, setIsGuest }) {
     setFormData({ ...formData, [name]: value });
   };
 
+  const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Only show email feedback once the user has started typing
+  const emailTouched = formData.email.length > 0;
+  const emailValid = EMAIL_REGEX.test(formData.email);
+
   // Only show password match feedback once the user has started typing in confirmPassword
   const confirmTouched = formData.confirmPassword.length > 0;
   const passwordsMatch = formData.password === formData.confirmPassword;
@@ -93,6 +99,15 @@ function RegisterPage({ setIsAuthenticated, setIsGuest }) {
               placeholder="Enter your email"
               required
             />
+            {emailTouched && (
+              <p style={{
+                marginTop: '6px',
+                fontSize: '0.85rem',
+                color: emailValid ? '#16a34a' : '#dc2626',
+              }}>
+                {emailValid ? '✓ Valid email address' : '✗ Please enter a valid email address'}
+              </p>
+            )}
           </div>
           <div className="form-group">
             <label htmlFor="password">Password</label>
@@ -130,7 +145,7 @@ function RegisterPage({ setIsAuthenticated, setIsGuest }) {
           <button
             type="submit"
             className="btn btn-primary"
-            disabled={loading || (confirmTouched && !passwordsMatch)}
+            disabled={loading || !emailValid || (confirmTouched && !passwordsMatch)}
           >
             {loading ? 'Creating account...' : 'Sign Up'}
           </button>
