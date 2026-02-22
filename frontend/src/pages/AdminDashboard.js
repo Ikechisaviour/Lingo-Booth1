@@ -13,6 +13,8 @@ function AdminDashboard() {
       totalFlashcards: 0,
       totalProgress: 0,
       totalLogins: 0,
+      challengeModeUsers: 0,
+      relaxedModeUsers: 0,
     },
     activity: {
       activeUsersToday: 0,
@@ -134,6 +136,18 @@ function AdminDashboard() {
       hour: '2-digit',
       minute: '2-digit',
     });
+  };
+
+  const formatMode = (xpDecayEnabled) => {
+    return xpDecayEnabled
+      ? <span className="mode-badge challenge">🔥 Challenge</span>
+      : <span className="mode-badge relaxed">😊 Relaxed</span>;
+  };
+
+  const formatActivity = (activityType) => {
+    if (activityType === 'lesson') return '📚 Lessons';
+    if (activityType === 'flashcard') return '🎴 Flashcards';
+    return '—';
   };
 
   const formatTimeSpent = (minutes) => {
@@ -295,6 +309,23 @@ function AdminDashboard() {
                 </div>
               </div>
 
+              {/* Mode Breakdown */}
+              <div className="section-title">
+                <h2>Learning Mode Breakdown</h2>
+              </div>
+              <div className="stats-row small">
+                <div className="stat-card">
+                  <span className="stat-emoji">🔥</span>
+                  <span className="stat-number">{stats?.overview?.challengeModeUsers || 0}</span>
+                  <span className="stat-label">Challenge Mode</span>
+                </div>
+                <div className="stat-card">
+                  <span className="stat-emoji">😊</span>
+                  <span className="stat-number">{stats?.overview?.relaxedModeUsers || 0}</span>
+                  <span className="stat-label">Relaxed Mode</span>
+                </div>
+              </div>
+
               {/* User Growth Chart */}
               <div className="section-title">
                 <h2>User Registrations (Last 7 Days)</h2>
@@ -411,6 +442,8 @@ function AdminDashboard() {
                         <th>User</th>
                         <th>Status</th>
                         <th>Role</th>
+                        <th>Mode</th>
+                        <th>Last Activity</th>
                         <th>Last Login</th>
                         <th>Logins</th>
                         <th>Time Spent</th>
@@ -442,6 +475,8 @@ function AdminDashboard() {
                               {user.role === 'admin' ? '👑 Admin' : 'User'}
                             </span>
                           </td>
+                          <td>{formatMode(user.xpDecayEnabled)}</td>
+                          <td className="center-cell">{formatActivity(user.lastActivityType)}</td>
                           <td className="date-cell">{formatDate(user.lastLogin)}</td>
                           <td className="center-cell">{user.loginCount || 0}</td>
                           <td className="center-cell">{formatTimeSpent(user.totalTimeSpent)}</td>
@@ -553,6 +588,8 @@ function AdminDashboard() {
                     <tr>
                       <th>User</th>
                       <th>Email</th>
+                      <th>Mode</th>
+                      <th>Last Activity</th>
                       <th>Last Active</th>
                       <th>Total Time</th>
                     </tr>
@@ -568,12 +605,14 @@ function AdminDashboard() {
                             </div>
                           </td>
                           <td className="email-cell">{user.email}</td>
+                          <td>{formatMode(user.xpDecayEnabled)}</td>
+                          <td className="center-cell">{formatActivity(user.lastActivityType)}</td>
                           <td>{formatDate(user.lastActive)}</td>
                           <td>{formatTimeSpent(user.totalTimeSpent)}</td>
                         </tr>
                       ))
                     ) : (
-                      <tr><td colSpan="4" className="no-data">No recent activity</td></tr>
+                      <tr><td colSpan="6" className="no-data">No recent activity</td></tr>
                     )}
                   </tbody>
                 </table>

@@ -23,10 +23,12 @@ router.get('/stats', async (req, res) => {
     ]);
 
     // User status counts
-    const [activeUsers, suspendedUsers, adminCount] = await Promise.all([
+    const [activeUsers, suspendedUsers, adminCount, challengeModeUsers, relaxedModeUsers] = await Promise.all([
       User.countDocuments({ status: 'active' }),
       User.countDocuments({ status: 'suspended' }),
       User.countDocuments({ role: 'admin' }),
+      User.countDocuments({ xpDecayEnabled: true }),
+      User.countDocuments({ xpDecayEnabled: { $ne: true } }),
     ]);
 
     // Time-based stats
@@ -89,7 +91,7 @@ router.get('/stats', async (req, res) => {
 
     // Recent activity (last 10 users who were active)
     const recentActiveUsers = await User.find({ lastActive: { $exists: true } })
-      .select('username email lastActive totalTimeSpent')
+      .select('username email lastActive totalTimeSpent xpDecayEnabled lastActivityType')
       .sort({ lastActive: -1 })
       .limit(10);
 
@@ -105,6 +107,8 @@ router.get('/stats', async (req, res) => {
         totalLogins,
         totalRateLimitHits,
         usersRateLimited,
+        challengeModeUsers,
+        relaxedModeUsers,
       },
       activity: {
         activeUsersToday,

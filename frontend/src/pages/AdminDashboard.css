@@ -457,6 +457,28 @@
   color: var(--accent-purple);
 }
 
+/* Mode Badge */
+.mode-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.mode-badge.challenge {
+  background: rgba(255, 107, 53, 0.15);
+  color: #ff6b35;
+}
+
+.mode-badge.relaxed {
+  background: rgba(88, 204, 2, 0.12);
+  color: #3a9a00;
+}
+
 /* Actions Cell */
 .actions-cell {
   display: flex;
