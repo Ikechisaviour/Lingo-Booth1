@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { authService, guestXPHelper } from '../services/api';
 import './Auth.css';
 
 function RegisterPage({ setIsAuthenticated, setIsGuest }) {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -12,7 +13,6 @@ function RegisterPage({ setIsAuthenticated, setIsGuest }) {
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [emailSent, setEmailSent] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,43 +32,29 @@ function RegisterPage({ setIsAuthenticated, setIsGuest }) {
 
     try {
       const guestXP = guestXPHelper.get();
-      await authService.register(
+      const data = await authService.register(
         formData.username,
         formData.email,
         formData.password,
         guestXP
       );
       guestXPHelper.clear();
-      setEmailSent(true);
+
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('userId', data.user.id);
+      localStorage.setItem('username', data.user.username);
+      localStorage.setItem('userRole', data.user.role);
+      localStorage.removeItem('guestMode');
+
+      setIsAuthenticated(true);
+      setIsGuest(false);
+      navigate('/');
     } catch (err) {
       setError(err.response?.data?.message || 'Registration failed');
     } finally {
       setLoading(false);
     }
   };
-
-  if (emailSent) {
-    return (
-      <div className="auth-container">
-        <div className="auth-card">
-          <img src="/images/logo.png" alt="Lingo Booth" className="auth-logo" />
-          <div style={{ textAlign: 'center', padding: '8px 0' }}>
-            <div style={{ fontSize: '3rem', marginBottom: '16px' }}>📧</div>
-            <h2>Check your email</h2>
-            <p style={{ color: '#6b7280', margin: '12px 0 8px' }}>
-              We sent a verification link to <strong>{formData.email}</strong>
-            </p>
-            <p style={{ color: '#6b7280', fontSize: '0.9rem' }}>
-              Click the link in the email to activate your account. The link expires in 24 hours.
-            </p>
-            <p style={{ color: '#9ca3af', fontSize: '0.85rem', marginTop: '24px' }}>
-              Already verified? <Link to="/login">Log in here</Link>
-            </p>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="auth-container">
