@@ -3,13 +3,19 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
-const { Resend } = require('resend');
+const nodemailer = require('nodemailer');
 const User = require('../models/User');
 
 const JWT_SECRET = process.env.JWT_SECRET;
-const resend = new Resend(process.env.RESEND_API_KEY);
 const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';
-const EMAIL_FROM = process.env.EMAIL_FROM || 'Lingo Booth <noreply@lingobooth.com>';
+
+const mailer = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_APP_PASSWORD,
+  },
+});
 
 // Register
 router.post('/register', async (req, res) => {
@@ -52,10 +58,10 @@ router.post('/register', async (req, res) => {
 
     await user.save();
 
-    // Send verification email via Resend
+    // Send verification email via Gmail
     const verifyUrl = `${FRONTEND_URL}/verify-email?token=${verificationToken}`;
-    await resend.emails.send({
-      from: EMAIL_FROM,
+    await mailer.sendMail({
+      from: `Lingo Booth <${process.env.GMAIL_USER}>`,
       to: email,
       subject: 'Verify your Lingo Booth email',
       html: `
