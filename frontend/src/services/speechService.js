@@ -72,23 +72,22 @@ class SpeechService {
   }
 
   /**
-   * Fetch MP3 audio from the backend TTS endpoint
-   * Returns an object URL for the audio blob
+   * Build the backend TTS GET URL synchronously.
+   * No network request is made here — the browser fetches the audio when
+   * audio.src is set, so audio.play() stays within the user gesture call
+   * stack on iOS Safari.
    */
-  async _fetchAudio(text, lang, voice) {
+  _buildAudioUrl(text, lang, voice) {
     const cacheKey = `${voice || lang}:${text}`;
     if (this._audioCache.has(cacheKey)) {
       return this._audioCache.get(cacheKey);
     }
 
-    const response = await ttsService.speak(text, lang, voice);
-    const blob = response.data;
-    const url = URL.createObjectURL(blob);
+    const url = ttsService.buildSpeakUrl(text, lang, voice);
 
-    // Manage cache size
+    // Manage cache size (evict oldest entry)
     if (this._audioCache.size >= this._maxCacheSize) {
       const firstKey = this._audioCache.keys().next().value;
-      URL.revokeObjectURL(this._audioCache.get(firstKey));
       this._audioCache.delete(firstKey);
     }
     this._audioCache.set(cacheKey, url);
@@ -131,7 +130,7 @@ class SpeechService {
       }
 
       try {
-        const url = await this._fetchAudio(seg.text, lang, voice);
+        const url = this._buildAudioUrl(seg.text, lang, voice);
         if (this._abortController?.signal.aborted) return;
         await this._playAudio(url);
       } catch (err) {

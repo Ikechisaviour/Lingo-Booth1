@@ -49,49 +49,66 @@ function escapeXml(text) {
     .replace(/'/g, '&apos;');
 }
 
-// POST /api/tts — synthesize text to speech, return MP3 audio
+// Shared synthesis logic used by both GET and POST routes
+async function synthesize(text, lang, voice, rate, res) {
+  if (!text || typeof text !== 'string' || text.trim().length === 0) {
+    return res.status(400).json({ message: 'Text is required' });
+  }
+
+  if (text.length > 2000) {
+    return res.status(400).json({ message: 'Text too long (max 2000 characters)' });
+  }
+
+  const { MsEdgeTTS, OUTPUT_FORMAT } = await loadTTS();
+
+  // Determine voice: explicit voice > default for lang > English fallback
+  const selectedVoice = voice || DEFAULT_VOICES[lang] || DEFAULT_VOICES['en-US'];
+
+  const tts = new MsEdgeTTS();
+  await tts.setMetadata(selectedVoice, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3);
+
+  const options = {};
+  if (rate) options.rate = rate;
+
+  const escapedText = escapeXml(text.trim());
+  const { audioStream } = tts.toStream(escapedText, options);
+
+  // Collect stream into buffer
+  const chunks = [];
+  await new Promise((resolve, reject) => {
+    audioStream.on('data', (chunk) => chunks.push(chunk));
+    audioStream.on('end', resolve);
+    audioStream.on('error', reject);
+  });
+
+  const audioBuffer = Buffer.concat(chunks);
+
+  res.set({
+    'Content-Type': 'audio/mpeg',
+    'Content-Length': audioBuffer.length,
+    'Cache-Control': 'public, max-age=86400',
+  });
+  res.send(audioBuffer);
+}
+
+// GET /api/tts?text=...&lang=...&voice=... — mobile-friendly route.
+// The frontend sets audio.src to this URL directly so audio.play() is called
+// synchronously within the user gesture, satisfying iOS Safari's policy.
+router.get('/', async (req, res) => {
+  try {
+    const { text, lang, voice, rate } = req.query;
+    await synthesize(text, lang, voice, rate, res);
+  } catch (err) {
+    console.error('TTS error:', err.message || err);
+    res.status(500).json({ message: 'Text-to-speech synthesis failed' });
+  }
+});
+
+// POST /api/tts — kept for any existing direct callers
 router.post('/', async (req, res) => {
   try {
     const { text, lang, voice, rate } = req.body;
-
-    if (!text || typeof text !== 'string' || text.trim().length === 0) {
-      return res.status(400).json({ message: 'Text is required' });
-    }
-
-    if (text.length > 2000) {
-      return res.status(400).json({ message: 'Text too long (max 2000 characters)' });
-    }
-
-    const { MsEdgeTTS, OUTPUT_FORMAT } = await loadTTS();
-
-    // Determine voice: explicit voice > default for lang > English fallback
-    const selectedVoice = voice || DEFAULT_VOICES[lang] || DEFAULT_VOICES['en-US'];
-
-    const tts = new MsEdgeTTS();
-    await tts.setMetadata(selectedVoice, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3);
-
-    const options = {};
-    if (rate) options.rate = rate;
-
-    const escapedText = escapeXml(text.trim());
-    const { audioStream } = tts.toStream(escapedText, options);
-
-    // Collect stream into buffer
-    const chunks = [];
-    await new Promise((resolve, reject) => {
-      audioStream.on('data', (chunk) => chunks.push(chunk));
-      audioStream.on('end', resolve);
-      audioStream.on('error', reject);
-    });
-
-    const audioBuffer = Buffer.concat(chunks);
-
-    res.set({
-      'Content-Type': 'audio/mpeg',
-      'Content-Length': audioBuffer.length,
-      'Cache-Control': 'public, max-age=86400',
-    });
-    res.send(audioBuffer);
+    await synthesize(text, lang, voice, rate, res);
   } catch (err) {
     console.error('TTS error:', err.message || err);
     res.status(500).json({ message: 'Text-to-speech synthesis failed' });

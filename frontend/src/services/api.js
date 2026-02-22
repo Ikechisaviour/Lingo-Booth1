@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5002/api';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
 
 const api = axios.create({
   baseURL: API_URL,
@@ -144,6 +144,14 @@ export const ttsService = {
     api.post('/tts', { text, lang, voice, rate }, { responseType: 'blob' }),
   getVoices: (lang) =>
     api.get('/tts/voices', { params: lang ? { lang } : {} }),
+  // Builds a direct GET URL so the frontend can set audio.src without a fetch,
+  // keeping audio.play() synchronous within the user gesture on iOS Safari.
+  buildSpeakUrl: (text, lang, voice, rate) => {
+    const params = new URLSearchParams({ text, lang });
+    if (voice) params.set('voice', voice);
+    if (rate) params.set('rate', rate);
+    return `${API_URL}/tts?${params.toString()}`;
+  },
 };
 
 export const adminService = {
