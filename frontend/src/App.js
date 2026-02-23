@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
-import { guestXPHelper } from './services/api';
+import { guestXPHelper, authService } from './services/api';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import LessonsPage from './pages/LessonsPage';
@@ -121,6 +121,48 @@ function App() {
     window.addEventListener('xpModeChanged', handleModeChange);
     return () => window.removeEventListener('xpModeChanged', handleModeChange);
   }, []);
+
+  // Track time spent on platform for authenticated users
+  useEffect(() => {
+    if (!isAuthenticated) return;
+    const userId = localStorage.getItem('userId');
+    if (!userId) return;
+
+    let startTime = Date.now();
+
+    const sendTime = (minutes) => {
+      if (minutes <= 0) return;
+      authService.trackActivity(userId, minutes).catch(() => {});
+    };
+
+    // Send accumulated time every 5 minutes
+    const interval = setInterval(() => {
+      const minutes = Math.floor((Date.now() - startTime) / 60000);
+      if (minutes > 0) {
+        sendTime(minutes);
+        startTime = Date.now();
+      }
+    }, 5 * 60 * 1000);
+
+    // When tab becomes hidden, save elapsed time and pause; resume on return
+    const handleVisibility = () => {
+      if (document.hidden) {
+        const minutes = Math.floor((Date.now() - startTime) / 60000);
+        sendTime(minutes);
+      } else {
+        startTime = Date.now();
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+
+    return () => {
+      // Save any remaining time when component unmounts / user logs out
+      const minutes = Math.floor((Date.now() - startTime) / 60000);
+      sendTime(minutes);
+      clearInterval(interval);
+      document.removeEventListener('visibilitychange', handleVisibility);
+    };
+  }, [isAuthenticated]);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
