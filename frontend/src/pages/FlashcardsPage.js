@@ -371,7 +371,9 @@ function FlashcardsPage() {
       const flashcard = activeFlashcards[currentIndex];
       if (flashcard.masteryLevel >= 5) return; // already maxed
 
-      if (userId) {
+      const isDefaultCard = flashcard._id?.toString().startsWith('default-');
+
+      if (userId && !isDefaultCard) {
         await flashcardService.updateFlashcard(flashcard._id, { isCorrect: true });
         await progressService.recordProgress({
           userId,
@@ -407,7 +409,9 @@ function FlashcardsPage() {
       const flashcard = activeFlashcards[currentIndex];
       if (flashcard.masteryLevel <= 1) return; // already at minimum
 
-      if (userId) {
+      const isDefaultCard = flashcard._id?.toString().startsWith('default-');
+
+      if (userId && !isDefaultCard) {
         await flashcardService.updateFlashcard(flashcard._id, { isCorrect: false });
         await progressService.recordProgress({
           userId,
@@ -798,7 +802,7 @@ function FlashcardsPage() {
                 </button>
               </div>
 
-              {!isGuest && (
+              {!isGuest && !current._id?.toString().startsWith('default-') && (
                 <button className="btn-delete-card" onClick={() => handleDelete(current._id)}>
                   Delete this card
                 </button>

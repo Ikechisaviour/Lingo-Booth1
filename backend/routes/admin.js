@@ -335,4 +335,32 @@ router.delete('/users/:userId', async (req, res) => {
   }
 });
 
+// Get all user-created flashcards (admin only)
+router.get('/flashcards', async (req, res) => {
+  try {
+    const flashcards = await Flashcard.find({ userId: { $exists: true } })
+      .populate('userId', 'username email')
+      .sort({ createdAt: -1 });
+    res.json(flashcards);
+  } catch (error) {
+    console.error('Admin get flashcards error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Delete a user-created flashcard (admin only)
+router.delete('/flashcards/:flashcardId', async (req, res) => {
+  try {
+    const flashcard = await Flashcard.findById(req.params.flashcardId);
+    if (!flashcard) {
+      return res.status(404).json({ message: 'Flashcard not found' });
+    }
+    await Flashcard.findByIdAndDelete(req.params.flashcardId);
+    res.json({ message: 'Flashcard deleted' });
+  } catch (error) {
+    console.error('Admin delete flashcard error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
 module.exports = router;

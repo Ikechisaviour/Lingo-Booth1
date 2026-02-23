@@ -27,6 +27,7 @@ function AdminDashboard() {
     recentActiveUsers: [],
   });
   const [users, setUsers] = useState([]);
+  const [userFlashcards, setUserFlashcards] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -42,9 +43,10 @@ function AdminDashboard() {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const [statsResponse, usersResponse] = await Promise.all([
+      const [statsResponse, usersResponse, flashcardsResponse] = await Promise.all([
         adminService.getStats(),
         adminService.getUsers(),
+        adminService.getUserFlashcards(),
       ]);
       // Safely merge stats with defaults
       const data = statsResponse.data || {};
@@ -55,6 +57,7 @@ function AdminDashboard() {
         recentActiveUsers: data.recentActiveUsers || [],
       }));
       setUsers(usersResponse.data || []);
+      setUserFlashcards(flashcardsResponse.data || []);
       setError('');
     } catch (err) {
       const errorMsg = err.response?.data?.message || err.message || 'Unknown error';
@@ -108,6 +111,18 @@ function AdminDashboard() {
         fetchData(); // Refresh stats
       } catch (err) {
         setError(err.response?.data?.message || 'Failed to delete user');
+      }
+    }
+  };
+
+  const handleDeleteFlashcard = async (flashcard) => {
+    if (window.confirm(`Delete flashcard "${flashcard.korean}" by ${flashcard.userId?.username || 'unknown'}?`)) {
+      try {
+        await adminService.deleteFlashcard(flashcard._id);
+        setUserFlashcards(userFlashcards.filter(f => f._id !== flashcard._id));
+        showSuccess('Flashcard deleted');
+      } catch (err) {
+        setError(err.response?.data?.message || 'Failed to delete flashcard');
       }
     }
   };
@@ -222,6 +237,13 @@ function AdminDashboard() {
           >
             <span className="tab-icon">📈</span>
             Activity
+          </button>
+          <button
+            className={`tab-btn ${activeTab === 'flashcards' ? 'active' : ''}`}
+            onClick={() => setActiveTab('flashcards')}
+          >
+            <span className="tab-icon">🎴</span>
+            User Flashcards ({userFlashcards.length})
           </button>
         </div>
 
@@ -616,6 +638,72 @@ function AdminDashboard() {
                     )}
                   </tbody>
                 </table>
+              </div>
+            </div>
+          )}
+
+          {/* Flashcards Tab */}
+          {activeTab === 'flashcards' && (
+            <div className="users-section">
+              <div className="section-title">
+                <h2>User-Created Flashcards</h2>
+                <p style={{ color: 'var(--text-secondary)', marginTop: '4px', fontSize: '0.9rem' }}>
+                  These are private flashcards added by users. Only visible to you and the creator.
+                </p>
+              </div>
+              <div className="card users-table-card">
+                <div className="table-container">
+                  <table className="users-table">
+                    <thead>
+                      <tr>
+                        <th>Korean</th>
+                        <th>English</th>
+                        <th>Romanization</th>
+                        <th>Category</th>
+                        <th>Created By</th>
+                        <th>Mastery</th>
+                        <th>Added</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {userFlashcards.length > 0 ? (
+                        userFlashcards.map((fc) => (
+                          <tr key={fc._id}>
+                            <td><strong>{fc.korean}</strong></td>
+                            <td>{fc.english}</td>
+                            <td style={{ color: 'var(--text-secondary)' }}>{fc.romanization || '—'}</td>
+                            <td>{fc.category || '—'}</td>
+                            <td>
+                              <div className="user-cell">
+                                <div className="user-avatar-sm">{fc.userId?.username?.charAt(0).toUpperCase() || '?'}</div>
+                                <div className="user-info">
+                                  <span className="user-name">{fc.userId?.username || 'Unknown'}</span>
+                                  <span className="user-email">{fc.userId?.email || ''}</span>
+                                </div>
+                              </div>
+                            </td>
+                            <td className="center-cell">{'★'.repeat(fc.masteryLevel)}{'☆'.repeat(5 - fc.masteryLevel)}</td>
+                            <td className="date-cell">{formatDate(fc.createdAt)}</td>
+                            <td>
+                              <div className="actions-cell">
+                                <button
+                                  className="action-btn delete"
+                                  onClick={() => handleDeleteFlashcard(fc)}
+                                  title="Delete flashcard"
+                                >
+                                  🗑️
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        ))
+                      ) : (
+                        <tr><td colSpan="8" className="no-data">No user-created flashcards yet</td></tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           )}

@@ -169,6 +169,10 @@ export const adminService = {
     api.put(`/admin/users/${userId}/role`, { role }),
   deleteUser: (userId) =>
     api.delete(`/admin/users/${userId}`),
+  getUserFlashcards: () =>
+    api.get('/admin/flashcards'),
+  deleteFlashcard: (flashcardId) =>
+    api.delete(`/admin/flashcards/${flashcardId}`),
 };
 
 export default api;

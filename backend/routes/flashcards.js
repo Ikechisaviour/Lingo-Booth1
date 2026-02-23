@@ -24,12 +24,28 @@ router.get('/guest', (req, res) => {
 // --- Authenticated routes ---
 router.use(verifyToken);
 
-// Get flashcards for user (only own flashcards or admin)
+// Get flashcards for user — default deck (visible to all) + user's own cards
 router.get('/user/:userId', isOwner('userId'), async (req, res) => {
   try {
     const { userId } = req.params;
-    const flashcards = await Flashcard.find({ userId });
-    res.json(flashcards);
+
+    // Default vocabulary deck — available to every authenticated user
+    const defaultCards = flashcardData.map((card, i) => ({
+      _id: `default-${i}`,
+      korean: card.korean,
+      english: card.english,
+      romanization: card.romanization,
+      category: card.category,
+      masteryLevel: 3,
+      correctCount: 0,
+      incorrectCount: 0,
+      isDefault: true,
+    }));
+
+    // User's own private flashcards
+    const userFlashcards = await Flashcard.find({ userId });
+
+    res.json([...defaultCards, ...userFlashcards]);
   } catch (error) {
     console.error('Get flashcards error:', error);
     res.status(500).json({ message: 'Server error' });
@@ -64,6 +80,11 @@ router.post('/', async (req, res) => {
 
 // Update flashcard (mark correct/incorrect) - verify ownership
 router.put('/:id', async (req, res) => {
+  // Default cards are not stored in DB — mastery is tracked client-side only
+  if (req.params.id.startsWith('default-')) {
+    return res.json({ message: 'Default card — no DB update' });
+  }
+
   try {
     const { isCorrect } = req.body;
     const flashcard = await Flashcard.findById(req.params.id);
