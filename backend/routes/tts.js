@@ -63,9 +63,11 @@ async function synthesize(text, lang, voice, rate, res) {
 
   // Determine voice: explicit voice > default for lang > English fallback
   const selectedVoice = voice || DEFAULT_VOICES[lang] || DEFAULT_VOICES['en-US'];
+  // Extract locale from voice name (e.g. 'ko-KR-SunHiNeural' → 'ko-KR')
+  const voiceLocale = lang || selectedVoice.split('-').slice(0, 2).join('-');
 
   const tts = new MsEdgeTTS();
-  await tts.setMetadata(selectedVoice, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3);
+  await tts.setMetadata(selectedVoice, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3, voiceLocale);
 
   const options = {};
   if (rate) options.rate = rate;
