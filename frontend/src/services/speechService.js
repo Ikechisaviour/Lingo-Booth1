@@ -100,13 +100,26 @@ class SpeechService {
    */
   _playAudio(url) {
     return new Promise((resolve, reject) => {
-      this.audio = new Audio(url);
-      this.audio.onended = () => resolve();
-      this.audio.onerror = (e) => {
+      const audio = new Audio();
+      this.audio = audio;
+
+      audio.preload = 'auto';
+      audio.onended = resolve;
+      audio.onerror = (e) => {
         console.error('Audio playback error:', e);
         reject(e);
       };
-      this.audio.play().catch(reject);
+
+      audio.src = url;
+      audio.play().catch((err) => {
+        if (err.name === 'NotAllowedError') {
+          // Chrome desktop blocks autoplay when there is no user gesture.
+          // Resolve silently so the speech chain doesn't break.
+          resolve();
+        } else {
+          reject(err);
+        }
+      });
     });
   }
 
