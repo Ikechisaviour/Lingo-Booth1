@@ -126,32 +126,33 @@ class SpeechService {
 
   /**
    * Play an audio URL and return a promise that resolves when done.
-   * Uses direct Audio(url) constructor so audio.play() is called in the
-   * same synchronous call stack as the user gesture (required by Chrome).
+   * Fetches audio as a blob first so the Audio element loads from a
+   * same-origin blob URL — Chrome desktop blocks cross-origin Audio loads.
    */
-  _playAudio(url) {
+  async _playAudio(url) {
+    // Fetch audio data (cross-origin handled by CORS headers)
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`TTS request failed: ${response.status}`);
+    const blob = await response.blob();
+    const blobUrl = URL.createObjectURL(blob);
+
     return new Promise((resolve, reject) => {
-      const audio = new Audio(url);
+      const audio = new Audio(blobUrl);
       this.audio = audio;
 
       let settled = false;
       const settle = (fn, arg) => {
         if (settled) return;
         settled = true;
+        URL.revokeObjectURL(blobUrl);
         fn(arg);
       };
 
       audio.onended = () => settle(resolve);
       audio.onerror = () => settle(reject, new Error('Audio failed to load'));
 
-      audio.play().then(() => {
-        // play started successfully — onended will resolve
-      }).catch((err) => {
-        if (err.name === 'NotAllowedError') {
-          // Chrome blocks autoplay without user gesture — skip silently
-          settle(resolve);
-        } else if (err.name === 'AbortError') {
-          // Chrome aborts play when source changes or element is removed
+      audio.play().catch((err) => {
+        if (err.name === 'NotAllowedError' || err.name === 'AbortError') {
           settle(resolve);
         } else {
           settle(reject, err);
