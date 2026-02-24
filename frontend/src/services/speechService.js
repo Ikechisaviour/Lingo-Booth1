@@ -96,17 +96,36 @@ class SpeechService {
   }
 
   /**
-   * Play an audio URL and return a promise that resolves when done
+   * Play an audio URL and return a promise that resolves when done.
+   * Uses fetch + blob for reliable cross-browser playback (fixes Chrome
+   * desktop autoplay issues). Falls back to direct URL on fetch failure.
    */
-  _playAudio(url) {
+  async _playAudio(url) {
+    // Fetch audio as blob — gives proper HTTP error handling and avoids
+    // cross-origin media loading quirks on desktop Chrome
+    let audioSrc = url;
+    let blobUrl = null;
+    try {
+      const response = await fetch(url);
+      if (response.ok) {
+        const blob = await response.blob();
+        blobUrl = URL.createObjectURL(blob);
+        audioSrc = blobUrl;
+      }
+    } catch {
+      // Network error — fall back to direct URL (works for iOS Safari gesture context)
+    }
+
     return new Promise((resolve, reject) => {
-      this.audio = new Audio(url);
-      this.audio.onended = () => resolve();
+      this.audio = new Audio(audioSrc);
+      const cleanup = () => { if (blobUrl) URL.revokeObjectURL(blobUrl); };
+      this.audio.onended = () => { cleanup(); resolve(); };
       this.audio.onerror = (e) => {
+        cleanup();
         console.error('Audio playback error:', e);
         reject(e);
       };
-      this.audio.play().catch(reject);
+      this.audio.play().catch((err) => { cleanup(); reject(err); });
     });
   }
 
