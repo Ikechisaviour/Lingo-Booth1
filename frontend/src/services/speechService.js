@@ -35,11 +35,26 @@ class SpeechService {
     this._audioUnlocked = false;
 
     // Voice preference (Edge TTS voice name, e.g. 'ko-KR-SunHiNeural')
-    this.preferredVoice = localStorage.getItem('preferredVoice') || null;
+    const storedVoice = localStorage.getItem('preferredVoice') || null;
+    if (storedVoice && !this._isValidEdgeVoice(storedVoice)) {
+      // Clear legacy Google Web Speech API voice names (e.g. "Google 한국의")
+      localStorage.removeItem('preferredVoice');
+      this.preferredVoice = null;
+    } else {
+      this.preferredVoice = storedVoice;
+    }
 
     // Chrome desktop blocks audio until user interacts with the page.
     // Listen for the first click/tap/key to unlock audio playback.
     this._setupAudioUnlock();
+  }
+
+  /**
+   * Check if a voice name is a valid Edge TTS voice (e.g. 'ko-KR-SunHiNeural')
+   * Edge TTS voices always end with 'Neural' and follow xx-XX-NameNeural pattern
+   */
+  _isValidEdgeVoice(voiceName) {
+    return typeof voiceName === 'string' && /Neural$/i.test(voiceName);
   }
 
   /**
@@ -287,7 +302,7 @@ class SpeechService {
    * Set the preferred voice by name (Edge TTS voice name)
    */
   setVoice(voiceName) {
-    if (!voiceName) {
+    if (!voiceName || !this._isValidEdgeVoice(voiceName)) {
       localStorage.removeItem('preferredVoice');
       this.preferredVoice = null;
       return;
