@@ -9,8 +9,20 @@ const User = require('./models/User');
 const app = express();
 
 // Middleware
+const allowedOrigins = process.env.FRONTEND_ORIGINS
+  ? process.env.FRONTEND_ORIGINS.split(',').map(o => o.trim())
+  : [process.env.FRONTEND_ORIGIN || 'http://localhost:3000'];
+
 const corsOptions = {
-  origin: process.env.FRONTEND_ORIGIN || 'http://localhost:3000',
+  origin: (origin, callback) => {
+    // Allow requests with no origin (mobile apps, curl, health checks)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
