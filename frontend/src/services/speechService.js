@@ -32,9 +32,38 @@ class SpeechService {
     this._abortController = null;
     this._audioCache = new Map();
     this._maxCacheSize = 50;
+    this._audioUnlocked = false;
 
     // Voice preference (Edge TTS voice name, e.g. 'ko-KR-SunHiNeural')
     this.preferredVoice = localStorage.getItem('preferredVoice') || null;
+
+    // Chrome desktop blocks audio until user interacts with the page.
+    // Listen for the first click/tap/key to unlock audio playback.
+    this._setupAudioUnlock();
+  }
+
+  /**
+   * Register a one-time listener that "unlocks" audio on Chrome desktop.
+   * Playing a tiny silent WAV from a data-URI on the first user gesture
+   * satisfies Chrome's autoplay gate for subsequent Audio element plays.
+   */
+  _setupAudioUnlock() {
+    const unlock = () => {
+      if (this._audioUnlocked) return;
+      this._audioUnlocked = true;
+      // 44-byte silent WAV
+      const silentWav = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=';
+      const a = new Audio(silentWav);
+      a.volume = 0.01;
+      const p = a.play();
+      if (p) p.then(() => a.pause()).catch(() => {});
+      document.removeEventListener('click', unlock, true);
+      document.removeEventListener('touchstart', unlock, true);
+      document.removeEventListener('keydown', unlock, true);
+    };
+    document.addEventListener('click', unlock, true);
+    document.addEventListener('touchstart', unlock, true);
+    document.addEventListener('keydown', unlock, true);
   }
 
   /**
@@ -97,28 +126,35 @@ class SpeechService {
 
   /**
    * Play an audio URL and return a promise that resolves when done.
-   * Uses direct Audio element (no fetch) so audio.play() stays within the
-   * user gesture call stack on Chrome, which blocks play() after async gaps.
+   * Uses direct Audio(url) constructor so audio.play() is called in the
+   * same synchronous call stack as the user gesture (required by Chrome).
    */
   _playAudio(url) {
     return new Promise((resolve, reject) => {
-      const audio = new Audio();
+      const audio = new Audio(url);
       this.audio = audio;
 
-      audio.preload = 'auto';
-      audio.onended = resolve;
-      audio.onerror = () => {
-        reject(new Error('Audio failed to load'));
+      let settled = false;
+      const settle = (fn, arg) => {
+        if (settled) return;
+        settled = true;
+        fn(arg);
       };
 
-      audio.src = url;
-      audio.play().catch((err) => {
+      audio.onended = () => settle(resolve);
+      audio.onerror = () => settle(reject, new Error('Audio failed to load'));
+
+      audio.play().then(() => {
+        // play started successfully — onended will resolve
+      }).catch((err) => {
         if (err.name === 'NotAllowedError') {
-          // Chrome desktop blocks autoplay when there is no user gesture.
-          // Resolve silently so the speech chain doesn't break.
-          resolve();
+          // Chrome blocks autoplay without user gesture — skip silently
+          settle(resolve);
+        } else if (err.name === 'AbortError') {
+          // Chrome aborts play when source changes or element is removed
+          settle(resolve);
         } else {
-          reject(err);
+          settle(reject, err);
         }
       });
     });
