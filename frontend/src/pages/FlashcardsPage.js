@@ -385,16 +385,18 @@ function FlashcardsPage() {
 
       const isDefaultCard = flashcard._id?.toString().startsWith('default-');
 
-      if (userId && !isDefaultCard) {
+      if (userId) {
         await flashcardService.updateFlashcard(flashcard._id, { isCorrect: true });
-        await progressService.recordProgress({
-          userId,
-          skillType: 'reading',
-          category: normalizeCategory(flashcard.category)[0],
-          score: 80,
-          isCorrect: true,
-        });
-        userService.awardXP(userId, { flashcardId: flashcard._id, basePoints: 2 }).catch(() => {});
+        if (!isDefaultCard) {
+          await progressService.recordProgress({
+            userId,
+            skillType: 'reading',
+            category: normalizeCategory(flashcard.category)[0],
+            score: 80,
+            isCorrect: true,
+          });
+          userService.awardXP(userId, { flashcardId: flashcard._id, basePoints: 2 }).catch(() => {});
+        }
       } else if (isGuest) {
         guestXPHelper.add(1);
       }
@@ -423,15 +425,17 @@ function FlashcardsPage() {
 
       const isDefaultCard = flashcard._id?.toString().startsWith('default-');
 
-      if (userId && !isDefaultCard) {
+      if (userId) {
         await flashcardService.updateFlashcard(flashcard._id, { isCorrect: false });
-        await progressService.recordProgress({
-          userId,
-          skillType: 'reading',
-          category: normalizeCategory(flashcard.category)[0],
-          score: 40,
-          isCorrect: false,
-        });
+        if (!isDefaultCard) {
+          await progressService.recordProgress({
+            userId,
+            skillType: 'reading',
+            category: normalizeCategory(flashcard.category)[0],
+            score: 40,
+            isCorrect: false,
+          });
+        }
       }
 
       const updatedFlashcards = flashcards.map(fc =>
