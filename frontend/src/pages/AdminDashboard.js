@@ -673,7 +673,7 @@ function AdminDashboard() {
                             <td><strong>{fc.korean}</strong></td>
                             <td>{fc.english}</td>
                             <td style={{ color: 'var(--text-secondary)' }}>{fc.romanization || '—'}</td>
-                            <td>{fc.category || '—'}</td>
+                            <td>{Array.isArray(fc.category) ? fc.category.join(', ') : fc.category || '—'}</td>
                             <td>
                               <div className="user-cell">
                                 <div className="user-avatar-sm">{fc.userId?.username?.charAt(0).toUpperCase() || '?'}</div>

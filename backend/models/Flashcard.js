@@ -20,7 +20,10 @@ const flashcardSchema = new mongoose.Schema({
     required: true,
   },
   audioUrl: String,
-  category: String,
+  category: {
+    type: [String],
+    default: ['uncategorized'],
+  },
   masteryLevel: {
     type: Number,
     default: 3,

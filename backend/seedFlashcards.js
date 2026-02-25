@@ -103,10 +103,13 @@ async function seedFlashcards() {
     // Show statistics
     const categoryStats = {};
     flashcardData.forEach(card => {
-      categoryStats[card.category] = (categoryStats[card.category] || 0) + 1;
+      const cats = Array.isArray(card.category) ? card.category : [card.category || 'uncategorized'];
+      cats.forEach(cat => {
+        categoryStats[cat] = (categoryStats[cat] || 0) + 1;
+      });
     });
 
-    console.log('\n=== Category Breakdown ===');
+    console.log('\n=== Category Breakdown (cards may appear in multiple) ===');
     Object.entries(categoryStats)
       .sort((a, b) => b[1] - a[1])
       .forEach(([category, count]) => {

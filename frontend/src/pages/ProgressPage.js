@@ -47,6 +47,9 @@ function ProgressPage() {
 
   const formatCategory = (cat) => {
     if (!cat) return 'General';
+    if (Array.isArray(cat)) {
+      return cat.map(c => c.charAt(0).toUpperCase() + c.slice(1).replace('-', ' ')).join(', ');
+    }
     return cat.charAt(0).toUpperCase() + cat.slice(1).replace('-', ' ');
   };
 

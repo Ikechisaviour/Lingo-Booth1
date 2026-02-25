@@ -4,6 +4,13 @@ import { flashcardService, progressService, userService, guestXPHelper } from '.
 import speechService from '../services/speechService';
 import './FlashcardsPage.css';
 
+// Normalize category: handles old string format and new array format
+const normalizeCategory = (cat) => {
+  if (Array.isArray(cat)) return cat.length > 0 ? cat : ['uncategorized'];
+  if (typeof cat === 'string' && cat.trim()) return [cat.trim()];
+  return ['uncategorized'];
+};
+
 function FlashcardsPage() {
   const [flashcards, setFlashcards] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -14,7 +21,7 @@ function FlashcardsPage() {
     korean: '',
     english: '',
     romanization: '',
-    category: 'vocabulary',
+    category: ['vocabulary'],
   });
   const [showForm, setShowForm] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
@@ -268,7 +275,7 @@ function FlashcardsPage() {
         ...newFlashcard,
       });
       setFlashcards([...flashcards, response.data]);
-      setNewFlashcard({ korean: '', english: '', romanization: '', category: 'vocabulary' });
+      setNewFlashcard({ korean: '', english: '', romanization: '', category: ['vocabulary'] });
       setShowForm(false);
     } catch (err) {
       setError('Failed to add flashcard');
@@ -287,8 +294,10 @@ function FlashcardsPage() {
   const getCategoryCounts = () => {
     const counts = {};
     flashcards.forEach((card) => {
-      const cat = card.category || 'uncategorized';
-      counts[cat] = (counts[cat] || 0) + 1;
+      const cats = normalizeCategory(card.category);
+      cats.forEach(cat => {
+        counts[cat] = (counts[cat] || 0) + 1;
+      });
     });
     return counts;
   };
@@ -309,7 +318,10 @@ function FlashcardsPage() {
   // Filtered flashcards based on selected categories
   const activeFlashcards = selectedCategories.size === 0
     ? flashcards
-    : flashcards.filter(c => selectedCategories.has(c.category || 'uncategorized'));
+    : flashcards.filter(c => {
+        const cats = normalizeCategory(c.category);
+        return cats.some(cat => selectedCategories.has(cat));
+      });
 
   const handleNext = async () => {
     if (transitioningRef.current || currentIndex >= activeFlashcards.length - 1) return;
@@ -378,7 +390,7 @@ function FlashcardsPage() {
         await progressService.recordProgress({
           userId,
           skillType: 'reading',
-          category: flashcard.category,
+          category: normalizeCategory(flashcard.category)[0],
           score: 80,
           isCorrect: true,
         });
@@ -416,7 +428,7 @@ function FlashcardsPage() {
         await progressService.recordProgress({
           userId,
           skillType: 'reading',
-          category: flashcard.category,
+          category: normalizeCategory(flashcard.category)[0],
           score: 40,
           isCorrect: false,
         });
@@ -618,12 +630,15 @@ function FlashcardsPage() {
                   />
                 </div>
                 <div className="form-group">
-                  <label>Category</label>
+                  <label>Category (comma-separated)</label>
                   <input
                     type="text"
-                    placeholder="vocabulary"
-                    value={newFlashcard.category}
-                    onChange={(e) => setNewFlashcard({ ...newFlashcard, category: e.target.value })}
+                    placeholder="vocabulary, verbs"
+                    value={newFlashcard.category.join(', ')}
+                    onChange={(e) => setNewFlashcard({
+                      ...newFlashcard,
+                      category: e.target.value.split(',').map(s => s.trim()).filter(Boolean),
+                    })}
                   />
                 </div>
               </div>

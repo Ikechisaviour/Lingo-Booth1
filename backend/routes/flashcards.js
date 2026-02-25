@@ -4,6 +4,13 @@ const Flashcard = require('../models/Flashcard');
 const flashcardData = require('../flashcardData');
 const { verifyToken, isOwner } = require('../middleware/auth');
 
+// Normalize category: handles old string format and new array format
+const normalizeCategory = (cat) => {
+  if (Array.isArray(cat)) return cat.length > 0 ? cat : ['uncategorized'];
+  if (typeof cat === 'string' && cat.trim()) return [cat.trim()];
+  return ['uncategorized'];
+};
+
 // --- Public routes (no auth required) ---
 
 // Guest flashcards — returns default vocabulary set (read-only)
@@ -42,10 +49,15 @@ router.get('/user/:userId', isOwner('userId'), async (req, res) => {
       isDefault: true,
     }));
 
-    // User's own private flashcards
+    // User's own private flashcards (normalize category for old string-format docs)
     const userFlashcards = await Flashcard.find({ userId });
+    const normalizedUserCards = userFlashcards.map(fc => {
+      const obj = fc.toObject();
+      obj.category = normalizeCategory(obj.category);
+      return obj;
+    });
 
-    res.json([...defaultCards, ...userFlashcards]);
+    res.json([...defaultCards, ...normalizedUserCards]);
   } catch (error) {
     console.error('Get flashcards error:', error);
     res.status(500).json({ message: 'Server error' });
@@ -67,7 +79,7 @@ router.post('/', async (req, res) => {
       english,
       romanization,
       audioUrl,
-      category,
+      category: normalizeCategory(category),
     });
 
     await flashcard.save();
