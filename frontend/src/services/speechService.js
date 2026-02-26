@@ -33,6 +33,12 @@ class SpeechService {
     this._audioCache = new Map();
     this._maxCacheSize = 50;
     this._audioUnlocked = false;
+    this._silentAudio = null;
+
+    // Persistent audio element — reused across plays so mobile OS keeps the
+    // media session alive when the browser is minimised.
+    this._persistentAudio = new Audio();
+    this._persistentAudio.preload = 'auto';
 
     // Voice preference (Edge TTS voice name, e.g. 'ko-KR-SunHiNeural')
     const storedVoice = localStorage.getItem('preferredVoice') || null;
@@ -72,6 +78,18 @@ class SpeechService {
       a.volume = 0.01;
       const p = a.play();
       if (p) p.then(() => a.pause()).catch(() => {});
+      // Also unlock the persistent element so it's pre-authorised for
+      // background playback later.
+      if (this._persistentAudio) {
+        this._persistentAudio.src = silentWav;
+        this._persistentAudio.volume = 0.01;
+        const p2 = this._persistentAudio.play();
+        if (p2) p2.then(() => {
+          this._persistentAudio.pause();
+          this._persistentAudio.removeAttribute('src');
+          this._persistentAudio.volume = 1;
+        }).catch(() => {});
+      }
       document.removeEventListener('click', unlock, true);
       document.removeEventListener('touchstart', unlock, true);
       document.removeEventListener('keydown', unlock, true);
@@ -141,18 +159,21 @@ class SpeechService {
 
   /**
    * Play an audio URL and return a promise that resolves when done.
-   * Fetches audio as a blob first so the Audio element loads from a
-   * same-origin blob URL — Chrome desktop blocks cross-origin Audio loads.
+   * Reuses the persistent Audio element so mobile browsers keep the media
+   * session alive when the page is backgrounded.
    */
   async _playAudio(url) {
-    // Fetch audio data (cross-origin handled by CORS headers)
+    // Pause silent bridge while real audio plays — the persistent element
+    // keeps the session alive on its own.
+    this._pauseSilentBridge();
+
     const response = await fetch(url);
     if (!response.ok) throw new Error(`TTS request failed: ${response.status}`);
     const blob = await response.blob();
     const blobUrl = URL.createObjectURL(blob);
 
     return new Promise((resolve, reject) => {
-      const audio = new Audio(blobUrl);
+      const audio = this._persistentAudio;
       this.audio = audio;
 
       let settled = false;
@@ -160,11 +181,14 @@ class SpeechService {
         if (settled) return;
         settled = true;
         URL.revokeObjectURL(blobUrl);
+        // Resume silent bridge after real audio finishes
+        this._resumeSilentBridge();
         fn(arg);
       };
 
       audio.onended = () => settle(resolve);
       audio.onerror = () => settle(reject, new Error('Audio failed to load'));
+      audio.src = blobUrl;
 
       audio.play().catch((err) => {
         if (err.name === 'NotAllowedError' || err.name === 'AbortError') {
@@ -318,6 +342,101 @@ class SpeechService {
     return this.preferredVoice;
   }
 
+  // ─── Silent audio bridge ───────────────────────────────────────────
+  // A looping near-silent MP3 keeps the media session alive during gaps
+  // (e.g. the 5-second think time) so mobile browsers don't suspend the tab.
+  // Minimal valid MP3 frame (silence, ~0.07s per frame, looped).
+  _SILENT_MP3 = 'data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAABhgC7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7//////////////////////////////////////////////////////////////////8AAAAATGF2YzU4LjEzAAAAAAAAAAAAAAAAJAAAAAAAAAAAAYYoRwmHAAAAAAD/+1DEAAAH+AV/UAAAIQQBL6qYAABAEQAAXEYGBsDBAxMw0FBR9f/ykHw+D9YPh8uD4f8oc/KHP/lDn//5Q5/Kf/yjz//8p8/+Xf/lDn/y7///lDn/5d/8o//8u//KHPf/Lv/ygAAAA0EjRERERERDkREIjdERCIiIiIiaIiIiGiIiERf/MzP/MzMzMzP/MzM/MzMzMzMAAAABPp6f/pqampqan/pqf+mpqampqYAAAA';
+
+  /**
+   * Start silent audio bridge to keep media session alive during gaps.
+   */
+  startSilentBridge() {
+    if (this._silentAudio) return;
+    this._silentAudio = new Audio(this._SILENT_MP3);
+    this._silentAudio.loop = true;
+    this._silentAudio.volume = 0.01;
+    this._silentAudio.play().catch(() => {});
+  }
+
+  /**
+   * Stop and discard the silent bridge.
+   */
+  stopSilentBridge() {
+    if (this._silentAudio) {
+      this._silentAudio.pause();
+      this._silentAudio.removeAttribute('src');
+      this._silentAudio = null;
+    }
+  }
+
+  /**
+   * Pause the silent bridge while real audio is playing.
+   */
+  _pauseSilentBridge() {
+    if (this._silentAudio && !this._silentAudio.paused) {
+      this._silentAudio.pause();
+    }
+  }
+
+  /**
+   * Resume the silent bridge after real audio finishes.
+   */
+  _resumeSilentBridge() {
+    if (this._silentAudio && this._silentAudio.paused) {
+      this._silentAudio.play().catch(() => {});
+    }
+  }
+
+  /**
+   * Wait for the given duration while keeping the media session alive
+   * via the silent bridge. Use this instead of raw setTimeout in autoplay.
+   */
+  waitAsync(ms) {
+    this.startSilentBridge();
+    return new Promise(resolve => {
+      const t = setTimeout(resolve, ms);
+      this._pendingTimers.push(t);
+    });
+  }
+
+  // ─── Media Session API ────────────────────────────────────────────
+
+  /**
+   * Set lock-screen / notification media session metadata and controls.
+   */
+  setMediaSession({ title, artist, album, artwork, onPlay, onPause, onPrevTrack, onNextTrack }) {
+    if (!('mediaSession' in navigator)) return;
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: title || 'Lingo Booth',
+      artist: artist || 'Flashcards',
+      album: album || 'Lingo Booth',
+      artwork: artwork || [
+        { src: '/images/logo.png', sizes: '512x512', type: 'image/png' },
+      ],
+    });
+    navigator.mediaSession.setActionHandler('play', onPlay || null);
+    navigator.mediaSession.setActionHandler('pause', onPause || null);
+    navigator.mediaSession.setActionHandler('previoustrack', onPrevTrack || null);
+    navigator.mediaSession.setActionHandler('nexttrack', onNextTrack || null);
+  }
+
+  /**
+   * Clear media session metadata and action handlers.
+   */
+  clearMediaSession() {
+    if (!('mediaSession' in navigator)) return;
+    navigator.mediaSession.metadata = null;
+    try {
+      navigator.mediaSession.setActionHandler('play', null);
+      navigator.mediaSession.setActionHandler('pause', null);
+      navigator.mediaSession.setActionHandler('previoustrack', null);
+      navigator.mediaSession.setActionHandler('nexttrack', null);
+    } catch (_) { /* some browsers throw if handler was never set */ }
+  }
+
+  // ─────────────────────────────────────────────────────────────────
+
   /**
    * Clear all pending timers
    */
@@ -335,29 +454,33 @@ class SpeechService {
       this._abortController.abort();
       this._abortController = null;
     }
-    if (this.audio) {
-      this.audio.pause();
-      this.audio.currentTime = 0;
-      this.audio = null;
+    if (this._persistentAudio) {
+      this._persistentAudio.pause();
+      this._persistentAudio.removeAttribute('src');
+      this._persistentAudio.load();
     }
+    this.audio = null;
+    this.stopSilentBridge();
   }
 
   /**
    * Pause ongoing speech
    */
   pause() {
-    if (this.audio && !this.audio.paused) {
-      this.audio.pause();
+    if (this._persistentAudio && !this._persistentAudio.paused) {
+      this._persistentAudio.pause();
     }
+    this._pauseSilentBridge();
   }
 
   /**
    * Resume paused speech
    */
   resume() {
-    if (this.audio && this.audio.paused) {
-      this.audio.play().catch(() => {});
+    if (this._persistentAudio && this._persistentAudio.paused && this._persistentAudio.src) {
+      this._persistentAudio.play().catch(() => {});
     }
+    this._resumeSilentBridge();
   }
 
   /**
@@ -397,7 +520,8 @@ class SpeechService {
    * Check if currently speaking
    */
   isSpeaking() {
-    return this.audio ? !this.audio.paused && !this.audio.ended : false;
+    const a = this._persistentAudio;
+    return a ? !a.paused && !a.ended && !!a.src : false;
   }
 }
 

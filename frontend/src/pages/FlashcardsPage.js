@@ -132,37 +132,37 @@ function FlashcardsPage() {
     autoPlayRef.current = autoPlay;
   }, [autoPlay]);
 
-  // Auto-play: automatically cycle through cards
+  // Auto-play: automatically cycle through cards.
+  // Uses speechService.waitAsync() instead of raw setTimeout so the silent
+  // audio bridge keeps the media session alive when the browser is minimised.
   useEffect(() => {
     if (!autoPlay || activeFlashcards.length === 0 || !activeFlashcards[currentIndex]) return;
     // Auto-play requires audio — disable for text-only
     if (studyStyle === 'text') { setAutoPlay(false); return; }
 
     let cancelled = false;
-    const wait = (ms) => new Promise(r => {
-      const t = setTimeout(r, ms);
-      return () => clearTimeout(t);
-    });
 
     const autoPlayCard = async () => {
+      speechService.startSilentBridge();
+
       const card = activeFlashcards[currentIndex];
       const frontText = currentCardShowsKorean ? card.korean : card.english;
       const backText = currentCardShowsKorean ? card.english : card.korean;
 
       // Wait for slide-in to settle
-      await wait(600);
+      await speechService.waitAsync(600);
       if (cancelled) return;
 
       // Speak front twice: korean, korean
       await speechService.speakAsync(frontText);
       if (cancelled) return;
-      await wait(400);
+      await speechService.waitAsync(400);
       if (cancelled) return;
       await speechService.speakAsync(frontText);
       if (cancelled) return;
 
       // 5 seconds for user to try and remember
-      await wait(5000);
+      await speechService.waitAsync(5000);
       if (cancelled) return;
 
       // Speak front again: korean
@@ -170,28 +170,29 @@ function FlashcardsPage() {
       if (cancelled) return;
 
       // Flip and speak back: english
-      await wait(600);
+      await speechService.waitAsync(600);
       if (cancelled) return;
       setIsFlipped(true);
-      await wait(400);
+      await speechService.waitAsync(400);
       if (cancelled) return;
       await speechService.speakAsync(backText);
       if (cancelled) return;
 
       // Pause before advancing
-      await wait(1200);
+      await speechService.waitAsync(1200);
       if (cancelled) return;
 
       // Check if last card
       if (currentIndex >= activeFlashcards.length - 1) {
         setAutoPlay(false);
+        speechService.stopSilentBridge();
         return;
       }
 
       // Slide to next card
       transitioningRef.current = true;
       setCardAnim('slide-out');
-      await wait(300);
+      await speechService.waitAsync(300);
       if (cancelled) return;
 
       setCurrentIndex(prev => prev + 1);
@@ -208,10 +209,43 @@ function FlashcardsPage() {
 
     return () => {
       cancelled = true;
-      speechService.cancel();
+      speechService.cancel(); // also stops silent bridge
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autoPlay, currentIndex]);
+
+  // Media Session: show lock-screen controls when autoplay is active
+  useEffect(() => {
+    if (!autoPlay || activeFlashcards.length === 0) { // eslint-disable-line no-use-before-define
+      speechService.clearMediaSession();
+      return;
+    }
+    const card = activeFlashcards[currentIndex];
+    if (!card) return;
+
+    speechService.setMediaSession({
+      title: card.korean || card.english,
+      artist: `Card ${currentIndex + 1} of ${activeFlashcards.length}`,
+      album: 'Lingo Booth \u2014 Flashcards',
+      onPlay: () => setAutoPlay(true),
+      onPause: () => { setAutoPlay(false); speechService.cancel(); },
+      onNextTrack: () => {
+        if (currentIndex < activeFlashcards.length - 1) {
+          setCurrentIndex(prev => prev + 1);
+          setIsFlipped(false);
+        }
+      },
+      onPrevTrack: () => {
+        if (currentIndex > 0) {
+          setCurrentIndex(prev => prev - 1);
+          setIsFlipped(false);
+        }
+      },
+    });
+
+    return () => speechService.clearMediaSession();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [autoPlay, currentIndex, activeFlashcards.length]);
 
   // Reset index when category filter changes
   useEffect(() => {
