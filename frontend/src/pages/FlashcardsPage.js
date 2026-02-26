@@ -214,39 +214,6 @@ function FlashcardsPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autoPlay, currentIndex]);
 
-  // Media Session: show lock-screen controls when autoplay is active
-  useEffect(() => {
-    if (!autoPlay || activeFlashcards.length === 0) { // eslint-disable-line no-use-before-define
-      speechService.clearMediaSession();
-      return;
-    }
-    const card = activeFlashcards[currentIndex];
-    if (!card) return;
-
-    speechService.setMediaSession({
-      title: card.korean || card.english,
-      artist: `Card ${currentIndex + 1} of ${activeFlashcards.length}`,
-      album: 'Lingo Booth \u2014 Flashcards',
-      onPlay: () => setAutoPlay(true),
-      onPause: () => { setAutoPlay(false); speechService.cancel(); },
-      onNextTrack: () => {
-        if (currentIndex < activeFlashcards.length - 1) {
-          setCurrentIndex(prev => prev + 1);
-          setIsFlipped(false);
-        }
-      },
-      onPrevTrack: () => {
-        if (currentIndex > 0) {
-          setCurrentIndex(prev => prev - 1);
-          setIsFlipped(false);
-        }
-      },
-    });
-
-    return () => speechService.clearMediaSession();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [autoPlay, currentIndex, activeFlashcards.length]);
-
   // Reset index when category filter changes
   useEffect(() => {
     setCurrentIndex(0);
@@ -356,6 +323,39 @@ function FlashcardsPage() {
         const cats = normalizeCategory(c.category);
         return cats.some(cat => selectedCategories.has(cat));
       });
+
+  // Media Session: show lock-screen controls when autoplay is active
+  useEffect(() => {
+    if (!autoPlay || activeFlashcards.length === 0) {
+      speechService.clearMediaSession();
+      return;
+    }
+    const card = activeFlashcards[currentIndex];
+    if (!card) return;
+
+    speechService.setMediaSession({
+      title: card.korean || card.english,
+      artist: `Card ${currentIndex + 1} of ${activeFlashcards.length}`,
+      album: 'Lingo Booth \u2014 Flashcards',
+      onPlay: () => setAutoPlay(true),
+      onPause: () => { setAutoPlay(false); speechService.cancel(); },
+      onNextTrack: () => {
+        if (currentIndex < activeFlashcards.length - 1) {
+          setCurrentIndex(prev => prev + 1);
+          setIsFlipped(false);
+        }
+      },
+      onPrevTrack: () => {
+        if (currentIndex > 0) {
+          setCurrentIndex(prev => prev - 1);
+          setIsFlipped(false);
+        }
+      },
+    });
+
+    return () => speechService.clearMediaSession();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [autoPlay, currentIndex, activeFlashcards.length]);
 
   const handleNext = async () => {
     if (transitioningRef.current || currentIndex >= activeFlashcards.length - 1) return;
