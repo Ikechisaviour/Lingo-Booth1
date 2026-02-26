@@ -3,6 +3,23 @@
   background-color: var(--bg);
 }
 
+/* Landscape: navbar becomes vertical sidebar, content beside it */
+@media (aspect-ratio > 1/1) {
+  .App {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+  }
+
+  /* Page content takes remaining width */
+  .App > *:not(.navbar) {
+    flex: 1;
+    min-width: 0;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+}
+
 /* Container variants */
 .container {
   max-width: 1200px;

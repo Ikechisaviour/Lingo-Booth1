@@ -532,141 +532,166 @@ function FlashcardsPage() {
         </div>
       )}
       <div className="container">
-        {/* Header */}
-        <div className="flashcards-header">
-          <div className="header-content">
-            <h1>Practice <span className="text-accent">Flashcards</span></h1>
-          </div>
-          <div className="header-actions">
-            {flashcards.length > 0 && (
-              <>
-                <button
-                  className={`header-tool-btn ${isShuffled ? 'active' : ''}`}
-                  title="Shuffle"
-                  onClick={() => {
-                    if (transitioningRef.current) return;
-                    transitioningRef.current = true;
-                    setCardAnim('shuffle');
-                    setTimeout(() => {
-                      const shuffled = [...flashcards];
-                      for (let i = shuffled.length - 1; i > 0; i--) {
-                        const j = Math.floor(Math.random() * (i + 1));
-                        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-                      }
-                      setFlashcards(shuffled);
-                      setCurrentIndex(0);
-                      setIsFlipped(false);
-                      setIsShuffled(true);
-                      setCardAnim('slide-in');
-                      setTimeout(() => {
-                        setCardAnim('');
-                        transitioningRef.current = false;
-                      }, 400);
-                    }, 400);
-                  }}
-                >
-                  <span className="tool-icon">🔀</span>
-                  <span className="tool-label">Shuffle</span>
-                </button>
-                <button
-                  className={`header-tool-btn ${autoPlay ? 'active' : ''}`}
-                  title={autoPlay ? 'Stop' : 'Auto-play'}
-                  onClick={() => {
-                    if (autoPlay) {
-                      setAutoPlay(false);
-                      speechService.cancel();
-                    } else {
-                      setAutoPlay(true);
-                    }
-                  }}
-                >
-                  <span className="tool-icon">{autoPlay ? '⏹' : '▶'}</span>
-                  <span className="tool-label">{autoPlay ? 'Stop' : 'Auto-play'}</span>
-                </button>
-              </>
-            )}
-            {!isGuest && (
-              <button className="btn btn-primary" onClick={() => setShowForm(!showForm)}>
-                {showForm ? 'Cancel' : '+ Add Flashcard'}
-              </button>
-            )}
-          </div>
-        </div>
-
-        {error && <div className="error">{error}</div>}
-
-        {/* Add Flashcard Form */}
-        {showForm && (
-          <div className="add-flashcard-form card">
-            <h2>Add New Flashcard</h2>
-            <form onSubmit={handleAddFlashcard}>
-              <div className="form-row">
-                <div className="form-group">
-                  <label>Korean</label>
-                  <input
-                    type="text"
-                    placeholder="한국어"
-                    value={newFlashcard.korean}
-                    onChange={(e) => setNewFlashcard({ ...newFlashcard, korean: e.target.value })}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Romanization</label>
-                  <input
-                    type="text"
-                    placeholder="hangugeo"
-                    value={newFlashcard.romanization}
-                    onChange={(e) => setNewFlashcard({ ...newFlashcard, romanization: e.target.value })}
-                    required
-                  />
-                </div>
-              </div>
-              <div className="form-row">
-                <div className="form-group">
-                  <label>English</label>
-                  <input
-                    type="text"
-                    placeholder="Korean language"
-                    value={newFlashcard.english}
-                    onChange={(e) => setNewFlashcard({ ...newFlashcard, english: e.target.value })}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Category (comma-separated)</label>
-                  <input
-                    type="text"
-                    placeholder="vocabulary, verbs"
-                    value={newFlashcard.category.join(', ')}
-                    onChange={(e) => setNewFlashcard({
-                      ...newFlashcard,
-                      category: e.target.value.split(',').map(s => s.trim()).filter(Boolean),
-                    })}
-                  />
-                </div>
-              </div>
-              <button type="submit" className="btn btn-success">
-                Add Flashcard
-              </button>
-            </form>
-          </div>
-        )}
-
         {flashcards.length === 0 ? (
-          <div className="empty-state">
-            <div className="empty-state-icon">🎴</div>
-            <h3>No flashcards yet</h3>
-            <p>Create your first flashcard to start learning!</p>
-            <button className="btn btn-primary" onClick={() => setShowForm(true)}>
-              Create Flashcard
-            </button>
-          </div>
+          <>
+            {/* Header — empty state */}
+            <div className="flashcards-header">
+              <div className="header-content">
+                <h1>Practice <span className="text-accent">Flashcards</span></h1>
+              </div>
+              <div className="header-actions">
+                {!isGuest && (
+                  <button className="btn btn-primary" onClick={() => setShowForm(!showForm)}>
+                    {showForm ? 'Cancel' : '+ Add Flashcard'}
+                  </button>
+                )}
+              </div>
+            </div>
+
+            {error && <div className="error">{error}</div>}
+
+            {showForm && (
+              <div className="add-flashcard-form card">
+                <h2>Add New Flashcard</h2>
+                <form onSubmit={handleAddFlashcard}>
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label>Korean</label>
+                      <input type="text" placeholder="한국어" value={newFlashcard.korean}
+                        onChange={(e) => setNewFlashcard({ ...newFlashcard, korean: e.target.value })} required />
+                    </div>
+                    <div className="form-group">
+                      <label>Romanization</label>
+                      <input type="text" placeholder="hangugeo" value={newFlashcard.romanization}
+                        onChange={(e) => setNewFlashcard({ ...newFlashcard, romanization: e.target.value })} required />
+                    </div>
+                  </div>
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label>English</label>
+                      <input type="text" placeholder="Korean language" value={newFlashcard.english}
+                        onChange={(e) => setNewFlashcard({ ...newFlashcard, english: e.target.value })} required />
+                    </div>
+                    <div className="form-group">
+                      <label>Category (comma-separated)</label>
+                      <input type="text" placeholder="vocabulary, verbs" value={newFlashcard.category.join(', ')}
+                        onChange={(e) => setNewFlashcard({ ...newFlashcard,
+                          category: e.target.value.split(',').map(s => s.trim()).filter(Boolean) })} />
+                    </div>
+                  </div>
+                  <button type="submit" className="btn btn-success">Add Flashcard</button>
+                </form>
+              </div>
+            )}
+
+            <div className="empty-state">
+              <div className="empty-state-icon">🎴</div>
+              <h3>No flashcards yet</h3>
+              <p>Create your first flashcard to start learning!</p>
+              <button className="btn btn-primary" onClick={() => setShowForm(true)}>
+                Create Flashcard
+              </button>
+            </div>
+          </>
         ) : (
-          <div className="flashcard-study-layout">
-            {/* Main Study Area */}
-            <div className="study-area">
-              {/* Progress Bar */}
+          <div className="flashcard-page-grid">
+            {/* Left panel: header + controls */}
+            <div className="fc-header-area">
+              <div className="flashcards-header">
+                <div className="header-content">
+                  <h1>Practice <span className="text-accent">Flashcards</span></h1>
+                </div>
+                <div className="header-actions">
+                  <button
+                    className={`header-tool-btn ${isShuffled ? 'active' : ''}`}
+                    title="Shuffle"
+                    onClick={() => {
+                      if (transitioningRef.current) return;
+                      transitioningRef.current = true;
+                      setCardAnim('shuffle');
+                      setTimeout(() => {
+                        const shuffled = [...flashcards];
+                        for (let i = shuffled.length - 1; i > 0; i--) {
+                          const j = Math.floor(Math.random() * (i + 1));
+                          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+                        }
+                        setFlashcards(shuffled);
+                        setCurrentIndex(0);
+                        setIsFlipped(false);
+                        setIsShuffled(true);
+                        setCardAnim('slide-in');
+                        setTimeout(() => {
+                          setCardAnim('');
+                          transitioningRef.current = false;
+                        }, 400);
+                      }, 400);
+                    }}
+                  >
+                    <span className="tool-icon">🔀</span>
+                    <span className="tool-label">Shuffle</span>
+                  </button>
+                  <button
+                    className={`header-tool-btn ${autoPlay ? 'active' : ''}`}
+                    title={autoPlay ? 'Stop' : 'Auto-play'}
+                    onClick={() => {
+                      if (autoPlay) {
+                        setAutoPlay(false);
+                        speechService.cancel();
+                      } else {
+                        setAutoPlay(true);
+                      }
+                    }}
+                  >
+                    <span className="tool-icon">{autoPlay ? '⏹' : '▶'}</span>
+                    <span className="tool-label">{autoPlay ? 'Stop' : 'Auto-play'}</span>
+                  </button>
+                  {!isGuest && (
+                    <button className="btn btn-primary" onClick={() => setShowForm(!showForm)}>
+                      {showForm ? 'Cancel' : '+ Add Flashcard'}
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              {error && <div className="error">{error}</div>}
+
+              {showForm && (
+                <div className="add-flashcard-form card">
+                  <h2>Add New Flashcard</h2>
+                  <form onSubmit={handleAddFlashcard}>
+                    <div className="form-row">
+                      <div className="form-group">
+                        <label>Korean</label>
+                        <input type="text" placeholder="한국어" value={newFlashcard.korean}
+                          onChange={(e) => setNewFlashcard({ ...newFlashcard, korean: e.target.value })} required />
+                      </div>
+                      <div className="form-group">
+                        <label>Romanization</label>
+                        <input type="text" placeholder="hangugeo" value={newFlashcard.romanization}
+                          onChange={(e) => setNewFlashcard({ ...newFlashcard, romanization: e.target.value })} required />
+                      </div>
+                    </div>
+                    <div className="form-row">
+                      <div className="form-group">
+                        <label>English</label>
+                        <input type="text" placeholder="Korean language" value={newFlashcard.english}
+                          onChange={(e) => setNewFlashcard({ ...newFlashcard, english: e.target.value })} required />
+                      </div>
+                      <div className="form-group">
+                        <label>Category (comma-separated)</label>
+                        <input type="text" placeholder="vocabulary, verbs" value={newFlashcard.category.join(', ')}
+                          onChange={(e) => setNewFlashcard({ ...newFlashcard,
+                            category: e.target.value.split(',').map(s => s.trim()).filter(Boolean) })} />
+                      </div>
+                    </div>
+                    <button type="submit" className="btn btn-success">Add Flashcard</button>
+                  </form>
+                </div>
+              )}
+            </div>
+
+            {/* Landscape controls: grid child in left column */}
+            <div className="study-controls-landscape">
               <div className="study-progress">
                 <div className="progress-text">
                   <span>Card {currentIndex + 1} of {activeFlashcards.length}</span>
@@ -675,24 +700,46 @@ function FlashcardsPage() {
                   </span>
                 </div>
                 <div className="progress-bar">
-                  <div
-                    className="progress-fill"
-                    style={{
-                      width: `${((currentIndex + 1) / activeFlashcards.length) * 100}%`,
-                      background: 'var(--accent-green)'
-                    }}
+                  <div className="progress-fill"
+                    style={{ width: `${((currentIndex + 1) / activeFlashcards.length) * 100}%`, background: 'var(--accent-green)' }}
                   ></div>
                 </div>
               </div>
-
-              {/* Action Buttons */}
               <div className="card-actions">
-                <button className="action-btn incorrect" onClick={handleIncorrect}>
-                  <span>Boost</span>
-                </button>
-                <button className="action-btn correct" onClick={handleCorrect}>
-                  <span>Fade</span>
-                </button>
+                <button className="action-btn incorrect" onClick={handleIncorrect}><span>Boost</span></button>
+                <button className="action-btn correct" onClick={handleCorrect}><span>Fade</span></button>
+              </div>
+            </div>
+
+            {/* Right panel: card study area */}
+            <div className="study-area">
+              {/* Portrait: progress + actions (hidden in landscape) */}
+              <div className="study-controls-portrait">
+                <div className="study-progress">
+                  <div className="progress-text">
+                    <span>Card {currentIndex + 1} of {activeFlashcards.length}</span>
+                    <span className="mastery-display">
+                      {getMasteryStars(current.masteryLevel, true)}
+                    </span>
+                  </div>
+                  <div className="progress-bar">
+                    <div
+                      className="progress-fill"
+                      style={{
+                        width: `${((currentIndex + 1) / activeFlashcards.length) * 100}%`,
+                        background: 'var(--accent-green)'
+                      }}
+                    ></div>
+                  </div>
+                </div>
+                <div className="card-actions">
+                  <button className="action-btn incorrect" onClick={handleIncorrect}>
+                    <span>Boost</span>
+                  </button>
+                  <button className="action-btn correct" onClick={handleCorrect}>
+                    <span>Fade</span>
+                  </button>
+                </div>
               </div>
 
               {/* Flashcard */}
@@ -821,15 +868,8 @@ function FlashcardsPage() {
                 </button>
               </div>
 
-              {!isGuest && !current._id?.toString().startsWith('default-') && (
-                <button className="btn-delete-card" onClick={() => handleDelete(current._id)}>
-                  Delete this card
-                </button>
-              )}
-            </div>
-
-            {/* Sidebar toggle — bottom of page */}
-            <div className="sidebar-bottom-wrapper" ref={sidebarToggleRef}>
+              {/* Portrait sidebar: inside study-area, right after nav buttons */}
+              <div className="fc-sidebar-area fc-sidebar-portrait" ref={sidebarToggleRef}>
               <button
                 className={`sidebar-toggle ${showSidebar ? 'sidebar-toggle-open' : ''}`}
                 onClick={() => setShowSidebar(!showSidebar)}
@@ -838,132 +878,222 @@ function FlashcardsPage() {
                 <span className="sidebar-toggle-icon">{showSidebar ? '✕' : '☰'}</span>
                 <span className="sidebar-toggle-label">{showSidebar ? 'Close' : 'Study Mode & Cards'}</span>
               </button>
-              {showSidebar && (
-                <div className="card-list-sidebar">
-                  {/* Study Mode Selector */}
-                  <div className="sidebar-mode-selector">
-                    <span className="mode-label">Study Mode:</span>
-                    <div className="mode-options">
-                      <button
-                        className={`mode-btn ${displayMode === 'korean' ? 'active' : ''}`}
-                        onClick={() => {
-                          setDisplayMode('korean');
-                          setCurrentCardShowsKorean(true);
-                        }}
-                      >
-                        <span className="mode-icon">🇰🇷</span>
-                        Korean → English
-                      </button>
-                      <button
-                        className={`mode-btn ${displayMode === 'english' ? 'active' : ''}`}
-                        onClick={() => {
-                          setDisplayMode('english');
-                          setCurrentCardShowsKorean(false);
-                        }}
-                      >
-                        <span className="mode-icon">🇬🇧</span>
-                        English → Korean
-                      </button>
-                      <button
-                        className={`mode-btn ${displayMode === 'random' ? 'active' : ''}`}
-                        onClick={() => {
-                          setDisplayMode('random');
-                          setCurrentCardShowsKorean(Math.random() < 0.5);
-                        }}
-                      >
-                        <span className="mode-icon">🎲</span>
-                        Random
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Study Style Selector */}
-                  <div className="sidebar-mode-selector">
-                    <span className="mode-label">Study Style:</span>
-                    <div className="mode-options">
-                      <button
-                        className={`mode-btn ${studyStyle === 'both' ? 'active' : ''}`}
-                        onClick={() => setStudyStyle('both')}
-                      >
-                        <span className="mode-icon">📖🔊</span>
-                        Both
-                      </button>
-                      <button
-                        className={`mode-btn ${studyStyle === 'text' ? 'active' : ''}`}
-                        onClick={() => { setStudyStyle('text'); speechService.cancel(); }}
-                      >
-                        <span className="mode-icon">📖</span>
-                        Reading
-                      </button>
-                      <button
-                        className={`mode-btn ${studyStyle === 'audio' ? 'active' : ''}`}
-                        onClick={() => setStudyStyle('audio')}
-                      >
-                        <span className="mode-icon">🔊</span>
-                        Listening
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="sidebar-tabs">
+              <div className={`card-list-sidebar ${showSidebar ? 'sidebar-open' : ''}`}>
+                {/* Study Mode Selector */}
+                <div className="sidebar-mode-selector">
+                  <span className="mode-label">Study Mode:</span>
+                  <div className="mode-options">
                     <button
-                      className={`sidebar-tab ${sidebarView === 'all' ? 'active' : ''}`}
-                      onClick={() => setSidebarView('all')}
+                      className={`mode-btn ${displayMode === 'korean' ? 'active' : ''}`}
+                      onClick={() => {
+                        setDisplayMode('korean');
+                        setCurrentCardShowsKorean(true);
+                      }}
                     >
-                      All <span className="card-count">{activeFlashcards.length}</span>
+                      <span className="mode-icon">🇰🇷</span>
+                      Korean → English
                     </button>
                     <button
-                      className={`sidebar-tab ${sidebarView === 'categories' ? 'active' : ''}`}
-                      onClick={() => setSidebarView('categories')}
+                      className={`mode-btn ${displayMode === 'english' ? 'active' : ''}`}
+                      onClick={() => {
+                        setDisplayMode('english');
+                        setCurrentCardShowsKorean(false);
+                      }}
                     >
-                      Categories
+                      <span className="mode-icon">🇬🇧</span>
+                      English → Korean
+                    </button>
+                    <button
+                      className={`mode-btn ${displayMode === 'random' ? 'active' : ''}`}
+                      onClick={() => {
+                        setDisplayMode('random');
+                        setCurrentCardShowsKorean(Math.random() < 0.5);
+                      }}
+                    >
+                      <span className="mode-icon">🎲</span>
+                      Random
                     </button>
                   </div>
-
-                  {sidebarView === 'all' ? (
-                    <ul className="card-list">
-                      {activeFlashcards.map((card, idx) => (
-                        <li
-                          key={card._id}
-                          className={`card-list-item ${idx === currentIndex ? 'active' : ''}`}
-                          onClick={() => {
-                            if (autoPlay) { setAutoPlay(false); speechService.cancel(); }
-                            setCurrentIndex(idx);
-                            setIsFlipped(false);
-                          }}
-                        >
-                          <span className="card-korean">{card.korean}</span>
-                          <span className="card-mastery">{getMasteryStars(card.masteryLevel)}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <div className="category-list">
-                      {selectedCategories.size > 0 && (
-                        <button
-                          className="category-clear"
-                          onClick={() => setSelectedCategories(new Set())}
-                        >
-                          Clear filters ({selectedCategories.size} selected)
-                        </button>
-                      )}
-                      {Object.entries(getCategoryCounts()).map(([cat, count]) => (
-                        <button
-                          key={cat}
-                          className={`category-item ${selectedCategories.has(cat) ? 'selected' : ''}`}
-                          onClick={() => toggleCategory(cat)}
-                        >
-                          <span className="category-check">
-                            {selectedCategories.has(cat) ? '✓' : ''}
-                          </span>
-                          <span className="category-name">{cat}</span>
-                          <span className="card-count">{count}</span>
-                        </button>
-                      ))}
-                    </div>
-                  )}
                 </div>
+
+                {/* Study Style Selector */}
+                <div className="sidebar-mode-selector">
+                  <span className="mode-label">Study Style:</span>
+                  <div className="mode-options">
+                    <button
+                      className={`mode-btn ${studyStyle === 'both' ? 'active' : ''}`}
+                      onClick={() => setStudyStyle('both')}
+                    >
+                      <span className="mode-icon">📖🔊</span>
+                      Both
+                    </button>
+                    <button
+                      className={`mode-btn ${studyStyle === 'text' ? 'active' : ''}`}
+                      onClick={() => { setStudyStyle('text'); speechService.cancel(); }}
+                    >
+                      <span className="mode-icon">📖</span>
+                      Reading
+                    </button>
+                    <button
+                      className={`mode-btn ${studyStyle === 'audio' ? 'active' : ''}`}
+                      onClick={() => setStudyStyle('audio')}
+                    >
+                      <span className="mode-icon">🔊</span>
+                      Listening
+                    </button>
+                  </div>
+                </div>
+
+                <div className="sidebar-tabs">
+                  <button
+                    className={`sidebar-tab ${sidebarView === 'all' ? 'active' : ''}`}
+                    onClick={() => setSidebarView('all')}
+                  >
+                    All <span className="card-count">{activeFlashcards.length}</span>
+                  </button>
+                  <button
+                    className={`sidebar-tab ${sidebarView === 'categories' ? 'active' : ''}`}
+                    onClick={() => setSidebarView('categories')}
+                  >
+                    Categories
+                  </button>
+                </div>
+
+                {sidebarView === 'all' ? (
+                  <ul className="card-list">
+                    {activeFlashcards.map((card, idx) => (
+                      <li
+                        key={card._id}
+                        className={`card-list-item ${idx === currentIndex ? 'active' : ''}`}
+                        onClick={() => {
+                          if (autoPlay) { setAutoPlay(false); speechService.cancel(); }
+                          setCurrentIndex(idx);
+                          setIsFlipped(false);
+                        }}
+                      >
+                        <span className="card-korean">{card.korean}</span>
+                        <span className="card-mastery">{getMasteryStars(card.masteryLevel)}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <div className="category-list">
+                    {selectedCategories.size > 0 && (
+                      <button
+                        className="category-clear"
+                        onClick={() => setSelectedCategories(new Set())}
+                      >
+                        Clear filters ({selectedCategories.size} selected)
+                      </button>
+                    )}
+                    {Object.entries(getCategoryCounts()).map(([cat, count]) => (
+                      <button
+                        key={cat}
+                        className={`category-item ${selectedCategories.has(cat) ? 'selected' : ''}`}
+                        onClick={() => toggleCategory(cat)}
+                      >
+                        <span className="category-check">
+                          {selectedCategories.has(cat) ? '✓' : ''}
+                        </span>
+                        <span className="category-name">{cat}</span>
+                        <span className="card-count">{count}</span>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+
+              {!isGuest && !current._id?.toString().startsWith('default-') && (
+                <button className="btn-delete-card" onClick={() => handleDelete(current._id)}>
+                  Delete this card
+                </button>
               )}
+            </div>
+
+            {/* Landscape sidebar: grid child in left column */}
+            <div className="fc-sidebar-area fc-sidebar-landscape">
+              <button
+                className={`sidebar-toggle ${showSidebar ? 'sidebar-toggle-open' : ''}`}
+                onClick={() => setShowSidebar(!showSidebar)}
+                title="Cards & Study Mode"
+              >
+                <span className="sidebar-toggle-icon">{showSidebar ? '✕' : '☰'}</span>
+                <span className="sidebar-toggle-label">{showSidebar ? 'Close' : 'Study Mode & Cards'}</span>
+              </button>
+              <div className={`card-list-sidebar ${showSidebar ? 'sidebar-open' : ''}`}>
+                <div className="sidebar-mode-selector">
+                  <span className="mode-label">Study Mode:</span>
+                  <div className="mode-options">
+                    <button className={`mode-btn ${displayMode === 'korean' ? 'active' : ''}`}
+                      onClick={() => { setDisplayMode('korean'); setCurrentCardShowsKorean(true); }}>
+                      <span className="mode-icon">🇰🇷</span> Korean → English
+                    </button>
+                    <button className={`mode-btn ${displayMode === 'english' ? 'active' : ''}`}
+                      onClick={() => { setDisplayMode('english'); setCurrentCardShowsKorean(false); }}>
+                      <span className="mode-icon">🇬🇧</span> English → Korean
+                    </button>
+                    <button className={`mode-btn ${displayMode === 'random' ? 'active' : ''}`}
+                      onClick={() => { setDisplayMode('random'); setCurrentCardShowsKorean(Math.random() < 0.5); }}>
+                      <span className="mode-icon">🎲</span> Random
+                    </button>
+                  </div>
+                </div>
+                <div className="sidebar-mode-selector">
+                  <span className="mode-label">Study Style:</span>
+                  <div className="mode-options">
+                    <button className={`mode-btn ${studyStyle === 'both' ? 'active' : ''}`}
+                      onClick={() => setStudyStyle('both')}>
+                      <span className="mode-icon">📖🔊</span> Both
+                    </button>
+                    <button className={`mode-btn ${studyStyle === 'text' ? 'active' : ''}`}
+                      onClick={() => { setStudyStyle('text'); speechService.cancel(); }}>
+                      <span className="mode-icon">📖</span> Reading
+                    </button>
+                    <button className={`mode-btn ${studyStyle === 'audio' ? 'active' : ''}`}
+                      onClick={() => setStudyStyle('audio')}>
+                      <span className="mode-icon">🔊</span> Listening
+                    </button>
+                  </div>
+                </div>
+                <div className="sidebar-tabs">
+                  <button className={`sidebar-tab ${sidebarView === 'all' ? 'active' : ''}`}
+                    onClick={() => setSidebarView('all')}>
+                    All <span className="card-count">{activeFlashcards.length}</span>
+                  </button>
+                  <button className={`sidebar-tab ${sidebarView === 'categories' ? 'active' : ''}`}
+                    onClick={() => setSidebarView('categories')}>
+                    Categories
+                  </button>
+                </div>
+                {sidebarView === 'all' ? (
+                  <ul className="card-list">
+                    {activeFlashcards.map((card, idx) => (
+                      <li key={card._id} className={`card-list-item ${idx === currentIndex ? 'active' : ''}`}
+                        onClick={() => { if (autoPlay) { setAutoPlay(false); speechService.cancel(); } setCurrentIndex(idx); setIsFlipped(false); }}>
+                        <span className="card-korean">{card.korean}</span>
+                        <span className="card-mastery">{getMasteryStars(card.masteryLevel)}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <div className="category-list">
+                    {selectedCategories.size > 0 && (
+                      <button className="category-clear" onClick={() => setSelectedCategories(new Set())}>
+                        Clear filters ({selectedCategories.size} selected)
+                      </button>
+                    )}
+                    {Object.entries(getCategoryCounts()).map(([cat, count]) => (
+                      <button key={cat} className={`category-item ${selectedCategories.has(cat) ? 'selected' : ''}`}
+                        onClick={() => toggleCategory(cat)}>
+                        <span className="category-check">{selectedCategories.has(cat) ? '✓' : ''}</span>
+                        <span className="category-name">{cat}</span>
+                        <span className="card-count">{count}</span>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         )}

@@ -1,6 +1,17 @@
 .flashcards-container {
-  padding: 32px 0 60px;
-  min-height: calc(100vh - 64px);
+  padding: 16px 0 0;
+  height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.flashcards-container > .container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
 
 /* Header */
@@ -8,9 +19,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 28px;
+  margin-bottom: 12px;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 10px;
+  flex-shrink: 0;
 }
 
 .header-content h1 {
@@ -104,10 +116,11 @@
   white-space: nowrap;
 }
 
-/* Add Flashcard Form */
+/* Add Flashcard Form — overlay so it doesn't push layout */
 .add-flashcard-form {
-  margin-bottom: 28px;
+  margin-bottom: 12px;
   animation: fadeIn 0.3s ease;
+  flex-shrink: 0;
 }
 
 .add-flashcard-form h2 {
@@ -128,15 +141,58 @@
   }
 }
 
-/* Study Layout */
-.flashcard-study-layout {
+/* Page Grid Layout */
+.flashcard-page-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
 
-/* Sidebar wrapper — bottom of page */
-.sidebar-bottom-wrapper {
+/* Header area */
+.fc-header-area {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+/* Study area fills remaining space */
+.study-area {
+  grid-column: 1;
+  grid-row: 2;
+  min-height: 0;
+}
+
+/* Sidebar base styles */
+.fc-sidebar-area {
   position: relative;
-  margin-top: 24px;
+  margin-top: 8px;
   z-index: 15;
+}
+
+/* Portrait sidebar (inside study-area) — visible by default */
+.fc-sidebar-portrait {
+  flex-shrink: 0;
+}
+
+/* Landscape sidebar (grid child) — hidden by default */
+.fc-sidebar-landscape {
+  display: none;
+}
+
+/* Landscape controls (grid child) — hidden by default */
+.study-controls-landscape {
+  display: none;
+}
+
+/* On narrow screens: sidebar panel is hidden, toggle shows it as overlay */
+.card-list-sidebar {
+  display: none;
+}
+
+.card-list-sidebar.sidebar-open {
+  display: block;
 }
 
 .sidebar-toggle {
@@ -167,6 +223,12 @@
   color: white;
 }
 
+.sidebar-toggle-open:hover {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+  color: white;
+}
+
 .sidebar-toggle-icon {
   font-size: 1.1rem;
 }
@@ -178,23 +240,28 @@
 /* Study Area */
 .study-area {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
 }
 
 /* Study Progress */
 .study-progress {
   background: var(--surface);
   border-radius: 12px;
-  padding: 16px 20px;
-  margin-bottom: 24px;
+  padding: 10px 16px;
+  margin-bottom: 10px;
   border: 1px solid var(--border-light);
+  flex-shrink: 0;
 }
 
 .progress-text {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
-  font-size: 0.95rem;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
 }
 
 .progress-text > span:first-child {
@@ -244,8 +311,10 @@
 /* Flashcard */
 .flashcard {
   perspective: 1000px;
-  margin-bottom: 24px;
-  height: 360px;
+  margin-bottom: 10px;
+  flex: 1;
+  min-height: 180px;
+  max-height: 360px;
   position: relative;
 }
 
@@ -301,7 +370,8 @@
 .card-nav-buttons {
   display: flex;
   gap: 6px;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
+  flex-shrink: 0;
 }
 
 .nav-btn {
@@ -309,7 +379,7 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 14px;
+  padding: 12px;
   border-radius: 12px;
   border: 2px solid var(--border-light);
   background: var(--surface);
@@ -378,6 +448,7 @@
   justify-content: center;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  overflow: hidden;
 }
 
 .flashcard-face.front {
@@ -395,10 +466,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  padding: 32px;
+  gap: 10px;
+  padding: 24px;
   text-align: center;
   color: white;
+  width: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  box-sizing: border-box;
 }
 
 .face-label {
@@ -409,15 +487,21 @@
 }
 
 .main-text {
-  font-size: 2.75rem;
+  font-size: clamp(1.4rem, 5vw, 2.75rem);
   font-weight: 700;
   line-height: 1.2;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .korean-text-row {
   display: flex;
   align-items: center;
   gap: 16px;
+  max-width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .speak-btn {
@@ -442,9 +526,11 @@
 }
 
 .romanization {
-  font-size: 1.25rem;
+  font-size: clamp(0.9rem, 2.5vw, 1.25rem);
   opacity: 0.85;
   font-style: italic;
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 .tap-hint {
@@ -457,7 +543,8 @@
 .card-actions {
   display: flex;
   gap: 6px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  flex-shrink: 0;
 }
 
 .card-actions .action-btn {
@@ -468,8 +555,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
-  padding: 16px;
+  gap: 4px;
+  padding: 12px;
   border-radius: 16px;
   border: none;
   font-weight: 600;
@@ -526,15 +613,20 @@
   color: var(--accent-red);
 }
 
-/* Card List Sidebar */
-.card-list-sidebar {
-  margin-top: 12px;
+/* Card List Sidebar — opens upward as overlay on narrow screens */
+.card-list-sidebar.sidebar-open {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  margin-bottom: 8px;
   width: 100%;
+  max-height: 60vh;
+  overflow-y: auto;
   background: var(--surface);
   border-radius: 16px;
   border: 1px solid var(--border-light);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  overflow: hidden;
   animation: fadeIn 0.15s ease;
 }
 
@@ -755,20 +847,21 @@
 /* Responsive */
 @media (max-width: 768px) {
   .flashcards-container {
-    padding: 20px 0 40px;
+    padding: 10px 0 0;
   }
 
   .flashcards-header {
     flex-direction: row;
     align-items: center;
+    margin-bottom: 8px;
   }
 
   .header-content h1 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
   }
 
   .header-tool-btn {
-    padding: 10px;
+    padding: 8px;
   }
 
   .tool-label {
@@ -791,16 +884,32 @@
   }
 
   .flashcard {
-    height: 300px;
+    min-height: 150px;
+    max-height: 280px;
   }
 
   .main-text {
-    font-size: 2rem;
+    font-size: clamp(1.2rem, 4.5vw, 1.8rem);
+  }
+
+  .face-content {
+    padding: 20px;
+    gap: 8px;
   }
 
   .action-btn {
-    padding: 12px 6px;
+    padding: 10px 6px;
     font-size: 0.8rem;
+  }
+
+  .nav-btn {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+
+  .study-progress {
+    padding: 8px 12px;
+    margin-bottom: 8px;
   }
 }
 
@@ -832,6 +941,78 @@
   font-size: 0.9rem;
   opacity: 0.7;
   margin-top: 8px;
+}
+
+/* Landscape / wide layout: two-column when width > height */
+@media (aspect-ratio > 1/1) {
+  .flashcards-container {
+    height: 100vh;
+  }
+
+  .flashcard-page-grid {
+    grid-template-columns: 2fr 3fr;
+    grid-template-rows: auto auto 1fr;
+    gap: 0 24px;
+  }
+
+  /* Left column: header (row 1), controls (row 2), sidebar (row 3) */
+  .fc-header-area {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .study-controls-landscape {
+    display: block;
+    grid-column: 1;
+    grid-row: 2;
+    margin-top: 10px;
+  }
+
+  .fc-sidebar-landscape {
+    display: block;
+    grid-column: 1;
+    grid-row: 3;
+    margin-top: 12px;
+    overflow-y: auto;
+  }
+
+  /* Hide portrait copies in landscape */
+  .fc-sidebar-portrait {
+    display: none;
+  }
+
+  .study-controls-portrait {
+    display: none;
+  }
+
+  /* Right column: study area spans all rows */
+  .study-area {
+    grid-column: 2;
+    grid-row: 1 / -1;
+  }
+
+  .flashcards-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .header-actions {
+    flex-wrap: wrap;
+  }
+
+  /* Sidebar opens in-place in the left column (not overlay) */
+  .fc-sidebar-landscape .card-list-sidebar.sidebar-open {
+    position: static;
+    margin-bottom: 0;
+    max-height: none;
+    overflow-y: auto;
+    background: var(--surface);
+    border-radius: 16px;
+    border: 1px solid var(--border-light);
+    box-shadow: none;
+    animation: none;
+  }
 }
 
 /* Challenge Theme overrides */
