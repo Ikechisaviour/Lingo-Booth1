@@ -24,10 +24,49 @@ const SCRIPT_LANG_MAP = [
   { pattern: /[\u00C0-\u00FF]/, lang: 'fr-FR' },                      // Latin extended (French/Spanish/German fallback)
 ];
 
-// Minimal valid silent WAV — used as the looping "bridge" audio to keep the
-// single audio element active between TTS clips so mobile Chrome doesn't
-// kill the media session when the screen is locked.
-const SILENT_WAV = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=';
+/**
+ * Build a blob URL for a 1-second silent WAV file with real audio samples.
+ * Chrome Android won't keep a media session alive for a WAV with 0 data bytes,
+ * so we generate 8000 zero-value PCM samples (8kHz, 16-bit mono, 1 second).
+ */
+function createSilentWavUrl() {
+  const sampleRate = 8000;
+  const numSamples = 8000; // 1 second
+  const bitsPerSample = 16;
+  const numChannels = 1;
+  const bytesPerSample = bitsPerSample / 8;
+  const blockAlign = numChannels * bytesPerSample;
+  const byteRate = sampleRate * blockAlign;
+  const dataSize = numSamples * blockAlign;
+  const headerSize = 44;
+  const buffer = new ArrayBuffer(headerSize + dataSize);
+  const view = new DataView(buffer);
+
+  function writeStr(offset, str) {
+    for (let i = 0; i < str.length; i++) view.setUint8(offset + i, str.charCodeAt(i));
+  }
+
+  writeStr(0, 'RIFF');
+  view.setUint32(4, headerSize + dataSize - 8, true);
+  writeStr(8, 'WAVE');
+  writeStr(12, 'fmt ');
+  view.setUint32(16, 16, true);          // fmt chunk size
+  view.setUint16(20, 1, true);           // PCM
+  view.setUint16(22, numChannels, true);
+  view.setUint32(24, sampleRate, true);
+  view.setUint32(28, byteRate, true);
+  view.setUint16(32, blockAlign, true);
+  view.setUint16(34, bitsPerSample, true);
+  writeStr(36, 'data');
+  view.setUint32(40, dataSize, true);
+  // Audio samples are all zero (silence) — ArrayBuffer is zero-initialized.
+
+  const blob = new Blob([buffer], { type: 'audio/wav' });
+  return URL.createObjectURL(blob);
+}
+
+// Generate the silent WAV blob URL once at module load.
+const SILENT_WAV_URL = createSilentWavUrl();
 
 class SpeechService {
   constructor() {
@@ -72,17 +111,15 @@ class SpeechService {
 
   /**
    * Register a one-time listener that "unlocks" audio on Chrome desktop.
-   * Playing a tiny silent WAV from a data-URI on the first user gesture
-   * satisfies Chrome's autoplay gate for subsequent Audio element plays.
+   * Playing the silent WAV on the persistent element on first user gesture
+   * satisfies Chrome's autoplay gate for subsequent plays.
    */
   _setupAudioUnlock() {
     const unlock = () => {
       if (this._audioUnlocked) return;
       this._audioUnlocked = true;
-      // Unlock the persistent element so it's pre-authorised for background
-      // playback later.  We play and immediately pause a silent WAV.
       const audio = this._persistentAudio;
-      audio.src = SILENT_WAV;
+      audio.src = SILENT_WAV_URL;
       audio.volume = 0.01;
       const p = audio.play();
       if (p) p.then(() => {
@@ -158,8 +195,8 @@ class SpeechService {
   }
 
   // ─── Silent bridge (keep-alive) ─────────────────────────────────
-  // Uses the SAME persistent audio element to loop a silent WAV during
-  // gaps between TTS clips.  Because it's the same element, Chrome
+  // Uses the SAME persistent audio element to loop a 1-second silent WAV
+  // during gaps between TTS clips.  Because it's the same element, Chrome
   // Android keeps the media session alive and doesn't suspend the tab.
 
   /**
@@ -173,7 +210,7 @@ class SpeechService {
   }
 
   /**
-   * Actually set the persistent element to loop silence.
+   * Set the persistent element to loop silence.
    */
   _playSilence() {
     if (!this._bridgeActive) return;
@@ -182,7 +219,7 @@ class SpeechService {
     audio.onerror = null;
     audio.loop = true;
     audio.volume = 0.01;
-    audio.src = SILENT_WAV;
+    audio.src = SILENT_WAV_URL;
     audio.play().catch(() => {});
   }
 
@@ -191,7 +228,6 @@ class SpeechService {
    */
   stopSilentBridge() {
     this._bridgeActive = false;
-    // Don't touch the element here — cancel() handles that.
   }
 
   /**
@@ -210,6 +246,27 @@ class SpeechService {
   }
 
   // ─── Audio playback ─────────────────────────────────────────────
+
+  /**
+   * Stop current speech but PRESERVE the bridge state.
+   * Used by speak/speakAsync/speakRepeat before starting new speech,
+   * so the silent bridge stays alive between TTS clips during autoplay.
+   */
+  _stopCurrent() {
+    this._clearPending();
+    if (this._abortController) {
+      this._abortController.abort();
+      this._abortController = null;
+    }
+    const audio = this._persistentAudio;
+    if (audio) {
+      audio.pause();
+      audio.onended = null;
+      audio.onerror = null;
+    }
+    this.audio = null;
+    // NOTE: does NOT touch _bridgeActive — that's the key difference from cancel()
+  }
 
   /**
    * Play an audio URL and return a promise that resolves when done.
@@ -298,7 +355,7 @@ class SpeechService {
    * Handles bracket pauses via segment splitting
    */
   speak(text, options = {}) {
-    this.cancel();
+    this._stopCurrent(); // preserve bridge
 
     if (!text) {
       console.warn('No text provided to speak');
@@ -325,7 +382,7 @@ class SpeechService {
    * Speak text and return a promise that resolves when finished
    */
   speakAsync(text, options = {}) {
-    this.cancel();
+    this._stopCurrent(); // preserve bridge
 
     if (!text) return Promise.resolve();
 
@@ -346,7 +403,7 @@ class SpeechService {
    * Speak text multiple times with a pause between repeats
    */
   speakRepeat(text, times = 2, options = {}) {
-    this.cancel();
+    this._stopCurrent(); // preserve bridge
 
     if (!text || times < 1) return;
 
@@ -443,7 +500,9 @@ class SpeechService {
   }
 
   /**
-   * Cancel ongoing speech and pending operations
+   * Cancel ongoing speech and pending operations.
+   * This is the FULL stop — kills the bridge too.
+   * Called when the user explicitly stops autoplay.
    */
   cancel() {
     this._clearPending();
@@ -522,7 +581,7 @@ class SpeechService {
     const a = this._persistentAudio;
     if (!a || a.paused || a.ended) return false;
     // Don't count silent bridge as "speaking"
-    return a.src && a.src !== SILENT_WAV;
+    return !!a.src && !a.src.startsWith('blob:') === false && a.volume > 0.01;
   }
 }
 
