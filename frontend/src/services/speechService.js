@@ -76,6 +76,8 @@ class SpeechService {
     this._abortController = null;
     this._audioCache = new Map();
     this._maxCacheSize = 50;
+    this._blobCache = new Map();      // cacheKey → blobUrl (pre-fetched audio data)
+    this._maxBlobCache = 250;         // ~50 cards × 2 texts × ~2 segments
     this._audioUnlocked = false;
     this._bridgeActive = false; // whether we're in "keep-alive" mode
 
@@ -270,13 +272,32 @@ class SpeechService {
 
   /**
    * Play an audio URL and return a promise that resolves when done.
-   * Swaps the persistent element from silence → real audio → silence.
+   * Checks the blob cache first — if a pre-fetched blob exists for this
+   * cacheKey, it plays from memory (no network request needed).
    */
-  async _playAudio(url) {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`TTS request failed: ${response.status}`);
-    const blob = await response.blob();
-    const blobUrl = URL.createObjectURL(blob);
+  async _playAudio(url, cacheKey) {
+    let blobUrl;
+    let fromCache = false;
+
+    if (cacheKey && this._blobCache.has(cacheKey)) {
+      blobUrl = this._blobCache.get(cacheKey);
+      fromCache = true;
+    } else {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`TTS request failed: ${response.status}`);
+      const blob = await response.blob();
+      blobUrl = URL.createObjectURL(blob);
+      // Store in blob cache for reuse (front text is spoken 3× per card)
+      if (cacheKey) {
+        if (this._blobCache.size >= this._maxBlobCache) {
+          const firstKey = this._blobCache.keys().next().value;
+          URL.revokeObjectURL(this._blobCache.get(firstKey));
+          this._blobCache.delete(firstKey);
+        }
+        this._blobCache.set(cacheKey, blobUrl);
+        fromCache = true; // now it's in cache, don't revoke after play
+      }
+    }
 
     return new Promise((resolve, reject) => {
       const audio = this._persistentAudio;
@@ -286,7 +307,8 @@ class SpeechService {
       const settle = (fn, arg) => {
         if (settled) return;
         settled = true;
-        URL.revokeObjectURL(blobUrl);
+        // Only revoke if it was a one-off fetch (not in cache)
+        if (!fromCache) URL.revokeObjectURL(blobUrl);
         // Switch back to silent loop if bridge is active
         if (this._bridgeActive) {
           this._playSilence();
@@ -333,8 +355,9 @@ class SpeechService {
 
       try {
         const url = this._buildAudioUrl(seg.text, lang, voice);
+        const cacheKey = `${voice || lang}:${seg.text}`;
         if (this._abortController?.signal.aborted) return;
-        await this._playAudio(url);
+        await this._playAudio(url, cacheKey);
       } catch (err) {
         if (this._abortController?.signal.aborted) return;
         console.error('TTS segment error:', err);
@@ -452,6 +475,64 @@ class SpeechService {
    */
   getSelectedVoiceName() {
     return this.preferredVoice;
+  }
+
+  // ─── Pre-fetch (background audio cache) ────────────────────────
+
+  /**
+   * Pre-fetch and cache the audio blob for a text without playing it.
+   * When _playAudio is later called for this text, it uses the cached
+   * blob instead of making a network request — critical for background
+   * playback when fetch() is suspended.
+   */
+  async prefetch(text) {
+    if (!text) return;
+    const segments = this._parseSegments(text);
+    const langCode = this.detectLanguage(text);
+    const voice = langCode === 'ko-KR' ? this.preferredVoice : null;
+
+    for (const seg of segments) {
+      const cacheKey = `${voice || langCode}:${seg.text}`;
+      if (this._blobCache.has(cacheKey)) continue;
+
+      try {
+        const url = this._buildAudioUrl(seg.text, langCode, voice);
+        const response = await fetch(url);
+        if (!response.ok) continue;
+        const blob = await response.blob();
+        const blobUrl = URL.createObjectURL(blob);
+
+        if (this._blobCache.size >= this._maxBlobCache) {
+          const firstKey = this._blobCache.keys().next().value;
+          URL.revokeObjectURL(this._blobCache.get(firstKey));
+          this._blobCache.delete(firstKey);
+        }
+        this._blobCache.set(cacheKey, blobUrl);
+      } catch (_) { /* network error — will fetch on demand */ }
+    }
+  }
+
+  /**
+   * Pre-fetch audio for an array of flashcard objects.
+   * Fetches sequentially to avoid hammering the backend.
+   */
+  async prefetchCards(cards, showKoreanFirst = true) {
+    for (const card of cards) {
+      const front = showKoreanFirst ? card.korean : card.english;
+      const back = showKoreanFirst ? card.english : card.korean;
+      await this.prefetch(front);
+      await this.prefetch(back);
+    }
+  }
+
+  /**
+   * Release all pre-fetched audio blobs to free memory.
+   */
+  clearBlobCache() {
+    for (const blobUrl of this._blobCache.values()) {
+      URL.revokeObjectURL(blobUrl);
+    }
+    this._blobCache.clear();
   }
 
   // ─── Media Session API ────────────────────────────────────────────

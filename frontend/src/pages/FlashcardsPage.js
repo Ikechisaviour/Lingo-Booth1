@@ -357,6 +357,21 @@ function FlashcardsPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autoPlay, currentIndex, activeFlashcards.length]);
 
+  // Pre-fetch audio for upcoming cards so autoplay works with screen locked
+  // (fetch() is suspended in background, but cached blobs play fine)
+  useEffect(() => {
+    if (!autoPlay || activeFlashcards.length === 0) return;
+
+    const cardsToCache = activeFlashcards.slice(
+      currentIndex,
+      Math.min(currentIndex + 50, activeFlashcards.length)
+    );
+    speechService.prefetchCards(cardsToCache, currentCardShowsKorean);
+
+    return () => speechService.clearBlobCache();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [autoPlay]); // only on autoplay toggle, not every card change
+
   const handleNext = async () => {
     if (transitioningRef.current || currentIndex >= activeFlashcards.length - 1) return;
     if (autoPlay) { setAutoPlay(false); speechService.cancel(); return; }
