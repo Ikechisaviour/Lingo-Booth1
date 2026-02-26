@@ -68,6 +68,49 @@ function createSilentWavUrl() {
 // Generate the silent WAV blob URL once at module load.
 const SILENT_WAV_URL = createSilentWavUrl();
 
+/**
+ * Build a silent WAV blob URL for a specific duration in milliseconds.
+ * Used by waitAudio() to keep the audio element playing during pauses,
+ * so the media session stays alive when the screen is locked.
+ */
+function createSilentWavUrlForDuration(durationMs) {
+  const sampleRate = 8000;
+  const numSamples = Math.ceil(sampleRate * durationMs / 1000);
+  const bitsPerSample = 16;
+  const numChannels = 1;
+  const bytesPerSample = bitsPerSample / 8;
+  const blockAlign = numChannels * bytesPerSample;
+  const byteRate = sampleRate * blockAlign;
+  const dataSize = numSamples * blockAlign;
+  const headerSize = 44;
+  const buffer = new ArrayBuffer(headerSize + dataSize);
+  const view = new DataView(buffer);
+
+  function writeStr(offset, str) {
+    for (let i = 0; i < str.length; i++) view.setUint8(offset + i, str.charCodeAt(i));
+  }
+
+  writeStr(0, 'RIFF');
+  view.setUint32(4, headerSize + dataSize - 8, true);
+  writeStr(8, 'WAVE');
+  writeStr(12, 'fmt ');
+  view.setUint32(16, 16, true);
+  view.setUint16(20, 1, true);
+  view.setUint16(22, numChannels, true);
+  view.setUint32(24, sampleRate, true);
+  view.setUint32(28, byteRate, true);
+  view.setUint16(32, blockAlign, true);
+  view.setUint16(34, bitsPerSample, true);
+  writeStr(36, 'data');
+  view.setUint32(40, dataSize, true);
+
+  const blob = new Blob([buffer], { type: 'audio/wav' });
+  return URL.createObjectURL(blob);
+}
+
+// Cache of silent WAV URLs by duration (e.g. 400 → blob:...)
+const _silenceUrlCache = new Map();
+
 class SpeechService {
   constructor() {
     this.audio = null;
@@ -80,6 +123,7 @@ class SpeechService {
     this._maxBlobCache = 250;         // ~50 cards × 2 texts × ~2 segments
     this._audioUnlocked = false;
     this._bridgeActive = false; // whether we're in "keep-alive" mode
+    this._pendingSettle = null; // resolve callback for active _playAudio/waitAudio
 
     // Single persistent audio element — used for BOTH real TTS playback and
     // silent keep-alive loops.  Chrome Android tracks one media session per
@@ -247,6 +291,43 @@ class SpeechService {
     });
   }
 
+  /**
+   * Wait by playing a silent audio clip of the given duration.
+   * Unlike waitAsync (which uses setTimeout), audio onended events fire
+   * reliably even when the browser is backgrounded / screen is locked.
+   * This keeps the audio element continuously playing, so the media
+   * session stays alive and Chrome Android doesn't suspend the tab.
+   */
+  waitAudio(ms) {
+    return new Promise((resolve) => {
+      let done = false;
+      const settle = () => {
+        if (done) return;
+        done = true;
+        this._pendingSettle = null;
+        resolve();
+      };
+
+      this._pendingSettle = settle;
+
+      // Get or create a silent WAV URL for this duration
+      let silenceUrl = _silenceUrlCache.get(ms);
+      if (!silenceUrl) {
+        silenceUrl = createSilentWavUrlForDuration(ms);
+        _silenceUrlCache.set(ms, silenceUrl);
+      }
+
+      const audio = this._persistentAudio;
+      audio.pause();
+      audio.onended = settle;
+      audio.onerror = settle;
+      audio.loop = false;
+      audio.volume = 0.01;
+      audio.src = silenceUrl;
+      audio.play().catch(settle);
+    });
+  }
+
   // ─── Audio playback ─────────────────────────────────────────────
 
   /**
@@ -256,6 +337,8 @@ class SpeechService {
    */
   _stopCurrent() {
     this._clearPending();
+    // Resolve any pending _playAudio / waitAudio promise
+    if (this._pendingSettle) { this._pendingSettle(); }
     if (this._abortController) {
       this._abortController.abort();
       this._abortController = null;
@@ -307,14 +390,12 @@ class SpeechService {
       const settle = (fn, arg) => {
         if (settled) return;
         settled = true;
+        this._pendingSettle = null;
         // Only revoke if it was a one-off fetch (not in cache)
         if (!fromCache) URL.revokeObjectURL(blobUrl);
-        // Switch back to silent loop if bridge is active
-        if (this._bridgeActive) {
-          this._playSilence();
-        }
         fn(arg);
       };
+      this._pendingSettle = () => settle(resolve);
 
       // Stop any current playback (silence or previous clip)
       audio.pause();
@@ -587,6 +668,8 @@ class SpeechService {
    */
   cancel() {
     this._clearPending();
+    // Resolve any pending _playAudio / waitAudio promise
+    if (this._pendingSettle) { this._pendingSettle(); }
     if (this._abortController) {
       this._abortController.abort();
       this._abortController = null;

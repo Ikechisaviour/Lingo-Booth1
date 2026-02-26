@@ -143,26 +143,24 @@ function FlashcardsPage() {
     let cancelled = false;
 
     const autoPlayCard = async () => {
-      speechService.startSilentBridge();
-
       const card = activeFlashcards[currentIndex];
       const frontText = currentCardShowsKorean ? card.korean : card.english;
       const backText = currentCardShowsKorean ? card.english : card.korean;
 
-      // Wait for slide-in to settle
-      await speechService.waitAsync(600);
+      // Wait for slide-in to settle (audio-driven, works in background)
+      await speechService.waitAudio(600);
       if (cancelled) return;
 
       // Speak front twice: korean, korean
       await speechService.speakAsync(frontText);
       if (cancelled) return;
-      await speechService.waitAsync(400);
+      await speechService.waitAudio(400);
       if (cancelled) return;
       await speechService.speakAsync(frontText);
       if (cancelled) return;
 
       // 5 seconds for user to try and remember
-      await speechService.waitAsync(5000);
+      await speechService.waitAudio(5000);
       if (cancelled) return;
 
       // Speak front again: korean
@@ -170,29 +168,28 @@ function FlashcardsPage() {
       if (cancelled) return;
 
       // Flip and speak back: english
-      await speechService.waitAsync(600);
+      await speechService.waitAudio(600);
       if (cancelled) return;
       setIsFlipped(true);
-      await speechService.waitAsync(400);
+      await speechService.waitAudio(400);
       if (cancelled) return;
       await speechService.speakAsync(backText);
       if (cancelled) return;
 
       // Pause before advancing
-      await speechService.waitAsync(1200);
+      await speechService.waitAudio(1200);
       if (cancelled) return;
 
       // Check if last card
       if (currentIndex >= activeFlashcards.length - 1) {
         setAutoPlay(false);
-        speechService.stopSilentBridge();
         return;
       }
 
       // Slide to next card
       transitioningRef.current = true;
       setCardAnim('slide-out');
-      await speechService.waitAsync(300);
+      await speechService.waitAudio(300);
       if (cancelled) return;
 
       setCurrentIndex(prev => prev + 1);
