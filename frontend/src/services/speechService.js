@@ -24,6 +24,11 @@ const SCRIPT_LANG_MAP = [
   { pattern: /[\u00C0-\u00FF]/, lang: 'fr-FR' },                      // Latin extended (French/Spanish/German fallback)
 ];
 
+// Minimal valid silent WAV — used as the looping "bridge" audio to keep the
+// single audio element active between TTS clips so mobile Chrome doesn't
+// kill the media session when the screen is locked.
+const SILENT_WAV = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=';
+
 class SpeechService {
   constructor() {
     this.audio = null;
@@ -33,10 +38,12 @@ class SpeechService {
     this._audioCache = new Map();
     this._maxCacheSize = 50;
     this._audioUnlocked = false;
-    this._silentAudio = null;
+    this._bridgeActive = false; // whether we're in "keep-alive" mode
 
-    // Persistent audio element — reused across plays so mobile OS keeps the
-    // media session alive when the browser is minimised.
+    // Single persistent audio element — used for BOTH real TTS playback and
+    // silent keep-alive loops.  Chrome Android tracks one media session per
+    // element, so using a single element for everything means the session
+    // stays alive when the screen is locked.
     this._persistentAudio = new Audio();
     this._persistentAudio.preload = 'auto';
 
@@ -72,24 +79,17 @@ class SpeechService {
     const unlock = () => {
       if (this._audioUnlocked) return;
       this._audioUnlocked = true;
-      // 44-byte silent WAV
-      const silentWav = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=';
-      const a = new Audio(silentWav);
-      a.volume = 0.01;
-      const p = a.play();
-      if (p) p.then(() => a.pause()).catch(() => {});
-      // Also unlock the persistent element so it's pre-authorised for
-      // background playback later.
-      if (this._persistentAudio) {
-        this._persistentAudio.src = silentWav;
-        this._persistentAudio.volume = 0.01;
-        const p2 = this._persistentAudio.play();
-        if (p2) p2.then(() => {
-          this._persistentAudio.pause();
-          this._persistentAudio.removeAttribute('src');
-          this._persistentAudio.volume = 1;
-        }).catch(() => {});
-      }
+      // Unlock the persistent element so it's pre-authorised for background
+      // playback later.  We play and immediately pause a silent WAV.
+      const audio = this._persistentAudio;
+      audio.src = SILENT_WAV;
+      audio.volume = 0.01;
+      const p = audio.play();
+      if (p) p.then(() => {
+        audio.pause();
+        audio.removeAttribute('src');
+        audio.volume = 1;
+      }).catch(() => {});
       document.removeEventListener('click', unlock, true);
       document.removeEventListener('touchstart', unlock, true);
       document.removeEventListener('keydown', unlock, true);
@@ -157,16 +157,65 @@ class SpeechService {
     return url;
   }
 
+  // ─── Silent bridge (keep-alive) ─────────────────────────────────
+  // Uses the SAME persistent audio element to loop a silent WAV during
+  // gaps between TTS clips.  Because it's the same element, Chrome
+  // Android keeps the media session alive and doesn't suspend the tab.
+
+  /**
+   * Start looping silence on the persistent element to keep the media
+   * session alive during gaps (think time, pauses, etc.).
+   */
+  startSilentBridge() {
+    if (this._bridgeActive) return;
+    this._bridgeActive = true;
+    this._playSilence();
+  }
+
+  /**
+   * Actually set the persistent element to loop silence.
+   */
+  _playSilence() {
+    if (!this._bridgeActive) return;
+    const audio = this._persistentAudio;
+    audio.onended = null;
+    audio.onerror = null;
+    audio.loop = true;
+    audio.volume = 0.01;
+    audio.src = SILENT_WAV;
+    audio.play().catch(() => {});
+  }
+
+  /**
+   * Stop the silent bridge entirely.
+   */
+  stopSilentBridge() {
+    this._bridgeActive = false;
+    // Don't touch the element here — cancel() handles that.
+  }
+
+  /**
+   * Wait for the given duration while keeping the media session alive
+   * via the silent bridge.  Use this instead of raw setTimeout in autoplay.
+   */
+  waitAsync(ms) {
+    // Ensure the bridge is running during the wait
+    if (this._bridgeActive) {
+      this._playSilence();
+    }
+    return new Promise(resolve => {
+      const t = setTimeout(resolve, ms);
+      this._pendingTimers.push(t);
+    });
+  }
+
+  // ─── Audio playback ─────────────────────────────────────────────
+
   /**
    * Play an audio URL and return a promise that resolves when done.
-   * Reuses the persistent Audio element so mobile browsers keep the media
-   * session alive when the page is backgrounded.
+   * Swaps the persistent element from silence → real audio → silence.
    */
   async _playAudio(url) {
-    // Pause silent bridge while real audio plays — the persistent element
-    // keeps the session alive on its own.
-    this._pauseSilentBridge();
-
     const response = await fetch(url);
     if (!response.ok) throw new Error(`TTS request failed: ${response.status}`);
     const blob = await response.blob();
@@ -181,13 +230,19 @@ class SpeechService {
         if (settled) return;
         settled = true;
         URL.revokeObjectURL(blobUrl);
-        // Resume silent bridge after real audio finishes
-        this._resumeSilentBridge();
+        // Switch back to silent loop if bridge is active
+        if (this._bridgeActive) {
+          this._playSilence();
+        }
         fn(arg);
       };
 
+      // Stop any current playback (silence or previous clip)
+      audio.pause();
       audio.onended = () => settle(resolve);
       audio.onerror = () => settle(reject, new Error('Audio failed to load'));
+      audio.loop = false;
+      audio.volume = 1;
       audio.src = blobUrl;
 
       audio.play().catch((err) => {
@@ -342,64 +397,6 @@ class SpeechService {
     return this.preferredVoice;
   }
 
-  // ─── Silent audio bridge ───────────────────────────────────────────
-  // A looping near-silent MP3 keeps the media session alive during gaps
-  // (e.g. the 5-second think time) so mobile browsers don't suspend the tab.
-  // Minimal valid MP3 frame (silence, ~0.07s per frame, looped).
-  _SILENT_MP3 = 'data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAABhgC7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7//////////////////////////////////////////////////////////////////8AAAAATGF2YzU4LjEzAAAAAAAAAAAAAAAAJAAAAAAAAAAAAYYoRwmHAAAAAAD/+1DEAAAH+AV/UAAAIQQBL6qYAABAEQAAXEYGBsDBAxMw0FBR9f/ykHw+D9YPh8uD4f8oc/KHP/lDn//5Q5/Kf/yjz//8p8/+Xf/lDn/y7///lDn/5d/8o//8u//KHPf/Lv/ygAAAA0EjRERERERDkREIjdERCIiIiIiaIiIiGiIiERf/MzP/MzMzMzP/MzM/MzMzMzMAAAABPp6f/pqampqan/pqf+mpqampqYAAAA';
-
-  /**
-   * Start silent audio bridge to keep media session alive during gaps.
-   */
-  startSilentBridge() {
-    if (this._silentAudio) return;
-    this._silentAudio = new Audio(this._SILENT_MP3);
-    this._silentAudio.loop = true;
-    this._silentAudio.volume = 0.01;
-    this._silentAudio.play().catch(() => {});
-  }
-
-  /**
-   * Stop and discard the silent bridge.
-   */
-  stopSilentBridge() {
-    if (this._silentAudio) {
-      this._silentAudio.pause();
-      this._silentAudio.removeAttribute('src');
-      this._silentAudio = null;
-    }
-  }
-
-  /**
-   * Pause the silent bridge while real audio is playing.
-   */
-  _pauseSilentBridge() {
-    if (this._silentAudio && !this._silentAudio.paused) {
-      this._silentAudio.pause();
-    }
-  }
-
-  /**
-   * Resume the silent bridge after real audio finishes.
-   */
-  _resumeSilentBridge() {
-    if (this._silentAudio && this._silentAudio.paused) {
-      this._silentAudio.play().catch(() => {});
-    }
-  }
-
-  /**
-   * Wait for the given duration while keeping the media session alive
-   * via the silent bridge. Use this instead of raw setTimeout in autoplay.
-   */
-  waitAsync(ms) {
-    this.startSilentBridge();
-    return new Promise(resolve => {
-      const t = setTimeout(resolve, ms);
-      this._pendingTimers.push(t);
-    });
-  }
-
   // ─── Media Session API ────────────────────────────────────────────
 
   /**
@@ -454,13 +451,17 @@ class SpeechService {
       this._abortController.abort();
       this._abortController = null;
     }
-    if (this._persistentAudio) {
-      this._persistentAudio.pause();
-      this._persistentAudio.removeAttribute('src');
-      this._persistentAudio.load();
+    this._bridgeActive = false;
+    const audio = this._persistentAudio;
+    if (audio) {
+      audio.pause();
+      audio.onended = null;
+      audio.onerror = null;
+      audio.loop = false;
+      audio.removeAttribute('src');
+      audio.load();
     }
     this.audio = null;
-    this.stopSilentBridge();
   }
 
   /**
@@ -470,7 +471,6 @@ class SpeechService {
     if (this._persistentAudio && !this._persistentAudio.paused) {
       this._persistentAudio.pause();
     }
-    this._pauseSilentBridge();
   }
 
   /**
@@ -480,7 +480,6 @@ class SpeechService {
     if (this._persistentAudio && this._persistentAudio.paused && this._persistentAudio.src) {
       this._persistentAudio.play().catch(() => {});
     }
-    this._resumeSilentBridge();
   }
 
   /**
@@ -521,7 +520,9 @@ class SpeechService {
    */
   isSpeaking() {
     const a = this._persistentAudio;
-    return a ? !a.paused && !a.ended && !!a.src : false;
+    if (!a || a.paused || a.ended) return false;
+    // Don't count silent bridge as "speaking"
+    return a.src && a.src !== SILENT_WAV;
   }
 }
 
