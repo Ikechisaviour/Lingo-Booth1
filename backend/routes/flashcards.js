@@ -2,8 +2,10 @@ const express = require('express');
 const router = express.Router();
 const Flashcard = require('../models/Flashcard');
 const UserCardPreference = require('../models/UserCardPreference');
+const GuestSession = require('../models/GuestSession');
 const flashcardData = require('../flashcardData');
 const { verifyToken, isOwner } = require('../middleware/auth');
+const { getClientIp, getGeoInfo } = require('../utils/geo');
 
 // Normalize category: handles old string format and new array format
 const normalizeCategory = (cat) => {
@@ -16,15 +18,58 @@ const normalizeCategory = (cat) => {
 
 // Guest flashcards — returns default vocabulary set (read-only)
 router.get('/guest', (req, res) => {
+  // Track guest session (fire-and-forget, non-blocking)
+  try {
+    const ip = getClientIp(req);
+    const nativeLang = req.query.nativeLang || 'en';
+    const targetLang = req.query.targetLang || 'ko';
+    const geo = getGeoInfo(ip);
+    const ua = (req.headers['user-agent'] || '').substring(0, 500);
+    const referrer = (req.headers['referer'] || req.headers['referrer'] || '').substring(0, 500);
+    const uaLower = ua.toLowerCase();
+    const deviceType = /mobile|android|iphone|ipod/.test(uaLower)
+      ? 'mobile'
+      : /tablet|ipad/.test(uaLower)
+        ? 'tablet'
+        : 'desktop';
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    GuestSession.findOneAndUpdate(
+      { ip, firstSeen: { $gte: today } },
+      {
+        $set: {
+          lastSeen: new Date(),
+          country: geo.country,
+          countryCode: geo.countryCode,
+          city: geo.city,
+          nativeLanguage: nativeLang,
+          targetLanguage: targetLang,
+          userAgent: ua,
+          deviceType,
+          ...(referrer && { referrer }),
+        },
+        $inc: { pageViews: 1 },
+      },
+      { upsert: true, setDefaultsOnInsert: true }
+    ).catch(() => {});
+  } catch (_) {}
+
   const guestCards = flashcardData.map((card, i) => ({
     _id: `guest-${i}`,
     korean: card.korean,
     english: card.english,
     romanization: card.romanization,
     category: card.category,
+    targetLang: 'ko',
+    nativeLang: 'en',
     masteryLevel: 3,
     correctCount: 0,
     incorrectCount: 0,
+    // Translation fields (es, fr, de, zh, ja, hi, ar, he, pt, it, nl, ru, id, ms, fil, tr, bn, ta)
+    ...Object.fromEntries(
+      Object.entries(card).filter(([k]) =>
+        !['korean','english','romanization','category'].includes(k)
+      )
+    ),
   }));
   res.json(guestCards);
 });
@@ -44,10 +89,18 @@ router.get('/user/:userId', isOwner('userId'), async (req, res) => {
       english: card.english,
       romanization: card.romanization,
       category: card.category,
+      targetLang: 'ko',
+      nativeLang: 'en',
       masteryLevel: 3,
       correctCount: 0,
       incorrectCount: 0,
       isDefault: true,
+      // Translation fields (es, fr, de, zh, ja, hi, ar, he, pt, it, nl, ru, id, ms, fil, tr, bn, ta)
+      ...Object.fromEntries(
+        Object.entries(card).filter(([k]) =>
+          !['korean','english','romanization','category'].includes(k)
+        )
+      ),
     }));
 
     // User's own private flashcards (normalize category for old string-format docs)
@@ -75,10 +128,10 @@ router.get('/user/:userId', isOwner('userId'), async (req, res) => {
 // Create flashcard (uses authenticated user's ID)
 router.post('/', async (req, res) => {
   try {
-    const { korean, english, romanization, audioUrl, category } = req.body;
+    const { korean, english, romanization, audioUrl, category, targetLang, nativeLang } = req.body;
 
     if (!korean || !english) {
-      return res.status(400).json({ message: 'Korean and English fields are required' });
+      return res.status(400).json({ message: 'Target and native text fields are required' });
     }
 
     const flashcard = new Flashcard({
@@ -88,6 +141,8 @@ router.post('/', async (req, res) => {
       romanization,
       audioUrl,
       category: normalizeCategory(category),
+      targetLang: targetLang || 'ko',
+      nativeLang: nativeLang || 'en',
     });
 
     await flashcard.save();

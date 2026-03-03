@@ -64,8 +64,8 @@ export const guestXPHelper = {
 };
 
 export const authService = {
-  register: (username, email, password, guestXP) =>
-    api.post('/auth/register', { username, email, password, guestXP }),
+  register: (username, email, password, guestXP, nativeLanguage, targetLanguage) =>
+    api.post('/auth/register', { username, email, password, guestXP, nativeLanguage, targetLanguage }),
   login: (email, password, guestXP) =>
     api.post('/auth/login', { email, password, guestXP }),
   trackActivity: (userId, timeSpent) =>
@@ -84,8 +84,11 @@ export const lessonService = {
 export const flashcardService = {
   getFlashcards: (userId) =>
     api.get(`/flashcards/user/${userId}`),
-  getGuestFlashcards: () =>
-    api.get('/flashcards/guest'),
+  getGuestFlashcards: () => {
+    const nativeLang = localStorage.getItem('nativeLanguage') || 'en';
+    const targetLang = localStorage.getItem('targetLanguage') || 'ko';
+    return api.get(`/flashcards/guest?nativeLang=${nativeLang}&targetLang=${targetLang}`);
+  },
   createFlashcard: (flashcardData) =>
     api.post('/flashcards', flashcardData),
   updateFlashcard: (id, data) =>
@@ -173,6 +176,8 @@ export const adminService = {
     api.get('/admin/flashcards'),
   deleteFlashcard: (flashcardId) =>
     api.delete(`/admin/flashcards/${flashcardId}`),
+  getGuests: (page = 1) =>
+    api.get(`/admin/guests?page=${page}`),
 };
 
 export default api;

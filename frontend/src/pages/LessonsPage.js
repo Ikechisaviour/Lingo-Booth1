@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation, Trans } from 'react-i18next';
 import { lessonService, progressService } from '../services/api';
+import { getTargetLangName } from '../config/languages';
 import './LessonsPage.css';
 
 function LessonsPage() {
+  const { t } = useTranslation();
   const [lessons, setLessons] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -54,7 +57,7 @@ function LessonsPage() {
       setLessons(response.data);
       setError('');
     } catch (err) {
-      setError('Failed to load lessons');
+      setError(t('lessons.failedToLoad'));
       console.error(err);
     } finally {
       setLoading(false);
@@ -62,20 +65,20 @@ function LessonsPage() {
   };
 
   const categories = [
-    { value: 'daily-life', label: 'Daily Life', icon: '🏠' },
-    { value: 'business', label: 'Business', icon: '💼' },
-    { value: 'travel', label: 'Travel', icon: '✈️' },
-    { value: 'greetings', label: 'Greetings', icon: '👋' },
-    { value: 'food', label: 'Food', icon: '🍜' },
-    { value: 'shopping', label: 'Shopping', icon: '🛒' },
-    { value: 'healthcare', label: 'Healthcare', icon: '🏥' },
+    { value: 'daily-life', icon: '🏠' },
+    { value: 'business', icon: '💼' },
+    { value: 'travel', icon: '✈️' },
+    { value: 'greetings', icon: '👋' },
+    { value: 'food', icon: '🍜' },
+    { value: 'shopping', icon: '🛒' },
+    { value: 'healthcare', icon: '🏥' },
   ];
 
   const difficulties = [
-    { value: 'beginner', label: 'Beginner', color: '#58cc02' },
-    { value: 'intermediate', label: 'Intermediate', color: '#1cb0f6' },
-    { value: 'advanced', label: 'Advanced', color: '#a560e8' },
-    { value: 'sentences', label: 'Sentences', color: '#ff6b35' },
+    { value: 'beginner', color: '#58cc02' },
+    { value: 'intermediate', color: '#1cb0f6' },
+    { value: 'advanced', color: '#a560e8' },
+    { value: 'sentences', color: '#ff6b35' },
   ];
 
   const getCategoryIcon = (categoryValue) => {
@@ -152,13 +155,17 @@ function LessonsPage() {
         {/* Header */}
         <div className="lessons-header">
           <div className="header-content">
-            <h1>Korean <span className="text-accent">Lessons</span></h1>
-            <p>Learn practical skills you can apply right away</p>
+            <h1>
+              <Trans i18nKey="lessons.title" values={{ language: getTargetLangName() }}>
+                {getTargetLangName()} <span className="text-accent">Lessons</span>
+              </Trans>
+            </h1>
+            <p>{t('lessons.subtitle')}</p>
           </div>
           <div className="header-stats">
             <div className="stat-badge">
               <span className="stat-icon">📚</span>
-              <span className="stat-text">{lessons.length} lessons available</span>
+              <span className="stat-text">{t('lessons.lessonsAvailable', { count: lessons.length })}</span>
             </div>
           </div>
         </div>
@@ -170,7 +177,7 @@ function LessonsPage() {
             onClick={() => setFilter({ ...filter, category: '' })}
           >
             <span className="pill-icon">🌐</span>
-            <span>All</span>
+            <span>{t('lessons.all')}</span>
           </button>
           {categories.map((cat) => (
             <button
@@ -179,20 +186,20 @@ function LessonsPage() {
               onClick={() => setFilter({ ...filter, category: cat.value })}
             >
               <span className="pill-icon">{cat.icon}</span>
-              <span>{cat.label}</span>
+              <span>{t(`lessons.categories.${cat.value}`)}</span>
             </button>
           ))}
         </div>
 
         {/* Difficulty Filter */}
         <div className="difficulty-filter">
-          <span className="filter-label">Level:</span>
+          <span className="filter-label">{t('lessons.level')}</span>
           <div className="difficulty-options">
             <button
               className={`difficulty-btn ${filter.difficulty === '' ? 'active' : ''}`}
               onClick={() => setFilter({ ...filter, difficulty: '' })}
             >
-              All Levels
+              {t('lessons.allLevels')}
             </button>
             {difficulties.map((diff) => (
               <button
@@ -201,7 +208,7 @@ function LessonsPage() {
                 onClick={() => setFilter({ ...filter, difficulty: diff.value })}
                 style={{ '--diff-color': diff.color }}
               >
-                {diff.label}
+                {t(`lessons.difficulties.${diff.value}`)}
               </button>
             ))}
           </div>
@@ -209,18 +216,18 @@ function LessonsPage() {
 
         {error && <div className="error">{error}</div>}
 
-        {/* Start All Banner - shown when both filters are "All" and not in customize mode */}
+        {/* Start All Banner */}
         {!loading && lessons.length > 0 && filter.category === '' && filter.difficulty === '' && !customizeMode && (
           <div className="playlist-action-bar">
             <div className="playlist-action-info">
               <span className="playlist-action-icon">🎯</span>
               <div>
-                <strong>Study All {lessons.length} Lessons</strong>
-                <p>Beginner → Intermediate → Advanced → Sentences, across all categories</p>
+                <strong>{t('lessons.studyAll', { count: lessons.length })}</strong>
+                <p>{t('lessons.studyAllDesc')}</p>
               </div>
             </div>
             <button className="btn btn-primary playlist-start-btn" onClick={handleStartAll}>
-              Start All →
+              {t('lessons.startAll')} →
             </button>
           </div>
         )}
@@ -232,22 +239,22 @@ function LessonsPage() {
               className={`btn ${customizeMode ? 'btn-active' : 'btn-outline'} customize-toggle-btn`}
               onClick={handleToggleCustomize}
             >
-              {customizeMode ? '✕ Exit Customize' : '✏️ Customize Path'}
+              {customizeMode ? `✕ ${t('lessons.exitCustomize')}` : `✏️ ${t('lessons.customizePath')}`}
             </button>
             {customizeMode && (
               <>
                 {selectedLessons.length > 0 && (
                   <button className="btn btn-primary playlist-start-btn" onClick={handleStartCustom}>
-                    Start Custom Path ({selectedLessons.length} lessons) →
+                    {t('lessons.startCustomPath', { count: selectedLessons.length })} →
                   </button>
                 )}
                 {selectedLessons.length > 0 && (
                   <button className="btn btn-outline" onClick={() => setSelectedLessons([])}>
-                    Clear Selection
+                    {t('lessons.clearSelection')}
                   </button>
                 )}
                 {selectedLessons.length === 0 && (
-                  <span className="customize-hint">Click cards to select lessons in your desired order</span>
+                  <span className="customize-hint">{t('lessons.customizeHint')}</span>
                 )}
               </>
             )}
@@ -255,17 +262,17 @@ function LessonsPage() {
         )}
 
         {loading ? (
-          <div className="loading">Loading lessons...</div>
+          <div className="loading">{t('lessons.loadingLessons')}</div>
         ) : lessons.length === 0 ? (
           <div className="empty-state">
             <div className="empty-state-icon">📚</div>
-            <h3>No lessons found</h3>
-            <p>Try adjusting your filters or check back soon for new content!</p>
+            <h3>{t('lessons.noLessons')}</h3>
+            <p>{t('lessons.noLessonsHint')}</p>
             <button
               className="btn btn-primary"
               onClick={() => setFilter({ category: '', difficulty: '' })}
             >
-              Clear filters
+              {t('lessons.clearFilters')}
             </button>
           </div>
         ) : (
@@ -294,17 +301,17 @@ function LessonsPage() {
                       className="difficulty-badge"
                       style={{ background: getDifficultyColor(lesson.difficulty) }}
                     >
-                      {lesson.difficulty}
+                      {t(`lessons.difficulties.${lesson.difficulty}`)}
                     </span>
                   </div>
                   <h3>{lesson.title}</h3>
                   <p className="lesson-category">
-                    {lesson.category.charAt(0).toUpperCase() + lesson.category.slice(1).replace('-', ' ')}
+                    {t(`lessons.categories.${lesson.category}`)}
                   </p>
                   <div className="lesson-footer">
                     <div className="lesson-meta">
                       <span className="meta-icon">📝</span>
-                      <span>{lesson.content.length} items</span>
+                      <span>{t('lessons.items', { count: lesson.content.length })}</span>
                     </div>
                     <div className="lesson-progress">
                       <div className="progress-ring">

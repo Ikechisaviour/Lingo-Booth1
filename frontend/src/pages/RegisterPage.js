@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, Navigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { authService, guestXPHelper } from '../services/api';
 import './Auth.css';
 
 function RegisterPage({ setIsAuthenticated, setIsGuest }) {
+  const { t } = useTranslation();
   const navigate = useNavigate();
+
+  // Languages should already be set by LanguageSelectPage
+  const nativeLanguage = localStorage.getItem('nativeLanguage');
+  const targetLanguage = localStorage.getItem('targetLanguage');
+
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -16,6 +23,11 @@ function RegisterPage({ setIsAuthenticated, setIsGuest }) {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+  // Guard: if no language was selected, redirect to language selection
+  if (!nativeLanguage) {
+    return <Navigate to="/select-language?mode=register" />;
+  }
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -23,11 +35,9 @@ function RegisterPage({ setIsAuthenticated, setIsGuest }) {
 
   const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  // Only show email feedback once the user has started typing
   const emailTouched = formData.email.length > 0;
   const emailValid = EMAIL_REGEX.test(formData.email);
 
-  // Only show password match feedback once the user has started typing in confirmPassword
   const confirmTouched = formData.confirmPassword.length > 0;
   const passwordsMatch = formData.password === formData.confirmPassword;
 
@@ -36,7 +46,7 @@ function RegisterPage({ setIsAuthenticated, setIsGuest }) {
     setError('');
 
     if (!passwordsMatch) {
-      setError('Passwords do not match');
+      setError(t('register.passwordsNoMatch'));
       return;
     }
 
@@ -48,7 +58,9 @@ function RegisterPage({ setIsAuthenticated, setIsGuest }) {
         formData.username,
         formData.email,
         formData.password,
-        guestXP
+        guestXP,
+        nativeLanguage || 'en',
+        targetLanguage || 'ko'
       );
       guestXPHelper.clear();
 
@@ -56,13 +68,15 @@ function RegisterPage({ setIsAuthenticated, setIsGuest }) {
       localStorage.setItem('userId', data.user.id);
       localStorage.setItem('username', data.user.username);
       localStorage.setItem('userRole', data.user.role);
+      localStorage.setItem('nativeLanguage', data.user.nativeLanguage || 'en');
+      localStorage.setItem('targetLanguage', data.user.targetLanguage || 'ko');
       localStorage.removeItem('guestMode');
 
       setIsAuthenticated(true);
       setIsGuest(false);
       navigate('/');
     } catch (err) {
-      setError(err.response?.data?.message || 'Registration failed');
+      setError(err.response?.data?.message || t('register.registrationFailed'));
     } finally {
       setLoading(false);
     }
@@ -72,33 +86,33 @@ function RegisterPage({ setIsAuthenticated, setIsGuest }) {
     <div className="auth-container">
       <div className="auth-card">
         <img src="/images/logo.png" alt="Lingo Booth" className="auth-logo" />
-        <h1>Create Your Account</h1>
-        <p className="auth-subtitle">Start your Korean learning journey today!</p>
+        <h1>{t('register.title')}</h1>
+        <p className="auth-subtitle">{t('register.subtitle')}</p>
 
         {error && <div className="error">{error}</div>}
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="username">Username</label>
+            <label htmlFor="username">{t('register.username')}</label>
             <input
               type="text"
               id="username"
               name="username"
               value={formData.username}
               onChange={handleChange}
-              placeholder="Choose a username"
+              placeholder={t('register.usernamePlaceholder')}
               required
             />
           </div>
           <div className="form-group">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">{t('register.email')}</label>
             <input
               type="email"
               id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="Enter your email"
+              placeholder={t('register.emailPlaceholder')}
               required
             />
             {emailTouched && (
@@ -107,12 +121,12 @@ function RegisterPage({ setIsAuthenticated, setIsGuest }) {
                 fontSize: '0.85rem',
                 color: emailValid ? '#16a34a' : '#dc2626',
               }}>
-                {emailValid ? '✓ Valid email address' : '✗ Please enter a valid email address'}
+                {emailValid ? `✓ ${t('register.validEmail')}` : `✗ ${t('register.invalidEmail')}`}
               </p>
             )}
           </div>
           <div className="form-group">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">{t('register.password')}</label>
             <div className="password-input-wrapper">
               <input
                 type={showPassword ? 'text' : 'password'}
@@ -120,14 +134,14 @@ function RegisterPage({ setIsAuthenticated, setIsGuest }) {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                placeholder="Create a password (min. 6 characters)"
+                placeholder={t('register.passwordPlaceholder')}
                 required
               />
               <button
                 type="button"
                 className="password-toggle"
                 onClick={() => setShowPassword(!showPassword)}
-                aria-label={showPassword ? 'Hide password' : 'Show password'}
+                aria-label={showPassword ? t('login.hidePassword') : t('login.showPassword')}
               >
                 {showPassword ? (
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -145,7 +159,7 @@ function RegisterPage({ setIsAuthenticated, setIsGuest }) {
             </div>
           </div>
           <div className="form-group">
-            <label htmlFor="confirmPassword">Confirm Password</label>
+            <label htmlFor="confirmPassword">{t('register.confirmPassword')}</label>
             <div className="password-input-wrapper">
               <input
                 type={showConfirmPassword ? 'text' : 'password'}
@@ -153,14 +167,14 @@ function RegisterPage({ setIsAuthenticated, setIsGuest }) {
                 name="confirmPassword"
                 value={formData.confirmPassword}
                 onChange={handleChange}
-                placeholder="Re-enter your password"
+                placeholder={t('register.confirmPlaceholder')}
                 required
               />
               <button
                 type="button"
                 className="password-toggle"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}
+                aria-label={showConfirmPassword ? t('login.hidePassword') : t('login.showPassword')}
               >
                 {showConfirmPassword ? (
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -182,7 +196,7 @@ function RegisterPage({ setIsAuthenticated, setIsGuest }) {
                 fontSize: '0.85rem',
                 color: passwordsMatch ? '#16a34a' : '#dc2626',
               }}>
-                {passwordsMatch ? '✓ Passwords match' : '✗ Passwords do not match'}
+                {passwordsMatch ? `✓ ${t('register.passwordsMatch')}` : `✗ ${t('register.passwordsNoMatch')}`}
               </p>
             )}
           </div>
@@ -191,12 +205,12 @@ function RegisterPage({ setIsAuthenticated, setIsGuest }) {
             className="btn btn-primary"
             disabled={loading || !emailValid || (confirmTouched && !passwordsMatch)}
           >
-            {loading ? 'Creating account...' : 'Sign Up'}
+            {loading ? t('register.creatingAccount') : t('register.signUpButton')}
           </button>
         </form>
 
         <p className="auth-link">
-          Already have an account? <Link to="/login">Login here</Link>
+          {t('register.hasAccount')} <Link to="/login">{t('register.loginHere')}</Link>
         </p>
       </div>
     </div>

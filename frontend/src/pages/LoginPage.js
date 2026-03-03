@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { authService, userService, guestXPHelper } from '../services/api';
 import './Auth.css';
 
 function LoginPage({ setIsAuthenticated, setIsGuest }) {
+  const { t, i18n } = useTranslation();
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -36,10 +38,15 @@ function LoginPage({ setIsAuthenticated, setIsGuest }) {
       if (response.data.user.preferredVoice) {
         localStorage.setItem('preferredVoice', response.data.user.preferredVoice);
       }
+      localStorage.setItem('nativeLanguage', response.data.user.nativeLanguage || 'en');
+      localStorage.setItem('targetLanguage', response.data.user.targetLanguage || 'ko');
       localStorage.removeItem('guestMode');
       guestXPHelper.clear();
       setIsGuest(false);
       setIsAuthenticated(true);
+
+      // Switch UI language to user's saved preference
+      i18n.changeLanguage(response.data.user.nativeLanguage || 'en');
 
       // Redirect to last activity if available, otherwise home
       const uid = response.data.user.id;
@@ -64,7 +71,7 @@ function LoginPage({ setIsAuthenticated, setIsGuest }) {
         });
         setError('');
       } else {
-        setError(err.response?.data?.message || 'Login failed');
+        setError(err.response?.data?.message || t('login.loginFailed'));
         setSuspended(null);
       }
     } finally {
@@ -73,39 +80,32 @@ function LoginPage({ setIsAuthenticated, setIsGuest }) {
   };
 
   const handleGuestMode = () => {
-    localStorage.setItem('guestMode', 'true');
-    localStorage.removeItem('token');
-    localStorage.removeItem('userId');
-    localStorage.removeItem('username');
-    localStorage.removeItem('userRole');
-    setIsGuest(true);
-    setIsAuthenticated(false);
-    navigate('/');
+    navigate('/select-language?mode=guest');
   };
 
   return (
     <div className="auth-container">
       <div className="auth-card">
         <img src="/images/logo.png" alt="Lingo Booth" className="auth-logo" />
-        <h1>Welcome Back!</h1>
-        <p className="auth-subtitle">Continue your Korean learning journey</p>
+        <h1>{t('login.welcomeBack')}</h1>
+        <p className="auth-subtitle">{t('login.subtitle')}</p>
 
         {wasSuspendedMidSession && !suspended && (
           <div className="suspended-notice">
             <div className="suspended-icon">&#x1F6AB;</div>
-            <h3>Account Suspended</h3>
-            <p>Your account has been suspended. You have been logged out.</p>
-            <p className="suspended-contact">Please contact support for more information.</p>
+            <h3>{t('login.accountSuspended')}</h3>
+            <p>{t('login.suspendedLoggedOut')}</p>
+            <p className="suspended-contact">{t('login.contactSupport')}</p>
           </div>
         )}
 
         {suspended && (
           <div className="suspended-notice">
             <div className="suspended-icon">&#x1F6AB;</div>
-            <h3>Account Suspended</h3>
+            <h3>{t('login.accountSuspended')}</h3>
             <p>{suspended.message}</p>
-            <p className="suspended-reason"><strong>Reason:</strong> {suspended.reason}</p>
-            <p className="suspended-contact">If you believe this is a mistake, please contact support.</p>
+            <p className="suspended-reason"><strong>{t('login.reason')}:</strong> {suspended.reason}</p>
+            <p className="suspended-contact">{t('login.suspendedMistake')}</p>
           </div>
         )}
 
@@ -113,19 +113,19 @@ function LoginPage({ setIsAuthenticated, setIsGuest }) {
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">{t('login.email')}</label>
             <input
               type="email"
               id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="Enter your email"
+              placeholder={t('login.emailPlaceholder')}
               required
             />
           </div>
           <div className="form-group">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">{t('login.password')}</label>
             <div className="password-input-wrapper">
               <input
                 type={showPassword ? 'text' : 'password'}
@@ -133,14 +133,14 @@ function LoginPage({ setIsAuthenticated, setIsGuest }) {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                placeholder="Enter your password"
+                placeholder={t('login.passwordPlaceholder')}
                 required
               />
               <button
                 type="button"
                 className="password-toggle"
                 onClick={() => setShowPassword(!showPassword)}
-                aria-label={showPassword ? 'Hide password' : 'Show password'}
+                aria-label={showPassword ? t('login.hidePassword') : t('login.showPassword')}
               >
                 {showPassword ? (
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -158,21 +158,21 @@ function LoginPage({ setIsAuthenticated, setIsGuest }) {
             </div>
           </div>
           <button type="submit" className="btn btn-primary" disabled={loading}>
-            {loading ? 'Logging in...' : 'Login'}
+            {loading ? t('login.loggingIn') : t('login.loginButton')}
           </button>
         </form>
 
         <div className="auth-divider">
-          <span>or</span>
+          <span>{t('common.or')}</span>
         </div>
 
         <button className="btn btn-guest" onClick={handleGuestMode}>
-          Try as Guest
+          {t('login.tryAsGuest')}
         </button>
-        <p className="guest-note">No account needed - explore the app freely!</p>
+        <p className="guest-note">{t('login.guestNote')}</p>
 
         <p className="auth-link">
-          Don't have an account? <Link to="/register">Sign up here</Link>
+          {t('login.noAccount')} <Link to="/select-language?mode=register">{t('login.signUpHere')}</Link>
         </p>
       </div>
     </div>

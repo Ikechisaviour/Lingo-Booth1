@@ -29,7 +29,7 @@ router.get('/:userId', isOwner('userId'), checkInactivityPenalty(), async (req, 
 // Update user profile (only own profile or admin)
 router.put('/:userId', isOwner('userId'), async (req, res) => {
   try {
-    const { username, preferredVoice } = req.body;
+    const { username, preferredVoice, nativeLanguage, targetLanguage } = req.body;
 
     // Check if username is already taken by another user
     if (username) {
@@ -45,6 +45,8 @@ router.put('/:userId', isOwner('userId'), async (req, res) => {
     const updateData = {};
     if (username) updateData.username = username;
     if (preferredVoice !== undefined) updateData.preferredVoice = preferredVoice;
+    if (nativeLanguage !== undefined) updateData.nativeLanguage = nativeLanguage;
+    if (targetLanguage !== undefined) updateData.targetLanguage = targetLanguage;
 
     const user = await User.findByIdAndUpdate(
       req.params.userId,

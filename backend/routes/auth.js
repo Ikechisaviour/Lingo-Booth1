@@ -3,6 +3,8 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const GuestSession = require('../models/GuestSession');
+const { getClientIp, getGeoInfo } = require('../utils/geo');
 
 const JWT_SECRET = process.env.JWT_SECRET;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -10,7 +12,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 // Register
 router.post('/register', async (req, res) => {
   try {
-    const { username, email, password, guestXP } = req.body;
+    const { username, email, password, guestXP, nativeLanguage, targetLanguage } = req.body;
 
     if (!username || !email || !password) {
       return res.status(400).json({ message: 'All fields are required' });
@@ -32,6 +34,9 @@ router.post('/register', async (req, res) => {
     // New accounts default to decay off, so guest XP can be applied
     const transferXP = (typeof guestXP === 'number' && guestXP > 0) ? Math.floor(guestXP) : 0;
 
+    const regIp = getClientIp(req);
+    const regGeo = getGeoInfo(regIp);
+
     user = new User({
       username,
       email,
@@ -41,12 +46,26 @@ router.post('/register', async (req, res) => {
       lastLogin: new Date(),
       lastActive: new Date(),
       emailVerified: true,
+      nativeLanguage: nativeLanguage || 'en',
+      targetLanguage: targetLanguage || 'ko',
+      lastIp: regIp,
+      lastCountry: regGeo.country,
+      lastCity: regGeo.city,
     });
 
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(password, salt);
 
     await user.save();
+
+    // Mark today's guest session as converted (fire-and-forget)
+    try {
+      const today = new Date(); today.setHours(0, 0, 0, 0);
+      GuestSession.findOneAndUpdate(
+        { ip: regIp, firstSeen: { $gte: today } },
+        { $set: { convertedToUser: true } }
+      ).catch(() => {});
+    } catch (_) {}
 
     const token = jwt.sign(
       { userId: user._id },
@@ -64,6 +83,8 @@ router.post('/register', async (req, res) => {
         status: user.status,
         preferredVoice: user.preferredVoice,
         xpDecayEnabled: !!user.xpDecayEnabled,
+        nativeLanguage: user.nativeLanguage,
+        targetLanguage: user.targetLanguage,
       },
       guestXPTransferred: transferXP,
     });
@@ -111,10 +132,15 @@ router.post('/login', async (req, res) => {
       user.totalXP = (user.totalXP || 0) + guestXPTransferred;
     }
 
-    // Update login tracking
+    // Update login tracking + location
     user.loginCount = (user.loginCount || 0) + 1;
     user.lastLogin = new Date();
     user.lastActive = new Date();
+    const loginIp = getClientIp(req);
+    const loginGeo = getGeoInfo(loginIp);
+    user.lastIp = loginIp;
+    user.lastCountry = loginGeo.country;
+    user.lastCity = loginGeo.city;
     await user.save();
 
     const token = jwt.sign(
@@ -133,6 +159,8 @@ router.post('/login', async (req, res) => {
         status: user.status,
         preferredVoice: user.preferredVoice,
         xpDecayEnabled: !!user.xpDecayEnabled,
+        nativeLanguage: user.nativeLanguage,
+        targetLanguage: user.targetLanguage,
       },
       guestXPTransferred,
     });
@@ -169,6 +197,55 @@ router.post('/activity', async (req, res) => {
     res.json({ message: 'Activity tracked' });
   } catch (error) {
     console.error('Activity tracking error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Track guest session engagement (called periodically + on page close)
+router.post('/guest-activity', async (req, res) => {
+  try {
+    const {
+      timeSpent,       // total seconds since session start
+      cardsStudied,
+      cardsCorrect,
+      cardsIncorrect,
+      lessonsViewed,
+      audioPlays,
+      lastActivity,    // 'home' | 'flashcards' | 'lessons'
+    } = req.body;
+
+    const ip = getClientIp(req);
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+
+    const inc = {};
+    // timeSpent is cumulative from client — set it, don't increment, to avoid double-counting
+    const setFields = { lastSeen: new Date() };
+
+    if (typeof timeSpent === 'number' && timeSpent > 0) {
+      setFields.timeSpent = Math.min(Math.floor(timeSpent), 86400); // cap at 24h
+    }
+    if (typeof cardsStudied === 'number' && cardsStudied > 0) inc.cardsStudied = cardsStudied;
+    if (typeof cardsCorrect === 'number' && cardsCorrect > 0) inc.cardsCorrect = cardsCorrect;
+    if (typeof cardsIncorrect === 'number' && cardsIncorrect > 0) inc.cardsIncorrect = cardsIncorrect;
+    if (typeof lessonsViewed === 'number' && lessonsViewed > 0) inc.lessonsViewed = lessonsViewed;
+    if (typeof audioPlays === 'number' && audioPlays > 0) inc.audioPlays = audioPlays;
+    if (lastActivity && typeof lastActivity === 'string') {
+      setFields.lastActivity = lastActivity.substring(0, 50);
+    }
+
+    const update = { $set: setFields };
+    if (Object.keys(inc).length > 0) update.$inc = inc;
+
+    // Only update existing session — don't create one here (creation happens via /flashcards/guest)
+    await GuestSession.findOneAndUpdate(
+      { ip, firstSeen: { $gte: today } },
+      update,
+      { upsert: false }
+    );
+
+    res.json({ ok: true });
+  } catch (error) {
+    console.error('Guest activity tracking error:', error);
     res.status(500).json({ message: 'Server error' });
   }
 });

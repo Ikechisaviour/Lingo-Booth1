@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { userService, progressService } from '../services/api';
 import speechService from '../services/speechService';
+import LANGUAGES, { getTargetLangName, getTargetLangCode, getTargetHello } from '../config/languages';
 import './ProfilePage.css';
 
 function ProfilePage({ onLogout }) {
+  const { t, i18n } = useTranslation();
   const [user, setUser] = useState(null);
   const [progress, setProgress] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -36,12 +39,12 @@ function ProfilePage({ onLogout }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Load available Korean voices from Edge TTS
+  // Load available voices for target language from Edge TTS
   useEffect(() => {
     const loadVoices = async () => {
-      const koreanVoices = await speechService.getKoreanVoices();
-      if (koreanVoices.length > 0) {
-        setAvailableVoices(koreanVoices);
+      const targetVoices = await speechService.getVoicesForLang(getTargetLangCode());
+      if (targetVoices.length > 0) {
+        setAvailableVoices(targetVoices);
       }
     };
     loadVoices();
@@ -66,7 +69,7 @@ function ProfilePage({ onLogout }) {
       }
       setError('');
     } catch (err) {
-      setError('Failed to load profile');
+      setError(t('profilePage.failedToLoad'));
       console.error(err);
     } finally {
       setLoading(false);
@@ -89,17 +92,17 @@ function ProfilePage({ onLogout }) {
       localStorage.setItem('username', editData.username);
       setUser({ ...user, username: editData.username });
       setIsEditing(false);
-      setSaveMessage('Profile updated successfully!');
+      setSaveMessage(t('profilePage.profileUpdated'));
       setTimeout(() => setSaveMessage(''), 3000);
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to update profile');
+      setError(err.response?.data?.message || t('profilePage.failedToLoad'));
     }
   };
 
   const handleChangePassword = async (e) => {
     e.preventDefault();
     if (passwordData.newPassword !== passwordData.confirmPassword) {
-      setError('New passwords do not match');
+      setError(t('profilePage.passwordsNoMatch'));
       return;
     }
     try {
@@ -108,11 +111,11 @@ function ProfilePage({ onLogout }) {
         newPassword: passwordData.newPassword,
       });
       setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
-      setSaveMessage('Password changed successfully!');
+      setSaveMessage(t('profilePage.passwordChanged'));
       setTimeout(() => setSaveMessage(''), 3000);
       setError('');
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to change password');
+      setError(err.response?.data?.message || t('profilePage.failedToLoad'));
     }
   };
 
@@ -120,11 +123,11 @@ function ProfilePage({ onLogout }) {
     setSelectedVoice(voiceName);
     speechService.setVoice(voiceName);
     // Preview the voice
-    speechService.speak('안녕하세요');
+    speechService.speak(getTargetHello());
     // Save to backend
     try {
       await userService.updateProfile(userId, { preferredVoice: voiceName || null });
-      setSaveMessage('Voice updated successfully!');
+      setSaveMessage(t('profilePage.voiceUpdated'));
       setTimeout(() => setSaveMessage(''), 3000);
     } catch (err) {
       console.error('Failed to save voice preference:', err);
@@ -143,23 +146,23 @@ function ProfilePage({ onLogout }) {
       // Notify XP display if XP changed (OFF → ON wipes XP)
       window.dispatchEvent(new CustomEvent('xpUpdated', { detail: { totalXP: res.data.totalXP } }));
       setShowModeConfirm(null);
-      setSaveMessage(enable ? 'Challenge Mode enabled! XP has been reset.' : 'Switched to Relaxed Mode. Your XP is preserved.');
+      setSaveMessage(enable ? t('profilePage.challengeEnabled') : t('profilePage.relaxedEnabled'));
       setTimeout(() => setSaveMessage(''), 4000);
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to change XP mode');
+      setError(err.response?.data?.message || t('profilePage.failedToLoad'));
     } finally {
       setModeLoading(false);
     }
   };
 
   const handleDeleteAccount = async () => {
-    if (window.confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+    if (window.confirm(t('profilePage.deleteConfirm'))) {
       try {
         await userService.deleteAccount(userId);
         onLogout();
         navigate('/login');
       } catch (err) {
-        setError(err.response?.data?.message || 'Failed to delete account');
+        setError(err.response?.data?.message || t('profilePage.failedToLoad'));
       }
     }
   };
@@ -170,11 +173,11 @@ function ProfilePage({ onLogout }) {
   };
 
   if (loading) {
-    return <div className="loading">Loading profile...</div>;
+    return <div className="loading">{t('profilePage.loadingProfile')}</div>;
   }
 
   const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
+    return new Date(dateString).toLocaleDateString(i18n.language, {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
@@ -193,16 +196,16 @@ function ProfilePage({ onLogout }) {
           </div>
           <div className="profile-info">
             <h1>{user?.username || 'User'}</h1>
-            <p className="member-since">Member since {user?.createdAt ? formatDate(user.createdAt) : 'Unknown'}</p>
+            <p className="member-since">{t('profilePage.memberSince', { date: user?.createdAt ? formatDate(user.createdAt) : t('profilePage.unknown') })}</p>
           </div>
           <div className="profile-stats-mini">
             <div className="mini-stat">
               <span className="mini-stat-value">{totalXP}</span>
-              <span className="mini-stat-label">Total XP</span>
+              <span className="mini-stat-label">{t('profilePage.totalXP')}</span>
             </div>
             <div className="mini-stat">
               <span className="mini-stat-value">{progress?.mastered || 0}</span>
-              <span className="mini-stat-label">Mastered</span>
+              <span className="mini-stat-label">{t('profilePage.mastered')}</span>
             </div>
           </div>
         </div>
@@ -218,21 +221,21 @@ function ProfilePage({ onLogout }) {
             onClick={() => setActiveTab('profile')}
           >
             <span className="tab-icon">👤</span>
-            Profile
+            {t('profilePage.profileTab')}
           </button>
           <button
             className={`tab-btn ${activeTab === 'settings' ? 'active' : ''}`}
             onClick={() => setActiveTab('settings')}
           >
             <span className="tab-icon">⚙️</span>
-            Settings
+            {t('profilePage.settingsTab')}
           </button>
           <button
             className={`tab-btn ${activeTab === 'account' ? 'active' : ''}`}
             onClick={() => setActiveTab('account')}
           >
             <span className="tab-icon">🔐</span>
-            Account
+            {t('profilePage.accountTab')}
           </button>
         </div>
 
@@ -243,25 +246,25 @@ function ProfilePage({ onLogout }) {
             <div className="profile-section">
               <div className="card info-card">
                 <div className="card-header">
-                  <h2>Personal Information</h2>
+                  <h2>{t('profilePage.personalInfo')}</h2>
                   {!isEditing ? (
                     <button className="btn btn-outline btn-sm" onClick={() => setIsEditing(true)}>
-                      Edit
+                      {t('common.edit')}
                     </button>
                   ) : (
                     <div className="edit-actions">
                       <button className="btn btn-primary btn-sm" onClick={handleSaveProfile}>
-                        Save
+                        {t('common.save')}
                       </button>
                       <button className="btn btn-outline btn-sm" onClick={() => setIsEditing(false)}>
-                        Cancel
+                        {t('common.cancel')}
                       </button>
                     </div>
                   )}
                 </div>
                 <div className="info-grid">
                   <div className="info-item">
-                    <label>Username</label>
+                    <label>{t('profilePage.username')}</label>
                     {isEditing ? (
                       <input
                         type="text"
@@ -275,51 +278,51 @@ function ProfilePage({ onLogout }) {
                     )}
                   </div>
                   <div className="info-item">
-                    <label>Email</label>
+                    <label>{t('profilePage.email')}</label>
                     <span>{user?.email}</span>
                   </div>
                   <div className="info-item">
-                    <label>Member Since</label>
-                    <span>{user?.createdAt ? formatDate(user.createdAt) : 'Unknown'}</span>
+                    <label>{t('profilePage.memberSinceLabel')}</label>
+                    <span>{user?.createdAt ? formatDate(user.createdAt) : t('profilePage.unknown')}</span>
                   </div>
                   <div className="info-item">
-                    <label>Account Type</label>
-                    <span className="badge">{user?.role === 'admin' ? 'Administrator' : 'Standard User'}</span>
+                    <label>{t('profilePage.accountType')}</label>
+                    <span className="badge">{user?.role === 'admin' ? t('profilePage.administrator') : t('profilePage.standardUser')}</span>
                   </div>
                 </div>
               </div>
 
               <div className="card">
-                <h2>Session</h2>
-                <p className="card-description">Manage your current session</p>
+                <h2>{t('profilePage.session')}</h2>
+                <p className="card-description">{t('profilePage.manageSession')}</p>
                 <button className="btn btn-outline" onClick={handleLogout}>
                   <span className="btn-icon">👋</span>
-                  Logout
+                  {t('common.logout')}
                 </button>
               </div>
 
               <div className="card stats-card">
-                <h2>Learning Statistics</h2>
+                <h2>{t('profilePage.learningStatistics')}</h2>
                 <div className="stats-grid">
                   <div className="stat-box">
                     <span className="stat-icon">🏆</span>
                     <span className="stat-number">{progress?.mastered || 0}</span>
-                    <span className="stat-title">Mastered</span>
+                    <span className="stat-title">{t('profilePage.mastered')}</span>
                   </div>
                   <div className="stat-box">
                     <span className="stat-icon">😊</span>
                     <span className="stat-number">{progress?.comfortable || 0}</span>
-                    <span className="stat-title">Comfortable</span>
+                    <span className="stat-title">{t('profilePage.comfortable')}</span>
                   </div>
                   <div className="stat-box">
                     <span className="stat-icon">📚</span>
                     <span className="stat-number">{progress?.learning || 0}</span>
-                    <span className="stat-title">Learning</span>
+                    <span className="stat-title">{t('profilePage.learning')}</span>
                   </div>
                   <div className="stat-box">
                     <span className="stat-icon">💪</span>
                     <span className="stat-number">{progress?.struggling || 0}</span>
-                    <span className="stat-title">Struggling</span>
+                    <span className="stat-title">{t('profilePage.struggling')}</span>
                   </div>
                 </div>
               </div>
@@ -330,58 +333,105 @@ function ProfilePage({ onLogout }) {
           {activeTab === 'settings' && (
             <div className="settings-section">
               <div className="card">
-                <h2>Change Password</h2>
+                <h2>{t('profilePage.changePassword')}</h2>
                 <form onSubmit={handleChangePassword} className="password-form">
                   <div className="form-group">
-                    <label htmlFor="currentPassword">Current Password</label>
+                    <label htmlFor="currentPassword">{t('profilePage.currentPassword')}</label>
                     <input
                       type="password"
                       id="currentPassword"
                       name="currentPassword"
                       value={passwordData.currentPassword}
                       onChange={handlePasswordChange}
-                      placeholder="Enter current password"
+                      placeholder={t('profilePage.currentPasswordPlaceholder')}
                       required
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="newPassword">New Password</label>
+                    <label htmlFor="newPassword">{t('profilePage.newPassword')}</label>
                     <input
                       type="password"
                       id="newPassword"
                       name="newPassword"
                       value={passwordData.newPassword}
                       onChange={handlePasswordChange}
-                      placeholder="Enter new password"
+                      placeholder={t('profilePage.newPasswordPlaceholder')}
                       required
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="confirmPassword">Confirm New Password</label>
+                    <label htmlFor="confirmPassword">{t('profilePage.confirmNewPassword')}</label>
                     <input
                       type="password"
                       id="confirmPassword"
                       name="confirmPassword"
                       value={passwordData.confirmPassword}
                       onChange={handlePasswordChange}
-                      placeholder="Confirm new password"
+                      placeholder={t('profilePage.confirmNewPasswordPlaceholder')}
                       required
                     />
                   </div>
                   <button type="submit" className="btn btn-primary">
-                    Update Password
+                    {t('profilePage.updatePassword')}
                   </button>
                 </form>
               </div>
 
               <div className="card">
-                <h2>Voice Settings</h2>
+                <h2>{t('profilePage.languagePreferences')}</h2>
+                <div className="language-prefs">
+                  <div className="form-group">
+                    <label>{t('profilePage.iSpeak')}</label>
+                    <select
+                      className="profile-select"
+                      value={localStorage.getItem('nativeLanguage') || 'en'}
+                      onChange={async (e) => {
+                        const val = e.target.value;
+                        localStorage.setItem('nativeLanguage', val);
+                        i18n.changeLanguage(val);
+                        try {
+                          await userService.updateProfile(userId, { nativeLanguage: val });
+                        } catch (_) {}
+                        window.location.reload();
+                      }}
+                    >
+                      {Object.entries(LANGUAGES).map(([code, lang]) => (
+                        <option key={code} value={code}>{lang.flag} {lang.name}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="form-group">
+                    <label>{t('profilePage.imLearning')}</label>
+                    <select
+                      className="profile-select"
+                      value={localStorage.getItem('targetLanguage') || 'ko'}
+                      onChange={async (e) => {
+                        const val = e.target.value;
+                        localStorage.setItem('targetLanguage', val);
+                        try {
+                          await userService.updateProfile(userId, { targetLanguage: val });
+                        } catch (_) {}
+                        window.location.reload();
+                      }}
+                    >
+                      {Object.entries(LANGUAGES)
+                        .filter(([code]) => code !== (localStorage.getItem('nativeLanguage') || 'en'))
+                        .map(([code, lang]) => (
+                          <option key={code} value={code}>{lang.flag} {lang.name}</option>
+                        ))}
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div className="card">
+                <h2>{t('profilePage.voiceSettings')}</h2>
                 <p className="voice-description">
-                  Choose a Korean voice for pronunciation. Your selection syncs across devices.
+                  {t('profilePage.voiceDescription', { language: getTargetLangName() })}
                 </p>
                 {availableVoices.length === 0 ? (
                   <p className="voice-no-voices">
-                    No Korean voices available on this device. Try using Chrome or Edge for more voice options.
+                    {t('profilePage.noVoices', { language: getTargetLangName() })}
                   </p>
                 ) : (
                   <div className="voice-selector">
@@ -401,14 +451,14 @@ function ProfilePage({ onLogout }) {
                             e.stopPropagation();
                             const prevVoice = speechService.getSelectedVoiceName();
                             speechService.setVoice(voice.name);
-                            speechService.speak('안녕하세요');
+                            speechService.speak(getTargetHello());
                             // Restore previous voice if not selecting
                             if (selectedVoice !== voice.name) {
                               setTimeout(() => speechService.setVoice(prevVoice), 100);
                             }
                           }}
                         >
-                          Preview
+                          {t('profilePage.preview')}
                         </button>
                         {selectedVoice === voice.name && (
                           <span className="voice-check">&#10003;</span>
@@ -421,9 +471,9 @@ function ProfilePage({ onLogout }) {
 
               {/* XP Mode */}
               <div className="card">
-                <h2>XP Mode</h2>
+                <h2>{t('profilePage.xpMode')}</h2>
                 <p className="voice-description">
-                  Choose how your XP system works. Challenge Mode adds XP decay for inactivity.
+                  {t('profilePage.xpModeDescription')}
                 </p>
                 <div className="xp-mode-selector">
                   <div
@@ -432,8 +482,8 @@ function ProfilePage({ onLogout }) {
                   >
                     <div className="xp-mode-icon">🌿</div>
                     <div className="xp-mode-info">
-                      <span className="xp-mode-name">Relaxed Mode</span>
-                      <span className="xp-mode-desc">No XP decay. Learn at your own pace.</span>
+                      <span className="xp-mode-name">{t('profilePage.relaxedMode')}</span>
+                      <span className="xp-mode-desc">{t('profilePage.relaxedDesc')}</span>
                     </div>
                     {!xpDecayEnabled && <span className="voice-check">&#10003;</span>}
                   </div>
@@ -443,8 +493,8 @@ function ProfilePage({ onLogout }) {
                   >
                     <div className="xp-mode-icon">🔥</div>
                     <div className="xp-mode-info">
-                      <span className="xp-mode-name">Challenge Mode</span>
-                      <span className="xp-mode-desc">XP decays after 48h of inactivity. Stay sharp!</span>
+                      <span className="xp-mode-name">{t('profilePage.challengeMode')}</span>
+                      <span className="xp-mode-desc">{t('profilePage.challengeDesc')}</span>
                     </div>
                     {xpDecayEnabled && <span className="voice-check">&#10003;</span>}
                   </div>
@@ -458,14 +508,10 @@ function ProfilePage({ onLogout }) {
                     {showModeConfirm === 'enable' ? (
                       <>
                         <div className="decay-confirm-icon">⚠️</div>
-                        <h3>Switch to Challenge Mode?</h3>
-                        <p className="decay-confirm-warning warning-red">
-                          Switching to Challenge Mode will <strong>reset your XP to 0</strong>. Your learning history
-                          will be preserved, but you'll start earning XP from scratch.
-                        </p>
+                        <h3>{t('profilePage.switchToChallenge')}</h3>
+                        <p className="decay-confirm-warning warning-red" dangerouslySetInnerHTML={{ __html: t('profilePage.challengeWarning') }} />
                         <p className="decay-confirm-detail">
-                          In Challenge Mode, your XP decays by 15% per day after 48 hours of inactivity.
-                          Only answering questions resets the timer.
+                          {t('profilePage.challengeDetail')}
                         </p>
                         <div className="decay-confirm-actions">
                           <button
@@ -473,39 +519,36 @@ function ProfilePage({ onLogout }) {
                             onClick={() => handleModeToggle(true)}
                             disabled={modeLoading}
                           >
-                            {modeLoading ? 'Switching...' : 'Reset XP & Enable Challenge Mode'}
+                            {modeLoading ? t('profilePage.switching') : t('profilePage.resetAndEnable')}
                           </button>
                           <button
                             className="btn btn-outline"
                             onClick={() => setShowModeConfirm(null)}
                             disabled={modeLoading}
                           >
-                            Cancel
+                            {t('common.cancel')}
                           </button>
                         </div>
                       </>
                     ) : (
                       <>
                         <div className="decay-confirm-icon">💡</div>
-                        <h3>Switch to Relaxed Mode?</h3>
-                        <p className="decay-confirm-warning warning-yellow">
-                          Your current XP will be <strong>preserved</strong> in Relaxed Mode. However, if you switch
-                          back to Challenge Mode in the future, your XP will be wiped to 0.
-                        </p>
+                        <h3>{t('profilePage.switchToRelaxed')}</h3>
+                        <p className="decay-confirm-warning warning-yellow" dangerouslySetInnerHTML={{ __html: t('profilePage.relaxedWarning') }} />
                         <div className="decay-confirm-actions">
                           <button
                             className="btn btn-primary"
                             onClick={() => handleModeToggle(false)}
                             disabled={modeLoading}
                           >
-                            {modeLoading ? 'Switching...' : 'Switch to Relaxed Mode'}
+                            {modeLoading ? t('profilePage.switching') : t('profilePage.switchRelaxedBtn')}
                           </button>
                           <button
                             className="btn btn-outline"
                             onClick={() => setShowModeConfirm(null)}
                             disabled={modeLoading}
                           >
-                            Cancel
+                            {t('common.cancel')}
                           </button>
                         </div>
                       </>
@@ -520,33 +563,33 @@ function ProfilePage({ onLogout }) {
           {activeTab === 'account' && (
             <div className="account-section">
               <div className="card danger-zone">
-                <h2>Reset Progress</h2>
+                <h2>{t('profilePage.resetProgress')}</h2>
                 <p className="card-description">
-                  Reset your XP and answer history. Your XP will go back to 0 and all questions will award full points again.
+                  {t('profilePage.resetProgressDesc')}
                 </p>
                 <button className="btn btn-danger" onClick={async () => {
-                  if (window.confirm('Are you sure you want to reset your XP and answer history? Your XP will go back to 0.')) {
+                  if (window.confirm(t('profilePage.resetConfirm'))) {
                     try {
                       await userService.resetXP(userId);
                       setUser({ ...user, totalXP: 0 });
-                      setSaveMessage('XP and answer history reset successfully!');
+                      setSaveMessage(t('profilePage.xpReset'));
                       setTimeout(() => setSaveMessage(''), 3000);
                     } catch (err) {
-                      setError(err.response?.data?.message || 'Failed to reset XP');
+                      setError(err.response?.data?.message || t('profilePage.failedToLoad'));
                     }
                   }
                 }}>
-                  Reset XP & History
+                  {t('profilePage.resetXPHistory')}
                 </button>
               </div>
               <div className="card danger-zone">
-                <h2>Danger Zone</h2>
+                <h2>{t('profilePage.dangerZone')}</h2>
                 <p className="card-description">
-                  Permanently delete your account and all associated data. This action cannot be undone.
+                  {t('profilePage.deleteAccountDesc')}
                 </p>
                 <button className="btn btn-danger" onClick={handleDeleteAccount}>
                   <span className="btn-icon">🗑️</span>
-                  Delete Account
+                  {t('profilePage.deleteAccount')}
                 </button>
               </div>
             </div>

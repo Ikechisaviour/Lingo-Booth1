@@ -34,10 +34,40 @@ const DEFAULT_VOICES = {
   'vi-VN': 'vi-VN-HoaiMyNeural',
   'id-ID': 'id-ID-GadisNeural',
   'ms-MY': 'ms-MY-YasminNeural',
+  'nl-NL': 'nl-NL-ColetteNeural',
+  'tr-TR': 'tr-TR-EmelNeural',
+  'fil-PH': 'fil-PH-BlessicaNeural',
   'km-KH': 'km-KH-SreymomNeural',
   'my-MM': 'my-MM-NilarNeural',
   'pa-IN': 'pa-IN-OjasNeural',
 };
+
+// Fallback voice used when the primary voice fails (e.g. transient service error)
+const FALLBACK_VOICES = {
+  'ar-SA': 'ar-SA-HamedNeural',
+  'he-IL': 'he-IL-AvriNeural',
+  'bn-BD': 'bn-BD-PradeepNeural',
+  'fil-PH': 'fil-PH-AngeloNeural',
+  'ko-KR': 'ko-KR-InJoonNeural',
+  'en-US': 'en-US-GuyNeural',
+  'ja-JP': 'ja-JP-KeitaNeural',
+  'zh-CN': 'zh-CN-YunxiNeural',
+  'hi-IN': 'hi-IN-MadhurNeural',
+  'ru-RU': 'ru-RU-DmitryNeural',
+  'fr-FR': 'fr-FR-HenriNeural',
+  'de-DE': 'de-DE-ConradNeural',
+  'es-ES': 'es-ES-AlvaroNeural',
+  'pt-BR': 'pt-BR-AntonioNeural',
+  'it-IT': 'it-IT-DiegoNeural',
+  'id-ID': 'id-ID-ArdiNeural',
+  'ms-MY': 'ms-MY-OsmanNeural',
+  'nl-NL': 'nl-NL-MaartenNeural',
+  'tr-TR': 'tr-TR-AhmetNeural',
+  'ta-IN': 'ta-IN-ValluvarNeural',
+};
+
+// How long (ms) to wait for the TTS audio stream before giving up
+const STREAM_TIMEOUT_MS = 30_000;
 
 // Escape XML special characters to prevent SSML injection
 function escapeXml(text) {
@@ -47,6 +77,35 @@ function escapeXml(text) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&apos;');
+}
+
+/**
+ * Attempt TTS synthesis with a specific voice.
+ * Returns the audio Buffer on success, throws on failure.
+ */
+async function attemptSynth(MsEdgeTTS, OUTPUT_FORMAT, voiceName, voiceLocale, escapedText, rate) {
+  const tts = new MsEdgeTTS();
+  await tts.setMetadata(voiceName, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3, voiceLocale);
+
+  const options = {};
+  if (rate) options.rate = rate;
+
+  const { audioStream } = tts.toStream(escapedText, options);
+
+  const chunks = [];
+  await new Promise((resolve, reject) => {
+    const timeout = setTimeout(
+      () => reject(new Error(`Audio stream timeout after ${STREAM_TIMEOUT_MS / 1000}s`)),
+      STREAM_TIMEOUT_MS
+    );
+    audioStream.on('data', (chunk) => chunks.push(chunk));
+    audioStream.on('end', () => { clearTimeout(timeout); resolve(); });
+    audioStream.on('error', (err) => { clearTimeout(timeout); reject(err); });
+  });
+
+  const buf = Buffer.concat(chunks);
+  if (buf.length === 0) throw new Error('Empty audio response from TTS service');
+  return buf;
 }
 
 // Shared synthesis logic used by both GET and POST routes
@@ -62,35 +121,31 @@ async function synthesize(text, lang, voice, rate, res) {
   const { MsEdgeTTS, OUTPUT_FORMAT } = await loadTTS();
 
   // Determine voice: explicit voice > default for lang > English fallback
-  const selectedVoice = voice || DEFAULT_VOICES[lang] || DEFAULT_VOICES['en-US'];
+  const primaryVoice = voice || DEFAULT_VOICES[lang] || DEFAULT_VOICES['en-US'];
   // Extract locale from voice name (e.g. 'ko-KR-SunHiNeural' → 'ko-KR')
-  const voiceLocale = lang || selectedVoice.split('-').slice(0, 2).join('-');
-
-  const tts = new MsEdgeTTS();
-  await tts.setMetadata(selectedVoice, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3, voiceLocale);
-
-  const options = {};
-  if (rate) options.rate = rate;
-
+  const voiceLocale = lang || primaryVoice.split('-').slice(0, 2).join('-');
   const escapedText = escapeXml(text.trim());
-  const { audioStream } = tts.toStream(escapedText, options);
 
-  // Collect stream into buffer
-  const chunks = [];
-  await new Promise((resolve, reject) => {
-    audioStream.on('data', (chunk) => chunks.push(chunk));
-    audioStream.on('end', resolve);
-    audioStream.on('error', reject);
-  });
+  // Build list of voices to try: primary first, then fallback if different
+  const fallbackVoice = FALLBACK_VOICES[lang];
+  const voicesToTry = [primaryVoice];
+  if (fallbackVoice && fallbackVoice !== primaryVoice) voicesToTry.push(fallbackVoice);
 
-  const audioBuffer = Buffer.concat(chunks);
+  for (const voiceName of voicesToTry) {
+    try {
+      const audioBuffer = await attemptSynth(MsEdgeTTS, OUTPUT_FORMAT, voiceName, voiceLocale, escapedText, rate);
+      res.set({
+        'Content-Type': 'audio/mpeg',
+        'Content-Length': audioBuffer.length,
+        'Cache-Control': 'public, max-age=86400',
+      });
+      return res.send(audioBuffer);
+    } catch (err) {
+      console.error(`TTS failed [lang=${lang || 'auto'} voice=${voiceName} textLen=${text.length}]: ${err.message}`);
+    }
+  }
 
-  res.set({
-    'Content-Type': 'audio/mpeg',
-    'Content-Length': audioBuffer.length,
-    'Cache-Control': 'public, max-age=86400',
-  });
-  res.send(audioBuffer);
+  res.status(500).json({ message: 'Text-to-speech synthesis failed' });
 }
 
 // GET /api/tts?text=...&lang=...&voice=... — mobile-friendly route.
@@ -101,8 +156,8 @@ router.get('/', async (req, res) => {
     const { text, lang, voice, rate } = req.query;
     await synthesize(text, lang, voice, rate, res);
   } catch (err) {
-    console.error('TTS error:', err.message || err);
-    res.status(500).json({ message: 'Text-to-speech synthesis failed' });
+    console.error(`TTS route error [GET lang=${req.query.lang}]:`, err.message || err);
+    if (!res.headersSent) res.status(500).json({ message: 'Text-to-speech synthesis failed' });
   }
 });
 
@@ -112,8 +167,8 @@ router.post('/', async (req, res) => {
     const { text, lang, voice, rate } = req.body;
     await synthesize(text, lang, voice, rate, res);
   } catch (err) {
-    console.error('TTS error:', err.message || err);
-    res.status(500).json({ message: 'Text-to-speech synthesis failed' });
+    console.error(`TTS route error [POST lang=${req.body?.lang}]:`, err.message || err);
+    if (!res.headersSent) res.status(500).json({ message: 'Text-to-speech synthesis failed' });
   }
 });
 

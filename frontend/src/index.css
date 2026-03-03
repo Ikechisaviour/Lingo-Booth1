@@ -324,3 +324,136 @@ input:focus, textarea:focus, select:focus {
   --primary-light: rgba(88, 204, 2, 0.1);
   --primary-dark: #3d8a02;
 }
+
+/* ===== RTL Support for Arabic & Hebrew ===== */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .navbar-container {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav-menu {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav-link {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .loading::before {
+  margin-right: 0;
+  margin-left: 12px;
+}
+
+[dir="rtl"] .lessons-header,
+[dir="rtl"] .progress-header,
+[dir="rtl"] .admin-header,
+[dir="rtl"] .profile-header {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .card-header {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .stat-card,
+[dir="rtl"] .lesson-card,
+[dir="rtl"] .area-card {
+  text-align: right;
+}
+
+[dir="rtl"] .navigation-buttons {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .category-pills {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .difficulty-filter {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .header-actions {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .info-grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .playlist-action-bar {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .continue-modal-actions {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .auth-card {
+  text-align: right;
+}
+
+[dir="rtl"] .auth-card .form-group {
+  text-align: right;
+}
+
+[dir="rtl"] .password-input-wrapper .password-toggle {
+  right: auto;
+  left: 12px;
+}
+
+[dir="rtl"] .guest-banner {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .mode-options {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .filters-row {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .actions-cell {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .user-cell {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .profile-tabs,
+[dir="rtl"] .admin-tabs {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .decay-confirm-actions {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .language-prefs {
+  direction: rtl;
+}
+
+[dir="rtl"] .xp-mode-selector .xp-mode-option {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .voice-option {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .mini-stat {
+  text-align: right;
+}
+
+[dir="rtl"] .modal-header {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .modal-footer {
+  flex-direction: row-reverse;
+}

@@ -71,6 +71,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: null,
   },
+  nativeLanguage: {
+    type: String,
+    default: 'en',
+  },
+  targetLanguage: {
+    type: String,
+    default: 'ko',
+  },
   totalXP: {
     type: Number,
     default: 0,
@@ -126,6 +134,10 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: null,
   },
+  // Location (captured on login/register via geoip-lite)
+  lastCountry:   { type: String, default: null },
+  lastCity:      { type: String, default: null },
+  lastIp:        { type: String, default: null },
 });
 
 // Index for leaderboard queries

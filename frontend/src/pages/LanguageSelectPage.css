@@ -1,0 +1,104 @@
+.language-select-card {
+  max-width: 560px !important;
+}
+
+.lang-section {
+  margin-bottom: 24px;
+}
+
+.lang-section-label {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.language-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 8px;
+}
+
+.language-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 2px solid var(--border-light);
+  border-radius: 10px;
+  background: var(--bg-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+}
+
+.language-option:hover {
+  border-color: var(--primary);
+  background: var(--surface);
+}
+
+.language-option.selected {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  font-weight: 600;
+  box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+.language-option:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+
+.language-option.native-lock:hover {
+  border-color: var(--border-light);
+  background: var(--bg-secondary);
+  box-shadow: none;
+}
+
+
+.lang-flag {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.lang-name {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.lang-english {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.85rem;
+}
+
+.lang-native {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.72rem;
+  opacity: 0.65;
+  margin-top: 1px;
+}
+
+@media (max-width: 480px) {
+  .language-select-card {
+    max-width: 100% !important;
+    padding: 28px 20px;
+  }
+
+  .language-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 6px;
+  }
+
+  .language-option {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+}

@@ -1,10 +1,14 @@
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { lessonService, progressService, userService, guestXPHelper } from '../services/api';
+import guestActivityTracker from '../services/guestActivityTracker';
 import speechService from '../services/speechService';
+import { getTargetLangName, getNativeLangName } from '../config/languages';
 import './LessonDetail.css';
 
 function LessonDetail() {
+  const { t } = useTranslation();
   const { id } = useParams();
   const navigate = useNavigate();
   const [lesson, setLesson] = useState(null);
@@ -42,23 +46,6 @@ function LessonDetail() {
 
   // Playlist state
   const [playlist, setPlaylist] = useState(null);
-
-  const categories = [
-    { value: 'daily-life', label: 'Daily Life' },
-    { value: 'business', label: 'Business' },
-    { value: 'travel', label: 'Travel' },
-    { value: 'greetings', label: 'Greetings' },
-    { value: 'food', label: 'Food' },
-    { value: 'shopping', label: 'Shopping' },
-    { value: 'healthcare', label: 'Healthcare' },
-  ];
-
-  const difficulties = [
-    { value: 'beginner', label: 'Beginner' },
-    { value: 'intermediate', label: 'Intermediate' },
-    { value: 'advanced', label: 'Advanced' },
-    { value: 'sentences', label: 'Sentences' },
-  ];
 
   const saveTimerRef = useRef(null);
   const autoAdvanceRef = useRef(null);
@@ -238,9 +225,10 @@ function LessonDetail() {
       setLoading(true);
       const response = await lessonService.getLesson(id);
       setLesson(response.data);
+      guestActivityTracker.trackLesson();
       setError('');
     } catch (err) {
-      setError('Failed to load lesson');
+      setError(t('lessonDetail.failedToLoad'));
       console.error(err);
     } finally {
       setLoading(false);
@@ -530,15 +518,15 @@ function LessonDetail() {
   }, [currentIndex, lesson, generateQuizOptions]);
 
   if (loading) {
-    return <div className="loading">Loading lesson...</div>;
+    return <div className="loading">{t('lessonDetail.loadingLesson')}</div>;
   }
 
   if (error || !lesson || !content) {
     return (
       <div className="container">
-        <div className="error">{error || 'Content not available'}</div>
+        <div className="error">{error || t('lessonDetail.contentNotAvailable')}</div>
         <button className="btn btn-primary" onClick={() => navigate('/lessons')}>
-          Back to Lessons
+          {t('lessons.backToLessons')}
         </button>
       </div>
     );
@@ -549,18 +537,18 @@ function LessonDetail() {
       {continuePrompt && (
         <div className="continue-modal-overlay">
           <div className="continue-modal">
-            <h3>Activity In Progress</h3>
+            <h3>{t('lessonDetail.activityInProgress')}</h3>
             {continuePrompt.activityType === 'flashcard' ? (
-              <p>You have a flashcard session in progress. Would you like to continue it or start this lesson?</p>
+              <p>{t('lessonDetail.flashcardInProgress')}</p>
             ) : (
-              <p>You have <strong>"{continuePrompt.lessonTitle}"</strong> in progress (question {continuePrompt.lessonIndex + 1}). Would you like to continue it or start this lesson?</p>
+              <p dangerouslySetInnerHTML={{ __html: t('lessonDetail.lessonInProgress', { title: continuePrompt.lessonTitle, index: continuePrompt.lessonIndex + 1 }) }} />
             )}
             <div className="continue-modal-actions">
               <button className="btn btn-primary" onClick={handleContinueExisting}>
-                {continuePrompt.activityType === 'flashcard' ? 'Continue Flashcards' : 'Continue Previous Lesson'}
+                {continuePrompt.activityType === 'flashcard' ? t('lessonDetail.continueFlashcards') : t('lessonDetail.continuePreviousLesson')}
               </button>
               <button className="btn btn-secondary" onClick={handleStartNew}>
-                Start This Lesson
+                {t('lessonDetail.startThisLesson')}
               </button>
             </div>
           </div>
@@ -575,11 +563,11 @@ function LessonDetail() {
             <p className="lesson-progress">{stepPosition + 1} / {lesson.content.length}</p>
             <button
               className={`header-tool-btn ${orderMode === 'random' ? 'active' : ''}`}
-              title={orderMode === 'random' ? 'Sequential' : 'Shuffle'}
+              title={orderMode === 'random' ? t('lessonDetail.sequential') : t('lessonDetail.shuffle')}
               onClick={() => handleOrderToggle(orderMode === 'random' ? 'sequential' : 'random')}
             >
               <span className="tool-icon">🔀</span>
-              <span className="tool-label">{orderMode === 'random' ? 'Shuffled' : 'Shuffle'}</span>
+              <span className="tool-label">{orderMode === 'random' ? t('lessonDetail.shuffled') : t('lessonDetail.shuffle')}</span>
             </button>
           </div>
         </div>
@@ -588,9 +576,9 @@ function LessonDetail() {
         {playlist && (
           <div className="playlist-progress-bar-container">
             <div className="playlist-progress-label">
-              {playlist.type === 'start-all' ? 'All Lessons Path' : 'Custom Path'}
+              {playlist.type === 'start-all' ? t('lessonDetail.allLessonsPath') : t('lessonDetail.customPath')}
               <span className="playlist-progress">
-                Lesson {playlist.currentIndex + 1} of {playlist.totalCount}
+                {t('lessonDetail.lessonXOfY', { current: playlist.currentIndex + 1, total: playlist.totalCount })}
               </span>
             </div>
             <div className="playlist-progress-bar">
@@ -609,38 +597,38 @@ function LessonDetail() {
                 <button
                   className="btn btn-primary listen-again-btn"
                   onClick={() => handleSpeak(content.korean)}
-                  title="Listen again"
+                  title={t('lessonDetail.listenAgain')}
                 >
-                  {isSpeaking ? '🔇 Playing...' : '🔊 Listen Again'}
+                  {isSpeaking ? `🔇 ${t('lessonDetail.playing')}` : `🔊 ${t('lessonDetail.listenAgain')}`}
                 </button>
-                <p className="listening-hint">Listen carefully, then answer the quiz below</p>
+                <p className="listening-hint">{t('lessonDetail.listeningHint')}</p>
               </div>
             ) : studyMode === 'reading' ? (
               <>
-                <h2 className="content-heading">Korean: {content.korean}</h2>
+                <h2 className="content-heading">{getTargetLangName()}: {content.korean}</h2>
                 <button
                   className="btn-romanization-toggle"
                   onClick={() => setShowRomanization(!showRomanization)}
                 >
-                  {showRomanization ? 'Hide Romanization' : 'Show Romanization'}
+                  {showRomanization ? t('lessonDetail.hideRomanization') : t('lessonDetail.showRomanization')}
                 </button>
                 {showRomanization && (
-                  <p className="romanization">Romanization: {content.romanization}</p>
+                  <p className="romanization">{t('lessonDetail.pronunciation')}: {content.romanization}</p>
                 )}
               </>
             ) : (
               <>
                 <div className="korean-text-row">
-                  <h2>Korean: {content.korean}</h2>
+                  <h2>{getTargetLangName()}: {content.korean}</h2>
                   <button
                     className="btn btn-primary speak-btn-lesson"
                     onClick={() => handleSpeak(content.korean)}
-                    title="Listen to pronunciation"
+                    title={t('lessonDetail.listenAgain')}
                   >
                     {isSpeaking ? '🔇' : '🔊'}
                   </button>
                 </div>
-                <p className="romanization">Romanization: {content.romanization}</p>
+                <p className="romanization">{t('lessonDetail.pronunciation')}: {content.romanization}</p>
               </>
             )}
 
@@ -661,7 +649,7 @@ function LessonDetail() {
                 }
               }}
             >
-              {showTranslation ? 'Hide Translation' : 'Word(s) Translation'}
+              {showTranslation ? t('lessonDetail.hideTranslation') : t('lessonDetail.wordTranslation')}
             </button>
 
             {showTranslation && (
@@ -680,16 +668,16 @@ function LessonDetail() {
                 {content.example && !content.breakdown && lesson.difficulty === 'sentences' && (
                   <div className="example">
                     <div className="example-row">
-                      <p className="example-text"><strong>Example:</strong> {content.example}</p>
+                      <p className="example-text"><strong>{t('lessonDetail.example')}:</strong> {content.example}</p>
                       <button
                         className="btn btn-primary speak-btn-small"
                         onClick={() => handleSpeak(content.example)}
-                        title="Listen to example"
+                        title={t('lessonDetail.listenAgain')}
                       >
                         🔊
                       </button>
                     </div>
-                    <p><strong>Translation:</strong> {content.exampleEnglish}</p>
+                    <p><strong>{t('lessonDetail.translation')}:</strong> {content.exampleEnglish}</p>
                   </div>
                 )}
               </div>
@@ -701,15 +689,15 @@ function LessonDetail() {
                 className="btn btn-primary quiz-toggle-btn"
                 onClick={() => setShowQuiz(!showQuiz)}
               >
-                {showQuiz ? '🔼 Hide Quiz' : '🔽 Test Your Knowledge'}
+                {showQuiz ? `🔼 ${t('lessonDetail.hideQuiz')}` : `🔽 ${t('lessonDetail.testKnowledge')}`}
               </button>
 
               {showQuiz && (
                 <div className="quiz-container">
                   <h3 className="quiz-question">
                     {studyMode === 'listening'
-                      ? 'What did you hear?'
-                      : `What does "${content.korean}" mean?`}
+                      ? t('lessonDetail.whatDidYouHear')
+                      : t('lessonDetail.whatDoesMean', { word: content.korean, language: getNativeLangName() })}
                   </h3>
 
                   <div className="quiz-options">
@@ -734,7 +722,7 @@ function LessonDetail() {
                           {String.fromCharCode(65 + index)}. {option}
                           {quizAttempted && isSelected && isCorrect && ' ✓'}
                           {quizAttempted && isSelected && !isCorrect && ' ✗'}
-                          {quizAttempted && !isCorrect && isCorrectAnswer && ' (Correct Answer)'}
+                          {quizAttempted && !isCorrect && isCorrectAnswer && ` (${t('lessonDetail.correctAnswer')})`}
                         </button>
                       );
                     })}
@@ -744,36 +732,36 @@ function LessonDetail() {
                     <div className={`quiz-feedback ${isCorrect ? 'quiz-feedback-correct' : 'quiz-feedback-incorrect'}`}>
                       {isCorrect ? (
                         <div>
-                          <h4 className="quiz-feedback-title correct">✓ Correct!</h4>
+                          <h4 className="quiz-feedback-title correct">✓ {t('lessonDetail.correct')}</h4>
                           <p className="quiz-feedback-text">
-                            <strong>Explanation:</strong> "{content.korean}" ({content.romanization}) means "{content.english}".
+                            <strong>{t('lessonDetail.explanation')}:</strong> {t('lessonDetail.means', { word: content.korean, romanization: content.romanization, meaning: content.english })}
                           </p>
                           {content.example && (
                             <p className="quiz-feedback-text">
-                              <strong>Example usage:</strong><br />
-                              Korean: {content.example}<br />
-                              English: {content.exampleEnglish}
+                              <strong>{t('lessonDetail.exampleUsage')}:</strong><br />
+                              {getTargetLangName()}: {content.example}<br />
+                              {getNativeLangName()}: {content.exampleEnglish}
                             </p>
                           )}
                         </div>
                       ) : (
                         <div>
-                          <h4 className="quiz-feedback-title incorrect">✗ Incorrect</h4>
+                          <h4 className="quiz-feedback-title incorrect">✗ {t('lessonDetail.incorrect')}</h4>
                           <p className="quiz-feedback-text">
-                            <strong>Correct Answer:</strong> "{content.english}"
+                            <strong>{t('lessonDetail.correctAnswer')}:</strong> "{content.english}"
                           </p>
                           <p className="quiz-feedback-text">
-                            <strong>Explanation:</strong> "{content.korean}" ({content.romanization}) means "{content.english}".
+                            <strong>{t('lessonDetail.explanation')}:</strong> {t('lessonDetail.means', { word: content.korean, romanization: content.romanization, meaning: content.english })}
                           </p>
                           {content.example && (
                             <p className="quiz-feedback-text">
-                              <strong>Example usage:</strong><br />
-                              Korean: {content.example}<br />
-                              English: {content.exampleEnglish}
+                              <strong>{t('lessonDetail.exampleUsage')}:</strong><br />
+                              {getTargetLangName()}: {content.example}<br />
+                              {getNativeLangName()}: {content.exampleEnglish}
                             </p>
                           )}
                           <button className="btn btn-primary quiz-try-again" onClick={handleTryAgain}>
-                            Try Again
+                            {t('lessonDetail.tryAgain')}
                           </button>
                         </div>
                       )}
@@ -791,7 +779,7 @@ function LessonDetail() {
               onClick={handlePrev}
               disabled={stepPosition === 0}
             >
-              ← Previous
+              ← {t('lessonDetail.previous')}
             </button>
 
             <span className="progress-bar">
@@ -804,12 +792,12 @@ function LessonDetail() {
             {stepPosition === orderMap.length - 1 ? (
               <button className="btn btn-success" onClick={handleComplete}>
                 {playlist && playlist.currentIndex < playlist.totalCount - 1
-                  ? 'Next Lesson →'
-                  : 'Complete Lesson ✓'}
+                  ? `${t('lessonDetail.nextLesson')} →`
+                  : `${t('lessonDetail.completeLesson')} ✓`}
               </button>
             ) : (
               <button className="btn btn-primary" onClick={handleNext}>
-                Next →
+                {t('lessonDetail.next')} →
               </button>
             )}
           </div>
@@ -820,70 +808,70 @@ function LessonDetail() {
           <button
             className={`sidebar-toggle ${showSettingsPanel ? 'sidebar-toggle-open' : ''}`}
             onClick={() => setShowSettingsPanel(!showSettingsPanel)}
-            title="Lesson Settings"
+            title={t('lessonDetail.studyModeSettings')}
           >
             <span className="sidebar-toggle-icon">{showSettingsPanel ? '✕' : '☰'}</span>
-            <span className="sidebar-toggle-label">{showSettingsPanel ? 'Close' : 'Study Mode & Settings'}</span>
+            <span className="sidebar-toggle-label">{showSettingsPanel ? t('common.close') : t('lessonDetail.studyModeSettings')}</span>
           </button>
 
           {showSettingsPanel && (
             <div className="lesson-settings-panel-content">
               {/* Study Style Selector */}
               <div className="sidebar-mode-selector">
-                <span className="mode-label">Study Style:</span>
+                <span className="mode-label">{t('lessonDetail.studyStyle')}</span>
                 <div className="mode-options">
                   <button
                     className={`mode-btn ${studyMode === 'default' ? 'active' : ''}`}
                     onClick={() => setStudyMode('default')}
                   >
-                    <span className="mode-icon">📖🔊</span> Both
+                    <span className="mode-icon">📖🔊</span> {t('lessonDetail.both')}
                   </button>
                   <button
                     className={`mode-btn ${studyMode === 'reading' ? 'active' : ''}`}
                     onClick={() => setStudyMode('reading')}
                   >
-                    <span className="mode-icon">📖</span> Reading
+                    <span className="mode-icon">📖</span> {t('lessonDetail.reading')}
                   </button>
                   <button
                     className={`mode-btn ${studyMode === 'listening' ? 'active' : ''}`}
                     onClick={() => setStudyMode('listening')}
                   >
-                    <span className="mode-icon">🔊</span> Listening
+                    <span className="mode-icon">🔊</span> {t('lessonDetail.listening')}
                   </button>
                 </div>
               </div>
 
               {/* Order Selector */}
               <div className="sidebar-mode-selector">
-                <span className="mode-label">Order:</span>
+                <span className="mode-label">{t('lessonDetail.order')}</span>
                 <div className="mode-options">
                   <button
                     className={`mode-btn ${orderMode === 'sequential' ? 'active' : ''}`}
                     onClick={() => handleOrderToggle('sequential')}
                   >
-                    Sequential
+                    {t('lessonDetail.sequential')}
                   </button>
                   <button
                     className={`mode-btn ${orderMode === 'random' ? 'active' : ''}`}
                     onClick={() => handleOrderToggle('random')}
                   >
-                    Random
+                    {t('lessonDetail.random')}
                   </button>
                 </div>
               </div>
 
               {/* Category Navigation */}
               <div className="sidebar-mode-selector">
-                <span className="mode-label">Category:</span>
+                <span className="mode-label">{t('lessonDetail.category')}</span>
                 <div className="mode-options mode-options-wrap">
-                  {categories.map(cat => (
+                  {['daily-life', 'business', 'travel', 'greetings', 'food', 'shopping', 'healthcare'].map(cat => (
                     <button
-                      key={cat.value}
-                      className={`mode-btn ${lesson.category === cat.value ? 'active' : ''}`}
-                      onClick={() => handleCategoryChange(cat.value)}
-                      disabled={lesson.category === cat.value}
+                      key={cat}
+                      className={`mode-btn ${lesson.category === cat ? 'active' : ''}`}
+                      onClick={() => handleCategoryChange(cat)}
+                      disabled={lesson.category === cat}
                     >
-                      {cat.label}
+                      {t(`lessons.categories.${cat}`)}
                     </button>
                   ))}
                 </div>
@@ -891,16 +879,16 @@ function LessonDetail() {
 
               {/* Difficulty Navigation */}
               <div className="sidebar-mode-selector">
-                <span className="mode-label">Difficulty:</span>
+                <span className="mode-label">{t('lessonDetail.difficulty')}</span>
                 <div className="mode-options mode-options-wrap">
-                  {difficulties.map(diff => (
+                  {['beginner', 'intermediate', 'advanced', 'sentences'].map(diff => (
                     <button
-                      key={diff.value}
-                      className={`mode-btn ${lesson.difficulty === diff.value ? 'active' : ''}`}
-                      onClick={() => handleDifficultyChange(diff.value)}
-                      disabled={lesson.difficulty === diff.value}
+                      key={diff}
+                      className={`mode-btn ${lesson.difficulty === diff ? 'active' : ''}`}
+                      onClick={() => handleDifficultyChange(diff)}
+                      disabled={lesson.difficulty === diff}
                     >
-                      {diff.label}
+                      {t(`lessons.difficulties.${diff}`)}
                     </button>
                   ))}
                 </div>
@@ -913,7 +901,7 @@ function LessonDetail() {
           sessionStorage.removeItem('lessonPlaylist');
           navigate('/lessons');
         }}>
-          {playlist ? '✕ Exit Playlist' : '← Back to Lessons'}
+          {playlist ? `✕ ${t('lessonDetail.exitPlaylist')}` : `← ${t('lessons.backToLessons')}`}
         </button>
       </div>
     </div>

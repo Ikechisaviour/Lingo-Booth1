@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import api from '../services/api';
 import './Auth.css';
 
 function VerifyEmailPage() {
+  const { t } = useTranslation();
   const [searchParams] = useSearchParams();
   const [status, setStatus] = useState('verifying'); // 'verifying' | 'success' | 'error'
   const [message, setMessage] = useState('');
@@ -12,7 +14,7 @@ function VerifyEmailPage() {
     const token = searchParams.get('token');
     if (!token) {
       setStatus('error');
-      setMessage('No verification token found in the link.');
+      setMessage(t('verifyEmail.noToken'));
       return;
     }
 
@@ -22,9 +24,9 @@ function VerifyEmailPage() {
       })
       .catch((err) => {
         setStatus('error');
-        setMessage(err.response?.data?.message || 'Verification failed. The link may have expired.');
+        setMessage(err.response?.data?.message || t('verifyEmail.failedMessage'));
       });
-  }, [searchParams]);
+  }, [searchParams, t]);
 
   return (
     <div className="auth-container">
@@ -34,19 +36,19 @@ function VerifyEmailPage() {
         {status === 'verifying' && (
           <div style={{ textAlign: 'center', padding: '8px 0' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '16px' }}>⏳</div>
-            <h2>Verifying your email...</h2>
+            <h2>{t('verifyEmail.verifying')}</h2>
           </div>
         )}
 
         {status === 'success' && (
           <div style={{ textAlign: 'center', padding: '8px 0' }}>
             <div style={{ fontSize: '3rem', marginBottom: '16px' }}>✅</div>
-            <h2>Email verified!</h2>
+            <h2>{t('verifyEmail.success')}</h2>
             <p style={{ color: '#6b7280', margin: '12px 0 24px' }}>
-              Your account is now active. You can log in and start learning.
+              {t('verifyEmail.successMessage')}
             </p>
             <Link to="/login" className="btn btn-primary" style={{ display: 'inline-block', textDecoration: 'none' }}>
-              Go to Login
+              {t('verifyEmail.goToLogin')}
             </Link>
           </div>
         )}
@@ -54,10 +56,10 @@ function VerifyEmailPage() {
         {status === 'error' && (
           <div style={{ textAlign: 'center', padding: '8px 0' }}>
             <div style={{ fontSize: '3rem', marginBottom: '16px' }}>❌</div>
-            <h2>Verification failed</h2>
+            <h2>{t('verifyEmail.failed')}</h2>
             <p style={{ color: '#6b7280', margin: '12px 0 8px' }}>{message}</p>
             <p style={{ color: '#9ca3af', fontSize: '0.85rem', marginTop: '16px' }}>
-              Need a new link? <Link to="/register">Register again</Link> or contact support.
+              {t('verifyEmail.needNewLink')} <Link to="/select-language?mode=register">{t('verifyEmail.registerAgain')}</Link> {t('verifyEmail.orContactSupport')}
             </p>
           </div>
         )}

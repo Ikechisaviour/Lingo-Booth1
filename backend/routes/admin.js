@@ -5,6 +5,7 @@ const User = require('../models/User');
 const Lesson = require('../models/Lesson');
 const Flashcard = require('../models/Flashcard');
 const Progress = require('../models/Progress');
+const GuestSession = require('../models/GuestSession');
 const { verifyToken, isAdmin } = require('../middleware/auth');
 
 // Apply auth middleware to all routes
@@ -15,11 +16,12 @@ router.use(isAdmin);
 router.get('/stats', async (req, res) => {
   try {
     // Basic counts
-    const [totalUsers, totalLessons, totalFlashcards, totalProgress] = await Promise.all([
+    const [totalUsers, totalLessons, totalFlashcards, totalProgress, totalGuestSessions] = await Promise.all([
       User.countDocuments(),
       Lesson.countDocuments(),
       Flashcard.countDocuments(),
       Progress.countDocuments(),
+      GuestSession.countDocuments(),
     ]);
 
     // User status counts
@@ -109,6 +111,7 @@ router.get('/stats', async (req, res) => {
         usersRateLimited,
         challengeModeUsers,
         relaxedModeUsers,
+        totalGuestSessions,
       },
       activity: {
         activeUsersToday,
@@ -139,7 +142,7 @@ router.get('/users', async (req, res) => {
   }
 });
 
-// Get single user details
+// Get single user details (enhanced)
 router.get('/users/:userId', async (req, res) => {
   try {
     const user = await User.findById(req.params.userId).select('-password');
@@ -147,18 +150,30 @@ router.get('/users/:userId', async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    // Get user's progress stats
-    const [progressCount, flashcardCount] = await Promise.all([
+    const [progressCount, flashcardCount, progressBreakdown, recentProgress] = await Promise.all([
       Progress.countDocuments({ userId: req.params.userId }),
       Flashcard.countDocuments({ userId: req.params.userId }),
+      Progress.aggregate([
+        { $match: { userId: new mongoose.Types.ObjectId(req.params.userId) } },
+        { $group: { _id: '$masteryStatus', count: { $sum: 1 } } },
+      ]),
+      Progress.find({ userId: req.params.userId })
+        .sort({ timestamp: -1 })
+        .limit(5)
+        .select('category skillType score masteryStatus timestamp'),
     ]);
+
+    const breakdown = {};
+    progressBreakdown.forEach(p => { breakdown[p._id || 'unknown'] = p.count; });
 
     res.json({
       user,
       stats: {
         progressCount,
         flashcardCount,
-      }
+        progressBreakdown: breakdown,
+        recentProgress,
+      },
     });
   } catch (error) {
     console.error('Admin get user error:', error);
@@ -359,6 +374,89 @@ router.delete('/flashcards/:flashcardId', async (req, res) => {
     res.json({ message: 'Flashcard deleted' });
   } catch (error) {
     console.error('Admin delete flashcard error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Get guest sessions (paginated) with comprehensive engagement stats
+router.get('/guests', async (req, res) => {
+  try {
+    const page = Math.max(parseInt(req.query.page) || 1, 1);
+    const limit = 50;
+    const skip = (page - 1) * limit;
+
+    const now = new Date();
+    const today = new Date(now); today.setHours(0, 0, 0, 0);
+    const lastWeek = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+
+    const [
+      sessions, total, todayCount, weekCount,
+      uniqueCountries, topLanguagePairs,
+      engagementStats, deviceStats, conversions,
+    ] = await Promise.all([
+      GuestSession.find().sort({ lastSeen: -1 }).skip(skip).limit(limit),
+      GuestSession.countDocuments(),
+      GuestSession.countDocuments({ lastSeen: { $gte: today } }),
+      GuestSession.countDocuments({ lastSeen: { $gte: lastWeek } }),
+      GuestSession.distinct('country'),
+      GuestSession.aggregate([
+        { $group: { _id: { native: '$nativeLanguage', target: '$targetLanguage' }, count: { $sum: 1 } } },
+        { $sort: { count: -1 } },
+        { $limit: 5 },
+      ]),
+      // Engagement averages / totals across all sessions
+      GuestSession.aggregate([
+        {
+          $group: {
+            _id: null,
+            avgTimeSpent:    { $avg: '$timeSpent' },
+            avgCardsStudied: { $avg: '$cardsStudied' },
+            totalCardsStudied:  { $sum: '$cardsStudied' },
+            totalAudioPlays:    { $sum: '$audioPlays' },
+            totalLessonsViewed: { $sum: '$lessonsViewed' },
+            engagedSessions: {
+              $sum: { $cond: [{ $gt: ['$cardsStudied', 0] }, 1, 0] },
+            },
+          },
+        },
+      ]),
+      // Device breakdown
+      GuestSession.aggregate([
+        { $group: { _id: '$deviceType', count: { $sum: 1 } } },
+        { $sort: { count: -1 } },
+      ]),
+      // Conversions (sessions where the guest signed up)
+      GuestSession.countDocuments({ convertedToUser: true }),
+    ]);
+
+    const eng = engagementStats[0] || {};
+
+    res.json({
+      sessions,
+      total,
+      page,
+      totalPages: Math.ceil(total / limit),
+      stats: {
+        todayCount,
+        weekCount,
+        uniqueCountries: uniqueCountries.filter(c => c && c !== 'Unknown').length,
+        topLanguagePairs,
+        // Engagement
+        avgTimeSpent:       eng.avgTimeSpent    ? Math.round(eng.avgTimeSpent)        : 0, // seconds
+        avgCardsStudied:    eng.avgCardsStudied ? Math.round(eng.avgCardsStudied * 10) / 10 : 0,
+        totalCardsStudied:  eng.totalCardsStudied  || 0,
+        totalAudioPlays:    eng.totalAudioPlays    || 0,
+        totalLessonsViewed: eng.totalLessonsViewed || 0,
+        engagedSessions:    eng.engagedSessions    || 0, // sessions where ≥1 card was studied
+        // Conversion
+        conversions,
+        conversionRate: total > 0 ? Math.round((conversions / total) * 100) : 0,
+        // Device
+        deviceBreakdown: deviceStats,
+      },
+    });
+  } catch (error) {
+    console.error('Admin guests error:', error);
     res.status(500).json({ message: 'Server error' });
   }
 });

@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { guestXPHelper, authService } from './services/api';
+import guestActivityTracker from './services/guestActivityTracker';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import LessonsPage from './pages/LessonsPage';
@@ -8,6 +10,7 @@ import FlashcardsPage from './pages/FlashcardsPage';
 import ProgressPage from './pages/ProgressPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import LanguageSelectPage from './pages/LanguageSelectPage';
 import LessonDetail from './pages/LessonDetail';
 import ProfilePage from './pages/ProfilePage';
 import AdminDashboard from './pages/AdminDashboard';
@@ -31,13 +34,14 @@ function SuspensionListener({ onSuspended }) {
 }
 
 function GuestSignupPrompt({ onClose, onGuestExit }) {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const guestXP = guestXPHelper.get();
 
   const handleSignUp = () => {
     onClose();
     if (onGuestExit) onGuestExit();
-    navigate('/register');
+    navigate('/select-language?mode=register');
   };
 
   const handleLogin = () => {
@@ -49,31 +53,29 @@ function GuestSignupPrompt({ onClose, onGuestExit }) {
   return (
     <div className="guest-prompt-overlay">
       <div className="guest-prompt-modal">
-        <button className="guest-prompt-close" onClick={onClose} aria-label="Close">&times;</button>
+        <button className="guest-prompt-close" onClick={onClose} aria-label={t('common.close')}>&times;</button>
         <div className="guest-prompt-icon">🎓</div>
-        <h2>You're doing great!</h2>
+        <h2>{t('guestPrompt.title')}</h2>
         {guestXP > 0 && (
-          <p className="guest-prompt-xp">You've earned <strong>{guestXP} XP</strong> so far!</p>
+          <p className="guest-prompt-xp" dangerouslySetInnerHTML={{ __html: t('guestPrompt.xpEarned', { xp: guestXP }) }} />
         )}
-        <p className="guest-prompt-message">
-          Create a free account to <strong>save your score</strong> and keep your progress safe. Without an account, your XP will be lost when you leave.
-        </p>
+        <p className="guest-prompt-message" dangerouslySetInnerHTML={{ __html: t('guestPrompt.message') }} />
         <ul className="guest-prompt-benefits">
-          <li>Save your XP and learning progress permanently</li>
-          <li>Track your scores across lessons and flashcards</li>
-          <li>Pick up right where you left off</li>
-          <li>Access your stats and achievements</li>
+          <li>{t('guestPrompt.benefit1')}</li>
+          <li>{t('guestPrompt.benefit2')}</li>
+          <li>{t('guestPrompt.benefit3')}</li>
+          <li>{t('guestPrompt.benefit4')}</li>
         </ul>
         <div className="guest-prompt-actions">
           <button className="btn btn-primary guest-prompt-signup" onClick={handleSignUp}>
-            Sign Up Free
+            {t('guestPrompt.signUpFree')}
           </button>
           <button className="btn btn-outline guest-prompt-login" onClick={handleLogin}>
-            Already have an account? Login
+            {t('guestPrompt.alreadyHaveAccount')}
           </button>
         </div>
         <button className="guest-prompt-dismiss" onClick={onClose}>
-          Continue as guest
+          {t('guestPrompt.continueAsGuest')}
         </button>
       </div>
     </div>
@@ -81,6 +83,7 @@ function GuestSignupPrompt({ onClose, onGuestExit }) {
 }
 
 function App() {
+  const { i18n } = useTranslation();
   const [isAuthenticated, setIsAuthenticated] = useState(
     !!localStorage.getItem('token')
   );
@@ -91,6 +94,23 @@ function App() {
     localStorage.getItem('xpDecayEnabled') === 'true'
   );
   const [showGuestPrompt, setShowGuestPrompt] = useState(false);
+
+  // RTL support for Arabic and Hebrew
+  useEffect(() => {
+    const rtlLanguages = ['ar', 'he'];
+    const dir = rtlLanguages.includes(i18n.language) ? 'rtl' : 'ltr';
+    document.documentElement.setAttribute('dir', dir);
+    document.documentElement.setAttribute('lang', i18n.language);
+  }, [i18n.language]);
+
+  // Start / stop guest activity tracker alongside guest mode
+  useEffect(() => {
+    if (isGuest) {
+      guestActivityTracker.init();
+    } else {
+      guestActivityTracker.destroy();
+    }
+  }, [isGuest]);
 
   // Guest signup prompt — first after 5 min, then every 30 min
   useEffect(() => {
@@ -171,9 +191,12 @@ function App() {
     localStorage.removeItem('userRole');
     localStorage.removeItem('guestMode');
     localStorage.removeItem('xpDecayEnabled');
+    localStorage.removeItem('nativeLanguage');
+    localStorage.removeItem('targetLanguage');
     setIsAuthenticated(false);
     setIsGuest(false);
     setChallengeMode(false);
+    i18n.changeLanguage('en');
   };
 
   const handleSuspended = useCallback(() => {
@@ -227,6 +250,18 @@ function App() {
               isAuthenticated ? <Navigate to="/" /> : (
                 <RegisterPage
                   setIsAuthenticated={setIsAuthenticated}
+                  setIsGuest={setIsGuest}
+                />
+              )
+            }
+          />
+
+          {/* Language selection — before register or guest mode */}
+          <Route
+            path="/select-language"
+            element={
+              isAuthenticated ? <Navigate to="/" /> : (
+                <LanguageSelectPage
                   setIsGuest={setIsGuest}
                 />
               )

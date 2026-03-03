@@ -9,7 +9,7 @@ const VALID_DIFFICULTIES = ['beginner', 'intermediate', 'advanced', 'sentences']
 // Get all lessons (public — guests and authenticated users)
 router.get('/', optionalAuth, async (req, res) => {
   try {
-    const { category, difficulty } = req.query;
+    const { category, difficulty, targetLang } = req.query;
     let filter = {};
 
     if (category && VALID_CATEGORIES.includes(category)) {
@@ -17,6 +17,9 @@ router.get('/', optionalAuth, async (req, res) => {
     }
     if (difficulty && VALID_DIFFICULTIES.includes(difficulty)) {
       filter.difficulty = difficulty;
+    }
+    if (targetLang) {
+      filter.targetLang = targetLang;
     }
 
     const lessons = await Lesson.find(filter);
@@ -44,7 +47,7 @@ router.get('/:id', optionalAuth, async (req, res) => {
 // Create lesson (admin only)
 router.post('/', verifyToken, isAdmin, async (req, res) => {
   try {
-    const { title, category, difficulty, content } = req.body;
+    const { title, category, difficulty, content, targetLang, nativeLang } = req.body;
 
     if (!title || !category || !content) {
       return res.status(400).json({ message: 'Title, category, and content are required' });
@@ -55,6 +58,8 @@ router.post('/', verifyToken, isAdmin, async (req, res) => {
       category,
       difficulty,
       content,
+      targetLang: targetLang || 'ko',
+      nativeLang: nativeLang || 'en',
     });
 
     await lesson.save();

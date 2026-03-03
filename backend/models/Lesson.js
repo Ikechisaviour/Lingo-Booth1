@@ -15,6 +15,14 @@ const lessonSchema = new mongoose.Schema({
     enum: ['beginner', 'intermediate', 'advanced', 'sentences'],
     default: 'beginner',
   },
+  targetLang: {
+    type: String,
+    default: 'ko',
+  },
+  nativeLang: {
+    type: String,
+    default: 'en',
+  },
   content: [{
     type: {
       type: String,

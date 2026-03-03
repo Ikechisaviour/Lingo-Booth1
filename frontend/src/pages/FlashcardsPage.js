@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { flashcardService, progressService, userService, guestXPHelper } from '../services/api';
 import speechService from '../services/speechService';
+import guestActivityTracker from '../services/guestActivityTracker';
+import LANGUAGES, { getTargetLangName, getNativeLangName, getTargetLangCode, getNativeLangCode } from '../config/languages';
 import './FlashcardsPage.css';
 
 // Normalize category: handles old string format and new array format
@@ -12,6 +15,7 @@ const normalizeCategory = (cat) => {
 };
 
 function FlashcardsPage() {
+  const { t, i18n } = useTranslation();
   const [flashcards, setFlashcards] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -25,8 +29,8 @@ function FlashcardsPage() {
   });
   const [showForm, setShowForm] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
-  const [displayMode, setDisplayMode] = useState('korean');
-  const [currentCardShowsKorean, setCurrentCardShowsKorean] = useState(true);
+  const [displayMode, setDisplayMode] = useState('target');
+  const [showsTargetFirst, setShowsTargetFirst] = useState(true);
   const [continuePrompt, setContinuePrompt] = useState(null);
   const [readyToSave, setReadyToSave] = useState(false);
   const [cardAnim, setCardAnim] = useState('');
@@ -45,6 +49,10 @@ function FlashcardsPage() {
   const isGuest = localStorage.getItem('guestMode') === 'true';
   const saveTimerRef = useRef(null);
   const transitioningRef = useRef(false);
+  const nativeLangCode = getNativeLangCode();
+  const targetLangCode = getTargetLangCode();
+  // Map language code to the field name on a flashcard object
+  const getLangField = (code) => code === 'ko' ? 'korean' : code === 'en' ? 'english' : code;
 
   const saveActivityState = useCallback((index) => {
     if (!userId) return;
@@ -116,16 +124,45 @@ function FlashcardsPage() {
     if (studyStyle === 'text') return; // text-only, no auto-speak
     if (activeFlashcards.length === 0 || !activeFlashcards[currentIndex]) return;
     const card = activeFlashcards[currentIndex];
-    const text = currentCardShowsKorean ? card.korean : card.english;
+    const targetField = targetLangCode === 'ko' ? 'korean' : targetLangCode;
+    const nativeField = nativeLangCode === 'en' ? 'english' : nativeLangCode;
+    const text = showsTargetFirst
+      ? (card[targetField] || card.korean)
+      : (card[nativeField] || card.english);
+    const frontLang = showsTargetFirst
+      ? (LANGUAGES[targetLangCode]?.ttsLocale)
+      : (LANGUAGES[nativeLangCode]?.ttsLocale);
 
     // Small delay to let slide-in animation settle
     const timer = setTimeout(() => {
-      speechService.speakRepeat(text, 2);
+      speechService.speakRepeat(text, 2, { lang: frontLang });
     }, 500);
 
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIndex, flashcards.length, studyStyle]);
+
+  // Auto-speak the back text once when the card is flipped
+  useEffect(() => {
+    if (!isFlipped) return;
+    if (studyStyle === 'text') return;
+    if (!activeFlashcards[currentIndex]) return;
+    const card = activeFlashcards[currentIndex];
+    const targetField = targetLangCode === 'ko' ? 'korean' : targetLangCode;
+    const nativeField = nativeLangCode === 'en' ? 'english' : nativeLangCode;
+    // Back face shows the opposite of front
+    const text = showsTargetFirst
+      ? (card[nativeField] || card.english)   // front=target → back=native
+      : (card[targetField] || card.korean);   // front=native → back=target
+    const backLang = showsTargetFirst
+      ? (LANGUAGES[nativeLangCode]?.ttsLocale)
+      : (LANGUAGES[targetLangCode]?.ttsLocale);
+    if (text) {
+      speechService.cancel(); // stop any ongoing front-face speech before playing flip audio
+      speechService.speak(text, { lang: backLang });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isFlipped]);
 
   // Keep autoPlayRef in sync
   useEffect(() => {
@@ -144,36 +181,40 @@ function FlashcardsPage() {
 
     const autoPlayCard = async () => {
       const card = activeFlashcards[currentIndex];
-      const frontText = currentCardShowsKorean ? card.korean : card.english;
-      const backText = currentCardShowsKorean ? card.english : card.korean;
+      const apTargetField = targetLangCode === 'ko' ? 'korean' : targetLangCode;
+      const apNativeField = nativeLangCode === 'en' ? 'english' : nativeLangCode;
+      const frontText = showsTargetFirst ? (card[apTargetField] || card.korean) : (card[apNativeField] || card.english);
+      const backText  = showsTargetFirst ? (card[apNativeField] || card.english) : (card[apTargetField] || card.korean);
+      const frontLocale = showsTargetFirst ? LANGUAGES[targetLangCode]?.ttsLocale : LANGUAGES[nativeLangCode]?.ttsLocale;
+      const backLocale  = showsTargetFirst ? LANGUAGES[nativeLangCode]?.ttsLocale : LANGUAGES[targetLangCode]?.ttsLocale;
 
       // Wait for slide-in to settle (audio-driven, works in background)
       await speechService.waitAudio(600);
       if (cancelled) return;
 
-      // Speak front twice: korean, korean
-      await speechService.speakAsync(frontText);
+      // Speak front twice: target, target
+      await speechService.speakAsync(frontText, { lang: frontLocale });
       if (cancelled) return;
       await speechService.waitAudio(400);
       if (cancelled) return;
-      await speechService.speakAsync(frontText);
+      await speechService.speakAsync(frontText, { lang: frontLocale });
       if (cancelled) return;
 
       // 5 seconds for user to try and remember
       await speechService.waitAudio(5000);
       if (cancelled) return;
 
-      // Speak front again: korean
-      await speechService.speakAsync(frontText);
+      // Speak front again: target
+      await speechService.speakAsync(frontText, { lang: frontLocale });
       if (cancelled) return;
 
-      // Flip and speak back: english
+      // Flip and speak back: native
       await speechService.waitAudio(600);
       if (cancelled) return;
       setIsFlipped(true);
       await speechService.waitAudio(400);
       if (cancelled) return;
-      await speechService.speakAsync(backText);
+      await speechService.speakAsync(backText, { lang: backLocale });
       if (cancelled) return;
 
       // Pause before advancing
@@ -194,7 +235,7 @@ function FlashcardsPage() {
 
       setCurrentIndex(prev => prev + 1);
       setIsFlipped(false);
-      setCurrentCardShowsKorean(determineCardDisplay());
+      setShowsTargetFirst(determineCardDisplay());
       setCardAnim('slide-in');
       setTimeout(() => {
         setCardAnim('');
@@ -247,20 +288,21 @@ function FlashcardsPage() {
       setFlashcards(response.data);
       setError('');
     } catch (err) {
-      setError('Failed to load flashcards');
+      setError(t('flashcards.failedToLoad'));
       console.error(err);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleSpeak = (text) => {
+  const handleSpeak = (text, lang) => {
     if (speechService.isSpeaking()) {
       speechService.cancel();
       setIsSpeaking(false);
     } else {
       setIsSpeaking(true);
-      speechService.speak(text);
+      speechService.speak(text, { lang });
+      if (isGuest) guestActivityTracker.trackAudio();
       setTimeout(() => setIsSpeaking(false), 3000);
     }
   };
@@ -285,7 +327,7 @@ function FlashcardsPage() {
     if (displayMode === 'random') {
       return Math.random() < 0.5;
     }
-    return displayMode === 'korean';
+    return displayMode === 'target';
   };
 
   // Get unique categories with counts from all flashcards
@@ -332,7 +374,7 @@ function FlashcardsPage() {
 
     speechService.setMediaSession({
       title: card.korean || card.english,
-      artist: `Card ${currentIndex + 1} of ${activeFlashcards.length}`,
+      artist: t('flashcards.cardXOfY', { current: currentIndex + 1, total: activeFlashcards.length }),
       album: 'Lingo Booth \u2014 Flashcards',
       onPlay: () => setAutoPlay(true),
       onPause: () => { setAutoPlay(false); speechService.cancel(); },
@@ -363,7 +405,7 @@ function FlashcardsPage() {
       currentIndex,
       Math.min(currentIndex + 50, activeFlashcards.length)
     );
-    speechService.prefetchCards(cardsToCache, currentCardShowsKorean);
+    speechService.prefetchCards(cardsToCache, showsTargetFirst, targetLangCode, nativeLangCode);
 
     return () => speechService.clearBlobCache();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -382,12 +424,15 @@ function FlashcardsPage() {
 
     // Speak the hidden side and wait for it to finish
     // (minimum 800ms so the flip animation is visible)
-    const textToSpeak = currentCardShowsKorean ? card.english : card.korean;
+    const hnTargetField = targetLangCode === 'ko' ? 'korean' : targetLangCode;
+    const hnNativeField = nativeLangCode === 'en' ? 'english' : nativeLangCode;
+    const textToSpeak = showsTargetFirst ? (card[hnNativeField] || card.english) : (card[hnTargetField] || card.korean);
+    const speakLocale  = showsTargetFirst ? LANGUAGES[nativeLangCode]?.ttsLocale : LANGUAGES[targetLangCode]?.ttsLocale;
     if (studyStyle === 'text') {
       await new Promise(resolve => setTimeout(resolve, 800));
     } else {
       await Promise.all([
-        speechService.speakAsync(textToSpeak),
+        speechService.speakAsync(textToSpeak, { lang: speakLocale }),
         new Promise(resolve => setTimeout(resolve, 800)),
       ]);
     }
@@ -397,7 +442,7 @@ function FlashcardsPage() {
     setTimeout(() => {
       setCurrentIndex(currentIndex + 1);
       setIsFlipped(false);
-      setCurrentCardShowsKorean(determineCardDisplay());
+      setShowsTargetFirst(determineCardDisplay());
       setCardAnim('slide-in');
       setTimeout(() => {
         setCardAnim('');
@@ -414,7 +459,7 @@ function FlashcardsPage() {
     setTimeout(() => {
       setCurrentIndex(currentIndex - 1);
       setIsFlipped(false);
-      setCurrentCardShowsKorean(determineCardDisplay());
+      setShowsTargetFirst(determineCardDisplay());
       setCardAnim('slide-in-left');
       setTimeout(() => {
         setCardAnim('');
@@ -445,6 +490,7 @@ function FlashcardsPage() {
         }
       } else if (isGuest) {
         guestXPHelper.add(1);
+        guestActivityTracker.trackCard(true);
       }
 
       const updatedFlashcards = flashcards.map(fc =>
@@ -458,7 +504,7 @@ function FlashcardsPage() {
       setStarPulse('up');
       setTimeout(() => setStarPulse(null), 600);
     } catch (err) {
-      setError('Failed to record answer. Please try again.');
+      setError(t('flashcards.failedToRecord'));
       console.error('Error:', err);
     }
   };
@@ -482,6 +528,8 @@ function FlashcardsPage() {
             isCorrect: false,
           });
         }
+      } else if (isGuest) {
+        guestActivityTracker.trackCard(false);
       }
 
       const updatedFlashcards = flashcards.map(fc =>
@@ -495,13 +543,13 @@ function FlashcardsPage() {
       setStarPulse('down');
       setTimeout(() => setStarPulse(null), 600);
     } catch (err) {
-      setError('Failed to record answer. Please try again.');
+      setError(t('flashcards.failedToRecord'));
       console.error('Error:', err);
     }
   };
 
   const handleDelete = async (id) => {
-    if (!window.confirm('Are you sure you want to delete this flashcard?')) return;
+    if (!window.confirm(t('flashcards.deleteConfirm'))) return;
     try {
       await flashcardService.deleteFlashcard(id);
       setFlashcards(flashcards.filter((fc) => fc._id !== id));
@@ -509,7 +557,7 @@ function FlashcardsPage() {
         setCurrentIndex(currentIndex - 1);
       }
     } catch (err) {
-      setError('Failed to delete flashcard');
+      setError(t('flashcards.failedToDelete'));
     }
   };
 
@@ -549,14 +597,27 @@ function FlashcardsPage() {
   };
 
   if (loading) {
-    return <div className="loading">Loading flashcards...</div>;
+    return <div className="loading">{t('flashcards.loadingFlashcards')}</div>;
   }
 
   const current = activeFlashcards[currentIndex];
+  // Word to learn (front of card) — uses the selected target language field
+  const displayTarget = current
+    ? current[getLangField(targetLangCode)] || current.korean
+    : '';
+  // Meaning/translation (back of card) — uses the selected native language field
+  const displayNative = current
+    ? (nativeLangCode !== 'en' && current[nativeLangCode]) || current.english
+    : '';
+  // For legacy compatibility where displayEnglish is referenced
+  const displayEnglish = displayNative;
+  // TTS locale strings for explicit language passing to speechService
+  const targetTtsLocale = LANGUAGES[targetLangCode]?.ttsLocale;
+  const nativeTtsLocale = LANGUAGES[nativeLangCode]?.ttsLocale;
 
   if (!loading && activeFlashcards.length > 0 && !current) {
     setCurrentIndex(0);
-    return <div className="loading">Loading...</div>;
+    return <div className="loading">{t('common.loading')}</div>;
   }
 
   return (
@@ -564,14 +625,14 @@ function FlashcardsPage() {
       {continuePrompt && (
         <div className="continue-modal-overlay">
           <div className="continue-modal">
-            <h3>Activity In Progress</h3>
-            <p>You have <strong>"{continuePrompt.lessonTitle}"</strong> in progress (question {continuePrompt.lessonIndex + 1}). Would you like to continue it or start flashcards?</p>
+            <h3>{t('flashcards.activityInProgress')}</h3>
+            <p dangerouslySetInnerHTML={{ __html: t('flashcards.lessonInProgress', { title: continuePrompt.lessonTitle, index: continuePrompt.lessonIndex + 1 }) }} />
             <div className="continue-modal-actions">
               <button className="btn btn-primary" onClick={handleContinueExisting}>
-                Continue Lesson
+                {t('flashcards.continueLesson')}
               </button>
               <button className="btn btn-secondary" onClick={handleStartNew}>
-                Start Flashcards
+                {t('flashcards.startFlashcards')}
               </button>
             </div>
           </div>
@@ -583,12 +644,17 @@ function FlashcardsPage() {
             {/* Header — empty state */}
             <div className="flashcards-header">
               <div className="header-content">
-                <h1>Practice <span className="text-accent">Flashcards</span></h1>
+                <h1>
+                  {t('flashcards.title').split('<1>')[0]}
+                  <span className="text-accent">
+                    {t('flashcards.title').match(/<1>(.*?)<\/1>/)?.[1] || ''}
+                  </span>
+                </h1>
               </div>
               <div className="header-actions">
                 {!isGuest && (
                   <button className="btn btn-primary" onClick={() => setShowForm(!showForm)}>
-                    {showForm ? 'Cancel' : '+ Add Flashcard'}
+                    {showForm ? t('common.cancel') : `+ ${t('flashcards.addFlashcard')}`}
                   </button>
                 )}
               </div>
@@ -598,44 +664,44 @@ function FlashcardsPage() {
 
             {showForm && (
               <div className="add-flashcard-form card">
-                <h2>Add New Flashcard</h2>
+                <h2>{t('flashcards.addNewFlashcard')}</h2>
                 <form onSubmit={handleAddFlashcard}>
                   <div className="form-row">
                     <div className="form-group">
-                      <label>Korean</label>
-                      <input type="text" placeholder="한국어" value={newFlashcard.korean}
+                      <label>{t('flashcards.targetLang', { language: getTargetLangName() })}</label>
+                      <input type="text" placeholder={t('flashcards.targetLang', { language: getTargetLangName() })} value={newFlashcard.korean}
                         onChange={(e) => setNewFlashcard({ ...newFlashcard, korean: e.target.value })} required />
                     </div>
                     <div className="form-group">
-                      <label>Romanization</label>
-                      <input type="text" placeholder="hangugeo" value={newFlashcard.romanization}
+                      <label>{t('flashcards.pronunciation')}</label>
+                      <input type="text" placeholder={t('flashcards.pronunciation')} value={newFlashcard.romanization}
                         onChange={(e) => setNewFlashcard({ ...newFlashcard, romanization: e.target.value })} required />
                     </div>
                   </div>
                   <div className="form-row">
                     <div className="form-group">
-                      <label>English</label>
-                      <input type="text" placeholder="Korean language" value={newFlashcard.english}
+                      <label>{t('flashcards.nativeLang', { language: getNativeLangName() })}</label>
+                      <input type="text" placeholder={t('flashcards.nativeLang', { language: getNativeLangName() })} value={newFlashcard.english}
                         onChange={(e) => setNewFlashcard({ ...newFlashcard, english: e.target.value })} required />
                     </div>
                     <div className="form-group">
-                      <label>Category (comma-separated)</label>
+                      <label>{t('flashcards.categoryLabel')}</label>
                       <input type="text" placeholder="vocabulary, verbs" value={newFlashcard.category.join(', ')}
                         onChange={(e) => setNewFlashcard({ ...newFlashcard,
                           category: e.target.value.split(',').map(s => s.trim()).filter(Boolean) })} />
                     </div>
                   </div>
-                  <button type="submit" className="btn btn-success">Add Flashcard</button>
+                  <button type="submit" className="btn btn-success">{t('flashcards.addFlashcard')}</button>
                 </form>
               </div>
             )}
 
             <div className="empty-state">
               <div className="empty-state-icon">🎴</div>
-              <h3>No flashcards yet</h3>
-              <p>Create your first flashcard to start learning!</p>
+              <h3>{t('flashcards.noFlashcards')}</h3>
+              <p>{t('flashcards.createFirst')}</p>
               <button className="btn btn-primary" onClick={() => setShowForm(true)}>
-                Create Flashcard
+                {t('flashcards.create')}
               </button>
             </div>
           </>
@@ -645,12 +711,17 @@ function FlashcardsPage() {
             <div className="fc-header-area">
               <div className="flashcards-header">
                 <div className="header-content">
-                  <h1>Practice <span className="text-accent">Flashcards</span></h1>
+                  <h1>
+                    {t('flashcards.title').split('<1>')[0]}
+                    <span className="text-accent">
+                      {t('flashcards.title').match(/<1>(.*?)<\/1>/)?.[1] || ''}
+                    </span>
+                  </h1>
                 </div>
                 <div className="header-actions">
                   <button
                     className={`header-tool-btn ${isShuffled ? 'active' : ''}`}
-                    title="Shuffle"
+                    title={t('flashcards.shuffle')}
                     onClick={() => {
                       if (transitioningRef.current) return;
                       transitioningRef.current = true;
@@ -674,11 +745,11 @@ function FlashcardsPage() {
                     }}
                   >
                     <span className="tool-icon">🔀</span>
-                    <span className="tool-label">Shuffle</span>
+                    <span className="tool-label">{t('flashcards.shuffle')}</span>
                   </button>
                   <button
                     className={`header-tool-btn ${autoPlay ? 'active' : ''}`}
-                    title={autoPlay ? 'Stop' : 'Auto-play'}
+                    title={autoPlay ? t('flashcards.stop') : t('flashcards.autoPlay')}
                     onClick={() => {
                       if (autoPlay) {
                         setAutoPlay(false);
@@ -689,11 +760,11 @@ function FlashcardsPage() {
                     }}
                   >
                     <span className="tool-icon">{autoPlay ? '⏹' : '▶'}</span>
-                    <span className="tool-label">{autoPlay ? 'Stop' : 'Auto-play'}</span>
+                    <span className="tool-label">{autoPlay ? t('flashcards.stop') : t('flashcards.autoPlay')}</span>
                   </button>
                   {!isGuest && (
                     <button className="btn btn-primary" onClick={() => setShowForm(!showForm)}>
-                      {showForm ? 'Cancel' : '+ Add Flashcard'}
+                      {showForm ? t('common.cancel') : `+ ${t('flashcards.addFlashcard')}`}
                     </button>
                   )}
                 </div>
@@ -703,34 +774,34 @@ function FlashcardsPage() {
 
               {showForm && (
                 <div className="add-flashcard-form card">
-                  <h2>Add New Flashcard</h2>
+                  <h2>{t('flashcards.addNewFlashcard')}</h2>
                   <form onSubmit={handleAddFlashcard}>
                     <div className="form-row">
                       <div className="form-group">
-                        <label>Korean</label>
-                        <input type="text" placeholder="한국어" value={newFlashcard.korean}
+                        <label>{t('flashcards.targetLang', { language: getTargetLangName() })}</label>
+                        <input type="text" placeholder={t('flashcards.targetLang', { language: getTargetLangName() })} value={newFlashcard.korean}
                           onChange={(e) => setNewFlashcard({ ...newFlashcard, korean: e.target.value })} required />
                       </div>
                       <div className="form-group">
-                        <label>Romanization</label>
-                        <input type="text" placeholder="hangugeo" value={newFlashcard.romanization}
+                        <label>{t('flashcards.pronunciation')}</label>
+                        <input type="text" placeholder={t('flashcards.pronunciation')} value={newFlashcard.romanization}
                           onChange={(e) => setNewFlashcard({ ...newFlashcard, romanization: e.target.value })} required />
                       </div>
                     </div>
                     <div className="form-row">
                       <div className="form-group">
-                        <label>English</label>
-                        <input type="text" placeholder="Korean language" value={newFlashcard.english}
+                        <label>{t('flashcards.nativeLang', { language: getNativeLangName() })}</label>
+                        <input type="text" placeholder={t('flashcards.nativeLang', { language: getNativeLangName() })} value={newFlashcard.english}
                           onChange={(e) => setNewFlashcard({ ...newFlashcard, english: e.target.value })} required />
                       </div>
                       <div className="form-group">
-                        <label>Category (comma-separated)</label>
+                        <label>{t('flashcards.categoryLabel')}</label>
                         <input type="text" placeholder="vocabulary, verbs" value={newFlashcard.category.join(', ')}
                           onChange={(e) => setNewFlashcard({ ...newFlashcard,
                             category: e.target.value.split(',').map(s => s.trim()).filter(Boolean) })} />
                       </div>
                     </div>
-                    <button type="submit" className="btn btn-success">Add Flashcard</button>
+                    <button type="submit" className="btn btn-success">{t('flashcards.addFlashcard')}</button>
                   </form>
                 </div>
               )}
@@ -740,7 +811,7 @@ function FlashcardsPage() {
             <div className="study-controls-landscape">
               <div className="study-progress">
                 <div className="progress-text">
-                  <span>Card {currentIndex + 1} of {activeFlashcards.length}</span>
+                  <span>{t('flashcards.cardXOfY', { current: currentIndex + 1, total: activeFlashcards.length })}</span>
                   <span className="mastery-display">
                     {getMasteryStars(current.masteryLevel, true)}
                   </span>
@@ -752,8 +823,8 @@ function FlashcardsPage() {
                 </div>
               </div>
               <div className="card-actions">
-                <button className="action-btn incorrect" onClick={handleIncorrect}><span>Boost</span></button>
-                <button className="action-btn correct" onClick={handleCorrect}><span>Fade</span></button>
+                <button className="action-btn incorrect" onClick={handleIncorrect}><span>{t('flashcards.boost')}</span></button>
+                <button className="action-btn correct" onClick={handleCorrect}><span>{t('flashcards.fade')}</span></button>
               </div>
             </div>
 
@@ -763,7 +834,7 @@ function FlashcardsPage() {
               <div className="study-controls-portrait">
                 <div className="study-progress">
                   <div className="progress-text">
-                    <span>Card {currentIndex + 1} of {activeFlashcards.length}</span>
+                    <span>{t('flashcards.cardXOfY', { current: currentIndex + 1, total: activeFlashcards.length })}</span>
                     <span className="mastery-display">
                       {getMasteryStars(current.masteryLevel, true)}
                     </span>
@@ -780,10 +851,10 @@ function FlashcardsPage() {
                 </div>
                 <div className="card-actions">
                   <button className="action-btn incorrect" onClick={handleIncorrect}>
-                    <span>Boost</span>
+                    <span>{t('flashcards.boost')}</span>
                   </button>
                   <button className="action-btn correct" onClick={handleCorrect}>
-                    <span>Fade</span>
+                    <span>{t('flashcards.fade')}</span>
                   </button>
                 </div>
               </div>
@@ -796,48 +867,48 @@ function FlashcardsPage() {
                     <div className="face-content">
                       {studyStyle === 'audio' ? (
                         <>
-                          <span className="face-label">Listening</span>
+                          <span className="face-label">{t('flashcards.listeningMode')}</span>
                           <button
                             className="listening-play-btn"
                             onClick={(e) => {
                               e.stopPropagation();
-                              handleSpeak(currentCardShowsKorean ? current.korean : current.english);
+                              handleSpeak(showsTargetFirst ? displayTarget : displayNative, showsTargetFirst ? targetTtsLocale : nativeTtsLocale);
                             }}
                           >
                             {isSpeaking ? '🔇' : '🔊'}
                           </button>
-                          <span className="listening-hint-text">Listen & guess, then tap to reveal</span>
+                          <span className="listening-hint-text">{t('flashcards.listeningHint')}</span>
                         </>
                       ) : (
                         <>
-                          <span className="face-label">{currentCardShowsKorean ? 'Korean' : 'English'}</span>
-                          {currentCardShowsKorean ? (
+                          <span className="face-label">{showsTargetFirst ? t('flashcards.targetLang', { language: LANGUAGES[targetLangCode]?.name || 'Korean' }) : t('flashcards.nativeLang', { language: LANGUAGES[nativeLangCode]?.name || 'English' })}</span>
+                          {showsTargetFirst ? (
                             <>
                               <div className="korean-text-row">
-                                <span className="main-text">{current.korean}</span>
+                                <span className="main-text">{displayTarget}</span>
                                 {studyStyle === 'both' && (
                                   <button
                                     className="speak-btn"
                                     onClick={(e) => {
                                       e.stopPropagation();
-                                      handleSpeak(current.korean);
+                                      handleSpeak(displayTarget, targetTtsLocale);
                                     }}
                                   >
                                     {isSpeaking ? '🔇' : '🔊'}
                                   </button>
                                 )}
                               </div>
-                              <span className="romanization">{current.romanization}</span>
+                              {targetLangCode === 'ko' && <span className="romanization">{current.romanization}</span>}
                             </>
                           ) : (
                             <div className="korean-text-row">
-                              <span className="main-text">{current.english}</span>
+                              <span className="main-text">{displayNative}</span>
                               {studyStyle === 'both' && (
                                 <button
                                   className="speak-btn"
                                   onClick={(e) => {
                                     e.stopPropagation();
-                                    handleSpeak(current.english);
+                                    handleSpeak(displayNative, nativeTtsLocale);
                                   }}
                                 >
                                   {isSpeaking ? '🔇' : '🔊'}
@@ -845,7 +916,7 @@ function FlashcardsPage() {
                               )}
                             </div>
                           )}
-                          <span className="tap-hint">Tap to flip</span>
+                          <span className="tap-hint">{t('flashcards.tapToFlip')}</span>
                         </>
                       )}
                     </div>
@@ -854,16 +925,16 @@ function FlashcardsPage() {
                   {/* Back Face */}
                   <div className="flashcard-face back">
                     <div className="face-content">
-                      <span className="face-label">{currentCardShowsKorean ? 'English' : 'Korean'}</span>
-                      {currentCardShowsKorean ? (
+                      <span className="face-label">{showsTargetFirst ? t('flashcards.nativeLang', { language: LANGUAGES[nativeLangCode]?.name || 'English' }) : t('flashcards.targetLang', { language: LANGUAGES[targetLangCode]?.name || 'Korean' })}</span>
+                      {showsTargetFirst ? (
                         <div className="korean-text-row">
-                          <span className="main-text">{current.english}</span>
+                          <span className="main-text">{displayNative}</span>
                           {studyStyle !== 'text' && (
                             <button
                               className="speak-btn"
                               onClick={(e) => {
                                 e.stopPropagation();
-                                handleSpeak(current.english);
+                                handleSpeak(displayNative, nativeTtsLocale);
                               }}
                             >
                               {isSpeaking ? '🔇' : '🔊'}
@@ -873,23 +944,23 @@ function FlashcardsPage() {
                       ) : (
                         <>
                           <div className="korean-text-row">
-                            <span className="main-text">{current.korean}</span>
+                            <span className="main-text">{displayTarget}</span>
                             {studyStyle !== 'text' && (
                               <button
                                 className="speak-btn"
                                 onClick={(e) => {
                                   e.stopPropagation();
-                                  handleSpeak(current.korean);
+                                  handleSpeak(displayTarget, targetTtsLocale);
                                 }}
                               >
                                 {isSpeaking ? '🔇' : '🔊'}
                               </button>
                             )}
                           </div>
-                          <span className="romanization">{current.romanization}</span>
+                          {targetLangCode === 'ko' && <span className="romanization">{current.romanization}</span>}
                         </>
                       )}
-                      <span className="tap-hint">Tap to flip back</span>
+                      <span className="tap-hint">{t('flashcards.tapToFlipBack')}</span>
                     </div>
                   </div>
                 </div>
@@ -919,41 +990,41 @@ function FlashcardsPage() {
               <button
                 className={`sidebar-toggle ${showSidebar ? 'sidebar-toggle-open' : ''}`}
                 onClick={() => setShowSidebar(!showSidebar)}
-                title="Cards & Study Mode"
+                title={t('flashcards.studyModeCards')}
               >
                 <span className="sidebar-toggle-icon">{showSidebar ? '✕' : '☰'}</span>
-                <span className="sidebar-toggle-label">{showSidebar ? 'Close' : 'Study Mode & Cards'}</span>
+                <span className="sidebar-toggle-label">{showSidebar ? t('common.close') : t('flashcards.studyModeCards')}</span>
               </button>
               <div className={`card-list-sidebar ${showSidebar ? 'sidebar-open' : ''}`}>
                 {/* Study Mode Selector */}
                 <div className="sidebar-mode-selector">
-                  <span className="mode-label">Study Mode:</span>
+                  <span className="mode-label">{t('flashcards.studyMode')}</span>
                   <div className="mode-options">
                     <button
-                      className={`mode-btn ${displayMode === 'korean' ? 'active' : ''}`}
+                      className={`mode-btn ${displayMode === 'target' ? 'active' : ''}`}
                       onClick={() => {
-                        setDisplayMode('korean');
-                        setCurrentCardShowsKorean(true);
+                        setDisplayMode('target');
+                        setShowsTargetFirst(true);
                       }}
                     >
-                      <span className="mode-icon">🇰🇷</span>
-                      Korean → English
+                      <span className="mode-icon">{LANGUAGES[getTargetLangCode()]?.flag || '🌍'}</span>
+                      {t('flashcards.showTargetFirst', { target: getTargetLangName(), native: getNativeLangName() })}
                     </button>
                     <button
-                      className={`mode-btn ${displayMode === 'english' ? 'active' : ''}`}
+                      className={`mode-btn ${displayMode === 'native' ? 'active' : ''}`}
                       onClick={() => {
-                        setDisplayMode('english');
-                        setCurrentCardShowsKorean(false);
+                        setDisplayMode('native');
+                        setShowsTargetFirst(false);
                       }}
                     >
-                      <span className="mode-icon">🇬🇧</span>
-                      English → Korean
+                      <span className="mode-icon">{LANGUAGES[getNativeLangCode()]?.flag || '🌍'}</span>
+                      {t('flashcards.showNativeFirst', { native: getNativeLangName(), target: getTargetLangName() })}
                     </button>
                     <button
                       className={`mode-btn ${displayMode === 'random' ? 'active' : ''}`}
                       onClick={() => {
                         setDisplayMode('random');
-                        setCurrentCardShowsKorean(Math.random() < 0.5);
+                        setShowsTargetFirst(Math.random() < 0.5);
                       }}
                     >
                       <span className="mode-icon">🎲</span>
@@ -964,28 +1035,28 @@ function FlashcardsPage() {
 
                 {/* Study Style Selector */}
                 <div className="sidebar-mode-selector">
-                  <span className="mode-label">Study Style:</span>
+                  <span className="mode-label">{t('flashcards.studyStyle')}</span>
                   <div className="mode-options">
                     <button
                       className={`mode-btn ${studyStyle === 'both' ? 'active' : ''}`}
                       onClick={() => setStudyStyle('both')}
                     >
                       <span className="mode-icon">📖🔊</span>
-                      Both
+                      {t('flashcards.textAndAudio')}
                     </button>
                     <button
                       className={`mode-btn ${studyStyle === 'text' ? 'active' : ''}`}
                       onClick={() => { setStudyStyle('text'); speechService.cancel(); }}
                     >
                       <span className="mode-icon">📖</span>
-                      Reading
+                      {t('flashcards.textOnly')}
                     </button>
                     <button
                       className={`mode-btn ${studyStyle === 'audio' ? 'active' : ''}`}
                       onClick={() => setStudyStyle('audio')}
                     >
                       <span className="mode-icon">🔊</span>
-                      Listening
+                      {t('flashcards.audioOnly')}
                     </button>
                   </div>
                 </div>
@@ -995,13 +1066,13 @@ function FlashcardsPage() {
                     className={`sidebar-tab ${sidebarView === 'all' ? 'active' : ''}`}
                     onClick={() => setSidebarView('all')}
                   >
-                    All <span className="card-count">{activeFlashcards.length}</span>
+                    {t('flashcards.allCards')} <span className="card-count">{activeFlashcards.length}</span>
                   </button>
                   <button
                     className={`sidebar-tab ${sidebarView === 'categories' ? 'active' : ''}`}
                     onClick={() => setSidebarView('categories')}
                   >
-                    Categories
+                    {t('flashcards.categories')}
                   </button>
                 </div>
 
@@ -1029,7 +1100,7 @@ function FlashcardsPage() {
                         className="category-clear"
                         onClick={() => setSelectedCategories(new Set())}
                       >
-                        Clear filters ({selectedCategories.size} selected)
+                        {t('flashcards.clearFilters', { count: selectedCategories.size })}
                       </button>
                     )}
                     {Object.entries(getCategoryCounts()).map(([cat, count]) => (
@@ -1041,7 +1112,7 @@ function FlashcardsPage() {
                         <span className="category-check">
                           {selectedCategories.has(cat) ? '✓' : ''}
                         </span>
-                        <span className="category-name">{cat}</span>
+                        <span className="category-name">{t(`flashcards.categoryNames.${cat}`, { defaultValue: cat })}</span>
                         <span className="card-count">{count}</span>
                       </button>
                     ))}
@@ -1052,7 +1123,7 @@ function FlashcardsPage() {
 
               {!isGuest && !current._id?.toString().startsWith('default-') && (
                 <button className="btn-delete-card" onClick={() => handleDelete(current._id)}>
-                  Delete this card
+                  {t('common.delete')}
                 </button>
               )}
             </div>
@@ -1062,54 +1133,54 @@ function FlashcardsPage() {
               <button
                 className={`sidebar-toggle ${showSidebar ? 'sidebar-toggle-open' : ''}`}
                 onClick={() => setShowSidebar(!showSidebar)}
-                title="Cards & Study Mode"
+                title={t('flashcards.studyModeCards')}
               >
                 <span className="sidebar-toggle-icon">{showSidebar ? '✕' : '☰'}</span>
-                <span className="sidebar-toggle-label">{showSidebar ? 'Close' : 'Study Mode & Cards'}</span>
+                <span className="sidebar-toggle-label">{showSidebar ? t('common.close') : t('flashcards.studyModeCards')}</span>
               </button>
               <div className={`card-list-sidebar ${showSidebar ? 'sidebar-open' : ''}`}>
                 <div className="sidebar-mode-selector">
-                  <span className="mode-label">Study Mode:</span>
+                  <span className="mode-label">{t('flashcards.studyMode')}</span>
                   <div className="mode-options">
-                    <button className={`mode-btn ${displayMode === 'korean' ? 'active' : ''}`}
-                      onClick={() => { setDisplayMode('korean'); setCurrentCardShowsKorean(true); }}>
-                      <span className="mode-icon">🇰🇷</span> Korean → English
+                    <button className={`mode-btn ${displayMode === 'target' ? 'active' : ''}`}
+                      onClick={() => { setDisplayMode('target'); setShowsTargetFirst(true); }}>
+                      <span className="mode-icon">{LANGUAGES[getTargetLangCode()]?.flag || '🌍'}</span> {t('flashcards.showTargetFirst', { target: getTargetLangName(), native: getNativeLangName() })}
                     </button>
-                    <button className={`mode-btn ${displayMode === 'english' ? 'active' : ''}`}
-                      onClick={() => { setDisplayMode('english'); setCurrentCardShowsKorean(false); }}>
-                      <span className="mode-icon">🇬🇧</span> English → Korean
+                    <button className={`mode-btn ${displayMode === 'native' ? 'active' : ''}`}
+                      onClick={() => { setDisplayMode('native'); setShowsTargetFirst(false); }}>
+                      <span className="mode-icon">{LANGUAGES[getNativeLangCode()]?.flag || '🌍'}</span> {t('flashcards.showNativeFirst', { native: getNativeLangName(), target: getTargetLangName() })}
                     </button>
                     <button className={`mode-btn ${displayMode === 'random' ? 'active' : ''}`}
-                      onClick={() => { setDisplayMode('random'); setCurrentCardShowsKorean(Math.random() < 0.5); }}>
+                      onClick={() => { setDisplayMode('random'); setShowsTargetFirst(Math.random() < 0.5); }}>
                       <span className="mode-icon">🎲</span> Random
                     </button>
                   </div>
                 </div>
                 <div className="sidebar-mode-selector">
-                  <span className="mode-label">Study Style:</span>
+                  <span className="mode-label">{t('flashcards.studyStyle')}</span>
                   <div className="mode-options">
                     <button className={`mode-btn ${studyStyle === 'both' ? 'active' : ''}`}
                       onClick={() => setStudyStyle('both')}>
-                      <span className="mode-icon">📖🔊</span> Both
+                      <span className="mode-icon">📖🔊</span> {t('flashcards.textAndAudio')}
                     </button>
                     <button className={`mode-btn ${studyStyle === 'text' ? 'active' : ''}`}
                       onClick={() => { setStudyStyle('text'); speechService.cancel(); }}>
-                      <span className="mode-icon">📖</span> Reading
+                      <span className="mode-icon">📖</span> {t('flashcards.textOnly')}
                     </button>
                     <button className={`mode-btn ${studyStyle === 'audio' ? 'active' : ''}`}
                       onClick={() => setStudyStyle('audio')}>
-                      <span className="mode-icon">🔊</span> Listening
+                      <span className="mode-icon">🔊</span> {t('flashcards.audioOnly')}
                     </button>
                   </div>
                 </div>
                 <div className="sidebar-tabs">
                   <button className={`sidebar-tab ${sidebarView === 'all' ? 'active' : ''}`}
                     onClick={() => setSidebarView('all')}>
-                    All <span className="card-count">{activeFlashcards.length}</span>
+                    {t('flashcards.allCards')} <span className="card-count">{activeFlashcards.length}</span>
                   </button>
                   <button className={`sidebar-tab ${sidebarView === 'categories' ? 'active' : ''}`}
                     onClick={() => setSidebarView('categories')}>
-                    Categories
+                    {t('flashcards.categories')}
                   </button>
                 </div>
                 {sidebarView === 'all' ? (
@@ -1126,14 +1197,14 @@ function FlashcardsPage() {
                   <div className="category-list">
                     {selectedCategories.size > 0 && (
                       <button className="category-clear" onClick={() => setSelectedCategories(new Set())}>
-                        Clear filters ({selectedCategories.size} selected)
+                        {t('flashcards.clearFilters', { count: selectedCategories.size })}
                       </button>
                     )}
                     {Object.entries(getCategoryCounts()).map(([cat, count]) => (
                       <button key={cat} className={`category-item ${selectedCategories.has(cat) ? 'selected' : ''}`}
                         onClick={() => toggleCategory(cat)}>
                         <span className="category-check">{selectedCategories.has(cat) ? '✓' : ''}</span>
-                        <span className="category-name">{cat}</span>
+                        <span className="category-name">{t(`flashcards.categoryNames.${cat}`, { defaultValue: cat })}</span>
                         <span className="card-count">{count}</span>
                       </button>
                     ))}

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { progressService } from '../services/api';
 import './ProgressPage.css';
 
 function ProgressPage() {
+  const { t } = useTranslation();
   const [progress, setProgress] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -23,7 +25,7 @@ function ProgressPage() {
       setProgress(response.data);
       setError('');
     } catch (err) {
-      setError('Failed to load progress');
+      setError(t('progress.failedToLoad'));
       console.error(err);
     } finally {
       setLoading(false);
@@ -31,7 +33,7 @@ function ProgressPage() {
   };
 
   if (loading) {
-    return <div className="loading">Loading progress...</div>;
+    return <div className="loading">{t('progress.loadingProgress')}</div>;
   }
 
   if (error || !progress) {
@@ -39,10 +41,10 @@ function ProgressPage() {
   }
 
   const masteryStats = [
-    { status: 'Mastered', key: 'mastered', count: progress.mastered, color: 'var(--mastered)', icon: '🏆', bgColor: 'rgba(88, 204, 2, 0.1)', areas: progress.masteredAreas || [] },
-    { status: 'Comfortable', key: 'comfortable', count: progress.comfortable, color: 'var(--comfortable)', icon: '😊', bgColor: 'rgba(255, 200, 0, 0.1)', areas: progress.comfortableAreas || [] },
-    { status: 'Learning', key: 'learning', count: progress.learning, color: 'var(--learning)', icon: '📚', bgColor: 'rgba(28, 176, 246, 0.1)', areas: progress.learningAreas || [] },
-    { status: 'Struggling', key: 'struggling', count: progress.struggling, color: 'var(--struggling)', icon: '💪', bgColor: 'rgba(255, 75, 75, 0.1)', areas: progress.strugglingAreas || [] },
+    { status: t('progress.mastered'), key: 'mastered', count: progress.mastered, color: 'var(--mastered)', icon: '🏆', bgColor: 'rgba(88, 204, 2, 0.1)', areas: progress.masteredAreas || [] },
+    { status: t('progress.comfortable'), key: 'comfortable', count: progress.comfortable, color: 'var(--comfortable)', icon: '😊', bgColor: 'rgba(255, 200, 0, 0.1)', areas: progress.comfortableAreas || [] },
+    { status: t('progress.learning'), key: 'learning', count: progress.learning, color: 'var(--learning)', icon: '📚', bgColor: 'rgba(28, 176, 246, 0.1)', areas: progress.learningAreas || [] },
+    { status: t('progress.struggling'), key: 'struggling', count: progress.struggling, color: 'var(--struggling)', icon: '💪', bgColor: 'rgba(255, 75, 75, 0.1)', areas: progress.strugglingAreas || [] },
   ];
 
   const formatCategory = (cat) => {
@@ -59,10 +61,10 @@ function ProgressPage() {
   const totalItems = progress.mastered + progress.comfortable + progress.learning + progress.struggling || 1;
 
   const skills = [
-    { name: 'listening', icon: '👂', color: '#1cb0f6' },
-    { name: 'speaking', icon: '🗣️', color: '#ff6b35' },
-    { name: 'reading', icon: '📖', color: '#58cc02' },
-    { name: 'writing', icon: '✍️', color: '#a560e8' },
+    { name: 'listening', label: t('progress.listening'), icon: '👂', color: '#1cb0f6' },
+    { name: 'speaking', label: t('progress.speaking'), icon: '🗣️', color: '#ff6b35' },
+    { name: 'reading', label: t('progress.reading'), icon: '📖', color: '#58cc02' },
+    { name: 'writing', label: t('progress.writing'), icon: '✍️', color: '#a560e8' },
   ];
 
   return (
@@ -71,11 +73,16 @@ function ProgressPage() {
         {/* Header */}
         <div className="progress-header">
           <div className="header-content">
-            <h1>Your <span className="text-accent">Progress</span></h1>
-            <p>Track your Korean learning journey</p>
+            <h1>
+              {t('progress.title').split('<1>')[0]}
+              <span className="text-accent">
+                {t('progress.title').match(/<1>(.*?)<\/1>/)?.[1] || t('progress.title')}
+              </span>
+            </h1>
+            <p>{t('progress.subtitle')}</p>
           </div>
           <button className="btn btn-outline" onClick={fetchProgress}>
-            ↻ Refresh
+            ↻ {t('common.refresh')}
           </button>
         </div>
 
@@ -84,13 +91,13 @@ function ProgressPage() {
           <div className="achievement-content">
             <div className="achievement-icon">🎯</div>
             <div className="achievement-text">
-              <h3>Keep up the great work!</h3>
-              <p>You've mastered <strong>{progress.mastered}</strong> items so far</p>
+              <h3>{t('progress.keepItUp')}</h3>
+              <p dangerouslySetInnerHTML={{ __html: t('progress.masteredItems', { count: progress.mastered }) }} />
             </div>
           </div>
           <div className="achievement-xp">
             <span className="xp-amount">+{progress.mastered * 10}</span>
-            <span className="xp-label">XP Earned</span>
+            <span className="xp-label">{t('progress.xpEarned')}</span>
           </div>
         </div>
 
@@ -115,7 +122,7 @@ function ProgressPage() {
                 ></div>
               </div>
               <span className="stat-expand-hint">
-                {selectedMastery === stat.key ? 'Click to collapse' : 'Click to view'}
+                {selectedMastery === stat.key ? t('progress.clickToCollapse') : t('progress.clickToView')}
               </span>
             </div>
           ))}
@@ -127,7 +134,7 @@ function ProgressPage() {
             <div className="mastery-detail-header">
               <h2>
                 {masteryStats.find(s => s.key === selectedMastery)?.icon}{' '}
-                {masteryStats.find(s => s.key === selectedMastery)?.status} Activities
+                {masteryStats.find(s => s.key === selectedMastery)?.status} {t('progress.activities')}
               </h2>
               <button className="btn-close-panel" onClick={() => setSelectedMastery(null)}>
                 ✕
@@ -136,7 +143,7 @@ function ProgressPage() {
             {(() => {
               const areas = masteryStats.find(s => s.key === selectedMastery)?.areas || [];
               if (areas.length === 0) {
-                return <p className="no-activities">No activities in this category yet.</p>;
+                return <p className="no-activities">{t('progress.noActivities')}</p>;
               }
               return (
                 <div className="mastery-detail-list">
@@ -158,7 +165,7 @@ function ProgressPage() {
                       </div>
                       <div className="detail-item-stats">
                         <span className="detail-score">{area.score}%</span>
-                        <span className="detail-attempts">{area.attemptCount} attempts</span>
+                        <span className="detail-attempts">{t('progress.attempts', { count: area.attemptCount })}</span>
                       </div>
                       {area.lessonId && needsPractice(selectedMastery) && (
                         <Link
@@ -166,7 +173,7 @@ function ProgressPage() {
                           className="btn-practice"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          Practice
+                          {t('progress.practice')}
                         </Link>
                       )}
                       {area.lessonId && !needsPractice(selectedMastery) && (
@@ -175,7 +182,7 @@ function ProgressPage() {
                           className="btn-review"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          Review
+                          {t('progress.review')}
                         </Link>
                       )}
                     </div>
@@ -189,7 +196,7 @@ function ProgressPage() {
         {/* Mastery Breakdown */}
         <div className="card mastery-section">
           <div className="section-header">
-            <h2>Mastery Breakdown</h2>
+            <h2>{t('progress.masteryBreakdown')}</h2>
           </div>
           <div className="mastery-chart">
             {masteryStats.map((stat, idx) => (
@@ -217,7 +224,7 @@ function ProgressPage() {
 
         {/* Skills Performance */}
         <div className="skills-section">
-          <h2>Skills Performance</h2>
+          <h2>{t('progress.skillsPerformance')}</h2>
           <div className="skills-grid">
             {skills.map((skill) => {
               const stats = skillStats[skill.name] || { averageScore: 0, count: 0 };
@@ -229,7 +236,7 @@ function ProgressPage() {
                 >
                   <div className="skill-header">
                     <span className="skill-icon">{skill.icon}</span>
-                    <h3>{skill.name.charAt(0).toUpperCase() + skill.name.slice(1)}</h3>
+                    <h3>{skill.label}</h3>
                   </div>
                   <div className="skill-progress-ring">
                     <svg viewBox="0 0 100 100">
@@ -247,7 +254,7 @@ function ProgressPage() {
                       <span className="ring-percent">{stats.averageScore}%</span>
                     </div>
                   </div>
-                  <p className="skill-activities">{stats.count} activities</p>
+                  <p className="skill-activities">{t('progress.skillActivities', { count: stats.count })}</p>
                 </div>
               );
             })}
@@ -256,13 +263,13 @@ function ProgressPage() {
 
         {/* Areas Needing Attention */}
         <div className="struggling-section">
-          <h2>Areas Needing Attention</h2>
+          <h2>{t('progress.areasNeedingAttention')}</h2>
           {progress.strugglingAreas.length === 0 ? (
             <div className="success-banner">
               <span className="success-icon">🎉</span>
               <div className="success-text">
-                <h3>Great job!</h3>
-                <p>You're not struggling with anything right now. Keep it up!</p>
+                <h3>{t('progress.greatJob')}</h3>
+                <p>{t('progress.noStruggles')}</p>
               </div>
             </div>
           ) : (
@@ -276,11 +283,11 @@ function ProgressPage() {
                   <div className="area-stats">
                     <div className="area-stat">
                       <span className="area-stat-value">{area.score}%</span>
-                      <span className="area-stat-label">Score</span>
+                      <span className="area-stat-label">{t('progress.score')}</span>
                     </div>
                     <div className="area-stat">
                       <span className="area-stat-value">{area.attemptCount}</span>
-                      <span className="area-stat-label">Attempts</span>
+                      <span className="area-stat-label">{t('progress.attempts', { count: area.attemptCount }).split(' ').pop()}</span>
                     </div>
                     <div className="area-stat">
                       <span className="area-stat-value">
@@ -288,12 +295,12 @@ function ProgressPage() {
                           ? ((area.correctAttempts / area.attemptCount) * 100).toFixed(0)
                           : 0}%
                       </span>
-                      <span className="area-stat-label">Success</span>
+                      <span className="area-stat-label">{t('progress.success')}</span>
                     </div>
                   </div>
                   <div className="area-tip">
                     <span className="tip-icon">💡</span>
-                    <p>Review {area.skillType} skills with {area.category} content</p>
+                    <p>{t('progress.areaTip', { skill: area.skillType, category: area.category })}</p>
                   </div>
                 </div>
               ))}
@@ -303,27 +310,27 @@ function ProgressPage() {
 
         {/* Learning Tips */}
         <div className="card tips-section">
-          <h2>Learning Tips</h2>
+          <h2>{t('progress.learningTips')}</h2>
           <div className="tips-grid">
             <div className="tip-card">
               <span className="tip-emoji">🔄</span>
-              <h4>Spaced Repetition</h4>
-              <p>Review flashcards regularly to improve retention</p>
+              <h4>{t('progress.spacedRepetition')}</h4>
+              <p>{t('progress.spacedRepetitionTip')}</p>
             </div>
             <div className="tip-card">
               <span className="tip-emoji">🎯</span>
-              <h4>Active Practice</h4>
-              <p>Focus on struggling areas to improve faster</p>
+              <h4>{t('progress.activePractice')}</h4>
+              <p>{t('progress.activePracticeTip')}</p>
             </div>
             <div className="tip-card">
               <span className="tip-emoji">📊</span>
-              <h4>Diversify Learning</h4>
-              <p>Practice all four skills evenly</p>
+              <h4>{t('progress.diversifyLearning')}</h4>
+              <p>{t('progress.diversifyLearningTip')}</p>
             </div>
             <div className="tip-card">
               <span className="tip-emoji">🔥</span>
-              <h4>Stay Consistent</h4>
-              <p>Study a little bit every day for best results</p>
+              <h4>{t('progress.stayConsistent')}</h4>
+              <p>{t('progress.stayConsistentTip')}</p>
             </div>
           </div>
         </div>

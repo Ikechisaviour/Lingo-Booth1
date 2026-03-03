@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { userService, guestXPHelper } from '../services/api';
 import './Navbar.css';
 
 function Navbar({ onLogout, isGuest, onGuestExit, userRole, challengeMode }) {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
   const username = localStorage.getItem('username');
@@ -72,7 +74,7 @@ function Navbar({ onLogout, isGuest, onGuestExit, userRole, challengeMode }) {
     if (activityState.activityType === 'lesson' && activityState.lesson) {
       return activityState.lesson.title;
     }
-    return 'Flashcards';
+    return t('navbar.flashcards');
   };
 
   const handleLogout = () => {
@@ -84,7 +86,7 @@ function Navbar({ onLogout, isGuest, onGuestExit, userRole, challengeMode }) {
     if (onGuestExit) {
       onGuestExit();
     }
-    navigate('/register');
+    navigate('/select-language?mode=register');
   };
 
   const handleLogin = () => {
@@ -105,9 +107,9 @@ function Navbar({ onLogout, isGuest, onGuestExit, userRole, challengeMode }) {
 
         {/* Continue Button - only show for authenticated users with activity */}
         {!isGuest && activityState && getContinueLink() && (
-          <Link to={getContinueLink()} className="nav-continue-btn" title={`Continue: ${getContinueLabel()}`}>
+          <Link to={getContinueLink()} className="nav-continue-btn" title={`${t('navbar.continue')}: ${getContinueLabel()}`}>
             <span className="continue-icon">&#9654;</span>
-            <span className="continue-text">Continue</span>
+            <span className="continue-text">{t('navbar.continue')}</span>
           </Link>
         )}
 
@@ -115,7 +117,7 @@ function Navbar({ onLogout, isGuest, onGuestExit, userRole, challengeMode }) {
         {isGuest && (
           <div className="guest-banner">
             <span className="guest-icon">👋</span>
-            <span className="guest-text">Guest Mode</span>
+            <span className="guest-text">{t('navbar.guestMode')}</span>
           </div>
         )}
 
@@ -123,19 +125,19 @@ function Navbar({ onLogout, isGuest, onGuestExit, userRole, challengeMode }) {
           <li className="nav-item">
             <Link to="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>
               <span className="nav-icon">🏠</span>
-              <span className="nav-text">Home</span>
+              <span className="nav-text">{t('navbar.home')}</span>
             </Link>
           </li>
           <li className="nav-item">
             <Link to="/lessons" className={`nav-link ${isActive('/lessons') ? 'active' : ''}`}>
               <span className="nav-icon">📚</span>
-              <span className="nav-text">Lessons</span>
+              <span className="nav-text">{t('navbar.lessons')}</span>
             </Link>
           </li>
           <li className="nav-item">
             <Link to="/flashcards" className={`nav-link ${isActive('/flashcards') ? 'active' : ''}`}>
               <span className="nav-icon">🎴</span>
-              <span className="nav-text">Flashcards</span>
+              <span className="nav-text">{t('navbar.flashcards')}</span>
             </Link>
           </li>
 
@@ -145,7 +147,7 @@ function Navbar({ onLogout, isGuest, onGuestExit, userRole, challengeMode }) {
               <li className="nav-item">
                 <span className="nav-link nav-xp guest-xp">
                   <span className="nav-icon">⭐</span>
-                  <span className="nav-text">{totalXP}<span className="xp-suffix"> XP</span></span>
+                  <span className="nav-text">{totalXP}<span className="xp-suffix"> {t('common.xp')}</span></span>
                 </span>
               </li>
             )
@@ -153,7 +155,7 @@ function Navbar({ onLogout, isGuest, onGuestExit, userRole, challengeMode }) {
             <li className="nav-item">
               <Link to="/progress" className={`nav-link nav-xp ${isActive('/progress') ? 'active' : ''}`}>
                 <span className="nav-icon">📊</span>
-                <span className="nav-text">{totalXP !== null ? <>{totalXP}<span className="xp-suffix"> XP</span></> : 'Progress'}</span>
+                <span className="nav-text">{totalXP !== null ? <>{totalXP}<span className="xp-suffix"> {t('common.xp')}</span></> : t('navbar.progress')}</span>
               </Link>
             </li>
           )}
@@ -163,7 +165,7 @@ function Navbar({ onLogout, isGuest, onGuestExit, userRole, challengeMode }) {
             <li className="nav-item">
               <Link to="/admin" className={`nav-link nav-admin ${isActive('/admin') ? 'active' : ''}`}>
                 <span className="nav-icon">⚙️</span>
-                <span className="nav-text">Admin</span>
+                <span className="nav-text">{t('navbar.admin')}</span>
               </Link>
             </li>
           )}
@@ -174,12 +176,12 @@ function Navbar({ onLogout, isGuest, onGuestExit, userRole, challengeMode }) {
               <li className="nav-item">
                 <button className="nav-link btn-auth" onClick={handleLogin}>
                   <span className="nav-icon">🔑</span>
-                  <span className="nav-text">Login</span>
+                  <span className="nav-text">{t('navbar.login')}</span>
                 </button>
               </li>
               <li className="nav-item">
                 <button className="nav-link btn-signup" onClick={handleSignUp}>
-                  <span className="nav-text">Sign Up Free</span>
+                  <span className="nav-text">{t('navbar.signUpFree')}</span>
                 </button>
               </li>
             </>
@@ -189,7 +191,7 @@ function Navbar({ onLogout, isGuest, onGuestExit, userRole, challengeMode }) {
               <li className="nav-item">
                 <Link to="/profile" className={`nav-link ${isActive('/profile') ? 'active' : ''}`}>
                   <span className="nav-icon">👤</span>
-                  <span className="nav-text">{username || 'Profile'}</span>
+                  <span className="nav-text">{username || t('navbar.profile')}</span>
                 </Link>
               </li>
             </>

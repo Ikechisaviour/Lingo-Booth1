@@ -2,6 +2,7 @@
 // Maintains the same public API as the previous Web Speech API implementation
 
 import { ttsService } from './api';
+import LANGUAGES from '../config/languages';
 
 // Script-to-language mapping using Unicode ranges
 const SCRIPT_LANG_MAP = [
@@ -455,8 +456,10 @@ class SpeechService {
   }
 
   /**
-   * Speak text with automatic language detection
-   * Handles bracket pauses via segment splitting
+   * Speak text with automatic language detection.
+   * Pass options.lang (e.g. 'es-ES') to override auto-detection —
+   * required for Latin-script languages (Spanish, French, German, etc.)
+   * that share the same Unicode range as English.
    */
   speak(text, options = {}) {
     this._stopCurrent(); // preserve bridge
@@ -469,11 +472,10 @@ class SpeechService {
     this._abortController = new AbortController();
 
     const segments = this._parseSegments(text);
-    const langCode = this.detectLanguage(text);
+    const langCode = options.lang || this.detectLanguage(text);
 
-    // Use preferred voice only for Korean (user can set it in Profile)
-    // Other languages use their default Edge TTS voice
-    const voice = langCode === 'ko-KR' ? this.preferredVoice : null;
+    // Use preferred voice if the detected language matches the user's target language
+    const voice = this.getPreferredVoiceForLang(langCode);
 
     this._speakSegments(segments, langCode, voice).catch(err => {
       if (!this._abortController?.signal.aborted) {
@@ -483,7 +485,8 @@ class SpeechService {
   }
 
   /**
-   * Speak text and return a promise that resolves when finished
+   * Speak text and return a promise that resolves when finished.
+   * Pass options.lang to override auto language detection.
    */
   speakAsync(text, options = {}) {
     this._stopCurrent(); // preserve bridge
@@ -493,8 +496,8 @@ class SpeechService {
     this._abortController = new AbortController();
 
     const segments = this._parseSegments(text);
-    const langCode = this.detectLanguage(text);
-    const voice = langCode === 'ko-KR' ? this.preferredVoice : null;
+    const langCode = options.lang || this.detectLanguage(text);
+    const voice = this.getPreferredVoiceForLang(langCode);
 
     return this._speakSegments(segments, langCode, voice).catch(err => {
       if (!this._abortController?.signal.aborted) {
@@ -504,7 +507,8 @@ class SpeechService {
   }
 
   /**
-   * Speak text multiple times with a pause between repeats
+   * Speak text multiple times with a pause between repeats.
+   * Pass options.lang to override auto language detection.
    */
   speakRepeat(text, times = 2, options = {}) {
     this._stopCurrent(); // preserve bridge
@@ -514,8 +518,8 @@ class SpeechService {
     this._abortController = new AbortController();
 
     const segments = this._parseSegments(text);
-    const langCode = this.detectLanguage(text);
-    const voice = langCode === 'ko-KR' ? this.preferredVoice : null;
+    const langCode = options.lang || this.detectLanguage(text);
+    const voice = this.getPreferredVoiceForLang(langCode);
 
     const playAll = async () => {
       for (let t = 0; t < times; t++) {
@@ -536,6 +540,20 @@ class SpeechService {
         console.error('Speech error:', err);
       }
     });
+  }
+
+  /**
+   * Get the preferred voice for a given TTS locale.
+   * Returns the user's stored voice if the detected language matches
+   * their target language, otherwise null (uses default).
+   */
+  getPreferredVoiceForLang(langCode) {
+    const targetCode = localStorage.getItem('targetLanguage') || 'ko';
+    const ttsLocale = LANGUAGES[targetCode]?.ttsLocale;
+    if (langCode === ttsLocale && this.preferredVoice) {
+      return this.preferredVoice;
+    }
+    return null;
   }
 
   /**
@@ -566,11 +584,11 @@ class SpeechService {
    * blob instead of making a network request — critical for background
    * playback when fetch() is suspended.
    */
-  async prefetch(text) {
+  async prefetch(text, lang) {
     if (!text) return;
     const segments = this._parseSegments(text);
-    const langCode = this.detectLanguage(text);
-    const voice = langCode === 'ko-KR' ? this.preferredVoice : null;
+    const langCode = lang || this.detectLanguage(text);
+    const voice = this.getPreferredVoiceForLang(langCode);
 
     for (const seg of segments) {
       const cacheKey = `${voice || langCode}:${seg.text}`;
@@ -597,12 +615,18 @@ class SpeechService {
    * Pre-fetch audio for an array of flashcard objects.
    * Fetches sequentially to avoid hammering the backend.
    */
-  async prefetchCards(cards, showKoreanFirst = true) {
+  async prefetchCards(cards, showTargetFirst = true, targetLang = 'ko', nativeLang = 'en') {
+    const getLangField = (code) => code === 'ko' ? 'korean' : code === 'en' ? 'english' : code;
+    const targetField = getLangField(targetLang);
+    const nativeField = getLangField(nativeLang);
+    const targetLocale = LANGUAGES[targetLang]?.ttsLocale;
+    const nativeLocale = LANGUAGES[nativeLang]?.ttsLocale;
+
     for (const card of cards) {
-      const front = showKoreanFirst ? card.korean : card.english;
-      const back = showKoreanFirst ? card.english : card.korean;
-      await this.prefetch(front);
-      await this.prefetch(back);
+      const front = showTargetFirst ? card[targetField] || card.korean : card[nativeField] || card.english;
+      const back  = showTargetFirst ? card[nativeField] || card.english : card[targetField] || card.korean;
+      await this.prefetch(front, showTargetFirst ? targetLocale : nativeLocale);
+      await this.prefetch(back,  showTargetFirst ? nativeLocale : targetLocale);
     }
   }
 
