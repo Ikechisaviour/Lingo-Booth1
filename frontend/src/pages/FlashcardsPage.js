@@ -127,7 +127,7 @@ function FlashcardsPage() {
     const targetField = targetLangCode === 'ko' ? 'korean' : targetLangCode;
     const nativeField = nativeLangCode === 'en' ? 'english' : nativeLangCode;
     const text = showsTargetFirst
-      ? (card[targetField] || card.english || card.korean)
+      ? card[targetField]
       : (card[nativeField] || card.english);
     const frontLang = showsTargetFirst
       ? (LANGUAGES[targetLangCode]?.ttsLocale)
@@ -153,7 +153,7 @@ function FlashcardsPage() {
     // Back face shows the opposite of front
     const text = showsTargetFirst
       ? (card[nativeField] || card.english)   // front=target → back=native
-      : (card[targetField] || card.english || card.korean);   // front=native → back=target
+      : card[targetField];                    // front=native → back=target
     const backLang = showsTargetFirst
       ? (LANGUAGES[nativeLangCode]?.ttsLocale)
       : (LANGUAGES[targetLangCode]?.ttsLocale);
@@ -183,8 +183,8 @@ function FlashcardsPage() {
       const card = activeFlashcards[currentIndex];
       const apTargetField = targetLangCode === 'ko' ? 'korean' : targetLangCode;
       const apNativeField = nativeLangCode === 'en' ? 'english' : nativeLangCode;
-      const frontText = showsTargetFirst ? (card[apTargetField] || card.english || card.korean) : (card[apNativeField] || card.english);
-      const backText  = showsTargetFirst ? (card[apNativeField] || card.english) : (card[apTargetField] || card.english || card.korean);
+      const frontText = showsTargetFirst ? card[apTargetField] : (card[apNativeField] || card.english);
+      const backText  = showsTargetFirst ? (card[apNativeField] || card.english) : card[apTargetField];
       const frontLocale = showsTargetFirst ? LANGUAGES[targetLangCode]?.ttsLocale : LANGUAGES[nativeLangCode]?.ttsLocale;
       const backLocale  = showsTargetFirst ? LANGUAGES[nativeLangCode]?.ttsLocale : LANGUAGES[targetLangCode]?.ttsLocale;
 
@@ -355,13 +355,15 @@ function FlashcardsPage() {
     });
   };
 
-  // Filtered flashcards based on selected categories
-  const activeFlashcards = selectedCategories.size === 0
+  // Filtered flashcards: by category, then by target language availability
+  const targetLangField = getLangField(targetLangCode);
+  const activeFlashcards = (selectedCategories.size === 0
     ? flashcards
     : flashcards.filter(c => {
         const cats = normalizeCategory(c.category);
         return cats.some(cat => selectedCategories.has(cat));
-      });
+      })
+  ).filter(c => !!c[targetLangField]);
 
   // Media Session: show lock-screen controls when autoplay is active
   useEffect(() => {
@@ -373,7 +375,7 @@ function FlashcardsPage() {
     if (!card) return;
 
     speechService.setMediaSession({
-      title: card[getLangField(targetLangCode)] || card.english || card.korean,
+      title: card[getLangField(targetLangCode)],
       artist: t('flashcards.cardXOfY', { current: currentIndex + 1, total: activeFlashcards.length }),
       album: 'Lingo Booth \u2014 Flashcards',
       onPlay: () => setAutoPlay(true),
@@ -426,7 +428,7 @@ function FlashcardsPage() {
     // (minimum 800ms so the flip animation is visible)
     const hnTargetField = targetLangCode === 'ko' ? 'korean' : targetLangCode;
     const hnNativeField = nativeLangCode === 'en' ? 'english' : nativeLangCode;
-    const textToSpeak = showsTargetFirst ? (card[hnNativeField] || card.english) : (card[hnTargetField] || card.english || card.korean);
+    const textToSpeak = showsTargetFirst ? (card[hnNativeField] || card.english) : card[hnTargetField];
     const speakLocale  = showsTargetFirst ? LANGUAGES[nativeLangCode]?.ttsLocale : LANGUAGES[targetLangCode]?.ttsLocale;
     if (studyStyle === 'text') {
       await new Promise(resolve => setTimeout(resolve, 800));
@@ -603,7 +605,7 @@ function FlashcardsPage() {
   const current = activeFlashcards[currentIndex];
   // Word to learn (front of card) — uses the selected target language field
   const displayTarget = current
-    ? current[getLangField(targetLangCode)] || current.english || current.korean
+    ? current[getLangField(targetLangCode)] || ''
     : '';
   // Meaning/translation (back of card) — uses the selected native language field
   const displayNative = current
@@ -1088,7 +1090,7 @@ function FlashcardsPage() {
                           setIsFlipped(false);
                         }}
                       >
-                        <span className="card-korean">{card[getLangField(targetLangCode)] || card.english || card.korean}</span>
+                        <span className="card-korean">{card[getLangField(targetLangCode)]}</span>
                         <span className="card-mastery">{getMasteryStars(card.masteryLevel)}</span>
                       </li>
                     ))}
@@ -1188,7 +1190,7 @@ function FlashcardsPage() {
                     {activeFlashcards.map((card, idx) => (
                       <li key={card._id} className={`card-list-item ${idx === currentIndex ? 'active' : ''}`}
                         onClick={() => { if (autoPlay) { setAutoPlay(false); speechService.cancel(); } setCurrentIndex(idx); setIsFlipped(false); }}>
-                        <span className="card-korean">{card[getLangField(targetLangCode)] || card.english || card.korean}</span>
+                        <span className="card-korean">{card[getLangField(targetLangCode)]}</span>
                         <span className="card-mastery">{getMasteryStars(card.masteryLevel)}</span>
                       </li>
                     ))}
