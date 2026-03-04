@@ -365,6 +365,15 @@ function FlashcardsPage() {
       })
   ).filter(c => !!c[targetLangField]);
 
+  // Reset index when the filtered deck shrinks and currentIndex is now out of bounds
+  useEffect(() => {
+    if (activeFlashcards.length > 0 && currentIndex >= activeFlashcards.length) {
+      setCurrentIndex(0);
+      setIsFlipped(false);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeFlashcards.length]);
+
   // Media Session: show lock-screen controls when autoplay is active
   useEffect(() => {
     if (!autoPlay || activeFlashcards.length === 0) {
@@ -815,7 +824,7 @@ function FlashcardsPage() {
                 <div className="progress-text">
                   <span>{t('flashcards.cardXOfY', { current: currentIndex + 1, total: activeFlashcards.length })}</span>
                   <span className="mastery-display">
-                    {getMasteryStars(current.masteryLevel, true)}
+                    {getMasteryStars(current?.masteryLevel, true)}
                   </span>
                 </div>
                 <div className="progress-bar">
@@ -838,7 +847,7 @@ function FlashcardsPage() {
                   <div className="progress-text">
                     <span>{t('flashcards.cardXOfY', { current: currentIndex + 1, total: activeFlashcards.length })}</span>
                     <span className="mastery-display">
-                      {getMasteryStars(current.masteryLevel, true)}
+                      {getMasteryStars(current?.masteryLevel, true)}
                     </span>
                   </div>
                   <div className="progress-bar">
