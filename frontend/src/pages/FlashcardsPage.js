@@ -355,15 +355,20 @@ function FlashcardsPage() {
     });
   };
 
-  // Filtered flashcards: by category, then by target language availability
+  // Filtered flashcards: by category, then by target language availability.
+  // Only exclude cards missing the target field when the backend is actually
+  // sending that field (i.e. at least one card has it). This prevents
+  // wiping out the whole deck when an older backend omits translation fields.
   const targetLangField = getLangField(targetLangCode);
+  const backendSendsTargetField = targetLangCode === 'ko' || targetLangCode === 'en'
+    || flashcards.some(c => !!c[targetLangField]);
   const activeFlashcards = (selectedCategories.size === 0
     ? flashcards
     : flashcards.filter(c => {
         const cats = normalizeCategory(c.category);
         return cats.some(cat => selectedCategories.has(cat));
       })
-  ).filter(c => !!c[targetLangField]);
+  ).filter(c => !backendSendsTargetField || !!c[targetLangField]);
 
   // Reset index when the filtered deck shrinks and currentIndex is now out of bounds
   useEffect(() => {
