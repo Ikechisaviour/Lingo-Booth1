@@ -4,11 +4,17 @@ const flashcardSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required: true,
   },
   lessonId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Lesson',
+  },
+  isDefault: {
+    type: Boolean,
+    default: false,
+  },
+  defaultIndex: {
+    type: Number,
   },
   korean: {
     type: String,
@@ -71,5 +77,7 @@ const flashcardSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
+
+flashcardSchema.index({ isDefault: 1, defaultIndex: 1 });
 
 module.exports = mongoose.model('Flashcard', flashcardSchema);

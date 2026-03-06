@@ -19,7 +19,7 @@ router.get('/stats', async (req, res) => {
     const [totalUsers, totalLessons, totalFlashcards, totalProgress, totalGuestSessions] = await Promise.all([
       User.countDocuments(),
       Lesson.countDocuments(),
-      Flashcard.countDocuments(),
+      Flashcard.countDocuments({ isDefault: { $ne: true } }),
       Progress.countDocuments(),
       GuestSession.countDocuments(),
     ]);

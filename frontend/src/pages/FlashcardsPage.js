@@ -490,7 +490,7 @@ function FlashcardsPage() {
       const flashcard = activeFlashcards[currentIndex];
       if (flashcard.masteryLevel >= 5) return; // already maxed
 
-      const isDefaultCard = flashcard._id?.toString().startsWith('default-');
+      const isDefaultCard = flashcard.isDefault === true;
 
       if (userId) {
         await flashcardService.updateFlashcard(flashcard._id, { isCorrect: true });
@@ -531,7 +531,7 @@ function FlashcardsPage() {
       const flashcard = activeFlashcards[currentIndex];
       if (flashcard.masteryLevel <= 1) return; // already at minimum
 
-      const isDefaultCard = flashcard._id?.toString().startsWith('default-');
+      const isDefaultCard = flashcard.isDefault === true;
 
       if (userId) {
         await flashcardService.updateFlashcard(flashcard._id, { isCorrect: false });
@@ -1137,7 +1137,7 @@ function FlashcardsPage() {
               </div>
             </div>
 
-              {!isGuest && !current._id?.toString().startsWith('default-') && (
+              {!isGuest && !current.isDefault && (
                 <button className="btn-delete-card" onClick={() => handleDelete(current._id)}>
                   {t('common.delete')}
                 </button>

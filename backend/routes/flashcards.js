@@ -3,7 +3,6 @@ const router = express.Router();
 const Flashcard = require('../models/Flashcard');
 const UserCardPreference = require('../models/UserCardPreference');
 const GuestSession = require('../models/GuestSession');
-const flashcardData = require('../flashcardData');
 const { verifyToken, isOwner } = require('../middleware/auth');
 const { getClientIp, getGeoInfo } = require('../utils/geo');
 
@@ -14,10 +13,26 @@ const normalizeCategory = (cat) => {
   return ['uncategorized'];
 };
 
+// --- In-memory cache for default cards (avoids DB query on every request) ---
+let cachedDefaultCards = null;
+let cacheTimestamp = 0;
+const CACHE_TTL = 60 * 60 * 1000; // 1 hour
+
+async function getDefaultCards() {
+  if (cachedDefaultCards && Date.now() - cacheTimestamp < CACHE_TTL) {
+    return cachedDefaultCards;
+  }
+  cachedDefaultCards = await Flashcard.find({ isDefault: true })
+    .sort({ defaultIndex: 1 })
+    .lean();
+  cacheTimestamp = Date.now();
+  return cachedDefaultCards;
+}
+
 // --- Public routes (no auth required) ---
 
 // Guest flashcards — returns default vocabulary set (read-only)
-router.get('/guest', (req, res) => {
+router.get('/guest', async (req, res) => {
   // Track guest session (fire-and-forget, non-blocking)
   try {
     const ip = getClientIp(req);
@@ -53,70 +68,54 @@ router.get('/guest', (req, res) => {
     ).catch(() => {});
   } catch (_) {}
 
-  const guestCards = flashcardData.map((card, i) => ({
-    _id: `guest-${i}`,
-    korean: card.korean,
-    english: card.english,
-    romanization: card.romanization,
-    category: card.category,
-    targetLang: 'ko',
-    nativeLang: 'en',
-    masteryLevel: 3,
-    correctCount: 0,
-    incorrectCount: 0,
-    // Translation fields (es, fr, de, zh, ja, hi, ar, he, pt, it, nl, ru, id, ms, fil, tr, bn, ta)
-    ...Object.fromEntries(
-      Object.entries(card).filter(([k]) =>
-        !['korean','english','romanization','category'].includes(k)
-      )
-    ),
-  }));
-  res.json(guestCards);
+  try {
+    const defaultCards = await getDefaultCards();
+    const guestCards = defaultCards.map((card, i) => ({
+      ...card,
+      _id: `guest-${i}`,
+      masteryLevel: 3,
+      correctCount: 0,
+      incorrectCount: 0,
+    }));
+    res.json(guestCards);
+  } catch (error) {
+    console.error('Get guest flashcards error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
 });
 
 // --- Authenticated routes ---
 router.use(verifyToken);
 
-// Get flashcards for user — default deck (visible to all) + user's own cards
+// Get flashcards for user — default deck + user's own cards
 router.get('/user/:userId', isOwner('userId'), async (req, res) => {
   try {
     const { userId } = req.params;
 
-    // Default vocabulary deck — available to every authenticated user
-    const defaultCards = flashcardData.map((card, i) => ({
-      _id: `default-${i}`,
-      korean: card.korean,
-      english: card.english,
-      romanization: card.romanization,
-      category: card.category,
-      targetLang: 'ko',
-      nativeLang: 'en',
-      masteryLevel: 3,
-      correctCount: 0,
-      incorrectCount: 0,
-      isDefault: true,
-      // Translation fields (es, fr, de, zh, ja, hi, ar, he, pt, it, nl, ru, id, ms, fil, tr, bn, ta)
-      ...Object.fromEntries(
-        Object.entries(card).filter(([k]) =>
-          !['korean','english','romanization','category'].includes(k)
-        )
-      ),
-    }));
+    // Default cards from DB (cached)
+    const defaultCards = await getDefaultCards();
 
-    // User's own private flashcards (normalize category for old string-format docs)
-    const userFlashcards = await Flashcard.find({ userId });
-    const normalizedUserCards = userFlashcards.map(fc => {
-      const obj = fc.toObject();
-      obj.category = normalizeCategory(obj.category);
-      return obj;
-    });
+    // User's own private flashcards
+    const userFlashcards = await Flashcard.find({ userId }).lean();
+    const normalizedUserCards = userFlashcards.map(fc => ({
+      ...fc,
+      category: normalizeCategory(fc.category),
+    }));
 
     // Merge persisted masteryLevel preferences into default cards
     const preferences = await UserCardPreference.find({ userId });
     const prefMap = new Map(preferences.map(p => [p.cardId, p.masteryLevel]));
-    const defaultCardsWithPrefs = defaultCards.map(card =>
-      prefMap.has(card._id) ? { ...card, masteryLevel: prefMap.get(card._id) } : card
-    );
+
+    const defaultCardsWithPrefs = defaultCards.map(card => {
+      const cardIdStr = card._id.toString();
+      return {
+        ...card,
+        isDefault: true,
+        masteryLevel: prefMap.has(cardIdStr) ? prefMap.get(cardIdStr) : 3,
+        correctCount: 0,
+        incorrectCount: 0,
+      };
+    });
 
     res.json([...defaultCardsWithPrefs, ...normalizedUserCards]);
   } catch (error) {
@@ -157,9 +156,14 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   const { isCorrect } = req.body;
 
-  // Default cards — persist masteryLevel in UserCardPreference
-  if (req.params.id.startsWith('default-')) {
-    try {
+  try {
+    const flashcard = await Flashcard.findById(req.params.id).lean();
+    if (!flashcard) {
+      return res.status(404).json({ message: 'Flashcard not found' });
+    }
+
+    // Default cards — persist masteryLevel in UserCardPreference
+    if (flashcard.isDefault) {
       const existing = await UserCardPreference.findOne({
         userId: req.userId,
         cardId: req.params.id,
@@ -176,36 +180,23 @@ router.put('/:id', async (req, res) => {
       );
 
       return res.json({ masteryLevel: newLevel });
-    } catch (error) {
-      console.error('Update default card preference error:', error);
-      return res.status(500).json({ message: 'Server error' });
-    }
-  }
-
-  try {
-    const flashcard = await Flashcard.findById(req.params.id);
-
-    if (!flashcard) {
-      return res.status(404).json({ message: 'Flashcard not found' });
     }
 
-    // Verify ownership
+    // User-created card — verify ownership and update directly
     if (flashcard.userId.toString() !== req.userId && req.user.role !== 'admin') {
       return res.status(403).json({ message: 'Access denied' });
     }
 
-    if (isCorrect) {
-      flashcard.correctCount += 1;
-      flashcard.masteryLevel = Math.min(flashcard.masteryLevel + 1, 5);
-    } else {
-      flashcard.incorrectCount += 1;
-      flashcard.masteryLevel = Math.max(flashcard.masteryLevel - 1, 1);
-    }
+    const newLevel = isCorrect
+      ? Math.min(flashcard.masteryLevel + 1, 5)
+      : Math.max(flashcard.masteryLevel - 1, 1);
+    const update = {
+      $set: { lastReviewedAt: new Date(), masteryLevel: newLevel },
+      $inc: isCorrect ? { correctCount: 1 } : { incorrectCount: 1 },
+    };
 
-    flashcard.lastReviewedAt = new Date();
-    await flashcard.save();
-
-    res.json(flashcard);
+    const updated = await Flashcard.findByIdAndUpdate(req.params.id, update, { new: true });
+    res.json(updated);
   } catch (error) {
     console.error('Update flashcard error:', error);
     res.status(500).json({ message: 'Server error' });
@@ -218,6 +209,11 @@ router.delete('/:id', async (req, res) => {
     const flashcard = await Flashcard.findById(req.params.id);
     if (!flashcard) {
       return res.status(404).json({ message: 'Flashcard not found' });
+    }
+
+    // Prevent deletion of default cards
+    if (flashcard.isDefault) {
+      return res.status(403).json({ message: 'Cannot delete default flashcards' });
     }
 
     // Verify ownership
