@@ -1,0 +1,857 @@
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import {
+  View,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  Animated,
+  Dimensions,
+  ActivityIndicator,
+  Modal,
+  FlatList,
+} from 'react-native';
+import { Text, Button, IconButton, TextInput, FAB, Chip, ProgressBar } from 'react-native-paper';
+import { useTranslation } from 'react-i18next';
+import { flashcardService, progressService, userService } from '../../services/api';
+import speechService from '../../services/speechService';
+import guestActivityTracker from '../../services/guestActivityTracker';
+import { useAuthStore } from '../../stores/authStore';
+import { useSettingsStore } from '../../stores/settingsStore';
+import LANGUAGES, { getLangName } from '../../config/languages';
+import { colors } from '../../config/theme';
+
+const { width: SCREEN_WIDTH } = Dimensions.get('window');
+
+const normalizeCategory = (cat: any): string[] => {
+  if (Array.isArray(cat)) return cat.length > 0 ? cat : ['uncategorized'];
+  if (typeof cat === 'string' && cat.trim()) return [cat.trim()];
+  return ['uncategorized'];
+};
+
+const getLangField = (code: string) => (code === 'ko' ? 'korean' : code === 'en' ? 'english' : code);
+
+const FlashcardsScreen: React.FC = () => {
+  const { t } = useTranslation();
+  const { userId, isGuest, guestXP, addGuestXP } = useAuthStore();
+  const { targetLanguage, nativeLanguage } = useSettingsStore();
+
+  const [flashcards, setFlashcards] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [displayMode, setDisplayMode] = useState<'target' | 'native' | 'random'>('target');
+  const [showsTargetFirst, setShowsTargetFirst] = useState(true);
+  const [autoPlay, setAutoPlay] = useState(false);
+  const [selectedCategories, setSelectedCategories] = useState<Set<string>>(new Set());
+  const [studyStyle, setStudyStyle] = useState<'both' | 'text' | 'audio'>('both');
+  const [showCategories, setShowCategories] = useState(false);
+  const [showAddForm, setShowAddForm] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+  const [starPulse, setStarPulse] = useState<'up' | 'down' | null>(null);
+
+  const [newCard, setNewCard] = useState({ korean: '', english: '', romanization: '', category: 'vocabulary' });
+
+  const autoPlayRef = useRef(false);
+  const transitioningRef = useRef(false);
+  const flipAnim = useRef(new Animated.Value(0)).current;
+
+  const targetField = getLangField(targetLanguage);
+  const nativeField = getLangField(nativeLanguage);
+  const targetLocale = LANGUAGES[targetLanguage]?.ttsLocale || 'ko-KR';
+  const nativeLocale = LANGUAGES[nativeLanguage]?.ttsLocale || 'en-US';
+
+  // Fetch flashcards
+  const fetchFlashcards = useCallback(async () => {
+    try {
+      setLoading(true);
+      const response = userId
+        ? await flashcardService.getFlashcards(userId)
+        : await flashcardService.getGuestFlashcards();
+      setFlashcards(response.data);
+      setError('');
+    } catch {
+      setError(t('flashcards.failedToLoad'));
+    } finally {
+      setLoading(false);
+    }
+  }, [userId, t]);
+
+  useEffect(() => {
+    fetchFlashcards();
+  }, [fetchFlashcards]);
+
+  // Keep autoPlayRef in sync
+  useEffect(() => {
+    autoPlayRef.current = autoPlay;
+  }, [autoPlay]);
+
+  // Category-filtered flashcards
+  const backendSendsTargetField =
+    targetLanguage === 'ko' || targetLanguage === 'en' || flashcards.some((c) => !!c[targetField]);
+
+  const activeFlashcards =
+    (selectedCategories.size === 0
+      ? flashcards
+      : flashcards.filter((c) => {
+          const cats = normalizeCategory(c.category);
+          return cats.some((cat) => selectedCategories.has(cat));
+        })
+    ).filter((c) => !backendSendsTargetField || !!c[targetField]);
+
+  // Reset index when filtered deck shrinks
+  useEffect(() => {
+    if (activeFlashcards.length > 0 && currentIndex >= activeFlashcards.length) {
+      setCurrentIndex(0);
+      setIsFlipped(false);
+    }
+  }, [activeFlashcards.length, currentIndex]);
+
+  // Reset on category change
+  useEffect(() => {
+    setCurrentIndex(0);
+    setIsFlipped(false);
+    if (autoPlay) {
+      setAutoPlay(false);
+      speechService.cancel();
+    }
+  }, [selectedCategories]);
+
+  // Get category counts
+  const getCategoryCounts = () => {
+    const counts: Record<string, number> = {};
+    flashcards.forEach((card) => {
+      normalizeCategory(card.category).forEach((cat) => {
+        counts[cat] = (counts[cat] || 0) + 1;
+      });
+    });
+    return counts;
+  };
+
+  const determineCardDisplay = () => {
+    if (displayMode === 'random') return Math.random() < 0.5;
+    return displayMode === 'target';
+  };
+
+  // Flip animation
+  const doFlip = (toFlipped: boolean) => {
+    Animated.spring(flipAnim, {
+      toValue: toFlipped ? 1 : 0,
+      friction: 8,
+      tension: 10,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handleFlip = () => {
+    if (transitioningRef.current) return;
+    const next = !isFlipped;
+    setIsFlipped(next);
+    doFlip(next);
+
+    // Speak back side on flip
+    if (next && studyStyle !== 'text') {
+      const card = activeFlashcards[currentIndex];
+      if (!card) return;
+      const text = showsTargetFirst ? card[nativeField] || card.english : card[targetField];
+      const lang = showsTargetFirst ? nativeLocale : targetLocale;
+      if (text) {
+        speechService.cancel();
+        speechService.speak(text, { lang });
+      }
+    }
+  };
+
+  // Auto-speak front when new card appears
+  useEffect(() => {
+    if (autoPlayRef.current || studyStyle === 'text') return;
+    if (activeFlashcards.length === 0 || !activeFlashcards[currentIndex]) return;
+
+    const card = activeFlashcards[currentIndex];
+    const text = showsTargetFirst ? card[targetField] : card[nativeField] || card.english;
+    const lang = showsTargetFirst ? targetLocale : nativeLocale;
+
+    const timer = setTimeout(() => {
+      speechService.speakRepeat(text, 2, { lang });
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [currentIndex, activeFlashcards.length, studyStyle]);
+
+  // Auto-play cycle
+  useEffect(() => {
+    if (!autoPlay || activeFlashcards.length === 0 || !activeFlashcards[currentIndex]) return;
+    if (studyStyle === 'text') {
+      setAutoPlay(false);
+      return;
+    }
+
+    let cancelled = false;
+
+    const autoPlayCard = async () => {
+      const card = activeFlashcards[currentIndex];
+      const frontText = showsTargetFirst ? card[targetField] : card[nativeField] || card.english;
+      const backText = showsTargetFirst ? card[nativeField] || card.english : card[targetField];
+      const frontLocale = showsTargetFirst ? targetLocale : nativeLocale;
+      const backLocale = showsTargetFirst ? nativeLocale : targetLocale;
+
+      await speechService.waitAudio(600);
+      if (cancelled) return;
+
+      // Front x2
+      await speechService.speakAsync(frontText, { lang: frontLocale });
+      if (cancelled) return;
+      await speechService.waitAudio(400);
+      if (cancelled) return;
+      await speechService.speakAsync(frontText, { lang: frontLocale });
+      if (cancelled) return;
+
+      // 5s pause
+      await speechService.waitAudio(5000);
+      if (cancelled) return;
+
+      // Front once more
+      await speechService.speakAsync(frontText, { lang: frontLocale });
+      if (cancelled) return;
+
+      // Flip
+      await speechService.waitAudio(600);
+      if (cancelled) return;
+      setIsFlipped(true);
+      doFlip(true);
+      await speechService.waitAudio(400);
+      if (cancelled) return;
+
+      // Back
+      await speechService.speakAsync(backText, { lang: backLocale });
+      if (cancelled) return;
+
+      await speechService.waitAudio(1200);
+      if (cancelled) return;
+
+      if (currentIndex >= activeFlashcards.length - 1) {
+        setAutoPlay(false);
+        return;
+      }
+
+      // Next card
+      setCurrentIndex((prev) => prev + 1);
+      setIsFlipped(false);
+      doFlip(false);
+      setShowsTargetFirst(determineCardDisplay());
+    };
+
+    autoPlayCard();
+    return () => {
+      cancelled = true;
+      speechService.cancel();
+    };
+  }, [autoPlay, currentIndex]);
+
+  // Navigation
+  const handleNext = async () => {
+    if (transitioningRef.current || currentIndex >= activeFlashcards.length - 1) return;
+    if (autoPlay) {
+      setAutoPlay(false);
+      speechService.cancel();
+      return;
+    }
+    transitioningRef.current = true;
+
+    if (!isFlipped) {
+      setIsFlipped(true);
+      doFlip(true);
+    }
+
+    const card = activeFlashcards[currentIndex];
+    const text = showsTargetFirst ? card[nativeField] || card.english : card[targetField];
+    const lang = showsTargetFirst ? nativeLocale : targetLocale;
+
+    if (studyStyle === 'text') {
+      await new Promise((r) => setTimeout(r, 800));
+    } else {
+      await Promise.all([
+        speechService.speakAsync(text, { lang }),
+        new Promise((r) => setTimeout(r, 800)),
+      ]);
+    }
+
+    setCurrentIndex((prev) => prev + 1);
+    setIsFlipped(false);
+    doFlip(false);
+    setShowsTargetFirst(determineCardDisplay());
+    transitioningRef.current = false;
+  };
+
+  const handlePrev = () => {
+    if (transitioningRef.current || currentIndex <= 0) return;
+    if (autoPlay) {
+      setAutoPlay(false);
+      speechService.cancel();
+      return;
+    }
+    setCurrentIndex((prev) => prev - 1);
+    setIsFlipped(false);
+    doFlip(false);
+    setShowsTargetFirst(determineCardDisplay());
+  };
+
+  // Mastery: correct / incorrect
+  const handleCorrect = async () => {
+    const card = activeFlashcards[currentIndex];
+    if (!card || card.masteryLevel >= 5) return;
+
+    setStarPulse('up');
+    setTimeout(() => setStarPulse(null), 600);
+
+    if (isGuest) {
+      addGuestXP(1);
+      guestActivityTracker.trackCard(true);
+    } else if (userId) {
+      try {
+        await flashcardService.updateFlashcard(card._id, {
+          masteryLevel: Math.min((card.masteryLevel || 0) + 1, 5),
+        });
+        await userService.awardXP(userId, { points: 1, source: 'flashcard_correct' });
+        // Update local state
+        setFlashcards((prev) =>
+          prev.map((c) =>
+            c._id === card._id ? { ...c, masteryLevel: Math.min((c.masteryLevel || 0) + 1, 5) } : c,
+          ),
+        );
+      } catch {}
+    }
+  };
+
+  const handleIncorrect = async () => {
+    const card = activeFlashcards[currentIndex];
+    if (!card || (card.masteryLevel || 0) <= 0) return;
+
+    setStarPulse('down');
+    setTimeout(() => setStarPulse(null), 600);
+
+    if (isGuest) {
+      guestActivityTracker.trackCard(false);
+    } else if (userId) {
+      try {
+        await flashcardService.updateFlashcard(card._id, {
+          masteryLevel: Math.max((card.masteryLevel || 0) - 1, 0),
+        });
+        setFlashcards((prev) =>
+          prev.map((c) =>
+            c._id === card._id ? { ...c, masteryLevel: Math.max((c.masteryLevel || 0) - 1, 0) } : c,
+          ),
+        );
+      } catch {}
+    }
+  };
+
+  // Add flashcard
+  const handleAddFlashcard = async () => {
+    if (!newCard.korean.trim() || !newCard.english.trim()) return;
+    try {
+      const response = await flashcardService.createFlashcard({
+        userId,
+        korean: newCard.korean,
+        english: newCard.english,
+        romanization: newCard.romanization,
+        category: [newCard.category],
+      });
+      setFlashcards((prev) => [...prev, response.data]);
+      setNewCard({ korean: '', english: '', romanization: '', category: 'vocabulary' });
+      setShowAddForm(false);
+    } catch {}
+  };
+
+  // Speak button
+  const handleSpeak = (text: string, lang: string) => {
+    if (speechService.isSpeaking()) {
+      speechService.cancel();
+      setIsSpeaking(false);
+    } else {
+      setIsSpeaking(true);
+      speechService.speak(text, { lang });
+      if (isGuest) guestActivityTracker.trackAudio();
+      setTimeout(() => setIsSpeaking(false), 3000);
+    }
+  };
+
+  // Flip animation interpolations
+  const frontRotation = flipAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0deg', '180deg'],
+  });
+  const backRotation = flipAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['180deg', '360deg'],
+  });
+
+  if (loading) {
+    return (
+      <View style={styles.centered}>
+        <ActivityIndicator size="large" color={colors.primary} />
+        <Text style={styles.loadingText}>{t('flashcards.loading')}</Text>
+      </View>
+    );
+  }
+
+  if (error) {
+    return (
+      <View style={styles.centered}>
+        <Text style={styles.errorText}>{error}</Text>
+        <Button mode="contained" onPress={fetchFlashcards} style={{ marginTop: 16 }}>
+          {t('common.retry', 'Retry')}
+        </Button>
+      </View>
+    );
+  }
+
+  if (activeFlashcards.length === 0) {
+    return (
+      <View style={styles.centered}>
+        <Text style={styles.emptyIcon}>🎴</Text>
+        <Text variant="titleLarge" style={styles.emptyTitle}>
+          {t('flashcards.noCards')}
+        </Text>
+        <Text style={styles.emptyDesc}>{t('flashcards.noCardsDesc', 'No flashcards available for this selection.')}</Text>
+        {!isGuest && (
+          <Button mode="contained" onPress={() => setShowAddForm(true)} style={{ marginTop: 16 }}>
+            {t('flashcards.addCard', 'Add Card')}
+          </Button>
+        )}
+      </View>
+    );
+  }
+
+  const card = activeFlashcards[currentIndex];
+  const frontText = showsTargetFirst ? card[targetField] : card[nativeField] || card.english;
+  const backText = showsTargetFirst ? card[nativeField] || card.english : card[targetField];
+  const frontLabel = showsTargetFirst ? getLangName(targetLanguage) : getLangName(nativeLanguage);
+  const backLabel = showsTargetFirst ? getLangName(nativeLanguage) : getLangName(targetLanguage);
+  const frontLocale = showsTargetFirst ? targetLocale : nativeLocale;
+  const backLocale = showsTargetFirst ? nativeLocale : targetLocale;
+  const mastery = card.masteryLevel || 0;
+
+  return (
+    <View style={styles.screen}>
+      {/* Header bar */}
+      <View style={styles.header}>
+        <Text style={styles.counter}>
+          {currentIndex + 1} / {activeFlashcards.length}
+        </Text>
+        <View style={styles.headerActions}>
+          <IconButton
+            icon="filter-variant"
+            size={22}
+            onPress={() => setShowCategories(true)}
+            iconColor={selectedCategories.size > 0 ? colors.primary : colors.textMuted}
+          />
+          <IconButton
+            icon={autoPlay ? 'pause-circle' : 'play-circle'}
+            size={22}
+            onPress={() => {
+              if (autoPlay) {
+                setAutoPlay(false);
+                speechService.cancel();
+              } else {
+                setAutoPlay(true);
+              }
+            }}
+            iconColor={autoPlay ? colors.accentGreen : colors.textMuted}
+          />
+          <IconButton icon="cog" size={22} onPress={() => setShowSettings(true)} iconColor={colors.textMuted} />
+        </View>
+      </View>
+
+      {/* Progress bar */}
+      <ProgressBar
+        progress={(currentIndex + 1) / activeFlashcards.length}
+        color={colors.primary}
+        style={styles.progressBar}
+      />
+
+      {/* Card */}
+      <View style={styles.cardContainer}>
+        <TouchableOpacity activeOpacity={0.9} onPress={handleFlip} style={styles.cardTouchable}>
+          {/* Front */}
+          <Animated.View
+            style={[
+              styles.card,
+              styles.cardFront,
+              { transform: [{ rotateY: frontRotation }] },
+              studyStyle === 'audio' && styles.cardAudioOnly,
+            ]}
+          >
+            <Text style={styles.cardLabel}>{frontLabel}</Text>
+            {studyStyle !== 'audio' && (
+              <Text style={styles.cardText}>{frontText}</Text>
+            )}
+            {studyStyle === 'audio' && (
+              <IconButton icon="volume-high" size={48} iconColor={colors.primary} onPress={() => handleSpeak(frontText, frontLocale)} />
+            )}
+            {card.romanization && studyStyle !== 'audio' && showsTargetFirst && (
+              <Text style={styles.romanization}>{card.romanization}</Text>
+            )}
+            <Text style={styles.tapHint}>{t('flashcards.tapToFlip', 'Tap to flip')}</Text>
+          </Animated.View>
+
+          {/* Back */}
+          <Animated.View
+            style={[
+              styles.card,
+              styles.cardBack,
+              { transform: [{ rotateY: backRotation }] },
+            ]}
+          >
+            <Text style={styles.cardLabel}>{backLabel}</Text>
+            <Text style={styles.cardText}>{backText}</Text>
+            {card.romanization && !showsTargetFirst && (
+              <Text style={styles.romanization}>{card.romanization}</Text>
+            )}
+          </Animated.View>
+        </TouchableOpacity>
+      </View>
+
+      {/* Mastery stars */}
+      <View style={styles.masteryRow}>
+        {[1, 2, 3, 4, 5].map((star) => (
+          <Text key={star} style={[styles.masteryStar, star <= mastery && styles.masteryStarActive]}>
+            ★
+          </Text>
+        ))}
+      </View>
+
+      {/* Action buttons */}
+      <View style={styles.actionRow}>
+        <IconButton
+          icon="thumb-down-outline"
+          size={28}
+          iconColor={colors.accentRed}
+          onPress={handleIncorrect}
+          style={styles.actionBtn}
+        />
+        <IconButton
+          icon="volume-high"
+          size={28}
+          iconColor={isSpeaking ? colors.primary : colors.textSecondary}
+          onPress={() => {
+            const text = isFlipped ? backText : frontText;
+            const lang = isFlipped ? backLocale : frontLocale;
+            handleSpeak(text, lang);
+          }}
+          style={styles.actionBtn}
+        />
+        <IconButton
+          icon="thumb-up-outline"
+          size={28}
+          iconColor={colors.accentGreen}
+          onPress={handleCorrect}
+          style={styles.actionBtn}
+        />
+      </View>
+
+      {/* Navigation */}
+      <View style={styles.navRow}>
+        <Button
+          mode="outlined"
+          onPress={handlePrev}
+          disabled={currentIndex <= 0}
+          icon="chevron-left"
+          style={styles.navBtn}
+        >
+          {t('flashcards.prev', 'Prev')}
+        </Button>
+        <Button
+          mode="contained"
+          onPress={handleNext}
+          disabled={currentIndex >= activeFlashcards.length - 1}
+          icon="chevron-right"
+          contentStyle={{ flexDirection: 'row-reverse' }}
+          style={[styles.navBtn, { backgroundColor: colors.primary }]}
+        >
+          {t('flashcards.next', 'Next')}
+        </Button>
+      </View>
+
+      {/* Add card FAB */}
+      {!isGuest && (
+        <FAB icon="plus" style={styles.fab} onPress={() => setShowAddForm(true)} color="#fff" />
+      )}
+
+      {/* Category filter modal */}
+      <Modal visible={showCategories} transparent animationType="slide" onRequestClose={() => setShowCategories(false)}>
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalSheet}>
+            <Text variant="titleMedium" style={styles.modalTitle}>
+              {t('flashcards.categories', 'Categories')}
+            </Text>
+            <ScrollView style={{ maxHeight: 400 }}>
+              {Object.entries(getCategoryCounts()).map(([cat, count]) => (
+                <TouchableOpacity
+                  key={cat}
+                  style={[styles.categoryItem, selectedCategories.has(cat) && styles.categorySelected]}
+                  onPress={() => {
+                    setSelectedCategories((prev) => {
+                      const next = new Set(prev);
+                      next.has(cat) ? next.delete(cat) : next.add(cat);
+                      return next;
+                    });
+                  }}
+                >
+                  <Text style={styles.categoryName}>{cat}</Text>
+                  <Text style={styles.categoryCount}>{count as number}</Text>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+            <View style={styles.modalActions}>
+              <Button onPress={() => setSelectedCategories(new Set())}>{t('common.clearAll', 'Clear All')}</Button>
+              <Button mode="contained" onPress={() => setShowCategories(false)}>
+                {t('common.done', 'Done')}
+              </Button>
+            </View>
+          </View>
+        </View>
+      </Modal>
+
+      {/* Settings modal */}
+      <Modal visible={showSettings} transparent animationType="slide" onRequestClose={() => setShowSettings(false)}>
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalSheet}>
+            <Text variant="titleMedium" style={styles.modalTitle}>
+              {t('flashcards.settings', 'Settings')}
+            </Text>
+
+            <Text style={styles.settingLabel}>{t('flashcards.displayMode', 'Card Display')}</Text>
+            <View style={styles.chipRow}>
+              <Chip
+                selected={displayMode === 'target'}
+                onPress={() => { setDisplayMode('target'); setShowsTargetFirst(true); }}
+                style={styles.chip}
+              >
+                {getLangName(targetLanguage)} {t('flashcards.first', 'first')}
+              </Chip>
+              <Chip
+                selected={displayMode === 'native'}
+                onPress={() => { setDisplayMode('native'); setShowsTargetFirst(false); }}
+                style={styles.chip}
+              >
+                {getLangName(nativeLanguage)} {t('flashcards.first', 'first')}
+              </Chip>
+              <Chip
+                selected={displayMode === 'random'}
+                onPress={() => setDisplayMode('random')}
+                style={styles.chip}
+              >
+                {t('flashcards.random', 'Random')}
+              </Chip>
+            </View>
+
+            <Text style={styles.settingLabel}>{t('flashcards.studyStyle', 'Study Style')}</Text>
+            <View style={styles.chipRow}>
+              <Chip selected={studyStyle === 'both'} onPress={() => setStudyStyle('both')} style={styles.chip}>
+                {t('flashcards.textAndAudio', 'Text + Audio')}
+              </Chip>
+              <Chip selected={studyStyle === 'text'} onPress={() => setStudyStyle('text')} style={styles.chip}>
+                {t('flashcards.textOnly', 'Text Only')}
+              </Chip>
+              <Chip selected={studyStyle === 'audio'} onPress={() => setStudyStyle('audio')} style={styles.chip}>
+                {t('flashcards.audioOnly', 'Audio Only')}
+              </Chip>
+            </View>
+
+            <Button mode="contained" onPress={() => setShowSettings(false)} style={{ marginTop: 16 }}>
+              {t('common.done', 'Done')}
+            </Button>
+          </View>
+        </View>
+      </Modal>
+
+      {/* Add flashcard modal */}
+      <Modal visible={showAddForm} transparent animationType="slide" onRequestClose={() => setShowAddForm(false)}>
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalSheet}>
+            <Text variant="titleMedium" style={styles.modalTitle}>
+              {t('flashcards.addFlashcard', 'Add Flashcard')}
+            </Text>
+            <TextInput
+              label={getLangName(targetLanguage)}
+              value={newCard.korean}
+              onChangeText={(v) => setNewCard({ ...newCard, korean: v })}
+              mode="outlined"
+              style={styles.formInput}
+            />
+            <TextInput
+              label={getLangName(nativeLanguage)}
+              value={newCard.english}
+              onChangeText={(v) => setNewCard({ ...newCard, english: v })}
+              mode="outlined"
+              style={styles.formInput}
+            />
+            <TextInput
+              label={t('flashcards.romanization', 'Romanization')}
+              value={newCard.romanization}
+              onChangeText={(v) => setNewCard({ ...newCard, romanization: v })}
+              mode="outlined"
+              style={styles.formInput}
+            />
+            <View style={styles.modalActions}>
+              <Button onPress={() => setShowAddForm(false)}>{t('common.cancel', 'Cancel')}</Button>
+              <Button mode="contained" onPress={handleAddFlashcard}>
+                {t('flashcards.save', 'Save')}
+              </Button>
+            </View>
+          </View>
+        </View>
+      </Modal>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  screen: { flex: 1, backgroundColor: colors.background },
+  centered: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 24 },
+  loadingText: { marginTop: 12, color: colors.textSecondary },
+  errorText: { color: colors.error, fontSize: 16, textAlign: 'center' },
+  emptyIcon: { fontSize: 64, marginBottom: 16 },
+  emptyTitle: { fontWeight: '700', color: colors.textPrimary, marginBottom: 8 },
+  emptyDesc: { color: colors.textSecondary, textAlign: 'center' },
+
+  // Header
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingTop: 48,
+    paddingBottom: 8,
+    backgroundColor: colors.surface,
+  },
+  counter: { fontSize: 16, fontWeight: '700', color: colors.textPrimary },
+  headerActions: { flexDirection: 'row' },
+
+  progressBar: { height: 4, backgroundColor: colors.border },
+
+  // Card
+  cardContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+  },
+  cardTouchable: {
+    width: SCREEN_WIDTH - 40,
+    height: 280,
+  },
+  card: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    borderRadius: 20,
+    padding: 24,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backfaceVisibility: 'hidden',
+    elevation: 4,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.12,
+    shadowRadius: 8,
+  },
+  cardFront: { backgroundColor: colors.surface },
+  cardBack: { backgroundColor: '#fff5f0' },
+  cardAudioOnly: { justifyContent: 'center' },
+  cardLabel: {
+    position: 'absolute',
+    top: 16,
+    left: 20,
+    fontSize: 12,
+    color: colors.textMuted,
+    fontWeight: '600',
+    textTransform: 'uppercase',
+  },
+  cardText: { fontSize: 28, fontWeight: '700', color: colors.textPrimary, textAlign: 'center' },
+  romanization: { fontSize: 16, color: colors.textSecondary, marginTop: 8 },
+  tapHint: {
+    position: 'absolute',
+    bottom: 16,
+    fontSize: 12,
+    color: colors.textMuted,
+  },
+
+  // Mastery
+  masteryRow: { flexDirection: 'row', justifyContent: 'center', paddingVertical: 8, gap: 4 },
+  masteryStar: { fontSize: 24, color: colors.border },
+  masteryStarActive: { color: colors.accentYellow },
+
+  // Actions
+  actionRow: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    gap: 24,
+    paddingVertical: 4,
+  },
+  actionBtn: {
+    backgroundColor: colors.surface,
+    elevation: 2,
+  },
+
+  // Navigation
+  navRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 20,
+    paddingBottom: 24,
+    paddingTop: 8,
+    gap: 12,
+  },
+  navBtn: { flex: 1, borderRadius: 8 },
+
+  // FAB
+  fab: {
+    position: 'absolute',
+    right: 20,
+    bottom: 90,
+    backgroundColor: colors.primary,
+  },
+
+  // Modals
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.4)',
+    justifyContent: 'flex-end',
+  },
+  modalSheet: {
+    backgroundColor: colors.surface,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    padding: 24,
+    maxHeight: '80%',
+  },
+  modalTitle: { fontWeight: '700', marginBottom: 16, textAlign: 'center' },
+  modalActions: { flexDirection: 'row', justifyContent: 'flex-end', gap: 12, marginTop: 16 },
+
+  // Categories
+  categoryItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderRadius: 8,
+    marginBottom: 4,
+  },
+  categorySelected: { backgroundColor: '#fff5f0' },
+  categoryName: { fontSize: 15, fontWeight: '600', color: colors.textPrimary, textTransform: 'capitalize' },
+  categoryCount: { fontSize: 14, color: colors.textMuted },
+
+  // Settings
+  settingLabel: { fontSize: 14, fontWeight: '600', color: colors.textPrimary, marginTop: 16, marginBottom: 8 },
+  chipRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
+  chip: { marginBottom: 4 },
+
+  // Form
+  formInput: { marginBottom: 12, backgroundColor: colors.surface },
+});
+
+export default FlashcardsScreen;

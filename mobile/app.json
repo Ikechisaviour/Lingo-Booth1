@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "Lingo Booth",
+    "slug": "lingo-booth",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "scheme": "lingobooth",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#faf7f2"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.lingobooth.app"
+    },
+    "android": {
+      "package": "com.lingobooth.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#faf7f2",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
