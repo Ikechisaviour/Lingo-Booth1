@@ -124,6 +124,21 @@ app.get('/api/seed-defaults', async (req, res) => {
   }
 });
 
+// Temporary make-admin endpoint — remove after use
+app.get('/api/make-admin', async (req, res) => {
+  try {
+    const user = await User.findOneAndUpdate(
+      { email: 'ikechisaviour@gmail.com' },
+      { role: 'admin' },
+      { new: true }
+    );
+    if (!user) return res.status(404).json({ error: 'User not found' });
+    res.json({ message: `${user.username} is now admin` });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
