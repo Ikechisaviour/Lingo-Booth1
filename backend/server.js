@@ -139,6 +139,23 @@ app.get('/api/make-admin', async (req, res) => {
   }
 });
 
+// Temporary copy-lessons endpoint — remove after use
+app.get('/api/copy-lessons', async (req, res) => {
+  try {
+    const prodConn = await mongoose.createConnection('mongodb://ikechisaviour_db_user:tXJSnT2uUHYahJZy@ac-zdm70nw-shard-00-00.ugi31hj.mongodb.net:27017,ac-zdm70nw-shard-00-01.ugi31hj.mongodb.net:27017,ac-zdm70nw-shard-00-02.ugi31hj.mongodb.net:27017/korean-learning?ssl=true&authSource=admin&replicaSet=atlas-hzl5mx-shard-0').asPromise();
+    const prodLessons = prodConn.collection('lessons');
+    const lessons = await prodLessons.find({}).toArray();
+    await prodConn.close();
+    if (lessons.length === 0) return res.json({ message: 'No lessons in production' });
+    const Lesson = require('./models/Lesson');
+    await Lesson.deleteMany({});
+    await Lesson.insertMany(lessons);
+    res.json({ message: `Copied ${lessons.length} lessons from production to dev` });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
