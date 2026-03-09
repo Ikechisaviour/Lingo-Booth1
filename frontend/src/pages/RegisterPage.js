@@ -22,6 +22,9 @@ function RegisterPage({ setIsAuthenticated, setIsGuest }) {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [verificationSent, setVerificationSent] = useState(false);
+  const [resending, setResending] = useState(false);
+  const [resendMessage, setResendMessage] = useState('');
 
   // Guard: if no language was selected, redirect to language selection
   if (!nativeLanguage) {
@@ -54,7 +57,7 @@ function RegisterPage({ setIsAuthenticated, setIsGuest }) {
 
     try {
       const guestXP = guestXPHelper.get();
-      const data = await authService.register(
+      await authService.register(
         formData.username,
         formData.email,
         formData.password,
@@ -63,24 +66,58 @@ function RegisterPage({ setIsAuthenticated, setIsGuest }) {
         targetLanguage || 'ko'
       );
       guestXPHelper.clear();
-
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('userId', data.user.id);
-      localStorage.setItem('username', data.user.username);
-      localStorage.setItem('userRole', data.user.role);
-      localStorage.setItem('nativeLanguage', data.user.nativeLanguage || 'en');
-      localStorage.setItem('targetLanguage', data.user.targetLanguage || 'ko');
-      localStorage.removeItem('guestMode');
-
-      setIsAuthenticated(true);
-      setIsGuest(false);
-      navigate('/');
+      setVerificationSent(true);
     } catch (err) {
       setError(err.response?.data?.message || t('register.registrationFailed'));
     } finally {
       setLoading(false);
     }
   };
+
+  const handleResendVerification = async () => {
+    setResending(true);
+    setResendMessage('');
+    try {
+      await authService.resendVerification(formData.email);
+      setResendMessage(t('register.verificationResent'));
+    } catch (err) {
+      setResendMessage(err.response?.data?.message || t('register.resendFailed'));
+    } finally {
+      setResending(false);
+    }
+  };
+
+  if (verificationSent) {
+    return (
+      <div className="auth-container">
+        <div className="auth-card">
+          <img src="/images/logo.png" alt="Lingo Booth" className="auth-logo" />
+          <div className="verification-pending">
+            <div className="verification-icon">&#x2709;&#xFE0F;</div>
+            <h2>{t('register.checkYourEmail')}</h2>
+            <p className="verification-text">
+              {t('register.verificationSentTo')} <strong>{formData.email}</strong>
+            </p>
+            <p className="verification-subtext">
+              {t('register.checkSpam')}
+            </p>
+            {resendMessage && <p className="verification-resend-msg">{resendMessage}</p>}
+            <button
+              className="btn btn-primary"
+              onClick={handleResendVerification}
+              disabled={resending}
+              style={{ marginTop: '16px' }}
+            >
+              {resending ? t('register.resending') : t('register.resendEmail')}
+            </button>
+            <p className="auth-link" style={{ marginTop: '20px' }}>
+              <Link to="/login">{t('register.backToLogin')}</Link>
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="auth-container">

@@ -265,6 +265,68 @@
   margin-top: 12px !important;
 }
 
+/* Email Verification Pending (RegisterPage) */
+.verification-pending {
+  text-align: center;
+  padding: 8px 0;
+}
+
+.verification-icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.verification-pending h2 {
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.verification-text {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.verification-subtext {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+
+.verification-resend-msg {
+  color: var(--primary);
+  font-size: 0.9rem;
+  margin-top: 12px;
+}
+
+/* Email Verification Notice (LoginPage) */
+.verification-notice {
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  border: 2px solid #f59e0b;
+  border-radius: 14px;
+  padding: 24px 20px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.verification-notice .verification-icon {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.verification-notice h3 {
+  color: #92400e;
+  font-size: 1.1rem;
+  margin: 0 0 8px;
+}
+
+.verification-notice p {
+  color: #78350f;
+  font-size: 0.9rem;
+  margin: 4px 0;
+  line-height: 1.5;
+}
+
 /* Responsive */
 @media (max-width: 480px) {
   .auth-card {

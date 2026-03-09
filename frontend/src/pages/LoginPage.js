@@ -11,6 +11,9 @@ function LoginPage({ setIsAuthenticated, setIsGuest }) {
   const [loading, setLoading] = useState(false);
   const [suspended, setSuspended] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
+  const [needsVerification, setNeedsVerification] = useState(false);
+  const [resending, setResending] = useState(false);
+  const [resendMessage, setResendMessage] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -70,12 +73,32 @@ function LoginPage({ setIsAuthenticated, setIsGuest }) {
           reason: err.response.data.reason,
         });
         setError('');
+        setNeedsVerification(false);
+      } else if (err.response?.status === 403 && err.response?.data?.needsVerification) {
+        setNeedsVerification(true);
+        setError('');
+        setSuspended(null);
+        setResendMessage('');
       } else {
         setError(err.response?.data?.message || t('login.loginFailed'));
         setSuspended(null);
+        setNeedsVerification(false);
       }
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleResendVerification = async () => {
+    setResending(true);
+    setResendMessage('');
+    try {
+      await authService.resendVerification(formData.email);
+      setResendMessage(t('login.verificationResent'));
+    } catch (err) {
+      setResendMessage(err.response?.data?.message || t('login.resendFailed'));
+    } finally {
+      setResending(false);
     }
   };
 
@@ -106,6 +129,23 @@ function LoginPage({ setIsAuthenticated, setIsGuest }) {
             <p>{suspended.message}</p>
             <p className="suspended-reason"><strong>{t('login.reason')}:</strong> {suspended.reason}</p>
             <p className="suspended-contact">{t('login.suspendedMistake')}</p>
+          </div>
+        )}
+
+        {needsVerification && (
+          <div className="verification-notice">
+            <div className="verification-icon">&#x2709;&#xFE0F;</div>
+            <h3>{t('login.emailNotVerified')}</h3>
+            <p>{t('login.pleaseVerifyEmail')}</p>
+            {resendMessage && <p className="verification-resend-msg">{resendMessage}</p>}
+            <button
+              className="btn btn-primary"
+              onClick={handleResendVerification}
+              disabled={resending}
+              style={{ marginTop: '12px', padding: '10px 20px', fontSize: '0.9rem' }}
+            >
+              {resending ? t('login.resending') : t('login.resendVerification')}
+            </button>
           </div>
         )}
 

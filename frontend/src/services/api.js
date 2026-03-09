@@ -68,6 +68,8 @@ export const authService = {
     api.post('/auth/register', { username, email, password, guestXP, nativeLanguage, targetLanguage }),
   login: (email, password, guestXP) =>
     api.post('/auth/login', { email, password, guestXP }),
+  resendVerification: (email) =>
+    api.post('/auth/resend-verification', { email }),
   trackActivity: (userId, timeSpent) =>
     api.post('/auth/activity', { userId, timeSpent }),
 };

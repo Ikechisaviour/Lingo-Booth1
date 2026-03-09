@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
+const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const GuestSession = require('../models/GuestSession');
 const { getClientIp, getGeoInfo } = require('../utils/geo');
+const { sendVerificationEmail } = require('../utils/email');
 
 const JWT_SECRET = process.env.JWT_SECRET;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -37,15 +39,18 @@ router.post('/register', async (req, res) => {
     const regIp = getClientIp(req);
     const regGeo = getGeoInfo(regIp);
 
+    const verificationToken = crypto.randomBytes(32).toString('hex');
+
     user = new User({
       username,
       email,
       password,
       totalXP: transferXP,
-      loginCount: 1,
-      lastLogin: new Date(),
+      loginCount: 0,
       lastActive: new Date(),
-      emailVerified: true,
+      emailVerified: false,
+      verificationToken,
+      verificationTokenExpires: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24 hours
       nativeLanguage: nativeLanguage || 'en',
       targetLanguage: targetLanguage || 'ko',
       lastIp: regIp,
@@ -67,26 +72,14 @@ router.post('/register', async (req, res) => {
       ).catch(() => {});
     } catch (_) {}
 
-    const token = jwt.sign(
-      { userId: user._id },
-      JWT_SECRET,
-      { expiresIn: '7d' }
-    );
+    // Send verification email (fire-and-forget to avoid blocking response if SMTP is slow)
+    sendVerificationEmail(email, verificationToken).catch((err) => {
+      console.error('Failed to send verification email:', err);
+    });
 
     res.status(201).json({
-      token,
-      user: {
-        id: user._id,
-        username: user.username,
-        email: user.email,
-        role: user.role,
-        status: user.status,
-        preferredVoice: user.preferredVoice,
-        xpDecayEnabled: !!user.xpDecayEnabled,
-        nativeLanguage: user.nativeLanguage,
-        targetLanguage: user.targetLanguage,
-      },
-      guestXPTransferred: transferXP,
+      message: 'Registration successful. Please check your email to verify your account.',
+      needsVerification: true,
     });
   } catch (error) {
     console.error('Registration error:', error);
@@ -117,6 +110,15 @@ router.post('/login', async (req, res) => {
       return res.status(403).json({
         message: 'Your account has been suspended',
         reason: user.suspendReason || 'Contact support for more information',
+      });
+    }
+
+    // Check if email is verified
+    if (!user.emailVerified) {
+      return res.status(403).json({
+        message: 'Please verify your email before logging in.',
+        needsVerification: true,
+        email: user.email,
       });
     }
 
@@ -166,6 +168,63 @@ router.post('/login', async (req, res) => {
     });
   } catch (error) {
     console.error('Login error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Verify email
+router.get('/verify-email', async (req, res) => {
+  try {
+    const { token } = req.query;
+    if (!token) {
+      return res.status(400).json({ message: 'Verification token is required' });
+    }
+
+    const user = await User.findOne({
+      verificationToken: token,
+      verificationTokenExpires: { $gt: new Date() },
+    });
+
+    if (!user) {
+      return res.status(400).json({ message: 'Invalid or expired verification link. Please register again.' });
+    }
+
+    user.emailVerified = true;
+    user.verificationToken = null;
+    user.verificationTokenExpires = null;
+    await user.save();
+
+    res.json({ message: 'Email verified successfully. You can now log in.' });
+  } catch (error) {
+    console.error('Email verification error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Resend verification email
+router.post('/resend-verification', async (req, res) => {
+  try {
+    const { email } = req.body;
+    if (!email) {
+      return res.status(400).json({ message: 'Email is required' });
+    }
+
+    const user = await User.findOne({ email, emailVerified: false });
+    if (!user) {
+      // Don't reveal whether the email exists — always return success
+      return res.json({ message: 'If that email is registered and unverified, a new verification link has been sent.' });
+    }
+
+    const verificationToken = crypto.randomBytes(32).toString('hex');
+    user.verificationToken = verificationToken;
+    user.verificationTokenExpires = new Date(Date.now() + 24 * 60 * 60 * 1000);
+    await user.save();
+
+    await sendVerificationEmail(email, verificationToken);
+
+    res.json({ message: 'If that email is registered and unverified, a new verification link has been sent.' });
+  } catch (error) {
+    console.error('Resend verification error:', error);
     res.status(500).json({ message: 'Server error' });
   }
 });
