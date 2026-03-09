@@ -92,6 +92,38 @@ app.get('/health', (req, res) => {
   res.json({ status: 'API is running' });
 });
 
+// Temporary seed endpoint — remove after seeding
+app.get('/api/seed-defaults', async (req, res) => {
+  try {
+    const Flashcard = require('./models/Flashcard');
+    const flashcardData = require('./flashcardData');
+    const deleted = await Flashcard.deleteMany({ isDefault: true });
+    const CORE_FIELDS = ['korean', 'english', 'romanization', 'category'];
+    const docs = flashcardData.map((card, i) => ({
+      korean: card.korean,
+      english: card.english,
+      romanization: card.romanization || '',
+      category: Array.isArray(card.category) ? card.category : [card.category || 'uncategorized'],
+      isDefault: true,
+      defaultIndex: i,
+      targetLang: 'ko',
+      nativeLang: 'en',
+      masteryLevel: 3,
+      correctCount: 0,
+      incorrectCount: 0,
+      ...Object.fromEntries(
+        Object.entries(card).filter(([k]) => !CORE_FIELDS.includes(k))
+      ),
+    }));
+    for (let i = 0; i < docs.length; i += 500) {
+      await Flashcard.insertMany(docs.slice(i, i + 500));
+    }
+    res.json({ message: `Seeded ${docs.length} default cards (deleted ${deleted.deletedCount} old)` });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
