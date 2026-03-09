@@ -15,7 +15,7 @@ const normalizeCategory = (cat) => {
 };
 
 function FlashcardsPage() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [flashcards, setFlashcards] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -105,18 +105,20 @@ function FlashcardsPage() {
     }
   }, [currentIndex, flashcards.length, saveActivityState, readyToSave]);
 
-  // Keyboard navigation
+  // Keyboard navigation – use refs so the effect never needs to re-subscribe
+  const handlePrevRef = useRef(null);
+  const handleNextRef = useRef(null);
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'ArrowLeft') {
-        handlePrev();
+        handlePrevRef.current?.();
       } else if (e.key === 'ArrowRight') {
-        handleNext();
+        handleNextRef.current?.();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentIndex, flashcards.length, displayMode]);
+  }, []);
 
   // Auto-speak the front text twice when a new card appears (manual mode only)
   useEffect(() => {
@@ -484,6 +486,10 @@ function FlashcardsPage() {
     }, 300);
   };
 
+  // Keep keyboard-navigation refs in sync with latest handlers
+  handleNextRef.current = handleNext;
+  handlePrevRef.current = handlePrev;
+
   // Fade — user knows this card, increase mastery (stay on card)
   const handleCorrect = async () => {
     try {
@@ -625,8 +631,6 @@ function FlashcardsPage() {
   const displayNative = current
     ? (nativeLangCode !== 'en' && current[nativeLangCode]) || current.english
     : '';
-  // For legacy compatibility where displayEnglish is referenced
-  const displayEnglish = displayNative;
   // TTS locale strings for explicit language passing to speechService
   const targetTtsLocale = LANGUAGES[targetLangCode]?.ttsLocale;
   const nativeTtsLocale = LANGUAGES[nativeLangCode]?.ttsLocale;

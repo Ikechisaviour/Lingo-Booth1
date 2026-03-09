@@ -16,7 +16,7 @@ function LessonDetail() {
   const [error, setError] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showTranslation, setShowTranslation] = useState(false);
-  const [translationPeeked, setTranslationPeeked] = useState(false);
+  const [, setTranslationPeeked] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [showQuiz, setShowQuiz] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);

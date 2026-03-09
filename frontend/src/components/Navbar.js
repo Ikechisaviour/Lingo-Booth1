@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { userService, guestXPHelper } from '../services/api';
 import './Navbar.css';
 
-function Navbar({ onLogout, isGuest, onGuestExit, userRole, challengeMode }) {
+function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
@@ -75,11 +75,6 @@ function Navbar({ onLogout, isGuest, onGuestExit, userRole, challengeMode }) {
       return activityState.lesson.title;
     }
     return t('navbar.flashcards');
-  };
-
-  const handleLogout = () => {
-    onLogout();
-    navigate('/login');
   };
 
   const handleSignUp = () => {
