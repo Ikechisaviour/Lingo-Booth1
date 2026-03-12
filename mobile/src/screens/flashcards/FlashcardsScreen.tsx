@@ -217,19 +217,16 @@ const FlashcardsScreen: React.FC = () => {
     }
   }, [shuffleEnabled, activeFlashcards, autoPlay]);
 
-  // Build hierarchical category tree: { primary: { count, subtopics: { topic: count } } }
-  const buildCategoryTree = () => {
-    const tree: Record<string, { count: number; subtopics: Record<string, number> }> = {};
+  // Build category → cards map: { primary: { count, cards: Flashcard[] } }
+  const buildCategoryCards = () => {
+    const map: Record<string, { count: number; cards: typeof flashcards }> = {};
     flashcards.forEach((card) => {
-      const cats = normalizeCategory(card.category);
-      const primary = cats[0];
-      if (!tree[primary]) tree[primary] = { count: 0, subtopics: {} };
-      tree[primary].count++;
-      cats.slice(1).forEach((tag) => {
-        tree[primary].subtopics[tag] = (tree[primary].subtopics[tag] || 0) + 1;
-      });
+      const primary = normalizeCategory(card.category)[0];
+      if (!map[primary]) map[primary] = { count: 0, cards: [] };
+      map[primary].count++;
+      map[primary].cards.push(card);
     });
-    return tree;
+    return map;
   };
 
   const toggleExpandedPrimary = (cat: string) => {
@@ -791,9 +788,8 @@ const FlashcardsScreen: React.FC = () => {
               {t('flashcards.categories', 'Categories')}
             </Text>
             <ScrollView style={{ maxHeight: 400 }}>
-              {Object.entries(buildCategoryTree()).map(([primary, { count, subtopics }]) => {
+              {Object.entries(buildCategoryCards()).map(([primary, { count, cards }]) => {
                 const isExpanded = expandedPrimaries.has(primary);
-                const hasSubtopics = Object.keys(subtopics).length > 0;
                 return (
                   <View key={primary} style={styles.categoryGroup}>
                     <TouchableOpacity
@@ -809,37 +805,38 @@ const FlashcardsScreen: React.FC = () => {
                       <Text style={styles.categoryName}>{primary}</Text>
                       <View style={styles.categoryItemRight}>
                         <Text style={styles.categoryCount}>{count}</Text>
-                        {hasSubtopics && (
-                          <TouchableOpacity
-                            onPress={() => toggleExpandedPrimary(primary)}
-                            style={styles.expandBtn}
-                            hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-                          >
-                            <Text style={[styles.expandArrow, isExpanded && styles.expandArrowOpen]}>›</Text>
-                          </TouchableOpacity>
-                        )}
+                        <TouchableOpacity
+                          onPress={() => toggleExpandedPrimary(primary)}
+                          style={styles.expandBtn}
+                          hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                        >
+                          <Text style={[styles.expandArrow, isExpanded && styles.expandArrowOpen]}>›</Text>
+                        </TouchableOpacity>
                       </View>
                     </TouchableOpacity>
-                    {isExpanded && hasSubtopics && (
+                    {isExpanded && (
                       <View style={styles.subtopicList}>
-                        {Object.entries(subtopics).map(([tag, tagCount]) => (
-                          <TouchableOpacity
-                            key={tag}
-                            style={[styles.subtopicItem, selectedCategories.has(tag) && styles.subtopicSelected]}
-                            onPress={() => {
-                              setSelectedCategories((prev) => {
-                                const next = new Set(prev);
-                                next.has(tag) ? next.delete(tag) : next.add(tag);
-                                return next;
-                              });
-                            }}
-                          >
-                            <Text style={[styles.subtopicName, selectedCategories.has(tag) && styles.subtopicNameActive]}>
-                              {tag}
-                            </Text>
-                            <Text style={styles.categoryCount}>{tagCount}</Text>
-                          </TouchableOpacity>
-                        ))}
+                        {cards.map((card) => {
+                          const isChecked = selectedCardIds.has(card._id);
+                          return (
+                            <TouchableOpacity
+                              key={card._id}
+                              style={[styles.subtopicItem, isChecked && styles.subtopicSelected]}
+                              onPress={() => {
+                                setSelectedCardIds((prev) => {
+                                  const next = new Set(prev);
+                                  next.has(card._id) ? next.delete(card._id) : next.add(card._id);
+                                  return next;
+                                });
+                              }}
+                            >
+                              <Text style={[styles.subtopicName, isChecked && styles.subtopicNameActive]}>
+                                {card[nativeField] || card.english}
+                              </Text>
+                              {isChecked && <Text style={styles.categoryCount}>✓</Text>}
+                            </TouchableOpacity>
+                          );
+                        })}
                       </View>
                     )}
                   </View>
