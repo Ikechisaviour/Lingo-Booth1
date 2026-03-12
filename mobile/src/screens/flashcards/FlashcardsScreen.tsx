@@ -81,7 +81,6 @@ const FlashcardsScreen: React.FC = () => {
   const [shuffledDeck, setShuffledDeck] = useState<any[]>([]);
   const [expandedPrimaries, setExpandedPrimaries] = useState<Set<string>>(new Set());
   const [selectedCardIds, setSelectedCardIds] = useState<Set<string>>(new Set());
-  const [showCardPicker, setShowCardPicker] = useState(false);
 
   const [newCard, setNewCard] = useState({ korean: '', english: '', romanization: '', category: 'vocabulary', topic: '' });
 
@@ -543,12 +542,6 @@ const FlashcardsScreen: React.FC = () => {
         </Text>
         <View style={styles.headerActions}>
           <IconButton
-            icon="card-multiple-outline"
-            size={22}
-            onPress={() => setShowCardPicker(true)}
-            iconColor={selectedCardIds.size > 0 ? colors.primary : colors.textMuted}
-          />
-          <IconButton
             icon="filter-variant"
             size={22}
             onPress={() => setShowCategories(true)}
@@ -604,6 +597,22 @@ const FlashcardsScreen: React.FC = () => {
 
       {/* Card */}
       <View style={styles.cardContainer}>
+        <TouchableOpacity
+          style={styles.cardMicButton}
+          onPress={() => {
+            const text = isFlipped ? backText : frontText;
+            const lang = isFlipped ? backLocale : frontLocale;
+            handleSpeak(text, lang);
+          }}
+          hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+        >
+          <IconButton
+            icon="microphone"
+            size={24}
+            iconColor={isSpeaking ? colors.primary : colors.textMuted}
+            style={{ margin: 0 }}
+          />
+        </TouchableOpacity>
         <TouchableOpacity activeOpacity={0.9} onPress={handleFlip} style={styles.cardTouchable}>
           {/* Front */}
           <Animated.View
@@ -709,76 +718,6 @@ const FlashcardsScreen: React.FC = () => {
       {!isGuest && (
         <FAB icon="plus" style={styles.fab} onPress={() => setShowAddForm(true)} color="#fff" />
       )}
-
-      {/* Card picker modal */}
-      <Modal visible={showCardPicker} transparent animationType="slide" onRequestClose={() => setShowCardPicker(false)}>
-        <View style={styles.modalOverlay}>
-          <View style={styles.modalSheet}>
-            <Text variant="titleMedium" style={styles.modalTitle}>
-              {t('flashcards.selectCards', 'Select Cards to Study')}
-            </Text>
-            <View style={styles.pickerHeader}>
-              {selectedCardIds.size > 0 ? (
-                <>
-                  <Text style={styles.pickerSelectedLabel}>
-                    ☑ {selectedCardIds.size} / {categoryFilteredCards.length} {t('flashcards.selected', 'selected')}
-                  </Text>
-                  <Button compact onPress={() => setSelectedCardIds(new Set())}>
-                    {t('common.clearAll', 'Clear All')}
-                  </Button>
-                </>
-              ) : (
-                <Text style={styles.pickerHint}>
-                  {t('flashcards.tapCardsToSelect', 'Tap cards to include them in your study set')}
-                </Text>
-              )}
-            </View>
-            <ScrollView style={{ maxHeight: 420 }}>
-              {categoryFilteredCards.map((card) => {
-                const isChecked = selectedCardIds.has(card._id);
-                return (
-                  <TouchableOpacity
-                    key={card._id}
-                    style={[styles.pickerItem, isChecked && styles.pickerItemSelected]}
-                    onPress={() => {
-                      setSelectedCardIds((prev) => {
-                        const next = new Set(prev);
-                        next.has(card._id) ? next.delete(card._id) : next.add(card._id);
-                        return next;
-                      });
-                    }}
-                  >
-                    <View style={[styles.pickerCheckbox, isChecked && styles.pickerCheckboxChecked]}>
-                      {isChecked && <Text style={styles.pickerCheckmark}>✓</Text>}
-                    </View>
-                    <View style={styles.pickerCardInfo}>
-                      <Text style={styles.pickerCardTarget} numberOfLines={1}>
-                        {card[targetField] || card.korean}
-                      </Text>
-                      <Text style={styles.pickerCardNative} numberOfLines={1}>
-                        {card[nativeField] || card.english}
-                      </Text>
-                    </View>
-                    <View style={styles.pickerMastery}>
-                      {[1, 2, 3, 4, 5].map((s) => (
-                        <Text key={s} style={{ fontSize: 10, color: s <= (card.masteryLevel || 0) ? colors.accentYellow : colors.border }}>★</Text>
-                      ))}
-                    </View>
-                  </TouchableOpacity>
-                );
-              })}
-            </ScrollView>
-            <View style={styles.modalActions}>
-              <Button onPress={() => setSelectedCardIds(new Set())}>{t('flashcards.studyAll', 'Study All')}</Button>
-              <Button mode="contained" onPress={() => setShowCardPicker(false)}>
-                {selectedCardIds.size > 0
-                  ? `▶ ${t('flashcards.studySelected', 'Study')} (${selectedCardIds.size})`
-                  : t('common.done', 'Done')}
-              </Button>
-            </View>
-          </View>
-        </View>
-      </Modal>
 
       {/* Category filter modal */}
       <Modal visible={showCategories} transparent animationType="slide" onRequestClose={() => setShowCategories(false)}>
@@ -1013,6 +952,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 20,
+  },
+  cardMicButton: {
+    position: 'absolute',
+    bottom: 12,
+    right: 28,
+    zIndex: 10,
+    borderRadius: 20,
+    backgroundColor: 'rgba(255,255,255,0.85)',
   },
   cardTouchable: {
     width: SCREEN_WIDTH - 40,
