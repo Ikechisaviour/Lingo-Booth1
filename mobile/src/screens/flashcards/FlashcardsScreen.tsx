@@ -9,6 +9,8 @@ import {
   ActivityIndicator,
   Modal,
   FlatList,
+  AppState,
+  Platform,
 } from 'react-native';
 import { Text, Button, IconButton, TextInput, FAB, Chip, ProgressBar } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
@@ -20,6 +22,17 @@ import {
   showPlayerNotification,
   dismissPlayerNotification,
 } from '../../services/playerNotification';
+
+// PiP is Android-only and unavailable in Expo Go — import safely
+let PipHandler: { enterPipMode: (w?: number, h?: number) => void } | null = null;
+if (Platform.OS === 'android') {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    PipHandler = require('react-native-pip-android').default;
+  } catch {
+    // Not linked (e.g. Expo Go) — PiP silently disabled
+  }
+}
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import LANGUAGES, { getLangName } from '../../config/languages';
@@ -136,6 +149,19 @@ const FlashcardsScreen: React.FC = () => {
     if (!shuffleEnabled) return activeFlashcards;
     return shuffledDeck.length === activeFlashcards.length ? shuffledDeck : activeFlashcards;
   }, [shuffleEnabled, shuffledDeck, activeFlashcards]);
+
+  // PiP — enter picture-in-picture when autoplay is active and user leaves the app
+  useEffect(() => {
+    if (!autoPlay || !PipHandler) return;
+    const sub = AppState.addEventListener('change', (nextState) => {
+      if (nextState === 'background' && autoPlayRef.current && PipHandler) {
+        try {
+          PipHandler.enterPipMode(16, 9); // 16:9 aspect ratio
+        } catch {}
+      }
+    });
+    return () => sub.remove();
+  }, [autoPlay]);
 
   // Mini-player notification — show/update when autoplay is on, dismiss when off
   useEffect(() => {
@@ -385,8 +411,14 @@ const FlashcardsScreen: React.FC = () => {
   // Mastery: correct / incorrect
   const handleCorrect = async () => {
     const card = displayedCards[currentIndex];
-    if (!card || card.masteryLevel >= 5) return;
+    if (!card || (card.masteryLevel || 0) >= 5) return;
 
+    const newLevel = Math.min((card.masteryLevel || 0) + 1, 5);
+
+    // Optimistic update — stars change immediately for everyone
+    setFlashcards((prev) =>
+      prev.map((c) => (c._id === card._id ? { ...c, masteryLevel: newLevel } : c)),
+    );
     setStarPulse('up');
     setTimeout(() => setStarPulse(null), 600);
 
@@ -394,17 +426,8 @@ const FlashcardsScreen: React.FC = () => {
       addGuestXP(1);
       guestActivityTracker.trackCard(true);
     } else if (userId) {
-      try {
-        await flashcardService.updateFlashcard(card._id, {
-          masteryLevel: Math.min((card.masteryLevel || 0) + 1, 5),
-        });
-        await userService.awardXP(userId, { points: 1, source: 'flashcard_correct' });
-        setFlashcards((prev) =>
-          prev.map((c) =>
-            c._id === card._id ? { ...c, masteryLevel: Math.min((c.masteryLevel || 0) + 1, 5) } : c,
-          ),
-        );
-      } catch {}
+      flashcardService.updateFlashcard(card._id, { masteryLevel: newLevel }).catch(() => {});
+      userService.awardXP(userId, { points: 1, source: 'flashcard_correct' }).catch(() => {});
     }
   };
 
@@ -412,22 +435,19 @@ const FlashcardsScreen: React.FC = () => {
     const card = displayedCards[currentIndex];
     if (!card || (card.masteryLevel || 0) <= 0) return;
 
+    const newLevel = Math.max((card.masteryLevel || 0) - 1, 0);
+
+    // Optimistic update — stars change immediately for everyone
+    setFlashcards((prev) =>
+      prev.map((c) => (c._id === card._id ? { ...c, masteryLevel: newLevel } : c)),
+    );
     setStarPulse('down');
     setTimeout(() => setStarPulse(null), 600);
 
     if (isGuest) {
       guestActivityTracker.trackCard(false);
     } else if (userId) {
-      try {
-        await flashcardService.updateFlashcard(card._id, {
-          masteryLevel: Math.max((card.masteryLevel || 0) - 1, 0),
-        });
-        setFlashcards((prev) =>
-          prev.map((c) =>
-            c._id === card._id ? { ...c, masteryLevel: Math.max((c.masteryLevel || 0) - 1, 0) } : c,
-          ),
-        );
-      } catch {}
+      flashcardService.updateFlashcard(card._id, { masteryLevel: newLevel }).catch(() => {});
     }
   };
 

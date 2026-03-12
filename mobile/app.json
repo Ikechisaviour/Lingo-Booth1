@@ -51,7 +51,8 @@
           "color": "#58cc02",
           "defaultChannel": "flashcards"
         }
-      ]
+      ],
+      "./plugins/withPictureInPicture"
     ]
   }
 }
