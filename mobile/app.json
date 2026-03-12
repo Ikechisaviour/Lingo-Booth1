@@ -16,15 +16,16 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.lingobooth.app",
       "infoPlist": {
-        "UIBackgroundModes": ["audio"]
+        "UIBackgroundModes": [
+          "audio"
+        ]
       }
     },
     "android": {
       "package": "com.lingobooth.app",
       "adaptiveIcon": {
-        "backgroundColor": "#faf7f2",
         "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png"
+        "backgroundColor": "#ffffff"
       },
       "permissions": [
         "android.permission.FOREGROUND_SERVICE",
@@ -52,7 +53,9 @@
           "defaultChannel": "flashcards"
         }
       ],
-      "./plugins/withPictureInPicture"
+      "./plugins/withPictureInPicture",
+      "expo-build-properties",
+      "expo-localization"
     ]
   }
 }

@@ -1080,7 +1080,7 @@ function FlashcardsPage() {
                 </button>
               </div>
 
-              {/* Portrait sidebar: inside study-area, right after nav buttons */}
+              {/* Portrait sidebar: below nav buttons, expands inline so page scrolls */}
               <div className="fc-sidebar-area fc-sidebar-portrait" ref={sidebarToggleRef}>
               <button
                 className={`sidebar-toggle ${showSidebar ? 'sidebar-toggle-open' : ''}`}
@@ -1091,78 +1091,41 @@ function FlashcardsPage() {
                 <span className="sidebar-toggle-label">{showSidebar ? t('common.close') : t('flashcards.studyModeCards')}</span>
               </button>
               <div className={`card-list-sidebar ${showSidebar ? 'sidebar-open' : ''}`}>
-                {/* Study Mode Selector */}
                 <div className="sidebar-mode-selector">
                   <span className="mode-label">{t('flashcards.studyMode')}</span>
                   <div className="mode-options">
-                    <button
-                      className={`mode-btn ${displayMode === 'target' ? 'active' : ''}`}
-                      onClick={() => {
-                        setDisplayMode('target');
-                        setShowsTargetFirst(true);
-                      }}
-                    >
+                    <button className={`mode-btn ${displayMode === 'target' ? 'active' : ''}`} onClick={() => { setDisplayMode('target'); setShowsTargetFirst(true); }}>
                       <span className="mode-icon">{LANGUAGES[getTargetLangCode()]?.flag || '🌍'}</span>
                       {t('flashcards.showTargetFirst', { target: getTargetLangName(), native: getNativeLangName() })}
                     </button>
-                    <button
-                      className={`mode-btn ${displayMode === 'native' ? 'active' : ''}`}
-                      onClick={() => {
-                        setDisplayMode('native');
-                        setShowsTargetFirst(false);
-                      }}
-                    >
+                    <button className={`mode-btn ${displayMode === 'native' ? 'active' : ''}`} onClick={() => { setDisplayMode('native'); setShowsTargetFirst(false); }}>
                       <span className="mode-icon">{LANGUAGES[getNativeLangCode()]?.flag || '🌍'}</span>
                       {t('flashcards.showNativeFirst', { native: getNativeLangName(), target: getTargetLangName() })}
                     </button>
-                    <button
-                      className={`mode-btn ${displayMode === 'random' ? 'active' : ''}`}
-                      onClick={() => {
-                        setDisplayMode('random');
-                        setShowsTargetFirst(Math.random() < 0.5);
-                      }}
-                    >
-                      <span className="mode-icon">🎲</span>
-                      Random
+                    <button className={`mode-btn ${displayMode === 'random' ? 'active' : ''}`} onClick={() => { setDisplayMode('random'); setShowsTargetFirst(Math.random() < 0.5); }}>
+                      <span className="mode-icon">🎲</span> Random
                     </button>
                   </div>
                 </div>
-
-                {/* Study Style Selector */}
                 <div className="sidebar-mode-selector">
                   <span className="mode-label">{t('flashcards.studyStyle')}</span>
                   <div className="mode-options">
-                    <button
-                      className={`mode-btn ${studyStyle === 'both' ? 'active' : ''}`}
-                      onClick={() => setStudyStyle('both')}
-                    >
-                      <span className="mode-icon">📖🔊</span>
-                      {t('flashcards.textAndAudio')}
+                    <button className={`mode-btn ${studyStyle === 'both' ? 'active' : ''}`} onClick={() => setStudyStyle('both')}>
+                      <span className="mode-icon">📖🔊</span> {t('flashcards.textAndAudio')}
                     </button>
-                    <button
-                      className={`mode-btn ${studyStyle === 'text' ? 'active' : ''}`}
-                      onClick={() => { setStudyStyle('text'); speechService.cancel(); }}
-                    >
-                      <span className="mode-icon">📖</span>
-                      {t('flashcards.textOnly')}
+                    <button className={`mode-btn ${studyStyle === 'text' ? 'active' : ''}`} onClick={() => { setStudyStyle('text'); speechService.cancel(); }}>
+                      <span className="mode-icon">📖</span> {t('flashcards.textOnly')}
                     </button>
-                    <button
-                      className={`mode-btn ${studyStyle === 'audio' ? 'active' : ''}`}
-                      onClick={() => setStudyStyle('audio')}
-                    >
-                      <span className="mode-icon">🔊</span>
-                      {t('flashcards.audioOnly')}
+                    <button className={`mode-btn ${studyStyle === 'audio' ? 'active' : ''}`} onClick={() => setStudyStyle('audio')}>
+                      <span className="mode-icon">🔊</span> {t('flashcards.audioOnly')}
                     </button>
                   </div>
                 </div>
-
                 <div className="card-list-header">
                   {selectedCardIds.size > 0 ? (
                     <>
                       <span className="card-list-selected-label">✓ {selectedCardIds.size} / {allLangFilteredCards.length}</span>
-                      <button className="category-clear" onClick={() => setSelectedCardIds(new Set())}>
-                        {t('common.clearAll', 'Clear')}
-                      </button>
+                      <button className="category-clear" onClick={() => setSelectedCardIds(new Set())}>{t('common.clearAll', 'Clear')}</button>
                     </>
                   ) : (
                     <span className="card-list-hint">{t('flashcards.clickCategoryHint', 'Click a category to select all its cards')}</span>
@@ -1175,35 +1138,19 @@ function FlashcardsPage() {
                     const allSelected = selectedCount === data.cards.length;
                     return (
                       <div key={primary} className="category-group">
-                        <button
-                          className={`category-item ${selectedCount > 0 ? 'selected' : ''}`}
-                          onClick={() => toggleCategoryCards(data.cards)}
-                        >
+                        <button className={`category-item ${selectedCount > 0 ? 'selected' : ''}`} onClick={() => toggleCategoryCards(data.cards)}>
                           <span className="category-check">{allSelected ? '✓' : selectedCount > 0 ? '–' : ''}</span>
                           <span className="category-name">{t(`flashcards.categoryNames.${primary}`, { defaultValue: primary })}</span>
                           <span className="card-count">{selectedCount > 0 ? `${selectedCount}/` : ''}{data.count}</span>
-                          <span
-                            className={`category-expand-arrow ${isExpanded ? 'expanded' : ''}`}
-                            onClick={(e) => { e.stopPropagation(); toggleExpandedCategory(primary); }}
-                            title={isExpanded ? 'Collapse' : 'Show cards'}
-                          >›</span>
+                          <span className={`category-expand-arrow ${isExpanded ? 'expanded' : ''}`} onClick={(e) => { e.stopPropagation(); toggleExpandedCategory(primary); }} title={isExpanded ? 'Collapse' : 'Show cards'}>›</span>
                         </button>
                         {isExpanded && (
                           <div className="subtopic-list">
                             {data.cards.map(card => {
                               const isChecked = selectedCardIds.has(card._id);
                               return (
-                                <button
-                                  key={card._id}
-                                  className={`subtopic-item ${isChecked ? 'selected' : ''}`}
-                                  onClick={() => {
-                                    setSelectedCardIds(prev => {
-                                      const next = new Set(prev);
-                                      next.has(card._id) ? next.delete(card._id) : next.add(card._id);
-                                      return next;
-                                    });
-                                  }}
-                                >
+                                <button key={card._id} className={`subtopic-item ${isChecked ? 'selected' : ''}`}
+                                  onClick={() => { setSelectedCardIds(prev => { const next = new Set(prev); next.has(card._id) ? next.delete(card._id) : next.add(card._id); return next; }); }}>
                                   <span className="category-check">{isChecked ? '✓' : ''}</span>
                                   <span className="category-name">{card[getLangField(nativeLangCode)] || card.english}</span>
                                 </button>

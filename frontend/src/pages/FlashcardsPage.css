@@ -1,9 +1,8 @@
 .flashcards-container {
   padding: 16px 0 0;
-  height: calc(100vh - 64px);
+  min-height: calc(100vh - 64px);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 
 .flashcards-container > .container {
@@ -148,7 +147,6 @@
   grid-template-rows: auto 1fr;
   flex: 1;
   min-height: 0;
-  overflow: hidden;
 }
 
 /* Header area */
@@ -243,7 +241,6 @@
   display: flex;
   flex-direction: column;
   min-height: 0;
-  overflow: hidden;
 }
 
 /* Study Progress */
@@ -312,9 +309,8 @@
 .flashcard {
   perspective: 1000px;
   margin-bottom: 10px;
-  flex: 1;
-  min-height: 180px;
-  max-height: 360px;
+  flex: 0 0 auto;
+  height: clamp(180px, 30vh, 360px);
   position: relative;
 }
 
@@ -613,20 +609,14 @@
   color: var(--accent-red);
 }
 
-/* Card List Sidebar — opens upward as overlay on narrow screens */
+/* Card List Sidebar — expands inline below button, page scrolls */
 .card-list-sidebar.sidebar-open {
-  position: absolute;
-  bottom: 100%;
-  left: 0;
-  right: 0;
-  margin-bottom: 8px;
-  width: 100%;
-  max-height: 60vh;
-  overflow-y: auto;
+  display: block;
+  margin-top: 8px;
   background: var(--surface);
   border-radius: 16px;
   border: 1px solid var(--border-light);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   animation: fadeIn 0.15s ease;
 }
 
@@ -1021,8 +1011,7 @@
   }
 
   .flashcard {
-    min-height: 150px;
-    max-height: 280px;
+    height: clamp(150px, 28vh, 280px);
   }
 
   .main-text {
@@ -1141,7 +1130,7 @@
   /* Sidebar opens in-place in the left column (not overlay) */
   .fc-sidebar-landscape .card-list-sidebar.sidebar-open {
     position: static;
-    margin-bottom: 0;
+    margin-top: 0;
     max-height: none;
     overflow-y: auto;
     background: var(--surface);
