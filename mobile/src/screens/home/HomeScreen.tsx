@@ -100,6 +100,11 @@ const HomeScreen: React.FC = () => {
     if (!lastActivity) return;
     if (lastActivity.type === 'flashcard') {
       navigation.navigate('Flashcards');
+    } else if (lastActivity.lessonId) {
+      navigation.navigate('Lessons', {
+        screen: 'LessonDetail',
+        params: { lessonId: lastActivity.lessonId },
+      });
     } else {
       navigation.navigate('Lessons');
     }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import {
   View,
   ScrollView,
@@ -30,6 +30,15 @@ const normalizeCategory = (cat: any): string[] => {
 
 const getLangField = (code: string) => (code === 'ko' ? 'korean' : code === 'en' ? 'english' : code);
 
+function shuffleArray<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 const FlashcardsScreen: React.FC = () => {
   const { t } = useTranslation();
   const { userId, isGuest, guestXP, addGuestXP } = useAuthStore();
@@ -50,8 +59,11 @@ const FlashcardsScreen: React.FC = () => {
   const [showAddForm, setShowAddForm] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [starPulse, setStarPulse] = useState<'up' | 'down' | null>(null);
+  const [shuffleEnabled, setShuffleEnabled] = useState(false);
+  const [shuffledDeck, setShuffledDeck] = useState<any[]>([]);
+  const [expandedPrimaries, setExpandedPrimaries] = useState<Set<string>>(new Set());
 
-  const [newCard, setNewCard] = useState({ korean: '', english: '', romanization: '', category: 'vocabulary' });
+  const [newCard, setNewCard] = useState({ korean: '', english: '', romanization: '', category: 'vocabulary', topic: '' });
 
   const autoPlayRef = useRef(false);
   const transitioningRef = useRef(false);
@@ -100,13 +112,19 @@ const FlashcardsScreen: React.FC = () => {
         })
     ).filter((c) => !backendSendsTargetField || !!c[targetField]);
 
+  // Displayed deck — shuffled or normal order
+  const displayedCards = useMemo(() => {
+    if (!shuffleEnabled) return activeFlashcards;
+    return shuffledDeck.length === activeFlashcards.length ? shuffledDeck : activeFlashcards;
+  }, [shuffleEnabled, shuffledDeck, activeFlashcards]);
+
   // Reset index when filtered deck shrinks
   useEffect(() => {
-    if (activeFlashcards.length > 0 && currentIndex >= activeFlashcards.length) {
+    if (displayedCards.length > 0 && currentIndex >= displayedCards.length) {
       setCurrentIndex(0);
       setIsFlipped(false);
     }
-  }, [activeFlashcards.length, currentIndex]);
+  }, [displayedCards.length, currentIndex]);
 
   // Reset on category change
   useEffect(() => {
@@ -116,17 +134,48 @@ const FlashcardsScreen: React.FC = () => {
       setAutoPlay(false);
       speechService.cancel();
     }
+    // Re-shuffle if shuffle mode is on
+    if (shuffleEnabled) {
+      setShuffledDeck(shuffleArray(activeFlashcards));
+    }
   }, [selectedCategories]);
 
-  // Get category counts
-  const getCategoryCounts = () => {
-    const counts: Record<string, number> = {};
+  // Toggle shuffle
+  const handleToggleShuffle = useCallback(() => {
+    if (!shuffleEnabled) {
+      setShuffledDeck(shuffleArray(activeFlashcards));
+    }
+    setShuffleEnabled((prev) => !prev);
+    setCurrentIndex(0);
+    setIsFlipped(false);
+    doFlip(false);
+    if (autoPlay) {
+      setAutoPlay(false);
+      speechService.cancel();
+    }
+  }, [shuffleEnabled, activeFlashcards, autoPlay]);
+
+  // Build hierarchical category tree: { primary: { count, subtopics: { topic: count } } }
+  const buildCategoryTree = () => {
+    const tree: Record<string, { count: number; subtopics: Record<string, number> }> = {};
     flashcards.forEach((card) => {
-      normalizeCategory(card.category).forEach((cat) => {
-        counts[cat] = (counts[cat] || 0) + 1;
+      const cats = normalizeCategory(card.category);
+      const primary = cats[0];
+      if (!tree[primary]) tree[primary] = { count: 0, subtopics: {} };
+      tree[primary].count++;
+      cats.slice(1).forEach((tag) => {
+        tree[primary].subtopics[tag] = (tree[primary].subtopics[tag] || 0) + 1;
       });
     });
-    return counts;
+    return tree;
+  };
+
+  const toggleExpandedPrimary = (cat: string) => {
+    setExpandedPrimaries((prev) => {
+      const next = new Set(prev);
+      next.has(cat) ? next.delete(cat) : next.add(cat);
+      return next;
+    });
   };
 
   const determineCardDisplay = () => {
@@ -152,7 +201,7 @@ const FlashcardsScreen: React.FC = () => {
 
     // Speak back side on flip
     if (next && studyStyle !== 'text') {
-      const card = activeFlashcards[currentIndex];
+      const card = displayedCards[currentIndex];
       if (!card) return;
       const text = showsTargetFirst ? card[nativeField] || card.english : card[targetField];
       const lang = showsTargetFirst ? nativeLocale : targetLocale;
@@ -166,9 +215,9 @@ const FlashcardsScreen: React.FC = () => {
   // Auto-speak front when new card appears
   useEffect(() => {
     if (autoPlayRef.current || studyStyle === 'text') return;
-    if (activeFlashcards.length === 0 || !activeFlashcards[currentIndex]) return;
+    if (displayedCards.length === 0 || !displayedCards[currentIndex]) return;
 
-    const card = activeFlashcards[currentIndex];
+    const card = displayedCards[currentIndex];
     const text = showsTargetFirst ? card[targetField] : card[nativeField] || card.english;
     const lang = showsTargetFirst ? targetLocale : nativeLocale;
 
@@ -177,11 +226,11 @@ const FlashcardsScreen: React.FC = () => {
     }, 300);
 
     return () => clearTimeout(timer);
-  }, [currentIndex, activeFlashcards.length, studyStyle]);
+  }, [currentIndex, displayedCards.length, studyStyle]);
 
   // Auto-play cycle
   useEffect(() => {
-    if (!autoPlay || activeFlashcards.length === 0 || !activeFlashcards[currentIndex]) return;
+    if (!autoPlay || displayedCards.length === 0 || !displayedCards[currentIndex]) return;
     if (studyStyle === 'text') {
       setAutoPlay(false);
       return;
@@ -190,7 +239,7 @@ const FlashcardsScreen: React.FC = () => {
     let cancelled = false;
 
     const autoPlayCard = async () => {
-      const card = activeFlashcards[currentIndex];
+      const card = displayedCards[currentIndex];
       const frontText = showsTargetFirst ? card[targetField] : card[nativeField] || card.english;
       const backText = showsTargetFirst ? card[nativeField] || card.english : card[targetField];
       const frontLocale = showsTargetFirst ? targetLocale : nativeLocale;
@@ -230,7 +279,7 @@ const FlashcardsScreen: React.FC = () => {
       await speechService.waitAudio(1200);
       if (cancelled) return;
 
-      if (currentIndex >= activeFlashcards.length - 1) {
+      if (currentIndex >= displayedCards.length - 1) {
         setAutoPlay(false);
         return;
       }
@@ -251,7 +300,7 @@ const FlashcardsScreen: React.FC = () => {
 
   // Navigation
   const handleNext = async () => {
-    if (transitioningRef.current || currentIndex >= activeFlashcards.length - 1) return;
+    if (transitioningRef.current || currentIndex >= displayedCards.length - 1) return;
     if (autoPlay) {
       setAutoPlay(false);
       speechService.cancel();
@@ -264,7 +313,7 @@ const FlashcardsScreen: React.FC = () => {
       doFlip(true);
     }
 
-    const card = activeFlashcards[currentIndex];
+    const card = displayedCards[currentIndex];
     const text = showsTargetFirst ? card[nativeField] || card.english : card[targetField];
     const lang = showsTargetFirst ? nativeLocale : targetLocale;
 
@@ -299,7 +348,7 @@ const FlashcardsScreen: React.FC = () => {
 
   // Mastery: correct / incorrect
   const handleCorrect = async () => {
-    const card = activeFlashcards[currentIndex];
+    const card = displayedCards[currentIndex];
     if (!card || card.masteryLevel >= 5) return;
 
     setStarPulse('up');
@@ -314,7 +363,6 @@ const FlashcardsScreen: React.FC = () => {
           masteryLevel: Math.min((card.masteryLevel || 0) + 1, 5),
         });
         await userService.awardXP(userId, { points: 1, source: 'flashcard_correct' });
-        // Update local state
         setFlashcards((prev) =>
           prev.map((c) =>
             c._id === card._id ? { ...c, masteryLevel: Math.min((c.masteryLevel || 0) + 1, 5) } : c,
@@ -325,7 +373,7 @@ const FlashcardsScreen: React.FC = () => {
   };
 
   const handleIncorrect = async () => {
-    const card = activeFlashcards[currentIndex];
+    const card = displayedCards[currentIndex];
     if (!card || (card.masteryLevel || 0) <= 0) return;
 
     setStarPulse('down');
@@ -356,10 +404,10 @@ const FlashcardsScreen: React.FC = () => {
         korean: newCard.korean,
         english: newCard.english,
         romanization: newCard.romanization,
-        category: [newCard.category],
+        category: newCard.topic.trim() ? [newCard.category, newCard.topic.trim()] : [newCard.category],
       });
       setFlashcards((prev) => [...prev, response.data]);
-      setNewCard({ korean: '', english: '', romanization: '', category: 'vocabulary' });
+      setNewCard({ korean: '', english: '', romanization: '', category: 'vocabulary', topic: '' });
       setShowAddForm(false);
     } catch {}
   };
@@ -407,7 +455,7 @@ const FlashcardsScreen: React.FC = () => {
     );
   }
 
-  if (activeFlashcards.length === 0) {
+  if (displayedCards.length === 0) {
     return (
       <View style={styles.centered}>
         <Text style={styles.emptyIcon}>🎴</Text>
@@ -424,7 +472,7 @@ const FlashcardsScreen: React.FC = () => {
     );
   }
 
-  const card = activeFlashcards[currentIndex];
+  const card = displayedCards[currentIndex];
   const frontText = showsTargetFirst ? card[targetField] : card[nativeField] || card.english;
   const backText = showsTargetFirst ? card[nativeField] || card.english : card[targetField];
   const frontLabel = showsTargetFirst ? getLangName(targetLanguage) : getLangName(nativeLanguage);
@@ -438,7 +486,7 @@ const FlashcardsScreen: React.FC = () => {
       {/* Header bar */}
       <View style={styles.header}>
         <Text style={styles.counter}>
-          {currentIndex + 1} / {activeFlashcards.length}
+          {currentIndex + 1} / {displayedCards.length}
         </Text>
         <View style={styles.headerActions}>
           <IconButton
@@ -446,6 +494,12 @@ const FlashcardsScreen: React.FC = () => {
             size={22}
             onPress={() => setShowCategories(true)}
             iconColor={selectedCategories.size > 0 ? colors.primary : colors.textMuted}
+          />
+          <IconButton
+            icon="shuffle-variant"
+            size={22}
+            onPress={handleToggleShuffle}
+            iconColor={shuffleEnabled ? colors.primary : colors.textMuted}
           />
           <IconButton
             icon={autoPlay ? 'pause-circle' : 'play-circle'}
@@ -464,9 +518,16 @@ const FlashcardsScreen: React.FC = () => {
         </View>
       </View>
 
+      {/* Shuffle badge */}
+      {shuffleEnabled && (
+        <View style={styles.shuffleBadge}>
+          <Text style={styles.shuffleBadgeText}>🔀 {t('flashcards.shuffleOn', 'Shuffled')}</Text>
+        </View>
+      )}
+
       {/* Progress bar */}
       <ProgressBar
-        progress={(currentIndex + 1) / activeFlashcards.length}
+        progress={(currentIndex + 1) / displayedCards.length}
         color={colors.primary}
         style={styles.progressBar}
       />
@@ -565,7 +626,7 @@ const FlashcardsScreen: React.FC = () => {
         <Button
           mode="contained"
           onPress={handleNext}
-          disabled={currentIndex >= activeFlashcards.length - 1}
+          disabled={currentIndex >= displayedCards.length - 1}
           icon="chevron-right"
           contentStyle={{ flexDirection: 'row-reverse' }}
           style={[styles.navBtn, { backgroundColor: colors.primary }]}
@@ -587,22 +648,60 @@ const FlashcardsScreen: React.FC = () => {
               {t('flashcards.categories', 'Categories')}
             </Text>
             <ScrollView style={{ maxHeight: 400 }}>
-              {Object.entries(getCategoryCounts()).map(([cat, count]) => (
-                <TouchableOpacity
-                  key={cat}
-                  style={[styles.categoryItem, selectedCategories.has(cat) && styles.categorySelected]}
-                  onPress={() => {
-                    setSelectedCategories((prev) => {
-                      const next = new Set(prev);
-                      next.has(cat) ? next.delete(cat) : next.add(cat);
-                      return next;
-                    });
-                  }}
-                >
-                  <Text style={styles.categoryName}>{cat}</Text>
-                  <Text style={styles.categoryCount}>{count as number}</Text>
-                </TouchableOpacity>
-              ))}
+              {Object.entries(buildCategoryTree()).map(([primary, { count, subtopics }]) => {
+                const isExpanded = expandedPrimaries.has(primary);
+                const hasSubtopics = Object.keys(subtopics).length > 0;
+                return (
+                  <View key={primary} style={styles.categoryGroup}>
+                    <TouchableOpacity
+                      style={[styles.categoryItem, selectedCategories.has(primary) && styles.categorySelected]}
+                      onPress={() => {
+                        setSelectedCategories((prev) => {
+                          const next = new Set(prev);
+                          next.has(primary) ? next.delete(primary) : next.add(primary);
+                          return next;
+                        });
+                      }}
+                    >
+                      <Text style={styles.categoryName}>{primary}</Text>
+                      <View style={styles.categoryItemRight}>
+                        <Text style={styles.categoryCount}>{count}</Text>
+                        {hasSubtopics && (
+                          <TouchableOpacity
+                            onPress={() => toggleExpandedPrimary(primary)}
+                            style={styles.expandBtn}
+                            hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                          >
+                            <Text style={[styles.expandArrow, isExpanded && styles.expandArrowOpen]}>›</Text>
+                          </TouchableOpacity>
+                        )}
+                      </View>
+                    </TouchableOpacity>
+                    {isExpanded && hasSubtopics && (
+                      <View style={styles.subtopicList}>
+                        {Object.entries(subtopics).map(([tag, tagCount]) => (
+                          <TouchableOpacity
+                            key={tag}
+                            style={[styles.subtopicItem, selectedCategories.has(tag) && styles.subtopicSelected]}
+                            onPress={() => {
+                              setSelectedCategories((prev) => {
+                                const next = new Set(prev);
+                                next.has(tag) ? next.delete(tag) : next.add(tag);
+                                return next;
+                              });
+                            }}
+                          >
+                            <Text style={[styles.subtopicName, selectedCategories.has(tag) && styles.subtopicNameActive]}>
+                              {tag}
+                            </Text>
+                            <Text style={styles.categoryCount}>{tagCount}</Text>
+                          </TouchableOpacity>
+                        ))}
+                      </View>
+                    )}
+                  </View>
+                );
+              })}
             </ScrollView>
             <View style={styles.modalActions}>
               <Button onPress={() => setSelectedCategories(new Set())}>{t('common.clearAll', 'Clear All')}</Button>
@@ -660,6 +759,16 @@ const FlashcardsScreen: React.FC = () => {
               </Chip>
             </View>
 
+            <Text style={styles.settingLabel}>{t('flashcards.deckOrder', 'Deck Order')}</Text>
+            <View style={styles.chipRow}>
+              <Chip selected={!shuffleEnabled} onPress={() => { if (shuffleEnabled) handleToggleShuffle(); setShowSettings(false); }} style={styles.chip}>
+                {t('flashcards.inOrder', 'In Order')}
+              </Chip>
+              <Chip selected={shuffleEnabled} onPress={() => { if (!shuffleEnabled) handleToggleShuffle(); setShowSettings(false); }} style={styles.chip}>
+                🔀 {t('flashcards.shuffled', 'Shuffled')}
+              </Chip>
+            </View>
+
             <Button mode="contained" onPress={() => setShowSettings(false)} style={{ marginTop: 16 }}>
               {t('common.done', 'Done')}
             </Button>
@@ -695,6 +804,22 @@ const FlashcardsScreen: React.FC = () => {
               mode="outlined"
               style={styles.formInput}
             />
+            <TextInput
+              label={t('flashcards.category', 'Category')}
+              value={newCard.category}
+              onChangeText={(v) => setNewCard({ ...newCard, category: v })}
+              mode="outlined"
+              style={styles.formInput}
+              placeholder="e.g. numbers, greetings"
+            />
+            <TextInput
+              label={t('flashcards.topic', 'Topic (optional)')}
+              value={newCard.topic}
+              onChangeText={(v) => setNewCard({ ...newCard, topic: v })}
+              mode="outlined"
+              style={styles.formInput}
+              placeholder="e.g. days of the week, 1-10"
+            />
             <View style={styles.modalActions}>
               <Button onPress={() => setShowAddForm(false)}>{t('common.cancel', 'Cancel')}</Button>
               <Button mode="contained" onPress={handleAddFlashcard}>
@@ -729,6 +854,16 @@ const styles = StyleSheet.create({
   },
   counter: { fontSize: 16, fontWeight: '700', color: colors.textPrimary },
   headerActions: { flexDirection: 'row' },
+
+  shuffleBadge: {
+    backgroundColor: '#eff6ff',
+    alignSelf: 'center',
+    paddingHorizontal: 12,
+    paddingVertical: 3,
+    borderRadius: 12,
+    marginBottom: 4,
+  },
+  shuffleBadgeText: { fontSize: 12, color: colors.primary, fontWeight: '600' },
 
   progressBar: { height: 4, backgroundColor: colors.border },
 
@@ -852,6 +987,31 @@ const styles = StyleSheet.create({
 
   // Form
   formInput: { marginBottom: 12, backgroundColor: colors.surface },
+
+  // Hierarchical categories
+  categoryGroup: { borderBottomWidth: 1, borderBottomColor: colors.border },
+  categoryItemRight: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  expandBtn: { padding: 4 },
+  expandArrow: { fontSize: 18, color: colors.textMuted, fontWeight: '700' },
+  expandArrowOpen: { transform: [{ rotate: '90deg' }] },
+  subtopicList: {
+    marginLeft: 16,
+    borderLeftWidth: 2,
+    borderLeftColor: colors.primary + '40',
+    marginBottom: 4,
+  },
+  subtopicItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 9,
+    paddingHorizontal: 14,
+    borderRadius: 6,
+    marginBottom: 2,
+  },
+  subtopicSelected: { backgroundColor: colors.primary + '18' },
+  subtopicName: { fontSize: 13, color: colors.textSecondary, textTransform: 'capitalize' },
+  subtopicNameActive: { color: colors.primary, fontWeight: '600' },
 });
 
 export default FlashcardsScreen;

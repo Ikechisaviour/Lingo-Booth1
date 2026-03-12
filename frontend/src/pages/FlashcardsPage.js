@@ -26,6 +26,7 @@ function FlashcardsPage() {
     english: '',
     romanization: '',
     category: ['vocabulary'],
+    topic: '',
   });
   const [showForm, setShowForm] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
@@ -41,6 +42,7 @@ function FlashcardsPage() {
   const [sidebarView, setSidebarView] = useState('all'); // 'all' or 'categories'
   const [selectedCategories, setSelectedCategories] = useState(new Set()); // empty = all
   const [studyStyle, setStudyStyle] = useState('both'); // 'both' | 'text' | 'audio'
+  const [expandedCategories, setExpandedCategories] = useState(new Set());
   const autoPlayRef = useRef(false);
   const sidebarToggleRef = useRef(null);
 
@@ -312,12 +314,18 @@ function FlashcardsPage() {
   const handleAddFlashcard = async (e) => {
     e.preventDefault();
     try {
+      const mainCat = (newFlashcard.category[0] || 'vocabulary').trim();
+      const topic = (newFlashcard.topic || '').trim();
+      const category = topic ? [mainCat, topic] : [mainCat];
       const response = await flashcardService.createFlashcard({
         userId,
-        ...newFlashcard,
+        korean: newFlashcard.korean,
+        english: newFlashcard.english,
+        romanization: newFlashcard.romanization,
+        category,
       });
       setFlashcards([...flashcards, response.data]);
-      setNewFlashcard({ korean: '', english: '', romanization: '', category: ['vocabulary'] });
+      setNewFlashcard({ korean: '', english: '', romanization: '', category: ['vocabulary'], topic: '' });
       setShowForm(false);
     } catch (err) {
       setError('Failed to add flashcard');
@@ -342,6 +350,29 @@ function FlashcardsPage() {
       });
     });
     return counts;
+  };
+
+  // Build a 2-level category tree: primary → { count, subtopics: { topic: count } }
+  const buildCategoryTree = () => {
+    const tree = {};
+    flashcards.forEach(card => {
+      const cats = normalizeCategory(card.category);
+      const primary = cats[0];
+      if (!tree[primary]) tree[primary] = { count: 0, subtopics: {} };
+      tree[primary].count++;
+      cats.slice(1).forEach(tag => {
+        tree[primary].subtopics[tag] = (tree[primary].subtopics[tag] || 0) + 1;
+      });
+    });
+    return tree;
+  };
+
+  const toggleExpandedCategory = (cat) => {
+    setExpandedCategories(prev => {
+      const next = new Set(prev);
+      next.has(cat) ? next.delete(cat) : next.add(cat);
+      return next;
+    });
   };
 
   // Toggle a category filter on/off
@@ -706,9 +737,31 @@ function FlashcardsPage() {
                     </div>
                     <div className="form-group">
                       <label>{t('flashcards.categoryLabel')}</label>
-                      <input type="text" placeholder="vocabulary, verbs" value={newFlashcard.category.join(', ')}
-                        onChange={(e) => setNewFlashcard({ ...newFlashcard,
-                          category: e.target.value.split(',').map(s => s.trim()).filter(Boolean) })} />
+                      <input
+                        type="text"
+                        list="category-suggestions"
+                        placeholder="numbers, time, vocabulary…"
+                        value={newFlashcard.category[0] || ''}
+                        onChange={(e) => setNewFlashcard({ ...newFlashcard, category: [e.target.value] })}
+                      />
+                      <datalist id="category-suggestions">
+                        {Object.keys(buildCategoryTree()).map(cat => <option key={cat} value={cat} />)}
+                      </datalist>
+                    </div>
+                    <div className="form-group">
+                      <label>{t('flashcards.topicLabel', 'Topic (optional)')}</label>
+                      <input
+                        type="text"
+                        list="topic-suggestions"
+                        placeholder="days-of-week, 1-10, months…"
+                        value={newFlashcard.topic || ''}
+                        onChange={(e) => setNewFlashcard({ ...newFlashcard, topic: e.target.value })}
+                      />
+                      <datalist id="topic-suggestions">
+                        {newFlashcard.category[0] && buildCategoryTree()[newFlashcard.category[0]]
+                          ? Object.keys(buildCategoryTree()[newFlashcard.category[0]].subtopics).map(t => <option key={t} value={t} />)
+                          : null}
+                      </datalist>
                     </div>
                   </div>
                   <button type="submit" className="btn btn-success">{t('flashcards.addFlashcard')}</button>
@@ -1123,19 +1176,44 @@ function FlashcardsPage() {
                         {t('flashcards.clearFilters', { count: selectedCategories.size })}
                       </button>
                     )}
-                    {Object.entries(getCategoryCounts()).map(([cat, count]) => (
-                      <button
-                        key={cat}
-                        className={`category-item ${selectedCategories.has(cat) ? 'selected' : ''}`}
-                        onClick={() => toggleCategory(cat)}
-                      >
-                        <span className="category-check">
-                          {selectedCategories.has(cat) ? '✓' : ''}
-                        </span>
-                        <span className="category-name">{t(`flashcards.categoryNames.${cat}`, { defaultValue: cat })}</span>
-                        <span className="card-count">{count}</span>
-                      </button>
-                    ))}
+                    {Object.entries(buildCategoryTree()).map(([primary, data]) => {
+                      const hasSubtopics = Object.keys(data.subtopics).length > 0;
+                      const isExpanded = expandedCategories.has(primary);
+                      return (
+                        <div key={primary} className="category-group">
+                          <button
+                            className={`category-item ${selectedCategories.has(primary) ? 'selected' : ''}`}
+                            onClick={() => toggleCategory(primary)}
+                          >
+                            <span className="category-check">{selectedCategories.has(primary) ? '✓' : ''}</span>
+                            <span className="category-name">{t(`flashcards.categoryNames.${primary}`, { defaultValue: primary })}</span>
+                            <span className="card-count">{data.count}</span>
+                            {hasSubtopics && (
+                              <span
+                                className={`category-expand-arrow ${isExpanded ? 'expanded' : ''}`}
+                                onClick={(e) => { e.stopPropagation(); toggleExpandedCategory(primary); }}
+                                title={isExpanded ? 'Collapse' : 'Show topics'}
+                              >›</span>
+                            )}
+                          </button>
+                          {hasSubtopics && isExpanded && (
+                            <div className="subtopic-list">
+                              {Object.entries(data.subtopics).map(([topic, count]) => (
+                                <button
+                                  key={topic}
+                                  className={`subtopic-item ${selectedCategories.has(topic) ? 'selected' : ''}`}
+                                  onClick={() => toggleCategory(topic)}
+                                >
+                                  <span className="category-check">{selectedCategories.has(topic) ? '✓' : ''}</span>
+                                  <span className="category-name">{t(`flashcards.categoryNames.${topic}`, { defaultValue: topic })}</span>
+                                  <span className="card-count">{count}</span>
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
                 )}
               </div>
@@ -1220,14 +1298,43 @@ function FlashcardsPage() {
                         {t('flashcards.clearFilters', { count: selectedCategories.size })}
                       </button>
                     )}
-                    {Object.entries(getCategoryCounts()).map(([cat, count]) => (
-                      <button key={cat} className={`category-item ${selectedCategories.has(cat) ? 'selected' : ''}`}
-                        onClick={() => toggleCategory(cat)}>
-                        <span className="category-check">{selectedCategories.has(cat) ? '✓' : ''}</span>
-                        <span className="category-name">{t(`flashcards.categoryNames.${cat}`, { defaultValue: cat })}</span>
-                        <span className="card-count">{count}</span>
-                      </button>
-                    ))}
+                    {Object.entries(buildCategoryTree()).map(([primary, data]) => {
+                      const hasSubtopics = Object.keys(data.subtopics).length > 0;
+                      const isExpanded = expandedCategories.has(primary);
+                      return (
+                        <div key={primary} className="category-group">
+                          <button
+                            className={`category-item ${selectedCategories.has(primary) ? 'selected' : ''}`}
+                            onClick={() => toggleCategory(primary)}
+                          >
+                            <span className="category-check">{selectedCategories.has(primary) ? '✓' : ''}</span>
+                            <span className="category-name">{t(`flashcards.categoryNames.${primary}`, { defaultValue: primary })}</span>
+                            <span className="card-count">{data.count}</span>
+                            {hasSubtopics && (
+                              <span
+                                className={`category-expand-arrow ${isExpanded ? 'expanded' : ''}`}
+                                onClick={(e) => { e.stopPropagation(); toggleExpandedCategory(primary); }}
+                              >›</span>
+                            )}
+                          </button>
+                          {hasSubtopics && isExpanded && (
+                            <div className="subtopic-list">
+                              {Object.entries(data.subtopics).map(([topic, count]) => (
+                                <button
+                                  key={topic}
+                                  className={`subtopic-item ${selectedCategories.has(topic) ? 'selected' : ''}`}
+                                  onClick={() => toggleCategory(topic)}
+                                >
+                                  <span className="category-check">{selectedCategories.has(topic) ? '✓' : ''}</span>
+                                  <span className="category-name">{t(`flashcards.categoryNames.${topic}`, { defaultValue: topic })}</span>
+                                  <span className="card-count">{count}</span>
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
                 )}
               </div>

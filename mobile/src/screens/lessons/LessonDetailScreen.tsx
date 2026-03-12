@@ -18,7 +18,13 @@ import { useSettingsStore } from '../../stores/settingsStore';
 import { getLangName } from '../../config/languages';
 import { colors } from '../../config/theme';
 
-type RouteParams = { LessonDetail: { lessonId: string } };
+type RouteParams = {
+  LessonDetail: {
+    lessonId: string;
+    playlist?: string[];
+    playlistIndex?: number;
+  };
+};
 
 const xpPointsMap: Record<string, number> = { beginner: 2, intermediate: 3, advanced: 4, sentences: 5 };
 
@@ -29,6 +35,10 @@ const LessonDetailScreen: React.FC = () => {
   const { userId, isGuest, addGuestXP } = useAuthStore();
   const { targetLanguage, nativeLanguage } = useSettingsStore();
   const lessonId = route.params.lessonId;
+  const playlist = route.params.playlist;
+  const playlistIndex = route.params.playlistIndex ?? -1;
+  const isInPlaylist = Array.isArray(playlist) && playlist.length > 1;
+  const hasNextLesson = isInPlaylist && playlistIndex < playlist.length - 1;
 
   const [lesson, setLesson] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -48,12 +58,14 @@ const LessonDetailScreen: React.FC = () => {
   const [quizCorrect, setQuizCorrect] = useState(0);
   const [quizTotal, setQuizTotal] = useState(0);
   const [visitedItems, setVisitedItems] = useState<Set<number>>(new Set([0]));
+  const [lessonCompleted, setLessonCompleted] = useState(false);
 
   const autoAdvanceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const fetchLesson = useCallback(async () => {
     try {
       setLoading(true);
+      setLessonCompleted(false);
       const res = await lessonService.getLesson(lessonId);
       setLesson(res.data);
       guestActivityTracker.trackLesson();
@@ -70,6 +82,7 @@ const LessonDetailScreen: React.FC = () => {
     setQuizCorrect(0);
     setQuizTotal(0);
     setVisitedItems(new Set([0]));
+    setLessonCompleted(false);
     fetchLesson();
   }, [fetchLesson]);
 
@@ -103,7 +116,7 @@ const LessonDetailScreen: React.FC = () => {
     return () => { speechService.cancel(); };
   }, [lesson, currentIndex, studyMode]);
 
-  // Save progress on unmount
+  // Cleanup on unmount
   useEffect(() => {
     return () => {
       if (autoAdvanceRef.current) clearTimeout(autoAdvanceRef.current);
@@ -201,7 +214,7 @@ const LessonDetailScreen: React.FC = () => {
     return Math.round(completionPct * 0.4 + quizPct * 0.6);
   };
 
-  const handleComplete = async () => {
+  const saveProgress = async () => {
     if (userId && lesson) {
       const score = calculateScore(true);
       const skillType = studyMode === 'listening' ? 'listening' : 'reading';
@@ -216,6 +229,26 @@ const LessonDetailScreen: React.FC = () => {
         });
       } catch {}
     }
+  };
+
+  const handleComplete = async () => {
+    await saveProgress();
+    setLessonCompleted(true);
+  };
+
+  const handleNextLesson = async () => {
+    if (!playlist || !hasNextLesson) return;
+    await saveProgress();
+    const nextIndex = playlistIndex + 1;
+    navigation.replace('LessonDetail', {
+      lessonId: playlist[nextIndex],
+      playlist,
+      playlistIndex: nextIndex,
+    });
+  };
+
+  const handleFinishPlaylist = async () => {
+    await saveProgress();
     navigation.goBack();
   };
 
@@ -240,6 +273,92 @@ const LessonDetailScreen: React.FC = () => {
 
   const isLastItem = stepPosition >= orderMap.length - 1;
 
+  // Lesson complete screen
+  if (lessonCompleted) {
+    const score = calculateScore(true);
+    return (
+      <View style={styles.screen}>
+        <View style={styles.header}>
+          <IconButton icon="arrow-left" onPress={() => navigation.goBack()} iconColor={colors.textPrimary} />
+          <View style={styles.headerCenter}>
+            <Text style={styles.headerTitle} numberOfLines={1}>{lesson.title}</Text>
+          </View>
+          <View style={{ width: 48 }} />
+        </View>
+
+        <View style={styles.completionScreen}>
+          <Text style={styles.completionEmoji}>🎉</Text>
+          <Text variant="headlineSmall" style={styles.completionTitle}>
+            {t('lessonDetail.lessonComplete', 'Lesson Complete!')}
+          </Text>
+          <Text style={styles.completionScore}>
+            {t('lessonDetail.score', 'Score')}: {score}%
+          </Text>
+          {quizTotal > 0 && (
+            <Text style={styles.completionQuiz}>
+              {t('lessonDetail.quizResult', 'Quiz')}: {quizCorrect}/{quizTotal} {t('lessonDetail.correct', 'correct')}
+            </Text>
+          )}
+
+          {isInPlaylist && (
+            <Text style={styles.playlistProgress}>
+              {t('lessons.lesson', 'Lesson')} {playlistIndex + 1} / {playlist!.length}
+            </Text>
+          )}
+
+          <View style={styles.completionActions}>
+            {hasNextLesson ? (
+              <>
+                <Button
+                  mode="contained"
+                  onPress={handleNextLesson}
+                  icon="chevron-right"
+                  contentStyle={{ flexDirection: 'row-reverse' }}
+                  style={[styles.completionBtn, { backgroundColor: colors.accentGreen }]}
+                >
+                  {t('lessons.nextLesson', 'Next Lesson')} →
+                </Button>
+                <Button
+                  mode="outlined"
+                  onPress={handleFinishPlaylist}
+                  style={styles.completionBtn}
+                >
+                  {t('lessons.finishPlaylist', 'Finish Playlist')}
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button
+                  mode="contained"
+                  onPress={() => navigation.goBack()}
+                  style={[styles.completionBtn, { backgroundColor: colors.accentGreen }]}
+                >
+                  {isInPlaylist
+                    ? t('lessons.playlistDone', '🎊 Playlist Complete!')
+                    : t('common.done', 'Done')}
+                </Button>
+                <Button
+                  mode="outlined"
+                  onPress={() => {
+                    setLessonCompleted(false);
+                    setStepPosition(0);
+                    setVisitedItems(new Set([0]));
+                    setQuizCorrect(0);
+                    setQuizTotal(0);
+                    resetQuiz();
+                  }}
+                  style={styles.completionBtn}
+                >
+                  {t('lessonDetail.studyAgain', 'Study Again')}
+                </Button>
+              </>
+            )}
+          </View>
+        </View>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.screen}>
       {/* Header */}
@@ -249,6 +368,9 @@ const LessonDetailScreen: React.FC = () => {
           <Text style={styles.headerTitle} numberOfLines={1}>{lesson.title}</Text>
           <Text style={styles.headerCounter}>
             {stepPosition + 1} / {totalItems}
+            {isInPlaylist && (
+              <Text style={styles.playlistBadge}>  📋 {playlistIndex + 1}/{playlist!.length}</Text>
+            )}
           </Text>
         </View>
         <IconButton icon="cog" onPress={() => setShowSettings(true)} iconColor={colors.textMuted} />
@@ -310,22 +432,20 @@ const LessonDetailScreen: React.FC = () => {
                 <Text style={styles.quizQuestion}>
                   {t('lessonDetail.whatDoesThisMean', 'What does this mean?')}
                 </Text>
-                {quizOptions.map((option, idx) => {
-                  return (
-                    <TouchableOpacity
-                      key={idx}
-                      style={[
-                        styles.quizOption,
-                        quizAttempted && option === content.english && { borderColor: colors.accentGreen, backgroundColor: '#d1fae5' },
-                        quizAttempted && option === selectedAnswer && option !== content.english && { borderColor: colors.error, backgroundColor: '#fef2f2' },
-                      ]}
-                      onPress={() => !quizAttempted && handleAnswerSelect(option)}
-                      disabled={quizAttempted}
-                    >
-                      <Text style={styles.quizOptionText}>{option}</Text>
-                    </TouchableOpacity>
-                  );
-                })}
+                {quizOptions.map((option, idx) => (
+                  <TouchableOpacity
+                    key={idx}
+                    style={[
+                      styles.quizOption,
+                      quizAttempted && option === content.english && { borderColor: colors.accentGreen, backgroundColor: '#d1fae5' },
+                      quizAttempted && option === selectedAnswer && option !== content.english && { borderColor: colors.error, backgroundColor: '#fef2f2' },
+                    ]}
+                    onPress={() => !quizAttempted && handleAnswerSelect(option)}
+                    disabled={quizAttempted}
+                  >
+                    <Text style={styles.quizOptionText}>{option}</Text>
+                  </TouchableOpacity>
+                ))}
                 {quizAttempted && (
                   <View style={styles.quizResult}>
                     <Text style={[styles.quizResultText, { color: isCorrect ? colors.accentGreen : colors.error }]}>
@@ -350,8 +470,16 @@ const LessonDetailScreen: React.FC = () => {
           {t('lessonDetail.prev', 'Prev')}
         </Button>
         {isLastItem ? (
-          <Button mode="contained" onPress={handleComplete} icon="check" style={[styles.navBtn, { backgroundColor: colors.accentGreen }]}>
-            {t('lessonDetail.complete', 'Complete')}
+          <Button
+            mode="contained"
+            onPress={handleComplete}
+            icon={hasNextLesson ? 'chevron-right' : 'check'}
+            contentStyle={hasNextLesson ? { flexDirection: 'row-reverse' } : undefined}
+            style={[styles.navBtn, { backgroundColor: colors.accentGreen }]}
+          >
+            {hasNextLesson
+              ? t('lessons.completeAndNext', 'Complete & Next')
+              : t('lessonDetail.complete', 'Complete')}
           </Button>
         ) : (
           <Button
@@ -428,6 +556,7 @@ const styles = StyleSheet.create({
   headerCenter: { flex: 1, alignItems: 'center' },
   headerTitle: { fontSize: 16, fontWeight: '700', color: colors.textPrimary },
   headerCounter: { fontSize: 13, color: colors.textSecondary },
+  playlistBadge: { fontSize: 12, color: colors.primary },
   progressBar: { height: 4, backgroundColor: colors.border },
 
   contentArea: { padding: 20, paddingBottom: 100 },
@@ -491,6 +620,29 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   navBtn: { flex: 1, borderRadius: 8 },
+
+  // Completion screen
+  completionScreen: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 32,
+  },
+  completionEmoji: { fontSize: 72, marginBottom: 16 },
+  completionTitle: { fontWeight: '700', color: colors.textPrimary, marginBottom: 8, textAlign: 'center' },
+  completionScore: { fontSize: 24, fontWeight: '800', color: colors.primary, marginBottom: 4 },
+  completionQuiz: { fontSize: 15, color: colors.textSecondary, marginBottom: 8 },
+  playlistProgress: {
+    fontSize: 14,
+    color: colors.textMuted,
+    marginBottom: 24,
+    backgroundColor: '#eff6ff',
+    paddingHorizontal: 16,
+    paddingVertical: 6,
+    borderRadius: 12,
+  },
+  completionActions: { width: '100%', gap: 12 },
+  completionBtn: { borderRadius: 10 },
 
   // Modal
   modalOverlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.4)', justifyContent: 'flex-end' },

@@ -6,11 +6,12 @@ import {
   Alert,
   ActivityIndicator,
   RefreshControl,
+  TouchableOpacity,
 } from 'react-native';
 import { Text, Button, TextInput, Card, Divider, SegmentedButtons, Switch } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
-import { userService, progressService } from '../../services/api';
+import { userService, progressService, ttsService } from '../../services/api';
 import speechService from '../../services/speechService';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
@@ -41,6 +42,11 @@ const ProfileScreen: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordMsg, setPasswordMsg] = useState('');
 
+  // Voice state
+  const [voices, setVoices] = useState<any[]>([]);
+  const [loadingVoices, setLoadingVoices] = useState(false);
+  const [previewingVoice, setPreviewingVoice] = useState<string | null>(null);
+
   const fetchData = useCallback(async () => {
     if (!userId) return;
     try {
@@ -68,6 +74,38 @@ const ProfileScreen: React.FC = () => {
     setRefreshing(true);
     await fetchData();
     setRefreshing(false);
+  };
+
+  const fetchVoices = useCallback(async () => {
+    const locale = LANGUAGES[targetLanguage]?.ttsLocale;
+    if (!locale) return;
+    try {
+      setLoadingVoices(true);
+      const res = await ttsService.getVoices(locale);
+      setVoices(Array.isArray(res.data) ? res.data : []);
+    } catch {
+      setVoices([]);
+    } finally {
+      setLoadingVoices(false);
+    }
+  }, [targetLanguage]);
+
+  useEffect(() => {
+    if (activeTab === 'settings' && voices.length === 0) {
+      fetchVoices();
+    }
+  }, [activeTab]);
+
+  const handlePreviewVoice = async (voiceName: string) => {
+    const locale = LANGUAGES[targetLanguage]?.ttsLocale || 'ko-KR';
+    const sampleText = targetLanguage === 'ko' ? '안녕하세요' : 'Hello, how are you?';
+    setPreviewingVoice(voiceName);
+    await speechService.speakAsync(sampleText, { lang: locale, voice: voiceName });
+    setPreviewingVoice(null);
+  };
+
+  const handleSelectVoice = (voiceName: string | null) => {
+    setVoice(voiceName);
   };
 
   const handleSaveUsername = async () => {
@@ -333,6 +371,77 @@ const ProfileScreen: React.FC = () => {
             </Card.Content>
           </Card>
 
+          {/* Voice Selection */}
+          <Card style={styles.card}>
+            <Card.Content>
+              <View style={styles.cardTitleRow}>
+                <Text variant="titleMedium" style={styles.cardTitle}>
+                  {t('profile.voiceSettings', 'Voice Settings')}
+                </Text>
+                <Button mode="text" compact onPress={fetchVoices} loading={loadingVoices}>
+                  {t('common.refresh', 'Refresh')}
+                </Button>
+              </View>
+              <Text style={styles.hintText}>
+                {t('profile.voiceHint', 'Choose the voice used for audio playback.')}
+              </Text>
+
+              {loadingVoices ? (
+                <ActivityIndicator size="small" color={colors.primary} style={{ marginVertical: 12 }} />
+              ) : voices.length === 0 ? (
+                <Text style={styles.hintText}>{t('profile.noVoices', 'No voices available. Tap refresh to load.')}</Text>
+              ) : (
+                <>
+                  {/* Default option */}
+                  <TouchableOpacity
+                    style={[styles.voiceRow, !preferredVoice && styles.voiceRowSelected]}
+                    onPress={() => handleSelectVoice(null)}
+                    activeOpacity={0.7}
+                  >
+                    <View style={{ flex: 1 }}>
+                      <Text style={styles.voiceName}>{t('profile.defaultVoice', 'Default Voice')}</Text>
+                      <Text style={styles.voiceMeta}>{t('profile.systemDefault', 'System default')}</Text>
+                    </View>
+                    {!preferredVoice && <Text style={styles.voiceCheck}>✓</Text>}
+                  </TouchableOpacity>
+
+                  {voices.map((voice: any) => {
+                    const name = voice.ShortName || voice.Name || voice.name || String(voice);
+                    const isSelected = preferredVoice === name;
+                    const isPreviewing = previewingVoice === name;
+                    return (
+                      <TouchableOpacity
+                        key={name}
+                        style={[styles.voiceRow, isSelected && styles.voiceRowSelected]}
+                        onPress={() => handleSelectVoice(name)}
+                        activeOpacity={0.7}
+                      >
+                        <View style={{ flex: 1 }}>
+                          <Text style={styles.voiceName}>{voice.FriendlyName || name}</Text>
+                          <Text style={styles.voiceMeta}>
+                            {voice.Gender || ''}{voice.Locale ? ` · ${voice.Locale}` : ''}
+                          </Text>
+                        </View>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                          <TouchableOpacity
+                            style={styles.previewBtn}
+                            onPress={() => handlePreviewVoice(name)}
+                            disabled={!!previewingVoice}
+                          >
+                            <Text style={styles.previewBtnText}>
+                              {isPreviewing ? '⏹' : '▶'}
+                            </Text>
+                          </TouchableOpacity>
+                          {isSelected && <Text style={styles.voiceCheck}>✓</Text>}
+                        </View>
+                      </TouchableOpacity>
+                    );
+                  })}
+                </>
+              )}
+            </Card.Content>
+          </Card>
+
           {/* XP Mode */}
           <Card style={styles.card}>
             <Card.Content>
@@ -441,6 +550,34 @@ const styles = StyleSheet.create({
 
   dangerCard: { borderLeftWidth: 4, borderLeftColor: colors.error },
   dangerText: { fontSize: 14, color: colors.textSecondary },
+
+  // Voice
+  voiceRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    borderRadius: 8,
+    marginBottom: 4,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  voiceRowSelected: {
+    borderColor: colors.primary,
+    backgroundColor: '#eff6ff',
+  },
+  voiceName: { fontSize: 14, fontWeight: '600', color: colors.textPrimary },
+  voiceMeta: { fontSize: 12, color: colors.textMuted, marginTop: 2 },
+  voiceCheck: { fontSize: 16, color: colors.primary, fontWeight: '700', marginLeft: 8 },
+  previewBtn: {
+    backgroundColor: colors.primary,
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  previewBtnText: { color: '#fff', fontSize: 12 },
 });
 
 export default ProfileScreen;

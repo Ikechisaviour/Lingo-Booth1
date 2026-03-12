@@ -7,7 +7,7 @@ import {
   ActivityIndicator,
   RefreshControl,
 } from 'react-native';
-import { Text, Chip, Button } from 'react-native-paper';
+import { Text, Chip, Button, FAB } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import { lessonService, progressService } from '../../services/api';
@@ -49,6 +49,10 @@ const LessonsListScreen: React.FC = () => {
   const [catFilter, setCatFilter] = useState('');
   const [diffFilter, setDiffFilter] = useState('');
   const [progressMap, setProgressMap] = useState<Record<string, number>>({});
+
+  // Playlist selection
+  const [selectMode, setSelectMode] = useState(false);
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
 
   const fetchLessons = useCallback(async () => {
     try {
@@ -93,16 +97,57 @@ const LessonsListScreen: React.FC = () => {
     setRefreshing(false);
   };
 
+  const startPlaylist = (playlist: string[]) => {
+    if (playlist.length === 0) return;
+    navigation.navigate('LessonDetail', {
+      lessonId: playlist[0],
+      playlist,
+      playlistIndex: 0,
+    });
+    setSelectMode(false);
+    setSelectedIds(new Set());
+  };
+
+  const handleStartAll = () => {
+    startPlaylist(lessons.map((l) => l._id));
+  };
+
+  const handleStartSelected = () => {
+    // Preserve order from lessons list
+    const ordered = lessons.filter((l) => selectedIds.has(l._id)).map((l) => l._id);
+    startPlaylist(ordered);
+  };
+
+  const toggleSelect = (id: string) => {
+    setSelectedIds((prev) => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+  };
+
   const renderLesson = ({ item }: { item: any }) => {
     const progress = progressMap[item._id] || 0;
     const diffColor = getDifficultyColor(item.difficulty);
+    const isSelected = selectedIds.has(item._id);
 
     return (
       <TouchableOpacity
-        style={styles.lessonCard}
-        onPress={() => navigation.navigate('LessonDetail', { lessonId: item._id })}
+        style={[styles.lessonCard, isSelected && styles.lessonCardSelected]}
+        onPress={() => {
+          if (selectMode) {
+            toggleSelect(item._id);
+          } else {
+            navigation.navigate('LessonDetail', { lessonId: item._id });
+          }
+        }}
         activeOpacity={0.7}
       >
+        {selectMode && (
+          <View style={[styles.checkbox, isSelected && styles.checkboxSelected]}>
+            {isSelected && <Text style={styles.checkmark}>✓</Text>}
+          </View>
+        )}
         <View style={styles.cardTop}>
           <View style={[styles.lessonIcon, { backgroundColor: `${diffColor}20` }]}>
             <Text style={styles.iconEmoji}>{getCategoryIcon(item.category)}</Text>
@@ -133,12 +178,45 @@ const LessonsListScreen: React.FC = () => {
     <View style={styles.screen}>
       {/* Header */}
       <View style={styles.header}>
-        <Text variant="headlineSmall" style={styles.headerTitle}>
-          {getLangName(targetLanguage)} {t('lessons.lessons', 'Lessons')}
-        </Text>
-        <Text style={styles.headerStat}>
-          📚 {t('lessons.lessonsAvailable', { count: lessons.length })}
-        </Text>
+        <View style={styles.headerTop}>
+          <View>
+            <Text variant="headlineSmall" style={styles.headerTitle}>
+              {getLangName(targetLanguage)} {t('lessons.lessons', 'Lessons')}
+            </Text>
+            <Text style={styles.headerStat}>
+              📚 {t('lessons.lessonsAvailable', { count: lessons.length })}
+            </Text>
+          </View>
+          {lessons.length > 0 && (
+            <Button
+              mode={selectMode ? 'outlined' : 'text'}
+              compact
+              onPress={() => {
+                setSelectMode(!selectMode);
+                setSelectedIds(new Set());
+              }}
+              textColor={selectMode ? colors.error : colors.primary}
+            >
+              {selectMode ? t('common.cancel', 'Cancel') : t('lessons.select', 'Select')}
+            </Button>
+          )}
+        </View>
+
+        {/* Selection action bar */}
+        {selectMode && (
+          <View style={styles.selectionBar}>
+            <Text style={styles.selectionCount}>
+              {selectedIds.size > 0
+                ? t('lessons.selectedCount', { count: selectedIds.size })
+                : t('lessons.tapToSelect', 'Tap lessons to select')}
+            </Text>
+            {selectedIds.size > 0 && (
+              <Button mode="contained" compact onPress={handleStartSelected} style={styles.startBtn}>
+                ▶ {t('lessons.startSelected', 'Start Selected')}
+              </Button>
+            )}
+          </View>
+        )}
       </View>
 
       {/* Category filter */}
@@ -212,8 +290,19 @@ const LessonsListScreen: React.FC = () => {
           renderItem={renderLesson}
           numColumns={2}
           columnWrapperStyle={styles.row}
-          contentContainerStyle={styles.listContent}
+          contentContainerStyle={[styles.listContent, { paddingBottom: 96 }]}
           refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={[colors.primary]} />}
+        />
+      )}
+
+      {/* Start All FAB — only visible when not in select mode */}
+      {!selectMode && lessons.length > 0 && (
+        <FAB
+          icon="play"
+          label={t('lessons.startAll', 'Start All')}
+          style={styles.fab}
+          onPress={handleStartAll}
+          color="#fff"
         />
       )}
     </View>
@@ -228,8 +317,19 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
     backgroundColor: colors.surface,
   },
+  headerTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' },
   headerTitle: { fontWeight: '700', color: colors.textPrimary },
   headerStat: { color: colors.textSecondary, fontSize: 14, marginTop: 4 },
+
+  selectionBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 8,
+    marginTop: 4,
+  },
+  selectionCount: { fontSize: 13, color: colors.textSecondary },
+  startBtn: { borderRadius: 8, backgroundColor: colors.accentGreen },
 
   filterRow: { backgroundColor: colors.surface, paddingBottom: 4 },
   filterList: { paddingHorizontal: 12, gap: 6 },
@@ -255,6 +355,30 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.08,
     shadowRadius: 3,
   },
+  lessonCardSelected: {
+    borderWidth: 2,
+    borderColor: colors.primary,
+    backgroundColor: '#eff6ff',
+  },
+  checkbox: {
+    position: 'absolute',
+    top: 8,
+    right: 8,
+    width: 22,
+    height: 22,
+    borderRadius: 11,
+    borderWidth: 2,
+    borderColor: colors.border,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 1,
+  },
+  checkboxSelected: {
+    backgroundColor: colors.primary,
+    borderColor: colors.primary,
+  },
+  checkmark: { color: '#fff', fontSize: 12, fontWeight: '700' },
   cardTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 },
   lessonIcon: { width: 40, height: 40, borderRadius: 10, justifyContent: 'center', alignItems: 'center' },
   iconEmoji: { fontSize: 20 },
@@ -265,6 +389,13 @@ const styles = StyleSheet.create({
   lessonFooter: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   metaText: { fontSize: 12, color: colors.textMuted },
   progressText: { fontSize: 13, fontWeight: '700' },
+
+  fab: {
+    position: 'absolute',
+    right: 20,
+    bottom: 20,
+    backgroundColor: colors.primary,
+  },
 });
 
 export default LessonsListScreen;
