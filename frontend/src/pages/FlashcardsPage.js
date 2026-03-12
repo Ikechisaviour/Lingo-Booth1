@@ -43,6 +43,7 @@ function FlashcardsPage() {
   const [selectedCategories, setSelectedCategories] = useState(new Set()); // empty = all
   const [studyStyle, setStudyStyle] = useState('both'); // 'both' | 'text' | 'audio'
   const [expandedCategories, setExpandedCategories] = useState(new Set());
+  const [selectedCardIds, setSelectedCardIds] = useState(new Set()); // empty = study all
   const autoPlayRef = useRef(false);
   const sidebarToggleRef = useRef(null);
 
@@ -256,13 +257,13 @@ function FlashcardsPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autoPlay, currentIndex]);
 
-  // Reset index when category filter changes
+  // Reset index when category or card-selection filter changes
   useEffect(() => {
     setCurrentIndex(0);
     setIsFlipped(false);
     if (autoPlay) { setAutoPlay(false); speechService.cancel(); }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedCategories]);
+  }, [selectedCategories, selectedCardIds]);
 
   // Close sidebar on outside click
   useEffect(() => {
@@ -395,13 +396,18 @@ function FlashcardsPage() {
   const targetLangField = getLangField(targetLangCode);
   const backendSendsTargetField = targetLangCode === 'ko' || targetLangCode === 'en'
     || flashcards.some(c => !!c[targetLangField]);
-  const activeFlashcards = (selectedCategories.size === 0
+  // Cards after category filter — used for the sidebar picker list
+  const categoryFilteredCards = (selectedCategories.size === 0
     ? flashcards
     : flashcards.filter(c => {
         const cats = normalizeCategory(c.category);
         return cats.some(cat => selectedCategories.has(cat));
       })
   ).filter(c => !backendSendsTargetField || !!c[targetLangField]);
+  // Final study deck: further filtered to only selected individual cards
+  const activeFlashcards = selectedCardIds.size === 0
+    ? categoryFilteredCards
+    : categoryFilteredCards.filter(c => selectedCardIds.has(c._id));
 
   // Reset index when the filtered deck shrinks and currentIndex is now out of bounds
   useEffect(() => {
@@ -1139,7 +1145,7 @@ function FlashcardsPage() {
                     className={`sidebar-tab ${sidebarView === 'all' ? 'active' : ''}`}
                     onClick={() => setSidebarView('all')}
                   >
-                    {t('flashcards.allCards')} <span className="card-count">{activeFlashcards.length}</span>
+                    {t('flashcards.allCards')} <span className="card-count">{selectedCardIds.size > 0 ? `${selectedCardIds.size}/${categoryFilteredCards.length}` : categoryFilteredCards.length}</span>
                   </button>
                   <button
                     className={`sidebar-tab ${sidebarView === 'categories' ? 'active' : ''}`}
@@ -1150,22 +1156,51 @@ function FlashcardsPage() {
                 </div>
 
                 {sidebarView === 'all' ? (
-                  <ul className="card-list">
-                    {activeFlashcards.map((card, idx) => (
-                      <li
-                        key={card._id}
-                        className={`card-list-item ${idx === currentIndex ? 'active' : ''}`}
-                        onClick={() => {
-                          if (autoPlay) { setAutoPlay(false); speechService.cancel(); }
-                          setCurrentIndex(idx);
-                          setIsFlipped(false);
-                        }}
-                      >
-                        <span className="card-korean">{card[getLangField(targetLangCode)]}</span>
-                        <span className="card-mastery">{getMasteryStars(card.masteryLevel)}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <>
+                    <div className="card-list-header">
+                      {selectedCardIds.size > 0 ? (
+                        <>
+                          <span className="card-list-selected-label">✓ {selectedCardIds.size} selected</span>
+                          <button className="category-clear" onClick={() => setSelectedCardIds(new Set())}>
+                            {t('common.clearAll', 'Clear')}
+                          </button>
+                        </>
+                      ) : (
+                        <span className="card-list-hint">☑ {t('flashcards.selectToStudy', 'Check cards to study a custom set')}</span>
+                      )}
+                    </div>
+                    <ul className="card-list">
+                      {categoryFilteredCards.map((card, idx) => {
+                        const isChecked = selectedCardIds.has(card._id);
+                        const activeIdx = activeFlashcards.findIndex(c => c._id === card._id);
+                        const isCurrent = activeIdx !== -1 && activeIdx === currentIndex;
+                        return (
+                          <li key={card._id} className={`card-list-item ${isCurrent ? 'active' : ''} ${isChecked ? 'card-selected' : ''}`}>
+                            <label className="card-select-label" onClick={e => e.stopPropagation()}>
+                              <input
+                                type="checkbox"
+                                className="card-checkbox"
+                                checked={isChecked}
+                                onChange={() => {
+                                  setSelectedCardIds(prev => {
+                                    const next = new Set(prev);
+                                    next.has(card._id) ? next.delete(card._id) : next.add(card._id);
+                                    return next;
+                                  });
+                                }}
+                              />
+                            </label>
+                            <span className="card-korean" onClick={() => {
+                              if (autoPlay) { setAutoPlay(false); speechService.cancel(); }
+                              if (activeIdx !== -1) setCurrentIndex(activeIdx);
+                              setIsFlipped(false);
+                            }}>{card[getLangField(targetLangCode)]}</span>
+                            <span className="card-mastery">{getMasteryStars(card.masteryLevel)}</span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </>
                 ) : (
                   <div className="category-list">
                     {selectedCategories.size > 0 && (
@@ -1274,7 +1309,7 @@ function FlashcardsPage() {
                 <div className="sidebar-tabs">
                   <button className={`sidebar-tab ${sidebarView === 'all' ? 'active' : ''}`}
                     onClick={() => setSidebarView('all')}>
-                    {t('flashcards.allCards')} <span className="card-count">{activeFlashcards.length}</span>
+                    {t('flashcards.allCards')} <span className="card-count">{selectedCardIds.size > 0 ? `${selectedCardIds.size}/${categoryFilteredCards.length}` : categoryFilteredCards.length}</span>
                   </button>
                   <button className={`sidebar-tab ${sidebarView === 'categories' ? 'active' : ''}`}
                     onClick={() => setSidebarView('categories')}>
@@ -1282,15 +1317,51 @@ function FlashcardsPage() {
                   </button>
                 </div>
                 {sidebarView === 'all' ? (
-                  <ul className="card-list">
-                    {activeFlashcards.map((card, idx) => (
-                      <li key={card._id} className={`card-list-item ${idx === currentIndex ? 'active' : ''}`}
-                        onClick={() => { if (autoPlay) { setAutoPlay(false); speechService.cancel(); } setCurrentIndex(idx); setIsFlipped(false); }}>
-                        <span className="card-korean">{card[getLangField(targetLangCode)]}</span>
-                        <span className="card-mastery">{getMasteryStars(card.masteryLevel)}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <>
+                    <div className="card-list-header">
+                      {selectedCardIds.size > 0 ? (
+                        <>
+                          <span className="card-list-selected-label">✓ {selectedCardIds.size} selected</span>
+                          <button className="category-clear" onClick={() => setSelectedCardIds(new Set())}>
+                            {t('common.clearAll', 'Clear')}
+                          </button>
+                        </>
+                      ) : (
+                        <span className="card-list-hint">☑ {t('flashcards.selectToStudy', 'Check cards to study a custom set')}</span>
+                      )}
+                    </div>
+                    <ul className="card-list">
+                      {categoryFilteredCards.map((card) => {
+                        const isChecked = selectedCardIds.has(card._id);
+                        const activeIdx = activeFlashcards.findIndex(c => c._id === card._id);
+                        const isCurrent = activeIdx !== -1 && activeIdx === currentIndex;
+                        return (
+                          <li key={card._id} className={`card-list-item ${isCurrent ? 'active' : ''} ${isChecked ? 'card-selected' : ''}`}>
+                            <label className="card-select-label" onClick={e => e.stopPropagation()}>
+                              <input
+                                type="checkbox"
+                                className="card-checkbox"
+                                checked={isChecked}
+                                onChange={() => {
+                                  setSelectedCardIds(prev => {
+                                    const next = new Set(prev);
+                                    next.has(card._id) ? next.delete(card._id) : next.add(card._id);
+                                    return next;
+                                  });
+                                }}
+                              />
+                            </label>
+                            <span className="card-korean" onClick={() => {
+                              if (autoPlay) { setAutoPlay(false); speechService.cancel(); }
+                              if (activeIdx !== -1) setCurrentIndex(activeIdx);
+                              setIsFlipped(false);
+                            }}>{card[getLangField(targetLangCode)]}</span>
+                            <span className="card-mastery">{getMasteryStars(card.masteryLevel)}</span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </>
                 ) : (
                   <div className="category-list">
                     {selectedCategories.size > 0 && (

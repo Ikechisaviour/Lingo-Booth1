@@ -15,6 +15,11 @@ import { useTranslation } from 'react-i18next';
 import { flashcardService, progressService, userService } from '../../services/api';
 import speechService from '../../services/speechService';
 import guestActivityTracker from '../../services/guestActivityTracker';
+import {
+  requestPermissions as requestNotifPermissions,
+  showPlayerNotification,
+  dismissPlayerNotification,
+} from '../../services/playerNotification';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import LANGUAGES, { getLangName } from '../../config/languages';
@@ -62,6 +67,8 @@ const FlashcardsScreen: React.FC = () => {
   const [shuffleEnabled, setShuffleEnabled] = useState(false);
   const [shuffledDeck, setShuffledDeck] = useState<any[]>([]);
   const [expandedPrimaries, setExpandedPrimaries] = useState<Set<string>>(new Set());
+  const [selectedCardIds, setSelectedCardIds] = useState<Set<string>>(new Set());
+  const [showCardPicker, setShowCardPicker] = useState(false);
 
   const [newCard, setNewCard] = useState({ korean: '', english: '', romanization: '', category: 'vocabulary', topic: '' });
 
@@ -73,6 +80,11 @@ const FlashcardsScreen: React.FC = () => {
   const nativeField = getLangField(nativeLanguage);
   const targetLocale = LANGUAGES[targetLanguage]?.ttsLocale || 'ko-KR';
   const nativeLocale = LANGUAGES[nativeLanguage]?.ttsLocale || 'en-US';
+
+  // Request notification permission once on mount
+  useEffect(() => {
+    requestNotifPermissions();
+  }, []);
 
   // Fetch flashcards
   const fetchFlashcards = useCallback(async () => {
@@ -103,7 +115,8 @@ const FlashcardsScreen: React.FC = () => {
   const backendSendsTargetField =
     targetLanguage === 'ko' || targetLanguage === 'en' || flashcards.some((c) => !!c[targetField]);
 
-  const activeFlashcards =
+  // All cards matching the category filter — used for the card picker list
+  const categoryFilteredCards =
     (selectedCategories.size === 0
       ? flashcards
       : flashcards.filter((c) => {
@@ -112,11 +125,34 @@ const FlashcardsScreen: React.FC = () => {
         })
     ).filter((c) => !backendSendsTargetField || !!c[targetField]);
 
+  // Final study deck: further filtered to only individually selected cards
+  const activeFlashcards =
+    selectedCardIds.size === 0
+      ? categoryFilteredCards
+      : categoryFilteredCards.filter((c) => selectedCardIds.has(c._id));
+
   // Displayed deck — shuffled or normal order
   const displayedCards = useMemo(() => {
     if (!shuffleEnabled) return activeFlashcards;
     return shuffledDeck.length === activeFlashcards.length ? shuffledDeck : activeFlashcards;
   }, [shuffleEnabled, shuffledDeck, activeFlashcards]);
+
+  // Mini-player notification — show/update when autoplay is on, dismiss when off
+  useEffect(() => {
+    if (!autoPlay) {
+      dismissPlayerNotification();
+      return;
+    }
+    const card = displayedCards[currentIndex];
+    if (!card) return;
+    showPlayerNotification(
+      card[targetField] || card.korean || '',
+      card[nativeField] || card.english || '',
+      currentIndex + 1,
+      displayedCards.length,
+    );
+    return () => { dismissPlayerNotification(); };
+  }, [autoPlay, currentIndex, displayedCards.length]);
 
   // Reset index when filtered deck shrinks
   useEffect(() => {
@@ -126,7 +162,7 @@ const FlashcardsScreen: React.FC = () => {
     }
   }, [displayedCards.length, currentIndex]);
 
-  // Reset on category change
+  // Reset on category or card-selection change
   useEffect(() => {
     setCurrentIndex(0);
     setIsFlipped(false);
@@ -138,7 +174,7 @@ const FlashcardsScreen: React.FC = () => {
     if (shuffleEnabled) {
       setShuffledDeck(shuffleArray(activeFlashcards));
     }
-  }, [selectedCategories]);
+  }, [selectedCategories, selectedCardIds]);
 
   // Toggle shuffle
   const handleToggleShuffle = useCallback(() => {
@@ -490,6 +526,12 @@ const FlashcardsScreen: React.FC = () => {
         </Text>
         <View style={styles.headerActions}>
           <IconButton
+            icon="card-multiple-outline"
+            size={22}
+            onPress={() => setShowCardPicker(true)}
+            iconColor={selectedCardIds.size > 0 ? colors.primary : colors.textMuted}
+          />
+          <IconButton
             icon="filter-variant"
             size={22}
             onPress={() => setShowCategories(true)}
@@ -522,6 +564,17 @@ const FlashcardsScreen: React.FC = () => {
       {shuffleEnabled && (
         <View style={styles.shuffleBadge}>
           <Text style={styles.shuffleBadgeText}>🔀 {t('flashcards.shuffleOn', 'Shuffled')}</Text>
+        </View>
+      )}
+      {/* Selected cards badge */}
+      {selectedCardIds.size > 0 && (
+        <View style={styles.selectionBadge}>
+          <Text style={styles.selectionBadgeText}>
+            ☑ {selectedCardIds.size} {t('flashcards.cardsSelected', 'cards selected')}
+          </Text>
+          <TouchableOpacity onPress={() => setSelectedCardIds(new Set())} style={styles.selectionClear}>
+            <Text style={styles.selectionClearText}>✕</Text>
+          </TouchableOpacity>
         </View>
       )}
 
@@ -639,6 +692,76 @@ const FlashcardsScreen: React.FC = () => {
       {!isGuest && (
         <FAB icon="plus" style={styles.fab} onPress={() => setShowAddForm(true)} color="#fff" />
       )}
+
+      {/* Card picker modal */}
+      <Modal visible={showCardPicker} transparent animationType="slide" onRequestClose={() => setShowCardPicker(false)}>
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalSheet}>
+            <Text variant="titleMedium" style={styles.modalTitle}>
+              {t('flashcards.selectCards', 'Select Cards to Study')}
+            </Text>
+            <View style={styles.pickerHeader}>
+              {selectedCardIds.size > 0 ? (
+                <>
+                  <Text style={styles.pickerSelectedLabel}>
+                    ☑ {selectedCardIds.size} / {categoryFilteredCards.length} {t('flashcards.selected', 'selected')}
+                  </Text>
+                  <Button compact onPress={() => setSelectedCardIds(new Set())}>
+                    {t('common.clearAll', 'Clear All')}
+                  </Button>
+                </>
+              ) : (
+                <Text style={styles.pickerHint}>
+                  {t('flashcards.tapCardsToSelect', 'Tap cards to include them in your study set')}
+                </Text>
+              )}
+            </View>
+            <ScrollView style={{ maxHeight: 420 }}>
+              {categoryFilteredCards.map((card) => {
+                const isChecked = selectedCardIds.has(card._id);
+                return (
+                  <TouchableOpacity
+                    key={card._id}
+                    style={[styles.pickerItem, isChecked && styles.pickerItemSelected]}
+                    onPress={() => {
+                      setSelectedCardIds((prev) => {
+                        const next = new Set(prev);
+                        next.has(card._id) ? next.delete(card._id) : next.add(card._id);
+                        return next;
+                      });
+                    }}
+                  >
+                    <View style={[styles.pickerCheckbox, isChecked && styles.pickerCheckboxChecked]}>
+                      {isChecked && <Text style={styles.pickerCheckmark}>✓</Text>}
+                    </View>
+                    <View style={styles.pickerCardInfo}>
+                      <Text style={styles.pickerCardTarget} numberOfLines={1}>
+                        {card[targetField] || card.korean}
+                      </Text>
+                      <Text style={styles.pickerCardNative} numberOfLines={1}>
+                        {card[nativeField] || card.english}
+                      </Text>
+                    </View>
+                    <View style={styles.pickerMastery}>
+                      {[1, 2, 3, 4, 5].map((s) => (
+                        <Text key={s} style={{ fontSize: 10, color: s <= (card.masteryLevel || 0) ? colors.accentYellow : colors.border }}>★</Text>
+                      ))}
+                    </View>
+                  </TouchableOpacity>
+                );
+              })}
+            </ScrollView>
+            <View style={styles.modalActions}>
+              <Button onPress={() => setSelectedCardIds(new Set())}>{t('flashcards.studyAll', 'Study All')}</Button>
+              <Button mode="contained" onPress={() => setShowCardPicker(false)}>
+                {selectedCardIds.size > 0
+                  ? `▶ ${t('flashcards.studySelected', 'Study')} (${selectedCardIds.size})`
+                  : t('common.done', 'Done')}
+              </Button>
+            </View>
+          </View>
+        </View>
+      </Modal>
 
       {/* Category filter modal */}
       <Modal visible={showCategories} transparent animationType="slide" onRequestClose={() => setShowCategories(false)}>
@@ -987,6 +1110,60 @@ const styles = StyleSheet.create({
 
   // Form
   formInput: { marginBottom: 12, backgroundColor: colors.surface },
+
+  // Selection badge
+  selectionBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'center',
+    backgroundColor: colors.primary + '18',
+    paddingHorizontal: 12,
+    paddingVertical: 3,
+    borderRadius: 12,
+    marginBottom: 4,
+    gap: 8,
+  },
+  selectionBadgeText: { fontSize: 12, color: colors.primary, fontWeight: '600' },
+  selectionClear: { padding: 2 },
+  selectionClearText: { fontSize: 12, color: colors.primary, fontWeight: '700' },
+
+  // Card picker modal
+  pickerHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 8,
+    minHeight: 32,
+  },
+  pickerHint: { fontSize: 12, color: colors.textMuted, flex: 1 },
+  pickerSelectedLabel: { fontSize: 13, fontWeight: '700', color: colors.primary },
+  pickerItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 10,
+    paddingHorizontal: 4,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.border,
+    gap: 10,
+  },
+  pickerItemSelected: { backgroundColor: colors.primary + '10' },
+  pickerCheckbox: {
+    width: 22,
+    height: 22,
+    borderRadius: 11,
+    borderWidth: 2,
+    borderColor: colors.border,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexShrink: 0,
+  },
+  pickerCheckboxChecked: { backgroundColor: colors.primary, borderColor: colors.primary },
+  pickerCheckmark: { color: '#fff', fontSize: 12, fontWeight: '700' },
+  pickerCardInfo: { flex: 1 },
+  pickerCardTarget: { fontSize: 15, fontWeight: '700', color: colors.textPrimary },
+  pickerCardNative: { fontSize: 12, color: colors.textSecondary, marginTop: 1 },
+  pickerMastery: { flexDirection: 'row', gap: 1 },
 
   // Hierarchical categories
   categoryGroup: { borderBottomWidth: 1, borderBottomColor: colors.border },

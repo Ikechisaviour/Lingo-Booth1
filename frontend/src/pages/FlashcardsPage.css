@@ -902,9 +902,51 @@
   border-left: 3px solid var(--primary);
 }
 
+.card-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 12px;
+  border-bottom: 1px solid var(--border-light);
+  min-height: 32px;
+  flex-shrink: 0;
+}
+
+.card-list-hint {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.card-list-selected-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.card-list-item.card-selected {
+  background: var(--primary-light);
+}
+
+.card-select-label {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.card-checkbox {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
 .card-korean {
   font-weight: 600;
   color: var(--text-primary);
+  cursor: pointer;
+  flex: 1;
 }
 
 .card-mastery {
