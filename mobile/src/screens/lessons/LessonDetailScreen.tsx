@@ -109,9 +109,9 @@ const LessonDetailScreen: React.FC = () => {
 
   // Auto-speak on content change
   useEffect(() => {
-    if (!lesson?.content?.[currentIndex]?.korean) return;
+    if (!lesson?.content?.[currentIndex]?.targetText) return;
     if (studyMode === 'reading') return;
-    const text = lesson.content[currentIndex].korean;
+    const text = lesson.content[currentIndex].targetText;
     speechService.speakRepeat(text, 2, { lang: 'ko-KR' });
     return () => { speechService.cancel(); };
   }, [lesson, currentIndex, studyMode]);
@@ -168,8 +168,8 @@ const LessonDetailScreen: React.FC = () => {
 
   const generateQuizOptions = useCallback((correctAnswer: string, allContent: any[]) => {
     const otherAnswers = allContent
-      .filter((item) => item.english !== correctAnswer && item.english)
-      .map((item) => item.english);
+      .filter((item) => item.nativeText !== correctAnswer && item.nativeText)
+      .map((item) => item.nativeText);
     const fallback = [
       'Thank you', 'Good morning', 'How are you?', 'See you later',
       'Nice to meet you', 'Excuse me', "I'm sorry", "You're welcome",
@@ -181,14 +181,14 @@ const LessonDetailScreen: React.FC = () => {
   }, []);
 
   const quizOptions = useMemo(() => {
-    if (!content?.english || !lesson?.content) return [];
-    return generateQuizOptions(content.english, lesson.content);
+    if (!content?.nativeText || !lesson?.content) return [];
+    return generateQuizOptions(content.nativeText, lesson.content);
   }, [content, lesson, generateQuizOptions]);
 
   const handleAnswerSelect = (answer: string) => {
     setSelectedAnswer(answer);
     setQuizAttempted(true);
-    const correct = answer === content.english;
+    const correct = answer === content.nativeText;
     setIsCorrect(correct);
 
     setQuizTotal((prev) => prev + 1);
@@ -384,7 +384,7 @@ const LessonDetailScreen: React.FC = () => {
             {/* Korean text card */}
             {studyMode !== 'listening' && (
               <View style={styles.contentCard}>
-                <Text style={styles.contentKorean}>{content.korean}</Text>
+                <Text style={styles.contentKorean}>{content.targetText}</Text>
                 {showRomanization && content.romanization && (
                   <Text style={styles.romanization}>{content.romanization}</Text>
                 )}
@@ -398,7 +398,7 @@ const LessonDetailScreen: React.FC = () => {
                   icon={isSpeaking ? 'volume-high' : 'volume-medium'}
                   size={40}
                   iconColor={isSpeaking ? colors.primary : colors.textSecondary}
-                  onPress={() => handleSpeak(content.korean)}
+                  onPress={() => handleSpeak(content.targetText)}
                   style={styles.audioBtn}
                 />
                 <Text style={styles.audioLabel}>{t('lessonDetail.listen', 'Listen')}</Text>
@@ -413,7 +413,7 @@ const LessonDetailScreen: React.FC = () => {
                 activeOpacity={0.7}
               >
                 {showTranslation ? (
-                  <Text style={styles.translationText}>{content.english}</Text>
+                  <Text style={styles.translationText}>{content.nativeText}</Text>
                 ) : (
                   <Text style={styles.translationHint}>
                     {t('lessonDetail.tapToReveal', 'Tap to reveal translation')}
@@ -437,8 +437,8 @@ const LessonDetailScreen: React.FC = () => {
                     key={idx}
                     style={[
                       styles.quizOption,
-                      quizAttempted && option === content.english && { borderColor: colors.accentGreen, backgroundColor: '#d1fae5' },
-                      quizAttempted && option === selectedAnswer && option !== content.english && { borderColor: colors.error, backgroundColor: '#fef2f2' },
+                      quizAttempted && option === content.nativeText && { borderColor: colors.accentGreen, backgroundColor: '#d1fae5' },
+                      quizAttempted && option === selectedAnswer && option !== content.nativeText && { borderColor: colors.error, backgroundColor: '#fef2f2' },
                     ]}
                     onPress={() => !quizAttempted && handleAnswerSelect(option)}
                     disabled={quizAttempted}

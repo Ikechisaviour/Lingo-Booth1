@@ -62,8 +62,10 @@ export const authService = {
 };
 
 export const lessonService = {
-  getLessons: (category?: string, difficulty?: string) =>
-    api.get('/lessons', { params: { category, difficulty } }),
+  getLessons: (category?: string, difficulty?: string) => {
+    const targetLang = useSettingsStore.getState().targetLanguage || 'ko';
+    return api.get('/lessons', { params: { category, difficulty, targetLang } });
+  },
   getLesson: (id: string) =>
     api.get(`/lessons/${id}`),
   createLesson: (lessonData: object) =>

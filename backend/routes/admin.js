@@ -461,4 +461,92 @@ router.get('/guests', async (req, res) => {
   }
 });
 
+// Migrate existing lessons (add targetLang) + seed multi-language lessons
+router.post('/seed-lessons', async (req, res) => {
+  try {
+    // Step 1: Migrate existing lessons — add targetLang: 'ko' where missing
+    const existing = await Lesson.find({ targetLang: { $exists: false } });
+    let migrated = 0;
+    for (const lesson of existing) {
+      await Lesson.updateOne({ _id: lesson._id }, { $set: { targetLang: 'ko', nativeLang: 'en' } });
+      migrated++;
+    }
+
+    // Also backfill generic content fields from legacy fields
+    const allLessons = await Lesson.find({}).lean();
+    let contentMigrated = 0;
+    for (const lesson of allLessons) {
+      let needsUpdate = false;
+      const contentUpdates = [];
+      for (const item of lesson.content) {
+        const patch = {};
+        if (item.korean && !item.targetText) { patch.targetText = item.korean; needsUpdate = true; }
+        if (item.english && !item.nativeText) { patch.nativeText = item.english; needsUpdate = true; }
+        if (item.example && !item.exampleTarget) { patch.exampleTarget = item.example; needsUpdate = true; }
+        if (item.exampleEnglish && !item.exampleNative) { patch.exampleNative = item.exampleEnglish; needsUpdate = true; }
+        if (item.breakdown && item.breakdown.length > 0) {
+          patch.breakdown = item.breakdown.map(b => {
+            const bp = { ...b };
+            if (b.korean && !b.target) { bp.target = b.korean; needsUpdate = true; }
+            if (b.english && !b.native) { bp.native = b.english; needsUpdate = true; }
+            return bp;
+          });
+        }
+        contentUpdates.push({ ...item, ...patch });
+      }
+      if (needsUpdate) {
+        await Lesson.updateOne({ _id: lesson._id }, { $set: { content: contentUpdates } });
+        contentMigrated++;
+      }
+    }
+
+    // Step 2: Seed new multi-language lessons (skip languages already in DB)
+    const existingLangs = await Lesson.distinct('targetLang');
+    const langDataMap = {
+      es: require('../lessonData/es'),
+      fr: require('../lessonData/fr'),
+      de: require('../lessonData/de'),
+      zh: require('../lessonData/zh'),
+      ja: require('../lessonData/ja'),
+      hi: require('../lessonData/hi'),
+      ar: require('../lessonData/ar'),
+      he: require('../lessonData/he'),
+      pt: require('../lessonData/pt'),
+      it: require('../lessonData/it'),
+      nl: require('../lessonData/nl'),
+      ru: require('../lessonData/ru'),
+      id: require('../lessonData/id'),
+      ms: require('../lessonData/ms'),
+      fil: require('../lessonData/fil'),
+      tr: require('../lessonData/tr'),
+      bn: require('../lessonData/bn'),
+      ta: require('../lessonData/ta'),
+    };
+
+    const newLessons = [];
+    for (const [lang, data] of Object.entries(langDataMap)) {
+      if (existingLangs.includes(lang)) continue; // skip if already seeded
+      const categories = [data.greetings, data.dailyLife, data.food, data.travel, data.shopping, data.business, data.healthcare].filter(Boolean);
+      newLessons.push(...categories);
+    }
+
+    let inserted = 0;
+    if (newLessons.length > 0) {
+      const result = await Lesson.insertMany(newLessons);
+      inserted = result.length;
+    }
+
+    res.json({
+      message: 'Lesson migration and seeding complete',
+      migrated,
+      contentMigrated,
+      inserted,
+      existingLangs,
+    });
+  } catch (error) {
+    console.error('Admin seed-lessons error:', error);
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+});
+
 module.exports = router;

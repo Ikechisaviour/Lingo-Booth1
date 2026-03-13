@@ -65,7 +65,7 @@ const LessonsListScreen: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  }, [catFilter, diffFilter, t]);
+  }, [catFilter, diffFilter, targetLanguage, t]);
 
   useEffect(() => {
     fetchLessons();

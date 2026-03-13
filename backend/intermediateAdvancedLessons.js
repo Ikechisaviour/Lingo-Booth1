@@ -3,13 +3,17 @@
 
 const createContentItem = (korean, romanization, english, type = 'word', example = '', exampleEnglish = '', breakdown = null) => ({
   type,
-  korean,
+  targetText: korean,
   romanization,
-  english,
+  nativeText: english,
   pronunciation: romanization,
+  exampleTarget: example || korean,
+  exampleNative: exampleEnglish || english,
+  korean,
+  english,
   example: example || korean,
   exampleEnglish: exampleEnglish || english,
-  ...(breakdown ? { breakdown } : {}),
+  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.korean, native: b.english, korean: b.korean, english: b.english })) } : {}),
 });
 
 // DAILY LIFE - INTERMEDIATE: Daily Activities & Schedules

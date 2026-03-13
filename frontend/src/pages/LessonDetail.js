@@ -197,12 +197,12 @@ function LessonDetail() {
   // Default: auto-play twice | Listening: auto-play twice | Reading: no auto-play
   useEffect(() => {
     const currentContent = lesson?.content?.[currentIndex];
-    if (!currentContent?.korean) return;
+    if (!currentContent?.targetText) return;
 
     if (studyMode === 'default' || studyMode === 'listening') {
-      speechService.speak(currentContent.korean);
+      speechService.speak(currentContent.targetText);
       const timer = setTimeout(() => {
-        speechService.speak(currentContent.korean);
+        speechService.speak(currentContent.targetText);
       }, 3000);
       return () => clearTimeout(timer);
     }
@@ -238,8 +238,8 @@ function LessonDetail() {
   const generateQuizOptions = useCallback((correctAnswer, allContent) => {
     // Get other English translations from the lesson
     const otherAnswers = allContent
-      .filter(item => item.english !== correctAnswer && item.english)
-      .map(item => item.english);
+      .filter(item => item.nativeText !== correctAnswer && item.nativeText)
+      .map(item => item.nativeText);
 
     // Create a pool of wrong answers
     const wrongAnswers = [];
@@ -377,7 +377,7 @@ function LessonDetail() {
   const handleAnswerSelect = (answer) => {
     setSelectedAnswer(answer);
     setQuizAttempted(true);
-    const correct = answer === content.english;
+    const correct = answer === content.nativeText;
     setIsCorrect(correct);
     setShowExplanation(true);
 
@@ -513,7 +513,7 @@ function LessonDetail() {
   const content = lesson?.content?.[currentIndex];
   const quizOptions = useMemo(() => {
     if (!content || !lesson) return [];
-    return generateQuizOptions(content.english, lesson.content);
+    return generateQuizOptions(content.nativeText, lesson.content);
     // eslint-disable-next-line react-hooks/exhaustive-deps -- regenerate when currentIndex or lesson changes
   }, [currentIndex, lesson, generateQuizOptions]);
 
@@ -596,7 +596,7 @@ function LessonDetail() {
               <div className="listening-mode-prompt">
                 <button
                   className="btn btn-primary listen-again-btn"
-                  onClick={() => handleSpeak(content.korean)}
+                  onClick={() => handleSpeak(content.targetText)}
                   title={t('lessonDetail.listenAgain')}
                 >
                   {isSpeaking ? `🔇 ${t('lessonDetail.playing')}` : `🔊 ${t('lessonDetail.listenAgain')}`}
@@ -605,7 +605,7 @@ function LessonDetail() {
               </div>
             ) : studyMode === 'reading' ? (
               <>
-                <h2 className="content-heading">{getTargetLangName()}: {content.korean}</h2>
+                <h2 className="content-heading">{getTargetLangName()}: {content.targetText}</h2>
                 <button
                   className="btn-romanization-toggle"
                   onClick={() => setShowRomanization(!showRomanization)}
@@ -619,10 +619,10 @@ function LessonDetail() {
             ) : (
               <>
                 <div className="korean-text-row">
-                  <h2>{getTargetLangName()}: {content.korean}</h2>
+                  <h2>{getTargetLangName()}: {content.targetText}</h2>
                   <button
                     className="btn btn-primary speak-btn-lesson"
-                    onClick={() => handleSpeak(content.korean)}
+                    onClick={() => handleSpeak(content.targetText)}
                     title={t('lessonDetail.listenAgain')}
                   >
                     {isSpeaking ? '🔇' : '🔊'}
@@ -654,30 +654,30 @@ function LessonDetail() {
 
             {showTranslation && (
               <div className="translation">
-                <h3>{content.korean} — {content.english}</h3>
+                <h3>{content.targetText} — {content.nativeText}</h3>
                 {content.breakdown && content.breakdown.length > 0 && (
                   <div className="breakdown">
                     {content.breakdown.map((part, i) => (
                       <div key={i} className="breakdown-item">
-                        <span className="breakdown-korean">{part.korean}</span>
-                        <span className="breakdown-english">{part.english}</span>
+                        <span className="breakdown-korean">{part.target}</span>
+                        <span className="breakdown-english">{part.native}</span>
                       </div>
                     ))}
                   </div>
                 )}
-                {content.example && !content.breakdown && lesson.difficulty === 'sentences' && (
+                {content.exampleTarget && !content.breakdown && lesson.difficulty === 'sentences' && (
                   <div className="example">
                     <div className="example-row">
-                      <p className="example-text"><strong>{t('lessonDetail.example')}:</strong> {content.example}</p>
+                      <p className="example-text"><strong>{t('lessonDetail.example')}:</strong> {content.exampleTarget}</p>
                       <button
                         className="btn btn-primary speak-btn-small"
-                        onClick={() => handleSpeak(content.example)}
+                        onClick={() => handleSpeak(content.exampleTarget)}
                         title={t('lessonDetail.listenAgain')}
                       >
                         🔊
                       </button>
                     </div>
-                    <p><strong>{t('lessonDetail.translation')}:</strong> {content.exampleEnglish}</p>
+                    <p><strong>{t('lessonDetail.translation')}:</strong> {content.exampleNative}</p>
                   </div>
                 )}
               </div>
@@ -697,13 +697,13 @@ function LessonDetail() {
                   <h3 className="quiz-question">
                     {studyMode === 'listening'
                       ? t('lessonDetail.whatDidYouHear')
-                      : t('lessonDetail.whatDoesMean', { word: content.korean, language: getNativeLangName() })}
+                      : t('lessonDetail.whatDoesMean', { word: content.targetText, language: getNativeLangName() })}
                   </h3>
 
                   <div className="quiz-options">
                     {quizOptions.map((option, index) => {
                       const isSelected = selectedAnswer === option;
-                      const isCorrectAnswer = option === content.english;
+                      const isCorrectAnswer = option === content.nativeText;
 
                       let optionClass = 'quiz-option';
                       if (quizAttempted) {
@@ -734,13 +734,13 @@ function LessonDetail() {
                         <div>
                           <h4 className="quiz-feedback-title correct">✓ {t('lessonDetail.correct')}</h4>
                           <p className="quiz-feedback-text">
-                            <strong>{t('lessonDetail.explanation')}:</strong> {t('lessonDetail.means', { word: content.korean, romanization: content.romanization, meaning: content.english })}
+                            <strong>{t('lessonDetail.explanation')}:</strong> {t('lessonDetail.means', { word: content.targetText, romanization: content.romanization, meaning: content.nativeText })}
                           </p>
-                          {content.example && (
+                          {content.exampleTarget && (
                             <p className="quiz-feedback-text">
                               <strong>{t('lessonDetail.exampleUsage')}:</strong><br />
-                              {getTargetLangName()}: {content.example}<br />
-                              {getNativeLangName()}: {content.exampleEnglish}
+                              {getTargetLangName()}: {content.exampleTarget}<br />
+                              {getNativeLangName()}: {content.exampleNative}
                             </p>
                           )}
                         </div>
@@ -748,16 +748,16 @@ function LessonDetail() {
                         <div>
                           <h4 className="quiz-feedback-title incorrect">✗ {t('lessonDetail.incorrect')}</h4>
                           <p className="quiz-feedback-text">
-                            <strong>{t('lessonDetail.correctAnswer')}:</strong> "{content.english}"
+                            <strong>{t('lessonDetail.correctAnswer')}:</strong> "{content.nativeText}"
                           </p>
                           <p className="quiz-feedback-text">
-                            <strong>{t('lessonDetail.explanation')}:</strong> {t('lessonDetail.means', { word: content.korean, romanization: content.romanization, meaning: content.english })}
+                            <strong>{t('lessonDetail.explanation')}:</strong> {t('lessonDetail.means', { word: content.targetText, romanization: content.romanization, meaning: content.nativeText })}
                           </p>
-                          {content.example && (
+                          {content.exampleTarget && (
                             <p className="quiz-feedback-text">
                               <strong>{t('lessonDetail.exampleUsage')}:</strong><br />
-                              {getTargetLangName()}: {content.example}<br />
-                              {getNativeLangName()}: {content.exampleEnglish}
+                              {getTargetLangName()}: {content.exampleTarget}<br />
+                              {getNativeLangName()}: {content.exampleNative}
                             </p>
                           )}
                           <button className="btn btn-primary quiz-try-again" onClick={handleTryAgain}>

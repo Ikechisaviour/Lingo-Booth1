@@ -6,16 +6,42 @@ require('dotenv').config();
 const realLessons = require('./intermediateAdvancedLessons');
 const sentenceLessons = require('./sentenceLessons');
 
-// Helper function to create content items
+// Import multi-language lesson data
+const esData = require('./lessonData/es');
+const frData = require('./lessonData/fr');
+const deData = require('./lessonData/de');
+const zhData = require('./lessonData/zh');
+const jaData = require('./lessonData/ja');
+const hiData = require('./lessonData/hi');
+const arData = require('./lessonData/ar');
+const heData = require('./lessonData/he');
+const ptData = require('./lessonData/pt');
+const itData = require('./lessonData/it');
+const nlData = require('./lessonData/nl');
+const ruData = require('./lessonData/ru');
+const idData = require('./lessonData/id');
+const msData = require('./lessonData/ms');
+const filData = require('./lessonData/fil');
+const trData = require('./lessonData/tr');
+const bnData = require('./lessonData/bn');
+const taData = require('./lessonData/ta');
+
+// Helper function to create content items (outputs both legacy + generic fields)
 const createContentItem = (korean, romanization, english, type = 'word', example = '', exampleEnglish = '', breakdown = null) => ({
   type,
-  korean,
+  // Generic language-agnostic fields
+  targetText: korean,
   romanization,
-  english,
+  nativeText: english,
   pronunciation: romanization,
+  exampleTarget: example || korean,
+  exampleNative: exampleEnglish || english,
+  // Legacy fields (kept for backward compatibility)
+  korean,
+  english,
   example: example || korean,
   exampleEnglish: exampleEnglish || english,
-  ...(breakdown ? { breakdown } : {}),
+  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.korean, native: b.english, korean: b.korean, english: b.english })) } : {}),
 });
 
 const lessons = [
@@ -26,6 +52,7 @@ const lessons = [
     title: 'Basic Greetings & Introductions',
     category: 'greetings',
     difficulty: 'beginner',
+    targetLang: 'ko',
     content: [
       // Basic greetings
       createContentItem('안녕하세요', 'annyeonghaseyo', 'Hello', 'word', '안녕하세요, 만나서 반갑습니다', 'Hello, nice to meet you'),
@@ -170,6 +197,7 @@ const lessons = [
     title: 'Polite Expressions & Social Phrases',
     category: 'greetings',
     difficulty: 'intermediate',
+    targetLang: 'ko',
     content: [
       createContentItem('오래간만입니다', 'oraegamanimnida', 'Long time no see', 'sentence', '정말 오래간만입니다', 'It\'s been a really long time'),
       createContentItem('오랜만이에요', 'oraenmanieyo', 'Long time no see (casual)', 'sentence', '오랜만이에요', 'Long time no see'),
@@ -320,6 +348,7 @@ const lessons = [
     title: 'Formal Business & Cultural Expressions',
     category: 'greetings',
     difficulty: 'advanced',
+    targetLang: 'ko',
     content: [
       createContentItem('뵙게 되어 영광입니다', 'boepge doeeo yeonggwangimnida', 'It\'s an honor to meet you', 'sentence', '뵙게 되어 영광입니다', 'It\'s an honor to meet you', [{ korean: '뵙게 되어', english: 'to come to meet (humble)' }, { korean: '영광입니다', english: 'it is an honor' }]),
       createContentItem('오랫동안 기다려 왔습니다', 'oraetdongan gidaryeo watseumnida', 'I\'ve been looking forward to this for a long time', 'sentence', '이 만남을 오랫동안 기다려 왔습니다', 'I\'ve been looking forward to this meeting for a long time', [{ korean: '오랫동안', english: 'for a long time' }, { korean: '기다려 왔습니다', english: 'have been waiting' }]),
@@ -476,6 +505,7 @@ const lessons = [
     title: 'Daily Life & Routines',
     category: 'daily-life',
     difficulty: 'beginner',
+    targetLang: 'ko',
     content: [
       // Time words
       createContentItem('아침', 'achim', 'Morning', 'word', '아침에 일어나요', 'I wake up in the morning'),
@@ -623,6 +653,7 @@ const lessons = [
     title: 'Korean Food & Dining',
     category: 'food',
     difficulty: 'beginner',
+    targetLang: 'ko',
     content: Array(120).fill(null).map((_, i) => {
       const foodItems = [
         ['김치', 'gimchi', 'Kimchi', '김치가 맛있어요', 'Kimchi is delicious'],
@@ -760,6 +791,7 @@ const lessons = [
     title: 'Transportation & Directions',
     category: 'travel',
     difficulty: 'beginner',
+    targetLang: 'ko',
     content: Array(110).fill(null).map((_, i) => {
       const travelItems = [
         ['공항', 'gonghang', 'Airport', '공항에 가요', 'I\'m going to the airport'],
@@ -883,6 +915,7 @@ const lessons = [
     title: 'Shopping Basics',
     category: 'shopping',
     difficulty: 'beginner',
+    targetLang: 'ko',
     content: Array(105).fill(null).map((_, i) => {
       const items = [
         ['가게', 'gage', 'Shop/Store', '가게에 가요', 'I go to the store'],
@@ -1003,6 +1036,7 @@ const lessons = [
     title: 'Health & Medical Basics',
     category: 'healthcare',
     difficulty: 'beginner',
+    targetLang: 'ko',
     content: Array(105).fill(null).map((_, i) => {
       const items = [
         ['병원', 'byeongwon', 'Hospital', '병원에 가야 해요', 'I need to go to the hospital'],
@@ -1123,6 +1157,7 @@ const lessons = [
     title: 'Business Korean Basics',
     category: 'business',
     difficulty: 'beginner',
+    targetLang: 'ko',
     content: Array(105).fill(null).map((_, i) => {
       const items = [
         ['회사', 'hoesa', 'Company', '회사에 다녀요', 'I go to work'],
@@ -1242,12 +1277,14 @@ const lessons = [
     title: 'Daily Activities & Schedules',
     category: 'daily-life',
     difficulty: 'intermediate',
+    targetLang: 'ko',
     content: realLessons.dailyLifeIntermediate
   },
   {
     title: 'Lifestyle & Cultural Practices',
     category: 'daily-life',
     difficulty: 'advanced',
+    targetLang: 'ko',
     content: realLessons.dailyLifeAdvanced
   },
 
@@ -1256,12 +1293,14 @@ const lessons = [
     title: 'Restaurant Conversations',
     category: 'food',
     difficulty: 'intermediate',
+    targetLang: 'ko',
     content: realLessons.foodIntermediate
   },
   {
     title: 'Korean Cuisine Culture',
     category: 'food',
     difficulty: 'advanced',
+    targetLang: 'ko',
     content: realLessons.foodAdvanced
   },
 
@@ -1270,12 +1309,14 @@ const lessons = [
     title: 'Public Transportation',
     category: 'travel',
     difficulty: 'intermediate',
+    targetLang: 'ko',
     content: realLessons.travelIntermediate
   },
   {
     title: 'Travel Planning',
     category: 'travel',
     difficulty: 'advanced',
+    targetLang: 'ko',
     content: realLessons.travelAdvanced
   },
 
@@ -1284,12 +1325,14 @@ const lessons = [
     title: 'Price Negotiation',
     category: 'shopping',
     difficulty: 'intermediate',
+    targetLang: 'ko',
     content: realLessons.shoppingIntermediate
   },
   {
     title: 'Consumer Rights',
     category: 'shopping',
     difficulty: 'advanced',
+    targetLang: 'ko',
     content: realLessons.shoppingAdvanced
   },
 
@@ -1298,12 +1341,14 @@ const lessons = [
     title: 'Office Communication',
     category: 'business',
     difficulty: 'intermediate',
+    targetLang: 'ko',
     content: realLessons.businessIntermediate
   },
   {
     title: 'Corporate Management',
     category: 'business',
     difficulty: 'advanced',
+    targetLang: 'ko',
     content: realLessons.businessAdvanced
   },
 
@@ -1312,12 +1357,14 @@ const lessons = [
     title: 'Medical Consultations',
     category: 'healthcare',
     difficulty: 'intermediate',
+    targetLang: 'ko',
     content: realLessons.healthcareIntermediate
   },
   {
     title: 'Specialized Treatment',
     category: 'healthcare',
     difficulty: 'advanced',
+    targetLang: 'ko',
     content: realLessons.healthcareAdvanced
   },
 
@@ -1330,6 +1377,7 @@ const lessons = [
     title: 'Conversation Practice',
     category: 'greetings',
     difficulty: 'sentences',
+    targetLang: 'ko',
     content: sentenceLessons.greetingsSentences
   },
 
@@ -1338,6 +1386,7 @@ const lessons = [
     title: 'Daily Conversations',
     category: 'daily-life',
     difficulty: 'sentences',
+    targetLang: 'ko',
     content: sentenceLessons.dailyLifeSentences
   },
 
@@ -1346,6 +1395,7 @@ const lessons = [
     title: 'Restaurant Dialogues',
     category: 'food',
     difficulty: 'sentences',
+    targetLang: 'ko',
     content: sentenceLessons.foodSentences
   },
 
@@ -1354,6 +1404,7 @@ const lessons = [
     title: 'Travel Conversations',
     category: 'travel',
     difficulty: 'sentences',
+    targetLang: 'ko',
     content: sentenceLessons.travelSentences
   },
 
@@ -1362,6 +1413,7 @@ const lessons = [
     title: 'Shopping Dialogues',
     category: 'shopping',
     difficulty: 'sentences',
+    targetLang: 'ko',
     content: sentenceLessons.shoppingSentences
   },
 
@@ -1370,6 +1422,7 @@ const lessons = [
     title: 'Workplace Conversations',
     category: 'business',
     difficulty: 'sentences',
+    targetLang: 'ko',
     content: sentenceLessons.businessSentences
   },
 
@@ -1378,9 +1431,29 @@ const lessons = [
     title: 'Medical Conversations',
     category: 'healthcare',
     difficulty: 'sentences',
+    targetLang: 'ko',
     content: sentenceLessons.healthcareSentences
   }
 ];
+
+// Collect all multi-language lesson data
+const multiLangData = [
+  esData, frData, deData, zhData, jaData, hiData, arData, heData,
+  ptData, itData, nlData, ruData, idData, msData, filData, trData, bnData, taData,
+];
+
+multiLangData.forEach(langData => {
+  const langLessons = [
+    langData.greetings,
+    langData.dailyLife,
+    langData.food,
+    langData.travel,
+    langData.shopping,
+    langData.business,
+    langData.healthcare,
+  ].filter(Boolean); // skip any undefined categories
+  lessons.push(...langLessons);
+});
 
 // Connect to MongoDB and seed data
 async function seedDatabase() {
@@ -1414,11 +1487,19 @@ async function seedDatabase() {
     });
 
     console.log('\n=== Difficulty Breakdown ===');
-    const difficulties = ['beginner', 'intermediate', 'advanced'];
+    const difficulties = ['beginner', 'intermediate', 'advanced', 'sentences'];
     difficulties.forEach(diff => {
       const diffLessons = lessons.filter(l => l.difficulty === diff);
       const totalExercises = diffLessons.reduce((sum, l) => sum + l.content.length, 0);
       console.log(`${diff}: ${diffLessons.length} lessons, ${totalExercises} total exercises`);
+    });
+
+    console.log('\n=== Language Breakdown ===');
+    const languages = [...new Set(lessons.map(l => l.targetLang))];
+    languages.forEach(lang => {
+      const langLessons = lessons.filter(l => l.targetLang === lang);
+      const totalExercises = langLessons.reduce((sum, l) => sum + l.content.length, 0);
+      console.log(`${lang}: ${langLessons.length} lessons, ${totalExercises} total exercises`);
     });
 
     console.log('\n✨ Database seeding completed successfully!');

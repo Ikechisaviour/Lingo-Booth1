@@ -18,9 +18,8 @@ router.get('/', optionalAuth, async (req, res) => {
     if (difficulty && VALID_DIFFICULTIES.includes(difficulty)) {
       filter.difficulty = difficulty;
     }
-    if (targetLang) {
-      filter.targetLang = targetLang;
-    }
+    // Always filter by target language (default to 'ko' for backward compatibility)
+    filter.targetLang = targetLang || 'ko';
 
     const lessons = await Lesson.find(filter);
     res.json(lessons);
@@ -49,8 +48,8 @@ router.post('/', verifyToken, isAdmin, async (req, res) => {
   try {
     const { title, category, difficulty, content, targetLang, nativeLang } = req.body;
 
-    if (!title || !category || !content) {
-      return res.status(400).json({ message: 'Title, category, and content are required' });
+    if (!title || !category || !content || !targetLang) {
+      return res.status(400).json({ message: 'Title, category, content, and targetLang are required' });
     }
 
     const lesson = new Lesson({
@@ -58,7 +57,7 @@ router.post('/', verifyToken, isAdmin, async (req, res) => {
       category,
       difficulty,
       content,
-      targetLang: targetLang || 'ko',
+      targetLang,
       nativeLang: nativeLang || 'en',
     });
 

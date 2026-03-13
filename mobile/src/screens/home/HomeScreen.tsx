@@ -301,8 +301,8 @@ const HomeScreen: React.FC = () => {
                 {xpStats.status === 'off' ? '🌿' : xpStats.status === 'decaying' ? '📉' : xpStats.status === 'grace' ? '⏳' : '✨'}
               </Text>
               <Text style={styles.cardTitle}>{t('home.xpTracker')}</Text>
-              <View style={[styles.xpStatusBadge, xpStats.status === 'off' ? styles.badgeRelaxed : styles.badgeIntense]}>
-                <Text style={styles.xpStatusText}>
+              <View style={[styles.xpStatusBadge, styles[`badge_${xpStats.status}`] || styles.badge_safe]}>
+                <Text style={[styles.xpStatusText, styles[`badgeText_${xpStats.status}`] || styles.badgeText_safe]}>
                   {xpStats.status === 'off' ? t('home.relaxed') : t('home.intense')}
                 </Text>
               </View>
@@ -501,8 +501,14 @@ const styles = StyleSheet.create({
 
   // XP Tracker
   xpStatusBadge: { paddingHorizontal: 8, paddingVertical: 2, borderRadius: 10 },
-  badgeRelaxed: { backgroundColor: '#d1fae5' },
-  badgeIntense: { backgroundColor: '#fef3c7' },
+  badge_off: { backgroundColor: 'rgba(88, 204, 2, 0.1)' },
+  badge_safe: { backgroundColor: 'rgba(88, 204, 2, 0.15)' },
+  badge_grace: { backgroundColor: 'rgba(255, 200, 0, 0.15)' },
+  badge_decaying: { backgroundColor: 'rgba(255, 75, 75, 0.15)' },
+  badgeText_off: { color: '#58cc02' },
+  badgeText_safe: { color: '#58cc02' },
+  badgeText_grace: { color: '#e6a800' },
+  badgeText_decaying: { color: '#ff4b4b' },
   xpStatusText: { fontSize: 11, fontWeight: '600' },
   xpTotal: { alignItems: 'center', marginVertical: 8 },
   xpNumber: { fontSize: 36, fontWeight: '800', color: colors.primary },

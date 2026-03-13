@@ -73,8 +73,10 @@ export const authService = {
 };
 
 export const lessonService = {
-  getLessons: (category, difficulty) =>
-    api.get('/lessons', { params: { category, difficulty } }),
+  getLessons: (category, difficulty) => {
+    const targetLang = localStorage.getItem('targetLanguage') || 'ko';
+    return api.get('/lessons', { params: { category, difficulty, targetLang } });
+  },
   getLesson: (id) =>
     api.get(`/lessons/${id}`),
   createLesson: (lessonData) =>

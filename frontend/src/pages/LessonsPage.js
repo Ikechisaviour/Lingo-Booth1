@@ -23,10 +23,27 @@ function LessonsPage() {
     sessionStorage.removeItem('lessonPlaylist');
   }, []);
 
+  // Track target language to re-fetch when it changes
+  const [targetLang, setTargetLang] = useState(localStorage.getItem('targetLanguage') || 'ko');
+
+  useEffect(() => {
+    const onStorage = () => {
+      const lang = localStorage.getItem('targetLanguage') || 'ko';
+      setTargetLang(prev => prev !== lang ? lang : prev);
+    };
+    window.addEventListener('storage', onStorage);
+    // Also check on focus (same-tab changes)
+    window.addEventListener('focus', onStorage);
+    return () => {
+      window.removeEventListener('storage', onStorage);
+      window.removeEventListener('focus', onStorage);
+    };
+  }, []);
+
   useEffect(() => {
     fetchLessons();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filter]);
+  }, [filter, targetLang]);
 
   // Fetch user progress to build lessonId → score map
   useEffect(() => {
@@ -152,117 +169,113 @@ function LessonsPage() {
   return (
     <div className="lessons-container">
       <div className="container">
-        {/* Header */}
-        <div className="lessons-header">
-          <div className="header-content">
+        {/* Hero Header */}
+        <div className="lessons-hero">
+          <div className="hero-text">
             <h1>
               <Trans i18nKey="lessons.title" values={{ language: getTargetLangName() }}>
                 {getTargetLangName()} <span className="text-accent">Lessons</span>
               </Trans>
             </h1>
             <p>{t('lessons.subtitle')}</p>
+            <span className="hero-stat">📚 {t('lessons.lessonsAvailable', { count: lessons.length })}</span>
           </div>
-          <div className="header-stats">
-            <div className="stat-badge">
-              <span className="stat-icon">📚</span>
-              <span className="stat-text">{t('lessons.lessonsAvailable', { count: lessons.length })}</span>
+          <div className="hero-actions">
+            {!customizeMode && lessons.length > 0 && filter.category === '' && filter.difficulty === '' && (
+              <button className="btn btn-primary hero-start-btn" onClick={handleStartAll}>
+                ▶ {t('lessons.startAll')}
+              </button>
+            )}
+            {lessons.length > 0 && (
+              <button
+                className={`btn ${customizeMode ? 'btn-active' : 'btn-outline'} hero-action-btn`}
+                onClick={handleToggleCustomize}
+              >
+                {customizeMode ? `✕ ${t('lessons.exitCustomize')}` : `✏️ ${t('lessons.customizePath')}`}
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Customize bar — only when selecting */}
+        {customizeMode && (
+          <div className="customize-bar">
+            {selectedLessons.length > 0 ? (
+              <>
+                <span className="customize-count">
+                  {t('lessons.selectedCount', { count: selectedLessons.length })}
+                </span>
+                <button className="btn btn-primary" onClick={handleStartCustom}>
+                  ▶ {t('lessons.startCustomPath', { count: selectedLessons.length })}
+                </button>
+                <button className="btn btn-outline" onClick={() => setSelectedLessons([])}>
+                  {t('lessons.clearSelection')}
+                </button>
+              </>
+            ) : (
+              <span className="customize-hint">{t('lessons.customizeHint')}</span>
+            )}
+          </div>
+        )}
+
+        {/* Filters */}
+        <div className="filter-bar">
+          <div className="filter-group">
+            <span className="filter-label">{t('lessons.category', 'Category')}</span>
+            <div className="filter-pills">
+              <button
+                className={`filter-pill ${filter.category === '' ? 'active' : ''}`}
+                onClick={() => setFilter({ ...filter, category: '' })}
+              >
+                <span className="pill-icon">🌐</span>
+                <span>{t('lessons.all')}</span>
+              </button>
+              {categories.map((cat) => (
+                <button
+                  key={cat.value}
+                  className={`filter-pill ${filter.category === cat.value ? 'active' : ''}`}
+                  onClick={() => setFilter({ ...filter, category: cat.value })}
+                >
+                  <span className="pill-icon">{cat.icon}</span>
+                  <span>{t(`lessons.categories.${cat.value}`)}</span>
+                </button>
+              ))}
             </div>
           </div>
-        </div>
-
-        {/* Category Pills */}
-        <div className="category-pills">
-          <button
-            className={`category-pill ${filter.category === '' ? 'active' : ''}`}
-            onClick={() => setFilter({ ...filter, category: '' })}
-          >
-            <span className="pill-icon">🌐</span>
-            <span>{t('lessons.all')}</span>
-          </button>
-          {categories.map((cat) => (
-            <button
-              key={cat.value}
-              className={`category-pill ${filter.category === cat.value ? 'active' : ''}`}
-              onClick={() => setFilter({ ...filter, category: cat.value })}
-            >
-              <span className="pill-icon">{cat.icon}</span>
-              <span>{t(`lessons.categories.${cat.value}`)}</span>
-            </button>
-          ))}
-        </div>
-
-        {/* Difficulty Filter */}
-        <div className="difficulty-filter">
-          <span className="filter-label">{t('lessons.level')}</span>
-          <div className="difficulty-options">
-            <button
-              className={`difficulty-btn ${filter.difficulty === '' ? 'active' : ''}`}
-              onClick={() => setFilter({ ...filter, difficulty: '' })}
-            >
-              {t('lessons.allLevels')}
-            </button>
-            {difficulties.map((diff) => (
-              <button
-                key={diff.value}
-                className={`difficulty-btn ${filter.difficulty === diff.value ? 'active' : ''}`}
-                onClick={() => setFilter({ ...filter, difficulty: diff.value })}
-                style={{ '--diff-color': diff.color }}
-              >
-                {t(`lessons.difficulties.${diff.value}`)}
-              </button>
-            ))}
+          <div className="filter-group">
+            <span className="filter-label">{t('lessons.level', 'Level')}</span>
+            <div className="filter-pills">
+              {difficulties.map((diff) => (
+                <button
+                  key={diff.value}
+                  className={`filter-pill diff-pill ${filter.difficulty === diff.value ? 'active' : ''}`}
+                  onClick={() => setFilter({ ...filter, difficulty: filter.difficulty === diff.value ? '' : diff.value })}
+                  style={{ '--pill-color': diff.color }}
+                >
+                  <span className="diff-dot" style={{ background: diff.color }} />
+                  {t(`lessons.difficulties.${diff.value}`)}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
         {error && <div className="error">{error}</div>}
 
-        {/* Start All Banner */}
-        {!loading && lessons.length > 0 && filter.category === '' && filter.difficulty === '' && !customizeMode && (
-          <div className="playlist-action-bar">
-            <div className="playlist-action-info">
-              <span className="playlist-action-icon">🎯</span>
-              <div>
-                <strong>{t('lessons.studyAll', { count: lessons.length })}</strong>
-                <p>{t('lessons.studyAllDesc')}</p>
-              </div>
-            </div>
-            <button className="btn btn-primary playlist-start-btn" onClick={handleStartAll}>
-              {t('lessons.startAll')} →
-            </button>
-          </div>
-        )}
-
-        {/* Customize Path Toolbar */}
-        {!loading && lessons.length > 0 && (
-          <div className="customize-toolbar">
-            <button
-              className={`btn ${customizeMode ? 'btn-active' : 'btn-outline'} customize-toggle-btn`}
-              onClick={handleToggleCustomize}
-            >
-              {customizeMode ? `✕ ${t('lessons.exitCustomize')}` : `✏️ ${t('lessons.customizePath')}`}
-            </button>
-            {customizeMode && (
-              <>
-                {selectedLessons.length > 0 && (
-                  <button className="btn btn-primary playlist-start-btn" onClick={handleStartCustom}>
-                    {t('lessons.startCustomPath', { count: selectedLessons.length })} →
-                  </button>
-                )}
-                {selectedLessons.length > 0 && (
-                  <button className="btn btn-outline" onClick={() => setSelectedLessons([])}>
-                    {t('lessons.clearSelection')}
-                  </button>
-                )}
-                {selectedLessons.length === 0 && (
-                  <span className="customize-hint">{t('lessons.customizeHint')}</span>
-                )}
-              </>
-            )}
-          </div>
-        )}
-
+        {/* Content */}
         {loading ? (
-          <div className="loading">{t('lessons.loadingLessons')}</div>
+          <div className="lessons-skeleton">
+            {[...Array(6)].map((_, i) => (
+              <div className="skeleton-card" key={i}>
+                <div className="skeleton-bar" />
+                <div className="skeleton-body">
+                  <div className="skeleton-line wide" />
+                  <div className="skeleton-line medium" />
+                  <div className="skeleton-line narrow" />
+                </div>
+              </div>
+            ))}
+          </div>
         ) : lessons.length === 0 ? (
           <div className="empty-state">
             <div className="empty-state-icon">📚</div>
@@ -280,57 +293,61 @@ function LessonsPage() {
             {lessons.map((lesson, index) => {
               const selIdx = selectedLessons.indexOf(lesson._id);
               const isSelected = selIdx !== -1;
+              const diffColor = getDifficultyColor(lesson.difficulty);
+              const progress = progressMap[lesson._id] || 0;
+
               return (
                 <Link
                   to={`/lessons/${lesson._id}`}
                   key={lesson._id}
                   className={`lesson-card${customizeMode && isSelected ? ' selected' : ''}`}
                   onClick={(e) => handleCardClick(e, lesson._id)}
+                  style={{ '--card-accent': diffColor, animationDelay: `${index * 0.04}s` }}
                 >
                   {customizeMode && isSelected && (
                     <span className="selection-badge">{selIdx + 1}</span>
                   )}
-                  <div className="card-header-row">
-                    <div
-                      className="lesson-icon"
-                      style={{ background: `${getDifficultyColor(lesson.difficulty)}20` }}
-                    >
-                      <span>{getCategoryIcon(lesson.category)}</span>
+
+                  <div className="card-accent-bar" />
+
+                  <div className="card-body">
+                    <div className="card-top">
+                      <div className="lesson-icon" style={{ background: `${diffColor}15` }}>
+                        <span>{getCategoryIcon(lesson.category)}</span>
+                      </div>
+                      <span className="difficulty-tag" style={{ color: diffColor, background: `${diffColor}12` }}>
+                        {t(`lessons.difficulties.${lesson.difficulty}`)}
+                      </span>
                     </div>
-                    <span
-                      className="difficulty-badge"
-                      style={{ background: getDifficultyColor(lesson.difficulty) }}
-                    >
-                      {t(`lessons.difficulties.${lesson.difficulty}`)}
-                    </span>
-                  </div>
-                  <h3>{lesson.title}</h3>
-                  <p className="lesson-category">
-                    {t(`lessons.categories.${lesson.category}`)}
-                  </p>
-                  <div className="lesson-footer">
-                    <div className="lesson-meta">
-                      <span className="meta-icon">📝</span>
-                      <span>{t('lessons.items', { count: lesson.content.length })}</span>
-                    </div>
-                    <div className="lesson-progress">
-                      <div className="progress-ring">
-                        <svg viewBox="0 0 36 36">
-                          <path
-                            className="progress-bg"
-                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                          />
-                          <path
+
+                    <h3>{lesson.title}</h3>
+                    <p className="lesson-category">
+                      {t(`lessons.categories.${lesson.category}`)}
+                    </p>
+
+                    <div className="card-bottom">
+                      <div className="lesson-meta">
+                        <span>📝 {t('lessons.items', { count: lesson.content.length })}</span>
+                      </div>
+                      <div className="progress-section">
+                        <div className="progress-track">
+                          <div
                             className="progress-fill"
-                            strokeDasharray={`${progressMap[lesson._id] || 0}, 100`}
-                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                            style={{ stroke: getDifficultyColor(lesson.difficulty) }}
+                            style={{ width: `${progress}%`, background: diffColor }}
                           />
-                        </svg>
+                        </div>
+                        {progress > 0 && (
+                          <span className="progress-pct" style={{ color: diffColor }}>{progress}%</span>
+                        )}
                       </div>
                     </div>
                   </div>
-                  <div className="card-hover-arrow">→</div>
+
+                  <div className="card-hover-arrow">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
                 </Link>
               );
             })}
