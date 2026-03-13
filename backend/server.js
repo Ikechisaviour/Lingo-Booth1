@@ -12,6 +12,10 @@ const app = express();
 const allowedOrigins = process.env.FRONTEND_ORIGINS
   ? process.env.FRONTEND_ORIGINS.split(',').map(o => o.trim())
   : [process.env.FRONTEND_ORIGIN || 'http://localhost:3000'];
+// Always allow localhost for development
+if (!allowedOrigins.includes('http://localhost:3000')) {
+  allowedOrigins.push('http://localhost:3000');
+}
 
 const corsOptions = {
   origin: (origin, callback) => {
