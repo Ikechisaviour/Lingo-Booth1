@@ -491,7 +491,7 @@
   word-break: break-word;
 }
 
-.korean-text-row {
+.target-text-row {
   display: flex;
   align-items: center;
   gap: 16px;

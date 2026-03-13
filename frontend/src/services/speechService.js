@@ -2,7 +2,7 @@
 // Maintains the same public API as the previous Web Speech API implementation
 
 import { ttsService } from './api';
-import LANGUAGES from '../config/languages';
+import LANGUAGES, { getLangField } from '../config/languages';
 
 // Script-to-language mapping using Unicode ranges
 const SCRIPT_LANG_MAP = [
@@ -616,15 +616,14 @@ class SpeechService {
    * Fetches sequentially to avoid hammering the backend.
    */
   async prefetchCards(cards, showTargetFirst = true, targetLang = 'ko', nativeLang = 'en') {
-    const getLangField = (code) => code === 'ko' ? 'korean' : code === 'en' ? 'english' : code;
     const targetField = getLangField(targetLang);
     const nativeField = getLangField(nativeLang);
     const targetLocale = LANGUAGES[targetLang]?.ttsLocale;
     const nativeLocale = LANGUAGES[nativeLang]?.ttsLocale;
 
     for (const card of cards) {
-      const front = showTargetFirst ? card[targetField] || card.korean : card[nativeField] || card.english;
-      const back  = showTargetFirst ? card[nativeField] || card.english : card[targetField] || card.korean;
+      const front = showTargetFirst ? card[targetField] : card[nativeField];
+      const back  = showTargetFirst ? card[nativeField] : card[targetField];
       await this.prefetch(front, showTargetFirst ? targetLocale : nativeLocale);
       await this.prefetch(back,  showTargetFirst ? nativeLocale : targetLocale);
     }
@@ -756,10 +755,12 @@ class SpeechService {
   }
 
   /**
-   * Get available Korean voices (convenience method)
+   * Get available voices for the current target language (convenience method)
    */
-  async getKoreanVoices() {
-    return this.getVoicesForLang('ko');
+  async getTargetLangVoices() {
+    const targetLang = localStorage.getItem('targetLanguage') || 'ko';
+    const locale = LANGUAGES[targetLang]?.ttsLocale?.split('-')[0] || targetLang;
+    return this.getVoicesForLang(locale);
   }
 
   /**

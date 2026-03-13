@@ -35,7 +35,7 @@ if (Platform.OS === 'android') {
 }
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
-import LANGUAGES, { getLangName } from '../../config/languages';
+import LANGUAGES, { getLangName, getLangField, langHasRomanization } from '../../config/languages';
 import { colors } from '../../config/theme';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
@@ -46,7 +46,6 @@ const normalizeCategory = (cat: any): string[] => {
   return ['uncategorized'];
 };
 
-const getLangField = (code: string) => (code === 'ko' ? 'korean' : code === 'en' ? 'english' : code);
 
 function shuffleArray<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -82,7 +81,7 @@ const FlashcardsScreen: React.FC = () => {
   const [expandedPrimaries, setExpandedPrimaries] = useState<Set<string>>(new Set());
   const [selectedCardIds, setSelectedCardIds] = useState<Set<string>>(new Set());
 
-  const [newCard, setNewCard] = useState({ korean: '', english: '', romanization: '', category: 'vocabulary', topic: '' });
+  const [newCard, setNewCard] = useState<Record<string, string>>(() => ({ [getLangField(targetLanguage)]: '', [getLangField(nativeLanguage)]: '', romanization: '', category: 'vocabulary', topic: '' }));
 
   const autoPlayRef = useRef(false);
   const transitioningRef = useRef(false);
@@ -125,7 +124,7 @@ const FlashcardsScreen: React.FC = () => {
 
   // Category-filtered flashcards
   const backendSendsTargetField =
-    targetLanguage === 'ko' || targetLanguage === 'en' || flashcards.some((c) => !!c[targetField]);
+    flashcards.some((c) => !!c[targetField]);
 
   // All cards matching the category filter — used for the card picker list
   const categoryFilteredCards =
@@ -171,8 +170,8 @@ const FlashcardsScreen: React.FC = () => {
     const card = displayedCards[currentIndex];
     if (!card) return;
     showPlayerNotification(
-      card[targetField] || card.korean || '',
-      card[nativeField] || card.english || '',
+      card[targetField] || '',
+      card[nativeField] || '',
       currentIndex + 1,
       displayedCards.length,
     );
@@ -261,7 +260,7 @@ const FlashcardsScreen: React.FC = () => {
     if (next && studyStyle !== 'text') {
       const card = displayedCards[currentIndex];
       if (!card) return;
-      const text = showsTargetFirst ? card[nativeField] || card.english : card[targetField];
+      const text = showsTargetFirst ? card[nativeField] : card[targetField];
       const lang = showsTargetFirst ? nativeLocale : targetLocale;
       if (text) {
         speechService.cancel();
@@ -276,7 +275,7 @@ const FlashcardsScreen: React.FC = () => {
     if (displayedCards.length === 0 || !displayedCards[currentIndex]) return;
 
     const card = displayedCards[currentIndex];
-    const text = showsTargetFirst ? card[targetField] : card[nativeField] || card.english;
+    const text = showsTargetFirst ? card[targetField] : card[nativeField];
     const lang = showsTargetFirst ? targetLocale : nativeLocale;
 
     const timer = setTimeout(() => {
@@ -298,8 +297,8 @@ const FlashcardsScreen: React.FC = () => {
 
     const autoPlayCard = async () => {
       const card = displayedCards[currentIndex];
-      const frontText = showsTargetFirst ? card[targetField] : card[nativeField] || card.english;
-      const backText = showsTargetFirst ? card[nativeField] || card.english : card[targetField];
+      const frontText = showsTargetFirst ? card[targetField] : card[nativeField];
+      const backText = showsTargetFirst ? card[nativeField] : card[targetField];
       const frontLocale = showsTargetFirst ? targetLocale : nativeLocale;
       const backLocale = showsTargetFirst ? nativeLocale : targetLocale;
 
@@ -372,7 +371,7 @@ const FlashcardsScreen: React.FC = () => {
     }
 
     const card = displayedCards[currentIndex];
-    const text = showsTargetFirst ? card[nativeField] || card.english : card[targetField];
+    const text = showsTargetFirst ? card[nativeField] : card[targetField];
     const lang = showsTargetFirst ? nativeLocale : targetLocale;
 
     if (studyStyle === 'text') {
@@ -449,17 +448,19 @@ const FlashcardsScreen: React.FC = () => {
 
   // Add flashcard
   const handleAddFlashcard = async () => {
-    if (!newCard.korean.trim() || !newCard.english.trim()) return;
+    if (!newCard[targetField]?.trim() || !newCard[nativeField]?.trim()) return;
     try {
       const response = await flashcardService.createFlashcard({
         userId,
-        korean: newCard.korean,
-        english: newCard.english,
+        [targetField]: newCard[targetField],
+        [nativeField]: newCard[nativeField],
         romanization: newCard.romanization,
         category: newCard.topic.trim() ? [newCard.category, newCard.topic.trim()] : [newCard.category],
+        targetLang: targetLanguage,
+        nativeLang: nativeLanguage,
       });
       setFlashcards((prev) => [...prev, response.data]);
-      setNewCard({ korean: '', english: '', romanization: '', category: 'vocabulary', topic: '' });
+      setNewCard({ [targetField]: '', [nativeField]: '', romanization: '', category: 'vocabulary', topic: '' });
       setShowAddForm(false);
     } catch {}
   };
@@ -525,8 +526,8 @@ const FlashcardsScreen: React.FC = () => {
   }
 
   const card = displayedCards[currentIndex];
-  const frontText = showsTargetFirst ? card[targetField] : card[nativeField] || card.english;
-  const backText = showsTargetFirst ? card[nativeField] || card.english : card[targetField];
+  const frontText = showsTargetFirst ? card[targetField] : card[nativeField];
+  const backText = showsTargetFirst ? card[nativeField] : card[targetField];
   const frontLabel = showsTargetFirst ? getLangName(targetLanguage) : getLangName(nativeLanguage);
   const backLabel = showsTargetFirst ? getLangName(nativeLanguage) : getLangName(targetLanguage);
   const frontLocale = showsTargetFirst ? targetLocale : nativeLocale;
@@ -770,7 +771,7 @@ const FlashcardsScreen: React.FC = () => {
                               }}
                             >
                               <Text style={[styles.subtopicName, isChecked && styles.subtopicNameActive]}>
-                                {card[nativeField] || card.english}
+                                {card[nativeField]}
                               </Text>
                               {isChecked && <Text style={styles.categoryCount}>✓</Text>}
                             </TouchableOpacity>
@@ -864,22 +865,24 @@ const FlashcardsScreen: React.FC = () => {
             </Text>
             <TextInput
               label={getLangName(targetLanguage)}
-              value={newCard.korean}
-              onChangeText={(v) => setNewCard({ ...newCard, korean: v })}
+              value={newCard[targetField] || ''}
+              onChangeText={(v) => setNewCard({ ...newCard, [targetField]: v })}
               mode="outlined"
               style={styles.formInput}
             />
-            <TextInput
-              label={getLangName(nativeLanguage)}
-              value={newCard.english}
-              onChangeText={(v) => setNewCard({ ...newCard, english: v })}
-              mode="outlined"
-              style={styles.formInput}
-            />
+            {langHasRomanization(targetLanguage) && (
             <TextInput
               label={t('flashcards.romanization', 'Romanization')}
-              value={newCard.romanization}
+              value={newCard.romanization || ''}
               onChangeText={(v) => setNewCard({ ...newCard, romanization: v })}
+              mode="outlined"
+              style={styles.formInput}
+            />
+            )}
+            <TextInput
+              label={getLangName(nativeLanguage)}
+              value={newCard[nativeField] || ''}
+              onChangeText={(v) => setNewCard({ ...newCard, [nativeField]: v })}
               mode="outlined"
               style={styles.formInput}
             />

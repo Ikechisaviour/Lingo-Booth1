@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { adminService } from '../services/api';
-import LANGUAGES, { getTargetLangName, getNativeLangName } from '../config/languages';
+import LANGUAGES, { getTargetLangName, getNativeLangName, getTargetField, getNativeField } from '../config/languages';
 import './AdminDashboard.css';
 
 // Country code → flag emoji
@@ -198,7 +198,7 @@ function AdminDashboard() {
   };
 
   const handleDeleteFlashcard = async (flashcard) => {
-    if (window.confirm(t('admin.deleteFlashcardConfirm', { word: flashcard.korean, username: flashcard.userId?.username || 'unknown' }))) {
+    if (window.confirm(t('admin.deleteFlashcardConfirm', { word: flashcard[getTargetField()] || flashcard.korean, username: flashcard.userId?.username || 'unknown' }))) {
       try {
         await adminService.deleteFlashcard(flashcard._id);
         setUserFlashcards(userFlashcards.filter(f => f._id !== flashcard._id));
@@ -855,8 +855,8 @@ function AdminDashboard() {
                       {userFlashcards.length > 0 ? (
                         userFlashcards.map((fc) => (
                           <tr key={fc._id}>
-                            <td><strong>{fc.korean}</strong></td>
-                            <td>{fc.english}</td>
+                            <td><strong>{fc[getTargetField()] || fc.korean}</strong></td>
+                            <td>{fc[getNativeField()] || fc.english}</td>
                             <td style={{ color: 'var(--text-secondary)' }}>{fc.romanization || '—'}</td>
                             <td>{Array.isArray(fc.category) ? fc.category.join(', ') : fc.category || '—'}</td>
                             <td>

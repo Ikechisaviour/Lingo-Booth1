@@ -4,7 +4,12 @@ import { useTranslation } from 'react-i18next';
 import { flashcardService, progressService, userService, guestXPHelper } from '../services/api';
 import speechService from '../services/speechService';
 import guestActivityTracker from '../services/guestActivityTracker';
-import LANGUAGES, { getTargetLangName, getNativeLangName, getTargetLangCode, getNativeLangCode } from '../config/languages';
+import LANGUAGES, {
+  getTargetLangName, getNativeLangName,
+  getTargetLangCode, getNativeLangCode,
+  getLangField, getTargetField, getNativeField,
+  targetLangHasRomanization,
+} from '../config/languages';
 import './FlashcardsPage.css';
 
 // Normalize category: handles old string format and new array format
@@ -21,9 +26,11 @@ function FlashcardsPage() {
   const [error, setError] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
+  const targetField = getTargetField();
+  const nativeField = getNativeField();
   const [newFlashcard, setNewFlashcard] = useState({
-    korean: '',
-    english: '',
+    [targetField]: '',
+    [nativeField]: '',
     romanization: '',
     category: ['vocabulary'],
     topic: '',
@@ -54,8 +61,6 @@ function FlashcardsPage() {
   const transitioningRef = useRef(false);
   const nativeLangCode = getNativeLangCode();
   const targetLangCode = getTargetLangCode();
-  // Map language code to the field name on a flashcard object
-  const getLangField = (code) => code === 'ko' ? 'korean' : code === 'en' ? 'english' : code;
 
   const saveActivityState = useCallback((index) => {
     if (!userId) return;
@@ -129,11 +134,9 @@ function FlashcardsPage() {
     if (studyStyle === 'text') return; // text-only, no auto-speak
     if (activeFlashcards.length === 0 || !activeFlashcards[currentIndex]) return;
     const card = activeFlashcards[currentIndex];
-    const targetField = targetLangCode === 'ko' ? 'korean' : targetLangCode;
-    const nativeField = nativeLangCode === 'en' ? 'english' : nativeLangCode;
     const text = showsTargetFirst
-      ? card[targetField]
-      : (card[nativeField] || card.english);
+      ? card[getLangField(targetLangCode)]
+      : card[getLangField(nativeLangCode)];
     const frontLang = showsTargetFirst
       ? (LANGUAGES[targetLangCode]?.ttsLocale)
       : (LANGUAGES[nativeLangCode]?.ttsLocale);
@@ -153,12 +156,10 @@ function FlashcardsPage() {
     if (studyStyle === 'text') return;
     if (!activeFlashcards[currentIndex]) return;
     const card = activeFlashcards[currentIndex];
-    const targetField = targetLangCode === 'ko' ? 'korean' : targetLangCode;
-    const nativeField = nativeLangCode === 'en' ? 'english' : nativeLangCode;
     // Back face shows the opposite of front
     const text = showsTargetFirst
-      ? (card[nativeField] || card.english)   // front=target → back=native
-      : card[targetField];                    // front=native → back=target
+      ? card[getLangField(nativeLangCode)]   // front=target → back=native
+      : card[getLangField(targetLangCode)];  // front=native → back=target
     const backLang = showsTargetFirst
       ? (LANGUAGES[nativeLangCode]?.ttsLocale)
       : (LANGUAGES[targetLangCode]?.ttsLocale);
@@ -186,10 +187,8 @@ function FlashcardsPage() {
 
     const autoPlayCard = async () => {
       const card = activeFlashcards[currentIndex];
-      const apTargetField = targetLangCode === 'ko' ? 'korean' : targetLangCode;
-      const apNativeField = nativeLangCode === 'en' ? 'english' : nativeLangCode;
-      const frontText = showsTargetFirst ? card[apTargetField] : (card[apNativeField] || card.english);
-      const backText  = showsTargetFirst ? (card[apNativeField] || card.english) : card[apTargetField];
+      const frontText = showsTargetFirst ? card[getLangField(targetLangCode)] : card[getLangField(nativeLangCode)];
+      const backText  = showsTargetFirst ? card[getLangField(nativeLangCode)] : card[getLangField(targetLangCode)];
       const frontLocale = showsTargetFirst ? LANGUAGES[targetLangCode]?.ttsLocale : LANGUAGES[nativeLangCode]?.ttsLocale;
       const backLocale  = showsTargetFirst ? LANGUAGES[nativeLangCode]?.ttsLocale : LANGUAGES[targetLangCode]?.ttsLocale;
 
@@ -324,13 +323,13 @@ function FlashcardsPage() {
       const category = topic ? [mainCat, topic] : [mainCat];
       const response = await flashcardService.createFlashcard({
         userId,
-        korean: newFlashcard.korean,
-        english: newFlashcard.english,
+        [targetField]: newFlashcard[targetField],
+        [nativeField]: newFlashcard[nativeField],
         romanization: newFlashcard.romanization,
         category,
       });
       setFlashcards([...flashcards, response.data]);
-      setNewFlashcard({ korean: '', english: '', romanization: '', category: ['vocabulary'], topic: '' });
+      setNewFlashcard({ [targetField]: '', [nativeField]: '', romanization: '', category: ['vocabulary'], topic: '' });
       setShowForm(false);
     } catch (err) {
       setError('Failed to add flashcard');
@@ -408,8 +407,7 @@ function FlashcardsPage() {
   // Only exclude cards missing the target field when the backend is actually
   // sending that field (i.e. at least one card has it).
   const targetLangField = getLangField(targetLangCode);
-  const backendSendsTargetField = targetLangCode === 'ko' || targetLangCode === 'en'
-    || flashcards.some(c => !!c[targetLangField]);
+  const backendSendsTargetField = flashcards.some(c => !!c[targetLangField]);
   const allLangFilteredCards = flashcards.filter(c => !backendSendsTargetField || !!c[targetLangField]);
   // Study deck: all cards, or only selected ones
   const activeFlashcards = selectedCardIds.size === 0
@@ -486,9 +484,7 @@ function FlashcardsPage() {
 
     // Speak the hidden side and wait for it to finish
     // (minimum 800ms so the flip animation is visible)
-    const hnTargetField = targetLangCode === 'ko' ? 'korean' : targetLangCode;
-    const hnNativeField = nativeLangCode === 'en' ? 'english' : nativeLangCode;
-    const textToSpeak = showsTargetFirst ? (card[hnNativeField] || card.english) : card[hnTargetField];
+    const textToSpeak = showsTargetFirst ? card[getLangField(nativeLangCode)] : card[getLangField(targetLangCode)];
     const speakLocale  = showsTargetFirst ? LANGUAGES[nativeLangCode]?.ttsLocale : LANGUAGES[targetLangCode]?.ttsLocale;
     if (studyStyle === 'text') {
       await new Promise(resolve => setTimeout(resolve, 800));
@@ -673,7 +669,7 @@ function FlashcardsPage() {
     : '';
   // Meaning/translation (back of card) — uses the selected native language field
   const displayNative = current
-    ? (nativeLangCode !== 'en' && current[nativeLangCode]) || current.english
+    ? current[getLangField(nativeLangCode)] || ''
     : '';
   // TTS locale strings for explicit language passing to speechService
   const targetTtsLocale = LANGUAGES[targetLangCode]?.ttsLocale;
@@ -733,20 +729,22 @@ function FlashcardsPage() {
                   <div className="form-row">
                     <div className="form-group">
                       <label>{t('flashcards.targetLang', { language: getTargetLangName() })}</label>
-                      <input type="text" placeholder={t('flashcards.targetLang', { language: getTargetLangName() })} value={newFlashcard.korean}
-                        onChange={(e) => setNewFlashcard({ ...newFlashcard, korean: e.target.value })} required />
+                      <input type="text" placeholder={t('flashcards.targetLang', { language: getTargetLangName() })} value={newFlashcard[targetField] || ''}
+                        onChange={(e) => setNewFlashcard({ ...newFlashcard, [targetField]: e.target.value })} required />
                     </div>
+                    {targetLangHasRomanization() && (
                     <div className="form-group">
                       <label>{t('flashcards.pronunciation')}</label>
                       <input type="text" placeholder={t('flashcards.pronunciation')} value={newFlashcard.romanization}
-                        onChange={(e) => setNewFlashcard({ ...newFlashcard, romanization: e.target.value })} required />
+                        onChange={(e) => setNewFlashcard({ ...newFlashcard, romanization: e.target.value })} />
                     </div>
+                    )}
                   </div>
                   <div className="form-row">
                     <div className="form-group">
                       <label>{t('flashcards.nativeLang', { language: getNativeLangName() })}</label>
-                      <input type="text" placeholder={t('flashcards.nativeLang', { language: getNativeLangName() })} value={newFlashcard.english}
-                        onChange={(e) => setNewFlashcard({ ...newFlashcard, english: e.target.value })} required />
+                      <input type="text" placeholder={t('flashcards.nativeLang', { language: getNativeLangName() })} value={newFlashcard[nativeField] || ''}
+                        onChange={(e) => setNewFlashcard({ ...newFlashcard, [nativeField]: e.target.value })} required />
                     </div>
                     <div className="form-group">
                       <label>{t('flashcards.categoryLabel')}</label>
@@ -874,20 +872,22 @@ function FlashcardsPage() {
                     <div className="form-row">
                       <div className="form-group">
                         <label>{t('flashcards.targetLang', { language: getTargetLangName() })}</label>
-                        <input type="text" placeholder={t('flashcards.targetLang', { language: getTargetLangName() })} value={newFlashcard.korean}
-                          onChange={(e) => setNewFlashcard({ ...newFlashcard, korean: e.target.value })} required />
+                        <input type="text" placeholder={t('flashcards.targetLang', { language: getTargetLangName() })} value={newFlashcard[targetField] || ''}
+                          onChange={(e) => setNewFlashcard({ ...newFlashcard, [targetField]: e.target.value })} required />
                       </div>
+                      {targetLangHasRomanization() && (
                       <div className="form-group">
                         <label>{t('flashcards.pronunciation')}</label>
                         <input type="text" placeholder={t('flashcards.pronunciation')} value={newFlashcard.romanization}
-                          onChange={(e) => setNewFlashcard({ ...newFlashcard, romanization: e.target.value })} required />
+                          onChange={(e) => setNewFlashcard({ ...newFlashcard, romanization: e.target.value })} />
                       </div>
+                      )}
                     </div>
                     <div className="form-row">
                       <div className="form-group">
                         <label>{t('flashcards.nativeLang', { language: getNativeLangName() })}</label>
-                        <input type="text" placeholder={t('flashcards.nativeLang', { language: getNativeLangName() })} value={newFlashcard.english}
-                          onChange={(e) => setNewFlashcard({ ...newFlashcard, english: e.target.value })} required />
+                        <input type="text" placeholder={t('flashcards.nativeLang', { language: getNativeLangName() })} value={newFlashcard[nativeField] || ''}
+                          onChange={(e) => setNewFlashcard({ ...newFlashcard, [nativeField]: e.target.value })} required />
                       </div>
                       <div className="form-group">
                         <label>{t('flashcards.categoryLabel')}</label>
@@ -976,10 +976,10 @@ function FlashcardsPage() {
                         </>
                       ) : (
                         <>
-                          <span className="face-label">{showsTargetFirst ? t('flashcards.targetLang', { language: LANGUAGES[targetLangCode]?.name || 'Korean' }) : t('flashcards.nativeLang', { language: LANGUAGES[nativeLangCode]?.name || 'English' })}</span>
+                          <span className="face-label">{showsTargetFirst ? t('flashcards.targetLang', { language: LANGUAGES[targetLangCode]?.name || targetLangCode }) : t('flashcards.nativeLang', { language: LANGUAGES[nativeLangCode]?.name || nativeLangCode })}</span>
                           {showsTargetFirst ? (
                             <>
-                              <div className="korean-text-row">
+                              <div className="target-text-row">
                                 <span className="main-text">{displayTarget}</span>
                                 {studyStyle === 'both' && (
                                   <button
@@ -993,10 +993,10 @@ function FlashcardsPage() {
                                   </button>
                                 )}
                               </div>
-                              {targetLangCode === 'ko' && <span className="romanization">{current.romanization}</span>}
+                              {targetLangHasRomanization() && current.romanization && <span className="romanization">{current.romanization}</span>}
                             </>
                           ) : (
-                            <div className="korean-text-row">
+                            <div className="target-text-row">
                               <span className="main-text">{displayNative}</span>
                               {studyStyle === 'both' && (
                                 <button
@@ -1020,9 +1020,9 @@ function FlashcardsPage() {
                   {/* Back Face */}
                   <div className="flashcard-face back">
                     <div className="face-content">
-                      <span className="face-label">{showsTargetFirst ? t('flashcards.nativeLang', { language: LANGUAGES[nativeLangCode]?.name || 'English' }) : t('flashcards.targetLang', { language: LANGUAGES[targetLangCode]?.name || 'Korean' })}</span>
+                      <span className="face-label">{showsTargetFirst ? t('flashcards.nativeLang', { language: LANGUAGES[nativeLangCode]?.name || nativeLangCode }) : t('flashcards.targetLang', { language: LANGUAGES[targetLangCode]?.name || targetLangCode })}</span>
                       {showsTargetFirst ? (
-                        <div className="korean-text-row">
+                        <div className="target-text-row">
                           <span className="main-text">{displayNative}</span>
                           {studyStyle !== 'text' && (
                             <button
@@ -1038,7 +1038,7 @@ function FlashcardsPage() {
                         </div>
                       ) : (
                         <>
-                          <div className="korean-text-row">
+                          <div className="target-text-row">
                             <span className="main-text">{displayTarget}</span>
                             {studyStyle !== 'text' && (
                               <button
@@ -1052,7 +1052,7 @@ function FlashcardsPage() {
                               </button>
                             )}
                           </div>
-                          {targetLangCode === 'ko' && <span className="romanization">{current.romanization}</span>}
+                          {targetLangHasRomanization() && current.romanization && <span className="romanization">{current.romanization}</span>}
                         </>
                       )}
                       <span className="tap-hint">{t('flashcards.tapToFlipBack')}</span>
@@ -1152,7 +1152,7 @@ function FlashcardsPage() {
                                 <button key={card._id} className={`subtopic-item ${isChecked ? 'selected' : ''}`}
                                   onClick={() => { setSelectedCardIds(prev => { const next = new Set(prev); next.has(card._id) ? next.delete(card._id) : next.add(card._id); return next; }); }}>
                                   <span className="category-check">{isChecked ? '✓' : ''}</span>
-                                  <span className="category-name">{card[getLangField(nativeLangCode)] || card.english}</span>
+                                  <span className="category-name">{card[getLangField(nativeLangCode)] || card[getLangField(targetLangCode)]}</span>
                                 </button>
                               );
                             })}
@@ -1266,7 +1266,7 @@ function FlashcardsPage() {
                                   }}
                                 >
                                   <span className="category-check">{isChecked ? '✓' : ''}</span>
-                                  <span className="category-name">{card[getLangField(nativeLangCode)] || card.english}</span>
+                                  <span className="category-name">{card[getLangField(nativeLangCode)] || card[getLangField(targetLangCode)]}</span>
                                 </button>
                               );
                             })}

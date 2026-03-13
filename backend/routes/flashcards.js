@@ -124,19 +124,28 @@ router.get('/user/:userId', isOwner('userId'), async (req, res) => {
   }
 });
 
+// Allowed dynamic language field names on Flashcard (all schema fields except system fields)
+const LANG_FIELDS = ['korean','english','es','fr','de','zh','ja','hi','ar','he','pt','it','nl','ru','id','ms','fil','tr','bn','ta'];
+
 // Create flashcard (uses authenticated user's ID)
 router.post('/', async (req, res) => {
   try {
-    const { korean, english, romanization, audioUrl, category, targetLang, nativeLang } = req.body;
+    const { romanization, audioUrl, category, targetLang, nativeLang } = req.body;
 
-    if (!korean || !english) {
+    // Accept any recognised language field names from the body
+    const langData = {};
+    for (const field of LANG_FIELDS) {
+      if (req.body[field] !== undefined) langData[field] = req.body[field];
+    }
+
+    // Require at least one target and one native field
+    if (Object.keys(langData).length < 2) {
       return res.status(400).json({ message: 'Target and native text fields are required' });
     }
 
     const flashcard = new Flashcard({
       userId: req.userId,
-      korean,
-      english,
+      ...langData,
       romanization,
       audioUrl,
       category: normalizeCategory(category),

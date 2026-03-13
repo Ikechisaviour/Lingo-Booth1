@@ -16,15 +16,9 @@ const flashcardSchema = new mongoose.Schema({
   defaultIndex: {
     type: Number,
   },
-  korean: {
-    type: String,
-    required: true,
-  },
+  korean: String,
   romanization: String,
-  english: {
-    type: String,
-    required: true,
-  },
+  english: String,
   audioUrl: String,
   // Translations of the 'english' field into each supported native language
   es: String,  // Spanish
