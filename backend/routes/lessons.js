@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Lesson = require('../models/Lesson');
 const { verifyToken, optionalAuth, isAdmin } = require('../middleware/auth');
+const { getOrCreateTranslation, applyTranslation } = require('../utils/translationService');
 
 const VALID_CATEGORIES = ['daily-life', 'business', 'travel', 'greetings', 'food', 'shopping', 'healthcare'];
 const VALID_DIFFICULTIES = ['beginner', 'intermediate', 'advanced', 'sentences'];
@@ -30,13 +31,28 @@ router.get('/', optionalAuth, async (req, res) => {
 });
 
 // Get single lesson (public — guests and authenticated users)
+// Pass ?nativeLang=de to get native-side fields translated to German, etc.
 router.get('/:id', optionalAuth, async (req, res) => {
   try {
     const lesson = await Lesson.findById(req.params.id);
     if (!lesson) {
       return res.status(404).json({ message: 'Lesson not found' });
     }
-    res.json(lesson);
+
+    const { nativeLang } = req.query;
+    const lessonObj = lesson.toJSON();
+
+    // If nativeLang is not English, translate native-side fields
+    if (nativeLang && nativeLang !== 'en') {
+      try {
+        const translation = await getOrCreateTranslation(lesson, nativeLang);
+        applyTranslation(lessonObj, translation);
+      } catch (err) {
+        console.error('Translation overlay failed, serving English fallback:', err.message);
+      }
+    }
+
+    res.json(lessonObj);
   } catch (error) {
     console.error('Get lesson error:', error);
     res.status(500).json({ message: 'Server error' });

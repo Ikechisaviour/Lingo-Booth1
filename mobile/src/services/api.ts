@@ -66,8 +66,10 @@ export const lessonService = {
     const targetLang = useSettingsStore.getState().targetLanguage || 'ko';
     return api.get('/lessons', { params: { category, difficulty, targetLang } });
   },
-  getLesson: (id: string) =>
-    api.get(`/lessons/${id}`),
+  getLesson: (id: string) => {
+    const nativeLang = useSettingsStore.getState().nativeLanguage || 'en';
+    return api.get(`/lessons/${id}`, { params: { nativeLang }, timeout: 30000 });
+  },
   createLesson: (lessonData: object) =>
     api.post('/lessons', lessonData),
 };

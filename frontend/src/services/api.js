@@ -77,8 +77,10 @@ export const lessonService = {
     const targetLang = localStorage.getItem('targetLanguage') || 'ko';
     return api.get('/lessons', { params: { category, difficulty, targetLang } });
   },
-  getLesson: (id) =>
-    api.get(`/lessons/${id}`),
+  getLesson: (id) => {
+    const nativeLang = localStorage.getItem('nativeLanguage') || 'en';
+    return api.get(`/lessons/${id}`, { params: { nativeLang }, timeout: 30000 });
+  },
   createLesson: (lessonData) =>
     api.post('/lessons', lessonData),
 };
