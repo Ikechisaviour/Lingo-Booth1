@@ -526,8 +526,9 @@ router.post('/seed-lessons', async (req, res) => {
     const newLessons = [];
     for (const [lang, data] of Object.entries(langDataMap)) {
       if (existingLangs.includes(lang)) continue; // skip if already seeded
-      const categories = [data.greetings, data.dailyLife, data.food, data.travel, data.shopping, data.business, data.healthcare].filter(Boolean);
-      newLessons.push(...categories);
+      // Collect all exported lesson objects (supports beginner + intermediate/advanced/sentences)
+      const allLessons = Object.values(data).filter(Boolean);
+      newLessons.push(...allLessons);
     }
 
     let inserted = 0;
@@ -545,6 +546,53 @@ router.post('/seed-lessons', async (req, res) => {
     });
   } catch (error) {
     console.error('Admin seed-lessons error:', error);
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+});
+
+// Seed multi-language default flashcards (skip languages already in DB)
+router.post('/seed-flashcards', async (req, res) => {
+  try {
+    const Flashcard = require('../models/Flashcard');
+    const existingLangs = await Flashcard.distinct('targetLang', { isDefault: true });
+
+    const langDataMap = {};
+    const langCodes = ['es','fr','de','zh','ja','hi','ar','he','pt','it','nl','ru','id','ms','fil','tr','bn','ta'];
+    for (const lang of langCodes) {
+      if (existingLangs.includes(lang)) continue;
+      try {
+        langDataMap[lang] = require(`../flashcardData/${lang}`);
+      } catch (e) {
+        // Data file not yet created for this language — skip
+      }
+    }
+
+    let inserted = 0;
+    for (const [lang, cards] of Object.entries(langDataMap)) {
+      const docs = cards.map((card, i) => ({
+        ...card,
+        isDefault: true,
+        defaultIndex: i,
+        targetLang: lang,
+        nativeLang: 'en',
+        masteryLevel: 3,
+        // Store target text in language-specific field so frontend getLangField() finds it
+        [lang]: card.korean,
+      }));
+      if (docs.length > 0) {
+        const result = await Flashcard.insertMany(docs);
+        inserted += result.length;
+      }
+    }
+
+    res.json({
+      message: 'Flashcard seeding complete',
+      inserted,
+      existingLangs,
+      newLangs: Object.keys(langDataMap),
+    });
+  } catch (error) {
+    console.error('Admin seed-flashcards error:', error);
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 });
