@@ -344,18 +344,6 @@ function FlashcardsPage() {
     return displayMode === 'target';
   };
 
-  // Get unique categories with counts from all flashcards
-  const getCategoryCounts = () => {
-    const counts = {};
-    flashcards.forEach((card) => {
-      const cats = normalizeCategory(card.category);
-      cats.forEach(cat => {
-        counts[cat] = (counts[cat] || 0) + 1;
-      });
-    });
-    return counts;
-  };
-
   // Build category → cards map: { primary: { count, cards: Card[] } }
   const buildCategoryCards = () => {
     const map = {};
