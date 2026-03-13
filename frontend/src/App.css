@@ -12,7 +12,7 @@
   }
 
   /* Page content takes remaining width */
-  .App > *:not(.navbar) {
+  .app-content {
     flex: 1;
     min-width: 0;
     max-height: 100vh;

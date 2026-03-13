@@ -442,7 +442,12 @@
     "failedMessage": "Pengesahan gagal. Pautan mungkin telah tamat tempoh.",
     "needNewLink": "Perlukan pautan baharu?",
     "registerAgain": "Daftar semula",
-    "orContactSupport": "atau hubungi sokongan."
+    "orContactSupport": "atau hubungi sokongan.",
+    "continueLearning": "Teruskan belajar",
+    "resendButton": "Hantar semula e-mel pengesahan",
+    "resendSuccess": "E-mel pengesahan baru telah dihantar! Semak peti masuk dan folder spam/sampah anda.",
+    "resendFailed": "Gagal menghantar semula. Sila cuba lagi.",
+    "loginToResend": "Sila log masuk dahulu untuk menghantar semula e-mel pengesahan."
   },
   "admin": {
     "title": "Papan Pemuka <1>Admin</1>",
@@ -535,5 +540,12 @@
     "overview": "Gambaran Keseluruhan",
     "userGrowth": "Pertumbuhan Pengguna",
     "recentActiveUsers": "Pengguna Aktif Terkini"
+  },
+  "emailBanner": {
+    "message": "Sila sahkan alamat e-mel anda. Semak peti masuk (dan folder spam/sampah) untuk pautan pengesahan.",
+    "resend": "Hantar semula e-mel",
+    "sending": "Menghantar...",
+    "sent": "E-mel pengesahan dihantar! Semak peti masuk dan folder spam/sampah anda.",
+    "failed": "Gagal menghantar e-mel. Sila cuba lagi."
   }
 }

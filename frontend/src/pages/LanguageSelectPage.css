@@ -1,5 +1,12 @@
+.auth-container:has(.language-select-card) {
+  align-items: flex-start;
+  overflow-y: auto;
+}
+
 .language-select-card {
   max-width: 560px !important;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .lang-section {

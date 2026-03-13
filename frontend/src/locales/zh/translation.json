@@ -442,7 +442,12 @@
     "failedMessage": "验证失败。链接可能已过期。",
     "needNewLink": "需要新链接？",
     "registerAgain": "重新注册",
-    "orContactSupport": "或联系客服。"
+    "orContactSupport": "或联系客服。",
+    "continueLearning": "继续学习",
+    "resendButton": "重新发送验证邮件",
+    "resendSuccess": "新的验证邮件已发送！请检查您的收件箱和垃圾邮件文件夹。",
+    "resendFailed": "重新发送失败。请重试。",
+    "loginToResend": "请先登录以重新发送验证邮件。"
   },
   "admin": {
     "title": "管理<1>控制台</1>",
@@ -535,5 +540,12 @@
     "overview": "概览",
     "userGrowth": "用户增长",
     "recentActiveUsers": "最近活跃用户"
+  },
+  "emailBanner": {
+    "message": "请验证您的电子邮件地址。请检查您的收件箱（和垃圾邮件文件夹）中的验证链接。",
+    "resend": "重新发送邮件",
+    "sending": "发送中...",
+    "sent": "验证邮件已发送！请检查您的收件箱和垃圾邮件文件夹。",
+    "failed": "邮件发送失败。请重试。"
   }
 }

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, useSearchParams, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import LANGUAGES from '../config/languages';
+import { userService } from '../services/api';
 import './LanguageSelectPage.css';
 
 function LanguageSelectPage({ setIsGuest }) {
@@ -18,7 +19,7 @@ function LanguageSelectPage({ setIsGuest }) {
   );
 
   // If no valid mode, redirect to login
-  if (mode !== 'register' && mode !== 'guest') {
+  if (mode !== 'register' && mode !== 'guest' && mode !== 'google-setup') {
     return <Navigate to="/login" />;
   }
 
@@ -51,6 +52,13 @@ function LanguageSelectPage({ setIsGuest }) {
       localStorage.removeItem('username');
       localStorage.removeItem('userRole');
       if (setIsGuest) setIsGuest(true);
+      navigate('/');
+    } else if (mode === 'google-setup') {
+      // New Google user — save languages to backend and go home
+      const userId = localStorage.getItem('userId');
+      if (userId) {
+        userService.updateProfile(userId, { nativeLanguage, targetLanguage }).catch(() => {});
+      }
       navigate('/');
     } else {
       navigate('/register');

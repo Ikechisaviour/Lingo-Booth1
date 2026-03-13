@@ -13,8 +13,12 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
+    default: null,
   },
+  authProviders: [{
+    provider: { type: String, enum: ['google', 'facebook', 'apple', 'microsoft'] },
+    providerId: { type: String },
+  }],
   role: {
     type: String,
     enum: ['user', 'admin'],
@@ -124,7 +128,11 @@ const userSchema = new mongoose.Schema({
   },
   emailVerified: {
     type: Boolean,
-    default: true,
+    default: false,
+  },
+  lastVerificationSent: {
+    type: Date,
+    default: null,
   },
   verificationToken: {
     type: String,

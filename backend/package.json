@@ -17,10 +17,12 @@
     "express-rate-limit": "^7.5.1",
     "express-validator": "^7.0.0",
     "geoip-lite": "^1.4.10",
+    "google-auth-library": "^10.6.1",
     "google-translate-api-x": "^10.7.2",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.0.0",
-    "msedge-tts": "^2.0.4"
+    "msedge-tts": "^2.0.4",
+    "resend": "^6.9.3"
   },
   "devDependencies": {
     "jest": "^29.5.0",

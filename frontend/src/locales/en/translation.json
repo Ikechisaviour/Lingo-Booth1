@@ -59,6 +59,7 @@
     "showPassword": "Show password",
     "hidePassword": "Hide password",
     "loginFailed": "Login failed",
+    "googleFailed": "Google sign-in failed. Please try again.",
     "accountSuspended": "Account Suspended",
     "suspendedLoggedOut": "Your account has been suspended. You have been logged out.",
     "contactSupport": "Please contact support for more information.",
@@ -84,7 +85,9 @@
     "validEmail": "Valid email address",
     "invalidEmail": "Please enter a valid email address",
     "passwordsMatch": "Passwords match",
-    "registrationFailed": "Registration failed"
+    "registrationFailed": "Registration failed",
+    "googleFailed": "Google sign-up failed. Please try again.",
+    "checkEmail": "Check your email to verify your account"
   },
   "navbar": {
     "continue": "Continue",
@@ -432,14 +435,26 @@
     "failedToLoad": "Failed to load profile",
     "unknown": "Unknown"
   },
+  "emailBanner": {
+    "message": "Please verify your email address. Check your inbox (and spam/junk folder) for a verification link.",
+    "resend": "Resend email",
+    "sending": "Sending...",
+    "sent": "Verification email sent! Check your inbox and spam/junk folder.",
+    "failed": "Failed to send email. Please try again."
+  },
   "verifyEmail": {
     "verifying": "Verifying your email...",
     "success": "Email verified!",
-    "successMessage": "Your account is now active. You can log in and start learning.",
+    "successMessage": "Your email is verified. You're all set to learn!",
+    "continueLearning": "Continue Learning",
     "goToLogin": "Go to Login",
     "failed": "Verification failed",
     "noToken": "No verification token found in the link.",
     "failedMessage": "Verification failed. The link may have expired.",
+    "resendButton": "Resend verification email",
+    "resendSuccess": "A new verification email has been sent! Check your inbox and spam/junk folder.",
+    "resendFailed": "Failed to resend. Please try again.",
+    "loginToResend": "Please log in first to resend the verification email.",
     "needNewLink": "Need a new link?",
     "registerAgain": "Register again",
     "orContactSupport": "or contact support."

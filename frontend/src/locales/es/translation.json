@@ -442,7 +442,12 @@
     "failedMessage": "La verificación falló. El enlace puede haber expirado.",
     "needNewLink": "¿Necesitas un nuevo enlace?",
     "registerAgain": "Regístrate de nuevo",
-    "orContactSupport": "o contacta al soporte."
+    "orContactSupport": "o contacta al soporte.",
+    "continueLearning": "Continuar aprendiendo",
+    "resendButton": "Reenviar correo de verificación",
+    "resendSuccess": "¡Se ha enviado un nuevo correo de verificación! Revisa tu bandeja de entrada y la carpeta de spam/correo no deseado.",
+    "resendFailed": "Error al reenviar. Por favor, inténtalo de nuevo.",
+    "loginToResend": "Inicia sesión primero para reenviar el correo de verificación."
   },
   "admin": {
     "title": "Panel de <1>administración</1>",
@@ -535,5 +540,12 @@
     "overview": "Resumen",
     "userGrowth": "Crecimiento de usuarios",
     "recentActiveUsers": "Usuarios activos recientes"
+  },
+  "emailBanner": {
+    "message": "Por favor, verifica tu correo electrónico. Revisa tu bandeja de entrada (y la carpeta de spam/correo no deseado) para encontrar el enlace de verificación.",
+    "resend": "Reenviar correo",
+    "sending": "Enviando...",
+    "sent": "¡Correo de verificación enviado! Revisa tu bandeja de entrada y la carpeta de spam/correo no deseado.",
+    "failed": "Error al enviar el correo. Por favor, inténtalo de nuevo."
   }
 }

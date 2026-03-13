@@ -68,6 +68,10 @@ export const authService = {
     api.post('/auth/register', { username, email, password, guestXP, nativeLanguage, targetLanguage }),
   login: (email, password, guestXP) =>
     api.post('/auth/login', { email, password, guestXP }),
+  googleLogin: (credential, guestXP, nativeLanguage, targetLanguage) =>
+    api.post('/auth/google', { credential, guestXP, nativeLanguage, targetLanguage }),
+  resendVerification: () =>
+    api.post('/auth/resend-verification'),
   trackActivity: (userId, timeSpent) =>
     api.post('/auth/activity', { userId, timeSpent }),
 };

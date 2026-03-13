@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import { guestXPHelper, authService } from './services/api';
 import guestActivityTracker from './services/guestActivityTracker';
 import Navbar from './components/Navbar';
+import EmailVerificationBanner from './components/EmailVerificationBanner';
 import HomePage from './pages/HomePage';
 import LessonsPage from './pages/LessonsPage';
 import FlashcardsPage from './pages/FlashcardsPage';
@@ -93,6 +95,9 @@ function App() {
   const [challengeMode, setChallengeMode] = useState(
     localStorage.getItem('xpDecayEnabled') === 'true'
   );
+  const [emailVerified, setEmailVerified] = useState(
+    localStorage.getItem('emailVerified') !== 'false'
+  );
   const [showGuestPrompt, setShowGuestPrompt] = useState(false);
 
   // RTL support for Arabic and Hebrew
@@ -140,6 +145,16 @@ function App() {
     };
     window.addEventListener('xpModeChanged', handleModeChange);
     return () => window.removeEventListener('xpModeChanged', handleModeChange);
+  }, []);
+
+  // Listen for email verification events
+  useEffect(() => {
+    const handler = () => {
+      setEmailVerified(true);
+      localStorage.setItem('emailVerified', 'true');
+    };
+    window.addEventListener('emailVerified', handler);
+    return () => window.removeEventListener('emailVerified', handler);
   }, []);
 
   // Track time spent on platform for authenticated users
@@ -191,11 +206,13 @@ function App() {
     localStorage.removeItem('userRole');
     localStorage.removeItem('guestMode');
     localStorage.removeItem('xpDecayEnabled');
+    localStorage.removeItem('emailVerified');
     localStorage.removeItem('nativeLanguage');
     localStorage.removeItem('targetLanguage');
     setIsAuthenticated(false);
     setIsGuest(false);
     setChallengeMode(false);
+    setEmailVerified(true);
     i18n.changeLanguage('en');
   };
 
@@ -212,7 +229,10 @@ function App() {
   // Check if user can access the app (either authenticated or guest)
   const canAccessApp = isAuthenticated || isGuest;
 
+  const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+
   return (
+    <GoogleOAuthProvider clientId={googleClientId || ''}>
     <Router>
       <SuspensionListener onSuspended={handleSuspended} />
       <div className={`App${challengeMode ? ' challenge-theme' : ''}`}>
@@ -224,6 +244,10 @@ function App() {
             userRole={localStorage.getItem('userRole')}
             challengeMode={challengeMode}
           />
+        )}
+        <div className="app-content">
+        {isAuthenticated && !emailVerified && !isGuest && (
+          <EmailVerificationBanner />
         )}
         {showGuestPrompt && isGuest && (
           <GuestSignupPrompt
@@ -240,6 +264,7 @@ function App() {
                 <LoginPage
                   setIsAuthenticated={setIsAuthenticated}
                   setIsGuest={setIsGuest}
+                  setEmailVerified={setEmailVerified}
                 />
               )
             }
@@ -251,20 +276,19 @@ function App() {
                 <RegisterPage
                   setIsAuthenticated={setIsAuthenticated}
                   setIsGuest={setIsGuest}
+                  setEmailVerified={setEmailVerified}
                 />
               )
             }
           />
 
-          {/* Language selection — before register or guest mode */}
+          {/* Language selection — before register, guest mode, or google-setup */}
           <Route
             path="/select-language"
             element={
-              isAuthenticated ? <Navigate to="/" /> : (
-                <LanguageSelectPage
-                  setIsGuest={setIsGuest}
-                />
-              )
+              <LanguageSelectPage
+                setIsGuest={setIsGuest}
+              />
             }
           />
 
@@ -325,8 +349,10 @@ function App() {
             }
           />
         </Routes>
+        </div>
       </div>
     </Router>
+    </GoogleOAuthProvider>
   );
 }
 

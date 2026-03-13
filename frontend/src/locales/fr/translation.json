@@ -442,7 +442,12 @@
     "failedMessage": "La vérification a échoué. Le lien a peut-être expiré.",
     "needNewLink": "Besoin d'un nouveau lien ?",
     "registerAgain": "Inscrivez-vous à nouveau",
-    "orContactSupport": "ou contactez le support."
+    "orContactSupport": "ou contactez le support.",
+    "continueLearning": "Continuer à apprendre",
+    "resendButton": "Renvoyer l'e-mail de vérification",
+    "resendSuccess": "Un nouvel e-mail de vérification a été envoyé ! Vérifiez votre boîte de réception et le dossier spam/courrier indésirable.",
+    "resendFailed": "Échec du renvoi. Veuillez réessayer.",
+    "loginToResend": "Veuillez d'abord vous connecter pour renvoyer l'e-mail de vérification."
   },
   "admin": {
     "title": "Tableau de bord <1>Admin</1>",
@@ -535,5 +540,12 @@
     "overview": "Aperçu",
     "userGrowth": "Croissance des utilisateurs",
     "recentActiveUsers": "Utilisateurs actifs récents"
+  },
+  "emailBanner": {
+    "message": "Veuillez vérifier votre adresse e-mail. Consultez votre boîte de réception (et le dossier spam/courrier indésirable) pour trouver le lien de vérification.",
+    "resend": "Renvoyer l'e-mail",
+    "sending": "Envoi en cours...",
+    "sent": "E-mail de vérification envoyé ! Vérifiez votre boîte de réception et le dossier spam/courrier indésirable.",
+    "failed": "Échec de l'envoi de l'e-mail. Veuillez réessayer."
   }
 }

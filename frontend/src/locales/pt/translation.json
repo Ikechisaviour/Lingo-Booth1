@@ -442,7 +442,12 @@
     "failedMessage": "A verificação falhou. O link pode ter expirado.",
     "needNewLink": "Precisa de um novo link?",
     "registerAgain": "Cadastre-se novamente",
-    "orContactSupport": "ou entre em contato com o suporte."
+    "orContactSupport": "ou entre em contato com o suporte.",
+    "continueLearning": "Continuar aprendendo",
+    "resendButton": "Reenviar e-mail de verificação",
+    "resendSuccess": "Um novo e-mail de verificação foi enviado! Confira sua caixa de entrada e a pasta de spam/lixo eletrônico.",
+    "resendFailed": "Falha ao reenviar. Por favor, tente novamente.",
+    "loginToResend": "Faça login primeiro para reenviar o e-mail de verificação."
   },
   "admin": {
     "title": "Painel de <1>Administração</1>",
@@ -535,5 +540,12 @@
     "overview": "Visão geral",
     "userGrowth": "Crescimento de usuários",
     "recentActiveUsers": "Usuários ativos recentes"
+  },
+  "emailBanner": {
+    "message": "Por favor, verifique seu endereço de e-mail. Confira sua caixa de entrada (e a pasta de spam/lixo eletrônico) para encontrar o link de verificação.",
+    "resend": "Reenviar e-mail",
+    "sending": "Enviando...",
+    "sent": "E-mail de verificação enviado! Confira sua caixa de entrada e a pasta de spam/lixo eletrônico.",
+    "failed": "Falha ao enviar o e-mail. Por favor, tente novamente."
   }
 }

@@ -442,7 +442,12 @@
     "failedMessage": "La verifica è fallita. Il link potrebbe essere scaduto.",
     "needNewLink": "Hai bisogno di un nuovo link?",
     "registerAgain": "Registrati di nuovo",
-    "orContactSupport": "o contatta il supporto."
+    "orContactSupport": "o contatta il supporto.",
+    "continueLearning": "Continua a imparare",
+    "resendButton": "Reinvia email di verifica",
+    "resendSuccess": "Una nuova email di verifica è stata inviata! Controlla la tua casella di posta e la cartella spam/posta indesiderata.",
+    "resendFailed": "Reinvio fallito. Riprova.",
+    "loginToResend": "Accedi prima per reinviare l'email di verifica."
   },
   "admin": {
     "title": "Pannello di <1>Amministrazione</1>",
@@ -535,5 +540,12 @@
     "overview": "Panoramica",
     "userGrowth": "Crescita utenti",
     "recentActiveUsers": "Utenti attivi recenti"
+  },
+  "emailBanner": {
+    "message": "Verifica il tuo indirizzo email. Controlla la tua casella di posta (e la cartella spam/posta indesiderata) per il link di verifica.",
+    "resend": "Reinvia email",
+    "sending": "Invio in corso...",
+    "sent": "Email di verifica inviata! Controlla la tua casella di posta e la cartella spam/posta indesiderata.",
+    "failed": "Invio email fallito. Riprova."
   }
 }

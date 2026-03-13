@@ -442,7 +442,12 @@
     "failedMessage": "Die Verifizierung ist fehlgeschlagen. Der Link ist möglicherweise abgelaufen.",
     "needNewLink": "Brauchst du einen neuen Link?",
     "registerAgain": "Erneut registrieren",
-    "orContactSupport": "oder kontaktiere den Support."
+    "orContactSupport": "oder kontaktiere den Support.",
+    "continueLearning": "Weiterlernen",
+    "resendButton": "Bestätigungs-E-Mail erneut senden",
+    "resendSuccess": "Eine neue Bestätigungs-E-Mail wurde gesendet! Überprüfen Sie Ihren Posteingang und den Spam-/Junk-Ordner.",
+    "resendFailed": "Erneutes Senden fehlgeschlagen. Bitte versuchen Sie es erneut.",
+    "loginToResend": "Bitte melden Sie sich zuerst an, um die Bestätigungs-E-Mail erneut zu senden."
   },
   "admin": {
     "title": "Admin-<1>Dashboard</1>",
@@ -535,5 +540,12 @@
     "overview": "Übersicht",
     "userGrowth": "Benutzerwachstum",
     "recentActiveUsers": "Kürzlich aktive Benutzer"
+  },
+  "emailBanner": {
+    "message": "Bitte bestätigen Sie Ihre E-Mail-Adresse. Überprüfen Sie Ihren Posteingang (und den Spam-/Junk-Ordner) auf den Bestätigungslink.",
+    "resend": "E-Mail erneut senden",
+    "sending": "Wird gesendet...",
+    "sent": "Bestätigungs-E-Mail gesendet! Überprüfen Sie Ihren Posteingang und den Spam-/Junk-Ordner.",
+    "failed": "E-Mail konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
   }
 }

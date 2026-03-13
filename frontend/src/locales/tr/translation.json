@@ -442,7 +442,12 @@
     "failedMessage": "Doğrulama başarısız oldu. Bağlantının süresi dolmuş olabilir.",
     "needNewLink": "Yeni bir bağlantıya mı ihtiyacınız var?",
     "registerAgain": "Tekrar kaydolun",
-    "orContactSupport": "veya destek ekibiyle iletişime geçin."
+    "orContactSupport": "veya destek ekibiyle iletişime geçin.",
+    "continueLearning": "Öğrenmeye devam et",
+    "resendButton": "Doğrulama e-postasını yeniden gönder",
+    "resendSuccess": "Yeni bir doğrulama e-postası gönderildi! Gelen kutunuzu ve spam/gereksiz posta klasörünü kontrol edin.",
+    "resendFailed": "Yeniden gönderilemedi. Lütfen tekrar deneyin.",
+    "loginToResend": "Doğrulama e-postasını yeniden göndermek için lütfen önce giriş yapın."
   },
   "admin": {
     "title": "Yönetici <1>Paneli</1>",
@@ -535,5 +540,12 @@
     "overview": "Genel Bakış",
     "userGrowth": "Kullanıcı Artışı",
     "recentActiveUsers": "Son Aktif Kullanıcılar"
+  },
+  "emailBanner": {
+    "message": "Lütfen e-posta adresinizi doğrulayın. Doğrulama bağlantısı için gelen kutunuzu (ve spam/gereksiz posta klasörünü) kontrol edin.",
+    "resend": "E-postayı yeniden gönder",
+    "sending": "Gönderiliyor...",
+    "sent": "Doğrulama e-postası gönderildi! Gelen kutunuzu ve spam/gereksiz posta klasörünü kontrol edin.",
+    "failed": "E-posta gönderilemedi. Lütfen tekrar deneyin."
   }
 }

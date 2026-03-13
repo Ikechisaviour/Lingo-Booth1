@@ -442,7 +442,12 @@
     "failedMessage": "Verifikasi gagal. Tautan mungkin sudah kedaluwarsa.",
     "needNewLink": "Butuh tautan baru?",
     "registerAgain": "Daftar lagi",
-    "orContactSupport": "atau hubungi dukungan."
+    "orContactSupport": "atau hubungi dukungan.",
+    "continueLearning": "Lanjutkan belajar",
+    "resendButton": "Kirim ulang email verifikasi",
+    "resendSuccess": "Email verifikasi baru telah dikirim! Periksa kotak masuk dan folder spam/sampah Anda.",
+    "resendFailed": "Gagal mengirim ulang. Silakan coba lagi.",
+    "loginToResend": "Silakan login terlebih dahulu untuk mengirim ulang email verifikasi."
   },
   "admin": {
     "title": "<1>Dasbor</1> Admin",
@@ -535,5 +540,12 @@
     "overview": "Ringkasan",
     "userGrowth": "Pertumbuhan Pengguna",
     "recentActiveUsers": "Pengguna Aktif Terbaru"
+  },
+  "emailBanner": {
+    "message": "Silakan verifikasi alamat email Anda. Periksa kotak masuk (dan folder spam/sampah) untuk menemukan tautan verifikasi.",
+    "resend": "Kirim ulang email",
+    "sending": "Mengirim...",
+    "sent": "Email verifikasi terkirim! Periksa kotak masuk dan folder spam/sampah Anda.",
+    "failed": "Gagal mengirim email. Silakan coba lagi."
   }
 }

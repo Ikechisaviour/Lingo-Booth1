@@ -442,7 +442,12 @@
     "failedMessage": "인증에 실패했습니다. 링크가 만료되었을 수 있습니다.",
     "needNewLink": "새 링크가 필요하신가요?",
     "registerAgain": "다시 가입하기",
-    "orContactSupport": "또는 고객 지원에 문의하세요."
+    "orContactSupport": "또는 고객 지원에 문의하세요.",
+    "continueLearning": "학습 계속하기",
+    "resendButton": "인증 이메일 재전송",
+    "resendSuccess": "새 인증 이메일이 전송되었습니다! 받은편지함과 스팸/정크 폴더를 확인하세요.",
+    "resendFailed": "재전송에 실패했습니다. 다시 시도해 주세요.",
+    "loginToResend": "인증 이메일을 재전송하려면 먼저 로그인하세요."
   },
   "admin": {
     "title": "관리자 <1>대시보드</1>",
@@ -535,5 +540,12 @@
     "overview": "개요",
     "userGrowth": "사용자 성장",
     "recentActiveUsers": "최근 활성 사용자"
+  },
+  "emailBanner": {
+    "message": "이메일 주소를 인증해 주세요. 받은편지함(및 스팸/정크 폴더)에서 인증 링크를 확인하세요.",
+    "resend": "이메일 재전송",
+    "sending": "전송 중...",
+    "sent": "인증 이메일이 전송되었습니다! 받은편지함과 스팸/정크 폴더를 확인하세요.",
+    "failed": "이메일 전송에 실패했습니다. 다시 시도해 주세요."
   }
 }

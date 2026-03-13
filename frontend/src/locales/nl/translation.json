@@ -442,7 +442,12 @@
     "failedMessage": "Verificatie mislukt. De link is mogelijk verlopen.",
     "needNewLink": "Een nieuwe link nodig?",
     "registerAgain": "Registreer opnieuw",
-    "orContactSupport": "of neem contact op met support."
+    "orContactSupport": "of neem contact op met support.",
+    "continueLearning": "Doorgaan met leren",
+    "resendButton": "Verificatie-e-mail opnieuw versturen",
+    "resendSuccess": "Er is een nieuwe verificatie-e-mail verzonden! Controleer je inbox en de spam-/ongewenste map.",
+    "resendFailed": "Opnieuw verzenden mislukt. Probeer het opnieuw.",
+    "loginToResend": "Log eerst in om de verificatie-e-mail opnieuw te versturen."
   },
   "admin": {
     "title": "Admin-<1>dashboard</1>",
@@ -535,5 +540,12 @@
     "overview": "Overzicht",
     "userGrowth": "Gebruikersgroei",
     "recentActiveUsers": "Recent actieve gebruikers"
+  },
+  "emailBanner": {
+    "message": "Verifieer je e-mailadres. Controleer je inbox (en de spam-/ongewenste map) voor de verificatielink.",
+    "resend": "E-mail opnieuw versturen",
+    "sending": "Verzenden...",
+    "sent": "Verificatie-e-mail verzonden! Controleer je inbox en de spam-/ongewenste map.",
+    "failed": "E-mail verzenden mislukt. Probeer het opnieuw."
   }
 }

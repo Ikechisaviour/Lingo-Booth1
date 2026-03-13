@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { GoogleLogin } from '@react-oauth/google';
 import { authService, guestXPHelper } from '../services/api';
 import './Auth.css';
 
-function RegisterPage({ setIsAuthenticated, setIsGuest }) {
+function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -41,6 +42,23 @@ function RegisterPage({ setIsAuthenticated, setIsGuest }) {
   const confirmTouched = formData.confirmPassword.length > 0;
   const passwordsMatch = formData.password === formData.confirmPassword;
 
+  const storeAuthData = (data, isGoogleAuth = false) => {
+    const user = data.user || data;
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('userId', user.id);
+    localStorage.setItem('username', user.username);
+    localStorage.setItem('userRole', user.role);
+    localStorage.setItem('nativeLanguage', user.nativeLanguage || 'en');
+    localStorage.setItem('targetLanguage', user.targetLanguage || 'ko');
+    localStorage.setItem('emailVerified', String(!!user.emailVerified));
+    localStorage.removeItem('guestMode');
+    guestXPHelper.clear();
+
+    setIsAuthenticated(true);
+    setIsGuest(false);
+    setEmailVerified(!!user.emailVerified);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -54,7 +72,7 @@ function RegisterPage({ setIsAuthenticated, setIsGuest }) {
 
     try {
       const guestXP = guestXPHelper.get();
-      const data = await authService.register(
+      const response = await authService.register(
         formData.username,
         formData.email,
         formData.password,
@@ -62,21 +80,34 @@ function RegisterPage({ setIsAuthenticated, setIsGuest }) {
         nativeLanguage || 'en',
         targetLanguage || 'ko'
       );
-      guestXPHelper.clear();
-
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('userId', data.user.id);
-      localStorage.setItem('username', data.user.username);
-      localStorage.setItem('userRole', data.user.role);
-      localStorage.setItem('nativeLanguage', data.user.nativeLanguage || 'en');
-      localStorage.setItem('targetLanguage', data.user.targetLanguage || 'ko');
-      localStorage.removeItem('guestMode');
-
-      setIsAuthenticated(true);
-      setIsGuest(false);
+      storeAuthData(response.data);
       navigate('/');
     } catch (err) {
       setError(err.response?.data?.message || t('register.registrationFailed'));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleSuccess = async (credentialResponse) => {
+    setError('');
+    setLoading(true);
+    try {
+      const guestXP = guestXPHelper.get();
+      const response = await authService.googleLogin(
+        credentialResponse.credential,
+        guestXP,
+        nativeLanguage || 'en',
+        targetLanguage || 'ko'
+      );
+      storeAuthData(response.data, true);
+      navigate('/');
+    } catch (err) {
+      if (err.response?.status === 403 && err.response?.data?.reason) {
+        setError(err.response.data.message);
+      } else {
+        setError(err.response?.data?.message || t('register.googleFailed'));
+      }
     } finally {
       setLoading(false);
     }
@@ -90,6 +121,22 @@ function RegisterPage({ setIsAuthenticated, setIsGuest }) {
         <p className="auth-subtitle">{t('register.subtitle')}</p>
 
         {error && <div className="error">{error}</div>}
+
+        <div className="google-btn-wrapper">
+          <GoogleLogin
+            onSuccess={handleGoogleSuccess}
+            onError={() => setError(t('register.googleFailed'))}
+            theme="outline"
+            size="large"
+            width="340"
+            text="continue_with"
+            shape="pill"
+          />
+        </div>
+
+        <div className="auth-divider">
+          <span>{t('common.or')}</span>
+        </div>
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">

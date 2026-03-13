@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { GoogleLogin } from '@react-oauth/google';
 import { authService, userService, guestXPHelper } from '../services/api';
 import './Auth.css';
 
-function LoginPage({ setIsAuthenticated, setIsGuest }) {
+function LoginPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
   const { t, i18n } = useTranslation();
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
@@ -22,6 +23,44 @@ function LoginPage({ setIsAuthenticated, setIsGuest }) {
     setFormData({ ...formData, [name]: value });
   };
 
+  const storeAuthAndNavigate = async (data) => {
+    const user = data.user;
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('userId', user.id);
+    localStorage.setItem('username', user.username);
+    localStorage.setItem('userRole', user.role || 'user');
+    localStorage.setItem('xpDecayEnabled', String(!!user.xpDecayEnabled));
+    localStorage.setItem('emailVerified', String(!!user.emailVerified));
+    if (user.preferredVoice) {
+      localStorage.setItem('preferredVoice', user.preferredVoice);
+    }
+    localStorage.setItem('nativeLanguage', user.nativeLanguage || 'en');
+    localStorage.setItem('targetLanguage', user.targetLanguage || 'ko');
+    localStorage.removeItem('guestMode');
+    guestXPHelper.clear();
+    setIsGuest(false);
+    setIsAuthenticated(true);
+    setEmailVerified(!!user.emailVerified);
+
+    // Switch UI language to user's saved preference
+    i18n.changeLanguage(user.nativeLanguage || 'en');
+
+    // Redirect to last activity if available, otherwise home
+    try {
+      const actRes = await userService.getActivityState(user.id);
+      const state = actRes.data;
+      if (state.activityType === 'lesson' && state.lesson?._id) {
+        navigate(`/lessons/${state.lesson._id}`);
+      } else if (state.activityType === 'flashcard' && state.flashcardIndex > 0) {
+        navigate('/flashcards');
+      } else {
+        navigate('/');
+      }
+    } catch {
+      navigate('/');
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -30,39 +69,7 @@ function LoginPage({ setIsAuthenticated, setIsGuest }) {
     try {
       const guestXP = guestXPHelper.get();
       const response = await authService.login(formData.email, formData.password, guestXP);
-      localStorage.setItem('token', response.data.token);
-      localStorage.setItem('userId', response.data.user.id);
-      localStorage.setItem('username', response.data.user.username);
-      localStorage.setItem('userRole', response.data.user.role || 'user');
-      localStorage.setItem('xpDecayEnabled', String(!!response.data.user.xpDecayEnabled));
-      if (response.data.user.preferredVoice) {
-        localStorage.setItem('preferredVoice', response.data.user.preferredVoice);
-      }
-      localStorage.setItem('nativeLanguage', response.data.user.nativeLanguage || 'en');
-      localStorage.setItem('targetLanguage', response.data.user.targetLanguage || 'ko');
-      localStorage.removeItem('guestMode');
-      guestXPHelper.clear();
-      setIsGuest(false);
-      setIsAuthenticated(true);
-
-      // Switch UI language to user's saved preference
-      i18n.changeLanguage(response.data.user.nativeLanguage || 'en');
-
-      // Redirect to last activity if available, otherwise home
-      const uid = response.data.user.id;
-      try {
-        const actRes = await userService.getActivityState(uid);
-        const state = actRes.data;
-        if (state.activityType === 'lesson' && state.lesson?._id) {
-          navigate(`/lessons/${state.lesson._id}`);
-        } else if (state.activityType === 'flashcard' && state.flashcardIndex > 0) {
-          navigate('/flashcards');
-        } else {
-          navigate('/');
-        }
-      } catch {
-        navigate('/');
-      }
+      await storeAuthAndNavigate(response.data);
     } catch (err) {
       if (err.response?.status === 403 && err.response?.data?.reason) {
         setSuspended({
@@ -72,6 +79,54 @@ function LoginPage({ setIsAuthenticated, setIsGuest }) {
         setError('');
       } else {
         setError(err.response?.data?.message || t('login.loginFailed'));
+        setSuspended(null);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleSuccess = async (credentialResponse) => {
+    setError('');
+    setSuspended(null);
+    setLoading(true);
+    try {
+      const guestXP = guestXPHelper.get();
+      const nativeLang = localStorage.getItem('nativeLanguage') || 'en';
+      const targetLang = localStorage.getItem('targetLanguage') || 'ko';
+      const response = await authService.googleLogin(
+        credentialResponse.credential,
+        guestXP,
+        nativeLang,
+        targetLang
+      );
+      // New Google user — let them pick languages first
+      if (response.data.isNewUser) {
+        const data = response.data;
+        const user = data.user;
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('userId', user.id);
+        localStorage.setItem('username', user.username);
+        localStorage.setItem('userRole', user.role || 'user');
+        localStorage.setItem('emailVerified', String(!!user.emailVerified));
+        localStorage.removeItem('guestMode');
+        guestXPHelper.clear();
+        setIsGuest(false);
+        setIsAuthenticated(true);
+        setEmailVerified(!!user.emailVerified);
+        navigate('/select-language?mode=google-setup');
+        return;
+      }
+      await storeAuthAndNavigate(response.data);
+    } catch (err) {
+      if (err.response?.status === 403 && err.response?.data?.reason) {
+        setSuspended({
+          message: err.response.data.message,
+          reason: err.response.data.reason,
+        });
+        setError('');
+      } else {
+        setError(err.response?.data?.message || t('login.googleFailed'));
         setSuspended(null);
       }
     } finally {
@@ -110,6 +165,22 @@ function LoginPage({ setIsAuthenticated, setIsGuest }) {
         )}
 
         {error && <div className="error">{error}</div>}
+
+        <div className="google-btn-wrapper">
+          <GoogleLogin
+            onSuccess={handleGoogleSuccess}
+            onError={() => setError(t('login.googleFailed'))}
+            theme="outline"
+            size="large"
+            width="340"
+            text="continue_with"
+            shape="pill"
+          />
+        </div>
+
+        <div className="auth-divider">
+          <span>{t('common.or')}</span>
+        </div>
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">

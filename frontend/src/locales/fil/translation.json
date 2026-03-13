@@ -442,7 +442,12 @@
     "failedMessage": "Nabigo ang verification. Maaaring nag-expire na ang link.",
     "needNewLink": "Kailangan ng bagong link?",
     "registerAgain": "Mag-rehistro muli",
-    "orContactSupport": "o makipag-ugnayan sa support."
+    "orContactSupport": "o makipag-ugnayan sa support.",
+    "continueLearning": "Magpatuloy sa pag-aaral",
+    "resendButton": "Ipadala muli ang verification email",
+    "resendSuccess": "Naipadala na ang bagong verification email! Tingnan ang iyong inbox at spam/junk folder.",
+    "resendFailed": "Hindi naipadala muli. Pakisubukan muli.",
+    "loginToResend": "Mag-login muna para maipadala muli ang verification email."
   },
   "admin": {
     "title": "Dashboard ng <1>Admin</1>",
@@ -535,5 +540,12 @@
     "overview": "Pangkalahatang-tanaw",
     "userGrowth": "Paglago ng User",
     "recentActiveUsers": "Kamakailang Aktibong mga User"
+  },
+  "emailBanner": {
+    "message": "Pakikumpirma ang iyong email address. Tingnan ang iyong inbox (at spam/junk folder) para sa verification link.",
+    "resend": "Ipadala muli ang email",
+    "sending": "Ipinapadala...",
+    "sent": "Naipadala na ang verification email! Tingnan ang iyong inbox at spam/junk folder.",
+    "failed": "Hindi naipadala ang email. Pakisubukan muli."
   }
 }
