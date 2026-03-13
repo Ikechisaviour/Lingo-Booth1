@@ -117,9 +117,18 @@ async function getOrCreateTranslation(lesson, nativeLang, targetLang) {
 
   const lessonId = lesson._id;
 
-  // Check cache
+  // Check cache — backfill title if missing from older cached docs
   const cached = await Translation.findOne({ lessonId, lang: cacheKey });
-  if (cached) return cached;
+  if (cached) {
+    if (needsNativeTranslation && lesson.title && !cached.title) {
+      try {
+        const [titleResult] = await batchTranslateRaw([lesson.title], 'en', nativeLang);
+        cached.title = titleResult?.text || '';
+        await Translation.updateOne({ _id: cached._id }, { $set: { title: cached.title } });
+      } catch (e) { /* ignore backfill errors */ }
+    }
+    return cached;
+  }
 
   // Collect target-language texts for direct target → native translation
   const targetTexts = [];

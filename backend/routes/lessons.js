@@ -26,9 +26,10 @@ router.get('/', optionalAuth, async (req, res) => {
     const lessons = await Lesson.find(filter);
     const lessonsJson = lessons.map(l => l.toJSON());
 
-    // Apply cached title translations if nativeLang is specified
+    // Translate lesson titles for non-English native speakers
     if (nativeLang && nativeLang !== 'en') {
       const Translation = require('../models/Translation');
+      const { batchTranslateRaw } = require('../utils/translationService');
       const lessonIds = lessonsJson.map(l => l._id);
       const translations = await Translation.find({
         lessonId: { $in: lessonIds },
@@ -39,6 +40,23 @@ router.get('/', optionalAuth, async (req, res) => {
       translations.forEach(t => {
         if (t.title) titleMap[t.lessonId.toString()] = t.title;
       });
+
+      // Find lessons without cached title translations
+      const uncached = lessonsJson.filter(l => !titleMap[l._id.toString()] && l.title);
+      if (uncached.length > 0) {
+        const titles = uncached.map(l => l.title);
+        const results = await batchTranslateRaw(titles, 'en', nativeLang);
+        for (let i = 0; i < uncached.length; i++) {
+          const translated = results[i]?.text || uncached[i].title;
+          titleMap[uncached[i]._id.toString()] = translated;
+          // Cache the translated title for future requests
+          Translation.updateOne(
+            { lessonId: uncached[i]._id, lang: nativeLang },
+            { $set: { title: translated } },
+            { upsert: true }
+          ).catch(() => {});
+        }
+      }
 
       lessonsJson.forEach(l => {
         if (titleMap[l._id.toString()]) {

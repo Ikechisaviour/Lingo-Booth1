@@ -5,6 +5,7 @@ const UserCardPreference = require('../models/UserCardPreference');
 const GuestSession = require('../models/GuestSession');
 const { verifyToken, isOwner } = require('../middleware/auth');
 const { getClientIp, getGeoInfo } = require('../utils/geo');
+const { batchNativePhonetic, ROMANIZATION_LANGS, NON_LATIN_LANGS } = require('../utils/translationService');
 
 // Normalize category: handles old string format and new array format
 const normalizeCategory = (cat) => {
@@ -13,20 +14,77 @@ const normalizeCategory = (cat) => {
   return ['uncategorized'];
 };
 
-// --- In-memory cache for default cards (avoids DB query on every request) ---
-let cachedDefaultCards = null;
-let cacheTimestamp = 0;
+// --- Native-script phonetic cache (nativeLang:targetLang -> Map<text, phonetic>) ---
+const phoneticCache = new Map();
+const PHONETIC_CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours
+
+/**
+ * For non-Latin native speakers learning a non-Latin target language,
+ * replace Latin romanization with native-script phonetic approximation.
+ * e.g. Arabic speaker learning Korean: "annyeonghaseyo" → "آن نيونغ ها سي يو"
+ * Latin-script native speakers keep standard romanization as-is.
+ */
+async function applyNativePhonetics(cards, targetLang, nativeLang) {
+  // Only needed when both target and native use non-Latin scripts
+  if (!ROMANIZATION_LANGS.has(targetLang) || !NON_LATIN_LANGS.has(nativeLang)) {
+    return cards;
+  }
+
+  const cacheKey = `${nativeLang}:${targetLang}`;
+  let cache = phoneticCache.get(cacheKey);
+  if (!cache || Date.now() - cache.timestamp > PHONETIC_CACHE_TTL) {
+    cache = { map: new Map(), timestamp: Date.now() };
+    phoneticCache.set(cacheKey, cache);
+  }
+
+  // Collect romanizations that need conversion (not already cached)
+  const romanToConvert = [];
+  const indexMap = []; // maps back to card index
+
+  for (let i = 0; i < cards.length; i++) {
+    const roman = cards[i].romanization || '';
+    if (!roman.trim()) continue;
+    if (cache.map.has(roman)) {
+      cards[i].romanization = cache.map.get(roman);
+    } else {
+      romanToConvert.push(roman);
+      indexMap.push(i);
+    }
+  }
+
+  if (romanToConvert.length > 0) {
+    try {
+      const phonetics = await batchNativePhonetic(romanToConvert, targetLang, nativeLang);
+      for (let k = 0; k < phonetics.length; k++) {
+        const phonetic = phonetics[k];
+        if (phonetic) {
+          cache.map.set(romanToConvert[k], phonetic);
+          cards[indexMap[k]].romanization = phonetic;
+        }
+        // If empty, keep original Latin romanization as fallback
+      }
+    } catch (err) {
+      console.error('Native phonetic conversion failed:', err.message);
+    }
+  }
+
+  return cards;
+}
+
+// --- In-memory cache for default cards per targetLang ---
+const defaultCardsCache = new Map(); // targetLang -> { cards, timestamp }
 const CACHE_TTL = 60 * 60 * 1000; // 1 hour
 
-async function getDefaultCards() {
-  if (cachedDefaultCards && Date.now() - cacheTimestamp < CACHE_TTL) {
-    return cachedDefaultCards;
+async function getDefaultCards(targetLang = 'ko') {
+  const cached = defaultCardsCache.get(targetLang);
+  if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
+    return cached.cards;
   }
-  cachedDefaultCards = await Flashcard.find({ isDefault: true })
+  const cards = await Flashcard.find({ isDefault: true, targetLang })
     .sort({ defaultIndex: 1 })
     .lean();
-  cacheTimestamp = Date.now();
-  return cachedDefaultCards;
+  defaultCardsCache.set(targetLang, { cards, timestamp: Date.now() });
+  return cards;
 }
 
 // --- Public routes (no auth required) ---
@@ -69,7 +127,9 @@ router.get('/guest', async (req, res) => {
   } catch (_) {}
 
   try {
-    const defaultCards = await getDefaultCards();
+    const targetLang = req.query.targetLang || 'ko';
+    const nativeLang = req.query.nativeLang || 'en';
+    const defaultCards = await getDefaultCards(targetLang);
     const guestCards = defaultCards.map((card, i) => ({
       ...card,
       _id: `guest-${i}`,
@@ -77,6 +137,10 @@ router.get('/guest', async (req, res) => {
       correctCount: 0,
       incorrectCount: 0,
     }));
+
+    // Replace romanization with native-script phonetics for non-Latin native speakers
+    await applyNativePhonetics(guestCards, targetLang, nativeLang);
+
     res.json(guestCards);
   } catch (error) {
     console.error('Get guest flashcards error:', error);
@@ -91,12 +155,14 @@ router.use(verifyToken);
 router.get('/user/:userId', isOwner('userId'), async (req, res) => {
   try {
     const { userId } = req.params;
+    const targetLang = req.query.targetLang || 'ko';
+    const nativeLang = req.query.nativeLang || 'en';
 
-    // Default cards from DB (cached)
-    const defaultCards = await getDefaultCards();
+    // Default cards from DB (cached, filtered by targetLang)
+    const defaultCards = await getDefaultCards(targetLang);
 
-    // User's own private flashcards
-    const userFlashcards = await Flashcard.find({ userId }).lean();
+    // User's own private flashcards (filtered by targetLang)
+    const userFlashcards = await Flashcard.find({ userId, targetLang }).lean();
     const normalizedUserCards = userFlashcards.map(fc => ({
       ...fc,
       category: normalizeCategory(fc.category),
@@ -117,7 +183,12 @@ router.get('/user/:userId', isOwner('userId'), async (req, res) => {
       };
     });
 
-    res.json([...defaultCardsWithPrefs, ...normalizedUserCards]);
+    const allCards = [...defaultCardsWithPrefs, ...normalizedUserCards];
+
+    // Replace romanization with native-script phonetics for non-Latin native speakers
+    await applyNativePhonetics(allCards, targetLang, nativeLang);
+
+    res.json(allCards);
   } catch (error) {
     console.error('Get flashcards error:', error);
     res.status(500).json({ message: 'Server error' });

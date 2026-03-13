@@ -964,7 +964,7 @@ function FlashcardsPage() {
                         </>
                       ) : (
                         <>
-                          <span className="face-label">{showsTargetFirst ? t('flashcards.targetLang', { language: LANGUAGES[targetLangCode]?.name || targetLangCode }) : t('flashcards.nativeLang', { language: LANGUAGES[nativeLangCode]?.name || nativeLangCode })}</span>
+                          <span className="face-label">{showsTargetFirst ? t('flashcards.targetLang', { language: t(`languages.${targetLangCode}`, LANGUAGES[targetLangCode]?.name || targetLangCode) }) : t('flashcards.nativeLang', { language: t(`languages.${nativeLangCode}`, LANGUAGES[nativeLangCode]?.name || nativeLangCode) })}</span>
                           {showsTargetFirst ? (
                             <>
                               <div className="target-text-row">
@@ -1008,7 +1008,7 @@ function FlashcardsPage() {
                   {/* Back Face */}
                   <div className="flashcard-face back">
                     <div className="face-content">
-                      <span className="face-label">{showsTargetFirst ? t('flashcards.nativeLang', { language: LANGUAGES[nativeLangCode]?.name || nativeLangCode }) : t('flashcards.targetLang', { language: LANGUAGES[targetLangCode]?.name || targetLangCode })}</span>
+                      <span className="face-label">{showsTargetFirst ? t('flashcards.nativeLang', { language: t(`languages.${nativeLangCode}`, LANGUAGES[nativeLangCode]?.name || nativeLangCode) }) : t('flashcards.targetLang', { language: t(`languages.${targetLangCode}`, LANGUAGES[targetLangCode]?.name || targetLangCode) })}</span>
                       {showsTargetFirst ? (
                         <div className="target-text-row">
                           <span className="main-text">{displayNative}</span>

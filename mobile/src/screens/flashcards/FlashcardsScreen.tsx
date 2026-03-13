@@ -631,7 +631,7 @@ const FlashcardsScreen: React.FC = () => {
             {studyStyle === 'audio' && (
               <IconButton icon="volume-high" size={48} iconColor={colors.primary} onPress={() => handleSpeak(frontText, frontLocale)} />
             )}
-            {card.romanization && studyStyle !== 'audio' && showsTargetFirst && (
+            {card.romanization && studyStyle !== 'audio' && showsTargetFirst && langHasRomanization(targetLanguage) && (
               <Text style={styles.romanization}>{card.romanization}</Text>
             )}
             <Text style={styles.tapHint}>{t('flashcards.tapToFlip', 'Tap to flip')}</Text>
@@ -647,7 +647,7 @@ const FlashcardsScreen: React.FC = () => {
           >
             <Text style={styles.cardLabel}>{backLabel}</Text>
             <Text style={styles.cardText}>{backText}</Text>
-            {card.romanization && !showsTargetFirst && (
+            {card.romanization && !showsTargetFirst && langHasRomanization(targetLanguage) && (
               <Text style={styles.romanization}>{card.romanization}</Text>
             )}
           </Animated.View>

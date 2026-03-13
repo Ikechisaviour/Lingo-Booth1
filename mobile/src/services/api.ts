@@ -75,8 +75,10 @@ export const lessonService = {
 };
 
 export const flashcardService = {
-  getFlashcards: (userId: string) =>
-    api.get(`/flashcards/user/${userId}`),
+  getFlashcards: (userId: string) => {
+    const { targetLanguage, nativeLanguage } = useSettingsStore.getState();
+    return api.get(`/flashcards/user/${userId}`, { params: { targetLang: targetLanguage || 'ko', nativeLang: nativeLanguage || 'en' } });
+  },
   getGuestFlashcards: () => {
     const { nativeLanguage, targetLanguage } = useSettingsStore.getState();
     return api.get(`/flashcards/guest?nativeLang=${nativeLanguage}&targetLang=${targetLanguage}`);
