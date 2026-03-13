@@ -1,4 +1,26 @@
 {
+  "languages": {
+    "en": "Engels",
+    "ko": "Koreaans",
+    "es": "Spaans",
+    "fr": "Frans",
+    "de": "Duits",
+    "zh": "Chinees",
+    "ja": "Japans",
+    "hi": "Hindi",
+    "ar": "Arabisch",
+    "he": "Hebreeuws",
+    "pt": "Portugees",
+    "it": "Italiaans",
+    "nl": "Nederlands",
+    "ru": "Russisch",
+    "id": "Indonesisch",
+    "ms": "Maleis",
+    "fil": "Filipijns",
+    "tr": "Turks",
+    "bn": "Bengaals",
+    "ta": "Tamil"
+  },
   "common": {
     "loading": "Laden...",
     "error": "Er is een fout opgetreden",

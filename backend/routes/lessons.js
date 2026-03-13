@@ -8,9 +8,10 @@ const VALID_CATEGORIES = ['daily-life', 'business', 'travel', 'greetings', 'food
 const VALID_DIFFICULTIES = ['beginner', 'intermediate', 'advanced', 'sentences'];
 
 // Get all lessons (public — guests and authenticated users)
+// Pass ?nativeLang=hi to get translated titles
 router.get('/', optionalAuth, async (req, res) => {
   try {
-    const { category, difficulty, targetLang } = req.query;
+    const { category, difficulty, targetLang, nativeLang } = req.query;
     let filter = {};
 
     if (category && VALID_CATEGORIES.includes(category)) {
@@ -23,7 +24,30 @@ router.get('/', optionalAuth, async (req, res) => {
     filter.targetLang = targetLang || 'ko';
 
     const lessons = await Lesson.find(filter);
-    res.json(lessons);
+    const lessonsJson = lessons.map(l => l.toJSON());
+
+    // Apply cached title translations if nativeLang is specified
+    if (nativeLang && nativeLang !== 'en') {
+      const Translation = require('../models/Translation');
+      const lessonIds = lessonsJson.map(l => l._id);
+      const translations = await Translation.find({
+        lessonId: { $in: lessonIds },
+        lang: nativeLang,
+      }).select('lessonId title').lean();
+
+      const titleMap = {};
+      translations.forEach(t => {
+        if (t.title) titleMap[t.lessonId.toString()] = t.title;
+      });
+
+      lessonsJson.forEach(l => {
+        if (titleMap[l._id.toString()]) {
+          l.title = titleMap[l._id.toString()];
+        }
+      });
+    }
+
+    res.json(lessonsJson);
   } catch (error) {
     console.error('Get lessons error:', error);
     res.status(500).json({ message: 'Server error' });
@@ -41,15 +65,14 @@ router.get('/:id', optionalAuth, async (req, res) => {
 
     const { nativeLang } = req.query;
     const lessonObj = lesson.toJSON();
+    const targetLang = lesson.targetLang || 'ko';
 
-    // If nativeLang is not English, translate native-side fields
-    if (nativeLang && nativeLang !== 'en') {
-      try {
-        const translation = await getOrCreateTranslation(lesson, nativeLang);
-        applyTranslation(lessonObj, translation);
-      } catch (err) {
-        console.error('Translation overlay failed, serving English fallback:', err.message);
-      }
+    // Translate native-side fields and/or generate romanization
+    try {
+      const translation = await getOrCreateTranslation(lesson, nativeLang || 'en', targetLang);
+      applyTranslation(lessonObj, translation);
+    } catch (err) {
+      console.error('Translation/romanization overlay failed:', err.message);
     }
 
     res.json(lessonObj);

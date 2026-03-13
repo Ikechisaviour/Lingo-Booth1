@@ -1,4 +1,26 @@
 {
+  "languages": {
+    "en": "Ingles",
+    "ko": "Koreano",
+    "es": "Espanyol",
+    "fr": "Pranses",
+    "de": "Aleman",
+    "zh": "Tsino",
+    "ja": "Hapon",
+    "hi": "Hindi",
+    "ar": "Arabe",
+    "he": "Hebreo",
+    "pt": "Portuges",
+    "it": "Italyano",
+    "nl": "Olandes",
+    "ru": "Ruso",
+    "id": "Indonesyo",
+    "ms": "Malay",
+    "fil": "Filipino",
+    "tr": "Turko",
+    "bn": "Bengali",
+    "ta": "Tamil"
+  },
   "common": {
     "loading": "Naglo-load...",
     "error": "May naganap na error",

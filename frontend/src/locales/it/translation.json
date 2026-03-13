@@ -1,4 +1,26 @@
 {
+  "languages": {
+    "en": "Inglese",
+    "ko": "Coreano",
+    "es": "Spagnolo",
+    "fr": "Francese",
+    "de": "Tedesco",
+    "zh": "Cinese",
+    "ja": "Giapponese",
+    "hi": "Hindi",
+    "ar": "Arabo",
+    "he": "Ebraico",
+    "pt": "Portoghese",
+    "it": "Italiano",
+    "nl": "Olandese",
+    "ru": "Russo",
+    "id": "Indonesiano",
+    "ms": "Malese",
+    "fil": "Filippino",
+    "tr": "Turco",
+    "bn": "Bengalese",
+    "ta": "Tamil"
+  },
   "common": {
     "loading": "Caricamento...",
     "error": "Si è verificato un errore",

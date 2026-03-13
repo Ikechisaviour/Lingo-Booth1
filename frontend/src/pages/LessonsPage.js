@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation, Trans } from 'react-i18next';
 import { lessonService, progressService } from '../services/api';
-import { getTargetLangName } from '../config/languages';
+import { getTargetLangName, getTargetLangCode } from '../config/languages';
 import './LessonsPage.css';
 
 function LessonsPage() {
@@ -173,8 +173,8 @@ function LessonsPage() {
         <div className="lessons-hero">
           <div className="hero-text">
             <h1>
-              <Trans i18nKey="lessons.title" values={{ language: getTargetLangName() }}>
-                {getTargetLangName()} <span className="text-accent">Lessons</span>
+              <Trans i18nKey="lessons.title" values={{ language: t(`languages.${getTargetLangCode()}`, getTargetLangName()) }}>
+                {t(`languages.${getTargetLangCode()}`, getTargetLangName())} <span className="text-accent">Lessons</span>
               </Trans>
             </h1>
             <p>{t('lessons.subtitle')}</p>

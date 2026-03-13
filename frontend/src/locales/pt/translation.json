@@ -1,4 +1,26 @@
 {
+  "languages": {
+    "en": "Inglês",
+    "ko": "Coreano",
+    "es": "Espanhol",
+    "fr": "Francês",
+    "de": "Alemão",
+    "zh": "Chinês",
+    "ja": "Japonês",
+    "hi": "Hindi",
+    "ar": "Árabe",
+    "he": "Hebraico",
+    "pt": "Português",
+    "it": "Italiano",
+    "nl": "Holandês",
+    "ru": "Russo",
+    "id": "Indonésio",
+    "ms": "Malaio",
+    "fil": "Filipino",
+    "tr": "Turco",
+    "bn": "Bengali",
+    "ta": "Tâmil"
+  },
   "common": {
     "loading": "Carregando...",
     "error": "Ocorreu um erro",

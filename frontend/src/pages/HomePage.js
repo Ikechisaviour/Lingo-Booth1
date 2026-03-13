@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation, Trans } from 'react-i18next';
 import { userService, lessonService } from '../services/api';
-import { getTargetLangName } from '../config/languages';
+import { getTargetLangName, getTargetLangCode } from '../config/languages';
 import './HomePage.css';
 
 function HomePage() {
@@ -174,8 +174,8 @@ function HomePage() {
               ) : (
                 <>
                   <h1>
-                    <Trans i18nKey="home.learnLanguage" values={{ language: getTargetLangName() }}>
-                      Learn <span className="text-accent">{getTargetLangName()}</span> for real conversations
+                    <Trans i18nKey="home.learnLanguage" values={{ language: t(`languages.${getTargetLangCode()}`, getTargetLangName()) }}>
+                      Learn <span className="text-accent">{t(`languages.${getTargetLangCode()}`, getTargetLangName())}</span> for real conversations
                     </Trans>
                   </h1>
                   <p className="hero-subtitle">

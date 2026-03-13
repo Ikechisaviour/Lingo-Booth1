@@ -427,11 +427,11 @@ function ProfilePage({ onLogout }) {
               <div className="card">
                 <h2>{t('profilePage.voiceSettings')}</h2>
                 <p className="voice-description">
-                  {t('profilePage.voiceDescription', { language: getTargetLangName() })}
+                  {t('profilePage.voiceDescription', { language: t(`languages.${getTargetLangCode()}`, getTargetLangName()) })}
                 </p>
                 {availableVoices.length === 0 ? (
                   <p className="voice-no-voices">
-                    {t('profilePage.noVoices', { language: getTargetLangName() })}
+                    {t('profilePage.noVoices', { language: t(`languages.${getTargetLangCode()}`, getTargetLangName()) })}
                   </p>
                 ) : (
                   <div className="voice-selector">

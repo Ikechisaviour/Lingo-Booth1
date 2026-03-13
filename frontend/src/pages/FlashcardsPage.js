@@ -716,8 +716,8 @@ function FlashcardsPage() {
                 <form onSubmit={handleAddFlashcard}>
                   <div className="form-row">
                     <div className="form-group">
-                      <label>{t('flashcards.targetLang', { language: getTargetLangName() })}</label>
-                      <input type="text" placeholder={t('flashcards.targetLang', { language: getTargetLangName() })} value={newFlashcard[targetField] || ''}
+                      <label>{t('flashcards.targetLang', { language: t(`languages.${getTargetLangCode()}`, getTargetLangName()) })}</label>
+                      <input type="text" placeholder={t('flashcards.targetLang', { language: t(`languages.${getTargetLangCode()}`, getTargetLangName()) })} value={newFlashcard[targetField] || ''}
                         onChange={(e) => setNewFlashcard({ ...newFlashcard, [targetField]: e.target.value })} required />
                     </div>
                     {targetLangHasRomanization() && (
@@ -730,8 +730,8 @@ function FlashcardsPage() {
                   </div>
                   <div className="form-row">
                     <div className="form-group">
-                      <label>{t('flashcards.nativeLang', { language: getNativeLangName() })}</label>
-                      <input type="text" placeholder={t('flashcards.nativeLang', { language: getNativeLangName() })} value={newFlashcard[nativeField] || ''}
+                      <label>{t('flashcards.nativeLang', { language: t(`languages.${getNativeLangCode()}`, getNativeLangName()) })}</label>
+                      <input type="text" placeholder={t('flashcards.nativeLang', { language: t(`languages.${getNativeLangCode()}`, getNativeLangName()) })} value={newFlashcard[nativeField] || ''}
                         onChange={(e) => setNewFlashcard({ ...newFlashcard, [nativeField]: e.target.value })} required />
                     </div>
                     <div className="form-group">
@@ -859,8 +859,8 @@ function FlashcardsPage() {
                   <form onSubmit={handleAddFlashcard}>
                     <div className="form-row">
                       <div className="form-group">
-                        <label>{t('flashcards.targetLang', { language: getTargetLangName() })}</label>
-                        <input type="text" placeholder={t('flashcards.targetLang', { language: getTargetLangName() })} value={newFlashcard[targetField] || ''}
+                        <label>{t('flashcards.targetLang', { language: t(`languages.${getTargetLangCode()}`, getTargetLangName()) })}</label>
+                        <input type="text" placeholder={t('flashcards.targetLang', { language: t(`languages.${getTargetLangCode()}`, getTargetLangName()) })} value={newFlashcard[targetField] || ''}
                           onChange={(e) => setNewFlashcard({ ...newFlashcard, [targetField]: e.target.value })} required />
                       </div>
                       {targetLangHasRomanization() && (
@@ -873,8 +873,8 @@ function FlashcardsPage() {
                     </div>
                     <div className="form-row">
                       <div className="form-group">
-                        <label>{t('flashcards.nativeLang', { language: getNativeLangName() })}</label>
-                        <input type="text" placeholder={t('flashcards.nativeLang', { language: getNativeLangName() })} value={newFlashcard[nativeField] || ''}
+                        <label>{t('flashcards.nativeLang', { language: t(`languages.${getNativeLangCode()}`, getNativeLangName()) })}</label>
+                        <input type="text" placeholder={t('flashcards.nativeLang', { language: t(`languages.${getNativeLangCode()}`, getNativeLangName()) })} value={newFlashcard[nativeField] || ''}
                           onChange={(e) => setNewFlashcard({ ...newFlashcard, [nativeField]: e.target.value })} required />
                       </div>
                       <div className="form-group">
@@ -1084,11 +1084,11 @@ function FlashcardsPage() {
                   <div className="mode-options">
                     <button className={`mode-btn ${displayMode === 'target' ? 'active' : ''}`} onClick={() => { setDisplayMode('target'); setShowsTargetFirst(true); }}>
                       <span className="mode-icon">{LANGUAGES[getTargetLangCode()]?.flag || '🌍'}</span>
-                      {t('flashcards.showTargetFirst', { target: getTargetLangName(), native: getNativeLangName() })}
+                      {t('flashcards.showTargetFirst', { target: t(`languages.${getTargetLangCode()}`, getTargetLangName()), native: t(`languages.${getNativeLangCode()}`, getNativeLangName()) })}
                     </button>
                     <button className={`mode-btn ${displayMode === 'native' ? 'active' : ''}`} onClick={() => { setDisplayMode('native'); setShowsTargetFirst(false); }}>
                       <span className="mode-icon">{LANGUAGES[getNativeLangCode()]?.flag || '🌍'}</span>
-                      {t('flashcards.showNativeFirst', { native: getNativeLangName(), target: getTargetLangName() })}
+                      {t('flashcards.showNativeFirst', { native: t(`languages.${getNativeLangCode()}`, getNativeLangName()), target: t(`languages.${getTargetLangCode()}`, getTargetLangName()) })}
                     </button>
                     <button className={`mode-btn ${displayMode === 'random' ? 'active' : ''}`} onClick={() => { setDisplayMode('random'); setShowsTargetFirst(Math.random() < 0.5); }}>
                       <span className="mode-icon">🎲</span> Random
@@ -1176,11 +1176,11 @@ function FlashcardsPage() {
                   <div className="mode-options">
                     <button className={`mode-btn ${displayMode === 'target' ? 'active' : ''}`}
                       onClick={() => { setDisplayMode('target'); setShowsTargetFirst(true); }}>
-                      <span className="mode-icon">{LANGUAGES[getTargetLangCode()]?.flag || '🌍'}</span> {t('flashcards.showTargetFirst', { target: getTargetLangName(), native: getNativeLangName() })}
+                      <span className="mode-icon">{LANGUAGES[getTargetLangCode()]?.flag || '🌍'}</span> {t('flashcards.showTargetFirst', { target: t(`languages.${getTargetLangCode()}`, getTargetLangName()), native: t(`languages.${getNativeLangCode()}`, getNativeLangName()) })}
                     </button>
                     <button className={`mode-btn ${displayMode === 'native' ? 'active' : ''}`}
                       onClick={() => { setDisplayMode('native'); setShowsTargetFirst(false); }}>
-                      <span className="mode-icon">{LANGUAGES[getNativeLangCode()]?.flag || '🌍'}</span> {t('flashcards.showNativeFirst', { native: getNativeLangName(), target: getTargetLangName() })}
+                      <span className="mode-icon">{LANGUAGES[getNativeLangCode()]?.flag || '🌍'}</span> {t('flashcards.showNativeFirst', { native: t(`languages.${getNativeLangCode()}`, getNativeLangName()), target: t(`languages.${getTargetLangCode()}`, getTargetLangName()) })}
                     </button>
                     <button className={`mode-btn ${displayMode === 'random' ? 'active' : ''}`}
                       onClick={() => { setDisplayMode('random'); setShowsTargetFirst(Math.random() < 0.5); }}>

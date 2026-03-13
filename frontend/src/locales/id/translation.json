@@ -1,4 +1,26 @@
 {
+  "languages": {
+    "en": "Inggris",
+    "ko": "Korea",
+    "es": "Spanyol",
+    "fr": "Prancis",
+    "de": "Jerman",
+    "zh": "Tionghoa",
+    "ja": "Jepang",
+    "hi": "Hindi",
+    "ar": "Arab",
+    "he": "Ibrani",
+    "pt": "Portugis",
+    "it": "Italia",
+    "nl": "Belanda",
+    "ru": "Rusia",
+    "id": "Indonesia",
+    "ms": "Melayu",
+    "fil": "Filipino",
+    "tr": "Turki",
+    "bn": "Bengali",
+    "ta": "Tamil"
+  },
   "common": {
     "loading": "Memuat...",
     "error": "Terjadi kesalahan",

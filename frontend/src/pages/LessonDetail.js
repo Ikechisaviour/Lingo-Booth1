@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { lessonService, progressService, userService, guestXPHelper } from '../services/api';
 import guestActivityTracker from '../services/guestActivityTracker';
 import speechService from '../services/speechService';
-import { getTargetLangName, getNativeLangName } from '../config/languages';
+import { getTargetLangCode, getNativeLangCode, getTargetLangName, getNativeLangName } from '../config/languages';
 import './LessonDetail.css';
 
 function LessonDetail() {
@@ -605,7 +605,7 @@ function LessonDetail() {
               </div>
             ) : studyMode === 'reading' ? (
               <>
-                <h2 className="content-heading">{getTargetLangName()}: {content.targetText}</h2>
+                <h2 className="content-heading">{t(`languages.${getTargetLangCode()}`, getTargetLangName())}: {content.targetText}</h2>
                 <button
                   className="btn-romanization-toggle"
                   onClick={() => setShowRomanization(!showRomanization)}
@@ -619,7 +619,7 @@ function LessonDetail() {
             ) : (
               <>
                 <div className="korean-text-row">
-                  <h2>{getTargetLangName()}: {content.targetText}</h2>
+                  <h2>{t(`languages.${getTargetLangCode()}`, getTargetLangName())}: {content.targetText}</h2>
                   <button
                     className="btn btn-primary speak-btn-lesson"
                     onClick={() => handleSpeak(content.targetText)}
@@ -697,7 +697,7 @@ function LessonDetail() {
                   <h3 className="quiz-question">
                     {studyMode === 'listening'
                       ? t('lessonDetail.whatDidYouHear')
-                      : t('lessonDetail.whatDoesMean', { word: content.targetText, language: getNativeLangName() })}
+                      : t('lessonDetail.whatDoesMean', { word: content.targetText, language: t(`languages.${getNativeLangCode()}`, getNativeLangName()) })}
                   </h3>
 
                   <div className="quiz-options">
@@ -739,8 +739,8 @@ function LessonDetail() {
                           {content.exampleTarget && (
                             <p className="quiz-feedback-text">
                               <strong>{t('lessonDetail.exampleUsage')}:</strong><br />
-                              {getTargetLangName()}: {content.exampleTarget}<br />
-                              {getNativeLangName()}: {content.exampleNative}
+                              {t(`languages.${getTargetLangCode()}`, getTargetLangName())}: {content.exampleTarget}<br />
+                              {t(`languages.${getNativeLangCode()}`, getNativeLangName())}: {content.exampleNative}
                             </p>
                           )}
                         </div>
@@ -756,8 +756,8 @@ function LessonDetail() {
                           {content.exampleTarget && (
                             <p className="quiz-feedback-text">
                               <strong>{t('lessonDetail.exampleUsage')}:</strong><br />
-                              {getTargetLangName()}: {content.exampleTarget}<br />
-                              {getNativeLangName()}: {content.exampleNative}
+                              {t(`languages.${getTargetLangCode()}`, getTargetLangName())}: {content.exampleTarget}<br />
+                              {t(`languages.${getNativeLangCode()}`, getNativeLangName())}: {content.exampleNative}
                             </p>
                           )}
                           <button className="btn btn-primary quiz-try-again" onClick={handleTryAgain}>

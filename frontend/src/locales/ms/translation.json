@@ -1,4 +1,26 @@
 {
+  "languages": {
+    "en": "Inggeris",
+    "ko": "Korea",
+    "es": "Sepanyol",
+    "fr": "Perancis",
+    "de": "Jerman",
+    "zh": "Cina",
+    "ja": "Jepun",
+    "hi": "Hindi",
+    "ar": "Arab",
+    "he": "Ibrani",
+    "pt": "Portugis",
+    "it": "Itali",
+    "nl": "Belanda",
+    "ru": "Rusia",
+    "id": "Indonesia",
+    "ms": "Melayu",
+    "fil": "Filipino",
+    "tr": "Turki",
+    "bn": "Bengali",
+    "ta": "Tamil"
+  },
   "common": {
     "loading": "Memuatkan...",
     "error": "Ralat telah berlaku",

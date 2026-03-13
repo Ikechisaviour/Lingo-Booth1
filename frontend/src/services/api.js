@@ -75,7 +75,8 @@ export const authService = {
 export const lessonService = {
   getLessons: (category, difficulty) => {
     const targetLang = localStorage.getItem('targetLanguage') || 'ko';
-    return api.get('/lessons', { params: { category, difficulty, targetLang } });
+    const nativeLang = localStorage.getItem('nativeLanguage') || 'en';
+    return api.get('/lessons', { params: { category, difficulty, targetLang, nativeLang } });
   },
   getLesson: (id) => {
     const nativeLang = localStorage.getItem('nativeLanguage') || 'en';
@@ -86,8 +87,11 @@ export const lessonService = {
 };
 
 export const flashcardService = {
-  getFlashcards: (userId) =>
-    api.get(`/flashcards/user/${userId}`),
+  getFlashcards: (userId) => {
+    const targetLang = localStorage.getItem('targetLanguage') || 'ko';
+    const nativeLang = localStorage.getItem('nativeLanguage') || 'en';
+    return api.get(`/flashcards/user/${userId}`, { params: { targetLang, nativeLang } });
+  },
   getGuestFlashcards: () => {
     const nativeLang = localStorage.getItem('nativeLanguage') || 'en';
     const targetLang = localStorage.getItem('targetLanguage') || 'ko';

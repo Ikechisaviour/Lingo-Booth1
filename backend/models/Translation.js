@@ -13,11 +13,14 @@ const translationSchema = new mongoose.Schema(
       trim: true,
       lowercase: true,
     },
+    title: { type: String, default: '' },
     items: [
       {
         index: { type: Number, required: true },
         nativeText: { type: String, default: '' },
         exampleNative: { type: String, default: '' },
+        romanization: { type: String, default: '' },
+        exampleRomanization: { type: String, default: '' },
         breakdown: [
           {
             native: { type: String, default: '' },

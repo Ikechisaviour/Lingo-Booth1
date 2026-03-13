@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { adminService } from '../services/api';
-import LANGUAGES, { getTargetLangName, getNativeLangName, getTargetField, getNativeField } from '../config/languages';
+import LANGUAGES, { getTargetLangName, getNativeLangName, getTargetLangCode, getNativeLangCode, getTargetField, getNativeField } from '../config/languages';
 import './AdminDashboard.css';
 
 // Country code → flag emoji
@@ -841,8 +841,8 @@ function AdminDashboard() {
                   <table className="users-table">
                     <thead>
                       <tr>
-                        <th>{getTargetLangName()}</th>
-                        <th>{getNativeLangName()}</th>
+                        <th>{t(`languages.${getTargetLangCode()}`, getTargetLangName())}</th>
+                        <th>{t(`languages.${getNativeLangCode()}`, getNativeLangName())}</th>
                         <th>{t('admin.pronunciationCol')}</th>
                         <th>{t('admin.categoryCol')}</th>
                         <th>{t('admin.createdBy')}</th>
