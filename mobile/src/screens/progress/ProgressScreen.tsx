@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { progressService } from '../../services/api';
 import { useAuthStore } from '../../stores/authStore';
 import { colors } from '../../config/theme';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface MasteryArea {
   lessonTitle?: string;
@@ -20,6 +21,7 @@ interface MasteryArea {
 const ProgressScreen: React.FC = () => {
   const { t } = useTranslation();
   const { userId } = useAuthStore();
+  const insets = useSafeAreaInsets();
 
   const [progress, setProgress] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -95,7 +97,7 @@ const ProgressScreen: React.FC = () => {
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={[colors.primary]} />}
     >
       {/* Header */}
-      <View style={styles.header}>
+      <View style={[styles.header, { paddingTop: insets.top + 16 }]}>
         <Text variant="headlineSmall" style={styles.headerTitle}>
           {t('progress.title', 'Your Progress')}
         </Text>
@@ -250,13 +252,20 @@ const ProgressScreen: React.FC = () => {
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
-  container: { padding: 16, paddingBottom: 32 },
+  container: { padding: 16, paddingTop: 0, paddingBottom: 32 },
   centered: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 24 },
   errorText: { color: colors.error, fontSize: 16, textAlign: 'center' },
 
-  header: { paddingTop: 48, paddingBottom: 16 },
-  headerTitle: { fontWeight: '700', color: colors.textPrimary },
-  headerSubtitle: { color: colors.textSecondary, fontSize: 15, marginTop: 4 },
+  header: {
+    marginLeft: -16,
+    marginRight: -16,
+    paddingHorizontal: 16,
+    paddingBottom: 20,
+    backgroundColor: colors.accentGreen,
+    marginBottom: 16,
+  },
+  headerTitle: { fontWeight: '700', color: '#fff' },
+  headerSubtitle: { color: 'rgba(255,255,255,0.85)', fontSize: 15, marginTop: 4 },
 
   card: { backgroundColor: colors.surface, borderRadius: 14, marginBottom: 12, elevation: 1 },
   achievementCard: { backgroundColor: '#fff5f0' },

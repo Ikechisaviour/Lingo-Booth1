@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../stores/authStore';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { colors } from '../config/theme';
+import { colors, shadows } from '../config/theme';
 
 import HomeScreen from '../screens/home/HomeScreen';
 import LessonsListScreen from '../screens/lessons/LessonsListScreen';
@@ -45,7 +45,15 @@ const MainTabs: React.FC = () => {
         tabBarInactiveTintColor: colors.textMuted,
         tabBarStyle: {
           backgroundColor: colors.surface,
-          borderTopColor: colors.border,
+          borderTopWidth: 0,
+          height: 64,
+          paddingBottom: 10,
+          paddingTop: 6,
+          ...shadows.up,
+        },
+        tabBarLabelStyle: {
+          fontSize: 11,
+          fontWeight: '600',
         },
       }}
     >

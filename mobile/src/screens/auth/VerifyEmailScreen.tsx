@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import { Text, Button } from 'react-native-paper';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import { authService } from '../../services/api';
@@ -10,6 +11,7 @@ const VerifyEmailScreen: React.FC = () => {
   const { t } = useTranslation();
   const route = useRoute<any>();
   const navigation = useNavigation<any>();
+  const insets = useSafeAreaInsets();
   const token = route.params?.token;
 
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
@@ -37,7 +39,7 @@ const VerifyEmailScreen: React.FC = () => {
   }, [token, t]);
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { paddingTop: insets.top + 24 }]}>
       {status === 'loading' && (
         <>
           <ActivityIndicator size="large" color={colors.primary} />
@@ -75,13 +77,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 24,
+    padding: 32,
     backgroundColor: colors.background,
   },
-  icon: { fontSize: 64, marginBottom: 16 },
-  title: { fontWeight: '700', color: colors.textPrimary, marginBottom: 8 },
-  text: { color: colors.textSecondary, textAlign: 'center', fontSize: 15, marginTop: 12 },
-  button: { marginTop: 24, borderRadius: 8 },
+  icon: { fontSize: 72, marginBottom: 20 },
+  title: { fontWeight: '800', color: colors.textPrimary, marginBottom: 8, textAlign: 'center' },
+  text: { color: colors.textSecondary, textAlign: 'center', fontSize: 15, marginTop: 8, lineHeight: 22 },
+  button: { marginTop: 28, borderRadius: 10, paddingHorizontal: 8 },
 });
 
 export default VerifyEmailScreen;

@@ -17,10 +17,12 @@ import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import LANGUAGES, { getLangName } from '../../config/languages';
 import { colors } from '../../config/theme';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const ProfileScreen: React.FC = () => {
   const { t, i18n } = useTranslation();
   const navigation = useNavigation<any>();
+  const insets = useSafeAreaInsets();
   const { userId, username, userRole, logout, setChallengeMode, challengeMode } = useAuthStore();
   const { nativeLanguage, targetLanguage, setLanguages, setVoice, preferredVoice } = useSettingsStore();
 
@@ -225,7 +227,7 @@ const ProfileScreen: React.FC = () => {
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={[colors.primary]} />}
     >
       {/* Profile header */}
-      <View style={styles.profileHeader}>
+      <View style={[styles.profileHeader, { paddingTop: insets.top + 20 }]}>
         <View style={styles.avatar}>
           <Text style={styles.avatarText}>👤</Text>
         </View>
@@ -514,18 +516,36 @@ const ProfileScreen: React.FC = () => {
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
-  container: { padding: 16, paddingBottom: 32 },
+  container: { padding: 16, paddingTop: 0, paddingBottom: 32 },
   centered: { flex: 1, justifyContent: 'center', alignItems: 'center' },
 
-  profileHeader: { alignItems: 'center', paddingTop: 48, paddingBottom: 20 },
-  avatar: { width: 72, height: 72, borderRadius: 36, backgroundColor: '#f3f4f6', justifyContent: 'center', alignItems: 'center', marginBottom: 12 },
-  avatarText: { fontSize: 36 },
-  profileName: { fontWeight: '700', color: colors.textPrimary },
-  profileSince: { fontSize: 13, color: colors.textMuted, marginTop: 4 },
-  profileStats: { flexDirection: 'row', gap: 32, marginTop: 16 },
+  profileHeader: {
+    alignItems: 'center',
+    paddingBottom: 24,
+    paddingHorizontal: 16,
+    marginLeft: -16,
+    marginRight: -16,
+    backgroundColor: colors.secondary,
+    marginBottom: 16,
+  },
+  avatar: {
+    width: 76,
+    height: 76,
+    borderRadius: 38,
+    backgroundColor: 'rgba(255,255,255,0.15)',
+    borderWidth: 2,
+    borderColor: 'rgba(255,255,255,0.3)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+  avatarText: { fontSize: 38 },
+  profileName: { fontWeight: '700', color: '#fff' },
+  profileSince: { fontSize: 13, color: 'rgba(255,255,255,0.6)', marginTop: 4 },
+  profileStats: { flexDirection: 'row', gap: 40, marginTop: 16 },
   profileStat: { alignItems: 'center' },
-  statNumber: { fontSize: 18, fontWeight: '700', color: colors.textPrimary },
-  statLabel: { fontSize: 12, color: colors.textMuted },
+  statNumber: { fontSize: 18, fontWeight: '700', color: '#fff' },
+  statLabel: { fontSize: 12, color: 'rgba(255,255,255,0.65)' },
 
   tabs: { marginBottom: 16 },
 

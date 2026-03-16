@@ -15,6 +15,7 @@ import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { getLangName } from '../../config/languages';
 import { colors } from '../../config/theme';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const categories = [
   { value: 'daily-life', icon: '🏠' },
@@ -39,6 +40,7 @@ const getDifficultyColor = (val: string) => difficulties.find((d) => d.value ===
 const LessonsListScreen: React.FC = () => {
   const { t } = useTranslation();
   const navigation = useNavigation<any>();
+  const insets = useSafeAreaInsets();
   const { userId } = useAuthStore();
   const { targetLanguage } = useSettingsStore();
 
@@ -177,7 +179,7 @@ const LessonsListScreen: React.FC = () => {
   return (
     <View style={styles.screen}>
       {/* Header */}
-      <View style={styles.header}>
+      <View style={[styles.header, { paddingTop: insets.top + 16 }]}>
         <View style={styles.headerTop}>
           <View>
             <Text variant="headlineSmall" style={styles.headerTitle}>
@@ -195,7 +197,7 @@ const LessonsListScreen: React.FC = () => {
                 setSelectMode(!selectMode);
                 setSelectedIds(new Set());
               }}
-              textColor={selectMode ? colors.error : colors.primary}
+              textColor={selectMode ? 'rgba(255,200,180,1)' : '#fff'}
             >
               {selectMode ? t('common.cancel', 'Cancel') : t('lessons.select', 'Select')}
             </Button>
@@ -312,14 +314,13 @@ const LessonsListScreen: React.FC = () => {
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
   header: {
-    paddingTop: 48,
     paddingHorizontal: 16,
-    paddingBottom: 8,
-    backgroundColor: colors.surface,
+    paddingBottom: 12,
+    backgroundColor: colors.primary,
   },
   headerTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' },
-  headerTitle: { fontWeight: '700', color: colors.textPrimary },
-  headerStat: { color: colors.textSecondary, fontSize: 14, marginTop: 4 },
+  headerTitle: { fontWeight: '700', color: '#fff' },
+  headerStat: { color: 'rgba(255,255,255,0.82)', fontSize: 14, marginTop: 4 },
 
   selectionBar: {
     flexDirection: 'row',
@@ -328,7 +329,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     marginTop: 4,
   },
-  selectionCount: { fontSize: 13, color: colors.textSecondary },
+  selectionCount: { fontSize: 13, color: 'rgba(255,255,255,0.85)' },
   startBtn: { borderRadius: 8, backgroundColor: colors.accentGreen },
 
   filterRow: { backgroundColor: colors.surface, paddingBottom: 4 },

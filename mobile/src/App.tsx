@@ -1,6 +1,7 @@
 import React from 'react';
 import { PaperProvider } from 'react-native-paper';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet } from 'react-native';
 import { useAuthStore } from './stores/authStore';
@@ -17,11 +18,13 @@ const App: React.FC = () => {
   return (
     <ErrorBoundary>
       <GestureHandlerRootView style={styles.root}>
-        <PaperProvider theme={activeTheme}>
-          <StatusBar style="dark" />
-          <RootNavigator />
-          <GuestSignupPrompt />
-        </PaperProvider>
+        <SafeAreaProvider>
+          <PaperProvider theme={activeTheme}>
+            <StatusBar style="light" />
+            <RootNavigator />
+            <GuestSignupPrompt />
+          </PaperProvider>
+        </SafeAreaProvider>
       </GestureHandlerRootView>
     </ErrorBoundary>
   );

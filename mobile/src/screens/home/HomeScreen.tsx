@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { View, ScrollView, StyleSheet, TouchableOpacity, RefreshControl, Modal } from 'react-native';
 import { Text, Button, Card, ProgressBar } from 'react-native-paper';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import { userService } from '../../services/api';
@@ -12,6 +13,7 @@ import { colors } from '../../config/theme';
 const HomeScreen: React.FC = () => {
   const { t } = useTranslation();
   const navigation = useNavigation<any>();
+  const insets = useSafeAreaInsets();
   const { userId, username, userRole, isGuest, challengeMode, guestXP } = useAuthStore();
   const { targetLanguage } = useSettingsStore();
   const isAdmin = userRole === 'admin';
@@ -23,6 +25,8 @@ const HomeScreen: React.FC = () => {
   const [showLeaderboard, setShowLeaderboard] = useState(false);
   const [leaderboard, setLeaderboard] = useState<any[]>([]);
   const [claimingQuest, setClaimingQuest] = useState<string | null>(null);
+
+  const activeColor = challengeMode ? colors.accentGreen : colors.primary;
 
   const fetchData = useCallback(async () => {
     if (!userId) return;
@@ -112,12 +116,14 @@ const HomeScreen: React.FC = () => {
 
   return (
     <ScrollView
-      style={styles.scrollView}
+      style={[styles.scrollView, { backgroundColor: activeColor }]}
       contentContainerStyle={styles.container}
-      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={[colors.primary]} />}
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={['#fff']} tintColor="#fff" />
+      }
     >
-      {/* Hero Section */}
-      <View style={styles.heroSection}>
+      {/* Hero Section — colored background */}
+      <View style={[styles.heroSection, { paddingTop: insets.top + 16 }]}>
         {isReturningUser ? (
           <>
             <Text variant="headlineSmall" style={styles.heroTitle}>
@@ -131,7 +137,14 @@ const HomeScreen: React.FC = () => {
                 : t('home.readyForSession')}
             </Text>
             {lastActivity && (
-              <Button mode="contained" onPress={handleContinue} style={styles.heroButton} labelStyle={styles.heroButtonLabel}>
+              <Button
+                mode="contained"
+                onPress={handleContinue}
+                buttonColor="rgba(255,255,255,0.95)"
+                textColor={activeColor}
+                style={styles.heroButton}
+                labelStyle={styles.heroButtonLabel}
+              >
                 {lastActivity.type === 'lesson' ? t('home.continueLesson') : t('home.continueFlashcards')} →
               </Button>
             )}
@@ -147,214 +160,237 @@ const HomeScreen: React.FC = () => {
                 <Text style={styles.guestXpText}>⚡ {guestXP} {t('common.xp')}</Text>
               </View>
             )}
-            <Button mode="contained" onPress={() => navigation.navigate('Lessons')} style={styles.heroButton} labelStyle={styles.heroButtonLabel}>
+            <Button
+              mode="contained"
+              onPress={() => navigation.navigate('Lessons')}
+              buttonColor="rgba(255,255,255,0.95)"
+              textColor={activeColor}
+              style={styles.heroButton}
+              labelStyle={styles.heroButtonLabel}
+            >
               {isGuest ? t('home.startLearning') : t('home.getStartedFree')}
             </Button>
           </>
         )}
       </View>
 
-      {/* Quick Actions */}
-      <View style={styles.quickActions}>
-        <TouchableOpacity style={styles.quickAction} onPress={() => navigation.navigate('Lessons')} activeOpacity={0.7}>
-          <Text style={styles.quickIcon}>📚</Text>
-          <View style={styles.quickTextCol}>
-            <Text style={styles.quickTitle}>{t('home.lessonsAction')}</Text>
-            <Text style={styles.quickDesc}>{t('home.lessonsDesc')}</Text>
-          </View>
-          <Text style={styles.quickArrow}>→</Text>
-        </TouchableOpacity>
+      {/* Main content area — rounded top sheet */}
+      <View style={styles.mainContent}>
 
-        <TouchableOpacity style={styles.quickAction} onPress={() => navigation.navigate('Flashcards')} activeOpacity={0.7}>
-          <Text style={styles.quickIcon}>🎴</Text>
-          <View style={styles.quickTextCol}>
-            <Text style={styles.quickTitle}>{t('home.flashcardsAction')}</Text>
-            <Text style={styles.quickDesc}>{t('home.flashcardsDesc')}</Text>
-          </View>
-          <Text style={styles.quickArrow}>→</Text>
-        </TouchableOpacity>
-
-        {!isGuest && (
-          <TouchableOpacity style={styles.quickAction} onPress={() => navigation.navigate('Progress')} activeOpacity={0.7}>
-            <Text style={styles.quickIcon}>📊</Text>
+        {/* Quick Actions */}
+        <View style={styles.quickActions}>
+          <TouchableOpacity
+            style={[styles.quickAction, { borderLeftColor: colors.accentBlue }]}
+            onPress={() => navigation.navigate('Lessons')}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.quickIcon}>📚</Text>
             <View style={styles.quickTextCol}>
-              <Text style={styles.quickTitle}>{t('home.progressAction')}</Text>
-              <Text style={styles.quickDesc}>{t('home.progressDesc')}</Text>
+              <Text style={styles.quickTitle}>{t('home.lessonsAction')}</Text>
+              <Text style={styles.quickDesc}>{t('home.lessonsDesc')}</Text>
             </View>
-            <Text style={styles.quickArrow}>→</Text>
+            <Text style={styles.quickArrow}>›</Text>
           </TouchableOpacity>
-        )}
-      </View>
 
-      {/* Gamification Cards — Challenge Mode */}
-      {gamification?.challengeMode && (
-        <>
-          {/* Streak Card */}
-          <Card style={styles.card}>
-            <Card.Content>
-              <View style={styles.cardHeader}>
-                <Text style={styles.cardIcon}>🔥</Text>
-                <Text style={styles.cardTitle}>{t('home.dayStreak')}</Text>
+          <TouchableOpacity
+            style={[styles.quickAction, { borderLeftColor: colors.primary }]}
+            onPress={() => navigation.navigate('Flashcards')}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.quickIcon}>🎴</Text>
+            <View style={styles.quickTextCol}>
+              <Text style={styles.quickTitle}>{t('home.flashcardsAction')}</Text>
+              <Text style={styles.quickDesc}>{t('home.flashcardsDesc')}</Text>
+            </View>
+            <Text style={styles.quickArrow}>›</Text>
+          </TouchableOpacity>
+
+          {!isGuest && (
+            <TouchableOpacity
+              style={[styles.quickAction, { borderLeftColor: colors.accentGreen }]}
+              onPress={() => navigation.navigate('Progress')}
+              activeOpacity={0.7}
+            >
+              <Text style={styles.quickIcon}>📊</Text>
+              <View style={styles.quickTextCol}>
+                <Text style={styles.quickTitle}>{t('home.progressAction')}</Text>
+                <Text style={styles.quickDesc}>{t('home.progressDesc')}</Text>
               </View>
-              <View style={styles.streakDisplay}>
-                <Text style={styles.streakNumber}>{gamification.streak.current}</Text>
-                <Text style={styles.streakLabel}>
-                  {gamification.streak.current !== 1 ? t('home.days') : t('home.day')}
-                </Text>
-              </View>
-              <View style={styles.streakCalendar}>
-                {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((day, i) => (
-                  <View key={i} style={[styles.calDay, gamification.streak.history[i] && styles.calDayActive]}>
-                    <Text style={styles.calDayText}>
-                      {gamification.streak.history[i] ? '🔥' : day}
-                    </Text>
+              <Text style={styles.quickArrow}>›</Text>
+            </TouchableOpacity>
+          )}
+        </View>
+
+        {/* Gamification Cards — Challenge Mode */}
+        {gamification?.challengeMode && (
+          <>
+            {/* Streak Card */}
+            <Card style={styles.card}>
+              <Card.Content>
+                <View style={styles.cardHeader}>
+                  <Text style={styles.cardIcon}>🔥</Text>
+                  <Text style={styles.cardTitle}>{t('home.dayStreak')}</Text>
+                </View>
+                <View style={styles.streakDisplay}>
+                  <Text style={[styles.streakNumber, { color: activeColor }]}>{gamification.streak.current}</Text>
+                  <Text style={styles.streakLabel}>
+                    {gamification.streak.current !== 1 ? t('home.days') : t('home.day')}
+                  </Text>
+                </View>
+                <View style={styles.streakCalendar}>
+                  {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((day, i) => (
+                    <View key={i} style={[styles.calDay, gamification.streak.history[i] && styles.calDayActive]}>
+                      <Text style={styles.calDayText}>
+                        {gamification.streak.history[i] ? '🔥' : day}
+                      </Text>
+                    </View>
+                  ))}
+                </View>
+              </Card.Content>
+            </Card>
+
+            {/* Daily Quests */}
+            <Card style={styles.card}>
+              <Card.Content>
+                <View style={styles.cardHeader}>
+                  <Text style={styles.cardIcon}>🎯</Text>
+                  <Text style={styles.cardTitle}>{t('home.dailyQuests')}</Text>
+                </View>
+                {gamification.quests.map((quest: any) => (
+                  <View key={quest.id} style={styles.questItem}>
+                    <Text style={styles.questIcon}>{questIcons[quest.id] || '⭐'}</Text>
+                    <View style={styles.questInfo}>
+                      <Text style={styles.questTask}>{quest.task}</Text>
+                      <ProgressBar
+                        progress={quest.total > 0 ? quest.progress / quest.total : 0}
+                        color={quest.completed ? colors.accentGreen : activeColor}
+                        style={styles.questProgress}
+                      />
+                    </View>
+                    {quest.claimed ? (
+                      <Text style={styles.questClaimed}>✓</Text>
+                    ) : quest.completed ? (
+                      <TouchableOpacity
+                        style={[styles.claimButton, { backgroundColor: colors.accentGreen }]}
+                        onPress={() => handleClaimQuest(quest.id)}
+                        disabled={claimingQuest === quest.id}
+                      >
+                        <Text style={styles.claimButtonText}>+{quest.bonusXP} {t('common.xp')}</Text>
+                      </TouchableOpacity>
+                    ) : (
+                      <Text style={styles.questCount}>{quest.progress}/{quest.total}</Text>
+                    )}
                   </View>
                 ))}
-              </View>
-            </Card.Content>
-          </Card>
+              </Card.Content>
+            </Card>
 
-          {/* Daily Quests */}
-          <Card style={styles.card}>
-            <Card.Content>
-              <View style={styles.cardHeader}>
-                <Text style={styles.cardIcon}>🎯</Text>
-                <Text style={styles.cardTitle}>{t('home.dailyQuests')}</Text>
-              </View>
-              {gamification.quests.map((quest: any) => (
-                <View key={quest.id} style={styles.questItem}>
-                  <Text style={styles.questIcon}>{questIcons[quest.id] || '⭐'}</Text>
-                  <View style={styles.questInfo}>
-                    <Text style={styles.questTask}>{quest.task}</Text>
-                    <ProgressBar
-                      progress={quest.total > 0 ? quest.progress / quest.total : 0}
-                      color={quest.completed ? colors.accentGreen : colors.primary}
-                      style={styles.questProgress}
-                    />
+            {/* League Card */}
+            <Card style={styles.card}>
+              <Card.Content>
+                <View style={styles.cardHeader}>
+                  <Text style={styles.cardIcon}>🏆</Text>
+                  <Text style={styles.cardTitle}>
+                    {t('home.league', { name: gamification.league.name })}
+                  </Text>
+                </View>
+                <View style={styles.leagueRow}>
+                  <View style={styles.leagueRank}>
+                    <Text style={styles.leagueBadge}>{leagueBadges[gamification.league.badge] || '🏅'}</Text>
+                    <Text style={styles.leaguePosition}>#{gamification.league.rank}</Text>
+                    <Text style={styles.leagueLabel}>{t('home.yourRank')}</Text>
                   </View>
-                  {quest.claimed ? (
-                    <Text style={styles.questClaimed}>✓</Text>
-                  ) : quest.completed ? (
-                    <TouchableOpacity
-                      style={styles.claimButton}
-                      onPress={() => handleClaimQuest(quest.id)}
-                      disabled={claimingQuest === quest.id}
-                    >
-                      <Text style={styles.claimButtonText}>+{quest.bonusXP} {t('common.xp')}</Text>
-                    </TouchableOpacity>
-                  ) : (
-                    <Text style={styles.questCount}>{quest.progress}/{quest.total}</Text>
-                  )}
+                  <View style={styles.leagueXp}>
+                    <Text style={[styles.leagueXpValue, { color: activeColor }]}>{gamification.league.weeklyXP} {t('common.xp')}</Text>
+                    <Text style={styles.leagueLabel}>{t('home.thisWeek')}</Text>
+                  </View>
                 </View>
-              ))}
-            </Card.Content>
-          </Card>
+                <Button mode="outlined" onPress={handleViewLeaderboard} style={styles.leaderboardBtn}>
+                  {t('home.viewLeague')}
+                </Button>
+              </Card.Content>
+            </Card>
+          </>
+        )}
 
-          {/* League Card */}
-          <Card style={styles.card}>
-            <Card.Content>
-              <View style={styles.cardHeader}>
-                <Text style={styles.cardIcon}>🏆</Text>
-                <Text style={styles.cardTitle}>
-                  {t('home.league', { name: gamification.league.name })}
-                </Text>
-              </View>
-              <View style={styles.leagueRow}>
-                <View style={styles.leagueRank}>
-                  <Text style={styles.leagueBadge}>{leagueBadges[gamification.league.badge] || '🏅'}</Text>
-                  <Text style={styles.leaguePosition}>#{gamification.league.rank}</Text>
-                  <Text style={styles.leagueLabel}>{t('home.yourRank')}</Text>
-                </View>
-                <View style={styles.leagueXp}>
-                  <Text style={styles.leagueXpValue}>{gamification.league.weeklyXP} {t('common.xp')}</Text>
-                  <Text style={styles.leagueLabel}>{t('home.thisWeek')}</Text>
-                </View>
-              </View>
-              <Button mode="outlined" onPress={handleViewLeaderboard} style={styles.leaderboardBtn}>
-                {t('home.viewLeague')}
+        {/* Teaser for Relaxed Mode users */}
+        {gamification && !gamification.challengeMode && !!userId && (
+          <Card style={[styles.card, styles.teaserCard]}>
+            <Card.Content style={styles.teaserContent}>
+              <Text style={styles.teaserLock}>🔒</Text>
+              <Text style={styles.teaserTitle}>{t('home.unlockTitle')}</Text>
+              <Text style={styles.teaserDesc}>{t('home.unlockDesc')}</Text>
+              <Button mode="contained" onPress={() => navigation.navigate('Profile')} style={[styles.teaserBtn, { backgroundColor: activeColor }]}>
+                {t('home.enableChallengeMode')}
               </Button>
             </Card.Content>
           </Card>
-        </>
-      )}
+        )}
 
-      {/* Teaser for Relaxed Mode users */}
-      {gamification && !gamification.challengeMode && !!userId && (
-        <Card style={[styles.card, styles.teaserCard]}>
-          <Card.Content style={styles.teaserContent}>
-            <Text style={styles.teaserLock}>🔒</Text>
-            <Text style={styles.teaserTitle}>{t('home.unlockTitle')}</Text>
-            <Text style={styles.teaserDesc}>{t('home.unlockDesc')}</Text>
-            <Button mode="contained" onPress={() => navigation.navigate('Profile')} style={styles.teaserBtn}>
-              {t('home.enableChallengeMode')}
-            </Button>
-          </Card.Content>
-        </Card>
-      )}
-
-      {/* XP Tracker */}
-      {xpStats && (
-        <Card style={styles.card}>
-          <Card.Content>
-            <View style={styles.cardHeader}>
-              <Text style={styles.cardIcon}>
-                {xpStats.status === 'off' ? '🌿' : xpStats.status === 'decaying' ? '📉' : xpStats.status === 'grace' ? '⏳' : '✨'}
-              </Text>
-              <Text style={styles.cardTitle}>{t('home.xpTracker')}</Text>
-              <View style={[styles.xpStatusBadge, styles[`badge_${xpStats.status}`] || styles.badge_safe]}>
-                <Text style={[styles.xpStatusText, styles[`badgeText_${xpStats.status}`] || styles.badgeText_safe]}>
-                  {xpStats.status === 'off' ? t('home.relaxed') : t('home.intense')}
+        {/* XP Tracker */}
+        {xpStats && (
+          <Card style={styles.card}>
+            <Card.Content>
+              <View style={styles.cardHeader}>
+                <Text style={styles.cardIcon}>
+                  {xpStats.status === 'off' ? '🌿' : xpStats.status === 'decaying' ? '📉' : xpStats.status === 'grace' ? '⏳' : '✨'}
                 </Text>
+                <Text style={styles.cardTitle}>{t('home.xpTracker')}</Text>
+                <View style={[styles.xpStatusBadge, styles[`badge_${xpStats.status}` as keyof typeof styles] || styles.badge_safe]}>
+                  <Text style={[styles.xpStatusText, styles[`badgeText_${xpStats.status}` as keyof typeof styles] || styles.badgeText_safe]}>
+                    {xpStats.status === 'off' ? t('home.relaxed') : t('home.intense')}
+                  </Text>
+                </View>
               </View>
-            </View>
-            <View style={styles.xpTotal}>
-              <Text style={styles.xpNumber}>{xpStats.totalXP}</Text>
-              <Text style={styles.xpLabel}>{t('home.totalXP')}</Text>
-            </View>
-            <View style={styles.xpDetails}>
-              <View style={styles.xpDetailRow}>
-                <Text style={styles.xpDetailLabel}>{t('home.lastAnswered')}</Text>
-                <Text style={styles.xpDetailValue}>{formatTimeAgo(xpStats.lastAnsweredAt)}</Text>
+              <View style={styles.xpTotal}>
+                <Text style={[styles.xpNumber, { color: activeColor }]}>{xpStats.totalXP}</Text>
+                <Text style={styles.xpLabel}>{t('home.totalXP')}</Text>
               </View>
-              {xpStats.status !== 'safe' && xpStats.status !== 'off' && (
-                <>
-                  <View style={styles.xpDetailRow}>
-                    <Text style={styles.xpDetailLabel}>
-                      {xpStats.status === 'grace' ? t('home.decayStartsIn') : t('home.nextDecayIn')}
-                    </Text>
-                    <Text style={styles.xpDetailValue}>
-                      {xpStats.hoursUntilDecay != null ? `${xpStats.hoursUntilDecay}h` : '—'}
-                    </Text>
-                  </View>
-                  <View style={styles.xpDetailRow}>
-                    <Text style={styles.xpDetailLabel}>{t('home.dailyLossRate')}</Text>
-                    <Text style={styles.xpDetailValue}>{xpStats.decayRate}%</Text>
-                  </View>
-                </>
+              <View style={styles.xpDetails}>
+                <View style={styles.xpDetailRow}>
+                  <Text style={styles.xpDetailLabel}>{t('home.lastAnswered')}</Text>
+                  <Text style={styles.xpDetailValue}>{formatTimeAgo(xpStats.lastAnsweredAt)}</Text>
+                </View>
+                {xpStats.status !== 'safe' && xpStats.status !== 'off' && (
+                  <>
+                    <View style={styles.xpDetailRow}>
+                      <Text style={styles.xpDetailLabel}>
+                        {xpStats.status === 'grace' ? t('home.decayStartsIn') : t('home.nextDecayIn')}
+                      </Text>
+                      <Text style={styles.xpDetailValue}>
+                        {xpStats.hoursUntilDecay != null ? `${xpStats.hoursUntilDecay}h` : '—'}
+                      </Text>
+                    </View>
+                    <View style={styles.xpDetailRow}>
+                      <Text style={styles.xpDetailLabel}>{t('home.dailyLossRate')}</Text>
+                      <Text style={styles.xpDetailValue}>{xpStats.decayRate}%</Text>
+                    </View>
+                  </>
+                )}
+              </View>
+              {xpStats.status === 'decaying' && (
+                <Text style={styles.decayWarning}>{t('home.stopDecayWarning')}</Text>
               )}
-            </View>
-            {xpStats.status === 'decaying' && (
-              <Text style={styles.decayWarning}>{t('home.stopDecayWarning')}</Text>
-            )}
-          </Card.Content>
-        </Card>
-      )}
+            </Card.Content>
+          </Card>
+        )}
 
-      {/* Admin Card */}
-      {isAdmin && (
-        <Card style={[styles.card, styles.adminCard]}>
-          <Card.Content>
-            <View style={styles.cardHeader}>
-              <Text style={styles.cardIcon}>⚙️</Text>
-              <Text style={[styles.cardTitle, { color: '#fff' }]}>{t('home.adminDashboard')}</Text>
-            </View>
-            <Text style={styles.adminDesc}>{t('home.adminDesc')}</Text>
-            <Button mode="contained" onPress={() => navigation.navigate('Profile', { screen: 'Admin' })} buttonColor="#fff" textColor="#764ba2" style={styles.adminBtn}>
-              {t('home.openDashboard')}
-            </Button>
-          </Card.Content>
-        </Card>
-      )}
+        {/* Admin Card */}
+        {isAdmin && (
+          <Card style={[styles.card, styles.adminCard]}>
+            <Card.Content>
+              <View style={styles.cardHeader}>
+                <Text style={styles.cardIcon}>⚙️</Text>
+                <Text style={[styles.cardTitle, { color: '#fff' }]}>{t('home.adminDashboard')}</Text>
+              </View>
+              <Text style={styles.adminDesc}>{t('home.adminDesc')}</Text>
+              <Button mode="contained" onPress={() => navigation.navigate('Profile', { screen: 'Admin' })} buttonColor="#fff" textColor="#764ba2" style={styles.adminBtn}>
+                {t('home.openDashboard')}
+              </Button>
+            </Card.Content>
+          </Card>
+        )}
+      </View>
 
       {/* Leaderboard Modal */}
       <Modal visible={showLeaderboard} transparent animationType="fade" onRequestClose={() => setShowLeaderboard(false)}>
@@ -373,7 +409,7 @@ const HomeScreen: React.FC = () => {
                   <Text style={styles.lbUsername} numberOfLines={1}>
                     {entry.username}{entry.isCurrentUser ? ` ${t('home.you')}` : ''}
                   </Text>
-                  <Text style={styles.lbXp}>{entry.weeklyXP} {t('common.xp')}</Text>
+                  <Text style={[styles.lbXp, { color: activeColor }]}>{entry.weeklyXP} {t('common.xp')}</Text>
                 </View>
               ))
             )}
@@ -388,58 +424,60 @@ const HomeScreen: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
-  scrollView: { flex: 1, backgroundColor: colors.background },
-  container: { padding: 16, paddingBottom: 32 },
+  scrollView: { flex: 1 },
+  container: { paddingBottom: 32 },
 
   // Hero
   heroSection: {
-    backgroundColor: colors.surface,
-    borderRadius: 16,
-    padding: 24,
-    marginBottom: 16,
-    elevation: 2,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.08,
-    shadowRadius: 4,
+    paddingHorizontal: 20,
+    paddingBottom: 28,
   },
-  heroTitle: { fontWeight: '700', color: colors.textPrimary, marginBottom: 8 },
-  heroSubtitle: { color: colors.textSecondary, fontSize: 15, marginBottom: 16 },
-  heroButton: { borderRadius: 8, backgroundColor: colors.primary },
-  heroButtonLabel: { fontSize: 16, fontWeight: '600', paddingVertical: 2 },
+  heroTitle: { fontWeight: '700', color: '#fff', marginBottom: 8 },
+  heroSubtitle: { color: 'rgba(255,255,255,0.85)', fontSize: 15, marginBottom: 16 },
+  heroButton: { borderRadius: 10, alignSelf: 'flex-start' },
+  heroButtonLabel: { fontSize: 15, fontWeight: '700', paddingVertical: 2 },
   guestXpBadge: {
     alignSelf: 'flex-start',
-    backgroundColor: '#fff5f0',
+    backgroundColor: 'rgba(255,255,255,0.2)',
     paddingHorizontal: 12,
     paddingVertical: 4,
     borderRadius: 20,
     marginBottom: 12,
   },
-  guestXpText: { color: colors.primary, fontWeight: '600', fontSize: 14 },
+  guestXpText: { color: '#fff', fontWeight: '600', fontSize: 14 },
+
+  // Main content sheet
+  mainContent: {
+    backgroundColor: '#faf7f2',
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    padding: 16,
+  },
 
   // Quick Actions
-  quickActions: { marginBottom: 16, gap: 8 },
+  quickActions: { marginBottom: 12, gap: 8 },
   quickAction: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: colors.surface,
-    borderRadius: 12,
+    backgroundColor: '#fff',
+    borderRadius: 14,
     padding: 16,
     elevation: 1,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
+    shadowOpacity: 0.06,
+    shadowRadius: 3,
+    borderLeftWidth: 5,
   },
-  quickIcon: { fontSize: 28, marginRight: 14 },
+  quickIcon: { fontSize: 26, marginRight: 14 },
   quickTextCol: { flex: 1 },
   quickTitle: { fontWeight: '700', fontSize: 15, color: colors.textPrimary },
   quickDesc: { fontSize: 13, color: colors.textSecondary, marginTop: 2 },
-  quickArrow: { fontSize: 20, color: colors.textMuted, marginLeft: 8 },
+  quickArrow: { fontSize: 22, color: colors.textMuted, fontWeight: '300', marginLeft: 8 },
 
   // Card
   card: {
-    backgroundColor: colors.surface,
+    backgroundColor: '#fff',
     borderRadius: 14,
     marginBottom: 12,
     elevation: 1,
@@ -450,7 +488,7 @@ const styles = StyleSheet.create({
 
   // Streak
   streakDisplay: { alignItems: 'center', marginVertical: 8 },
-  streakNumber: { fontSize: 40, fontWeight: '800', color: colors.primary },
+  streakNumber: { fontSize: 42, fontWeight: '800' },
   streakLabel: { fontSize: 14, color: colors.textSecondary },
   streakCalendar: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 12 },
   calDay: {
@@ -462,7 +500,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   calDayActive: { backgroundColor: '#fff5f0' },
-  calDayText: { fontSize: 14, fontWeight: '600', color: colors.textSecondary },
+  calDayText: { fontSize: 13, fontWeight: '600', color: colors.textSecondary },
 
   // Quests
   questItem: { flexDirection: 'row', alignItems: 'center', paddingVertical: 8 },
@@ -472,7 +510,6 @@ const styles = StyleSheet.create({
   questProgress: { height: 6, borderRadius: 3 },
   questClaimed: { fontSize: 18, color: colors.accentGreen, fontWeight: '700', marginLeft: 8 },
   claimButton: {
-    backgroundColor: colors.accentGreen,
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 6,
@@ -488,7 +525,7 @@ const styles = StyleSheet.create({
   leaguePosition: { fontSize: 22, fontWeight: '800', color: colors.textPrimary },
   leagueLabel: { fontSize: 12, color: colors.textMuted },
   leagueXp: { alignItems: 'center' },
-  leagueXpValue: { fontSize: 22, fontWeight: '800', color: colors.primary },
+  leagueXpValue: { fontSize: 22, fontWeight: '800' },
   leaderboardBtn: { borderRadius: 8, marginTop: 4 },
 
   // Teaser
@@ -497,7 +534,7 @@ const styles = StyleSheet.create({
   teaserLock: { fontSize: 36, marginBottom: 8 },
   teaserTitle: { fontSize: 18, fontWeight: '700', color: colors.textPrimary, marginBottom: 4 },
   teaserDesc: { textAlign: 'center', color: colors.textSecondary, marginBottom: 12 },
-  teaserBtn: { borderRadius: 8, backgroundColor: colors.primary },
+  teaserBtn: { borderRadius: 8 },
 
   // XP Tracker
   xpStatusBadge: { paddingHorizontal: 8, paddingVertical: 2, borderRadius: 10 },
@@ -505,13 +542,13 @@ const styles = StyleSheet.create({
   badge_safe: { backgroundColor: 'rgba(88, 204, 2, 0.15)' },
   badge_grace: { backgroundColor: 'rgba(255, 200, 0, 0.15)' },
   badge_decaying: { backgroundColor: 'rgba(255, 75, 75, 0.15)' },
-  badgeText_off: { color: '#58cc02' },
-  badgeText_safe: { color: '#58cc02' },
-  badgeText_grace: { color: '#e6a800' },
-  badgeText_decaying: { color: '#ff4b4b' },
+  badgeText_off: { color: '#58cc02', fontSize: 11, fontWeight: '600' },
+  badgeText_safe: { color: '#58cc02', fontSize: 11, fontWeight: '600' },
+  badgeText_grace: { color: '#e6a800', fontSize: 11, fontWeight: '600' },
+  badgeText_decaying: { color: '#ff4b4b', fontSize: 11, fontWeight: '600' },
   xpStatusText: { fontSize: 11, fontWeight: '600' },
   xpTotal: { alignItems: 'center', marginVertical: 8 },
-  xpNumber: { fontSize: 36, fontWeight: '800', color: colors.primary },
+  xpNumber: { fontSize: 38, fontWeight: '800' },
   xpLabel: { fontSize: 13, color: colors.textSecondary },
   xpDetails: { gap: 6 },
   xpDetailRow: { flexDirection: 'row', justifyContent: 'space-between' },
@@ -521,8 +558,8 @@ const styles = StyleSheet.create({
     marginTop: 8,
     backgroundColor: '#fef2f2',
     color: colors.error,
-    padding: 8,
-    borderRadius: 6,
+    padding: 10,
+    borderRadius: 8,
     fontSize: 13,
     textAlign: 'center',
   },
@@ -535,13 +572,13 @@ const styles = StyleSheet.create({
   // Modal
   modalOverlay: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: 'rgba(0,0,0,0.55)',
     justifyContent: 'center',
     padding: 24,
   },
   modalContent: {
-    backgroundColor: colors.surface,
-    borderRadius: 16,
+    backgroundColor: '#fff',
+    borderRadius: 20,
     padding: 24,
     maxHeight: '80%',
   },
@@ -549,10 +586,10 @@ const styles = StyleSheet.create({
   modalSubtitle: { textAlign: 'center', color: colors.textSecondary, marginBottom: 16 },
   leaderboardEmpty: { textAlign: 'center', color: colors.textMuted, paddingVertical: 20 },
   lbEntry: { flexDirection: 'row', alignItems: 'center', paddingVertical: 10, borderBottomWidth: 1, borderBottomColor: colors.border },
-  lbCurrentUser: { backgroundColor: '#fff5f0' },
+  lbCurrentUser: { backgroundColor: '#fff5f0', borderRadius: 8 },
   lbRank: { width: 40, fontSize: 16, fontWeight: '700' },
   lbUsername: { flex: 1, fontSize: 15, color: colors.textPrimary },
-  lbXp: { fontSize: 14, fontWeight: '600', color: colors.primary },
+  lbXp: { fontSize: 14, fontWeight: '700' },
 });
 
 export default HomeScreen;

@@ -8,6 +8,7 @@ import {
   Platform,
 } from 'react-native';
 import { Text, TextInput, Button, HelperText } from 'react-native-paper';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
@@ -26,6 +27,7 @@ const RegisterScreen: React.FC = () => {
   const navigation = useNavigation<RegisterNavProp>();
   const { login, guestXP, clearGuestXP } = useAuthStore();
   const { nativeLanguage, targetLanguage } = useSettingsStore();
+  const insets = useSafeAreaInsets();
 
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -63,7 +65,6 @@ const RegisterScreen: React.FC = () => {
         targetLanguage || 'ko',
       );
       clearGuestXP();
-
       const { token, user } = response.data;
       login({ token, user });
     } catch (err: any) {
@@ -78,196 +79,184 @@ const RegisterScreen: React.FC = () => {
       style={styles.flex}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
-      <ScrollView
-        contentContainerStyle={styles.container}
-        keyboardShouldPersistTaps="handled"
-      >
-        <View style={styles.card}>
+      <View style={styles.outer}>
+        {/* Branded top section */}
+        <View style={[styles.brandTop, { paddingTop: insets.top + 24 }]}>
           <Image
             source={require('../../../assets/icon.png')}
             style={styles.logo}
             resizeMode="contain"
           />
-          <Text variant="headlineMedium" style={styles.title}>
-            {t('register.title')}
-          </Text>
-          <Text variant="bodyMedium" style={styles.subtitle}>
-            {t('register.subtitle')}
-          </Text>
-
-          {!!error && (
-            <HelperText type="error" visible style={styles.errorText}>
-              {error}
-            </HelperText>
-          )}
-
-          <TextInput
-            label={t('register.username')}
-            value={username}
-            onChangeText={setUsername}
-            mode="outlined"
-            autoCapitalize="none"
-            style={styles.input}
-            outlineColor={colors.border}
-            activeOutlineColor={colors.primary}
-          />
-
-          <TextInput
-            label={t('register.email')}
-            value={email}
-            onChangeText={setEmail}
-            mode="outlined"
-            keyboardType="email-address"
-            autoCapitalize="none"
-            autoComplete="email"
-            style={styles.input}
-            outlineColor={colors.border}
-            activeOutlineColor={colors.primary}
-          />
-          {emailTouched && (
-            <Text style={[styles.validationText, { color: emailValid ? '#16a34a' : '#dc2626' }]}>
-              {emailValid ? `✓ ${t('register.validEmail')}` : `✗ ${t('register.invalidEmail')}`}
-            </Text>
-          )}
-
-          <TextInput
-            label={t('register.password')}
-            value={password}
-            onChangeText={setPassword}
-            mode="outlined"
-            secureTextEntry={!showPassword}
-            autoCapitalize="none"
-            style={styles.input}
-            outlineColor={colors.border}
-            activeOutlineColor={colors.primary}
-            right={
-              <TextInput.Icon
-                icon={showPassword ? 'eye-off' : 'eye'}
-                onPress={() => setShowPassword(!showPassword)}
-              />
-            }
-          />
-
-          <TextInput
-            label={t('register.confirmPassword')}
-            value={confirmPassword}
-            onChangeText={setConfirmPassword}
-            mode="outlined"
-            secureTextEntry={!showConfirmPassword}
-            autoCapitalize="none"
-            style={styles.input}
-            outlineColor={colors.border}
-            activeOutlineColor={colors.primary}
-            right={
-              <TextInput.Icon
-                icon={showConfirmPassword ? 'eye-off' : 'eye'}
-                onPress={() => setShowConfirmPassword(!showConfirmPassword)}
-              />
-            }
-          />
-          {confirmTouched && (
-            <Text style={[styles.validationText, { color: passwordsMatch ? '#16a34a' : '#dc2626' }]}>
-              {passwordsMatch
-                ? `✓ ${t('register.passwordsMatch')}`
-                : `✗ ${t('register.passwordsNoMatch')}`}
-            </Text>
-          )}
-
-          <Button
-            mode="contained"
-            onPress={handleRegister}
-            loading={loading}
-            disabled={!canSubmit}
-            style={styles.primaryButton}
-            labelStyle={styles.buttonLabel}
-          >
-            {loading ? t('register.creatingAccount') : t('register.signUpButton')}
-          </Button>
-
-          <View style={styles.linkRow}>
-            <Text style={styles.linkText}>{t('register.hasAccount')} </Text>
-            <Text style={styles.link} onPress={() => navigation.navigate('Login')}>
-              {t('register.loginHere')}
-            </Text>
-          </View>
+          <Text style={styles.brandName}>Lingo Booth</Text>
+          <Text style={styles.brandTagline}>{t('register.brandTagline', 'Start your journey')}</Text>
         </View>
-      </ScrollView>
+
+        {/* Form card */}
+        <ScrollView
+          style={styles.formScroll}
+          contentContainerStyle={[styles.formContent, { paddingBottom: insets.bottom + 28 }]}
+          keyboardShouldPersistTaps="handled"
+          showsVerticalScrollIndicator={false}
+        >
+          <View style={styles.formCard}>
+            <Text variant="headlineMedium" style={styles.title}>
+              {t('register.title')}
+            </Text>
+            <Text variant="bodyMedium" style={styles.subtitle}>
+              {t('register.subtitle')}
+            </Text>
+
+            {!!error && (
+              <HelperText type="error" visible style={styles.errorText}>
+                {error}
+              </HelperText>
+            )}
+
+            <TextInput
+              label={t('register.username')}
+              value={username}
+              onChangeText={setUsername}
+              mode="outlined"
+              autoCapitalize="none"
+              style={styles.input}
+              outlineColor={colors.border}
+              activeOutlineColor={colors.primary}
+            />
+
+            <TextInput
+              label={t('register.email')}
+              value={email}
+              onChangeText={setEmail}
+              mode="outlined"
+              keyboardType="email-address"
+              autoCapitalize="none"
+              autoComplete="email"
+              style={styles.input}
+              outlineColor={colors.border}
+              activeOutlineColor={colors.primary}
+            />
+            {emailTouched && (
+              <Text style={[styles.validationText, { color: emailValid ? '#16a34a' : '#dc2626' }]}>
+                {emailValid ? `✓ ${t('register.validEmail')}` : `✗ ${t('register.invalidEmail')}`}
+              </Text>
+            )}
+
+            <TextInput
+              label={t('register.password')}
+              value={password}
+              onChangeText={setPassword}
+              mode="outlined"
+              secureTextEntry={!showPassword}
+              autoCapitalize="none"
+              style={styles.input}
+              outlineColor={colors.border}
+              activeOutlineColor={colors.primary}
+              right={
+                <TextInput.Icon
+                  icon={showPassword ? 'eye-off' : 'eye'}
+                  onPress={() => setShowPassword(!showPassword)}
+                />
+              }
+            />
+
+            <TextInput
+              label={t('register.confirmPassword')}
+              value={confirmPassword}
+              onChangeText={setConfirmPassword}
+              mode="outlined"
+              secureTextEntry={!showConfirmPassword}
+              autoCapitalize="none"
+              style={styles.input}
+              outlineColor={colors.border}
+              activeOutlineColor={colors.primary}
+              right={
+                <TextInput.Icon
+                  icon={showConfirmPassword ? 'eye-off' : 'eye'}
+                  onPress={() => setShowConfirmPassword(!showConfirmPassword)}
+                />
+              }
+            />
+            {confirmTouched && (
+              <Text style={[styles.validationText, { color: passwordsMatch ? '#16a34a' : '#dc2626' }]}>
+                {passwordsMatch
+                  ? `✓ ${t('register.passwordsMatch')}`
+                  : `✗ ${t('register.passwordsNoMatch')}`}
+              </Text>
+            )}
+
+            <Button
+              mode="contained"
+              onPress={handleRegister}
+              loading={loading}
+              disabled={!canSubmit}
+              style={styles.primaryButton}
+              labelStyle={styles.buttonLabel}
+            >
+              {loading ? t('register.creatingAccount') : t('register.signUpButton')}
+            </Button>
+
+            <View style={styles.linkRow}>
+              <Text style={styles.linkText}>{t('register.hasAccount')} </Text>
+              <Text style={styles.link} onPress={() => navigation.navigate('Login')}>
+                {t('register.loginHere')}
+              </Text>
+            </View>
+          </View>
+        </ScrollView>
+      </View>
     </KeyboardAvoidingView>
   );
 };
 
 const styles = StyleSheet.create({
   flex: { flex: 1 },
-  container: {
-    flexGrow: 1,
-    justifyContent: 'center',
-    padding: 20,
-    backgroundColor: colors.background,
-  },
-  card: {
-    backgroundColor: colors.surface,
-    borderRadius: 16,
-    padding: 24,
-    elevation: 2,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
+  outer: { flex: 1, backgroundColor: colors.primary },
+
+  brandTop: {
+    alignItems: 'center',
+    paddingHorizontal: 24,
+    paddingBottom: 28,
   },
   logo: {
-    width: 80,
-    height: 80,
-    alignSelf: 'center',
-    marginBottom: 16,
-  },
-  title: {
-    textAlign: 'center',
-    fontWeight: '700',
-    color: colors.textPrimary,
-    marginBottom: 4,
-  },
-  subtitle: {
-    textAlign: 'center',
-    color: colors.textSecondary,
-    marginBottom: 20,
-  },
-  input: {
+    width: 76,
+    height: 76,
     marginBottom: 12,
+  },
+  brandName: {
+    color: '#fff',
+    fontSize: 28,
+    fontWeight: '800',
+    letterSpacing: 0.5,
+  },
+  brandTagline: {
+    color: 'rgba(255,255,255,0.82)',
+    fontSize: 15,
+    marginTop: 4,
+  },
+
+  formScroll: { flex: 1 },
+  formContent: { flexGrow: 1 },
+  formCard: {
     backgroundColor: colors.surface,
+    borderTopLeftRadius: 32,
+    borderTopRightRadius: 32,
+    paddingHorizontal: 28,
+    paddingTop: 32,
+    paddingBottom: 8,
+    flex: 1,
+    minHeight: 480,
   },
-  validationText: {
-    fontSize: 13,
-    marginTop: -8,
-    marginBottom: 8,
-    marginLeft: 4,
-  },
-  primaryButton: {
-    marginTop: 8,
-    borderRadius: 8,
-    backgroundColor: colors.primary,
-  },
-  buttonLabel: {
-    fontSize: 16,
-    fontWeight: '600',
-    paddingVertical: 4,
-  },
-  linkRow: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 20,
-  },
-  linkText: {
-    color: colors.textSecondary,
-    fontSize: 14,
-  },
-  link: {
-    color: colors.primary,
-    fontSize: 14,
-    fontWeight: '600',
-  },
-  errorText: {
-    fontSize: 14,
-  },
+
+  title: { fontWeight: '700', color: colors.textPrimary, marginBottom: 4 },
+  subtitle: { color: colors.textSecondary, marginBottom: 20 },
+  input: { marginBottom: 12, backgroundColor: colors.surface },
+  validationText: { fontSize: 13, marginTop: -8, marginBottom: 8, marginLeft: 4 },
+  primaryButton: { marginTop: 8, borderRadius: 10, backgroundColor: colors.primary },
+  buttonLabel: { fontSize: 16, fontWeight: '600', paddingVertical: 4 },
+  linkRow: { flexDirection: 'row', justifyContent: 'center', marginTop: 20 },
+  linkText: { color: colors.textSecondary, fontSize: 14 },
+  link: { color: colors.primary, fontSize: 14, fontWeight: '600' },
+  errorText: { fontSize: 14 },
 });
 
 export default RegisterScreen;

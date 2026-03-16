@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, ScrollView, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Text, Button } from 'react-native-paper';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
@@ -18,6 +19,7 @@ const LanguageSelectScreen: React.FC = () => {
   const navigation = useNavigation<NavProp>();
   const route = useRoute<RouteType>();
   const mode = route.params.mode;
+  const insets = useSafeAreaInsets();
 
   const { enterGuestMode } = useAuthStore();
   const { nativeLanguage: savedNative, targetLanguage: savedTarget, setLanguages } = useSettingsStore();
@@ -42,7 +44,6 @@ const LanguageSelectScreen: React.FC = () => {
   const handleContinue = () => {
     if (!canContinue) return;
     setLanguages(nativeLang, targetLang);
-
     if (mode === 'guest') {
       enterGuestMode();
     } else {
@@ -79,106 +80,133 @@ const LanguageSelectScreen: React.FC = () => {
           </Text>
         )}
       </View>
+      {selected && <Text style={styles.selectedCheck}>✓</Text>}
     </TouchableOpacity>
   );
 
   return (
-    <ScrollView
-      style={styles.scrollView}
-      contentContainerStyle={styles.container}
-      keyboardShouldPersistTaps="handled"
-    >
-      <View style={styles.card}>
+    <View style={styles.outer}>
+      {/* Branded header */}
+      <View style={[styles.brandHeader, { paddingTop: insets.top + 16 }]}>
         <Image
           source={require('../../../assets/icon.png')}
           style={styles.logo}
           resizeMode="contain"
         />
-        <Text variant="headlineMedium" style={styles.title}>
-          {t('languageSelect.title')}
-        </Text>
-        <Text variant="bodyMedium" style={styles.subtitle}>
-          {t('languageSelect.subtitle')}
-        </Text>
-
-        {/* Native language */}
-        <Text style={styles.sectionLabel}>{t('languageSelect.iSpeak')}</Text>
-        <View style={styles.languageGrid}>
-          {langEntries.map(([code, lang]) =>
-            renderLangButton(code, lang, nativeLang === code, false, () =>
-              handleNativeChange(code),
-            ),
-          )}
-        </View>
-
-        {/* Target language */}
-        <Text style={[styles.sectionLabel, { marginTop: 24 }]}>
-          {t('languageSelect.iWantToLearn')}
-        </Text>
-        <View style={styles.languageGrid}>
-          {langEntries.map(([code, lang]) =>
-            renderLangButton(code, lang, targetLang === code, code === nativeLang, () =>
-              handleTargetChange(code),
-            ),
-          )}
-        </View>
-
-        <Button
-          mode="contained"
-          onPress={handleContinue}
-          disabled={!canContinue}
-          style={[styles.continueButton, !canContinue && styles.continueDisabled]}
-          labelStyle={styles.continueLabel}
-        >
-          {t('languageSelect.continue')} →
-        </Button>
+        <Text style={styles.headerTitle}>{t('languageSelect.title')}</Text>
+        <Text style={styles.headerSubtitle}>{t('languageSelect.subtitle')}</Text>
       </View>
-    </ScrollView>
+
+      {/* Scrollable content sheet */}
+      <ScrollView
+        style={styles.scroll}
+        contentContainerStyle={[styles.scrollContent, { paddingBottom: insets.bottom + 24 }]}
+        keyboardShouldPersistTaps="handled"
+        showsVerticalScrollIndicator={false}
+      >
+        <View style={styles.contentSheet}>
+          {/* Native language */}
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionLabel}>{t('languageSelect.iSpeak')}</Text>
+            {nativeLang && (
+              <Text style={styles.sectionSelected}>
+                {LANGUAGES[nativeLang]?.flag} {LANGUAGES[nativeLang]?.name}
+              </Text>
+            )}
+          </View>
+          <View style={styles.languageGrid}>
+            {langEntries.map(([code, lang]) =>
+              renderLangButton(code, lang, nativeLang === code, false, () =>
+                handleNativeChange(code),
+              ),
+            )}
+          </View>
+
+          {/* Target language */}
+          <View style={[styles.sectionHeader, { marginTop: 24 }]}>
+            <Text style={styles.sectionLabel}>{t('languageSelect.iWantToLearn')}</Text>
+            {targetLang && (
+              <Text style={styles.sectionSelected}>
+                {LANGUAGES[targetLang]?.flag} {LANGUAGES[targetLang]?.name}
+              </Text>
+            )}
+          </View>
+          <View style={styles.languageGrid}>
+            {langEntries.map(([code, lang]) =>
+              renderLangButton(code, lang, targetLang === code, code === nativeLang, () =>
+                handleTargetChange(code),
+              ),
+            )}
+          </View>
+
+          <Button
+            mode="contained"
+            onPress={handleContinue}
+            disabled={!canContinue}
+            style={[styles.continueButton, !canContinue && styles.continueDisabled]}
+            labelStyle={styles.continueLabel}
+          >
+            {t('languageSelect.continue')} →
+          </Button>
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  scrollView: {
-    flex: 1,
-    backgroundColor: colors.background,
-  },
-  container: {
-    padding: 20,
-    paddingBottom: 40,
-  },
-  card: {
-    backgroundColor: colors.surface,
-    borderRadius: 16,
-    padding: 24,
-    elevation: 2,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
+  outer: { flex: 1, backgroundColor: colors.primary },
+
+  brandHeader: {
+    paddingHorizontal: 24,
+    paddingBottom: 20,
+    alignItems: 'center',
   },
   logo: {
-    width: 80,
-    height: 80,
-    alignSelf: 'center',
-    marginBottom: 16,
+    width: 60,
+    height: 60,
+    marginBottom: 10,
   },
-  title: {
-    textAlign: 'center',
-    fontWeight: '700',
-    color: colors.textPrimary,
-    marginBottom: 4,
+  headerTitle: {
+    color: '#fff',
+    fontSize: 22,
+    fontWeight: '800',
+    letterSpacing: 0.3,
   },
-  subtitle: {
+  headerSubtitle: {
+    color: 'rgba(255,255,255,0.82)',
+    fontSize: 14,
+    marginTop: 4,
     textAlign: 'center',
-    color: colors.textSecondary,
-    marginBottom: 20,
+  },
+
+  scroll: { flex: 1 },
+  scrollContent: { flexGrow: 1 },
+  contentSheet: {
+    backgroundColor: colors.surface,
+    borderTopLeftRadius: 28,
+    borderTopRightRadius: 28,
+    padding: 24,
+    minHeight: 400,
+  },
+
+  sectionHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 12,
   },
   sectionLabel: {
     fontSize: 16,
     fontWeight: '700',
     color: colors.textPrimary,
-    marginBottom: 12,
   },
+  sectionSelected: {
+    fontSize: 13,
+    color: colors.primary,
+    fontWeight: '600',
+  },
+
   languageGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -189,7 +217,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: 10,
-    paddingHorizontal: 14,
+    paddingHorizontal: 12,
     borderRadius: 10,
     borderWidth: 2,
     borderColor: colors.border,
@@ -199,42 +227,21 @@ const styles = StyleSheet.create({
     borderColor: colors.primary,
     backgroundColor: '#fff5f0',
   },
-  langOptionDisabled: {
-    opacity: 0.4,
-  },
-  langFlag: {
-    fontSize: 24,
-    marginRight: 10,
-  },
-  langNameCol: {
-    flex: 1,
-  },
-  langEnglish: {
-    fontSize: 13,
-    fontWeight: '600',
-    color: colors.textPrimary,
-  },
-  langNative: {
-    fontSize: 11,
-    color: colors.textSecondary,
-    marginTop: 1,
-  },
-  langTextDisabled: {
-    color: colors.textMuted,
-  },
+  langOptionDisabled: { opacity: 0.38 },
+  langFlag: { fontSize: 22, marginRight: 8 },
+  langNameCol: { flex: 1 },
+  langEnglish: { fontSize: 12, fontWeight: '600', color: colors.textPrimary },
+  langNative: { fontSize: 11, color: colors.textSecondary, marginTop: 1 },
+  langTextDisabled: { color: colors.textMuted },
+  selectedCheck: { fontSize: 14, color: colors.primary, fontWeight: '700', marginLeft: 4 },
+
   continueButton: {
-    marginTop: 24,
-    borderRadius: 8,
+    marginTop: 28,
+    borderRadius: 10,
     backgroundColor: colors.primary,
   },
-  continueDisabled: {
-    backgroundColor: colors.border,
-  },
-  continueLabel: {
-    fontSize: 16,
-    fontWeight: '600',
-    paddingVertical: 4,
-  },
+  continueDisabled: { backgroundColor: colors.border },
+  continueLabel: { fontSize: 16, fontWeight: '600', paddingVertical: 4 },
 });
 
 export default LanguageSelectScreen;
