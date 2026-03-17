@@ -96,7 +96,7 @@
     "readyForSession": "Bir sonraki oturuma hazır mısınız?",
     "continueLesson": "Derse Devam Et",
     "continueFlashcards": "Kartlara Devam Et",
-    "learnLanguage": "Gerçek konuşmalar için <1>{{language}}</1> öğrenin",
+    "learnLanguage": "Gerçek konuşmalar için {{language}} öğrenin",
     "heroSubtitle": "Yapılandırılmış dersler, etkileşimli kartlar ve ilerleme takibi — hepsi ana dil sesiyle.",
     "startLearning": "Öğrenmeye başla",
     "getStartedFree": "Ücretsiz başla",
@@ -139,7 +139,7 @@
     "mAgo": "{{m}}dk önce"
   },
   "lessons": {
-    "title": "{{language}} <1>Dersler</1>",
+    "title": "{{language}} Dersler",
     "subtitle": "Hemen uygulayabileceğiniz pratik beceriler öğrenin",
     "lessonsAvailable": "{{count}} ders mevcut",
     "all": "Tümü",
@@ -229,7 +229,7 @@
     "failedToLoad": "Ders yüklenemedi"
   },
   "flashcards": {
-    "title": "Kart <1>Pratiği</1>",
+    "title": "Kart Pratiği",
     "addFlashcard": "Kart Ekle",
     "addNewFlashcard": "Yeni Kart Ekle",
     "targetLang": "{{language}}",
@@ -301,7 +301,7 @@
     "clearFilters": "Filtreleri temizle ({{count}} seçildi)"
   },
   "progress": {
-    "title": "İlerlemeniz <1>Raporu</1>",
+    "title": "İlerlemeniz Raporu",
     "subtitle": "Öğrenme yolculuğunuzu takip edin",
     "loadingProgress": "İlerleme yükleniyor...",
     "failedToLoad": "İlerleme yüklenemedi",
@@ -423,7 +423,7 @@
     "orContactSupport": "veya destek ekibiyle iletişime geçin."
   },
   "admin": {
-    "title": "Yönetici <1>Paneli</1>",
+    "title": "Yönetici Paneli",
     "subtitle": "Etkinliği izleyin, kullanıcıları yönetin ve analizleri görüntüleyin",
     "refreshData": "Verileri Yenile",
     "dashboard": "Panel",

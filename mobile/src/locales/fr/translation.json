@@ -96,7 +96,7 @@
     "readyForSession": "Prêt pour votre prochaine session ?",
     "continueLesson": "Continuer la leçon",
     "continueFlashcards": "Continuer les cartes mémoire",
-    "learnLanguage": "Apprenez le <1>{{language}}</1> pour de vraies conversations",
+    "learnLanguage": "Apprenez le {{language}} pour de vraies conversations",
     "heroSubtitle": "Leçons structurées, cartes mémoire interactives et suivi des progrès — le tout avec de l'audio natif.",
     "startLearning": "Commencer à apprendre",
     "getStartedFree": "Commencez gratuitement",
@@ -139,7 +139,7 @@
     "mAgo": "il y a {{m}}m"
   },
   "lessons": {
-    "title": "{{language}} <1>Leçons</1>",
+    "title": "{{language}} Leçons",
     "subtitle": "Apprenez des compétences pratiques applicables immédiatement",
     "lessonsAvailable": "{{count}} leçons disponibles",
     "all": "Toutes",
@@ -229,7 +229,7 @@
     "failedToLoad": "Échec du chargement de la leçon"
   },
   "flashcards": {
-    "title": "Pratiquer les <1>cartes mémoire</1>",
+    "title": "Pratiquer les cartes mémoire",
     "addFlashcard": "Ajouter une carte",
     "addNewFlashcard": "Ajouter une nouvelle carte",
     "targetLang": "{{language}}",
@@ -301,7 +301,7 @@
     "clearFilters": "Effacer les filtres ({{count}} sélectionnés)"
   },
   "progress": {
-    "title": "Vos <1>progrès</1>",
+    "title": "Vos progrès",
     "subtitle": "Suivez votre parcours d'apprentissage",
     "loadingProgress": "Chargement des progrès...",
     "failedToLoad": "Échec du chargement des progrès",
@@ -423,7 +423,7 @@
     "orContactSupport": "ou contactez le support."
   },
   "admin": {
-    "title": "Tableau de bord <1>Admin</1>",
+    "title": "Tableau de bord Admin",
     "subtitle": "Surveillez l'activité, gérez les utilisateurs et consultez les analyses",
     "refreshData": "Actualiser les données",
     "dashboard": "Tableau de bord",

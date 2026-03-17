@@ -96,7 +96,7 @@
     "readyForSession": "Ready for your next session?",
     "continueLesson": "Continue Lesson",
     "continueFlashcards": "Continue Flashcards",
-    "learnLanguage": "Learn <1>{{language}}</1> for real conversations",
+    "learnLanguage": "Learn {{language}} for real conversations",
     "heroSubtitle": "Structured lessons, interactive flashcards, and progress tracking — all with native audio.",
     "startLearning": "Start learning",
     "getStartedFree": "Get started free",
@@ -139,7 +139,7 @@
     "mAgo": "{{m}}m ago"
   },
   "lessons": {
-    "title": "{{language}} <1>Lessons</1>",
+    "title": "{{language}} Lessons",
     "subtitle": "Learn practical skills you can apply right away",
     "lessonsAvailable": "{{count}} lessons available",
     "all": "All",
@@ -229,7 +229,7 @@
     "failedToLoad": "Failed to load lesson"
   },
   "flashcards": {
-    "title": "Practice <1>Flashcards</1>",
+    "title": "Practice Flashcards",
     "addFlashcard": "Add Flashcard",
     "addNewFlashcard": "Add New Flashcard",
     "targetLang": "{{language}}",
@@ -301,7 +301,7 @@
     "clearFilters": "Clear filters ({{count}} selected)"
   },
   "progress": {
-    "title": "Your <1>Progress</1>",
+    "title": "Your Progress",
     "subtitle": "Track your learning journey",
     "loadingProgress": "Loading progress...",
     "failedToLoad": "Failed to load progress",
@@ -423,7 +423,7 @@
     "orContactSupport": "or contact support."
   },
   "admin": {
-    "title": "Admin <1>Dashboard</1>",
+    "title": "Admin Dashboard",
     "subtitle": "Monitor activity, manage users, and view analytics",
     "refreshData": "Refresh Data",
     "dashboard": "Dashboard",

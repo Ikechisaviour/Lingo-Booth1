@@ -96,7 +96,7 @@
     "readyForSession": "Bersedia untuk sesi seterusnya?",
     "continueLesson": "Teruskan Pelajaran",
     "continueFlashcards": "Teruskan Kad Imbas",
-    "learnLanguage": "Belajar <1>{{language}}</1> untuk perbualan sebenar",
+    "learnLanguage": "Belajar {{language}} untuk perbualan sebenar",
     "heroSubtitle": "Pelajaran berstruktur, kad imbas interaktif, dan penjejakan kemajuan — semuanya dengan audio asli.",
     "startLearning": "Mula belajar",
     "getStartedFree": "Mula secara percuma",
@@ -139,7 +139,7 @@
     "mAgo": "{{m}}m lalu"
   },
   "lessons": {
-    "title": "Pelajaran <1>{{language}}</1>",
+    "title": "Pelajaran {{language}}",
     "subtitle": "Pelajari kemahiran praktikal yang boleh digunakan segera",
     "lessonsAvailable": "{{count}} pelajaran tersedia",
     "all": "Semua",
@@ -229,7 +229,7 @@
     "failedToLoad": "Gagal memuatkan pelajaran"
   },
   "flashcards": {
-    "title": "Latihan <1>Kad Imbas</1>",
+    "title": "Latihan Kad Imbas",
     "addFlashcard": "Tambah Kad Imbas",
     "addNewFlashcard": "Tambah Kad Imbas Baharu",
     "targetLang": "{{language}}",
@@ -301,7 +301,7 @@
     "clearFilters": "Kosongkan penapis ({{count}} dipilih)"
   },
   "progress": {
-    "title": "<1>Kemajuan</1> Anda",
+    "title": "Kemajuan Anda",
     "subtitle": "Jejak perjalanan pembelajaran anda",
     "loadingProgress": "Memuatkan kemajuan...",
     "failedToLoad": "Gagal memuatkan kemajuan",
@@ -423,7 +423,7 @@
     "orContactSupport": "atau hubungi sokongan."
   },
   "admin": {
-    "title": "Papan Pemuka <1>Admin</1>",
+    "title": "Papan Pemuka Admin",
     "subtitle": "Pantau aktiviti, urus pengguna, dan lihat analitik",
     "refreshData": "Muat Semula Data",
     "dashboard": "Papan Pemuka",

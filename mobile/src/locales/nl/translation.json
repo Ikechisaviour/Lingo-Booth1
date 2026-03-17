@@ -96,7 +96,7 @@
     "readyForSession": "Klaar voor je volgende sessie?",
     "continueLesson": "Les voortzetten",
     "continueFlashcards": "Flashcards voortzetten",
-    "learnLanguage": "Leer <1>{{language}}</1> voor echte gesprekken",
+    "learnLanguage": "Leer {{language}} voor echte gesprekken",
     "heroSubtitle": "Gestructureerde lessen, interactieve flashcards en voortgangsregistratie — allemaal met native audio.",
     "startLearning": "Begin met leren",
     "getStartedFree": "Begin gratis",
@@ -139,7 +139,7 @@
     "mAgo": "{{m}}m geleden"
   },
   "lessons": {
-    "title": "{{language}} <1>Lessen</1>",
+    "title": "{{language}} Lessen",
     "subtitle": "Leer praktische vaardigheden die je meteen kunt toepassen",
     "lessonsAvailable": "{{count}} lessen beschikbaar",
     "all": "Alle",
@@ -229,7 +229,7 @@
     "failedToLoad": "Les laden mislukt"
   },
   "flashcards": {
-    "title": "Oefen <1>Flashcards</1>",
+    "title": "Oefen Flashcards",
     "addFlashcard": "Flashcard toevoegen",
     "addNewFlashcard": "Nieuwe flashcard toevoegen",
     "targetLang": "{{language}}",
@@ -301,7 +301,7 @@
     "clearFilters": "Filters wissen ({{count}} geselecteerd)"
   },
   "progress": {
-    "title": "Je <1>voortgang</1>",
+    "title": "Je voortgang",
     "subtitle": "Volg je leerreis",
     "loadingProgress": "Voortgang laden...",
     "failedToLoad": "Voortgang laden mislukt",
@@ -423,7 +423,7 @@
     "orContactSupport": "of neem contact op met support."
   },
   "admin": {
-    "title": "Admin-<1>dashboard</1>",
+    "title": "Admin-dashboard",
     "subtitle": "Monitor activiteit, beheer gebruikers en bekijk analyses",
     "refreshData": "Gegevens vernieuwen",
     "dashboard": "Dashboard",

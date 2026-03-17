@@ -96,7 +96,7 @@
     "readyForSession": "Siap untuk sesi berikutnya?",
     "continueLesson": "Lanjutkan Pelajaran",
     "continueFlashcards": "Lanjutkan Kartu",
-    "learnLanguage": "Belajar <1>{{language}}</1> untuk percakapan nyata",
+    "learnLanguage": "Belajar {{language}} untuk percakapan nyata",
     "heroSubtitle": "Pelajaran terstruktur, kartu interaktif, dan pelacakan kemajuan — semua dengan audio asli.",
     "startLearning": "Mulai belajar",
     "getStartedFree": "Mulai gratis",
@@ -139,7 +139,7 @@
     "mAgo": "{{m}}m lalu"
   },
   "lessons": {
-    "title": "Pelajaran <1>{{language}}</1>",
+    "title": "Pelajaran {{language}}",
     "subtitle": "Pelajari keterampilan praktis yang bisa langsung diterapkan",
     "lessonsAvailable": "{{count}} pelajaran tersedia",
     "all": "Semua",
@@ -229,7 +229,7 @@
     "failedToLoad": "Gagal memuat pelajaran"
   },
   "flashcards": {
-    "title": "Latihan <1>Kartu</1>",
+    "title": "Latihan Kartu",
     "addFlashcard": "Tambah Kartu",
     "addNewFlashcard": "Tambah Kartu Baru",
     "targetLang": "{{language}}",
@@ -301,7 +301,7 @@
     "clearFilters": "Hapus filter ({{count}} dipilih)"
   },
   "progress": {
-    "title": "<1>Kemajuan</1> Anda",
+    "title": "Kemajuan Anda",
     "subtitle": "Lacak perjalanan belajar Anda",
     "loadingProgress": "Memuat kemajuan...",
     "failedToLoad": "Gagal memuat kemajuan",
@@ -423,7 +423,7 @@
     "orContactSupport": "atau hubungi dukungan."
   },
   "admin": {
-    "title": "<1>Dasbor</1> Admin",
+    "title": "Dasbor Admin",
     "subtitle": "Pantau aktivitas, kelola pengguna, dan lihat analitik",
     "refreshData": "Segarkan Data",
     "dashboard": "Dasbor",

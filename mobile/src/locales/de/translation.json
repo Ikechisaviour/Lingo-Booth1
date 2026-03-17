@@ -96,7 +96,7 @@
     "readyForSession": "Bereit für deine nächste Sitzung?",
     "continueLesson": "Lektion fortsetzen",
     "continueFlashcards": "Karteikarten fortsetzen",
-    "learnLanguage": "Lerne <1>{{language}}</1> für echte Gespräche",
+    "learnLanguage": "Lerne {{language}} für echte Gespräche",
     "heroSubtitle": "Strukturierte Lektionen, interaktive Karteikarten und Fortschrittsverfolgung — alles mit nativem Audio.",
     "startLearning": "Lernen starten",
     "getStartedFree": "Kostenlos starten",
@@ -139,7 +139,7 @@
     "mAgo": "vor {{m}}Min"
   },
   "lessons": {
-    "title": "{{language}} <1>Lektionen</1>",
+    "title": "{{language}} Lektionen",
     "subtitle": "Lerne praktische Fähigkeiten, die du sofort anwenden kannst",
     "lessonsAvailable": "{{count}} Lektionen verfügbar",
     "all": "Alle",
@@ -229,7 +229,7 @@
     "failedToLoad": "Lektion konnte nicht geladen werden"
   },
   "flashcards": {
-    "title": "<1>Karteikarten</1> üben",
+    "title": "Karteikarten üben",
     "addFlashcard": "Karteikarte hinzufügen",
     "addNewFlashcard": "Neue Karteikarte hinzufügen",
     "targetLang": "{{language}}",
@@ -301,7 +301,7 @@
     "clearFilters": "Filter löschen ({{count}} ausgewählt)"
   },
   "progress": {
-    "title": "Dein <1>Fortschritt</1>",
+    "title": "Dein Fortschritt",
     "subtitle": "Verfolge deine Lernreise",
     "loadingProgress": "Fortschritt wird geladen...",
     "failedToLoad": "Fortschritt konnte nicht geladen werden",
@@ -423,7 +423,7 @@
     "orContactSupport": "oder kontaktiere den Support."
   },
   "admin": {
-    "title": "Admin-<1>Dashboard</1>",
+    "title": "Admin-Dashboard",
     "subtitle": "Überwache Aktivitäten, verwalte Benutzer und sieh dir Analysen an",
     "refreshData": "Daten aktualisieren",
     "dashboard": "Dashboard",

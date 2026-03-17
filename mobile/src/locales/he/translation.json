@@ -96,7 +96,7 @@
     "readyForSession": "מוכן למפגש הבא?",
     "continueLesson": "המשך שיעור",
     "continueFlashcards": "המשך כרטיסיות",
-    "learnLanguage": "למד <1>{{language}}</1> לשיחות אמיתיות",
+    "learnLanguage": "למד {{language}} לשיחות אמיתיות",
     "heroSubtitle": "שיעורים מובנים, כרטיסיות אינטראקטיביות ומעקב התקדמות — הכל עם אודיו מקורי.",
     "startLearning": "התחל ללמוד",
     "getStartedFree": "התחל בחינם",
@@ -139,7 +139,7 @@
     "mAgo": "לפני {{m}}ד"
   },
   "lessons": {
-    "title": "{{language}} <1>שיעורים</1>",
+    "title": "{{language}} שיעורים",
     "subtitle": "למד מיומנויות מעשיות שתוכל ליישם מיד",
     "lessonsAvailable": "{{count}} שיעורים זמינים",
     "all": "הכל",
@@ -229,7 +229,7 @@
     "failedToLoad": "טעינת השיעור נכשלה"
   },
   "flashcards": {
-    "title": "תרגול <1>כרטיסיות</1>",
+    "title": "תרגול כרטיסיות",
     "addFlashcard": "הוסף כרטיסייה",
     "addNewFlashcard": "הוסף כרטיסייה חדשה",
     "targetLang": "{{language}}",
@@ -301,7 +301,7 @@
     "clearFilters": "נקה פילטרים ({{count}} נבחרו)"
   },
   "progress": {
-    "title": "<1>ההתקדמות</1> שלך",
+    "title": "ההתקדמות שלך",
     "subtitle": "עקוב אחר מסע הלמידה שלך",
     "loadingProgress": "טוען התקדמות...",
     "failedToLoad": "טעינת ההתקדמות נכשלה",
@@ -423,7 +423,7 @@
     "orContactSupport": "או צור קשר עם התמיכה."
   },
   "admin": {
-    "title": "לוח בקרה <1>לניהול</1>",
+    "title": "לוח בקרה לניהול",
     "subtitle": "עקוב אחר פעילות, נהל משתמשים וצפה בניתוחים",
     "refreshData": "רענן נתונים",
     "dashboard": "לוח בקרה",

@@ -96,7 +96,7 @@
     "readyForSession": "Handa ka na ba sa susunod na session?",
     "continueLesson": "Ipagpatuloy ang Aralin",
     "continueFlashcards": "Ipagpatuloy ang Flashcards",
-    "learnLanguage": "Matuto ng <1>{{language}}</1> para sa totoong pakikipag-usap",
+    "learnLanguage": "Matuto ng {{language}} para sa totoong pakikipag-usap",
     "heroSubtitle": "Mga nakabalangkas na aralin, interactive na flashcards, at pag-track ng progreso — lahat may native audio.",
     "startLearning": "Magsimulang matuto",
     "getStartedFree": "Magsimula nang libre",
@@ -139,7 +139,7 @@
     "mAgo": "{{m}}m ang nakaraan"
   },
   "lessons": {
-    "title": "Mga Aralin sa <1>{{language}}</1>",
+    "title": "Mga Aralin sa {{language}}",
     "subtitle": "Matuto ng mga praktikal na kasanayan na magagamit agad",
     "lessonsAvailable": "{{count}} aralin ang available",
     "all": "Lahat",
@@ -229,7 +229,7 @@
     "failedToLoad": "Hindi na-load ang aralin"
   },
   "flashcards": {
-    "title": "Magsanay ng <1>Flashcards</1>",
+    "title": "Magsanay ng Flashcards",
     "addFlashcard": "Magdagdag ng Flashcard",
     "addNewFlashcard": "Magdagdag ng Bagong Flashcard",
     "targetLang": "{{language}}",
@@ -301,7 +301,7 @@
     "clearFilters": "I-clear ang mga filter ({{count}} napili)"
   },
   "progress": {
-    "title": "Ang Iyong <1>Progreso</1>",
+    "title": "Ang Iyong Progreso",
     "subtitle": "I-track ang iyong paglalakbay sa pag-aaral",
     "loadingProgress": "Naglo-load ng progreso...",
     "failedToLoad": "Hindi na-load ang progreso",
@@ -423,7 +423,7 @@
     "orContactSupport": "o makipag-ugnayan sa support."
   },
   "admin": {
-    "title": "Dashboard ng <1>Admin</1>",
+    "title": "Dashboard ng Admin",
     "subtitle": "I-monitor ang aktibidad, pamahalaan ang mga user, at tingnan ang analytics",
     "refreshData": "I-refresh ang Data",
     "dashboard": "Dashboard",

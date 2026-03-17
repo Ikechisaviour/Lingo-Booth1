@@ -96,7 +96,7 @@
     "readyForSession": "准备好下一次学习了吗？",
     "continueLesson": "继续课程",
     "continueFlashcards": "继续闪卡",
-    "learnLanguage": "学习<1>{{language}}</1>进行真实对话",
+    "learnLanguage": "学习{{language}}进行真实对话",
     "heroSubtitle": "结构化课程、互动闪卡和进度跟踪——全部配有母语音频。",
     "startLearning": "开始学习",
     "getStartedFree": "免费开始",
@@ -139,7 +139,7 @@
     "mAgo": "{{m}}分钟前"
   },
   "lessons": {
-    "title": "{{language}} <1>课程</1>",
+    "title": "{{language}} 课程",
     "subtitle": "学习可以立即应用的实用技能",
     "lessonsAvailable": "{{count}}个课程可用",
     "all": "全部",
@@ -229,7 +229,7 @@
     "failedToLoad": "课程加载失败"
   },
   "flashcards": {
-    "title": "练习<1>闪卡</1>",
+    "title": "练习闪卡",
     "addFlashcard": "添加闪卡",
     "addNewFlashcard": "添加新闪卡",
     "targetLang": "{{language}}",
@@ -301,7 +301,7 @@
     "clearFilters": "清除筛选（已选 {{count}} 个）"
   },
   "progress": {
-    "title": "你的<1>进度</1>",
+    "title": "你的进度",
     "subtitle": "跟踪你的学习之旅",
     "loadingProgress": "加载进度中...",
     "failedToLoad": "进度加载失败",
@@ -423,7 +423,7 @@
     "orContactSupport": "或联系客服。"
   },
   "admin": {
-    "title": "管理<1>控制台</1>",
+    "title": "管理控制台",
     "subtitle": "监控活动、管理用户和查看分析",
     "refreshData": "刷新数据",
     "dashboard": "控制台",

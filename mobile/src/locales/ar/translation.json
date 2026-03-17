@@ -96,7 +96,7 @@
     "readyForSession": "مستعد لجلستك التالية؟",
     "continueLesson": "متابعة الدرس",
     "continueFlashcards": "متابعة البطاقات التعليمية",
-    "learnLanguage": "تعلم <1>{{language}}</1> للمحادثات الحقيقية",
+    "learnLanguage": "تعلم {{language}} للمحادثات الحقيقية",
     "heroSubtitle": "دروس منظمة، بطاقات تعليمية تفاعلية، وتتبع التقدم — كل ذلك مع صوت أصلي.",
     "startLearning": "ابدأ التعلم",
     "getStartedFree": "ابدأ مجانًا",
@@ -139,7 +139,7 @@
     "mAgo": "قبل {{m}}د"
   },
   "lessons": {
-    "title": "{{language}} <1>دروس</1>",
+    "title": "{{language}} دروس",
     "subtitle": "تعلم مهارات عملية يمكنك تطبيقها فورًا",
     "lessonsAvailable": "{{count}} درس متاح",
     "all": "الكل",
@@ -229,7 +229,7 @@
     "failedToLoad": "فشل تحميل الدرس"
   },
   "flashcards": {
-    "title": "تدريب <1>البطاقات التعليمية</1>",
+    "title": "تدريب البطاقات التعليمية",
     "addFlashcard": "إضافة بطاقة",
     "addNewFlashcard": "إضافة بطاقة جديدة",
     "targetLang": "{{language}}",
@@ -301,7 +301,7 @@
     "clearFilters": "مسح الفلاتر ({{count}} محدد)"
   },
   "progress": {
-    "title": "<1>تقدمك</1>",
+    "title": "تقدمك",
     "subtitle": "تتبع رحلة تعلمك",
     "loadingProgress": "جاري تحميل التقدم...",
     "failedToLoad": "فشل تحميل التقدم",
@@ -423,7 +423,7 @@
     "orContactSupport": "أو تواصل مع الدعم."
   },
   "admin": {
-    "title": "لوحة <1>الإدارة</1>",
+    "title": "لوحة الإدارة",
     "subtitle": "مراقبة النشاط وإدارة المستخدمين وعرض التحليلات",
     "refreshData": "تحديث البيانات",
     "dashboard": "لوحة التحكم",

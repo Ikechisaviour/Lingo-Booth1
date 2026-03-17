@@ -96,7 +96,7 @@
     "readyForSession": "次のセッションの準備はできていますか？",
     "continueLesson": "レッスンを続ける",
     "continueFlashcards": "フラッシュカードを続ける",
-    "learnLanguage": "実践的な会話のために<1>{{language}}</1>を学ぶ",
+    "learnLanguage": "実践的な会話のために{{language}}を学ぶ",
     "heroSubtitle": "体系的なレッスン、インタラクティブなフラッシュカード、進捗追跡 — すべてネイティブ音声付き。",
     "startLearning": "学習を始める",
     "getStartedFree": "無料で始める",
@@ -139,7 +139,7 @@
     "mAgo": "{{m}}分前"
   },
   "lessons": {
-    "title": "{{language}} <1>レッスン</1>",
+    "title": "{{language}} レッスン",
     "subtitle": "すぐに活用できる実践的なスキルを学びましょう",
     "lessonsAvailable": "{{count}}レッスン利用可能",
     "all": "すべて",
@@ -229,7 +229,7 @@
     "failedToLoad": "レッスンの読み込みに失敗しました"
   },
   "flashcards": {
-    "title": "<1>フラッシュカード</1>で練習",
+    "title": "フラッシュカードで練習",
     "addFlashcard": "フラッシュカードを追加",
     "addNewFlashcard": "新しいフラッシュカードを追加",
     "targetLang": "{{language}}",
@@ -301,7 +301,7 @@
     "clearFilters": "フィルターをクリア（{{count}}個選択中）"
   },
   "progress": {
-    "title": "あなたの<1>進捗</1>",
+    "title": "あなたの進捗",
     "subtitle": "学習の旅を追跡しましょう",
     "loadingProgress": "進捗読み込み中...",
     "failedToLoad": "進捗の読み込みに失敗しました",
@@ -423,7 +423,7 @@
     "orContactSupport": "またはサポートにお問い合わせください。"
   },
   "admin": {
-    "title": "管理<1>ダッシュボード</1>",
+    "title": "管理ダッシュボード",
     "subtitle": "アクティビティの監視、ユーザー管理、分析の確認",
     "refreshData": "データを更新",
     "dashboard": "ダッシュボード",

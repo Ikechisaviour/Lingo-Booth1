@@ -96,7 +96,7 @@
     "readyForSession": "¿Listo para tu próxima sesión?",
     "continueLesson": "Continuar lección",
     "continueFlashcards": "Continuar tarjetas",
-    "learnLanguage": "Aprende <1>{{language}}</1> para conversaciones reales",
+    "learnLanguage": "Aprende {{language}} para conversaciones reales",
     "heroSubtitle": "Lecciones estructuradas, tarjetas interactivas y seguimiento de progreso — todo con audio nativo.",
     "startLearning": "Empezar a aprender",
     "getStartedFree": "Comienza gratis",
@@ -139,7 +139,7 @@
     "mAgo": "hace {{m}}m"
   },
   "lessons": {
-    "title": "{{language}} <1>Lecciones</1>",
+    "title": "{{language}} Lecciones",
     "subtitle": "Aprende habilidades prácticas que puedes aplicar de inmediato",
     "lessonsAvailable": "{{count}} lecciones disponibles",
     "all": "Todas",
@@ -229,7 +229,7 @@
     "failedToLoad": "Error al cargar la lección"
   },
   "flashcards": {
-    "title": "Practicar <1>Tarjetas</1>",
+    "title": "Practicar Tarjetas",
     "addFlashcard": "Agregar tarjeta",
     "addNewFlashcard": "Agregar nueva tarjeta",
     "targetLang": "{{language}}",
@@ -301,7 +301,7 @@
     "clearFilters": "Borrar filtros ({{count}} seleccionados)"
   },
   "progress": {
-    "title": "Tu <1>progreso</1>",
+    "title": "Tu progreso",
     "subtitle": "Sigue tu viaje de aprendizaje",
     "loadingProgress": "Cargando progreso...",
     "failedToLoad": "Error al cargar progreso",
@@ -423,7 +423,7 @@
     "orContactSupport": "o contacta al soporte."
   },
   "admin": {
-    "title": "Panel de <1>administración</1>",
+    "title": "Panel de administración",
     "subtitle": "Monitorea actividad, gestiona usuarios y consulta análisis",
     "refreshData": "Actualizar datos",
     "dashboard": "Panel",
