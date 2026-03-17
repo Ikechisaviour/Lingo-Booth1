@@ -15,11 +15,14 @@ router.use(verifyToken);
 // Get user profile (only own profile or admin)
 router.get('/:userId', isOwner('userId'), checkInactivityPenalty(), async (req, res) => {
   try {
-    const user = await User.findById(req.params.userId).select('-password');
+    const user = await User.findById(req.params.userId);
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-    res.json(user);
+    const userObj = user.toObject();
+    userObj.hasPassword = !!user.password;
+    delete userObj.password;
+    res.json(userObj);
   } catch (error) {
     console.error('Get profile error:', error);
     res.status(500).json({ message: 'Server error' });
@@ -66,12 +69,13 @@ router.put('/:userId', isOwner('userId'), async (req, res) => {
 });
 
 // Change password (only own account)
+// Google-only users (no password set) can omit currentPassword to set one for the first time.
 router.put('/:userId/password', isOwner('userId'), async (req, res) => {
   try {
     const { currentPassword, newPassword } = req.body;
 
-    if (!currentPassword || !newPassword) {
-      return res.status(400).json({ message: 'Current and new password are required' });
+    if (!newPassword) {
+      return res.status(400).json({ message: 'New password is required' });
     }
 
     if (newPassword.length < 6) {
@@ -83,11 +87,17 @@ router.put('/:userId/password', isOwner('userId'), async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    // Verify current password
-    const isMatch = await bcrypt.compare(currentPassword, user.password);
-    if (!isMatch) {
-      return res.status(400).json({ message: 'Current password is incorrect' });
+    // If user already has a password, verify the current one
+    if (user.password) {
+      if (!currentPassword) {
+        return res.status(400).json({ message: 'Current password is required' });
+      }
+      const isMatch = await bcrypt.compare(currentPassword, user.password);
+      if (!isMatch) {
+        return res.status(400).json({ message: 'Current password is incorrect' });
+      }
     }
+    // else: Google-only user setting password for the first time — no currentPassword needed
 
     // Hash new password
     const salt = await bcrypt.genSalt(10);

@@ -91,15 +91,27 @@ export const lessonService = {
 };
 
 export const flashcardService = {
-  getFlashcards: (userId) => {
+  getCategories: () => {
     const targetLang = localStorage.getItem('targetLanguage') || 'ko';
-    const nativeLang = localStorage.getItem('nativeLanguage') || 'en';
-    return api.get(`/flashcards/user/${userId}`, { params: { targetLang, nativeLang } });
+    return api.get('/flashcards/categories', { params: { targetLang } });
   },
-  getGuestFlashcards: () => {
+  getFlashcards: (userId, page = 1, limit = 50, opts = {}) => {
+    const targetLang = localStorage.getItem('targetLanguage') || 'ko';
+    const nativeLang = localStorage.getItem('nativeLanguage') || 'en';
+    const params = { targetLang, nativeLang, page, limit };
+    if (opts.categories) params.categories = opts.categories;
+    if (opts.shuffle !== undefined) params.shuffle = opts.shuffle;
+    if (opts.seed !== undefined) params.seed = opts.seed;
+    return api.get(`/flashcards/user/${userId}`, { params });
+  },
+  getGuestFlashcards: (page = 1, limit = 50, opts = {}) => {
     const nativeLang = localStorage.getItem('nativeLanguage') || 'en';
     const targetLang = localStorage.getItem('targetLanguage') || 'ko';
-    return api.get(`/flashcards/guest?nativeLang=${nativeLang}&targetLang=${targetLang}`);
+    const params = { nativeLang, targetLang, page, limit };
+    if (opts.categories) params.categories = opts.categories;
+    if (opts.shuffle !== undefined) params.shuffle = opts.shuffle;
+    if (opts.seed !== undefined) params.seed = opts.seed;
+    return api.get('/flashcards/guest', { params });
   },
   createFlashcard: (flashcardData) =>
     api.post('/flashcards', flashcardData),

@@ -5,7 +5,7 @@ const UserCardPreference = require('../models/UserCardPreference');
 const GuestSession = require('../models/GuestSession');
 const { verifyToken, isOwner } = require('../middleware/auth');
 const { getClientIp, getGeoInfo } = require('../utils/geo');
-const { batchNativePhonetic, ROMANIZATION_LANGS, NON_LATIN_LANGS } = require('../utils/translationService');
+const { batchTranslateRaw, batchNativePhonetic, ROMANIZATION_LANGS, NON_LATIN_LANGS } = require('../utils/translationService');
 
 // Normalize category: handles old string format and new array format
 const normalizeCategory = (cat) => {
@@ -71,6 +71,73 @@ async function applyNativePhonetics(cards, targetLang, nativeLang) {
   return cards;
 }
 
+/**
+ * Fill missing native language fields on cards.
+ * If the card already has the translation in DB, it's already on the object.
+ * For cards missing the native field, use English as immediate fallback,
+ * then kick off background translation that persists to DB for next load.
+ */
+function fillNativeTranslations(cards, nativeLang) {
+  if (nativeLang === 'en') return cards;
+
+  const nativeField = nativeLang === 'ko' ? 'korean' : nativeLang;
+
+  // Collect cards missing the native field
+  const missingTexts = [];
+  const missingCardIds = [];
+  for (const card of cards) {
+    if (!card[nativeField] && card.english) {
+      // Immediate fallback: show English so the card isn't blank
+      card[nativeField] = card.english;
+      // Track for background translation (only real DB cards)
+      if (card._id && typeof card._id !== 'string') {
+        missingTexts.push(card.english);
+        missingCardIds.push(card._id);
+      }
+    }
+  }
+
+  // Fire-and-forget: translate in background and save to DB for next load
+  if (missingTexts.length > 0) {
+    translateAndPersist(missingTexts, missingCardIds, nativeField, nativeLang);
+  }
+
+  return cards;
+}
+
+// Background translation — runs after response is sent
+async function translateAndPersist(texts, cardIds, nativeField, nativeLang) {
+  try {
+    const CHUNK = 50;
+    for (let start = 0; start < texts.length; start += CHUNK) {
+      const chunk = texts.slice(start, start + CHUNK);
+      const chunkIds = cardIds.slice(start, start + CHUNK);
+      const results = await batchTranslateRaw(chunk, 'en', nativeLang);
+
+      const bulkOps = [];
+      for (let k = 0; k < results.length; k++) {
+        const translated = results[k]?.text || '';
+        if (translated) {
+          bulkOps.push({
+            updateOne: {
+              filter: { _id: chunkIds[k] },
+              update: { $set: { [nativeField]: translated } },
+            },
+          });
+        }
+      }
+      if (bulkOps.length > 0) {
+        await Flashcard.bulkWrite(bulkOps);
+      }
+    }
+    // Clear the in-memory cache so next request picks up translated cards
+    defaultCardsCache.clear();
+    console.log(`Background: translated ${texts.length} cards to ${nativeLang}`);
+  } catch (err) {
+    console.error('Background translation failed:', err.message);
+  }
+}
+
 // --- In-memory cache for default cards per targetLang+nativeLang ---
 const defaultCardsCache = new Map(); // `${targetLang}:${nativeLang}` -> { cards, timestamp }
 const CACHE_TTL = 60 * 60 * 1000; // 1 hour
@@ -88,7 +155,66 @@ async function getDefaultCards(targetLang = 'ko', nativeLang = 'en') {
   return cards;
 }
 
+// --- Seeded PRNG and weighted shuffle ---
+function seededRandom(seed) {
+  let s = seed;
+  return () => {
+    s = (s * 1664525 + 1013904223) & 0xFFFFFFFF;
+    return (s >>> 0) / 0xFFFFFFFF;
+  };
+}
+
+const MASTERY_WEIGHTS = { 1: 3.0, 2: 2.0, 3: 1.5, 4: 1.0, 5: 0.3 };
+
+function weightedShuffle(cards, seed) {
+  const rng = seededRandom(seed);
+  return cards
+    .map(card => ({ card, sort: -Math.log(rng()) / (MASTERY_WEIGHTS[card.masteryLevel] || 1) }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(x => x.card);
+}
+
+// --- Helper: parse shuffle/seed/categories from query ---
+function parseFilterParams(query) {
+  const shuffle = query.shuffle !== 'false'; // default true
+  const seed = parseInt(query.seed) || Math.floor(Math.random() * 2147483647);
+  const categoryFilter = query.categories
+    ? new Set(query.categories.split(',').map(c => c.trim().toLowerCase()))
+    : null;
+  return { shuffle, seed, categoryFilter };
+}
+
+function applyFilterAndShuffle(cards, { shuffle, seed, categoryFilter }) {
+  let filtered = categoryFilter
+    ? cards.filter(c => categoryFilter.has(normalizeCategory(c.category)[0]))
+    : cards;
+  if (shuffle) {
+    filtered = weightedShuffle(filtered, seed);
+  }
+  return filtered;
+}
+
 // --- Public routes (no auth required) ---
+
+// Category metadata — lightweight list of categories + counts
+router.get('/categories', async (req, res) => {
+  try {
+    const targetLang = req.query.targetLang || 'ko';
+    const defaultCards = await getDefaultCards(targetLang);
+    const categoryMap = {};
+    for (const card of defaultCards) {
+      const primary = normalizeCategory(card.category)[0];
+      categoryMap[primary] = (categoryMap[primary] || 0) + 1;
+    }
+    const categories = Object.entries(categoryMap)
+      .map(([name, count]) => ({ name, count }))
+      .sort((a, b) => a.name.localeCompare(b.name));
+    res.json({ categories, total: defaultCards.length });
+  } catch (error) {
+    console.error('Get categories error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 
 // Guest flashcards — returns default vocabulary set (read-only)
 router.get('/guest', async (req, res) => {
@@ -130,19 +256,34 @@ router.get('/guest', async (req, res) => {
   try {
     const targetLang = req.query.targetLang || 'ko';
     const nativeLang = req.query.nativeLang || 'en';
+    const page = Math.max(1, parseInt(req.query.page) || 1);
+    const limit = Math.min(200, Math.max(1, parseInt(req.query.limit) || 50));
+    const { shuffle, seed, categoryFilter } = parseFilterParams(req.query);
+
     const defaultCards = await getDefaultCards(targetLang, nativeLang);
-    const guestCards = defaultCards.map((card, i) => ({
-      ...card,
-      _id: `guest-${i}`,
-      masteryLevel: 3,
-      correctCount: 0,
-      incorrectCount: 0,
-    }));
+    const targetFieldName = targetLang === 'ko' ? 'korean' : targetLang === 'en' ? 'english' : targetLang;
+
+    // Prepare guest cards with default mastery
+    const allGuestCards = defaultCards.map((card, i) => {
+      const c = { ...card, _id: `guest-${i}`, masteryLevel: 3, correctCount: 0, incorrectCount: 0 };
+      if (!c[targetFieldName] && c.korean) c[targetFieldName] = c.korean;
+      return c;
+    });
+
+    // Apply category filter + weighted shuffle
+    const processed = applyFilterAndShuffle(allGuestCards, { shuffle, seed, categoryFilter });
+
+    const total = processed.length;
+    const start = (page - 1) * limit;
+    const pageCards = processed.slice(start, start + limit);
+
+    // Translate missing native language fields (English → native), with DB caching
+    fillNativeTranslations(pageCards, nativeLang);
 
     // Replace romanization with native-script phonetics for non-Latin native speakers
-    await applyNativePhonetics(guestCards, targetLang, nativeLang);
+    await applyNativePhonetics(pageCards, targetLang, nativeLang);
 
-    res.json(guestCards);
+    res.json({ cards: pageCards, total, page, limit, hasMore: start + limit < total, seed });
   } catch (error) {
     console.error('Get guest flashcards error:', error);
     res.status(500).json({ message: 'Server error' });
@@ -158,6 +299,9 @@ router.get('/user/:userId', isOwner('userId'), async (req, res) => {
     const { userId } = req.params;
     const targetLang = req.query.targetLang || 'ko';
     const nativeLang = req.query.nativeLang || 'en';
+    const page = Math.max(1, parseInt(req.query.page) || 1);
+    const limit = Math.min(200, Math.max(1, parseInt(req.query.limit) || 50));
+    const { shuffle, seed, categoryFilter } = parseFilterParams(req.query);
 
     // Default cards from DB (cached, filtered by targetLang + nativeLang)
     const defaultCards = await getDefaultCards(targetLang, nativeLang);
@@ -173,23 +317,37 @@ router.get('/user/:userId', isOwner('userId'), async (req, res) => {
     const preferences = await UserCardPreference.find({ userId });
     const prefMap = new Map(preferences.map(p => [p.cardId, p.masteryLevel]));
 
+    const targetFieldName = targetLang === 'ko' ? 'korean' : targetLang === 'en' ? 'english' : targetLang;
+
     const defaultCardsWithPrefs = defaultCards.map(card => {
       const cardIdStr = card._id.toString();
-      return {
+      const c = {
         ...card,
         isDefault: true,
         masteryLevel: prefMap.has(cardIdStr) ? prefMap.get(cardIdStr) : 3,
         correctCount: 0,
         incorrectCount: 0,
       };
+      if (!c[targetFieldName] && c.korean) c[targetFieldName] = c.korean;
+      return c;
     });
 
     const allCards = [...defaultCardsWithPrefs, ...normalizedUserCards];
 
-    // Replace romanization with native-script phonetics for non-Latin native speakers
-    await applyNativePhonetics(allCards, targetLang, nativeLang);
+    // Apply category filter + weighted shuffle
+    const processed = applyFilterAndShuffle(allCards, { shuffle, seed, categoryFilter });
 
-    res.json(allCards);
+    const total = processed.length;
+    const start = (page - 1) * limit;
+    const pageCards = processed.slice(start, start + limit);
+
+    // Translate missing native language fields (English → native), with DB caching
+    fillNativeTranslations(pageCards, nativeLang);
+
+    // Replace romanization with native-script phonetics for non-Latin native speakers
+    await applyNativePhonetics(pageCards, targetLang, nativeLang);
+
+    res.json({ cards: pageCards, total, page, limit, hasMore: start + limit < total, seed });
   } catch (error) {
     console.error('Get flashcards error:', error);
     res.status(500).json({ message: 'Server error' });

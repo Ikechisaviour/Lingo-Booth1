@@ -106,10 +106,9 @@ function ProfilePage({ onLogout }) {
       return;
     }
     try {
-      await userService.changePassword(userId, {
-        currentPassword: passwordData.currentPassword,
-        newPassword: passwordData.newPassword,
-      });
+      const payload = { newPassword: passwordData.newPassword };
+      if (user?.hasPassword) payload.currentPassword = passwordData.currentPassword;
+      await userService.changePassword(userId, payload);
       setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
       setSaveMessage(t('profilePage.passwordChanged'));
       setTimeout(() => setSaveMessage(''), 3000);
@@ -333,8 +332,9 @@ function ProfilePage({ onLogout }) {
           {activeTab === 'settings' && (
             <div className="settings-section">
               <div className="card">
-                <h2>{t('profilePage.changePassword')}</h2>
+                <h2>{user?.hasPassword ? t('profilePage.changePassword') : t('profilePage.setPassword', 'Set Password')}</h2>
                 <form onSubmit={handleChangePassword} className="password-form">
+                  {user?.hasPassword && (
                   <div className="form-group">
                     <label htmlFor="currentPassword">{t('profilePage.currentPassword')}</label>
                     <input
@@ -347,6 +347,7 @@ function ProfilePage({ onLogout }) {
                       required
                     />
                   </div>
+                  )}
                   <div className="form-group">
                     <label htmlFor="newPassword">{t('profilePage.newPassword')}</label>
                     <input

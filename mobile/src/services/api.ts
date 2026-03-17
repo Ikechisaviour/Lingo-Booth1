@@ -77,13 +77,25 @@ export const lessonService = {
 };
 
 export const flashcardService = {
-  getFlashcards: (userId: string) => {
-    const { targetLanguage, nativeLanguage } = useSettingsStore.getState();
-    return api.get(`/flashcards/user/${userId}`, { params: { targetLang: targetLanguage || 'ko', nativeLang: nativeLanguage || 'en' } });
+  getCategories: () => {
+    const targetLang = useSettingsStore.getState().targetLanguage || 'ko';
+    return api.get('/flashcards/categories', { params: { targetLang } });
   },
-  getGuestFlashcards: () => {
+  getFlashcards: (userId: string, page = 1, limit = 50, opts: { categories?: string; shuffle?: boolean; seed?: number } = {}) => {
+    const { targetLanguage, nativeLanguage } = useSettingsStore.getState();
+    const params: Record<string, any> = { targetLang: targetLanguage || 'ko', nativeLang: nativeLanguage || 'en', page, limit };
+    if (opts.categories) params.categories = opts.categories;
+    if (opts.shuffle !== undefined) params.shuffle = opts.shuffle;
+    if (opts.seed !== undefined) params.seed = opts.seed;
+    return api.get(`/flashcards/user/${userId}`, { params });
+  },
+  getGuestFlashcards: (page = 1, limit = 50, opts: { categories?: string; shuffle?: boolean; seed?: number } = {}) => {
     const { nativeLanguage, targetLanguage } = useSettingsStore.getState();
-    return api.get(`/flashcards/guest?nativeLang=${nativeLanguage}&targetLang=${targetLanguage}`);
+    const params: Record<string, any> = { nativeLang: nativeLanguage || 'en', targetLang: targetLanguage || 'ko', page, limit };
+    if (opts.categories) params.categories = opts.categories;
+    if (opts.shuffle !== undefined) params.shuffle = opts.shuffle;
+    if (opts.seed !== undefined) params.seed = opts.seed;
+    return api.get('/flashcards/guest', { params });
   },
   createFlashcard: (flashcardData: object) =>
     api.post('/flashcards', flashcardData),

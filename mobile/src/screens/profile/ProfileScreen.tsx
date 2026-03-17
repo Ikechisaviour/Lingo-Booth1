@@ -133,7 +133,9 @@ const ProfileScreen: React.FC = () => {
       return;
     }
     try {
-      await userService.changePassword(userId!, { currentPassword, newPassword });
+      const payload: any = { newPassword };
+      if (user?.hasPassword) payload.currentPassword = currentPassword;
+      await userService.changePassword(userId!, payload);
       setPasswordMsg(t('profile.passwordChanged', 'Password changed successfully!'));
       setCurrentPassword('');
       setNewPassword('');
@@ -337,14 +339,16 @@ const ProfileScreen: React.FC = () => {
           <Card style={styles.card}>
             <Card.Content>
               <Text variant="titleMedium" style={styles.cardTitle}>
-                {t('profile.changePassword', 'Change Password')}
+                {user?.hasPassword ? t('profile.changePassword', 'Change Password') : t('profile.setPassword', 'Set Password')}
               </Text>
               {!!passwordMsg && (
                 <Text style={[styles.successMsg, passwordMsg.includes('Failed') && { color: colors.error }]}>
                   {passwordMsg}
                 </Text>
               )}
-              <TextInput label={t('profile.currentPassword', 'Current Password')} value={currentPassword} onChangeText={setCurrentPassword} mode="outlined" secureTextEntry style={styles.input} />
+              {user?.hasPassword && (
+                <TextInput label={t('profile.currentPassword', 'Current Password')} value={currentPassword} onChangeText={setCurrentPassword} mode="outlined" secureTextEntry style={styles.input} />
+              )}
               <TextInput label={t('profile.newPassword', 'New Password')} value={newPassword} onChangeText={setNewPassword} mode="outlined" secureTextEntry style={styles.input} />
               <TextInput label={t('profile.confirmNewPassword', 'Confirm New Password')} value={confirmPassword} onChangeText={setConfirmPassword} mode="outlined" secureTextEntry style={styles.input} />
               <Button mode="contained" onPress={handleChangePassword} style={{ marginTop: 8 }}>

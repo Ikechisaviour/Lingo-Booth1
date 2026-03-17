@@ -43,12 +43,19 @@ function FlashcardsPage() {
   const [readyToSave, setReadyToSave] = useState(false);
   const [cardAnim, setCardAnim] = useState('');
   const [starPulse, setStarPulse] = useState(null); // 'up' or 'down'
-  const [isShuffled, setIsShuffled] = useState(false);
+  const [isShuffled, setIsShuffled] = useState(true); // default: shuffle ON
   const [autoPlay, setAutoPlay] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const [studyStyle, setStudyStyle] = useState('both'); // 'both' | 'text' | 'audio'
   const [expandedCategories, setExpandedCategories] = useState(new Set());
   const [selectedCardIds, setSelectedCardIds] = useState(new Set()); // empty = study all
+  const [currentPage, setCurrentPage] = useState(1);
+  const [hasMore, setHasMore] = useState(false);
+  const [totalCards, setTotalCards] = useState(0);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [allCategories, setAllCategories] = useState([]); // from metadata endpoint
+  const [selectedCategories, setSelectedCategories] = useState(new Set());
+  const [shuffleSeed, setShuffleSeed] = useState(() => Math.floor(Math.random() * 2147483647));
   const autoPlayRef = useRef(false);
   const prefetchEndRef = useRef(0); // highest card index (exclusive) already queued for prefetch
   const sidebarToggleRef = useRef(null);
@@ -75,6 +82,10 @@ function FlashcardsPage() {
   }, [userId]);
 
   useEffect(() => {
+    // Fetch category metadata + first page of cards in parallel
+    flashcardService.getCategories()
+      .then(res => setAllCategories(res.data.categories || []))
+      .catch(() => {});
     fetchFlashcards();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -113,6 +124,15 @@ function FlashcardsPage() {
       saveActivityState(currentIndex);
     }
   }, [currentIndex, flashcards.length, saveActivityState, readyToSave]);
+
+  // Auto-load next batch when 49 cards remaining (after viewing 1st card of batch)
+  useEffect(() => {
+    if (!hasMore || loadingMore) return;
+    if (flashcards.length > 0 && currentIndex >= flashcards.length - 49) {
+      fetchFlashcards(currentPage + 1, true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentIndex, flashcards.length, hasMore, loadingMore]);
 
   // Keyboard navigation – use refs so the effect never needs to re-subscribe
   const handlePrevRef = useRef(null);
@@ -226,10 +246,21 @@ function FlashcardsPage() {
       await speechService.waitAudio(1200);
       if (cancelled) return;
 
-      // Check if last card
+      // Check if last card (only stop if no more pages to load)
       if (currentIndex >= activeFlashcards.length - 1) {
-        setAutoPlay(false);
-        return;
+        if (!hasMore) {
+          setAutoPlay(false);
+          return;
+        }
+        // Wait for next batch to load
+        await new Promise(resolve => {
+          const check = setInterval(() => {
+            if (cancelled) { clearInterval(check); resolve(); }
+            // activeFlashcards.length will update when new cards are appended
+          }, 200);
+          setTimeout(() => { clearInterval(check); resolve(); }, 5000); // timeout after 5s
+        });
+        if (cancelled) return;
       }
 
       // Slide to next card
@@ -286,21 +317,42 @@ function FlashcardsPage() {
     };
   }, []);
 
-  const fetchFlashcards = async () => {
+  const fetchFlashcards = async (page = 1, append = false, seedOverride) => {
     try {
-      setLoading(true);
+      if (append) {
+        setLoadingMore(true);
+      } else {
+        setLoading(true);
+      }
+      const opts = {
+        shuffle: isShuffled,
+        seed: seedOverride !== undefined ? seedOverride : shuffleSeed,
+      };
+      if (selectedCategories.size > 0) {
+        opts.categories = Array.from(selectedCategories).join(',');
+      }
       const response = userId
-        ? await flashcardService.getFlashcards(userId)
-        : await flashcardService.getGuestFlashcards();
-      setFlashcards(response.data);
-      originalOrderRef.current = null;
-      setIsShuffled(false);
+        ? await flashcardService.getFlashcards(userId, page, 50, opts)
+        : await flashcardService.getGuestFlashcards(page, 50, opts);
+      const { cards, total, hasMore: more, seed: returnedSeed } = response.data;
+      // Store the seed returned by backend (in case none was sent)
+      if (returnedSeed && !seedOverride) setShuffleSeed(returnedSeed);
+      if (append) {
+        setFlashcards(prev => [...prev, ...cards]);
+      } else {
+        setFlashcards(cards);
+        originalOrderRef.current = null;
+      }
+      setTotalCards(total);
+      setHasMore(more);
+      setCurrentPage(page);
       setError('');
     } catch (err) {
       setError(t('flashcards.failedToLoad'));
       console.error(err);
     } finally {
       setLoading(false);
+      setLoadingMore(false);
     }
   };
 
@@ -393,6 +445,29 @@ function FlashcardsPage() {
     });
   };
 
+  // Toggle a category filter — triggers backend refetch
+  const toggleCategoryFilter = (categoryName) => {
+    setSelectedCategories(prev => {
+      const next = new Set(prev);
+      next.has(categoryName) ? next.delete(categoryName) : next.add(categoryName);
+      return next;
+    });
+  };
+
+  // Refetch when selectedCategories changes
+  useEffect(() => {
+    // Skip initial mount (handled by the mount effect)
+    if (!allCategories.length) return;
+    const newSeed = Math.floor(Math.random() * 2147483647);
+    setShuffleSeed(newSeed);
+    setCurrentIndex(0);
+    setIsFlipped(false);
+    setSelectedCardIds(new Set());
+    if (autoPlay) { setAutoPlay(false); speechService.cancel(); }
+    fetchFlashcards(1, false, newSeed);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedCategories]);
+
   // Only exclude cards missing the target field when the backend is actually
   // sending that field (i.e. at least one card has it).
   const targetLangField = getLangField(targetLangCode);
@@ -423,7 +498,7 @@ function FlashcardsPage() {
 
     speechService.setMediaSession({
       title: card[getLangField(targetLangCode)],
-      artist: t('flashcards.cardXOfY', { current: currentIndex + 1, total: activeFlashcards.length }),
+      artist: t('flashcards.cardXOfY', { current: currentIndex + 1, total: totalCards || activeFlashcards.length }),
       album: 'Lingo Booth \u2014 Flashcards',
       onPlay: () => setAutoPlay(true),
       onPause: () => { setAutoPlay(false); speechService.cancel(); },
@@ -806,25 +881,15 @@ function FlashcardsPage() {
                       if (transitioningRef.current) return;
                       transitioningRef.current = true;
                       setCardAnim('shuffle');
-                      setTimeout(() => {
-                        if (isShuffled && originalOrderRef.current) {
-                          // Unshuffle — restore original order
-                          setFlashcards([...originalOrderRef.current]);
-                          originalOrderRef.current = null;
-                          setIsShuffled(false);
-                        } else {
-                          // Shuffle — save original order first
-                          originalOrderRef.current = [...flashcards];
-                          const shuffled = [...flashcards];
-                          for (let i = shuffled.length - 1; i > 0; i--) {
-                            const j = Math.floor(Math.random() * (i + 1));
-                            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-                          }
-                          setFlashcards(shuffled);
-                          setIsShuffled(true);
-                        }
+                      setTimeout(async () => {
+                        const newShuffled = !isShuffled;
+                        setIsShuffled(newShuffled);
+                        const newSeed = newShuffled ? Math.floor(Math.random() * 2147483647) : shuffleSeed;
+                        setShuffleSeed(newSeed);
                         setCurrentIndex(0);
                         setIsFlipped(false);
+                        // Refetch from backend with new shuffle state
+                        await fetchFlashcards(1, false, newSeed);
                         setCardAnim('slide-in');
                         setTimeout(() => {
                           setCardAnim('');
@@ -902,14 +967,14 @@ function FlashcardsPage() {
             <div className="study-controls-landscape">
               <div className="study-progress">
                 <div className="progress-text">
-                  <span>{t('flashcards.cardXOfY', { current: currentIndex + 1, total: activeFlashcards.length })}</span>
+                  <span>{t('flashcards.cardXOfY', { current: currentIndex + 1, total: totalCards || activeFlashcards.length })}</span>
                   <span className="mastery-display">
                     {getMasteryStars(current?.masteryLevel, true)}
                   </span>
                 </div>
                 <div className="progress-bar">
                   <div className="progress-fill"
-                    style={{ width: `${((currentIndex + 1) / activeFlashcards.length) * 100}%`, background: 'var(--accent-green)' }}
+                    style={{ width: `${((currentIndex + 1) / (totalCards || activeFlashcards.length)) * 100}%`, background: 'var(--accent-green)' }}
                   ></div>
                 </div>
               </div>
@@ -925,7 +990,7 @@ function FlashcardsPage() {
               <div className="study-controls-portrait">
                 <div className="study-progress">
                   <div className="progress-text">
-                    <span>{t('flashcards.cardXOfY', { current: currentIndex + 1, total: activeFlashcards.length })}</span>
+                    <span>{t('flashcards.cardXOfY', { current: currentIndex + 1, total: totalCards || activeFlashcards.length })}</span>
                     <span className="mastery-display">
                       {getMasteryStars(current?.masteryLevel, true)}
                     </span>
@@ -934,7 +999,7 @@ function FlashcardsPage() {
                     <div
                       className="progress-fill"
                       style={{
-                        width: `${((currentIndex + 1) / activeFlashcards.length) * 100}%`,
+                        width: `${((currentIndex + 1) / (totalCards || activeFlashcards.length)) * 100}%`,
                         background: 'var(--accent-green)'
                       }}
                     ></div>
@@ -1118,31 +1183,31 @@ function FlashcardsPage() {
                   </div>
                 </div>
                 <div className="card-list-header">
-                  {selectedCardIds.size > 0 ? (
+                  {selectedCategories.size > 0 ? (
                     <>
-                      <span className="card-list-selected-label">✓ {selectedCardIds.size} / {allLangFilteredCards.length}</span>
-                      <button className="category-clear" onClick={() => setSelectedCardIds(new Set())}>{t('common.clearAll', 'Clear')}</button>
+                      <span className="card-list-selected-label">✓ {selectedCategories.size} {selectedCategories.size === 1 ? 'category' : 'categories'}</span>
+                      <button className="category-clear" onClick={() => setSelectedCategories(new Set())}>{t('common.clearAll', 'Clear')}</button>
                     </>
                   ) : (
-                    <span className="card-list-hint">{t('flashcards.clickCategoryHint', 'Click a category to select all its cards')}</span>
+                    <span className="card-list-hint">{t('flashcards.clickCategoryHint', 'Select categories to study')}</span>
                   )}
                 </div>
                 <div className="category-list">
-                  {Object.entries(buildCategoryCards()).map(([primary, data]) => {
+                  {(allCategories.length > 0 ? allCategories : Object.entries(buildCategoryCards()).map(([name, data]) => ({ name, count: data.count }))).map(({ name: primary, count: metaCount }) => {
                     const isExpanded = expandedCategories.has(primary);
-                    const selectedCount = data.cards.filter(c => selectedCardIds.has(c._id)).length;
-                    const allSelected = selectedCount === data.cards.length;
+                    const isCatSelected = selectedCategories.has(primary);
+                    const loadedCards = flashcards.filter(c => normalizeCategory(c.category)[0] === primary);
                     return (
                       <div key={primary} className="category-group">
-                        <button className={`category-item ${selectedCount > 0 ? 'selected' : ''}`} onClick={() => toggleCategoryCards(data.cards)}>
-                          <span className="category-check">{allSelected ? '✓' : selectedCount > 0 ? '–' : ''}</span>
+                        <button className={`category-item ${isCatSelected ? 'selected' : ''}`} onClick={() => toggleCategoryFilter(primary)}>
+                          <span className="category-check">{isCatSelected ? '✓' : ''}</span>
                           <span className="category-name">{t(`flashcards.categoryNames.${primary}`, { defaultValue: primary })}</span>
-                          <span className="card-count">{selectedCount > 0 ? `${selectedCount}/` : ''}{data.count}</span>
+                          <span className="card-count">{metaCount}</span>
                           <span className={`category-expand-arrow ${isExpanded ? 'expanded' : ''}`} onClick={(e) => { e.stopPropagation(); toggleExpandedCategory(primary); }} title={isExpanded ? 'Collapse' : 'Show cards'}>›</span>
                         </button>
-                        {isExpanded && (
+                        {isExpanded && loadedCards.length > 0 && (
                           <div className="subtopic-list">
-                            {data.cards.map(card => {
+                            {loadedCards.map(card => {
                               const isChecked = selectedCardIds.has(card._id);
                               return (
                                 <button key={card._id} className={`subtopic-item ${isChecked ? 'selected' : ''}`}
@@ -1214,40 +1279,40 @@ function FlashcardsPage() {
                   </div>
                 </div>
                 <div className="card-list-header">
-                  {selectedCardIds.size > 0 ? (
+                  {selectedCategories.size > 0 ? (
                     <>
-                      <span className="card-list-selected-label">✓ {selectedCardIds.size} / {allLangFilteredCards.length}</span>
-                      <button className="category-clear" onClick={() => setSelectedCardIds(new Set())}>
+                      <span className="card-list-selected-label">✓ {selectedCategories.size} {selectedCategories.size === 1 ? 'category' : 'categories'}</span>
+                      <button className="category-clear" onClick={() => setSelectedCategories(new Set())}>
                         {t('common.clearAll', 'Clear')}
                       </button>
                     </>
                   ) : (
-                    <span className="card-list-hint">{t('flashcards.clickCategoryHint', 'Click a category to select all its cards')}</span>
+                    <span className="card-list-hint">{t('flashcards.clickCategoryHint', 'Select categories to study')}</span>
                   )}
                 </div>
                 <div className="category-list">
-                  {Object.entries(buildCategoryCards()).map(([primary, data]) => {
+                  {(allCategories.length > 0 ? allCategories : Object.entries(buildCategoryCards()).map(([name, data]) => ({ name, count: data.count }))).map(({ name: primary, count: metaCount }) => {
                     const isExpanded = expandedCategories.has(primary);
-                    const selectedCount = data.cards.filter(c => selectedCardIds.has(c._id)).length;
-                    const allSelected = selectedCount === data.cards.length;
+                    const isCatSelected = selectedCategories.has(primary);
+                    const loadedCards = flashcards.filter(c => normalizeCategory(c.category)[0] === primary);
                     return (
                       <div key={primary} className="category-group">
                         <button
-                          className={`category-item ${selectedCount > 0 ? 'selected' : ''}`}
-                          onClick={() => toggleCategoryCards(data.cards)}
+                          className={`category-item ${isCatSelected ? 'selected' : ''}`}
+                          onClick={() => toggleCategoryFilter(primary)}
                         >
-                          <span className="category-check">{allSelected ? '✓' : selectedCount > 0 ? '–' : ''}</span>
+                          <span className="category-check">{isCatSelected ? '✓' : ''}</span>
                           <span className="category-name">{t(`flashcards.categoryNames.${primary}`, { defaultValue: primary })}</span>
-                          <span className="card-count">{selectedCount > 0 ? `${selectedCount}/` : ''}{data.count}</span>
+                          <span className="card-count">{metaCount}</span>
                           <span
                             className={`category-expand-arrow ${isExpanded ? 'expanded' : ''}`}
                             onClick={(e) => { e.stopPropagation(); toggleExpandedCategory(primary); }}
                             title={isExpanded ? 'Collapse' : 'Show cards'}
                           >›</span>
                         </button>
-                        {isExpanded && (
+                        {isExpanded && loadedCards.length > 0 && (
                           <div className="subtopic-list">
-                            {data.cards.map(card => {
+                            {loadedCards.map(card => {
                               const isChecked = selectedCardIds.has(card._id);
                               return (
                                 <button
