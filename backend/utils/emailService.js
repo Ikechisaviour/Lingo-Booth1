@@ -1,6 +1,13 @@
 const { Resend } = require('resend');
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Lazily instantiated so a missing key only fails when email is actually sent,
+// not at server startup (allows local dev without email credentials).
+let _resend = null;
+function getResend() {
+  if (!_resend) _resend = new Resend(process.env.RESEND_API_KEY);
+  return _resend;
+}
+
 const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3001';
 
 // Localized email strings keyed by language code
@@ -294,7 +301,7 @@ async function sendVerificationEmail(to, username, token, lang = 'en') {
   const html = buildVerificationTemplate(username, verifyUrl, lang);
   const text = `${s.textGreeting(username)}\n\n${verifyUrl}\n\n${s.textExpiry}\n\n— Lingo Booth`;
 
-  const { error } = await resend.emails.send({
+  const { error } = await getResend().emails.send({
     from: 'Lingo Booth <info@lingobooth.com>',
     reply_to: 'info@lingobooth.com',
     to,

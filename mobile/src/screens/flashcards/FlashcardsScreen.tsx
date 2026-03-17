@@ -23,7 +23,7 @@ import {
 } from '../../services/playerNotification';
 
 // PiP is not available in this build
-const PipHandler: null = null;
+const PipHandler: any = null;
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import LANGUAGES, { getLangName, getLangField, langHasRomanization } from '../../config/languages';
@@ -59,6 +59,7 @@ const FlashcardsScreen: React.FC = () => {
   const [isShuffled, setIsShuffled] = useState(true);
   const [shuffleSeed, setShuffleSeed] = useState(() => Math.floor(Math.random() * 2147483647));
   const [expandedPrimaries, setExpandedPrimaries] = useState<Set<string>>(new Set());
+  const [categoryCardsCache, setCategoryCardsCache] = useState<Record<string, any[]>>({});
   const [selectedCardIds, setSelectedCardIds] = useState<Set<string>>(new Set());
   const [allCategories, setAllCategories] = useState<{ name: string; count: number }[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<Set<string>>(new Set());
@@ -82,16 +83,13 @@ const FlashcardsScreen: React.FC = () => {
     requestNotifPermissions();
   }, []);
 
-  // Fetch flashcards (paginated, with shuffle/category params)
+  // Fetch flashcards (paginated, unfiltered — category filtering is done client-side via cache)
   const fetchFlashcards = useCallback(async (page = 1, append = false) => {
     try {
       if (page === 1) setLoading(true);
       else setLoadingMore(true);
 
-      const cats = selectedCategories.size > 0
-        ? Array.from(selectedCategories).join(',')
-        : undefined;
-      const opts = { categories: cats, shuffle: isShuffled, seed: shuffleSeed };
+      const opts = { shuffle: isShuffled, seed: shuffleSeed };
 
       const response = userId
         ? await flashcardService.getFlashcards(userId, page, 50, opts)
@@ -120,7 +118,7 @@ const FlashcardsScreen: React.FC = () => {
       setLoading(false);
       setLoadingMore(false);
     }
-  }, [userId, targetLanguage, nativeLanguage, t, selectedCategories, isShuffled, shuffleSeed]);
+  }, [userId, targetLanguage, nativeLanguage, t, isShuffled, shuffleSeed]);
 
   // Fetch categories + first page on mount
   useEffect(() => {
@@ -138,43 +136,14 @@ const FlashcardsScreen: React.FC = () => {
     setCurrentIndex(0);
   }, [targetLanguage, nativeLanguage]);
 
-  // Refetch when selectedCategories change (not on mount)
-  const selectedCategoriesRef = useRef(selectedCategories);
+  // Reset card position when category selection changes (no API refetch — deck is computed client-side)
   useEffect(() => {
-    if (selectedCategoriesRef.current === selectedCategories) return;
-    selectedCategoriesRef.current = selectedCategories;
-    const newSeed = Math.floor(Math.random() * 2147483647);
-    setShuffleSeed(newSeed);
     setCurrentIndex(0);
     setIsFlipped(false);
     if (autoPlay) {
       setAutoPlay(false);
       speechService.cancel();
     }
-    // Need to call with new seed directly since state hasn't updated yet
-    const cats = selectedCategories.size > 0
-      ? Array.from(selectedCategories).join(',')
-      : undefined;
-    const doRefetch = async () => {
-      try {
-        setLoading(true);
-        const opts = { categories: cats, shuffle: isShuffled, seed: newSeed };
-        const response = userId
-          ? await flashcardService.getFlashcards(userId, 1, 50, opts)
-          : await flashcardService.getGuestFlashcards(1, 50, opts);
-        const data = response.data;
-        const cards = Array.isArray(data) ? data : (data.cards || data);
-        setFlashcards(cards);
-        setTotalCards(data.total || cards.length);
-        setCurrentPage(1);
-        if (data.seed) setShuffleSeed(data.seed);
-      } catch {
-        setError(t('flashcards.failedToLoad'));
-      } finally {
-        setLoading(false);
-      }
-    };
-    doRefetch();
   }, [selectedCategories]);
 
   // Pre-fetch next page when 49 cards from end
@@ -189,11 +158,54 @@ const FlashcardsScreen: React.FC = () => {
     autoPlayRef.current = autoPlay;
   }, [autoPlay]);
 
-  // Study deck: all loaded cards (server-side filtered), or only selected individual cards
+  // Study deck: supports three modes —
+  //   • nothing selected → unfiltered paginated deck (language-filtered)
+  //   • categories and/or individual cards selected → client-side mix from cache + loaded cards
+  // Categories and individual cards can be combined freely.
   const displayedCards = useMemo(() => {
-    if (selectedCardIds.size === 0) return flashcards;
-    return flashcards.filter((c) => selectedCardIds.has(c._id));
-  }, [flashcards, selectedCardIds]);
+    const hasTgtField = flashcards.some((c) => !!c[targetField]);
+    const langFiltered = hasTgtField ? flashcards.filter((c) => !!c[targetField]) : flashcards;
+
+    if (selectedCardIds.size === 0 && selectedCategories.size === 0) return langFiltered;
+
+    const loadedById = new Map(langFiltered.map((c) => [c._id, c]));
+    const cacheById = new Map<string, any>();
+    for (const cards of Object.values(categoryCardsCache)) {
+      for (const c of cards) {
+        if (!cacheById.has(c._id)) cacheById.set(c._id, c);
+      }
+    }
+
+    const resultIds = new Set<string>();
+    const result: any[] = [];
+
+    // Add all cards from selected categories (full data if loaded, minimal otherwise)
+    for (const cat of selectedCategories) {
+      const catCards = categoryCardsCache[cat] || [];
+      for (const c of catCards) {
+        if (!resultIds.has(c._id)) {
+          const fullCard = loadedById.get(c._id) ?? { ...c, masteryLevel: 3, isDefault: true };
+          if (fullCard[targetField]) {
+            result.push(fullCard);
+            resultIds.add(c._id);
+          }
+        }
+      }
+    }
+
+    // Add individually selected cards not already included via a category
+    for (const id of selectedCardIds) {
+      if (!resultIds.has(id)) {
+        const card = loadedById.get(id) ?? (cacheById.has(id) ? { ...cacheById.get(id), masteryLevel: 3, isDefault: true } : null);
+        if (card && card[targetField]) {
+          result.push(card);
+          resultIds.add(id);
+        }
+      }
+    }
+
+    return result;
+  }, [flashcards, selectedCardIds, selectedCategories, targetField, categoryCardsCache]);
 
   // PiP — enter picture-in-picture when autoplay is active and user leaves the app
   useEffect(() => {
@@ -243,7 +255,7 @@ const FlashcardsScreen: React.FC = () => {
     }
   }, [selectedCardIds]);
 
-  // Toggle shuffle — refetch from backend
+  // Toggle shuffle — refetch the default (unfiltered) deck from backend with new order
   const handleToggleShuffle = useCallback(() => {
     const newShuffled = !isShuffled;
     setIsShuffled(newShuffled);
@@ -256,14 +268,10 @@ const FlashcardsScreen: React.FC = () => {
     }
     const newSeed = Math.floor(Math.random() * 2147483647);
     setShuffleSeed(newSeed);
-    // Refetch with new shuffle state
-    const cats = selectedCategories.size > 0
-      ? Array.from(selectedCategories).join(',')
-      : undefined;
     const doRefetch = async () => {
       try {
         setLoading(true);
-        const opts = { categories: cats, shuffle: newShuffled, seed: newSeed };
+        const opts = { shuffle: newShuffled, seed: newSeed };
         const response = userId
           ? await flashcardService.getFlashcards(userId, 1, 50, opts)
           : await flashcardService.getGuestFlashcards(1, 50, opts);
@@ -277,19 +285,35 @@ const FlashcardsScreen: React.FC = () => {
       finally { setLoading(false); }
     };
     doRefetch();
-  }, [isShuffled, autoPlay, selectedCategories, userId]);
+  }, [isShuffled, autoPlay, userId]);
 
-  // Toggle a category filter (triggers backend refetch via selectedCategories useEffect)
+  // Toggle a category filter — loads cards into cache on first select (no backend refetch)
   const toggleCategoryFilter = (categoryName: string) => {
+    const isRemoving = selectedCategories.has(categoryName);
     setSelectedCategories((prev) => {
       const next = new Set(prev);
-      if (next.has(categoryName)) {
+      if (isRemoving) {
         next.delete(categoryName);
       } else {
         next.add(categoryName);
+        // Background-load this category's full card list into cache if not already there
+        if (!categoryCardsCache[categoryName]) {
+          flashcardService.getCategoryCards(categoryName)
+            .then((res: any) => setCategoryCardsCache((p) => ({ ...p, [categoryName]: res.data.cards || [] })))
+            .catch(() => setCategoryCardsCache((p) => ({ ...p, [categoryName]: [] })));
+        }
       }
       return next;
     });
+    if (!isRemoving) {
+      // Deselect any individually selected cards that belong to this category
+      const catCards = categoryCardsCache[categoryName]
+        || flashcards.filter((c: any) => normalizeCategory(c.category)[0] === categoryName);
+      if (catCards.length > 0) {
+        const catCardIds = new Set(catCards.map((c: any) => c._id));
+        setSelectedCardIds((prev) => new Set([...prev].filter((id) => !catCardIds.has(id))));
+      }
+    }
   };
 
   // Build loaded-cards category map for individual card selection within expanded categories
@@ -307,7 +331,13 @@ const FlashcardsScreen: React.FC = () => {
   const toggleExpandedPrimary = (cat: string) => {
     setExpandedPrimaries((prev) => {
       const next = new Set(prev);
-      next.has(cat) ? next.delete(cat) : next.add(cat);
+      const willExpand = !next.has(cat);
+      willExpand ? next.add(cat) : next.delete(cat);
+      if (willExpand && !categoryCardsCache[cat]) {
+        flashcardService.getCategoryCards(cat)
+          .then((res: any) => setCategoryCardsCache((p) => ({ ...p, [cat]: res.data.cards || [] })))
+          .catch(() => setCategoryCardsCache((p) => ({ ...p, [cat]: [] })));
+      }
       return next;
     });
   };
@@ -578,7 +608,7 @@ const FlashcardsScreen: React.FC = () => {
     return (
       <View style={styles.centered}>
         <Text style={styles.errorText}>{error}</Text>
-        <Button mode="contained" onPress={fetchFlashcards} style={{ marginTop: 16 }}>
+        <Button mode="contained" onPress={() => fetchFlashcards()} style={{ marginTop: 16 }}>
           {t('common.retry', 'Retry')}
         </Button>
       </View>
@@ -616,14 +646,14 @@ const FlashcardsScreen: React.FC = () => {
       {/* Header bar */}
       <View style={styles.header}>
         <Text style={styles.counter}>
-          {currentIndex + 1} / {totalCards || displayedCards.length}
+          {currentIndex + 1} / {(selectedCategories.size > 0 || selectedCardIds.size > 0) ? displayedCards.length : (totalCards || displayedCards.length)}
         </Text>
         <View style={styles.headerActions}>
           <IconButton
             icon="filter-variant"
             size={22}
             onPress={() => setShowCategories(true)}
-            iconColor={selectedCategories.size > 0 ? colors.primary : colors.textMuted}
+            iconColor={(selectedCategories.size > 0 || selectedCardIds.size > 0) ? colors.primary : colors.textMuted}
           />
           <IconButton
             icon="shuffle-variant"
@@ -654,13 +684,18 @@ const FlashcardsScreen: React.FC = () => {
           <Text style={styles.shuffleBadgeText}>🔀 {t('flashcards.shuffleOn', 'Shuffled')}</Text>
         </View>
       )}
-      {/* Selected categories badge */}
-      {selectedCategories.size > 0 && (
+      {/* Selection badge — shows categories and/or individual cards */}
+      {(selectedCategories.size > 0 || selectedCardIds.size > 0) && (
         <View style={styles.selectionBadge}>
           <Text style={styles.selectionBadgeText}>
-            ☑ {selectedCategories.size} {selectedCategories.size === 1 ? 'category' : 'categories'}
+            ☑{selectedCategories.size > 0 ? ` ${selectedCategories.size} ${selectedCategories.size === 1 ? 'category' : 'categories'}` : ''}
+            {selectedCategories.size > 0 && selectedCardIds.size > 0 ? ' +' : ''}
+            {selectedCardIds.size > 0 ? ` ${selectedCardIds.size} ${selectedCardIds.size === 1 ? 'card' : 'cards'}` : ''}
           </Text>
-          <TouchableOpacity onPress={() => setSelectedCategories(new Set())} style={styles.selectionClear}>
+          <TouchableOpacity
+            onPress={() => { setSelectedCategories(new Set()); setSelectedCardIds(new Set()); }}
+            style={styles.selectionClear}
+          >
             <Text style={styles.selectionClearText}>✕</Text>
           </TouchableOpacity>
         </View>
@@ -668,7 +703,7 @@ const FlashcardsScreen: React.FC = () => {
 
       {/* Progress bar */}
       <ProgressBar
-        progress={(currentIndex + 1) / (totalCards || displayedCards.length)}
+        progress={(currentIndex + 1) / ((selectedCategories.size > 0 || selectedCardIds.size > 0) ? displayedCards.length : (totalCards || displayedCards.length))}
         color={colors.primary}
         style={styles.progressBar}
       />
@@ -823,7 +858,11 @@ const FlashcardsScreen: React.FC = () => {
                 return allCategories.map(({ name: primary, count: totalCount }) => {
                   const isExpanded = expandedPrimaries.has(primary);
                   const isCatSelected = selectedCategories.has(primary);
-                  const loadedCards = loadedMap[primary]?.cards || [];
+                  const cachedDefault = categoryCardsCache[primary];
+                  const customCards = (loadedMap[primary]?.cards || []).filter((c: any) => !c.isDefault);
+                  const allCategoryCards = cachedDefault
+                    ? [...cachedDefault, ...customCards]
+                    : loadedMap[primary]?.cards || [];
                   return (
                     <View key={primary} style={styles.categoryGroup}>
                       <TouchableOpacity
@@ -836,7 +875,7 @@ const FlashcardsScreen: React.FC = () => {
                         <Text style={[styles.categoryName, { flex: 1 }]}>{primary}</Text>
                         <View style={styles.categoryItemRight}>
                           <Text style={styles.categoryCount}>{totalCount}</Text>
-                          {loadedCards.length > 0 && (
+                          {totalCount > 0 && (
                             <TouchableOpacity
                               onPress={() => toggleExpandedPrimary(primary)}
                               style={styles.expandBtn}
@@ -847,20 +886,22 @@ const FlashcardsScreen: React.FC = () => {
                           )}
                         </View>
                       </TouchableOpacity>
-                      {isExpanded && loadedCards.length > 0 && (
+                      {isExpanded && allCategoryCards.length > 0 && (
                         <View style={styles.subtopicList}>
-                          {loadedCards.map((card) => {
+                          {allCategoryCards.map((card: any) => {
                             const isChecked = selectedCardIds.has(card._id);
                             return (
                               <TouchableOpacity
                                 key={card._id}
                                 style={[styles.subtopicItem, isChecked && styles.subtopicSelected]}
                                 onPress={() => {
+                                  const adding = !selectedCardIds.has(card._id);
                                   setSelectedCardIds((prev) => {
                                     const next = new Set(prev);
                                     next.has(card._id) ? next.delete(card._id) : next.add(card._id);
                                     return next;
                                   });
+                                  if (adding) setSelectedCategories((prev) => { const next = new Set(prev); next.delete(primary); return next; });
                                 }}
                               >
                                 <Text style={styles.categoryCheck}>{isChecked ? '✓' : ''}</Text>

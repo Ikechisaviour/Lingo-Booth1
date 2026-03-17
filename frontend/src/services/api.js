@@ -93,7 +93,13 @@ export const lessonService = {
 export const flashcardService = {
   getCategories: () => {
     const targetLang = localStorage.getItem('targetLanguage') || 'ko';
-    return api.get('/flashcards/categories', { params: { targetLang } });
+    const nativeLang = localStorage.getItem('nativeLanguage') || 'en';
+    return api.get('/flashcards/categories', { params: { targetLang, nativeLang } });
+  },
+  getCategoryCards: (category) => {
+    const targetLang = localStorage.getItem('targetLanguage') || 'ko';
+    const nativeLang = localStorage.getItem('nativeLanguage') || 'en';
+    return api.get('/flashcards/category-cards', { params: { targetLang, nativeLang, category } });
   },
   getFlashcards: (userId, page = 1, limit = 50, opts = {}) => {
     const targetLang = localStorage.getItem('targetLanguage') || 'ko';

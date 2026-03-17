@@ -676,10 +676,9 @@
   border-bottom-color: var(--primary);
 }
 
-/* Category Filter List */
+/* Category Filter List — no max-height; portrait page scrolls, landscape container scrolls */
 .category-list {
-  max-height: 500px;
-  overflow-y: auto;
+  overflow-y: visible;
 }
 
 .category-clear {
@@ -859,6 +858,12 @@
 
 .subtopic-item .category-name {
   flex: 1;
+}
+
+.subtopic-native {
+  font-size: 0.75em;
+  opacity: 0.6;
+  font-weight: 400;
 }
 
 .card-list {

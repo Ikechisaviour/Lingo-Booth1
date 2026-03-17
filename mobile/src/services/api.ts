@@ -78,8 +78,12 @@ export const lessonService = {
 
 export const flashcardService = {
   getCategories: () => {
-    const targetLang = useSettingsStore.getState().targetLanguage || 'ko';
-    return api.get('/flashcards/categories', { params: { targetLang } });
+    const { targetLanguage, nativeLanguage } = useSettingsStore.getState();
+    return api.get('/flashcards/categories', { params: { targetLang: targetLanguage || 'ko', nativeLang: nativeLanguage || 'en' } });
+  },
+  getCategoryCards: (category: string) => {
+    const { targetLanguage, nativeLanguage } = useSettingsStore.getState();
+    return api.get('/flashcards/category-cards', { params: { targetLang: targetLanguage || 'ko', nativeLang: nativeLanguage || 'en', category } });
   },
   getFlashcards: (userId: string, page = 1, limit = 50, opts: { categories?: string; shuffle?: boolean; seed?: number } = {}) => {
     const { targetLanguage, nativeLanguage } = useSettingsStore.getState();

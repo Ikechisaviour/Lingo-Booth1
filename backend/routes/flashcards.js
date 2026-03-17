@@ -186,7 +186,7 @@ function parseFilterParams(query) {
 
 function applyFilterAndShuffle(cards, { shuffle, seed, categoryFilter }) {
   let filtered = categoryFilter
-    ? cards.filter(c => categoryFilter.has(normalizeCategory(c.category)[0]))
+    ? cards.filter(c => categoryFilter.has(normalizeCategory(c.category)[0].toLowerCase()))
     : cards;
   if (shuffle) {
     filtered = weightedShuffle(filtered, seed);
@@ -200,7 +200,8 @@ function applyFilterAndShuffle(cards, { shuffle, seed, categoryFilter }) {
 router.get('/categories', async (req, res) => {
   try {
     const targetLang = req.query.targetLang || 'ko';
-    const defaultCards = await getDefaultCards(targetLang);
+    const nativeLang = req.query.nativeLang || 'en';
+    const defaultCards = await getDefaultCards(targetLang, nativeLang);
     const categoryMap = {};
     for (const card of defaultCards) {
       const primary = normalizeCategory(card.category)[0];
@@ -212,6 +213,33 @@ router.get('/categories', async (req, res) => {
     res.json({ categories, total: defaultCards.length });
   } catch (error) {
     console.error('Get categories error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// All cards for a specific category — used by sidebar for individual card selection (no pagination)
+router.get('/category-cards', async (req, res) => {
+  try {
+    const targetLang = req.query.targetLang || 'ko';
+    const nativeLang = req.query.nativeLang || 'en';
+    const category = (req.query.category || '').toLowerCase();
+    if (!category) return res.status(400).json({ message: 'category is required' });
+
+    const defaultCards = await getDefaultCards(targetLang, nativeLang);
+    const targetField = targetLang === 'ko' ? 'korean' : targetLang === 'en' ? 'english' : targetLang;
+    const nativeField = nativeLang === 'ko' ? 'korean' : nativeLang === 'en' ? 'english' : nativeLang;
+
+    const filtered = defaultCards
+      .filter(c => normalizeCategory(c.category)[0].toLowerCase() === category)
+      .map(c => ({
+        _id: c._id.toString(),
+        [targetField]: c[targetField] || c.korean || '',
+        [nativeField]: c[nativeField] || c.english || '',
+      }));
+
+    res.json({ cards: filtered });
+  } catch (error) {
+    console.error('Get category cards error:', error);
     res.status(500).json({ message: 'Server error' });
   }
 });
@@ -264,8 +292,8 @@ router.get('/guest', async (req, res) => {
     const targetFieldName = targetLang === 'ko' ? 'korean' : targetLang === 'en' ? 'english' : targetLang;
 
     // Prepare guest cards with default mastery
-    const allGuestCards = defaultCards.map((card, i) => {
-      const c = { ...card, _id: `guest-${i}`, masteryLevel: 3, correctCount: 0, incorrectCount: 0 };
+    const allGuestCards = defaultCards.map((card) => {
+      const c = { ...card, _id: card._id.toString(), masteryLevel: 3, correctCount: 0, incorrectCount: 0 };
       if (!c[targetFieldName] && c.korean) c[targetFieldName] = c.korean;
       return c;
     });
@@ -282,6 +310,12 @@ router.get('/guest', async (req, res) => {
 
     // Replace romanization with native-script phonetics for non-Latin native speakers
     await applyNativePhonetics(pageCards, targetLang, nativeLang);
+
+    // Default cards were seeded with Korean romanization. Clear it for non-Korean targets
+    // so learners of other languages don't see Korean pronunciation text.
+    if (targetLang !== 'ko') {
+      pageCards.forEach(c => { c.romanization = ''; });
+    }
 
     res.json({ cards: pageCards, total, page, limit, hasMore: start + limit < total, seed });
   } catch (error) {
@@ -346,6 +380,13 @@ router.get('/user/:userId', isOwner('userId'), async (req, res) => {
 
     // Replace romanization with native-script phonetics for non-Latin native speakers
     await applyNativePhonetics(pageCards, targetLang, nativeLang);
+
+    // Default cards were seeded with Korean romanization. Clear it for non-Korean targets
+    // so learners of other languages don't see Korean pronunciation text.
+    // User-created cards keep their romanization (they entered it themselves).
+    if (targetLang !== 'ko') {
+      pageCards.forEach(c => { if (c.isDefault) c.romanization = ''; });
+    }
 
     res.json({ cards: pageCards, total, page, limit, hasMore: start + limit < total, seed });
   } catch (error) {

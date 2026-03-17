@@ -48,6 +48,7 @@ function FlashcardsPage() {
   const [showSidebar, setShowSidebar] = useState(false);
   const [studyStyle, setStudyStyle] = useState('both'); // 'both' | 'text' | 'audio'
   const [expandedCategories, setExpandedCategories] = useState(new Set());
+  const [categoryCardsCache, setCategoryCardsCache] = useState({});
   const [selectedCardIds, setSelectedCardIds] = useState(new Set()); // empty = study all
   const [currentPage, setCurrentPage] = useState(1);
   const [hasMore, setHasMore] = useState(false);
@@ -328,9 +329,6 @@ function FlashcardsPage() {
         shuffle: isShuffled,
         seed: seedOverride !== undefined ? seedOverride : shuffleSeed,
       };
-      if (selectedCategories.size > 0) {
-        opts.categories = Array.from(selectedCategories).join(',');
-      }
       const response = userId
         ? await flashcardService.getFlashcards(userId, page, 50, opts)
         : await flashcardService.getGuestFlashcards(page, 50, opts);
@@ -427,7 +425,14 @@ function FlashcardsPage() {
   const toggleExpandedCategory = (cat) => {
     setExpandedCategories(prev => {
       const next = new Set(prev);
-      next.has(cat) ? next.delete(cat) : next.add(cat);
+      const willExpand = !next.has(cat);
+      willExpand ? next.add(cat) : next.delete(cat);
+      // Lazy-load all cards for this category when first expanded
+      if (willExpand && !categoryCardsCache[cat]) {
+        flashcardService.getCategoryCards(cat)
+          .then(res => setCategoryCardsCache(p => ({ ...p, [cat]: res.data.cards || [] })))
+          .catch(() => setCategoryCardsCache(p => ({ ...p, [cat]: [] })));
+      }
       return next;
     });
   };
@@ -445,38 +450,91 @@ function FlashcardsPage() {
     });
   };
 
-  // Toggle a category filter — triggers backend refetch
+  // Toggle a category filter — loads cards into cache on first select (no backend refetch).
+  // When ADDING a category, remove any individually selected cards that belong to it.
   const toggleCategoryFilter = (categoryName) => {
+    const isRemoving = selectedCategories.has(categoryName);
     setSelectedCategories(prev => {
       const next = new Set(prev);
-      next.has(categoryName) ? next.delete(categoryName) : next.add(categoryName);
+      isRemoving ? next.delete(categoryName) : next.add(categoryName);
       return next;
     });
+    if (!isRemoving) {
+      // Background-load cache if not already there
+      if (!categoryCardsCache[categoryName]) {
+        flashcardService.getCategoryCards(categoryName)
+          .then(res => setCategoryCardsCache(p => ({ ...p, [categoryName]: res.data.cards || [] })))
+          .catch(() => setCategoryCardsCache(p => ({ ...p, [categoryName]: [] })));
+      }
+      // Deselect any individually selected cards that belong to this category
+      const catCards = categoryCardsCache[categoryName]
+        || flashcards.filter(c => normalizeCategory(c.category)[0] === categoryName);
+      if (catCards.length > 0) {
+        const catCardIds = new Set(catCards.map(c => c._id));
+        setSelectedCardIds(prev => new Set([...prev].filter(id => !catCardIds.has(id))));
+      }
+    }
   };
 
-  // Refetch when selectedCategories changes
+  // Reset card position when category selection changes (no API refetch — deck is computed client-side)
   useEffect(() => {
-    // Skip initial mount (handled by the mount effect)
-    if (!allCategories.length) return;
-    const newSeed = Math.floor(Math.random() * 2147483647);
-    setShuffleSeed(newSeed);
     setCurrentIndex(0);
     setIsFlipped(false);
-    setSelectedCardIds(new Set());
     if (autoPlay) { setAutoPlay(false); speechService.cancel(); }
-    fetchFlashcards(1, false, newSeed);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCategories]);
 
   // Only exclude cards missing the target field when the backend is actually
   // sending that field (i.e. at least one card has it).
   const targetLangField = getLangField(targetLangCode);
+  const nativeLangField = getLangField(nativeLangCode);
   const backendSendsTargetField = flashcards.some(c => !!c[targetLangField]);
   const allLangFilteredCards = flashcards.filter(c => !backendSendsTargetField || !!c[targetLangField]);
-  // Study deck: all cards, or only selected ones
-  const activeFlashcards = selectedCardIds.size === 0
-    ? allLangFilteredCards
-    : allLangFilteredCards.filter(c => selectedCardIds.has(c._id));
+  // Study deck: supports three modes —
+  //   • nothing selected → unfiltered paginated deck (language-filtered)
+  //   • categories and/or individual cards selected → client-side mix from cache + loaded cards
+  // Categories and individual cards can be combined freely.
+  const activeFlashcards = (() => {
+    if (selectedCardIds.size === 0 && selectedCategories.size === 0) return allLangFilteredCards;
+
+    const loadedById = new Map(allLangFilteredCards.map(c => [c._id, c]));
+    const cacheById = new Map();
+    for (const cards of Object.values(categoryCardsCache)) {
+      for (const c of cards) {
+        if (!cacheById.has(c._id)) cacheById.set(c._id, c);
+      }
+    }
+
+    const resultIds = new Set();
+    const result = [];
+
+    // Add all cards from selected categories (full data if loaded, minimal otherwise)
+    for (const cat of selectedCategories) {
+      const catCards = categoryCardsCache[cat] || [];
+      for (const c of catCards) {
+        if (!resultIds.has(c._id)) {
+          const fullCard = loadedById.get(c._id) ?? { ...c, masteryLevel: 3, isDefault: true };
+          if (fullCard[targetLangField]) {
+            result.push(fullCard);
+            resultIds.add(c._id);
+          }
+        }
+      }
+    }
+
+    // Add individually selected cards not already included via a category
+    for (const id of selectedCardIds) {
+      if (!resultIds.has(id)) {
+        const card = loadedById.get(id) ?? (cacheById.has(id) ? { ...cacheById.get(id), masteryLevel: 3, isDefault: true } : null);
+        if (card && card[targetLangField]) {
+          result.push(card);
+          resultIds.add(id);
+        }
+      }
+    }
+
+    return result;
+  })();
 
   // Reset index when the filtered deck shrinks and currentIndex is now out of bounds
   useEffect(() => {
@@ -498,7 +556,7 @@ function FlashcardsPage() {
 
     speechService.setMediaSession({
       title: card[getLangField(targetLangCode)],
-      artist: t('flashcards.cardXOfY', { current: currentIndex + 1, total: totalCards || activeFlashcards.length }),
+      artist: t('flashcards.cardXOfY', { current: currentIndex + 1, total: (selectedCategories.size > 0 || selectedCardIds.size > 0) ? activeFlashcards.length : (totalCards || activeFlashcards.length) }),
       album: 'Lingo Booth \u2014 Flashcards',
       onPlay: () => setAutoPlay(true),
       onPause: () => { setAutoPlay(false); speechService.cancel(); },
@@ -751,6 +809,11 @@ function FlashcardsPage() {
     return <div className="loading">{t('common.loading')}</div>;
   }
 
+  // Category selected but cache still loading — show spinner instead of crashing
+  if (!loading && activeFlashcards.length === 0 && (selectedCategories.size > 0 || selectedCardIds.size > 0)) {
+    return <div className="loading">{t('common.loading')}</div>;
+  }
+
   return (
     <div className="flashcards-container">
       {continuePrompt && (
@@ -967,14 +1030,14 @@ function FlashcardsPage() {
             <div className="study-controls-landscape">
               <div className="study-progress">
                 <div className="progress-text">
-                  <span>{t('flashcards.cardXOfY', { current: currentIndex + 1, total: totalCards || activeFlashcards.length })}</span>
+                  <span>{t('flashcards.cardXOfY', { current: currentIndex + 1, total: (selectedCategories.size > 0 || selectedCardIds.size > 0) ? activeFlashcards.length : (totalCards || activeFlashcards.length) })}</span>
                   <span className="mastery-display">
                     {getMasteryStars(current?.masteryLevel, true)}
                   </span>
                 </div>
                 <div className="progress-bar">
                   <div className="progress-fill"
-                    style={{ width: `${((currentIndex + 1) / (totalCards || activeFlashcards.length)) * 100}%`, background: 'var(--accent-green)' }}
+                    style={{ width: `${((currentIndex + 1) / ((selectedCategories.size > 0 || selectedCardIds.size > 0) ? activeFlashcards.length : (totalCards || activeFlashcards.length))) * 100}%`, background: 'var(--accent-green)' }}
                   ></div>
                 </div>
               </div>
@@ -990,7 +1053,7 @@ function FlashcardsPage() {
               <div className="study-controls-portrait">
                 <div className="study-progress">
                   <div className="progress-text">
-                    <span>{t('flashcards.cardXOfY', { current: currentIndex + 1, total: totalCards || activeFlashcards.length })}</span>
+                    <span>{t('flashcards.cardXOfY', { current: currentIndex + 1, total: (selectedCategories.size > 0 || selectedCardIds.size > 0) ? activeFlashcards.length : (totalCards || activeFlashcards.length) })}</span>
                     <span className="mastery-display">
                       {getMasteryStars(current?.masteryLevel, true)}
                     </span>
@@ -999,7 +1062,7 @@ function FlashcardsPage() {
                     <div
                       className="progress-fill"
                       style={{
-                        width: `${((currentIndex + 1) / (totalCards || activeFlashcards.length)) * 100}%`,
+                        width: `${((currentIndex + 1) / ((selectedCategories.size > 0 || selectedCardIds.size > 0) ? activeFlashcards.length : (totalCards || activeFlashcards.length))) * 100}%`,
                         background: 'var(--accent-green)'
                       }}
                     ></div>
@@ -1183,10 +1246,14 @@ function FlashcardsPage() {
                   </div>
                 </div>
                 <div className="card-list-header">
-                  {selectedCategories.size > 0 ? (
+                  {(selectedCategories.size > 0 || selectedCardIds.size > 0) ? (
                     <>
-                      <span className="card-list-selected-label">✓ {selectedCategories.size} {selectedCategories.size === 1 ? 'category' : 'categories'}</span>
-                      <button className="category-clear" onClick={() => setSelectedCategories(new Set())}>{t('common.clearAll', 'Clear')}</button>
+                      <span className="card-list-selected-label">
+                        ☑{selectedCategories.size > 0 ? ` ${selectedCategories.size} ${selectedCategories.size === 1 ? 'category' : 'categories'}` : ''}
+                        {selectedCategories.size > 0 && selectedCardIds.size > 0 ? ' +' : ''}
+                        {selectedCardIds.size > 0 ? ` ${selectedCardIds.size} ${selectedCardIds.size === 1 ? 'card' : 'cards'}` : ''}
+                      </span>
+                      <button className="category-clear" onClick={() => { setSelectedCategories(new Set()); setSelectedCardIds(new Set()); }}>{t('common.clearAll', 'Clear all')}</button>
                     </>
                   ) : (
                     <span className="card-list-hint">{t('flashcards.clickCategoryHint', 'Select categories to study')}</span>
@@ -1196,7 +1263,11 @@ function FlashcardsPage() {
                   {(allCategories.length > 0 ? allCategories : Object.entries(buildCategoryCards()).map(([name, data]) => ({ name, count: data.count }))).map(({ name: primary, count: metaCount }) => {
                     const isExpanded = expandedCategories.has(primary);
                     const isCatSelected = selectedCategories.has(primary);
-                    const loadedCards = flashcards.filter(c => normalizeCategory(c.category)[0] === primary);
+                    const cachedDefault = categoryCardsCache[primary];
+                    const customCards = flashcards.filter(c => !c.isDefault && normalizeCategory(c.category)[0] === primary);
+                    const allCategoryCards = cachedDefault
+                      ? [...cachedDefault, ...customCards]
+                      : flashcards.filter(c => normalizeCategory(c.category)[0] === primary);
                     return (
                       <div key={primary} className="category-group">
                         <button className={`category-item ${isCatSelected ? 'selected' : ''}`} onClick={() => toggleCategoryFilter(primary)}>
@@ -1205,15 +1276,24 @@ function FlashcardsPage() {
                           <span className="card-count">{metaCount}</span>
                           <span className={`category-expand-arrow ${isExpanded ? 'expanded' : ''}`} onClick={(e) => { e.stopPropagation(); toggleExpandedCategory(primary); }} title={isExpanded ? 'Collapse' : 'Show cards'}>›</span>
                         </button>
-                        {isExpanded && loadedCards.length > 0 && (
+                        {isExpanded && allCategoryCards.length > 0 && (
                           <div className="subtopic-list">
-                            {loadedCards.map(card => {
+                            {allCategoryCards.map(card => {
                               const isChecked = selectedCardIds.has(card._id);
                               return (
                                 <button key={card._id} className={`subtopic-item ${isChecked ? 'selected' : ''}`}
-                                  onClick={() => { setSelectedCardIds(prev => { const next = new Set(prev); next.has(card._id) ? next.delete(card._id) : next.add(card._id); return next; }); }}>
+                                  onClick={() => {
+                                    const adding = !selectedCardIds.has(card._id);
+                                    setSelectedCardIds(prev => { const next = new Set(prev); next.has(card._id) ? next.delete(card._id) : next.add(card._id); return next; });
+                                    if (adding) setSelectedCategories(prev => { const next = new Set(prev); next.delete(primary); return next; });
+                                  }}>
                                   <span className="category-check">{isChecked ? '✓' : ''}</span>
-                                  <span className="category-name">{card[getLangField(nativeLangCode)] || card[getLangField(targetLangCode)]}</span>
+                                  <span className="category-name">
+                                    {card[getLangField(targetLangCode)] || card[getLangField(nativeLangCode)]}
+                                    {card[getLangField(nativeLangCode)] && card[getLangField(targetLangCode)] && (
+                                      <span className="subtopic-native"> — {card[getLangField(nativeLangCode)]}</span>
+                                    )}
+                                  </span>
                                 </button>
                               );
                             })}
@@ -1279,12 +1359,14 @@ function FlashcardsPage() {
                   </div>
                 </div>
                 <div className="card-list-header">
-                  {selectedCategories.size > 0 ? (
+                  {(selectedCategories.size > 0 || selectedCardIds.size > 0) ? (
                     <>
-                      <span className="card-list-selected-label">✓ {selectedCategories.size} {selectedCategories.size === 1 ? 'category' : 'categories'}</span>
-                      <button className="category-clear" onClick={() => setSelectedCategories(new Set())}>
-                        {t('common.clearAll', 'Clear')}
-                      </button>
+                      <span className="card-list-selected-label">
+                        ☑{selectedCategories.size > 0 ? ` ${selectedCategories.size} ${selectedCategories.size === 1 ? 'category' : 'categories'}` : ''}
+                        {selectedCategories.size > 0 && selectedCardIds.size > 0 ? ' +' : ''}
+                        {selectedCardIds.size > 0 ? ` ${selectedCardIds.size} ${selectedCardIds.size === 1 ? 'card' : 'cards'}` : ''}
+                      </span>
+                      <button className="category-clear" onClick={() => { setSelectedCategories(new Set()); setSelectedCardIds(new Set()); }}>{t('common.clearAll', 'Clear all')}</button>
                     </>
                   ) : (
                     <span className="card-list-hint">{t('flashcards.clickCategoryHint', 'Select categories to study')}</span>
@@ -1294,7 +1376,11 @@ function FlashcardsPage() {
                   {(allCategories.length > 0 ? allCategories : Object.entries(buildCategoryCards()).map(([name, data]) => ({ name, count: data.count }))).map(({ name: primary, count: metaCount }) => {
                     const isExpanded = expandedCategories.has(primary);
                     const isCatSelected = selectedCategories.has(primary);
-                    const loadedCards = flashcards.filter(c => normalizeCategory(c.category)[0] === primary);
+                    const cachedDefault = categoryCardsCache[primary];
+                    const customCards = flashcards.filter(c => !c.isDefault && normalizeCategory(c.category)[0] === primary);
+                    const allCategoryCards = cachedDefault
+                      ? [...cachedDefault, ...customCards]
+                      : flashcards.filter(c => normalizeCategory(c.category)[0] === primary);
                     return (
                       <div key={primary} className="category-group">
                         <button
@@ -1310,24 +1396,31 @@ function FlashcardsPage() {
                             title={isExpanded ? 'Collapse' : 'Show cards'}
                           >›</span>
                         </button>
-                        {isExpanded && loadedCards.length > 0 && (
+                        {isExpanded && allCategoryCards.length > 0 && (
                           <div className="subtopic-list">
-                            {loadedCards.map(card => {
+                            {allCategoryCards.map(card => {
                               const isChecked = selectedCardIds.has(card._id);
                               return (
                                 <button
                                   key={card._id}
                                   className={`subtopic-item ${isChecked ? 'selected' : ''}`}
                                   onClick={() => {
+                                    const adding = !selectedCardIds.has(card._id);
                                     setSelectedCardIds(prev => {
                                       const next = new Set(prev);
                                       next.has(card._id) ? next.delete(card._id) : next.add(card._id);
                                       return next;
                                     });
+                                    if (adding) setSelectedCategories(prev => { const next = new Set(prev); next.delete(primary); return next; });
                                   }}
                                 >
                                   <span className="category-check">{isChecked ? '✓' : ''}</span>
-                                  <span className="category-name">{card[getLangField(nativeLangCode)] || card[getLangField(targetLangCode)]}</span>
+                                  <span className="category-name">
+                                    {card[getLangField(targetLangCode)] || card[getLangField(nativeLangCode)]}
+                                    {card[getLangField(nativeLangCode)] && card[getLangField(targetLangCode)] && (
+                                      <span className="subtopic-native"> — {card[getLangField(nativeLangCode)]}</span>
+                                    )}
+                                  </span>
                                 </button>
                               );
                             })}
