@@ -9,6 +9,7 @@ import { AuthStackParamList } from '../../navigation/AuthStack';
 import LANGUAGES, { Language } from '../../config/languages';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
+import { userService } from '../../services/api';
 import { colors } from '../../config/theme';
 
 type NavProp = NativeStackNavigationProp<AuthStackParamList, 'LanguageSelect'>;
@@ -21,11 +22,12 @@ const LanguageSelectScreen: React.FC = () => {
   const mode = route.params.mode;
   const insets = useSafeAreaInsets();
 
-  const { enterGuestMode } = useAuthStore();
+  const { enterGuestMode, userId } = useAuthStore();
   const { nativeLanguage: savedNative, targetLanguage: savedTarget, setLanguages } = useSettingsStore();
 
   const [nativeLang, setNativeLang] = useState(savedNative || 'en');
   const [targetLang, setTargetLang] = useState(savedTarget || 'ko');
+  const [saving, setSaving] = useState(false);
 
   const langEntries = Object.entries(LANGUAGES);
 
@@ -41,11 +43,29 @@ const LanguageSelectScreen: React.FC = () => {
 
   const canContinue = nativeLang && targetLang && nativeLang !== targetLang;
 
-  const handleContinue = () => {
+  const handleContinue = async () => {
     if (!canContinue) return;
     setLanguages(nativeLang, targetLang);
+    i18n.changeLanguage(nativeLang);
+
     if (mode === 'guest') {
       enterGuestMode();
+    } else if (mode === 'google-setup') {
+      // User already logged in via Google — save language prefs to backend
+      setSaving(true);
+      try {
+        if (userId) {
+          await userService.updateProfile(userId, {
+            nativeLanguage: nativeLang,
+            targetLanguage: targetLang,
+          });
+        }
+      } catch {
+        // Non-fatal — languages are saved locally anyway
+      } finally {
+        setSaving(false);
+      }
+      // Navigation handled automatically by RootNavigator (user is now authenticated)
     } else {
       navigation.navigate('Register');
     }
@@ -142,7 +162,8 @@ const LanguageSelectScreen: React.FC = () => {
           <Button
             mode="contained"
             onPress={handleContinue}
-            disabled={!canContinue}
+            disabled={!canContinue || saving}
+            loading={saving}
             style={[styles.continueButton, !canContinue && styles.continueDisabled]}
             labelStyle={styles.continueLabel}
           >

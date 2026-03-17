@@ -10,7 +10,7 @@
     "preview": {
       "android": {
         "buildType": "apk",
-        "image": "expo-sdk-54"
+        "image": "sdk-54"
       },
       "distribution": "internal"
     },

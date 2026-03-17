@@ -71,19 +71,20 @@ async function applyNativePhonetics(cards, targetLang, nativeLang) {
   return cards;
 }
 
-// --- In-memory cache for default cards per targetLang ---
-const defaultCardsCache = new Map(); // targetLang -> { cards, timestamp }
+// --- In-memory cache for default cards per targetLang+nativeLang ---
+const defaultCardsCache = new Map(); // `${targetLang}:${nativeLang}` -> { cards, timestamp }
 const CACHE_TTL = 60 * 60 * 1000; // 1 hour
 
-async function getDefaultCards(targetLang = 'ko') {
-  const cached = defaultCardsCache.get(targetLang);
+async function getDefaultCards(targetLang = 'ko', nativeLang = 'en') {
+  const cacheKey = `${targetLang}:${nativeLang}`;
+  const cached = defaultCardsCache.get(cacheKey);
   if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
     return cached.cards;
   }
-  const cards = await Flashcard.find({ isDefault: true, targetLang })
+  const cards = await Flashcard.find({ isDefault: true, targetLang, nativeLang })
     .sort({ defaultIndex: 1 })
     .lean();
-  defaultCardsCache.set(targetLang, { cards, timestamp: Date.now() });
+  defaultCardsCache.set(cacheKey, { cards, timestamp: Date.now() });
   return cards;
 }
 
@@ -129,7 +130,7 @@ router.get('/guest', async (req, res) => {
   try {
     const targetLang = req.query.targetLang || 'ko';
     const nativeLang = req.query.nativeLang || 'en';
-    const defaultCards = await getDefaultCards(targetLang);
+    const defaultCards = await getDefaultCards(targetLang, nativeLang);
     const guestCards = defaultCards.map((card, i) => ({
       ...card,
       _id: `guest-${i}`,
@@ -158,11 +159,11 @@ router.get('/user/:userId', isOwner('userId'), async (req, res) => {
     const targetLang = req.query.targetLang || 'ko';
     const nativeLang = req.query.nativeLang || 'en';
 
-    // Default cards from DB (cached, filtered by targetLang)
-    const defaultCards = await getDefaultCards(targetLang);
+    // Default cards from DB (cached, filtered by targetLang + nativeLang)
+    const defaultCards = await getDefaultCards(targetLang, nativeLang);
 
-    // User's own private flashcards (filtered by targetLang)
-    const userFlashcards = await Flashcard.find({ userId, targetLang }).lean();
+    // User's own private flashcards (filtered by targetLang + nativeLang)
+    const userFlashcards = await Flashcard.find({ userId, targetLang, nativeLang }).lean();
     const normalizedUserCards = userFlashcards.map(fc => ({
       ...fc,
       category: normalizeCategory(fc.category),

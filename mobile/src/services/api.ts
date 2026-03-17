@@ -59,6 +59,8 @@ export const authService = {
     api.post('/auth/guest-activity', data),
   verifyEmail: (token: string) =>
     api.get(`/auth/verify-email/${token}`),
+  googleLogin: (credential: string, guestXP: number, nativeLanguage: string, targetLanguage: string) =>
+    api.post('/auth/google', { credential, guestXP, nativeLanguage, targetLanguage }),
 };
 
 export const lessonService = {

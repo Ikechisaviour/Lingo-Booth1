@@ -8,7 +8,7 @@ import VerifyEmailScreen from '../screens/auth/VerifyEmailScreen';
 export type AuthStackParamList = {
   Login: undefined;
   Register: undefined;
-  LanguageSelect: { mode: 'register' | 'guest' };
+  LanguageSelect: { mode: 'register' | 'guest' | 'google-setup' };
   VerifyEmail: { token?: string };
 };
 

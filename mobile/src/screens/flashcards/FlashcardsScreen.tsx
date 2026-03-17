@@ -10,7 +10,6 @@ import {
   Modal,
   FlatList,
   AppState,
-  Platform,
 } from 'react-native';
 import { Text, Button, IconButton, TextInput, FAB, Chip, ProgressBar } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
@@ -23,16 +22,8 @@ import {
   dismissPlayerNotification,
 } from '../../services/playerNotification';
 
-// PiP is Android-only and unavailable in Expo Go — import safely
-let PipHandler: { enterPipMode: (w?: number, h?: number) => void } | null = null;
-if (Platform.OS === 'android') {
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    PipHandler = require('react-native-pip-android').default;
-  } catch {
-    // Not linked (e.g. Expo Go) — PiP silently disabled
-  }
-}
+// PiP is not available in this build
+const PipHandler: null = null;
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import LANGUAGES, { getLangName, getLangField, langHasRomanization } from '../../config/languages';
@@ -97,7 +88,7 @@ const FlashcardsScreen: React.FC = () => {
     requestNotifPermissions();
   }, []);
 
-  // Fetch flashcards
+  // Fetch flashcards — re-runs when userId or language pair changes
   const fetchFlashcards = useCallback(async () => {
     try {
       setLoading(true);
@@ -111,10 +102,14 @@ const FlashcardsScreen: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  }, [userId, t]);
+  }, [userId, targetLanguage, nativeLanguage, t]);
 
   useEffect(() => {
     fetchFlashcards();
+    // Reset selections when language pair changes so stale card IDs don't linger
+    setSelectedCategories(new Set());
+    setSelectedCardIds(new Set());
+    setCurrentIndex(0);
   }, [fetchFlashcards]);
 
   // Keep autoPlayRef in sync
@@ -122,10 +117,7 @@ const FlashcardsScreen: React.FC = () => {
     autoPlayRef.current = autoPlay;
   }, [autoPlay]);
 
-  // Category-filtered flashcards
-  const backendSendsTargetField =
-    flashcards.some((c) => !!c[targetField]);
-
+  // Only show cards that have content in the user's target language field
   // All cards matching the category filter — used for the card picker list
   const categoryFilteredCards =
     (selectedCategories.size === 0
@@ -134,7 +126,7 @@ const FlashcardsScreen: React.FC = () => {
           const cats = normalizeCategory(c.category);
           return cats.some((cat) => selectedCategories.has(cat));
         })
-    ).filter((c) => !backendSendsTargetField || !!c[targetField]);
+    ).filter((c) => !!c[targetField]);
 
   // Final study deck: further filtered to only individually selected cards
   const activeFlashcards =

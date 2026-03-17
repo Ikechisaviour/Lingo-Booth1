@@ -40,7 +40,8 @@
     "extra": {
       "eas": {
         "projectId": "61ea2a51-1b2d-44fd-af79-7ddf10ea3ad5"
-      }
+      },
+      "googleWebClientId": "185911237323-s79tga5o3b53bsnri35sibmn1srg0en5.apps.googleusercontent.com"
     },
     "plugins": [
       "expo-asset",
@@ -55,7 +56,8 @@
       ],
       "./plugins/withPictureInPicture",
       "expo-build-properties",
-      "expo-localization"
+      "expo-localization",
+      "expo-web-browser"
     ]
   }
 }

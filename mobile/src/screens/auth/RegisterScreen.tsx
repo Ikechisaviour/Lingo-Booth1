@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   ScrollView,
@@ -6,27 +6,36 @@ import {
   Image,
   KeyboardAvoidingView,
   Platform,
+  TouchableOpacity,
 } from 'react-native';
-import { Text, TextInput, Button, HelperText } from 'react-native-paper';
+import { Text, TextInput, Button, HelperText, Divider } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
+import Constants from 'expo-constants';
+import * as WebBrowser from 'expo-web-browser';
+import * as Google from 'expo-auth-session/providers/google';
 import { AuthStackParamList } from '../../navigation/AuthStack';
 import { authService } from '../../services/api';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { colors } from '../../config/theme';
 
+WebBrowser.maybeCompleteAuthSession();
+
+const GOOGLE_WEB_CLIENT_ID =
+  (Constants.expoConfig?.extra?.googleWebClientId as string | undefined) || '';
+
 type RegisterNavProp = NativeStackNavigationProp<AuthStackParamList, 'Register'>;
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const RegisterScreen: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigation = useNavigation<RegisterNavProp>();
   const { login, guestXP, clearGuestXP } = useAuthStore();
-  const { nativeLanguage, targetLanguage } = useSettingsStore();
+  const { nativeLanguage, targetLanguage, setLanguages, setVoice } = useSettingsStore();
   const insets = useSafeAreaInsets();
 
   const [username, setUsername] = useState('');
@@ -37,6 +46,43 @@ const RegisterScreen: React.FC = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
+
+  const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
+    clientId: GOOGLE_WEB_CLIENT_ID,
+  });
+
+  useEffect(() => {
+    if (response?.type === 'success') {
+      const idToken = response.params.id_token;
+      if (idToken) handleGoogleToken(idToken);
+    } else if (response?.type === 'error' || response?.type === 'dismiss') {
+      setGoogleLoading(false);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [response]);
+
+  const handleGoogleToken = async (idToken: string) => {
+    setGoogleLoading(true);
+    setError('');
+    try {
+      const res = await authService.googleLogin(idToken, guestXP, nativeLanguage, targetLanguage);
+      const { token, user, isNewUser } = res.data;
+      login({ token, user });
+      clearGuestXP();
+      if (user.preferredVoice) setVoice(user.preferredVoice);
+      if (isNewUser) {
+        navigation.navigate('LanguageSelect', { mode: 'google-setup' });
+      } else {
+        setLanguages(user.nativeLanguage || 'en', user.targetLanguage || 'ko');
+        i18n.changeLanguage(user.nativeLanguage || 'en');
+      }
+    } catch (err: any) {
+      setError(err.response?.data?.message || t('login.googleFailed', 'Google sign-in failed.'));
+    } finally {
+      setGoogleLoading(false);
+    }
+  };
 
   const emailTouched = email.length > 0;
   const emailValid = EMAIL_REGEX.test(email);
@@ -195,6 +241,32 @@ const RegisterScreen: React.FC = () => {
               {loading ? t('register.creatingAccount') : t('register.signUpButton')}
             </Button>
 
+            {!!GOOGLE_WEB_CLIENT_ID && (
+              <>
+                <View style={styles.divider}>
+                  <Divider style={styles.dividerLine} />
+                  <Text style={styles.dividerText}>{t('common.or', 'or')}</Text>
+                  <Divider style={styles.dividerLine} />
+                </View>
+                <TouchableOpacity
+                  style={[styles.googleButton, (googleLoading || !request) && styles.googleButtonDisabled]}
+                  onPress={() => { setError(''); setGoogleLoading(true); promptAsync(); }}
+                  disabled={googleLoading || !request}
+                  activeOpacity={0.8}
+                >
+                  <Image
+                    source={{ uri: 'https://www.google.com/favicon.ico' }}
+                    style={styles.googleIcon}
+                  />
+                  <Text style={styles.googleButtonText}>
+                    {googleLoading
+                      ? t('login.signingInGoogle', 'Signing in...')
+                      : t('register.continueWithGoogle', 'Sign up with Google')}
+                  </Text>
+                </TouchableOpacity>
+              </>
+            )}
+
             <View style={styles.linkRow}>
               <Text style={styles.linkText}>{t('register.hasAccount')} </Text>
               <Text style={styles.link} onPress={() => navigation.navigate('Login')}>
@@ -253,6 +325,23 @@ const styles = StyleSheet.create({
   validationText: { fontSize: 13, marginTop: -8, marginBottom: 8, marginLeft: 4 },
   primaryButton: { marginTop: 8, borderRadius: 10, backgroundColor: colors.primary },
   buttonLabel: { fontSize: 16, fontWeight: '600', paddingVertical: 4 },
+  divider: { flexDirection: 'row', alignItems: 'center', marginVertical: 16 },
+  dividerLine: { flex: 1, backgroundColor: colors.border },
+  dividerText: { marginHorizontal: 12, color: colors.textMuted, fontSize: 13 },
+  googleButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    borderWidth: 1.5,
+    borderColor: '#dadce0',
+    borderRadius: 10,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+  },
+  googleButtonDisabled: { opacity: 0.6 },
+  googleIcon: { width: 20, height: 20, marginRight: 10 },
+  googleButtonText: { fontSize: 15, fontWeight: '600', color: '#3c4043' },
   linkRow: { flexDirection: 'row', justifyContent: 'center', marginTop: 20 },
   linkText: { color: colors.textSecondary, fontSize: 14 },
   link: { color: colors.primary, fontSize: 14, fontWeight: '600' },

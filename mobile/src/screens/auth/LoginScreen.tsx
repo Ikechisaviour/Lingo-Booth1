@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   ScrollView,
@@ -6,25 +6,34 @@ import {
   Image,
   KeyboardAvoidingView,
   Platform,
+  TouchableOpacity,
 } from 'react-native';
 import { Text, TextInput, Button, HelperText, Divider } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
+import Constants from 'expo-constants';
+import * as WebBrowser from 'expo-web-browser';
+import * as Google from 'expo-auth-session/providers/google';
 import { AuthStackParamList } from '../../navigation/AuthStack';
 import { authService } from '../../services/api';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { colors } from '../../config/theme';
 
+WebBrowser.maybeCompleteAuthSession();
+
 type LoginNavProp = NativeStackNavigationProp<AuthStackParamList, 'Login'>;
+
+const GOOGLE_WEB_CLIENT_ID =
+  (Constants.expoConfig?.extra?.googleWebClientId as string | undefined) || '';
 
 const LoginScreen: React.FC = () => {
   const { t, i18n } = useTranslation();
   const navigation = useNavigation<LoginNavProp>();
   const { login, guestXP, clearGuestXP } = useAuthStore();
-  const { setLanguages, setVoice } = useSettingsStore();
+  const { setLanguages, setVoice, nativeLanguage, targetLanguage } = useSettingsStore();
   const insets = useSafeAreaInsets();
 
   const [email, setEmail] = useState('');
@@ -32,7 +41,61 @@ const LoginScreen: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
   const [suspended, setSuspended] = useState<{ message: string; reason: string } | null>(null);
+
+  const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
+    clientId: GOOGLE_WEB_CLIENT_ID,
+  });
+
+  // Handle Google auth response
+  useEffect(() => {
+    if (response?.type === 'success') {
+      const idToken = response.params.id_token;
+      if (idToken) {
+        handleGoogleToken(idToken);
+      }
+    } else if (response?.type === 'error') {
+      setGoogleLoading(false);
+      setError(t('login.googleFailed', 'Google sign-in failed. Please try again.'));
+    } else if (response?.type === 'dismiss') {
+      setGoogleLoading(false);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [response]);
+
+  const handleGoogleToken = async (idToken: string) => {
+    setGoogleLoading(true);
+    setError('');
+    setSuspended(null);
+    try {
+      const res = await authService.googleLogin(idToken, guestXP, nativeLanguage, targetLanguage);
+      const { token, user, isNewUser } = res.data;
+
+      login({ token, user });
+      clearGuestXP();
+      if (user.preferredVoice) setVoice(user.preferredVoice);
+
+      if (isNewUser) {
+        // New Google user — let them pick their language pair
+        navigation.navigate('LanguageSelect', { mode: 'google-setup' });
+      } else {
+        setLanguages(user.nativeLanguage || 'en', user.targetLanguage || 'ko');
+        i18n.changeLanguage(user.nativeLanguage || 'en');
+      }
+    } catch (err: any) {
+      if (err.response?.status === 403 && err.response?.data?.reason) {
+        setSuspended({
+          message: err.response.data.message,
+          reason: err.response.data.reason,
+        });
+      } else {
+        setError(err.response?.data?.message || t('login.googleFailed', 'Google sign-in failed.'));
+      }
+    } finally {
+      setGoogleLoading(false);
+    }
+  };
 
   const handleLogin = async () => {
     if (!email.trim() || !password.trim()) return;
@@ -64,6 +127,12 @@ const LoginScreen: React.FC = () => {
 
   const handleGuestMode = () => {
     navigation.navigate('LanguageSelect', { mode: 'guest' });
+  };
+
+  const handleGooglePress = () => {
+    setError('');
+    setGoogleLoading(true);
+    promptAsync();
   };
 
   return (
@@ -115,6 +184,32 @@ const LoginScreen: React.FC = () => {
               </HelperText>
             )}
 
+            {/* Google Sign-In */}
+            {!!GOOGLE_WEB_CLIENT_ID && (
+              <TouchableOpacity
+                style={[styles.googleButton, (googleLoading || !request) && styles.googleButtonDisabled]}
+                onPress={handleGooglePress}
+                disabled={googleLoading || !request}
+                activeOpacity={0.8}
+              >
+                <Image
+                  source={{ uri: 'https://www.google.com/favicon.ico' }}
+                  style={styles.googleIcon}
+                />
+                <Text style={styles.googleButtonText}>
+                  {googleLoading
+                    ? t('login.signingInGoogle', 'Signing in...')
+                    : t('login.continueWithGoogle', 'Continue with Google')}
+                </Text>
+              </TouchableOpacity>
+            )}
+
+            <View style={styles.divider}>
+              <Divider style={styles.dividerLine} />
+              <Text style={styles.dividerText}>{t('common.or', 'or')}</Text>
+              <Divider style={styles.dividerLine} />
+            </View>
+
             <TextInput
               label={t('login.email')}
               value={email}
@@ -159,7 +254,7 @@ const LoginScreen: React.FC = () => {
 
             <View style={styles.divider}>
               <Divider style={styles.dividerLine} />
-              <Text style={styles.dividerText}>{t('common.or')}</Text>
+              <Text style={styles.dividerText}>{t('common.or', 'or')}</Text>
               <Divider style={styles.dividerLine} />
             </View>
 
@@ -235,7 +330,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     color: colors.textSecondary,
-    marginBottom: 24,
+    marginBottom: 20,
   },
   input: {
     marginBottom: 12,
@@ -251,10 +346,37 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     paddingVertical: 4,
   },
+
+  googleButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    borderWidth: 1.5,
+    borderColor: '#dadce0',
+    borderRadius: 10,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    marginBottom: 4,
+  },
+  googleButtonDisabled: {
+    opacity: 0.6,
+  },
+  googleIcon: {
+    width: 20,
+    height: 20,
+    marginRight: 10,
+  },
+  googleButtonText: {
+    fontSize: 15,
+    fontWeight: '600',
+    color: '#3c4043',
+  },
+
   divider: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 20,
+    marginVertical: 16,
   },
   dividerLine: {
     flex: 1,

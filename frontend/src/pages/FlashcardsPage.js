@@ -50,6 +50,7 @@ function FlashcardsPage() {
   const [expandedCategories, setExpandedCategories] = useState(new Set());
   const [selectedCardIds, setSelectedCardIds] = useState(new Set()); // empty = study all
   const autoPlayRef = useRef(false);
+  const prefetchEndRef = useRef(0); // highest card index (exclusive) already queued for prefetch
   const sidebarToggleRef = useRef(null);
   const landscapeSidebarRef = useRef(null);
   const originalOrderRef = useRef(null);
@@ -444,20 +445,27 @@ function FlashcardsPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autoPlay, currentIndex, activeFlashcards.length]);
 
-  // Pre-fetch audio for upcoming cards so autoplay works with screen locked
-  // (fetch() is suspended in background, but cached blobs play fine)
+  // Rolling pre-fetch: at card N, cache N+1..N+50 so autoplay works with screen locked.
+  // Re-triggers on every card advance; skips work when the lookahead window is still full.
   useEffect(() => {
-    if (!autoPlay || activeFlashcards.length === 0) return;
+    if (!autoPlay) {
+      prefetchEndRef.current = 0;
+      speechService.clearBlobCache();
+      return;
+    }
+    if (activeFlashcards.length === 0) return;
 
-    const cardsToCache = activeFlashcards.slice(
-      currentIndex,
-      Math.min(currentIndex + 50, activeFlashcards.length)
-    );
+    // Only kick off a new prefetch batch when within 10 cards of the cached window end
+    if (currentIndex + 10 < prefetchEndRef.current) return;
+
+    const start = currentIndex + 1;
+    const end = Math.min(currentIndex + 51, activeFlashcards.length);
+    prefetchEndRef.current = end;
+
+    const cardsToCache = activeFlashcards.slice(start, end);
     speechService.prefetchCards(cardsToCache, showsTargetFirst, targetLangCode, nativeLangCode);
-
-    return () => speechService.clearBlobCache();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [autoPlay]); // only on autoplay toggle, not every card change
+  }, [autoPlay, currentIndex]); // re-check on every card advance for rolling window
 
   const handleNext = async () => {
     if (transitioningRef.current || currentIndex >= activeFlashcards.length - 1) return;
