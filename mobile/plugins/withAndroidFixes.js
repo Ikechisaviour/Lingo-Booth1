@@ -34,14 +34,6 @@ subprojects {
                 compileSdkVersion 35
             }
         }
-        // Fix react-native-track-player Kotlin null-safety errors with Kotlin 2.x
-        if (project.name == 'react-native-track-player') {
-            project.tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
-                compilerOptions {
-                    freeCompilerArgs.addAll(['-Xno-param-assertions', '-Xno-call-assertions', '-Xno-receiver-assertions'])
-                }
-            }
-        }
     }
 }
 `;
