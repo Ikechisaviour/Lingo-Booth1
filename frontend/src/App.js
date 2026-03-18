@@ -19,6 +19,8 @@ import AdminDashboard from './pages/AdminDashboard';
 import VerifyEmailPage from './pages/VerifyEmailPage';
 import './App.css';
 
+const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID || '';
+
 // Listens for mid-session suspension and redirects to login
 function SuspensionListener({ onSuspended }) {
   const navigate = useNavigate();
@@ -243,10 +245,8 @@ function App() {
   // Check if user can access the app (either authenticated or guest)
   const canAccessApp = isAuthenticated || isGuest;
 
-  const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
-
   return (
-    <GoogleOAuthProvider clientId={googleClientId || ''}>
+    <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
     <Router>
       <SuspensionListener onSuspended={handleSuspended} />
       <div className={`App${challengeMode ? ' challenge-theme' : ''}`}>
