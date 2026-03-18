@@ -1,34 +1,24 @@
-import TrackPlayer from 'react-native-track-player';
+import { Audio } from 'expo-av';
 import { ttsService } from './api';
 
-let playerReady = false;
+let sound: Audio.Sound | null = null;
 let speaking = false;
 let cancelFlag = false;
+let audioReady = false;
 
 /**
- * Initialise TrackPlayer once. Safe to call multiple times — subsequent calls
- * are no-ops. Must be called while the app is in the foreground.
+ * Configure audio mode once. Safe to call multiple times.
  */
 async function setup(): Promise<void> {
-  if (playerReady) return;
+  if (audioReady) return;
   try {
-    await TrackPlayer.setupPlayer({
-      minBuffer: 5,
-      maxBuffer: 30,
-      waitForBuffer: true,
+    await Audio.setAudioModeAsync({
+      playsInSilentModeIOS: true,
+      staysActiveInBackground: true,
+      shouldDuckAndroid: true,
     });
-    const { Capability } = require('react-native-track-player');
-    await TrackPlayer.updateOptions({
-      capabilities: [Capability.Play, Capability.Pause, Capability.Stop],
-      compactCapabilities: [Capability.Play, Capability.Pause, Capability.Stop],
-    });
-    playerReady = true;
-  } catch (e: any) {
-    // "The player has already been initialized" — treat as success
-    if (e?.code === 'player_already_initialized' || /already.*init/i.test(e?.message ?? '')) {
-      playerReady = true;
-    }
-  }
+    audioReady = true;
+  } catch {}
 }
 
 /**
@@ -40,7 +30,7 @@ function speak(text: string, options?: { lang?: string; voice?: string; rate?: s
 
 /**
  * Play TTS audio and return a promise that resolves when playback finishes.
- * Uses TrackPlayer so audio continues in background with a media notification.
+ * Uses expo-av for audio playback with background support.
  */
 async function speakAsync(
   text: string,
@@ -61,21 +51,17 @@ async function speakAsync(
       options?.rate,
     );
 
-    await TrackPlayer.reset();
-    await TrackPlayer.add({
-      id: `tts-${Date.now()}`,
-      url,
-      title: text.slice(0, 60),
-      artist: 'Lingo Booth',
-    });
+    const { sound: newSound } = await Audio.Sound.createAsync(
+      { uri: url },
+      { shouldPlay: true },
+    );
+    sound = newSound;
 
     if (cancelFlag) {
-      await TrackPlayer.reset();
+      await cleanup();
       speaking = false;
       return;
     }
-
-    await TrackPlayer.play();
 
     // Wait for playback to end or cancellation
     await new Promise<void>((resolve) => {
@@ -84,14 +70,15 @@ async function speakAsync(
         if (done) return;
         done = true;
         clearInterval(cancelCheck);
-        endSub.remove();
-        errSub.remove();
         resolve();
       };
 
-      const { Event } = require('react-native-track-player');
-      const endSub = TrackPlayer.addEventListener(Event.PlaybackQueueEnded, finish);
-      const errSub = TrackPlayer.addEventListener(Event.PlaybackError, finish);
+      newSound.setOnPlaybackStatusUpdate((status) => {
+        if (status.isLoaded && status.didJustFinish) {
+          finish();
+        }
+      });
+
       const cancelCheck = setInterval(() => {
         if (cancelFlag) finish();
       }, 100);
@@ -99,6 +86,7 @@ async function speakAsync(
   } catch {
     // Network or playback error — silent
   } finally {
+    await cleanup();
     speaking = false;
   }
 }
@@ -137,15 +125,23 @@ async function waitAudio(ms: number): Promise<void> {
 }
 
 /**
+ * Unload the current sound instance.
+ */
+async function cleanup(): Promise<void> {
+  if (sound) {
+    try {
+      await sound.unloadAsync();
+    } catch {}
+    sound = null;
+  }
+}
+
+/**
  * Stop any ongoing playback.
  */
 async function cancel(): Promise<void> {
   cancelFlag = true;
-  if (playerReady) {
-    try {
-      await TrackPlayer.reset();
-    } catch {}
-  }
+  await cleanup();
   speaking = false;
 }
 
@@ -154,14 +150,9 @@ function isSpeaking(): boolean {
 }
 
 /**
- * Update the notification metadata (card info) without interrupting playback.
+ * Update the notification metadata — no-op with expo-av.
  */
-async function updateNotification(title: string, artist: string): Promise<void> {
-  if (!playerReady) return;
-  try {
-    await TrackPlayer.updateNowPlayingMetadata({ title, artist });
-  } catch {}
-}
+async function updateNotification(_title: string, _artist: string): Promise<void> {}
 
 const speechService = {
   setup,
