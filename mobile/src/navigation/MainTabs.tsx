@@ -2,9 +2,10 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
+import { Alert } from 'react-native';
 import { useAuthStore } from '../stores/authStore';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { colors, shadows } from '../config/theme';
+import { useAppColors, shadows } from '../config/theme';
 
 import HomeScreen from '../screens/home/HomeScreen';
 import LessonsListScreen from '../screens/lessons/LessonsListScreen';
@@ -32,16 +33,19 @@ const ProfileStackScreen: React.FC = () => (
   </ProfileStack.Navigator>
 );
 
+// Dummy screen — never actually rendered; the tab listener intercepts first
+const EmptyScreen: React.FC = () => null;
+
 const MainTabs: React.FC = () => {
   const { t } = useTranslation();
-  const { isGuest, challengeMode } = useAuthStore();
-  const activeColor = challengeMode ? colors.accentGreen : colors.primary;
+  const colors = useAppColors();
+  const { isGuest, logout } = useAuthStore();
 
   return (
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: activeColor,
+        tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: colors.textMuted,
         tabBarStyle: {
           backgroundColor: colors.surface,
@@ -108,6 +112,31 @@ const MainTabs: React.FC = () => {
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="account" color={color} size={size} />
             ),
+          }}
+        />
+      )}
+      {isGuest && (
+        <Tab.Screen
+          name="Login"
+          component={EmptyScreen}
+          options={{
+            tabBarLabel: t('nav.login', 'Login'),
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="login" color={color} size={size} />
+            ),
+          }}
+          listeners={{
+            tabPress: (e) => {
+              e.preventDefault();
+              Alert.alert(
+                t('guest.loginTitle', 'Sign In'),
+                t('guest.loginMessage', 'Create an account or sign in to save your progress and unlock all features.'),
+                [
+                  { text: t('guest.maybeLater', 'Maybe Later'), style: 'cancel' },
+                  { text: t('guest.signIn', 'Sign In'), onPress: () => logout() },
+                ],
+              );
+            },
           }}
         />
       )}

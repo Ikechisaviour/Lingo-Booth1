@@ -108,6 +108,20 @@ function App() {
     document.documentElement.setAttribute('lang', i18n.language);
   }, [i18n.language]);
 
+  // Auto-scroll inputs into view when mobile keyboard opens
+  useEffect(() => {
+    if (!('ontouchstart' in window)) return;
+    const handleFocusIn = (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+        setTimeout(() => {
+          e.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 300);
+      }
+    };
+    document.addEventListener('focusin', handleFocusIn);
+    return () => document.removeEventListener('focusin', handleFocusIn);
+  }, []);
+
   // Start / stop guest activity tracker alongside guest mode
   useEffect(() => {
     if (isGuest) {

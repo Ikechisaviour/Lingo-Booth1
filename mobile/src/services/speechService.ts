@@ -1,21 +1,37 @@
-import { Audio } from 'expo-av';
+import TrackPlayer, { Event, Capability } from 'react-native-track-player';
 import { ttsService } from './api';
 
-let currentSound: Audio.Sound | null = null;
+let playerReady = false;
 let speaking = false;
 let cancelFlag = false;
 
-async function ensureAudioMode() {
-  await Audio.setAudioModeAsync({
-    playsInSilentModeIOS: true,
-    staysActiveInBackground: true,
-    shouldDuckAndroid: true,
-  });
+/**
+ * Initialise TrackPlayer once. Safe to call multiple times — subsequent calls
+ * are no-ops. Must be called while the app is in the foreground.
+ */
+async function setup(): Promise<void> {
+  if (playerReady) return;
+  try {
+    await TrackPlayer.setupPlayer({
+      minBuffer: 5,
+      maxBuffer: 30,
+      waitForBuffer: true,
+    });
+    await TrackPlayer.updateOptions({
+      capabilities: [Capability.Play, Capability.Pause, Capability.Stop],
+      compactCapabilities: [Capability.Play, Capability.Pause, Capability.Stop],
+    });
+    playerReady = true;
+  } catch (e: any) {
+    // "The player has already been initialized" — treat as success
+    if (e?.code === 'player_already_initialized' || /already.*init/i.test(e?.message ?? '')) {
+      playerReady = true;
+    }
+  }
 }
 
 /**
- * Play TTS audio from the backend for the given text.
- * Fire-and-forget — returns immediately.
+ * Fire-and-forget speak.
  */
 function speak(text: string, options?: { lang?: string; voice?: string; rate?: string }) {
   speakAsync(text, options).catch(() => {});
@@ -23,6 +39,7 @@ function speak(text: string, options?: { lang?: string; voice?: string; rate?: s
 
 /**
  * Play TTS audio and return a promise that resolves when playback finishes.
+ * Uses TrackPlayer so audio continues in background with a media notification.
  */
 async function speakAsync(
   text: string,
@@ -34,7 +51,8 @@ async function speakAsync(
   speaking = true;
 
   try {
-    await ensureAudioMode();
+    await setup();
+
     const url = ttsService.buildSpeakUrl(
       text,
       options?.lang || 'ko-KR',
@@ -42,33 +60,43 @@ async function speakAsync(
       options?.rate,
     );
 
-    const { sound } = await Audio.Sound.createAsync(
-      { uri: url },
-      { shouldPlay: true },
-    );
-    currentSound = sound;
+    await TrackPlayer.reset();
+    await TrackPlayer.add({
+      id: `tts-${Date.now()}`,
+      url,
+      title: text.slice(0, 60),
+      artist: 'Lingo Booth',
+    });
 
     if (cancelFlag) {
-      await sound.unloadAsync();
+      await TrackPlayer.reset();
       speaking = false;
       return;
     }
 
-    await new Promise<void>((resolve) => {
-      sound.setOnPlaybackStatusUpdate((status) => {
-        if (!status.isLoaded) {
-          resolve();
-        } else if (status.didJustFinish) {
-          resolve();
-        }
-      });
-    });
+    await TrackPlayer.play();
 
-    await sound.unloadAsync();
+    // Wait for playback to end or cancellation
+    await new Promise<void>((resolve) => {
+      let done = false;
+      const finish = () => {
+        if (done) return;
+        done = true;
+        clearInterval(cancelCheck);
+        endSub.remove();
+        errSub.remove();
+        resolve();
+      };
+
+      const endSub = TrackPlayer.addEventListener(Event.PlaybackQueueEnded, finish);
+      const errSub = TrackPlayer.addEventListener(Event.PlaybackError, finish);
+      const cancelCheck = setInterval(() => {
+        if (cancelFlag) finish();
+      }, 100);
+    });
   } catch {
-    // Network error or playback error — silent
+    // Network or playback error — silent
   } finally {
-    currentSound = null;
     speaking = false;
   }
 }
@@ -89,14 +117,12 @@ async function speakRepeat(
 }
 
 /**
- * Wait for the specified duration. Unlike setTimeout, this uses Audio
- * to keep the app active when in background.
+ * Wait for the specified duration.
  */
 async function waitAudio(ms: number): Promise<void> {
   if (cancelFlag) return;
   return new Promise((resolve) => {
     const timer = setTimeout(resolve, ms);
-    // If cancelled during wait, resolve immediately
     const checkCancel = setInterval(() => {
       if (cancelFlag) {
         clearTimeout(timer);
@@ -113,12 +139,10 @@ async function waitAudio(ms: number): Promise<void> {
  */
 async function cancel(): Promise<void> {
   cancelFlag = true;
-  if (currentSound) {
+  if (playerReady) {
     try {
-      await currentSound.stopAsync();
-      await currentSound.unloadAsync();
+      await TrackPlayer.reset();
     } catch {}
-    currentSound = null;
   }
   speaking = false;
 }
@@ -127,13 +151,25 @@ function isSpeaking(): boolean {
   return speaking;
 }
 
+/**
+ * Update the notification metadata (card info) without interrupting playback.
+ */
+async function updateNotification(title: string, artist: string): Promise<void> {
+  if (!playerReady) return;
+  try {
+    await TrackPlayer.updateNowPlayingMetadata({ title, artist });
+  } catch {}
+}
+
 const speechService = {
+  setup,
   speak,
   speakAsync,
   speakRepeat,
   waitAudio,
   cancel,
   isSpeaking,
+  updateNotification,
 };
 
 export default speechService;

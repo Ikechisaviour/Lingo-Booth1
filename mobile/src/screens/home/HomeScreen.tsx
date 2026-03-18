@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { View, ScrollView, StyleSheet, TouchableOpacity, RefreshControl, Modal } from 'react-native';
 import { Text, Button, Card, ProgressBar } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -8,9 +8,10 @@ import { userService } from '../../services/api';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { getLangName } from '../../config/languages';
-import { colors } from '../../config/theme';
+import { useAppColors, type AppColors } from '../../config/theme';
 
 const HomeScreen: React.FC = () => {
+  const colors = useAppColors();
   const { t } = useTranslation();
   const navigation = useNavigation<any>();
   const insets = useSafeAreaInsets();
@@ -26,7 +27,8 @@ const HomeScreen: React.FC = () => {
   const [leaderboard, setLeaderboard] = useState<any[]>([]);
   const [claimingQuest, setClaimingQuest] = useState<string | null>(null);
 
-  const activeColor = challengeMode ? colors.accentGreen : colors.primary;
+  const activeColor = colors.primary;
+  const styles = useMemo(() => createStyles(colors), [colors]);
 
   const fetchData = useCallback(async () => {
     if (!userId) return;
@@ -423,7 +425,7 @@ const HomeScreen: React.FC = () => {
   );
 };
 
-const styles = StyleSheet.create({
+const createStyles = (colors: AppColors) => StyleSheet.create({
   scrollView: { flex: 1 },
   container: { paddingBottom: 32 },
 
@@ -542,8 +544,8 @@ const styles = StyleSheet.create({
   badge_safe: { backgroundColor: 'rgba(88, 204, 2, 0.15)' },
   badge_grace: { backgroundColor: 'rgba(255, 200, 0, 0.15)' },
   badge_decaying: { backgroundColor: 'rgba(255, 75, 75, 0.15)' },
-  badgeText_off: { color: '#58cc02', fontSize: 11, fontWeight: '600' },
-  badgeText_safe: { color: '#58cc02', fontSize: 11, fontWeight: '600' },
+  badgeText_off: { color: colors.accentGreen, fontSize: 11, fontWeight: '600' },
+  badgeText_safe: { color: colors.accentGreen, fontSize: 11, fontWeight: '600' },
   badgeText_grace: { color: '#e6a800', fontSize: 11, fontWeight: '600' },
   badgeText_decaying: { color: '#ff4b4b', fontSize: 11, fontWeight: '600' },
   xpStatusText: { fontSize: 11, fontWeight: '600' },

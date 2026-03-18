@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import {
   View,
   FlatList,
@@ -14,7 +14,7 @@ import { lessonService, progressService } from '../../services/api';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { getLangName } from '../../config/languages';
-import { colors } from '../../config/theme';
+import { useAppColors, type AppColors } from '../../config/theme';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const categories = [
@@ -43,6 +43,8 @@ const LessonsListScreen: React.FC = () => {
   const insets = useSafeAreaInsets();
   const { userId } = useAuthStore();
   const { targetLanguage } = useSettingsStore();
+  const colors = useAppColors();
+  const styles = useMemo(() => createStyles(colors), [colors]);
 
   const [lessons, setLessons] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -311,7 +313,7 @@ const LessonsListScreen: React.FC = () => {
   );
 };
 
-const styles = StyleSheet.create({
+const createStyles = (colors: AppColors) => StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
   header: {
     paddingHorizontal: 16,

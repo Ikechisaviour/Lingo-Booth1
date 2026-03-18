@@ -75,5 +75,22 @@ export const shadows = {
   },
 };
 
+// Pre-computed challenge-mode colors (stable reference — no new object per render)
+const challengeColors = Object.freeze({ ...colors, primary: colors.accentGreen, primaryHover: '#46a302' });
+
+export type AppColors = typeof colors;
+
+/**
+ * Hook that returns the colors object with `primary` swapped to green
+ * when challenge mode is active. Use this instead of importing `colors`
+ * directly so screens respond to mode changes.
+ */
+export function useAppColors(): AppColors {
+  // Inline require to avoid circular deps — authStore is tiny
+  const { useAuthStore } = require('../stores/authStore');
+  const challengeMode = useAuthStore((s: any) => s.challengeMode);
+  return challengeMode ? challengeColors : colors;
+}
+
 export { colors };
 export default theme;

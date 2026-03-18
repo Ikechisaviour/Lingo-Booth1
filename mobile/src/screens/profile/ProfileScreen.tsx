@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import {
   View,
   ScrollView,
@@ -7,6 +7,8 @@ import {
   ActivityIndicator,
   RefreshControl,
   TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import { Text, Button, TextInput, Card, Divider, SegmentedButtons, Switch } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
@@ -16,7 +18,7 @@ import speechService from '../../services/speechService';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import LANGUAGES, { getLangName } from '../../config/languages';
-import { colors } from '../../config/theme';
+import { useAppColors, type AppColors } from '../../config/theme';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const ProfileScreen: React.FC = () => {
@@ -25,6 +27,8 @@ const ProfileScreen: React.FC = () => {
   const insets = useSafeAreaInsets();
   const { userId, username, userRole, logout, setChallengeMode, challengeMode } = useAuthStore();
   const { nativeLanguage, targetLanguage, setLanguages, setVoice, preferredVoice } = useSettingsStore();
+  const colors = useAppColors();
+
 
   const [user, setUser] = useState<any>(null);
   const [progress, setProgress] = useState<any>(null);
@@ -48,6 +52,7 @@ const ProfileScreen: React.FC = () => {
   const [voices, setVoices] = useState<any[]>([]);
   const [loadingVoices, setLoadingVoices] = useState(false);
   const [previewingVoice, setPreviewingVoice] = useState<string | null>(null);
+  const styles = useMemo(() => createStyles(colors), [colors]);
 
   const fetchData = useCallback(async () => {
     if (!userId) return;
@@ -223,9 +228,11 @@ const ProfileScreen: React.FC = () => {
   }
 
   return (
+    <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined} keyboardVerticalOffset={0}>
     <ScrollView
       style={styles.screen}
       contentContainerStyle={styles.container}
+      keyboardShouldPersistTaps="handled"
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={[colors.primary]} />}
     >
       {/* Profile header */}
@@ -471,7 +478,7 @@ const ProfileScreen: React.FC = () => {
                 mode="outlined"
                 onPress={handleToggleChallengeMode}
                 style={{ marginTop: 12 }}
-                textColor={challengeMode ? colors.accentGreen : colors.primary}
+                textColor={colors.primary}
               >
                 {challengeMode
                   ? t('profile.switchToRelaxed', 'Switch to Relaxed')
@@ -515,10 +522,11 @@ const ProfileScreen: React.FC = () => {
         </>
       )}
     </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
-const styles = StyleSheet.create({
+const createStyles = (colors: AppColors) => StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
   container: { padding: 16, paddingTop: 0, paddingBottom: 32 },
   centered: { flex: 1, justifyContent: 'center', alignItems: 'center' },

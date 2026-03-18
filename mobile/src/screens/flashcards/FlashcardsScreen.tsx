@@ -10,24 +10,22 @@ import {
   Modal,
   FlatList,
   AppState,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import { Text, Button, IconButton, TextInput, FAB, Chip, ProgressBar } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
+import { useNavigation } from '@react-navigation/native';
 import { flashcardService, progressService, userService } from '../../services/api';
 import speechService from '../../services/speechService';
 import guestActivityTracker from '../../services/guestActivityTracker';
-import {
-  requestPermissions as requestNotifPermissions,
-  showPlayerNotification,
-  dismissPlayerNotification,
-} from '../../services/playerNotification';
 
 // PiP is not available in this build
 const PipHandler: any = null;
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import LANGUAGES, { getLangName, getLangField, langHasRomanization } from '../../config/languages';
-import { colors } from '../../config/theme';
+import { useAppColors, type AppColors } from '../../config/theme';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
@@ -39,8 +37,11 @@ const normalizeCategory = (cat: any): string[] => {
 
 const FlashcardsScreen: React.FC = () => {
   const { t } = useTranslation();
+  const navigation = useNavigation();
   const { userId, isGuest, guestXP, addGuestXP } = useAuthStore();
   const { targetLanguage, nativeLanguage } = useSettingsStore();
+  const colors = useAppColors();
+  const styles = useMemo(() => createStyles(colors), [colors]);
 
   const [flashcards, setFlashcards] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -78,10 +79,20 @@ const FlashcardsScreen: React.FC = () => {
   const targetLocale = LANGUAGES[targetLanguage]?.ttsLocale || 'ko-KR';
   const nativeLocale = LANGUAGES[nativeLanguage]?.ttsLocale || 'en-US';
 
-  // Request notification permission once on mount
+  // Initialise TrackPlayer once on mount
   useEffect(() => {
-    requestNotifPermissions();
+    speechService.setup();
   }, []);
+
+  // Stop autoplay & cancel audio when navigating away from this tab
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('blur', () => {
+      setAutoPlay(false);
+      autoPlayRef.current = false;
+      speechService.cancel();
+    });
+    return unsubscribe;
+  }, [navigation]);
 
   // Fetch flashcards (paginated, unfiltered — category filtering is done client-side via cache)
   const fetchFlashcards = useCallback(async (page = 1, append = false) => {
@@ -220,21 +231,15 @@ const FlashcardsScreen: React.FC = () => {
     return () => sub.remove();
   }, [autoPlay]);
 
-  // Mini-player notification — show/update when autoplay is on, dismiss when off
+  // Update media notification metadata when autoplay is active
   useEffect(() => {
-    if (!autoPlay) {
-      dismissPlayerNotification();
-      return;
-    }
+    if (!autoPlay) return;
     const card = displayedCards[currentIndex];
     if (!card) return;
-    showPlayerNotification(
+    speechService.updateNotification(
       card[targetField] || '',
-      card[nativeField] || '',
-      currentIndex + 1,
-      displayedCards.length,
+      `${card[nativeField] || ''}  ·  Card ${currentIndex + 1} of ${displayedCards.length}`,
     );
-    return () => { dismissPlayerNotification(); };
   }, [autoPlay, currentIndex, displayedCards.length]);
 
   // Reset index when filtered deck shrinks
@@ -994,6 +999,8 @@ const FlashcardsScreen: React.FC = () => {
       {/* Add flashcard modal */}
       <Modal visible={showAddForm} transparent animationType="slide" onRequestClose={() => setShowAddForm(false)}>
         <View style={styles.modalOverlay}>
+          <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+          <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }} keyboardShouldPersistTaps="handled">
           <View style={styles.modalSheet}>
             <Text variant="titleMedium" style={styles.modalTitle}>
               {t('flashcards.addFlashcard', 'Add Flashcard')}
@@ -1044,13 +1051,15 @@ const FlashcardsScreen: React.FC = () => {
               </Button>
             </View>
           </View>
+          </ScrollView>
+          </KeyboardAvoidingView>
         </View>
       </Modal>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
+const createStyles = (colors: AppColors) => StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
   centered: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 24 },
   loadingText: { marginTop: 12, color: colors.textSecondary },

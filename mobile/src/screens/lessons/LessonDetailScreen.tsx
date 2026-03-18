@@ -16,7 +16,7 @@ import guestActivityTracker from '../../services/guestActivityTracker';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { getLangName } from '../../config/languages';
-import { colors } from '../../config/theme';
+import { useAppColors, type AppColors } from '../../config/theme';
 
 type RouteParams = {
   LessonDetail: {
@@ -34,6 +34,8 @@ const LessonDetailScreen: React.FC = () => {
   const navigation = useNavigation<any>();
   const { userId, isGuest, addGuestXP } = useAuthStore();
   const { targetLanguage, nativeLanguage } = useSettingsStore();
+  const colors = useAppColors();
+  const styles = useMemo(() => createStyles(colors), [colors]);
   const lessonId = route.params.lessonId;
   const playlist = route.params.playlist;
   const playlistIndex = route.params.playlistIndex ?? -1;
@@ -115,6 +117,15 @@ const LessonDetailScreen: React.FC = () => {
     speechService.speakRepeat(text, 2, { lang: 'ko-KR' });
     return () => { speechService.cancel(); };
   }, [lesson, currentIndex, studyMode]);
+
+  // Cancel audio when navigating away from this screen
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('blur', () => {
+      speechService.cancel();
+      if (autoAdvanceRef.current) clearTimeout(autoAdvanceRef.current);
+    });
+    return unsubscribe;
+  }, [navigation]);
 
   // Cleanup on unmount
   useEffect(() => {
@@ -542,7 +553,7 @@ const LessonDetailScreen: React.FC = () => {
   );
 };
 
-const styles = StyleSheet.create({
+const createStyles = (colors: AppColors) => StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
   centered: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 24 },
   errorText: { color: colors.error, fontSize: 16, textAlign: 'center' },

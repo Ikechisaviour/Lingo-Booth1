@@ -580,6 +580,8 @@
   justify-content: center;
   z-index: 1000;
   padding: 20px;
+  overflow-y: auto;
+  max-height: 100vh;
 }
 
 .continue-modal {

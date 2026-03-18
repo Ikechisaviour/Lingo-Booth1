@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import {
   View,
   ScrollView,
@@ -8,16 +8,20 @@ import {
   ActivityIndicator,
   Alert,
   Modal,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import { Text, Button, Card, TextInput, Searchbar, Chip } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import { adminService } from '../../services/api';
-import { colors } from '../../config/theme';
+import { useAppColors, type AppColors } from '../../config/theme';
 
 type Tab = 'dashboard' | 'users' | 'guests';
 
 const AdminScreen: React.FC = () => {
   const { t } = useTranslation();
+  const colors = useAppColors();
+
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
   const [stats, setStats] = useState<any>(null);
   const [users, setUsers] = useState<any[]>([]);
@@ -35,6 +39,7 @@ const AdminScreen: React.FC = () => {
   const [userDetail, setUserDetail] = useState<any>(null);
   const [loadingDetail, setLoadingDetail] = useState(false);
   const [showUserDetail, setShowUserDetail] = useState(false);
+  const styles = useMemo(() => createStyles(colors), [colors]);
 
   const fetchStats = useCallback(async () => {
     try {
@@ -199,6 +204,7 @@ const AdminScreen: React.FC = () => {
 
       <ScrollView
         contentContainerStyle={styles.content}
+        keyboardShouldPersistTaps="handled"
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={[colors.primary]} />}
       >
         {/* ── Dashboard tab ── */}
@@ -531,6 +537,7 @@ const AdminScreen: React.FC = () => {
       {/* Suspend modal */}
       <Modal visible={!!suspendModal} transparent animationType="fade" onRequestClose={() => setSuspendModal(null)}>
         <View style={styles.modalOverlay}>
+          <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
           <View style={styles.modalContent}>
             <Text variant="titleMedium" style={styles.modalTitle}>
               Suspend {suspendModal?.username}?
@@ -551,6 +558,7 @@ const AdminScreen: React.FC = () => {
               </Button>
             </View>
           </View>
+          </KeyboardAvoidingView>
         </View>
       </Modal>
 
@@ -634,7 +642,7 @@ const AdminScreen: React.FC = () => {
   );
 };
 
-const styles = StyleSheet.create({
+const createStyles = (colors: AppColors) => StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
   centered: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 24 },
   header: { paddingTop: 48, paddingHorizontal: 16, paddingBottom: 8, backgroundColor: colors.surface },

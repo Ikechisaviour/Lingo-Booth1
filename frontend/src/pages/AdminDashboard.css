@@ -595,6 +595,8 @@
   justify-content: center;
   z-index: 1000;
   padding: 20px;
+  overflow-y: auto;
+  max-height: 100vh;
 }
 
 .modal {
@@ -887,6 +889,8 @@
   z-index: 1100;
   display: flex;
   justify-content: flex-end;
+  overflow-y: auto;
+  max-height: 100vh;
 }
 
 .user-detail-panel {

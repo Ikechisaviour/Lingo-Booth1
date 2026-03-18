@@ -503,6 +503,8 @@
   z-index: 1000;
   padding: 20px;
   animation: fadeIn 0.2s ease;
+  overflow-y: auto;
+  max-height: 100vh;
 }
 
 @keyframes fadeIn {

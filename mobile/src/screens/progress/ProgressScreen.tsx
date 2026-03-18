@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { View, ScrollView, StyleSheet, TouchableOpacity, RefreshControl, ActivityIndicator } from 'react-native';
 import { Text, Button, Card, ProgressBar } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import { progressService } from '../../services/api';
 import { useAuthStore } from '../../stores/authStore';
-import { colors } from '../../config/theme';
+import { useAppColors, type AppColors } from '../../config/theme';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface MasteryArea {
@@ -22,12 +22,15 @@ const ProgressScreen: React.FC = () => {
   const { t } = useTranslation();
   const { userId } = useAuthStore();
   const insets = useSafeAreaInsets();
+  const colors = useAppColors();
+
 
   const [progress, setProgress] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState('');
   const [selectedMastery, setSelectedMastery] = useState<string | null>(null);
+  const styles = useMemo(() => createStyles(colors), [colors]);
 
   const fetchProgress = useCallback(async () => {
     if (!userId) return;
@@ -89,6 +92,114 @@ const ProgressScreen: React.FC = () => {
         { key: 'speaking', label: t('progress.speaking', 'Speaking'), icon: '🗣️', color: '#10b981' },
       ]
     : [];
+
+  // Dynamic tips based on actual progress
+  const dynamicTips = useMemo(() => {
+    const tips: { icon: string; title: string; desc: string; color: string }[] = [];
+    const strugglingCount = progress.strugglingAreas?.length || 0;
+    const masteredCount = progress.mastered || 0;
+    const learningCount = progress.learning || 0;
+    const comfortableCount = progress.comfortable || 0;
+    const stats = progress.skillStats || {};
+
+    // Find weakest skill
+    const skillKeys = ['listening', 'reading', 'writing', 'speaking'];
+    let weakestSkill = '';
+    let weakestAvg = 101;
+    let strongestSkill = '';
+    let strongestAvg = -1;
+    for (const sk of skillKeys) {
+      const avg = stats[sk]?.averageScore ?? -1;
+      if (avg >= 0 && avg < weakestAvg) { weakestAvg = avg; weakestSkill = sk; }
+      if (avg > strongestAvg) { strongestAvg = avg; strongestSkill = sk; }
+    }
+
+    // Tip 1: If struggling areas exist
+    if (strugglingCount > 0) {
+      tips.push({
+        icon: '🔥',
+        title: t('progress.tipFocusWeak', 'Focus on Weak Areas'),
+        desc: t('progress.tipFocusWeakDesc', {
+          defaultValue: 'You have {{count}} struggling areas. Review them daily to improve faster.',
+          count: strugglingCount,
+        }),
+        color: '#ef4444',
+      });
+    }
+
+    // Tip 2: Weakest skill
+    if (weakestSkill && weakestAvg < 70) {
+      const skillLabel = t(`progress.${weakestSkill}`, weakestSkill);
+      tips.push({
+        icon: '🎯',
+        title: t('progress.tipBoostSkill', { defaultValue: 'Boost Your {{skill}}', skill: skillLabel }),
+        desc: t('progress.tipBoostSkillDesc', {
+          defaultValue: 'Your {{skill}} average is {{avg}}%. Try more {{skill}} exercises.',
+          skill: skillLabel.toLowerCase(),
+          avg: weakestAvg,
+        }),
+        color: '#f59e0b',
+      });
+    }
+
+    // Tip 3: Based on mastery distribution
+    if (masteredCount > 0 && learningCount > masteredCount) {
+      tips.push({
+        icon: '📚',
+        title: t('progress.tipDeepen', 'Deepen Your Knowledge'),
+        desc: t('progress.tipDeepenDesc', 'You have many items still in progress. Revisit lessons before moving on.'),
+        color: '#a560e8',
+      });
+    } else if (masteredCount > 5) {
+      tips.push({
+        icon: '🚀',
+        title: t('progress.tipChallenge', 'Challenge Yourself'),
+        desc: t('progress.tipChallengeDesc', {
+          defaultValue: "You've mastered {{count}} areas! Try harder lessons to keep growing.",
+          count: masteredCount,
+        }),
+        color: '#10b981',
+      });
+    }
+
+    // Tip 4: Strongest skill encouragement
+    if (strongestSkill && strongestAvg >= 70) {
+      const skillLabel = t(`progress.${strongestSkill}`, strongestSkill);
+      tips.push({
+        icon: '⭐',
+        title: t('progress.tipStrength', { defaultValue: '{{skill}} is Your Strength!', skill: skillLabel }),
+        desc: t('progress.tipStrengthDesc', {
+          defaultValue: 'Great work at {{avg}}%! Keep it up and try advanced content.',
+          avg: strongestAvg,
+        }),
+        color: '#1cb0f6',
+      });
+    }
+
+    // Tip 5: If comfortable items exist, push toward mastery
+    if (comfortableCount > 0) {
+      tips.push({
+        icon: '🏆',
+        title: t('progress.tipMasterNext', 'Push to Mastery'),
+        desc: t('progress.tipMasterNextDesc', {
+          defaultValue: '{{count}} areas are almost mastered. A few more reviews and you\'ll get there!',
+          count: comfortableCount,
+        }),
+        color: '#10b981',
+      });
+    }
+
+    // Tip 6: Spaced repetition (always good but lower priority)
+    tips.push({
+      icon: '🔄',
+      title: t('progress.tipRepetition', 'Spaced Repetition'),
+      desc: t('progress.tipRepetitionDesc', 'Review flashcards regularly to lock in long-term memory.'),
+      color: '#6b7280',
+    });
+
+    // Show max 4 tips, prioritized by the order above
+    return tips.slice(0, 4);
+  }, [progress, t]);
 
   return (
     <ScrollView
@@ -224,20 +335,20 @@ const ProgressScreen: React.FC = () => {
         </Card>
       )}
 
-      {/* Tips */}
-      <Card style={styles.card}>
+      {/* Dynamic Tips */}
+      <Card style={[styles.card, styles.tipsCard]}>
         <Card.Content>
-          <Text variant="titleMedium" style={{ fontWeight: '700', marginBottom: 12 }}>
-            {t('progress.learningTips', 'Learning Tips')}
-          </Text>
-          {[
-            { icon: '🔄', title: t('progress.tipRepetition', 'Spaced Repetition'), desc: t('progress.tipRepetitionDesc', 'Review flashcards regularly') },
-            { icon: '🎯', title: t('progress.tipPractice', 'Active Practice'), desc: t('progress.tipPracticeDesc', 'Take quizzes after each lesson') },
-            { icon: '🌍', title: t('progress.tipDiversify', 'Diversify'), desc: t('progress.tipDiversifyDesc', 'Mix different lesson categories') },
-            { icon: '📈', title: t('progress.tipConsistent', 'Stay Consistent'), desc: t('progress.tipConsistentDesc', 'Study a little every day') },
-          ].map((tip, idx) => (
+          <View style={styles.tipsHeader}>
+            <Text style={styles.tipsHeaderIcon}>💡</Text>
+            <Text variant="titleMedium" style={styles.tipsHeaderTitle}>
+              {t('progress.personalizedTips', 'Tips For You')}
+            </Text>
+          </View>
+          {dynamicTips.map((tip, idx) => (
             <View key={idx} style={styles.tipItem}>
-              <Text style={styles.tipIcon}>{tip.icon}</Text>
+              <View style={[styles.tipIconBadge, { backgroundColor: tip.color + '18' }]}>
+                <Text style={styles.tipIcon}>{tip.icon}</Text>
+              </View>
               <View style={{ flex: 1 }}>
                 <Text style={styles.tipTitle}>{tip.title}</Text>
                 <Text style={styles.tipDesc}>{tip.desc}</Text>
@@ -250,7 +361,7 @@ const ProgressScreen: React.FC = () => {
   );
 };
 
-const styles = StyleSheet.create({
+const createStyles = (colors: AppColors) => StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
   container: { padding: 16, paddingTop: 0, paddingBottom: 32 },
   centered: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 24 },
@@ -324,10 +435,38 @@ const styles = StyleSheet.create({
   skillLabel: { fontSize: 11, fontWeight: '600', color: colors.textPrimary },
   skillCount: { fontSize: 10, color: colors.textMuted },
 
-  tipItem: { flexDirection: 'row', alignItems: 'flex-start', gap: 12, marginBottom: 12 },
-  tipIcon: { fontSize: 24 },
-  tipTitle: { fontSize: 14, fontWeight: '600', color: colors.textPrimary },
-  tipDesc: { fontSize: 13, color: colors.textSecondary, marginTop: 2 },
+  tipsCard: {
+    borderLeftWidth: 4,
+    borderLeftColor: colors.primary,
+    backgroundColor: colors.surface,
+  },
+  tipsHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginBottom: 16,
+  },
+  tipsHeaderIcon: { fontSize: 22 },
+  tipsHeaderTitle: { fontWeight: '800', fontSize: 17, color: colors.textPrimary },
+  tipItem: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 12,
+    marginBottom: 14,
+    backgroundColor: colors.background,
+    borderRadius: 12,
+    padding: 12,
+  },
+  tipIconBadge: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  tipIcon: { fontSize: 20 },
+  tipTitle: { fontSize: 15, fontWeight: '700', color: colors.textPrimary },
+  tipDesc: { fontSize: 13, color: colors.textSecondary, marginTop: 3, lineHeight: 18 },
 });
 
 export default ProgressScreen;
