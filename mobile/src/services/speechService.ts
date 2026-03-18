@@ -1,4 +1,4 @@
-import TrackPlayer, { Event, Capability } from 'react-native-track-player';
+import TrackPlayer from 'react-native-track-player';
 import { ttsService } from './api';
 
 let playerReady = false;
@@ -17,6 +17,7 @@ async function setup(): Promise<void> {
       maxBuffer: 30,
       waitForBuffer: true,
     });
+    const { Capability } = require('react-native-track-player');
     await TrackPlayer.updateOptions({
       capabilities: [Capability.Play, Capability.Pause, Capability.Stop],
       compactCapabilities: [Capability.Play, Capability.Pause, Capability.Stop],
@@ -88,6 +89,7 @@ async function speakAsync(
         resolve();
       };
 
+      const { Event } = require('react-native-track-player');
       const endSub = TrackPlayer.addEventListener(Event.PlaybackQueueEnded, finish);
       const errSub = TrackPlayer.addEventListener(Event.PlaybackError, finish);
       const cancelCheck = setInterval(() => {
