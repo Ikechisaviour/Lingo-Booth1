@@ -21,6 +21,18 @@ allprojects {
         resolutionStrategy {
             force 'androidx.core:core:1.13.1'
             force 'androidx.core:core-ktx:1.13.1'
+            force 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3'
+            force 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
+        }
+    }
+}
+
+subprojects {
+    afterEvaluate { project ->
+        if (project.hasProperty('android')) {
+            project.android {
+                compileSdkVersion 35
+            }
         }
     }
 }
