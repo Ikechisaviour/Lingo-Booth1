@@ -715,22 +715,6 @@ const FlashcardsScreen: React.FC = () => {
 
       {/* Card */}
       <View style={styles.cardContainer}>
-        <TouchableOpacity
-          style={styles.cardMicButton}
-          onPress={() => {
-            const text = isFlipped ? backText : frontText;
-            const lang = isFlipped ? backLocale : frontLocale;
-            handleSpeak(text, lang);
-          }}
-          hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-        >
-          <IconButton
-            icon="microphone"
-            size={24}
-            iconColor={isSpeaking ? colors.primary : colors.textMuted}
-            style={{ margin: 0 }}
-          />
-        </TouchableOpacity>
         <TouchableOpacity activeOpacity={0.9} onPress={handleFlip} style={styles.cardTouchable}>
           {/* Front */}
           <Animated.View
@@ -1099,14 +1083,6 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 20,
-  },
-  cardMicButton: {
-    position: 'absolute',
-    bottom: 12,
-    right: 28,
-    zIndex: 10,
-    borderRadius: 20,
-    backgroundColor: 'rgba(255,255,255,0.85)',
   },
   cardTouchable: {
     width: SCREEN_WIDTH - 40,
