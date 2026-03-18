@@ -21,7 +21,6 @@
         ]
       }
     },
-    "newArchEnabled": false,
     "android": {
       "package": "com.lingobooth.app",
       "adaptiveIcon": {
