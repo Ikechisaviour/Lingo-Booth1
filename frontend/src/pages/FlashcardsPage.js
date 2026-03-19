@@ -437,18 +437,6 @@ function FlashcardsPage() {
     });
   };
 
-  const toggleCategoryCards = (cards) => {
-    setSelectedCardIds(prev => {
-      const next = new Set(prev);
-      const allSelected = cards.every(c => next.has(c._id));
-      if (allSelected) {
-        cards.forEach(c => next.delete(c._id));
-      } else {
-        cards.forEach(c => next.add(c._id));
-      }
-      return next;
-    });
-  };
 
   // Toggle a category filter — loads cards into cache on first select (no backend refetch).
   // When ADDING a category, remove any individually selected cards that belong to it.
@@ -487,7 +475,6 @@ function FlashcardsPage() {
   // Only exclude cards missing the target field when the backend is actually
   // sending that field (i.e. at least one card has it).
   const targetLangField = getLangField(targetLangCode);
-  const nativeLangField = getLangField(nativeLangCode);
   const backendSendsTargetField = flashcards.some(c => !!c[targetLangField]);
   const allLangFilteredCards = flashcards.filter(c => !backendSendsTargetField || !!c[targetLangField]);
   // Study deck: supports three modes —
