@@ -236,48 +236,20 @@ function LessonDetail() {
   };
 
   const generateQuizOptions = useCallback((correctAnswer, allContent) => {
-    // Get other English translations from the lesson
-    const otherAnswers = allContent
-      .filter(item => item.nativeText !== correctAnswer && item.nativeText)
-      .map(item => item.nativeText);
-
-    // Create a pool of wrong answers
-    const wrongAnswers = [];
-    const commonWrongAnswers = [
-      'Thank you very much',
-      'Good morning',
-      'How are you?',
-      'See you later',
-      'Nice to meet you',
-      'Excuse me',
-      'I\'m sorry',
-      'You\'re welcome',
-      'My name is',
-      'What is your name?',
-      'Where is the bathroom?',
-      'How much is this?',
-      'I don\'t understand',
-      'Please help me',
-      'Do you speak English?',
-    ];
-
-    // First, try to use other answers from the lesson
-    if (otherAnswers.length >= 4) {
-      // Shuffle and pick 4 random wrong answers from lesson
-      const shuffled = [...otherAnswers].sort(() => Math.random() - 0.5);
-      wrongAnswers.push(...shuffled.slice(0, 4));
-    } else {
-      // Use all available from lesson
-      wrongAnswers.push(...otherAnswers);
-
-      // Fill remaining with common wrong answers
-      const remaining = 4 - wrongAnswers.length;
-      const availableCommon = commonWrongAnswers.filter(
-        ans => ans !== correctAnswer && !wrongAnswers.includes(ans)
-      );
-      const shuffledCommon = [...availableCommon].sort(() => Math.random() - 0.5);
-      wrongAnswers.push(...shuffledCommon.slice(0, remaining));
+    // Get other native-language translations from the lesson
+    // Deduplicate to avoid identical-looking options
+    const seen = new Set([correctAnswer]);
+    const otherAnswers = [];
+    for (const item of allContent) {
+      if (item.nativeText && !seen.has(item.nativeText)) {
+        seen.add(item.nativeText);
+        otherAnswers.push(item.nativeText);
+      }
     }
+
+    // Shuffle and pick up to 4 wrong answers from lesson content
+    const shuffled = [...otherAnswers].sort(() => Math.random() - 0.5);
+    const wrongAnswers = shuffled.slice(0, 4);
 
     // Combine correct answer with wrong answers and shuffle
     const allOptions = [correctAnswer, ...wrongAnswers];

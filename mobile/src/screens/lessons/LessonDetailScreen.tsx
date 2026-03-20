@@ -181,16 +181,17 @@ const LessonDetailScreen: React.FC = () => {
   };
 
   const generateQuizOptions = useCallback((correctAnswer: string, allContent: any[]) => {
-    const otherAnswers = allContent
-      .filter((item) => item.nativeText !== correctAnswer && item.nativeText)
-      .map((item) => item.nativeText);
-    const fallback = [
-      'Thank you', 'Good morning', 'How are you?', 'See you later',
-      'Nice to meet you', 'Excuse me', "I'm sorry", "You're welcome",
-    ];
-    const wrong = otherAnswers.length >= 4
-      ? [...otherAnswers].sort(() => Math.random() - 0.5).slice(0, 4)
-      : [...otherAnswers, ...fallback.filter((a) => a !== correctAnswer && !otherAnswers.includes(a))].slice(0, 4);
+    // Deduplicate to avoid identical-looking options
+    const seen = new Set([correctAnswer]);
+    const otherAnswers: string[] = [];
+    for (const item of allContent) {
+      if (item.nativeText && !seen.has(item.nativeText)) {
+        seen.add(item.nativeText);
+        otherAnswers.push(item.nativeText);
+      }
+    }
+    const shuffled = [...otherAnswers].sort(() => Math.random() - 0.5);
+    const wrong = shuffled.slice(0, 4);
     return [correctAnswer, ...wrong].sort(() => Math.random() - 0.5);
   }, []);
 

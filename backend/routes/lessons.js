@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Lesson = require('../models/Lesson');
 const { verifyToken, optionalAuth, isAdmin } = require('../middleware/auth');
-const { getOrCreateTranslation, applyTranslation } = require('../utils/translationService');
+const { getOrCreateTranslation, applyTranslation, batchTranslateRaw } = require('../utils/translationService');
 
 const VALID_CATEGORIES = ['daily-life', 'business', 'travel', 'greetings', 'food', 'shopping', 'healthcare'];
 const VALID_DIFFICULTIES = ['beginner', 'intermediate', 'advanced', 'sentences'];
@@ -91,6 +91,34 @@ router.get('/:id', optionalAuth, async (req, res) => {
       applyTranslation(lessonObj, translation);
     } catch (err) {
       console.error('Translation/romanization overlay failed:', err.message);
+    }
+
+    // Fallback: if nativeLang !== 'en' and nativeText is still the English seed value,
+    // translate English → nativeLang inline so quiz options aren't in English
+    if (nativeLang && nativeLang !== 'en' && lessonObj.content) {
+      const missingIndices = [];
+      const missingTexts = [];
+      for (let i = 0; i < lessonObj.content.length; i++) {
+        const c = lessonObj.content[i];
+        // If nativeText matches the original English field, it wasn't translated
+        if (c.nativeText && c.english && c.nativeText === c.english) {
+          missingIndices.push(i);
+          missingTexts.push(c.english);
+        }
+      }
+      if (missingTexts.length > 0) {
+        try {
+          const results = await batchTranslateRaw(missingTexts, 'en', nativeLang);
+          for (let k = 0; k < results.length; k++) {
+            const translated = results[k]?.text;
+            if (translated) {
+              lessonObj.content[missingIndices[k]].nativeText = translated;
+            }
+          }
+        } catch (err) {
+          console.error('Lesson nativeText fallback translation failed:', err.message);
+        }
+      }
     }
 
     res.json(lessonObj);
