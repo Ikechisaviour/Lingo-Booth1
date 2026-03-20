@@ -28,6 +28,7 @@ const state = {
   lastActivity:   'home',
   sessionStart:   0,
   flushTimer:     null,
+  backoffMs:      0,
   initialized:    false,
 };
 
@@ -50,11 +51,17 @@ function buildPayload() {
 async function flush() {
   if (!state.initialized || !isGuest()) return;
   try {
-    await fetch(`${API_URL}/auth/guest-activity`, {
+    const res = await fetch(`${API_URL}/auth/guest-activity`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(buildPayload()),
     });
+    if (res.status === 429) {
+      // Rate limited — back off to 5 minutes
+      state.backoffMs = 5 * 60_000;
+    } else {
+      state.backoffMs = 0;
+    }
   } catch (_) {
     // silent — tracking is best-effort
   }
@@ -62,10 +69,11 @@ async function flush() {
 
 function scheduleFlush() {
   if (state.flushTimer) clearTimeout(state.flushTimer);
+  const delay = state.backoffMs || FLUSH_INTERVAL_MS;
   state.flushTimer = setTimeout(async () => {
     await flush();
-    if (state.initialized) scheduleFlush(); // reschedule only if still active
-  }, FLUSH_INTERVAL_MS);
+    if (state.initialized) scheduleFlush();
+  }, delay);
 }
 
 function handleBeforeUnload() {
