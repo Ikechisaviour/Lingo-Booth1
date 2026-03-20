@@ -123,6 +123,7 @@ class SpeechService {
     this._blobCache = new Map();      // cacheKey → blobUrl (pre-fetched audio data)
     this._maxBlobCache = 250;         // ~50 cards × 2 texts × ~2 segments
     this._audioUnlocked = false;
+    this._deferredSpeak = null; // speech queued before audio unlock
     this._bridgeActive = false; // whether we're in "keep-alive" mode
     this._pendingSettle = null; // resolve callback for active _playAudio/waitAudio
 
@@ -173,6 +174,12 @@ class SpeechService {
         audio.pause();
         audio.removeAttribute('src');
         audio.volume = 1;
+        // Replay any deferred speech that failed before unlock
+        if (this._deferredSpeak) {
+          const { text, times, options } = this._deferredSpeak;
+          this._deferredSpeak = null;
+          this.speakRepeat(text, times, options);
+        }
       }).catch(() => {});
       document.removeEventListener('click', unlock, true);
       document.removeEventListener('touchstart', unlock, true);
@@ -514,6 +521,12 @@ class SpeechService {
     this._stopCurrent(); // preserve bridge
 
     if (!text || times < 1) return;
+
+    // If audio isn't unlocked yet (no user gesture), defer until after unlock
+    if (!this._audioUnlocked) {
+      this._deferredSpeak = { text, times, options };
+      return;
+    }
 
     this._abortController = new AbortController();
 

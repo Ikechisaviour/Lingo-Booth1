@@ -152,11 +152,18 @@ function FlashcardsPage() {
   }, []);
 
   // Auto-speak the front text twice when a new card appears (manual mode only)
+  // Uses a ref to track the card identity so re-renders don't cancel pending speech.
+  const lastSpokenCardRef = useRef(null);
   useEffect(() => {
     if (autoPlayRef.current) return; // auto-play handles its own speaking
     if (studyStyle === 'text') return; // text-only, no auto-speak
     if (activeFlashcards.length === 0 || !activeFlashcards[currentIndex]) return;
     const card = activeFlashcards[currentIndex];
+    const cardId = card._id + '|' + currentIndex;
+    // Skip if we already spoke this exact card (prevents re-renders from re-triggering)
+    if (lastSpokenCardRef.current === cardId) return;
+    lastSpokenCardRef.current = cardId;
+
     const text = showsTargetFirst
       ? card[getLangField(targetLangCode)]
       : card[getLangField(nativeLangCode)];
@@ -171,7 +178,7 @@ function FlashcardsPage() {
 
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentIndex, flashcards.length, studyStyle]);
+  }, [currentIndex, activeFlashcards.length, studyStyle, showsTargetFirst]);
 
   // Auto-speak the back text once when the card is flipped
   useEffect(() => {

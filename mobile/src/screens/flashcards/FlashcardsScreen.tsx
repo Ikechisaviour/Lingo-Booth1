@@ -446,7 +446,7 @@ const FlashcardsScreen: React.FC = () => {
     }, 300);
 
     return () => clearTimeout(timer);
-  }, [currentIndex, displayedCards.length, studyStyle]);
+  }, [currentIndex, displayedCards.length, studyStyle, showsTargetFirst]);
 
   // Auto-play cycle
   useEffect(() => {
