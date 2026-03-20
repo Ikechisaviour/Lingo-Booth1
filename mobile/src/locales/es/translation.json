@@ -14,6 +14,28 @@
     "refresh": "Actualizar",
     "logout": "Cerrar sesión"
   },
+  "languages": {
+    "en": "Inglés",
+    "ko": "Coreano",
+    "es": "Español",
+    "fr": "Francés",
+    "de": "Alemán",
+    "zh": "Chino",
+    "ja": "Japonés",
+    "hi": "Hindi",
+    "ar": "Árabe",
+    "he": "Hebreo",
+    "pt": "Portugués",
+    "it": "Italiano",
+    "nl": "Neerlandés",
+    "ru": "Ruso",
+    "id": "Indonesio",
+    "ms": "Malayo",
+    "fil": "Filipino",
+    "tr": "Turco",
+    "bn": "Bengalí",
+    "ta": "Tamil"
+  },
   "languageSelect": {
     "title": "Elige tus idiomas",
     "subtitle": "Selecciona el idioma que hablas",

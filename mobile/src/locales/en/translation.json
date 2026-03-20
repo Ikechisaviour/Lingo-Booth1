@@ -14,6 +14,28 @@
     "refresh": "Refresh",
     "logout": "Logout"
   },
+  "languages": {
+    "en": "English",
+    "ko": "Korean",
+    "es": "Spanish",
+    "fr": "French",
+    "de": "German",
+    "zh": "Chinese",
+    "ja": "Japanese",
+    "hi": "Hindi",
+    "ar": "Arabic",
+    "he": "Hebrew",
+    "pt": "Portuguese",
+    "it": "Italian",
+    "nl": "Dutch",
+    "ru": "Russian",
+    "id": "Indonesian",
+    "ms": "Malay",
+    "fil": "Filipino",
+    "tr": "Turkish",
+    "bn": "Bengali",
+    "ta": "Tamil"
+  },
   "languageSelect": {
     "title": "Choose Your Languages",
     "subtitle": "Select the language you speak",

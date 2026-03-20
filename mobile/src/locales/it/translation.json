@@ -14,6 +14,28 @@
     "refresh": "Aggiorna",
     "logout": "Esci"
   },
+  "languages": {
+    "en": "Inglese",
+    "ko": "Coreano",
+    "es": "Spagnolo",
+    "fr": "Francese",
+    "de": "Tedesco",
+    "zh": "Cinese",
+    "ja": "Giapponese",
+    "hi": "Hindi",
+    "ar": "Arabo",
+    "he": "Ebraico",
+    "pt": "Portoghese",
+    "it": "Italiano",
+    "nl": "Olandese",
+    "ru": "Russo",
+    "id": "Indonesiano",
+    "ms": "Malese",
+    "fil": "Filippino",
+    "tr": "Turco",
+    "bn": "Bengalese",
+    "ta": "Tamil"
+  },
   "languageSelect": {
     "title": "Scegli le tue lingue",
     "subtitle": "Seleziona la lingua che parli",

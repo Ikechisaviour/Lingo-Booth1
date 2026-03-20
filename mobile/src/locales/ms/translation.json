@@ -14,6 +14,28 @@
     "refresh": "Muat Semula",
     "logout": "Log Keluar"
   },
+  "languages": {
+    "en": "Inggeris",
+    "ko": "Korea",
+    "es": "Sepanyol",
+    "fr": "Perancis",
+    "de": "Jerman",
+    "zh": "Mandarin",
+    "ja": "Jepun",
+    "hi": "Hindi",
+    "ar": "Arab",
+    "he": "Ibrani",
+    "pt": "Portugis",
+    "it": "Itali",
+    "nl": "Belanda",
+    "ru": "Rusia",
+    "id": "Indonesia",
+    "ms": "Melayu",
+    "fil": "Filipina",
+    "tr": "Turki",
+    "bn": "Bengali",
+    "ta": "Tamil"
+  },
   "languageSelect": {
     "title": "Pilih Bahasa Anda",
     "subtitle": "Pilih bahasa yang anda tuturkan",

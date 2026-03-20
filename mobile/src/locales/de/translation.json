@@ -14,6 +14,28 @@
     "refresh": "Aktualisieren",
     "logout": "Abmelden"
   },
+  "languages": {
+    "en": "Englisch",
+    "ko": "Koreanisch",
+    "es": "Spanisch",
+    "fr": "Französisch",
+    "de": "Deutsch",
+    "zh": "Chinesisch",
+    "ja": "Japanisch",
+    "hi": "Hindi",
+    "ar": "Arabisch",
+    "he": "Hebräisch",
+    "pt": "Portugiesisch",
+    "it": "Italienisch",
+    "nl": "Niederländisch",
+    "ru": "Russisch",
+    "id": "Indonesisch",
+    "ms": "Malaiisch",
+    "fil": "Philippinisch",
+    "tr": "Türkisch",
+    "bn": "Bengalisch",
+    "ta": "Tamilisch"
+  },
   "languageSelect": {
     "title": "Wähle deine Sprachen",
     "subtitle": "Wähle die Sprache, die du sprichst",

@@ -14,6 +14,28 @@
     "refresh": "Segarkan",
     "logout": "Keluar"
   },
+  "languages": {
+    "en": "Inggris",
+    "ko": "Korea",
+    "es": "Spanyol",
+    "fr": "Prancis",
+    "de": "Jerman",
+    "zh": "Mandarin",
+    "ja": "Jepang",
+    "hi": "Hindi",
+    "ar": "Arab",
+    "he": "Ibrani",
+    "pt": "Portugis",
+    "it": "Italia",
+    "nl": "Belanda",
+    "ru": "Rusia",
+    "id": "Indonesia",
+    "ms": "Melayu",
+    "fil": "Filipina",
+    "tr": "Turki",
+    "bn": "Bengali",
+    "ta": "Tamil"
+  },
   "languageSelect": {
     "title": "Pilih Bahasa Anda",
     "subtitle": "Pilih bahasa yang Anda gunakan",

@@ -14,6 +14,28 @@
     "refresh": "Yenile",
     "logout": "Çıkış Yap"
   },
+  "languages": {
+    "en": "İngilizce",
+    "ko": "Korece",
+    "es": "İspanyolca",
+    "fr": "Fransızca",
+    "de": "Almanca",
+    "zh": "Çince",
+    "ja": "Japonca",
+    "hi": "Hintçe",
+    "ar": "Arapça",
+    "he": "İbranice",
+    "pt": "Portekizce",
+    "it": "İtalyanca",
+    "nl": "Felemenkçe",
+    "ru": "Rusça",
+    "id": "Endonezce",
+    "ms": "Malayca",
+    "fil": "Filipince",
+    "tr": "Türkçe",
+    "bn": "Bengalce",
+    "ta": "Tamilce"
+  },
   "languageSelect": {
     "title": "Dillerinizi Seçin",
     "subtitle": "Konuştuğunuz dili seçin",
