@@ -78,7 +78,11 @@ const authLimiter = rateLimit({
 });
 
 app.use('/api/', generalLimiter);
-app.use('/api/auth', authLimiter);
+// Apply strict auth limiter only to sensitive auth endpoints (not guest-activity)
+app.use('/api/auth/register', authLimiter);
+app.use('/api/auth/login', authLimiter);
+app.use('/api/auth/google', authLimiter);
+app.use('/api/auth/resend-verification', authLimiter);
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/korean-learning', { family: 4 })
