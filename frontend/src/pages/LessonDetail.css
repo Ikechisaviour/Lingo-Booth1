@@ -347,6 +347,54 @@
   margin-top: 12px;
 }
 
+/* Translation Pending (loading animation) */
+.lesson-translation-pending {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+}
+
+.lesson-translation-spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--border-light);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  opacity: 0.4;
+}
+
+.lesson-translation-spinner.spinning {
+  opacity: 1;
+  animation: lesson-spin 0.8s linear infinite;
+}
+
+@keyframes lesson-spin {
+  to { transform: rotate(360deg); }
+}
+
+.lesson-translation-pending-text {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.lesson-retry-translation-btn {
+  background: var(--bg-secondary);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  padding: 6px 18px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.lesson-retry-translation-btn:hover {
+  background: var(--primary);
+  color: white;
+}
+
 /* Navigation */
 .navigation-buttons {
   display: flex;

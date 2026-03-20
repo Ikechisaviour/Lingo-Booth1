@@ -98,8 +98,8 @@ router.get('/:id', optionalAuth, async (req, res) => {
       console.error('Translation/romanization overlay failed:', err.message);
     }
 
-    // Fallback: if nativeLang !== 'en' and any nativeText wasn't changed by applyTranslation,
-    // it's still the English seed value — translate English → nativeLang inline
+    // If nativeLang !== 'en', translate any nativeText that wasn't changed by applyTranslation
+    // (still the English seed value). On failure, clear nativeText and mark as pending.
     if (originalNativeTexts && lessonObj.content) {
       const missingIndices = [];
       const missingTexts = [];
@@ -117,10 +117,19 @@ router.get('/:id', optionalAuth, async (req, res) => {
             const translated = results[k]?.text;
             if (translated) {
               lessonObj.content[missingIndices[k]].nativeText = translated;
+            } else {
+              // Translation returned empty — mark pending, clear English
+              lessonObj.content[missingIndices[k]].nativeText = '';
+              lessonObj.content[missingIndices[k]]._translationPending = true;
             }
           }
         } catch (err) {
-          console.error('Lesson nativeText fallback translation failed:', err.message);
+          // Translation API failed — mark all untranslated items as pending
+          for (const idx of missingIndices) {
+            lessonObj.content[idx].nativeText = '';
+            lessonObj.content[idx]._translationPending = true;
+          }
+          console.error('Lesson nativeText translation failed:', err.message);
         }
       }
     }

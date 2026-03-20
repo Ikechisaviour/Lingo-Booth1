@@ -59,6 +59,7 @@ const LessonDetailScreen: React.FC = () => {
   const [showRomanization, setShowRomanization] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [orderMode, setOrderMode] = useState<'sequential' | 'random'>('sequential');
+  const [retryingTranslation, setRetryingTranslation] = useState(false);
 
   const [quizCorrect, setQuizCorrect] = useState(0);
   const [quizTotal, setQuizTotal] = useState(0);
@@ -139,6 +140,19 @@ const LessonDetailScreen: React.FC = () => {
 
   const content = lesson?.content?.[currentIndex];
   const totalItems = lesson?.content?.length || 0;
+  const translationPending = content?._translationPending || (!content?.nativeText && content?.targetText);
+
+  const retryTranslation = async () => {
+    setRetryingTranslation(true);
+    try {
+      const res = await lessonService.getLesson(lessonId);
+      setLesson(res.data);
+    } catch {
+      // silent
+    } finally {
+      setRetryingTranslation(false);
+    }
+  };
 
   const handleNext = () => {
     if (stepPosition < orderMap.length - 1) {
@@ -428,7 +442,21 @@ const LessonDetailScreen: React.FC = () => {
                 activeOpacity={0.7}
               >
                 {showTranslation ? (
-                  <Text style={styles.translationText}>{content.nativeText}</Text>
+                  translationPending ? (
+                    <View style={styles.pendingContainer}>
+                      <ActivityIndicator size="small" color={retryingTranslation ? colors.primary : colors.textMuted} animating={retryingTranslation} />
+                      <Text style={styles.pendingText}>
+                        {retryingTranslation ? t('lessonDetail.translating', 'Translating...') : t('lessonDetail.translationUnavailable', 'Translation loading...')}
+                      </Text>
+                      {!retryingTranslation && (
+                        <TouchableOpacity style={styles.retryBtn} onPress={retryTranslation}>
+                          <Text style={styles.retryBtnText}>{t('lessonDetail.retryTranslation', 'Retry')}</Text>
+                        </TouchableOpacity>
+                      )}
+                    </View>
+                  ) : (
+                    <Text style={styles.translationText}>{content.nativeText}</Text>
+                  )
                 ) : (
                   <Text style={styles.translationHint}>
                     {t('lessonDetail.tapToReveal', 'Tap to reveal translation')}
@@ -442,6 +470,20 @@ const LessonDetailScreen: React.FC = () => {
               <Button mode="outlined" onPress={() => setShowQuiz(true)} style={styles.quizStartBtn} icon="help-circle">
                 {t('lessonDetail.testYourself', 'Test Yourself')}
               </Button>
+            ) : translationPending ? (
+              <View style={styles.quizSection}>
+                <View style={styles.pendingContainer}>
+                  <ActivityIndicator size="small" color={retryingTranslation ? colors.primary : colors.textMuted} animating={retryingTranslation} />
+                  <Text style={styles.pendingText}>
+                    {retryingTranslation ? t('lessonDetail.translating', 'Translating...') : t('lessonDetail.quizUnavailable', 'Quiz unavailable — translation loading...')}
+                  </Text>
+                  {!retryingTranslation && (
+                    <TouchableOpacity style={styles.retryBtn} onPress={retryTranslation}>
+                      <Text style={styles.retryBtnText}>{t('lessonDetail.retryTranslation', 'Retry')}</Text>
+                    </TouchableOpacity>
+                  )}
+                </View>
+              </View>
             ) : (
               <View style={styles.quizSection}>
                 <Text style={styles.quizQuestion}>
@@ -622,6 +664,18 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
   quizOptionText: { fontSize: 15, color: colors.textPrimary },
   quizResult: { alignItems: 'center', marginTop: 8 },
   quizResultText: { fontSize: 18, fontWeight: '700' },
+
+  pendingContainer: { alignItems: 'center', padding: 20, gap: 10 },
+  pendingText: { fontSize: 14, color: colors.textMuted, textAlign: 'center' },
+  retryBtn: {
+    backgroundColor: colors.surface,
+    borderWidth: 1,
+    borderColor: colors.primary,
+    borderRadius: 8,
+    paddingHorizontal: 18,
+    paddingVertical: 6,
+  },
+  retryBtnText: { color: colors.primary, fontSize: 14, fontWeight: '600' },
 
   bottomNav: {
     flexDirection: 'row',

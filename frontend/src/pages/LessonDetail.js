@@ -23,6 +23,7 @@ function LessonDetail() {
   const [quizAttempted, setQuizAttempted] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [showExplanation, setShowExplanation] = useState(false);
+  const [retryingTranslation, setRetryingTranslation] = useState(false);
 
   // Order mode: 'sequential' or 'random'
   const [orderMode, setOrderMode] = useState('sequential');
@@ -232,6 +233,18 @@ function LessonDetail() {
       console.error(err);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const retryTranslation = async () => {
+    setRetryingTranslation(true);
+    try {
+      const response = await lessonService.getLesson(id);
+      setLesson(response.data);
+    } catch (err) {
+      console.error('Retry translation failed:', err);
+    } finally {
+      setRetryingTranslation(false);
     }
   };
 
@@ -483,6 +496,7 @@ function LessonDetail() {
   // Memoize quiz options to prevent reshuffling on re-render
   // Must be called before any early returns (React hooks rule)
   const content = lesson?.content?.[currentIndex];
+  const translationPending = content?._translationPending || (!content?.nativeText && content?.targetText);
   const quizOptions = useMemo(() => {
     if (!content || !lesson) return [];
     return generateQuizOptions(content.nativeText, lesson.content);
@@ -626,7 +640,21 @@ function LessonDetail() {
 
             {showTranslation && (
               <div className="translation">
-                <h3>{content.targetText} — {content.nativeText}</h3>
+                {translationPending ? (
+                  <div className="lesson-translation-pending">
+                    <div className={`lesson-translation-spinner ${retryingTranslation ? 'spinning' : ''}`} />
+                    <span className="lesson-translation-pending-text">
+                      {retryingTranslation ? t('lessonDetail.translating', 'Translating...') : t('lessonDetail.translationUnavailable', 'Translation loading...')}
+                    </span>
+                    {!retryingTranslation && (
+                      <button className="lesson-retry-translation-btn" onClick={retryTranslation}>
+                        {t('lessonDetail.retryTranslation', 'Retry')}
+                      </button>
+                    )}
+                  </div>
+                ) : (
+                  <h3>{content.targetText} — {content.nativeText}</h3>
+                )}
                 {content.breakdown && content.breakdown.length > 0 && (
                   <div className="breakdown">
                     {content.breakdown.map((part, i) => (
@@ -666,78 +694,94 @@ function LessonDetail() {
 
               {showQuiz && (
                 <div className="quiz-container">
-                  <h3 className="quiz-question">
-                    {studyMode === 'listening'
-                      ? t('lessonDetail.whatDidYouHear')
-                      : t('lessonDetail.whatDoesMean', { word: content.targetText, language: t(`languages.${getNativeLangCode()}`, getNativeLangName()) })}
-                  </h3>
-
-                  <div className="quiz-options">
-                    {quizOptions.map((option, index) => {
-                      const isSelected = selectedAnswer === option;
-                      const isCorrectAnswer = option === content.nativeText;
-
-                      let optionClass = 'quiz-option';
-                      if (quizAttempted) {
-                        if (isSelected && isCorrect) optionClass += ' quiz-option-correct';
-                        else if (isSelected && !isCorrect) optionClass += ' quiz-option-incorrect';
-                        else if (isCorrectAnswer && !isCorrect) optionClass += ' quiz-option-reveal';
-                      }
-
-                      return (
-                        <button
-                          key={index}
-                          className={optionClass}
-                          onClick={() => !quizAttempted || !isCorrect ? handleAnswerSelect(option) : null}
-                          disabled={quizAttempted && isCorrect}
-                        >
-                          {String.fromCharCode(65 + index)}. {option}
-                          {quizAttempted && isSelected && isCorrect && ' ✓'}
-                          {quizAttempted && isSelected && !isCorrect && ' ✗'}
-                          {quizAttempted && !isCorrect && isCorrectAnswer && ` (${t('lessonDetail.correctAnswer')})`}
+                  {translationPending ? (
+                    <div className="lesson-translation-pending">
+                      <div className={`lesson-translation-spinner ${retryingTranslation ? 'spinning' : ''}`} />
+                      <span className="lesson-translation-pending-text">
+                        {retryingTranslation ? t('lessonDetail.translating', 'Translating...') : t('lessonDetail.quizUnavailable', 'Quiz unavailable — translation loading...')}
+                      </span>
+                      {!retryingTranslation && (
+                        <button className="lesson-retry-translation-btn" onClick={retryTranslation}>
+                          {t('lessonDetail.retryTranslation', 'Retry')}
                         </button>
-                      );
-                    })}
-                  </div>
-
-                  {showExplanation && (
-                    <div className={`quiz-feedback ${isCorrect ? 'quiz-feedback-correct' : 'quiz-feedback-incorrect'}`}>
-                      {isCorrect ? (
-                        <div>
-                          <h4 className="quiz-feedback-title correct">✓ {t('lessonDetail.correct')}</h4>
-                          <p className="quiz-feedback-text">
-                            <strong>{t('lessonDetail.explanation')}:</strong> {t('lessonDetail.means', { word: content.targetText, romanization: content.romanization, meaning: content.nativeText })}
-                          </p>
-                          {content.exampleTarget && (
-                            <p className="quiz-feedback-text">
-                              <strong>{t('lessonDetail.exampleUsage')}:</strong><br />
-                              {t(`languages.${getTargetLangCode()}`, getTargetLangName())}: {content.exampleTarget}<br />
-                              {t(`languages.${getNativeLangCode()}`, getNativeLangName())}: {content.exampleNative}
-                            </p>
-                          )}
-                        </div>
-                      ) : (
-                        <div>
-                          <h4 className="quiz-feedback-title incorrect">✗ {t('lessonDetail.incorrect')}</h4>
-                          <p className="quiz-feedback-text">
-                            <strong>{t('lessonDetail.correctAnswer')}:</strong> "{content.nativeText}"
-                          </p>
-                          <p className="quiz-feedback-text">
-                            <strong>{t('lessonDetail.explanation')}:</strong> {t('lessonDetail.means', { word: content.targetText, romanization: content.romanization, meaning: content.nativeText })}
-                          </p>
-                          {content.exampleTarget && (
-                            <p className="quiz-feedback-text">
-                              <strong>{t('lessonDetail.exampleUsage')}:</strong><br />
-                              {t(`languages.${getTargetLangCode()}`, getTargetLangName())}: {content.exampleTarget}<br />
-                              {t(`languages.${getNativeLangCode()}`, getNativeLangName())}: {content.exampleNative}
-                            </p>
-                          )}
-                          <button className="btn btn-primary quiz-try-again" onClick={handleTryAgain}>
-                            {t('lessonDetail.tryAgain')}
-                          </button>
-                        </div>
                       )}
                     </div>
+                  ) : (
+                    <>
+                      <h3 className="quiz-question">
+                        {studyMode === 'listening'
+                          ? t('lessonDetail.whatDidYouHear')
+                          : t('lessonDetail.whatDoesMean', { word: content.targetText, language: t(`languages.${getNativeLangCode()}`, getNativeLangName()) })}
+                      </h3>
+
+                      <div className="quiz-options">
+                        {quizOptions.map((option, index) => {
+                          const isSelected = selectedAnswer === option;
+                          const isCorrectAnswer = option === content.nativeText;
+
+                          let optionClass = 'quiz-option';
+                          if (quizAttempted) {
+                            if (isSelected && isCorrect) optionClass += ' quiz-option-correct';
+                            else if (isSelected && !isCorrect) optionClass += ' quiz-option-incorrect';
+                            else if (isCorrectAnswer && !isCorrect) optionClass += ' quiz-option-reveal';
+                          }
+
+                          return (
+                            <button
+                              key={index}
+                              className={optionClass}
+                              onClick={() => !quizAttempted || !isCorrect ? handleAnswerSelect(option) : null}
+                              disabled={quizAttempted && isCorrect}
+                            >
+                              {String.fromCharCode(65 + index)}. {option}
+                              {quizAttempted && isSelected && isCorrect && ' ✓'}
+                              {quizAttempted && isSelected && !isCorrect && ' ✗'}
+                              {quizAttempted && !isCorrect && isCorrectAnswer && ` (${t('lessonDetail.correctAnswer')})`}
+                            </button>
+                          );
+                        })}
+                      </div>
+
+                      {showExplanation && (
+                        <div className={`quiz-feedback ${isCorrect ? 'quiz-feedback-correct' : 'quiz-feedback-incorrect'}`}>
+                          {isCorrect ? (
+                            <div>
+                              <h4 className="quiz-feedback-title correct">✓ {t('lessonDetail.correct')}</h4>
+                              <p className="quiz-feedback-text">
+                                <strong>{t('lessonDetail.explanation')}:</strong> {t('lessonDetail.means', { word: content.targetText, romanization: content.romanization, meaning: content.nativeText })}
+                              </p>
+                              {content.exampleTarget && (
+                                <p className="quiz-feedback-text">
+                                  <strong>{t('lessonDetail.exampleUsage')}:</strong><br />
+                                  {t(`languages.${getTargetLangCode()}`, getTargetLangName())}: {content.exampleTarget}<br />
+                                  {t(`languages.${getNativeLangCode()}`, getNativeLangName())}: {content.exampleNative}
+                                </p>
+                              )}
+                            </div>
+                          ) : (
+                            <div>
+                              <h4 className="quiz-feedback-title incorrect">✗ {t('lessonDetail.incorrect')}</h4>
+                              <p className="quiz-feedback-text">
+                                <strong>{t('lessonDetail.correctAnswer')}:</strong> "{content.nativeText}"
+                              </p>
+                              <p className="quiz-feedback-text">
+                                <strong>{t('lessonDetail.explanation')}:</strong> {t('lessonDetail.means', { word: content.targetText, romanization: content.romanization, meaning: content.nativeText })}
+                              </p>
+                              {content.exampleTarget && (
+                                <p className="quiz-feedback-text">
+                                  <strong>{t('lessonDetail.exampleUsage')}:</strong><br />
+                                  {t(`languages.${getTargetLangCode()}`, getTargetLangName())}: {content.exampleTarget}<br />
+                                  {t(`languages.${getNativeLangCode()}`, getNativeLangName())}: {content.exampleNative}
+                                </p>
+                              )}
+                              <button className="btn btn-primary quiz-try-again" onClick={handleTryAgain}>
+                                {t('lessonDetail.tryAgain')}
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </>
                   )}
                 </div>
               )}
