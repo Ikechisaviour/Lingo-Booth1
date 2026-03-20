@@ -88,6 +88,18 @@
     "alreadyHaveAccount": "¿Ya tienes cuenta? Inicia sesión",
     "continueAsGuest": "Continuar como invitado"
   },
+  "guest": {
+    "loginTitle": "Iniciar sesión",
+    "loginMessage": "Crea una cuenta o inicia sesión para guardar tu progreso y desbloquear todas las funciones.",
+    "maybeLater": "Quizás después",
+    "signIn": "Iniciar sesión",
+    "signupTitle": "¿Listo para guardar tu progreso?",
+    "signupDesc": "Crea una cuenta gratuita para mantener tu XP, desbloquear todas las funciones y seguir tu aprendizaje.",
+    "benefitXP": "Conserva todo tu XP ganado",
+    "benefitProgress": "Sigue tu progreso",
+    "benefitLeaderboard": "Únete a la tabla de clasificación",
+    "createAccount": "Crear cuenta"
+  },
   "home": {
     "welcomeBack": "Bienvenido de nuevo, {{username}}",
     "welcomeBackNoName": "Bienvenido de nuevo",
@@ -158,6 +170,11 @@
     "noLessonsHint": "¡Ajusta tus filtros o vuelve pronto para nuevo contenido!",
     "clearFilters": "Borrar filtros",
     "failedToLoad": "Error al cargar lecciones",
+    "lessons": "Lecciones",
+    "select": "Seleccionar",
+    "selectedCount": "{{count}} seleccionados",
+    "tapToSelect": "Toca las lecciones para seleccionar",
+    "startSelected": "Iniciar seleccionados",
     "items": "{{count}} elementos",
     "backToLessons": "Volver a lecciones",
     "categories": {

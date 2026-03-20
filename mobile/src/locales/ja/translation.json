@@ -88,6 +88,18 @@
     "alreadyHaveAccount": "すでにアカウントをお持ちですか？ログイン",
     "continueAsGuest": "ゲストとして続ける"
   },
+  "guest": {
+    "loginTitle": "ログイン",
+    "loginMessage": "アカウントを作成またはログインして、進捗を保存しすべての機能をアンロックしましょう。",
+    "maybeLater": "後で",
+    "signIn": "ログイン",
+    "signupTitle": "進捗を保存する準備はできましたか？",
+    "signupDesc": "無料アカウントを作成して、XPを保持し、すべての機能をアンロックし、学習の旅を追跡しましょう。",
+    "benefitXP": "獲得したXPをすべて保持",
+    "benefitProgress": "進捗を追跡",
+    "benefitLeaderboard": "リーダーボードに参加",
+    "createAccount": "アカウント作成"
+  },
   "home": {
     "welcomeBack": "おかえりなさい、{{username}}",
     "welcomeBackNoName": "おかえりなさい",
@@ -158,6 +170,11 @@
     "noLessonsHint": "フィルターを調整するか、新しいコンテンツを確認してください！",
     "clearFilters": "フィルターをクリア",
     "failedToLoad": "レッスンの読み込みに失敗しました",
+    "lessons": "レッスン",
+    "select": "選択",
+    "selectedCount": "{{count}}件選択中",
+    "tapToSelect": "レッスンをタップして選択",
+    "startSelected": "選択したレッスンを開始",
     "items": "{{count}}項目",
     "backToLessons": "レッスンに戻る",
     "categories": {

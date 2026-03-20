@@ -88,6 +88,18 @@
     "alreadyHaveAccount": "Sudah ada akaun? Log Masuk",
     "continueAsGuest": "Teruskan sebagai tetamu"
   },
+  "guest": {
+    "loginTitle": "Log Masuk",
+    "loginMessage": "Cipta akaun atau log masuk untuk menyimpan kemajuan dan membuka semua ciri.",
+    "maybeLater": "Mungkin nanti",
+    "signIn": "Log Masuk",
+    "signupTitle": "Bersedia untuk menyimpan kemajuan anda?",
+    "signupDesc": "Cipta akaun percuma untuk menyimpan XP, membuka semua ciri dan menjejaki perjalanan pembelajaran.",
+    "benefitXP": "Simpan semua XP yang diperolehi",
+    "benefitProgress": "Jejaki kemajuan anda",
+    "benefitLeaderboard": "Sertai papan pendahulu",
+    "createAccount": "Cipta Akaun"
+  },
   "home": {
     "welcomeBack": "Selamat kembali, {{username}}",
     "welcomeBackNoName": "Selamat kembali",
@@ -158,6 +170,11 @@
     "noLessonsHint": "Cuba laraskan penapis anda atau kembali nanti untuk kandungan baharu!",
     "clearFilters": "Kosongkan penapis",
     "failedToLoad": "Gagal memuatkan pelajaran",
+    "lessons": "Pelajaran",
+    "select": "Pilih",
+    "selectedCount": "{{count}} dipilih",
+    "tapToSelect": "Ketik pelajaran untuk memilih",
+    "startSelected": "Mula yang dipilih",
     "items": "{{count}} item",
     "backToLessons": "Kembali ke Pelajaran",
     "categories": {

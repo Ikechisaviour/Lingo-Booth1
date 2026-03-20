@@ -88,6 +88,18 @@
     "alreadyHaveAccount": "Heb je al een account? Inloggen",
     "continueAsGuest": "Doorgaan als gast"
   },
+  "guest": {
+    "loginTitle": "Inloggen",
+    "loginMessage": "Maak een account aan of log in om je voortgang op te slaan en alle functies te ontgrendelen.",
+    "maybeLater": "Misschien later",
+    "signIn": "Inloggen",
+    "signupTitle": "Klaar om je voortgang op te slaan?",
+    "signupDesc": "Maak een gratis account aan om je XP te behouden, alle functies te ontgrendelen en je leertraject te volgen.",
+    "benefitXP": "Behoud al je verdiende XP",
+    "benefitProgress": "Volg je voortgang",
+    "benefitLeaderboard": "Doe mee aan het klassement",
+    "createAccount": "Account aanmaken"
+  },
   "home": {
     "welcomeBack": "Welkom terug, {{username}}",
     "welcomeBackNoName": "Welkom terug",
@@ -158,6 +170,11 @@
     "noLessonsHint": "Pas je filters aan of kom binnenkort terug voor nieuwe inhoud!",
     "clearFilters": "Filters wissen",
     "failedToLoad": "Lessen laden mislukt",
+    "lessons": "Lessen",
+    "select": "Selecteren",
+    "selectedCount": "{{count}} geselecteerd",
+    "tapToSelect": "Tik op lessen om te selecteren",
+    "startSelected": "Geselecteerde starten",
     "items": "{{count}} items",
     "backToLessons": "Terug naar lessen",
     "categories": {

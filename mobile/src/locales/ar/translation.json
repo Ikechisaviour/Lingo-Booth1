@@ -88,6 +88,18 @@
     "alreadyHaveAccount": "لديك حساب بالفعل؟ تسجيل الدخول",
     "continueAsGuest": "المتابعة كضيف"
   },
+  "guest": {
+    "loginTitle": "تسجيل الدخول",
+    "loginMessage": "أنشئ حساباً أو سجل دخولك لحفظ تقدمك وفتح جميع الميزات.",
+    "maybeLater": "ربما لاحقاً",
+    "signIn": "تسجيل الدخول",
+    "signupTitle": "مستعد لحفظ تقدمك؟",
+    "signupDesc": "أنشئ حساباً مجانياً للحفاظ على نقاط XP الخاصة بك وفتح جميع الميزات وتتبع رحلة التعلم.",
+    "benefitXP": "احتفظ بجميع نقاط XP المكتسبة",
+    "benefitProgress": "تتبع تقدمك",
+    "benefitLeaderboard": "انضم إلى لوحة المتصدرين",
+    "createAccount": "إنشاء حساب"
+  },
   "home": {
     "welcomeBack": "مرحبًا بعودتك، {{username}}",
     "welcomeBackNoName": "مرحبًا بعودتك",
@@ -158,6 +170,11 @@
     "noLessonsHint": "حاول تعديل الفلاتر أو عد قريبًا لمحتوى جديد!",
     "clearFilters": "مسح الفلاتر",
     "failedToLoad": "فشل تحميل الدروس",
+    "lessons": "الدروس",
+    "select": "تحديد",
+    "selectedCount": "{{count}} محدد",
+    "tapToSelect": "اضغط على الدروس للتحديد",
+    "startSelected": "بدء المحدد",
     "items": "{{count}} عنصر",
     "backToLessons": "العودة إلى الدروس",
     "categories": {

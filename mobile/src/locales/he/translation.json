@@ -88,6 +88,18 @@
     "alreadyHaveAccount": "כבר יש לך חשבון? התחבר",
     "continueAsGuest": "המשך כאורח"
   },
+  "guest": {
+    "loginTitle": "התחברות",
+    "loginMessage": "צור חשבון או התחבר כדי לשמור את ההתקדמות שלך ולפתוח את כל התכונות.",
+    "maybeLater": "אולי מאוחר יותר",
+    "signIn": "התחברות",
+    "signupTitle": "מוכן לשמור את ההתקדמות שלך?",
+    "signupDesc": "צור חשבון חינמי כדי לשמור את ה-XP שלך, לפתוח את כל התכונות ולעקוב אחר מסע הלמידה.",
+    "benefitXP": "שמור את כל ה-XP שצברת",
+    "benefitProgress": "עקוב אחר ההתקדמות שלך",
+    "benefitLeaderboard": "הצטרף ללוח המובילים",
+    "createAccount": "צור חשבון"
+  },
   "home": {
     "welcomeBack": "ברוך שובך, {{username}}",
     "welcomeBackNoName": "ברוך שובך",
@@ -158,6 +170,11 @@
     "noLessonsHint": "נסה להתאים את המסננים או חזור בקרוב לתוכן חדש!",
     "clearFilters": "נקה מסננים",
     "failedToLoad": "טעינת השיעורים נכשלה",
+    "lessons": "שיעורים",
+    "select": "בחר",
+    "selectedCount": "{{count}} נבחרו",
+    "tapToSelect": "הקש על שיעורים לבחירה",
+    "startSelected": "התחל נבחרים",
     "items": "{{count}} פריטים",
     "backToLessons": "חזרה לשיעורים",
     "categories": {

@@ -597,9 +597,10 @@
 
 .action-btn {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
+  gap: 6px;
   padding: 12px;
   border-radius: 16px;
   border: none;
@@ -610,7 +611,8 @@
 }
 
 .action-icon {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1;
 }
 
 .action-label {

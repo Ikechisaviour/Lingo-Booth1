@@ -88,6 +88,18 @@
     "alreadyHaveAccount": "Already have an account? Login",
     "continueAsGuest": "Continue as guest"
   },
+  "guest": {
+    "loginTitle": "Sign In",
+    "loginMessage": "Create an account or sign in to save your progress and unlock all features.",
+    "maybeLater": "Maybe Later",
+    "signIn": "Sign In",
+    "signupTitle": "Ready to save your progress?",
+    "signupDesc": "Create a free account to keep your XP, unlock all features, and track your learning journey.",
+    "benefitXP": "Keep all your earned XP",
+    "benefitProgress": "Track your progress",
+    "benefitLeaderboard": "Join the leaderboard",
+    "createAccount": "Create Account"
+  },
   "home": {
     "welcomeBack": "Welcome back, {{username}}",
     "welcomeBackNoName": "Welcome back",
@@ -158,6 +170,11 @@
     "noLessonsHint": "Try adjusting your filters or check back soon for new content!",
     "clearFilters": "Clear filters",
     "failedToLoad": "Failed to load lessons",
+    "lessons": "Lessons",
+    "select": "Select",
+    "selectedCount": "{{count}} selected",
+    "tapToSelect": "Tap lessons to select",
+    "startSelected": "Start Selected",
     "items": "{{count}} items",
     "backToLessons": "Back to Lessons",
     "categories": {

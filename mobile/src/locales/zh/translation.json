@@ -88,6 +88,18 @@
     "alreadyHaveAccount": "已有账号？登录",
     "continueAsGuest": "以访客身份继续"
   },
+  "guest": {
+    "loginTitle": "登录",
+    "loginMessage": "创建账户或登录以保存进度并解锁所有功能。",
+    "maybeLater": "以后再说",
+    "signIn": "登录",
+    "signupTitle": "准备好保存你的进度了吗？",
+    "signupDesc": "创建免费账户以保留XP、解锁所有功能并追踪学习历程。",
+    "benefitXP": "保留所有获得的XP",
+    "benefitProgress": "追踪你的进度",
+    "benefitLeaderboard": "加入排行榜",
+    "createAccount": "创建账户"
+  },
   "home": {
     "welcomeBack": "欢迎回来，{{username}}",
     "welcomeBackNoName": "欢迎回来",
@@ -158,6 +170,11 @@
     "noLessonsHint": "试试调整筛选条件或稍后回来查看新内容！",
     "clearFilters": "清除筛选",
     "failedToLoad": "课程加载失败",
+    "lessons": "课程",
+    "select": "选择",
+    "selectedCount": "已选择 {{count}} 个",
+    "tapToSelect": "点击课程进行选择",
+    "startSelected": "开始所选课程",
     "items": "{{count}}个项目",
     "backToLessons": "返回课程",
     "categories": {

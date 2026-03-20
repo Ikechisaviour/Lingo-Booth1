@@ -65,8 +65,10 @@ export const authService = {
 
 export const lessonService = {
   getLessons: (category?: string, difficulty?: string) => {
-    const targetLang = useSettingsStore.getState().targetLanguage || 'ko';
-    return api.get('/lessons', { params: { category, difficulty, targetLang } });
+    const { targetLanguage, nativeLanguage } = useSettingsStore.getState();
+    const targetLang = targetLanguage || 'ko';
+    const nativeLang = nativeLanguage || 'en';
+    return api.get('/lessons', { params: { category, difficulty, targetLang, nativeLang } });
   },
   getLesson: (id: string) => {
     const nativeLang = useSettingsStore.getState().nativeLanguage || 'en';

@@ -88,6 +88,18 @@
     "alreadyHaveAccount": "Mayroon nang account? Mag-log in",
     "continueAsGuest": "Magpatuloy bilang bisita"
   },
+  "guest": {
+    "loginTitle": "Mag-sign In",
+    "loginMessage": "Gumawa ng account o mag-sign in para i-save ang iyong progress at i-unlock lahat ng features.",
+    "maybeLater": "Mamaya na lang",
+    "signIn": "Mag-sign In",
+    "signupTitle": "Handa nang i-save ang iyong progress?",
+    "signupDesc": "Gumawa ng libreng account para mapanatili ang iyong XP, i-unlock lahat ng features, at subaybayan ang iyong pag-aaral.",
+    "benefitXP": "Panatilihin lahat ng nakuhang XP",
+    "benefitProgress": "Subaybayan ang iyong progress",
+    "benefitLeaderboard": "Sumali sa leaderboard",
+    "createAccount": "Gumawa ng Account"
+  },
   "home": {
     "welcomeBack": "Maligayang pagbabalik, {{username}}",
     "welcomeBackNoName": "Maligayang pagbabalik",
@@ -158,6 +170,11 @@
     "noLessonsHint": "Subukang i-adjust ang iyong mga filter o bumalik mamaya para sa bagong content!",
     "clearFilters": "I-clear ang mga filter",
     "failedToLoad": "Hindi na-load ang mga aralin",
+    "lessons": "Mga Aralin",
+    "select": "Pumili",
+    "selectedCount": "{{count}} napili",
+    "tapToSelect": "I-tap ang mga aralin para pumili",
+    "startSelected": "Simulan ang napili",
     "items": "{{count}} item",
     "backToLessons": "Bumalik sa mga Aralin",
     "categories": {

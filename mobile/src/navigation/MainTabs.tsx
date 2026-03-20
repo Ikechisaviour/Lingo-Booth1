@@ -68,7 +68,7 @@ const MainTabs: React.FC = () => {
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarLabel: t('nav.home', 'Home'),
+          tabBarLabel: t('navbar.home', 'Home'),
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="home" color={color} size={size} />
           ),
@@ -78,7 +78,7 @@ const MainTabs: React.FC = () => {
         name="Lessons"
         component={LessonsStackScreen}
         options={{
-          tabBarLabel: t('nav.lessons', 'Lessons'),
+          tabBarLabel: t('navbar.lessons', 'Lessons'),
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="book-open-variant" color={color} size={size} />
           ),
@@ -88,7 +88,7 @@ const MainTabs: React.FC = () => {
         name="Flashcards"
         component={FlashcardsScreen}
         options={{
-          tabBarLabel: t('nav.flashcards', 'Flashcards'),
+          tabBarLabel: t('navbar.flashcards', 'Flashcards'),
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="cards" color={color} size={size} />
           ),
@@ -99,7 +99,7 @@ const MainTabs: React.FC = () => {
           name="Progress"
           component={ProgressScreen}
           options={{
-            tabBarLabel: t('nav.progress', 'Progress'),
+            tabBarLabel: t('navbar.progress', 'Progress'),
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="chart-line" color={color} size={size} />
             ),
@@ -111,7 +111,7 @@ const MainTabs: React.FC = () => {
           name="Profile"
           component={ProfileStackScreen}
           options={{
-            tabBarLabel: t('nav.profile', 'Profile'),
+            tabBarLabel: t('navbar.profile', 'Profile'),
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="account" color={color} size={size} />
             ),
@@ -123,7 +123,7 @@ const MainTabs: React.FC = () => {
           name="Login"
           component={EmptyScreen}
           options={{
-            tabBarLabel: t('nav.login', 'Login'),
+            tabBarLabel: t('navbar.login', 'Login'),
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="login" color={color} size={size} />
             ),

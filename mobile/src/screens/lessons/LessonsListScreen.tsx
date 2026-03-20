@@ -14,7 +14,7 @@ import { useNavigation } from '@react-navigation/native';
 import { lessonService, progressService } from '../../services/api';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
-import { getLangName } from '../../config/languages';
+import { getLangNativeName } from '../../config/languages';
 import { useAppColors, type AppColors } from '../../config/theme';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -188,7 +188,7 @@ const LessonsListScreen: React.FC = () => {
         <View style={styles.headerTop}>
           <View>
             <Text variant="headlineSmall" style={styles.headerTitle}>
-              {getLangName(targetLanguage)} {t('lessons.lessons', 'Lessons')}
+              {getLangNativeName(targetLanguage)} {t('lessons.lessons', 'Lessons')}
             </Text>
             <Text style={styles.headerStat}>
               📚 {t('lessons.lessonsAvailable', { count: lessons.length })}

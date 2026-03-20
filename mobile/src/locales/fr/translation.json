@@ -88,6 +88,18 @@
     "alreadyHaveAccount": "Vous avez déjà un compte ? Connectez-vous",
     "continueAsGuest": "Continuer en tant qu'invité"
   },
+  "guest": {
+    "loginTitle": "Connexion",
+    "loginMessage": "Créez un compte ou connectez-vous pour sauvegarder votre progression et débloquer toutes les fonctionnalités.",
+    "maybeLater": "Plus tard",
+    "signIn": "Se connecter",
+    "signupTitle": "Prêt à sauvegarder votre progression ?",
+    "signupDesc": "Créez un compte gratuit pour conserver vos XP, débloquer toutes les fonctionnalités et suivre votre parcours.",
+    "benefitXP": "Conservez tous vos XP gagnés",
+    "benefitProgress": "Suivez votre progression",
+    "benefitLeaderboard": "Rejoignez le classement",
+    "createAccount": "Créer un compte"
+  },
   "home": {
     "welcomeBack": "Bon retour, {{username}}",
     "welcomeBackNoName": "Bon retour",
@@ -158,6 +170,11 @@
     "noLessonsHint": "Essayez d'ajuster vos filtres ou revenez bientôt pour du nouveau contenu !",
     "clearFilters": "Effacer les filtres",
     "failedToLoad": "Échec du chargement des leçons",
+    "lessons": "Leçons",
+    "select": "Sélectionner",
+    "selectedCount": "{{count}} sélectionnés",
+    "tapToSelect": "Appuyez sur les leçons pour sélectionner",
+    "startSelected": "Démarrer la sélection",
     "items": "{{count}} éléments",
     "backToLessons": "Retour aux leçons",
     "categories": {

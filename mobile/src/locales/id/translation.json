@@ -88,6 +88,18 @@
     "alreadyHaveAccount": "Sudah punya akun? Masuk",
     "continueAsGuest": "Lanjutkan sebagai tamu"
   },
+  "guest": {
+    "loginTitle": "Masuk",
+    "loginMessage": "Buat akun atau masuk untuk menyimpan kemajuan dan membuka semua fitur.",
+    "maybeLater": "Mungkin nanti",
+    "signIn": "Masuk",
+    "signupTitle": "Siap menyimpan kemajuanmu?",
+    "signupDesc": "Buat akun gratis untuk menyimpan XP, membuka semua fitur, dan melacak perjalanan belajarmu.",
+    "benefitXP": "Simpan semua XP yang diperoleh",
+    "benefitProgress": "Lacak kemajuanmu",
+    "benefitLeaderboard": "Bergabung di papan peringkat",
+    "createAccount": "Buat Akun"
+  },
   "home": {
     "welcomeBack": "Selamat datang kembali, {{username}}",
     "welcomeBackNoName": "Selamat datang kembali",
@@ -158,6 +170,11 @@
     "noLessonsHint": "Coba sesuaikan filter atau kembali lagi nanti untuk konten baru!",
     "clearFilters": "Hapus filter",
     "failedToLoad": "Gagal memuat pelajaran",
+    "lessons": "Pelajaran",
+    "select": "Pilih",
+    "selectedCount": "{{count}} dipilih",
+    "tapToSelect": "Ketuk pelajaran untuk memilih",
+    "startSelected": "Mulai yang dipilih",
     "items": "{{count}} item",
     "backToLessons": "Kembali ke Pelajaran",
     "categories": {

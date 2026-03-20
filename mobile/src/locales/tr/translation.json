@@ -88,6 +88,18 @@
     "alreadyHaveAccount": "Zaten hesabınız var mı? Giriş Yapın",
     "continueAsGuest": "Misafir olarak devam et"
   },
+  "guest": {
+    "loginTitle": "Giriş Yap",
+    "loginMessage": "İlerlemenizi kaydetmek ve tüm özelliklerin kilidini açmak için hesap oluşturun veya giriş yapın.",
+    "maybeLater": "Belki sonra",
+    "signIn": "Giriş Yap",
+    "signupTitle": "İlerlemenizi kaydetmeye hazır mısınız?",
+    "signupDesc": "XP'nizi korumak, tüm özellikleri açmak ve öğrenme yolculuğunuzu takip etmek için ücretsiz hesap oluşturun.",
+    "benefitXP": "Kazandığınız tüm XP'yi koruyun",
+    "benefitProgress": "İlerlemenizi takip edin",
+    "benefitLeaderboard": "Skor tablosuna katılın",
+    "createAccount": "Hesap Oluştur"
+  },
   "home": {
     "welcomeBack": "Tekrar hoş geldin, {{username}}",
     "welcomeBackNoName": "Tekrar hoş geldin",
@@ -158,6 +170,11 @@
     "noLessonsHint": "Filtrelerinizi düzenlemeyi deneyin veya yeni içerikler için daha sonra tekrar kontrol edin!",
     "clearFilters": "Filtreleri temizle",
     "failedToLoad": "Dersler yüklenemedi",
+    "lessons": "Dersler",
+    "select": "Seç",
+    "selectedCount": "{{count}} seçildi",
+    "tapToSelect": "Seçmek için derslere dokunun",
+    "startSelected": "Seçilenleri başlat",
     "items": "{{count}} öğe",
     "backToLessons": "Derslere Dön",
     "categories": {
