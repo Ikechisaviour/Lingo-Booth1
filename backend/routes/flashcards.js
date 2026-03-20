@@ -304,12 +304,24 @@ router.get('/category-cards', async (req, res) => {
     const filtered = defaultCards
       .filter(c => normalizeCategory(c.category)[0].toLowerCase() === category)
       .map(c => ({
-        _id: c._id.toString(),
+        _id: c._id,
+        english: c.english || '',
         [targetField]: c[targetField] || c.korean || '',
-        [nativeField]: c[nativeField] || c.english || '',
+        [nativeField]: c[nativeField] || '',
       }));
 
-    res.json({ cards: filtered });
+    // Translate missing native fields (same logic as main flashcard routes)
+    await fillNativeTranslations(filtered, nativeLang);
+
+    // Strip helper fields before sending
+    const cards = filtered.map(c => ({
+      _id: c._id.toString(),
+      [targetField]: c[targetField] || '',
+      [nativeField]: c[nativeField] || c.english || '',
+      ...(c._translationPending ? { _translationPending: true } : {}),
+    }));
+
+    res.json({ cards });
   } catch (error) {
     console.error('Get category cards error:', error);
     res.status(500).json({ message: 'Server error' });
