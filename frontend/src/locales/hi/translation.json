@@ -165,6 +165,7 @@
     "subtitle": "व्यावहारिक कौशल सीखें जिन्हें आप तुरंत लागू कर सकते हैं",
     "lessonsAvailable": "{{count}} पाठ उपलब्ध",
     "all": "सभी",
+    "category": "श्रेणी",
     "level": "स्तर:",
     "allLevels": "सभी स्तर",
     "studyAll": "सभी {{count}} पाठ पढ़ें",
@@ -292,6 +293,8 @@
     "uncategorized": "बिना श्रेणी",
     "shuffle": "शफ़ल",
     "shuffled": "शफ़ल किया गया",
+    "previous": "पिछला",
+    "next": "अगला",
     "categoryNames": {
       "greetings": "अभिवादन",
       "numbers": "संख्याएं",

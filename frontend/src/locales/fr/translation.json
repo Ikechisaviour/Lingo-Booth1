@@ -165,6 +165,7 @@
     "subtitle": "Apprenez des compétences pratiques applicables immédiatement",
     "lessonsAvailable": "{{count}} leçons disponibles",
     "all": "Toutes",
+    "category": "Catégorie",
     "level": "Niveau :",
     "allLevels": "Tous les niveaux",
     "studyAll": "Étudier les {{count}} leçons",
@@ -292,6 +293,8 @@
     "uncategorized": "non catégorisé",
     "shuffle": "Mélanger",
     "shuffled": "Mélangé",
+    "previous": "Précédent",
+    "next": "Suivant",
     "categoryNames": {
       "greetings": "Salutations",
       "numbers": "Nombres",

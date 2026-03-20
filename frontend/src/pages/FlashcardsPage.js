@@ -1245,14 +1245,14 @@ function FlashcardsPage() {
                   disabled={currentIndex === 0 || transitioningRef.current}
                   onClick={handlePrev}
                 >
-                  &#8249; Previous
+                  &#8249; {t('flashcards.previous')}
                 </button>
                 <button
                   className="nav-btn nav-btn-next"
                   disabled={currentIndex >= activeFlashcards.length - 1 || transitioningRef.current}
                   onClick={handleNext}
                 >
-                  Next &#8250;
+                  {t('flashcards.next')} &#8250;
                 </button>
               </div>
 

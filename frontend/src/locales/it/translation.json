@@ -165,6 +165,7 @@
     "subtitle": "Impara competenze pratiche da applicare subito",
     "lessonsAvailable": "{{count}} lezioni disponibili",
     "all": "Tutte",
+    "category": "Categoria",
     "level": "Livello:",
     "allLevels": "Tutti i livelli",
     "studyAll": "Studia tutte le {{count}} lezioni",
@@ -292,6 +293,8 @@
     "uncategorized": "senza categoria",
     "shuffle": "Mescola",
     "shuffled": "Mescolato",
+    "previous": "Precedente",
+    "next": "Successivo",
     "categoryNames": {
       "greetings": "Saluti",
       "numbers": "Numeri",

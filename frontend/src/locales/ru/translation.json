@@ -165,6 +165,7 @@
     "subtitle": "Изучайте практические навыки для немедленного применения",
     "lessonsAvailable": "{{count}} уроков доступно",
     "all": "Все",
+    "category": "Категория",
     "level": "Уровень:",
     "allLevels": "Все уровни",
     "studyAll": "Изучить все {{count}} уроков",
@@ -292,6 +293,8 @@
     "uncategorized": "без категории",
     "shuffle": "Перемешать",
     "shuffled": "Перемешано",
+    "previous": "Назад",
+    "next": "Далее",
     "categoryNames": {
       "greetings": "Приветствия",
       "numbers": "Числа",

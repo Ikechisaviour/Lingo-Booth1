@@ -165,6 +165,7 @@
     "subtitle": "Pelajari keterampilan praktis yang bisa langsung diterapkan",
     "lessonsAvailable": "{{count}} pelajaran tersedia",
     "all": "Semua",
+    "category": "Kategori",
     "level": "Tingkat:",
     "allLevels": "Semua Tingkat",
     "studyAll": "Pelajari Semua {{count}} Pelajaran",
@@ -292,6 +293,8 @@
     "uncategorized": "tanpa kategori",
     "shuffle": "Acak",
     "shuffled": "Diacak",
+    "previous": "Sebelumnya",
+    "next": "Berikutnya",
     "categoryNames": {
       "greetings": "Salam",
       "numbers": "Angka",

@@ -165,6 +165,7 @@
     "subtitle": "바로 활용할 수 있는 실용적인 기술을 배우세요",
     "lessonsAvailable": "{{count}}개 레슨 이용 가능",
     "all": "전체",
+    "category": "카테고리",
     "level": "레벨:",
     "allLevels": "모든 레벨",
     "studyAll": "{{count}}개 레슨 전체 학습",
@@ -292,6 +293,8 @@
     "uncategorized": "미분류",
     "shuffle": "섞기",
     "shuffled": "섞음",
+    "previous": "이전",
+    "next": "다음",
     "categoryNames": {
       "greetings": "인사",
       "numbers": "숫자",

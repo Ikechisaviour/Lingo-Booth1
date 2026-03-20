@@ -165,6 +165,7 @@
     "subtitle": "すぐに活用できる実践的なスキルを学びましょう",
     "lessonsAvailable": "{{count}}レッスン利用可能",
     "all": "すべて",
+    "category": "カテゴリー",
     "level": "レベル：",
     "allLevels": "全レベル",
     "studyAll": "全{{count}}レッスンを学習",
@@ -292,6 +293,8 @@
     "uncategorized": "未分類",
     "shuffle": "シャッフル",
     "shuffled": "シャッフル済み",
+    "previous": "前へ",
+    "next": "次へ",
     "categoryNames": {
       "greetings": "挨拶",
       "numbers": "数字",

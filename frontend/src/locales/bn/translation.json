@@ -165,6 +165,7 @@
     "subtitle": "এখনই প্রয়োগ করতে পারেন এমন ব্যবহারিক দক্ষতা শিখুন",
     "lessonsAvailable": "{{count}}টি পাঠ উপলব্ধ",
     "all": "সব",
+    "category": "বিভাগ",
     "level": "স্তর:",
     "allLevels": "সব স্তর",
     "studyAll": "সব {{count}}টি পাঠ পড়ুন",
@@ -292,6 +293,8 @@
     "uncategorized": "বিভাগহীন",
     "shuffle": "এলোমেলো",
     "shuffled": "এলোমেলো হয়েছে",
+    "previous": "আগের",
+    "next": "পরের",
     "categoryNames": {
       "greetings": "শুভেচ্ছা",
       "numbers": "সংখ্যা",

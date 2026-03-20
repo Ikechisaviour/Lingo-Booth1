@@ -165,6 +165,7 @@
     "subtitle": "Lerne praktische Fähigkeiten, die du sofort anwenden kannst",
     "lessonsAvailable": "{{count}} Lektionen verfügbar",
     "all": "Alle",
+    "category": "Kategorie",
     "level": "Stufe:",
     "allLevels": "Alle Stufen",
     "studyAll": "Alle {{count}} Lektionen lernen",
@@ -292,6 +293,8 @@
     "uncategorized": "ohne Kategorie",
     "shuffle": "Mischen",
     "shuffled": "Gemischt",
+    "previous": "Zurück",
+    "next": "Weiter",
     "categoryNames": {
       "greetings": "Begrüßungen",
       "numbers": "Zahlen",

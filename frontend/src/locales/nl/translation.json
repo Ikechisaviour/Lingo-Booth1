@@ -165,6 +165,7 @@
     "subtitle": "Leer praktische vaardigheden die je meteen kunt toepassen",
     "lessonsAvailable": "{{count}} lessen beschikbaar",
     "all": "Alle",
+    "category": "Categorie",
     "level": "Niveau:",
     "allLevels": "Alle niveaus",
     "studyAll": "Alle {{count}} lessen studeren",
@@ -292,6 +293,8 @@
     "uncategorized": "zonder categorie",
     "shuffle": "Schudden",
     "shuffled": "Geschud",
+    "previous": "Vorige",
+    "next": "Volgende",
     "categoryNames": {
       "greetings": "Begroetingen",
       "numbers": "Getallen",

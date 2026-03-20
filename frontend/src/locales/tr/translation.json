@@ -165,6 +165,7 @@
     "subtitle": "Hemen uygulayabileceğiniz pratik beceriler öğrenin",
     "lessonsAvailable": "{{count}} ders mevcut",
     "all": "Tümü",
+    "category": "Kategori",
     "level": "Seviye:",
     "allLevels": "Tüm Seviyeler",
     "studyAll": "Tüm {{count}} Dersi Çalış",
@@ -292,6 +293,8 @@
     "uncategorized": "kategorisiz",
     "shuffle": "Karıştır",
     "shuffled": "Karıştırıldı",
+    "previous": "Önceki",
+    "next": "Sonraki",
     "categoryNames": {
       "greetings": "Selamlamalar",
       "numbers": "Sayılar",

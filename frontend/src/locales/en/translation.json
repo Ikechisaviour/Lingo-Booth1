@@ -168,6 +168,7 @@
     "subtitle": "Learn practical skills you can apply right away",
     "lessonsAvailable": "{{count}} lessons available",
     "all": "All",
+    "category": "Category",
     "level": "Level:",
     "allLevels": "All Levels",
     "studyAll": "Study All {{count}} Lessons",
@@ -295,6 +296,8 @@
     "uncategorized": "uncategorized",
     "shuffle": "Shuffle",
     "shuffled": "Shuffled",
+    "previous": "Previous",
+    "next": "Next",
     "categoryNames": {
       "greetings": "Greetings",
       "numbers": "Numbers",

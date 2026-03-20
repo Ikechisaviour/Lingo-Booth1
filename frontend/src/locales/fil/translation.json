@@ -165,6 +165,7 @@
     "subtitle": "Matuto ng mga praktikal na kasanayan na magagamit agad",
     "lessonsAvailable": "{{count}} aralin ang available",
     "all": "Lahat",
+    "category": "Kategorya",
     "level": "Antas:",
     "allLevels": "Lahat ng Antas",
     "studyAll": "Pag-aralan ang Lahat ng {{count}} Aralin",
@@ -292,6 +293,8 @@
     "uncategorized": "walang kategorya",
     "shuffle": "I-shuffle",
     "shuffled": "Na-shuffle",
+    "previous": "Nakaraan",
+    "next": "Susunod",
     "categoryNames": {
       "greetings": "Mga Pagbati",
       "numbers": "Mga Numero",

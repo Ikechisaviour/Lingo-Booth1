@@ -165,6 +165,7 @@
     "subtitle": "למד מיומנויות מעשיות שתוכל ליישם מיד",
     "lessonsAvailable": "{{count}} שיעורים זמינים",
     "all": "הכל",
+    "category": "קטגוריה",
     "level": "רמה:",
     "allLevels": "כל הרמות",
     "studyAll": "למד את כל {{count}} השיעורים",
@@ -292,6 +293,8 @@
     "uncategorized": "ללא קטגוריה",
     "shuffle": "ערבב",
     "shuffled": "עורבב",
+    "previous": "הקודם",
+    "next": "הבא",
     "categoryNames": {
       "greetings": "ברכות",
       "numbers": "מספרים",

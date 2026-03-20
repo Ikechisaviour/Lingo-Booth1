@@ -165,6 +165,7 @@
     "subtitle": "学习可以立即应用的实用技能",
     "lessonsAvailable": "{{count}}个课程可用",
     "all": "全部",
+    "category": "类别",
     "level": "级别：",
     "allLevels": "所有级别",
     "studyAll": "学习全部{{count}}个课程",
@@ -292,6 +293,8 @@
     "uncategorized": "未分类",
     "shuffle": "打乱",
     "shuffled": "已打乱",
+    "previous": "上一个",
+    "next": "下一个",
     "categoryNames": {
       "greetings": "问候",
       "numbers": "数字",

@@ -165,6 +165,7 @@
     "subtitle": "Pelajari kemahiran praktikal yang boleh digunakan segera",
     "lessonsAvailable": "{{count}} pelajaran tersedia",
     "all": "Semua",
+    "category": "Kategori",
     "level": "Tahap:",
     "allLevels": "Semua Tahap",
     "studyAll": "Pelajari Semua {{count}} Pelajaran",
@@ -292,6 +293,8 @@
     "uncategorized": "tanpa kategori",
     "shuffle": "Kocok",
     "shuffled": "Dikocok",
+    "previous": "Sebelumnya",
+    "next": "Seterusnya",
     "categoryNames": {
       "greetings": "Ucapan",
       "numbers": "Nombor",

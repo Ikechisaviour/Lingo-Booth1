@@ -165,6 +165,7 @@
     "subtitle": "Aprende habilidades prácticas que puedes aplicar de inmediato",
     "lessonsAvailable": "{{count}} lecciones disponibles",
     "all": "Todas",
+    "category": "Categoría",
     "level": "Nivel:",
     "allLevels": "Todos los niveles",
     "studyAll": "Estudiar las {{count}} lecciones",
@@ -292,6 +293,8 @@
     "uncategorized": "sin categoría",
     "shuffle": "Mezclar",
     "shuffled": "Mezclado",
+    "previous": "Anterior",
+    "next": "Siguiente",
     "categoryNames": {
       "greetings": "Saludos",
       "numbers": "Números",

@@ -165,6 +165,7 @@
     "subtitle": "تعلم مهارات عملية يمكنك تطبيقها فورًا",
     "lessonsAvailable": "{{count}} درس متاح",
     "all": "الكل",
+    "category": "الفئة",
     "level": "المستوى:",
     "allLevels": "جميع المستويات",
     "studyAll": "ادرس جميع الدروس الـ {{count}}",
@@ -292,6 +293,8 @@
     "uncategorized": "بدون فئة",
     "shuffle": "خلط",
     "shuffled": "تم الخلط",
+    "previous": "السابق",
+    "next": "التالي",
     "categoryNames": {
       "greetings": "تحيات",
       "numbers": "أرقام",
