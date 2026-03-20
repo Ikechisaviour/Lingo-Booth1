@@ -498,7 +498,9 @@ const FlashcardsScreen: React.FC = () => {
         if (cancelled) return;
       }
 
-      await speechService.waitAudio(1500);
+      // Scale pause with text length for reading time
+      const readingPause = Math.max(1500, (backText || '').split(/\s+/).length * 200);
+      await speechService.waitAudio(readingPause);
       if (cancelled) return;
 
       if (currentIndex >= displayedCards.length - 1) {

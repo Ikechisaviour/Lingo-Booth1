@@ -277,8 +277,9 @@ function FlashcardsPage() {
         if (cancelled) return;
       }
 
-      // Pause before advancing
-      await speechService.waitAudio(1500);
+      // Pause before advancing — scale with text length for reading time
+      const readingPause = Math.max(1500, (backText || '').split(/\s+/).length * 200);
+      await speechService.waitAudio(readingPause);
       if (cancelled) return;
 
       // Check if last card (only stop if no more pages to load)
