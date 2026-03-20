@@ -85,6 +85,11 @@ router.get('/:id', optionalAuth, async (req, res) => {
     const lessonObj = lesson.toJSON();
     const targetLang = lesson.targetLang || 'ko';
 
+    // Snapshot original nativeText values (English seed data) before translation overlay
+    const originalNativeTexts = nativeLang && nativeLang !== 'en' && lessonObj.content
+      ? lessonObj.content.map(c => c.nativeText || '')
+      : null;
+
     // Translate native-side fields and/or generate romanization
     try {
       const translation = await getOrCreateTranslation(lesson, nativeLang || 'en', targetLang);
@@ -93,17 +98,16 @@ router.get('/:id', optionalAuth, async (req, res) => {
       console.error('Translation/romanization overlay failed:', err.message);
     }
 
-    // Fallback: if nativeLang !== 'en' and nativeText is still the English seed value,
-    // translate English → nativeLang inline so quiz options aren't in English
-    if (nativeLang && nativeLang !== 'en' && lessonObj.content) {
+    // Fallback: if nativeLang !== 'en' and any nativeText wasn't changed by applyTranslation,
+    // it's still the English seed value — translate English → nativeLang inline
+    if (originalNativeTexts && lessonObj.content) {
       const missingIndices = [];
       const missingTexts = [];
       for (let i = 0; i < lessonObj.content.length; i++) {
         const c = lessonObj.content[i];
-        // If nativeText matches the original English field, it wasn't translated
-        if (c.nativeText && c.english && c.nativeText === c.english) {
+        if (c.nativeText && c.nativeText === originalNativeTexts[i]) {
           missingIndices.push(i);
-          missingTexts.push(c.english);
+          missingTexts.push(c.nativeText);
         }
       }
       if (missingTexts.length > 0) {
