@@ -1070,8 +1070,8 @@ function FlashcardsPage() {
                 </div>
               </div>
               <div className="card-actions">
-                <button className="action-btn incorrect" onClick={handleIncorrect}><span>{t('flashcards.boost')}</span></button>
-                <button className="action-btn correct" onClick={handleCorrect}><span>{t('flashcards.fade')}</span></button>
+                <button className="action-btn incorrect" onClick={handleIncorrect}><span className="action-icon">👎</span><span className="action-label">{t('flashcards.boost')}</span></button>
+                <button className="action-btn correct" onClick={handleCorrect}><span className="action-icon">👍</span><span className="action-label">{t('flashcards.fade')}</span></button>
               </div>
             </div>
 
@@ -1098,10 +1098,10 @@ function FlashcardsPage() {
                 </div>
                 <div className="card-actions">
                   <button className="action-btn incorrect" onClick={handleIncorrect}>
-                    <span>{t('flashcards.boost')}</span>
+                    <span className="action-icon">👎</span><span className="action-label">{t('flashcards.boost')}</span>
                   </button>
                   <button className="action-btn correct" onClick={handleCorrect}>
-                    <span>{t('flashcards.fade')}</span>
+                    <span className="action-icon">👍</span><span className="action-label">{t('flashcards.fade')}</span>
                   </button>
                 </div>
               </div>

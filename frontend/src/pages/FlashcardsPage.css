@@ -613,6 +613,10 @@
   font-size: 1.5rem;
 }
 
+.action-label {
+  font-size: inherit;
+}
+
 .action-btn.incorrect {
   background: var(--accent-red);
   color: white;
@@ -1177,6 +1181,10 @@
     font-size: 1.2rem;
   }
 
+  .action-label {
+    display: none;
+  }
+
   .sidebar-toggle {
     padding: 8px 14px;
     font-size: 0.8rem;
@@ -1309,6 +1317,10 @@
 
   .action-icon {
     font-size: 1.1rem;
+  }
+
+  .action-label {
+    display: none;
   }
 
   .listening-play-btn {
