@@ -130,67 +130,81 @@ async function applyNativePhonetics(cards, targetLang, nativeLang) {
 /**
  * Fill missing native language fields on cards.
  * If the card already has the translation in DB, it's already on the object.
- * For cards missing the native field, use English as immediate fallback,
- * then kick off background translation that persists to DB for next load.
+ * For cards missing the native field, translate NOW before sending the response,
+ * then persist translations to DB in the background for future cache hits.
  */
-function fillNativeTranslations(cards, nativeLang) {
+async function fillNativeTranslations(cards, nativeLang) {
   if (nativeLang === 'en') return cards;
 
   const nativeField = nativeLang === 'ko' ? 'korean' : nativeLang;
 
   // Collect cards missing the native field
+  const missingIndices = [];
   const missingTexts = [];
-  const missingCardIds = [];
-  for (const card of cards) {
-    if (!card[nativeField] && card.english) {
-      // Immediate fallback: show English so the card isn't blank
-      card[nativeField] = card.english;
-      // Track for background translation (only real DB cards)
-      if (card._id && typeof card._id !== 'string') {
-        missingTexts.push(card.english);
-        missingCardIds.push(card._id);
-      }
+  for (let i = 0; i < cards.length; i++) {
+    if (!cards[i][nativeField] && cards[i].english) {
+      missingIndices.push(i);
+      missingTexts.push(cards[i].english);
     }
   }
+  if (missingIndices.length === 0) return cards;
 
-  // Fire-and-forget: translate in background and save to DB for next load
-  if (missingTexts.length > 0) {
-    translateAndPersist(missingTexts, missingCardIds, nativeField, nativeLang);
+  // Translate NOW — before the response is sent
+  try {
+    const CHUNK = 50;
+    for (let start = 0; start < missingTexts.length; start += CHUNK) {
+      const chunk = missingTexts.slice(start, start + CHUNK);
+      const results = await batchTranslateRaw(chunk, 'en', nativeLang);
+      for (let k = 0; k < results.length; k++) {
+        const translated = results[k]?.text;
+        const cardIdx = missingIndices[start + k];
+        if (translated) {
+          cards[cardIdx][nativeField] = translated;
+        } else {
+          // Individual card translation returned empty — mark as pending
+          cards[cardIdx]._translationPending = true;
+        }
+      }
+    }
+  } catch (err) {
+    // Translation API failed — mark untranslated cards as pending (frontend shows loading)
+    for (const idx of missingIndices) {
+      if (!cards[idx][nativeField]) cards[idx]._translationPending = true;
+    }
+    console.error('Native translation failed:', err.message);
+  }
+
+  // Background: persist translations to DB so future requests are fast from cache
+  const dbUpdates = [];
+  for (const idx of missingIndices) {
+    const card = cards[idx];
+    if (card._id && card[nativeField] && card[nativeField] !== card.english) {
+      dbUpdates.push({ id: card._id, text: card[nativeField] });
+    }
+  }
+  if (dbUpdates.length > 0) {
+    persistNativeTranslations(dbUpdates, nativeField).catch(() => {});
   }
 
   return cards;
 }
 
-// Background translation — runs after response is sent
-async function translateAndPersist(texts, cardIds, nativeField, nativeLang) {
+// Background DB persistence — runs after response is sent
+async function persistNativeTranslations(updates, nativeField) {
   try {
-    const CHUNK = 50;
-    for (let start = 0; start < texts.length; start += CHUNK) {
-      const chunk = texts.slice(start, start + CHUNK);
-      const chunkIds = cardIds.slice(start, start + CHUNK);
-      const results = await batchTranslateRaw(chunk, 'en', nativeLang);
-
-      const bulkOps = [];
-      for (let k = 0; k < results.length; k++) {
-        const translated = results[k]?.text || '';
-        if (translated) {
-          bulkOps.push({
-            updateOne: {
-              filter: { _id: chunkIds[k] },
-              update: { $set: { [nativeField]: translated } },
-            },
-          });
-        }
-      }
-      if (bulkOps.length > 0) {
-        await Flashcard.bulkWrite(bulkOps);
-      }
+    const bulkOps = updates.map(({ id, text }) => ({
+      updateOne: {
+        filter: { _id: id },
+        update: { $set: { [nativeField]: text } },
+      },
+    }));
+    if (bulkOps.length > 0) {
+      await Flashcard.bulkWrite(bulkOps);
+      defaultCardsCache.clear();
+      console.log(`Persisted ${bulkOps.length} native translations (${nativeField})`);
     }
-    // Clear the in-memory cache so next request picks up translated cards
-    defaultCardsCache.clear();
-    console.log(`Background: translated ${texts.length} cards to ${nativeLang}`);
   } catch (err) {
-    console.error('Background translation failed:', err.message);
+    console.error('Persist native translations failed:', err.message);
   }
 }
 
@@ -364,7 +378,7 @@ router.get('/guest', async (req, res) => {
     const pageCards = processed.slice(start, start + limit);
 
     // Translate missing native language fields (English → native), with DB caching
-    fillNativeTranslations(pageCards, nativeLang);
+    await fillNativeTranslations(pageCards, nativeLang);
 
     // Replace romanization with native-script phonetics for non-Latin native speakers
     await applyNativePhonetics(pageCards, targetLang, nativeLang);
@@ -431,7 +445,7 @@ router.get('/user/:userId', isOwner('userId'), async (req, res) => {
     const pageCards = processed.slice(start, start + limit);
 
     // Translate missing native language fields (English → native), with DB caching
-    fillNativeTranslations(pageCards, nativeLang);
+    await fillNativeTranslations(pageCards, nativeLang);
 
     // Replace romanization with native-script phonetics for non-Latin native speakers
     await applyNativePhonetics(pageCards, targetLang, nativeLang);

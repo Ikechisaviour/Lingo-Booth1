@@ -69,6 +69,7 @@ const FlashcardsScreen: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalCards, setTotalCards] = useState(0);
   const [loadingMore, setLoadingMore] = useState(false);
+  const [retryingTranslation, setRetryingTranslation] = useState(false);
 
   const [newCard, setNewCard] = useState<Record<string, string>>(() => ({ [getLangField(targetLanguage)]: '', [getLangField(nativeLanguage)]: '', romanization: '', category: 'vocabulary', topic: '' }));
 
@@ -251,6 +252,35 @@ const FlashcardsScreen: React.FC = () => {
     });
     return () => sub.remove();
   }, [autoPlay]);
+
+  // Retry translation for the current card when backend returned _translationPending
+  const retryTranslation = useCallback(async () => {
+    if (retryingTranslation) return;
+    const cur = displayedCards[currentIndex];
+    if (!(cur as any)?._translationPending) return;
+    setRetryingTranslation(true);
+    try {
+      const opts = { shuffle: false, seed: shuffleSeed };
+      const response = userId
+        ? await flashcardService.getFlashcards(userId, currentPage, 50, opts)
+        : await flashcardService.getGuestFlashcards(currentPage, 50, opts);
+      const data = response.data;
+      const cards = Array.isArray(data) ? data : (data.cards || data);
+      const nfKey = nativeField;
+      const updated = cards.find((c: any) => c._id === cur._id);
+      if (updated && updated[nfKey]) {
+        setFlashcards((prev: any[]) =>
+          prev.map((fc: any) =>
+            fc._id === cur._id ? { ...fc, [nfKey]: updated[nfKey], _translationPending: undefined } : fc
+          )
+        );
+      }
+    } catch (err) {
+      console.error('Retry translation failed:', err);
+    } finally {
+      setRetryingTranslation(false);
+    }
+  }, [retryingTranslation, displayedCards, currentIndex, shuffleSeed, userId, currentPage, nativeField]);
 
   // Update media notification metadata when autoplay is active
   useEffect(() => {
@@ -463,10 +493,12 @@ const FlashcardsScreen: React.FC = () => {
       if (cancelled) return;
 
       // Back
-      await speechService.speakAsync(backText, { lang: backLocale });
-      if (cancelled) return;
+      if (backText) {
+        await speechService.speakAsync(backText, { lang: backLocale });
+        if (cancelled) return;
+      }
 
-      await speechService.waitAudio(1200);
+      await speechService.waitAudio(1500);
       if (cancelled) return;
 
       if (currentIndex >= displayedCards.length - 1) {
@@ -669,6 +701,7 @@ const FlashcardsScreen: React.FC = () => {
   const backLabel = showsTargetFirst ? getLangName(nativeLanguage) : getLangName(targetLanguage);
   const frontLocale = showsTargetFirst ? targetLocale : nativeLocale;
   const backLocale = showsTargetFirst ? nativeLocale : targetLocale;
+  const translationPending = !!(card as any)?._translationPending && !backText;
   const mastery = card.masteryLevel || 0;
 
   return (
@@ -772,7 +805,27 @@ const FlashcardsScreen: React.FC = () => {
             ]}
           >
             <Text style={styles.cardLabel}>{backLabel}</Text>
-            <Text style={styles.cardText}>{backText}</Text>
+            {translationPending ? (
+              <View style={styles.translationPending}>
+                <ActivityIndicator
+                  size="small"
+                  color={colors.textMuted}
+                  animating={retryingTranslation}
+                />
+                <Text style={styles.translationPendingText}>
+                  {retryingTranslation
+                    ? t('flashcards.translating', 'Translating...')
+                    : t('flashcards.translationFailed', 'Translation unavailable')}
+                </Text>
+                {!retryingTranslation && (
+                  <TouchableOpacity style={styles.retryBtn} onPress={retryTranslation}>
+                    <Text style={styles.retryBtnText}>{t('flashcards.retryTranslation', 'Retry')}</Text>
+                  </TouchableOpacity>
+                )}
+              </View>
+            ) : (
+              <Text style={styles.cardText}>{backText}</Text>
+            )}
             {card.romanization && !showsTargetFirst && langHasRomanization(targetLanguage) && (
               <Text style={styles.romanization}>{card.romanization}</Text>
             )}
@@ -1329,6 +1382,16 @@ const createStyles = (colors: AppColors, winWidth: number, winHeight: number, is
   subtopicSelected: { backgroundColor: colors.primary + '18' },
   subtopicName: { fontSize: 13, color: colors.textSecondary, textTransform: 'capitalize' },
   subtopicNameActive: { color: colors.primary, fontWeight: '600' },
+  translationPending: { alignItems: 'center' as const, gap: 12, paddingVertical: 16 },
+  translationPendingText: { fontSize: 14, color: colors.textMuted },
+  retryBtn: {
+    backgroundColor: colors.primary + '30',
+    borderRadius: 8,
+    paddingHorizontal: 18,
+    paddingVertical: 6,
+    marginTop: 4,
+  },
+  retryBtnText: { fontSize: 14, color: colors.primary, fontWeight: '600' as const },
 });
 
 export default FlashcardsScreen;

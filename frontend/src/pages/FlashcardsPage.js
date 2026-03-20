@@ -57,6 +57,7 @@ function FlashcardsPage() {
   const [allCategories, setAllCategories] = useState([]); // from metadata endpoint
   const [selectedCategories, setSelectedCategories] = useState(new Set());
   const [shuffleSeed, setShuffleSeed] = useState(() => Math.floor(Math.random() * 2147483647));
+  const [retryingTranslation, setRetryingTranslation] = useState(false);
   const autoPlayRef = useRef(false);
   const prefetchEndRef = useRef(0); // highest card index (exclusive) already queued for prefetch
   const sidebarToggleRef = useRef(null);
@@ -240,11 +241,13 @@ function FlashcardsPage() {
       setIsFlipped(true);
       await speechService.waitAudio(400);
       if (cancelled) return;
-      await speechService.speakAsync(backText, { lang: backLocale });
-      if (cancelled) return;
+      if (backText) {
+        await speechService.speakAsync(backText, { lang: backLocale });
+        if (cancelled) return;
+      }
 
       // Pause before advancing
-      await speechService.waitAudio(1200);
+      await speechService.waitAudio(1500);
       if (cancelled) return;
 
       // Check if last card (only stop if no more pages to load)
@@ -351,6 +354,34 @@ function FlashcardsPage() {
     } finally {
       setLoading(false);
       setLoadingMore(false);
+    }
+  };
+
+  // Retry translation for the current card when backend returned _translationPending
+  const retryTranslation = async () => {
+    if (retryingTranslation || !current?._translationPending) return;
+    setRetryingTranslation(true);
+    try {
+      const opts = { shuffle: false, seed: shuffleSeed };
+      // Re-fetch just the current page — backend will re-attempt translation
+      const response = userId
+        ? await flashcardService.getFlashcards(userId, currentPage, 50, opts)
+        : await flashcardService.getGuestFlashcards(currentPage, 50, opts);
+      const { cards } = response.data;
+      // Find the matching card and update its native field in-place
+      const nativeFieldKey = getLangField(nativeLangCode);
+      const updatedCard = cards.find(c => c._id === current._id);
+      if (updatedCard && updatedCard[nativeFieldKey]) {
+        setFlashcards(prev => prev.map(fc =>
+          fc._id === current._id
+            ? { ...fc, [nativeFieldKey]: updatedCard[nativeFieldKey], _translationPending: false }
+            : fc
+        ));
+      }
+    } catch (err) {
+      console.error('Retry translation failed:', err);
+    } finally {
+      setRetryingTranslation(false);
     }
   };
 
@@ -787,6 +818,8 @@ function FlashcardsPage() {
   const displayNative = current
     ? current[getLangField(nativeLangCode)] || ''
     : '';
+  // True when the backend couldn't translate this card's native field
+  const translationPending = current?._translationPending && !displayNative;
   // TTS locale strings for explicit language passing to speechService
   const targetTtsLocale = LANGUAGES[targetLangCode]?.ttsLocale;
   const nativeTtsLocale = LANGUAGES[nativeLangCode]?.ttsLocale;
@@ -1106,6 +1139,18 @@ function FlashcardsPage() {
                               </div>
                               {targetLangHasRomanization() && current.romanization && <span className="romanization">{current.romanization}</span>}
                             </>
+                          ) : translationPending ? (
+                            <div className="translation-pending" onClick={(e) => e.stopPropagation()}>
+                              <div className={`translation-spinner${retryingTranslation ? ' spinning' : ''}`} />
+                              <span className="translation-pending-text">
+                                {retryingTranslation ? t('flashcards.translating', 'Translating...') : t('flashcards.translationFailed', 'Translation unavailable')}
+                              </span>
+                              {!retryingTranslation && (
+                                <button className="retry-translation-btn" onClick={retryTranslation}>
+                                  {t('flashcards.retryTranslation', 'Retry')}
+                                </button>
+                              )}
+                            </div>
                           ) : (
                             <div className="target-text-row">
                               <span className="main-text">{displayNative}</span>
@@ -1132,7 +1177,19 @@ function FlashcardsPage() {
                   <div className="flashcard-face back">
                     <div className="face-content">
                       <span className="face-label">{showsTargetFirst ? t('flashcards.nativeLang', { language: t(`languages.${nativeLangCode}`, LANGUAGES[nativeLangCode]?.name || nativeLangCode) }) : t('flashcards.targetLang', { language: t(`languages.${targetLangCode}`, LANGUAGES[targetLangCode]?.name || targetLangCode) })}</span>
-                      {showsTargetFirst ? (
+                      {showsTargetFirst && translationPending ? (
+                        <div className="translation-pending" onClick={(e) => e.stopPropagation()}>
+                          <div className={`translation-spinner${retryingTranslation ? ' spinning' : ''}`} />
+                          <span className="translation-pending-text">
+                            {retryingTranslation ? t('flashcards.translating', 'Translating...') : t('flashcards.translationFailed', 'Translation unavailable')}
+                          </span>
+                          {!retryingTranslation && (
+                            <button className="retry-translation-btn" onClick={retryTranslation}>
+                              {t('flashcards.retryTranslation', 'Retry')}
+                            </button>
+                          )}
+                        </div>
+                      ) : showsTargetFirst ? (
                         <div className="target-text-row">
                           <span className="main-text">{displayNative}</span>
                           {studyStyle !== 'text' && (
