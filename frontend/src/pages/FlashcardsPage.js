@@ -151,34 +151,58 @@ function FlashcardsPage() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // Auto-speak the front text twice when a new card appears (manual mode only)
-  // Uses a ref to track the card identity so re-renders don't cancel pending speech.
+  // Only exclude cards missing the target field when the backend is actually
+  // sending that field (i.e. at least one card has it).
+  const targetLangField = getLangField(targetLangCode);
+  const backendSendsTargetField = flashcards.some(c => !!c[targetLangField]);
+  const allLangFilteredCards = flashcards.filter(c => !backendSendsTargetField || !!c[targetLangField]);
+  // Study deck: supports three modes —
+  //   • nothing selected → unfiltered paginated deck (language-filtered)
+  //   • categories and/or individual cards selected → client-side mix from cache + loaded cards
+  // Categories and individual cards can be combined freely.
+  const activeFlashcards = (() => {
+    if (selectedCardIds.size === 0 && selectedCategories.size === 0) return allLangFilteredCards;
+
+    const loadedById = new Map(allLangFilteredCards.map(c => [c._id, c]));
+    const cacheById = new Map();
+    for (const cards of Object.values(categoryCardsCache)) {
+      for (const c of cards) {
+        if (!cacheById.has(c._id)) cacheById.set(c._id, c);
+      }
+    }
+
+    const resultIds = new Set();
+    const result = [];
+
+    // Add all cards from selected categories (full data if loaded, minimal otherwise)
+    for (const cat of selectedCategories) {
+      const catCards = categoryCardsCache[cat] || [];
+      for (const c of catCards) {
+        if (!resultIds.has(c._id)) {
+          const fullCard = loadedById.get(c._id) ?? { ...c, masteryLevel: 3, isDefault: true };
+          if (fullCard[targetLangField]) {
+            result.push(fullCard);
+            resultIds.add(c._id);
+          }
+        }
+      }
+    }
+
+    // Add individually selected cards not already included via a category
+    for (const id of selectedCardIds) {
+      if (!resultIds.has(id)) {
+        const card = loadedById.get(id) ?? (cacheById.has(id) ? { ...cacheById.get(id), masteryLevel: 3, isDefault: true } : null);
+        if (card && card[targetLangField]) {
+          result.push(card);
+          resultIds.add(id);
+        }
+      }
+    }
+
+    return result;
+  })();
+
   const lastSpokenCardRef = useRef(null);
-  useEffect(() => {
-    if (autoPlayRef.current) return; // auto-play handles its own speaking
-    if (studyStyle === 'text') return; // text-only, no auto-speak
-    if (activeFlashcards.length === 0 || !activeFlashcards[currentIndex]) return;
-    const card = activeFlashcards[currentIndex];
-    const cardId = card._id + '|' + currentIndex;
-    // Skip if we already spoke this exact card (prevents re-renders from re-triggering)
-    if (lastSpokenCardRef.current === cardId) return;
-    lastSpokenCardRef.current = cardId;
-
-    const text = showsTargetFirst
-      ? card[getLangField(targetLangCode)]
-      : card[getLangField(nativeLangCode)];
-    const frontLang = showsTargetFirst
-      ? (LANGUAGES[targetLangCode]?.ttsLocale)
-      : (LANGUAGES[nativeLangCode]?.ttsLocale);
-
-    // Small delay to let slide-in animation settle
-    const timer = setTimeout(() => {
-      speechService.speakRepeat(text, 2, { lang: frontLang });
-    }, 500);
-
-    return () => clearTimeout(timer);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentIndex, activeFlashcards.length, studyStyle, showsTargetFirst]);
 
   // Auto-speak the back text once when the card is flipped
   useEffect(() => {
@@ -510,56 +534,32 @@ function FlashcardsPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCategories]);
 
-  // Only exclude cards missing the target field when the backend is actually
-  // sending that field (i.e. at least one card has it).
-  const targetLangField = getLangField(targetLangCode);
-  const backendSendsTargetField = flashcards.some(c => !!c[targetLangField]);
-  const allLangFilteredCards = flashcards.filter(c => !backendSendsTargetField || !!c[targetLangField]);
-  // Study deck: supports three modes —
-  //   • nothing selected → unfiltered paginated deck (language-filtered)
-  //   • categories and/or individual cards selected → client-side mix from cache + loaded cards
-  // Categories and individual cards can be combined freely.
-  const activeFlashcards = (() => {
-    if (selectedCardIds.size === 0 && selectedCategories.size === 0) return allLangFilteredCards;
+  // Auto-speak the front text twice when a new card appears (manual mode only)
+  useEffect(() => {
+    if (autoPlayRef.current) return; // auto-play handles its own speaking
+    if (studyStyle === 'text') return; // text-only, no auto-speak
+    if (activeFlashcards.length === 0 || !activeFlashcards[currentIndex]) return;
+    const card = activeFlashcards[currentIndex];
+    const cardId = card._id + '|' + currentIndex;
+    // Skip if we already spoke this exact card (prevents re-renders from re-triggering)
+    if (lastSpokenCardRef.current === cardId) return;
+    lastSpokenCardRef.current = cardId;
 
-    const loadedById = new Map(allLangFilteredCards.map(c => [c._id, c]));
-    const cacheById = new Map();
-    for (const cards of Object.values(categoryCardsCache)) {
-      for (const c of cards) {
-        if (!cacheById.has(c._id)) cacheById.set(c._id, c);
-      }
-    }
+    const text = showsTargetFirst
+      ? card[getLangField(targetLangCode)]
+      : card[getLangField(nativeLangCode)];
+    const frontLang = showsTargetFirst
+      ? (LANGUAGES[targetLangCode]?.ttsLocale)
+      : (LANGUAGES[nativeLangCode]?.ttsLocale);
 
-    const resultIds = new Set();
-    const result = [];
+    // Small delay to let slide-in animation settle
+    const timer = setTimeout(() => {
+      speechService.speakRepeat(text, 2, { lang: frontLang });
+    }, 500);
 
-    // Add all cards from selected categories (full data if loaded, minimal otherwise)
-    for (const cat of selectedCategories) {
-      const catCards = categoryCardsCache[cat] || [];
-      for (const c of catCards) {
-        if (!resultIds.has(c._id)) {
-          const fullCard = loadedById.get(c._id) ?? { ...c, masteryLevel: 3, isDefault: true };
-          if (fullCard[targetLangField]) {
-            result.push(fullCard);
-            resultIds.add(c._id);
-          }
-        }
-      }
-    }
-
-    // Add individually selected cards not already included via a category
-    for (const id of selectedCardIds) {
-      if (!resultIds.has(id)) {
-        const card = loadedById.get(id) ?? (cacheById.has(id) ? { ...cacheById.get(id), masteryLevel: 3, isDefault: true } : null);
-        if (card && card[targetLangField]) {
-          result.push(card);
-          resultIds.add(id);
-        }
-      }
-    }
-
-    return result;
-  })();
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentIndex, activeFlashcards.length, studyStyle, showsTargetFirst]);
 
   // Reset index when the filtered deck shrinks and currentIndex is now out of bounds
   useEffect(() => {
