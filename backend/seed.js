@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Lesson = require('./models/Lesson');
+const Translation = require('./models/Translation');
 require('dotenv').config();
 
 // Import real vocabulary lessons
@@ -1443,15 +1444,8 @@ const multiLangData = [
 ];
 
 multiLangData.forEach(langData => {
-  const langLessons = [
-    langData.greetings,
-    langData.dailyLife,
-    langData.food,
-    langData.travel,
-    langData.shopping,
-    langData.business,
-    langData.healthcare,
-  ].filter(Boolean); // skip any undefined categories
+  // Import ALL difficulty levels (beginner, intermediate, advanced, sentences)
+  const langLessons = Object.values(langData).filter(Boolean);
   lessons.push(...langLessons);
 });
 
@@ -1465,9 +1459,10 @@ async function seedDatabase() {
     });
     console.log('Connected to MongoDB');
 
-    // Clear existing lessons
+    // Clear existing lessons and stale translation cache
     await Lesson.deleteMany({});
-    console.log('Cleared existing lessons');
+    await Translation.deleteMany({});
+    console.log('Cleared existing lessons and translation cache');
 
     // Insert new lessons
     const insertedLessons = await Lesson.insertMany(lessons);

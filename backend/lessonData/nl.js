@@ -9,11 +9,7 @@ const createContentItem = (targetText, romanization, nativeText, type = 'word', 
   pronunciation: romanization,
   exampleTarget: exampleTarget || targetText,
   exampleNative: exampleNative || nativeText,
-  korean: targetText,
-  english: nativeText,
-  example: exampleTarget || targetText,
-  exampleEnglish: exampleNative || nativeText,
-  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.korean || b.target, native: b.english || b.native, korean: b.korean || b.target, english: b.english || b.native })) } : {}),
+  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.target, native: b.native })) } : {}),
 });
 
 // ============================================================
@@ -361,381 +357,98 @@ const greetingsSentences = {
   difficulty: 'sentences',
   targetLang: 'nl',
   content: [
-    createContentItem('Ik ben student.', '', 'I am a student.', 'sentence', '', '', [
-      { target: 'Ik', native: 'I', korean: 'Ik', english: 'I' },
-      { target: 'ben', native: 'am', korean: 'ben', english: 'am' },
-      { target: 'student.', native: 'a', korean: 'student.', english: 'a' },
-    ]),
-    createContentItem('Ik ben vijfentwintig jaar oud.', '', 'I am twenty-five years old.', 'sentence', '', '', [
-      { target: 'Ik ben vijfentwintig', native: 'I am twenty-five', korean: 'Ik ben vijfentwintig', english: 'I am twenty-five' },
-      { target: 'jaar oud.', native: 'years old.', korean: 'jaar oud.', english: 'years old.' },
-    ]),
-    createContentItem('Wat is je hobby?', '', 'What is your hobby?', 'sentence', '', '', [
-      { target: 'Wat is', native: 'What is', korean: 'Wat is', english: 'What is' },
-      { target: 'je hobby?', native: 'your hobby?', korean: 'je hobby?', english: 'your hobby?' },
-    ]),
-    createContentItem('Ik luister graag naar muziek.', '', 'I like listening to music.', 'sentence', '', '', [
-      { target: 'Ik luister graag', native: 'I like listening', korean: 'Ik luister graag', english: 'I like listening' },
-      { target: 'naar muziek.', native: 'to music.', korean: 'naar muziek.', english: 'to music.' },
-    ]),
-    createContentItem('Uit hoeveel personen bestaat uw familie?', '', 'How many people are in your family?', 'sentence', '', '', [
-      { target: 'Uit hoeveel personen', native: 'How many people are', korean: 'Uit hoeveel personen', english: 'How many people are' },
-      { target: 'bestaat uw familie?', native: 'in your family?', korean: 'bestaat uw familie?', english: 'in your family?' },
-    ]),
-    createContentItem('Er zijn vier mensen.', '', 'There are four people.', 'sentence', '', '', [
-      { target: 'Er zijn', native: 'There are', korean: 'Er zijn', english: 'There are' },
-      { target: 'vier mensen.', native: 'four people.', korean: 'vier mensen.', english: 'four people.' },
-    ]),
-    createContentItem('Heb je broers en zussen?', '', 'Do you have siblings?', 'sentence', '', '', [
-      { target: 'Heb je broers', native: 'Do you', korean: 'Heb je broers', english: 'Do you' },
-      { target: 'en zussen?', native: 'have siblings?', korean: 'en zussen?', english: 'have siblings?' },
-    ]),
-    createContentItem('Ja, ik heb één oudere zus.', '', 'Yes, I have one older sister.', 'sentence', '', '', [
-      { target: 'Ja, ik heb', native: 'Yes, I have', korean: 'Ja, ik heb', english: 'Yes, I have' },
-      { target: 'één oudere zus.', native: 'one older sister.', korean: 'één oudere zus.', english: 'one older sister.' },
-    ]),
-    createContentItem('Wat heb je in het weekend gedaan?', '', 'What did you do on the weekend?', 'sentence', '', '', [
-      { target: 'Wat heb je in', native: 'What did you do', korean: 'Wat heb je in', english: 'What did you do' },
-      { target: 'het weekend gedaan?', native: 'on the weekend?', korean: 'het weekend gedaan?', english: 'on the weekend?' },
-    ]),
-    createContentItem('Ik heb met vrienden een film gekeken.', '', 'I watched a movie with friends.', 'sentence', '', '', [
-      { target: 'Ik heb met vrienden', native: 'I watched a', korean: 'Ik heb met vrienden', english: 'I watched a' },
-      { target: 'een film gekeken.', native: 'movie with friends.', korean: 'een film gekeken.', english: 'movie with friends.' },
-    ]),
-    createContentItem('Het is mooi weer vandaag.', '', 'The weather is nice today.', 'sentence', '', '', [
-      { target: 'Het is mooi', native: 'The weather is', korean: 'Het is mooi', english: 'The weather is' },
-      { target: 'weer vandaag.', native: 'nice today.', korean: 'weer vandaag.', english: 'nice today.' },
-    ]),
-    createContentItem('Ja, het is echt leuk.', '', 'Yes, it is really nice.', 'sentence', '', '', [
-      { target: 'Ja, het is', native: 'Yes, it is', korean: 'Ja, het is', english: 'Yes, it is' },
-      { target: 'echt leuk.', native: 'really nice.', korean: 'echt leuk.', english: 'really nice.' },
-    ]),
-    createContentItem('Heb je morgen tijd?', '', 'Do you have time tomorrow?', 'sentence', '', '', [
-      { target: 'Heb je', native: 'Do you have', korean: 'Heb je', english: 'Do you have' },
-      { target: 'morgen tijd?', native: 'time tomorrow?', korean: 'morgen tijd?', english: 'time tomorrow?' },
-    ]),
-    createContentItem('Ja, ik heb tijd.', '', 'Yes, I have time.', 'sentence', '', '', [
-      { target: 'Ja, ik', native: 'Yes, I', korean: 'Ja, ik', english: 'Yes, I' },
-      { target: 'heb tijd.', native: 'have time.', korean: 'heb tijd.', english: 'have time.' },
-    ]),
-    createContentItem('Zullen we een kopje koffie drinken?', '', 'Shall we have a cup of coffee?', 'sentence', '', '', [
-      { target: 'Zullen we een', native: 'Shall we have a', korean: 'Zullen we een', english: 'Shall we have a' },
-      { target: 'kopje koffie drinken?', native: 'cup of coffee?', korean: 'kopje koffie drinken?', english: 'cup of coffee?' },
-    ]),
-    createContentItem('Klinkt goed, laten we dat doen.', '', 'Sounds good, let\'s do that.', 'sentence', '', '', [
-      { target: 'Klinkt goed, laten', native: 'Sounds good, let\'s', korean: 'Klinkt goed, laten', english: 'Sounds good, let\'s' },
-      { target: 'we dat doen.', native: 'do that.', korean: 'we dat doen.', english: 'do that.' },
-    ]),
-    createContentItem('Wat is uw telefoonnummer?', '', 'What is your phone number?', 'sentence', '', '', [
-      { target: 'Wat is', native: 'What is your', korean: 'Wat is', english: 'What is your' },
-      { target: 'uw telefoonnummer?', native: 'phone number?', korean: 'uw telefoonnummer?', english: 'phone number?' },
-    ]),
-    createContentItem('Het is 010-1234-5678.', '', 'It is 010-1234-5678.', 'sentence', '', '', [
-      { target: 'Het', native: 'It', korean: 'Het', english: 'It' },
-      { target: 'is', native: 'is', korean: 'is', english: 'is' },
-      { target: '010-1234-5678.', native: '010-1234-5678.', korean: '010-1234-5678.', english: '010-1234-5678.' },
-    ]),
-    createContentItem('Ik zal contact met je opnemen.', '', 'I will contact you.', 'sentence', '', '', [
-      { target: 'Ik zal contact', native: 'I will', korean: 'Ik zal contact', english: 'I will' },
-      { target: 'met je opnemen.', native: 'contact you.', korean: 'met je opnemen.', english: 'contact you.' },
-    ]),
-    createContentItem('Ja, neem contact met mij op.', '', 'Yes, please contact me.', 'sentence', '', '', [
-      { target: 'Ja, neem contact', native: 'Yes, please', korean: 'Ja, neem contact', english: 'Yes, please' },
-      { target: 'met mij op.', native: 'contact me.', korean: 'met mij op.', english: 'contact me.' },
-    ]),
-    createContentItem('Hoe gaat het tegenwoordig?', '', 'How are things these days?', 'sentence', '', '', [
-      { target: 'Hoe gaat', native: 'How are things', korean: 'Hoe gaat', english: 'How are things' },
-      { target: 'het tegenwoordig?', native: 'these days?', korean: 'het tegenwoordig?', english: 'these days?' },
-    ]),
-    createContentItem('Ik heb het druk, maar oké.', '', 'I am busy but okay.', 'sentence', '', '', [
-      { target: 'Ik heb het', native: 'I am busy', korean: 'Ik heb het', english: 'I am busy' },
-      { target: 'druk, maar oké.', native: 'but okay.', korean: 'druk, maar oké.', english: 'but okay.' },
-    ]),
-    createContentItem('Hoe is het met uw gezondheid?', '', 'How is your health?', 'sentence', '', '', [
-      { target: 'Hoe is het', native: 'How is', korean: 'Hoe is het', english: 'How is' },
-      { target: 'met uw gezondheid?', native: 'your health?', korean: 'met uw gezondheid?', english: 'your health?' },
-    ]),
-    createContentItem('Ik ben gezond, dank je.', '', 'I am healthy, thank you.', 'sentence', '', '', [
-      { target: 'Ik ben gezond,', native: 'I am healthy,', korean: 'Ik ben gezond,', english: 'I am healthy,' },
-      { target: 'dank je.', native: 'thank you.', korean: 'dank je.', english: 'thank you.' },
-    ]),
-    createContentItem('Is dit je eerste keer in Korea?', '', 'Is this your first time in Korea?', 'sentence', '', '', [
-      { target: 'Is dit je eerste', native: 'Is this your first', korean: 'Is dit je eerste', english: 'Is this your first' },
-      { target: 'keer in Korea?', native: 'time in Korea?', korean: 'keer in Korea?', english: 'time in Korea?' },
-    ]),
-    createContentItem('Ja, het is mijn eerste keer.', '', 'Yes, it is my first time.', 'sentence', '', '', [
-      { target: 'Ja, het is', native: 'Yes, it is', korean: 'Ja, het is', english: 'Yes, it is' },
-      { target: 'mijn eerste keer.', native: 'my first time.', korean: 'mijn eerste keer.', english: 'my first time.' },
-    ]),
-    createContentItem('Hou je van Koreaans eten?', '', 'Do you like Korean food?', 'sentence', '', '', [
-      { target: 'Hou je van', native: 'Do you like', korean: 'Hou je van', english: 'Do you like' },
-      { target: 'Koreaans eten?', native: 'Korean food?', korean: 'Koreaans eten?', english: 'Korean food?' },
-    ]),
-    createContentItem('Ja, ik vind het erg leuk.', '', 'Yes, I like it very much.', 'sentence', '', '', [
-      { target: 'Ja, ik vind', native: 'Yes, I like', korean: 'Ja, ik vind', english: 'Yes, I like' },
-      { target: 'het erg leuk.', native: 'it very much.', korean: 'het erg leuk.', english: 'it very much.' },
-    ]),
-    createContentItem('Kun je kimchi eten?', '', 'Can you eat kimchi?', 'sentence', '', '', [
-      { target: 'Kun je', native: 'Can you', korean: 'Kun je', english: 'Can you' },
-      { target: 'kimchi eten?', native: 'eat kimchi?', korean: 'kimchi eten?', english: 'eat kimchi?' },
-    ]),
-    createContentItem('Ja, ik hou van kimchi.', '', 'Yes, I like kimchi.', 'sentence', '', '', [
-      { target: 'Ja, ik hou', native: 'Yes, I', korean: 'Ja, ik hou', english: 'Yes, I' },
-      { target: 'van kimchi.', native: 'like kimchi.', korean: 'van kimchi.', english: 'like kimchi.' },
-    ]),
-    createContentItem('Hoe lang studeer je Koreaans?', '', 'How long have you been studying Korean?', 'sentence', '', '', [
-      { target: 'Hoe lang studeer', native: 'How long have you', korean: 'Hoe lang studeer', english: 'How long have you' },
-      { target: 'je Koreaans?', native: 'been studying Korean?', korean: 'je Koreaans?', english: 'been studying Korean?' },
-    ]),
-    createContentItem('Ongeveer een jaar.', '', 'About one year.', 'sentence', '', '', [
-      { target: 'Ongeveer', native: 'About', korean: 'Ongeveer', english: 'About' },
-      { target: 'een', native: 'one', korean: 'een', english: 'one' },
-      { target: 'jaar.', native: 'year.', korean: 'jaar.', english: 'year.' },
-    ]),
-    createContentItem('Is Koreaans moeilijk?', '', 'Is Korean difficult?', 'sentence', '', '', [
-      { target: 'Is', native: 'Is', korean: 'Is', english: 'Is' },
-      { target: 'Koreaans', native: 'Korean', korean: 'Koreaans', english: 'Korean' },
-      { target: 'moeilijk?', native: 'difficult?', korean: 'moeilijk?', english: 'difficult?' },
-    ]),
-    createContentItem('Het is een beetje moeilijk maar interessant.', '', 'It is a bit difficult but interesting.', 'sentence', '', '', [
-      { target: 'Het is een beetje', native: 'It is a bit', korean: 'Het is een beetje', english: 'It is a bit' },
-      { target: 'moeilijk maar interessant.', native: 'difficult but interesting.', korean: 'moeilijk maar interessant.', english: 'difficult but interesting.' },
-    ]),
-    createContentItem('Wat doe je in Korea?', '', 'What do you do in Korea?', 'sentence', '', '', [
-      { target: 'Wat doe je', native: 'What do you', korean: 'Wat doe je', english: 'What do you' },
-      { target: 'in Korea?', native: 'do in Korea?', korean: 'in Korea?', english: 'do in Korea?' },
-    ]),
-    createContentItem('Ik geef Engelse les.', '', 'I teach English.', 'sentence', '', '', [
-      { target: 'Ik geef', native: 'I teach', korean: 'Ik geef', english: 'I teach' },
-      { target: 'Engelse les.', native: 'English.', korean: 'Engelse les.', english: 'English.' },
-    ]),
-    createContentItem('Hoe is het leven in Korea?', '', 'How is life in Korea?', 'sentence', '', '', [
-      { target: 'Hoe is het', native: 'How is life', korean: 'Hoe is het', english: 'How is life' },
-      { target: 'leven in Korea?', native: 'in Korea?', korean: 'leven in Korea?', english: 'in Korea?' },
-    ]),
-    createContentItem('Het is echt goed.', '', 'It is really good.', 'sentence', '', '', [
-      { target: 'Het is', native: 'It is', korean: 'Het is', english: 'It is' },
-      { target: 'echt goed.', native: 'really good.', korean: 'echt goed.', english: 'really good.' },
-    ]),
-    createContentItem('Hoe lang blijf je in Korea?', '', 'How long will you be in Korea?', 'sentence', '', '', [
-      { target: 'Hoe lang blijf', native: 'How long will you', korean: 'Hoe lang blijf', english: 'How long will you' },
-      { target: 'je in Korea?', native: 'be in Korea?', korean: 'je in Korea?', english: 'be in Korea?' },
-    ]),
-    createContentItem('Ik blijf hier ongeveer 2 jaar.', '', 'I will be here for about 2 years.', 'sentence', '', '', [
-      { target: 'Ik blijf hier', native: 'I will be here', korean: 'Ik blijf hier', english: 'I will be here' },
-      { target: 'ongeveer 2 jaar.', native: 'for about 2 years.', korean: 'ongeveer 2 jaar.', english: 'for about 2 years.' },
-    ]),
-    createContentItem('Wat doe je meestal in het weekend?', '', 'What do you usually do on weekends?', 'sentence', '', '', [
-      { target: 'Wat doe je meestal', native: 'What do you usually', korean: 'Wat doe je meestal', english: 'What do you usually' },
-      { target: 'in het weekend?', native: 'do on weekends?', korean: 'in het weekend?', english: 'do on weekends?' },
-    ]),
-    createContentItem('Meestal rust ik thuis uit.', '', 'I usually rest at home.', 'sentence', '', '', [
-      { target: 'Meestal rust ik', native: 'I usually rest', korean: 'Meestal rust ik', english: 'I usually rest' },
-      { target: 'thuis uit.', native: 'at home.', korean: 'thuis uit.', english: 'at home.' },
-    ]),
-    createContentItem('Wanneer ben je naar Korea gekomen?', '', 'When did you come to Korea?', 'sentence', '', '', [
-      { target: 'Wanneer ben je', native: 'When did you', korean: 'Wanneer ben je', english: 'When did you' },
-      { target: 'naar Korea gekomen?', native: 'come to Korea?', korean: 'naar Korea gekomen?', english: 'come to Korea?' },
-    ]),
-    createContentItem('Ik kwam vorig jaar.', '', 'I came last year.', 'sentence', '', '', [
-      { target: 'Ik kwam', native: 'I came', korean: 'Ik kwam', english: 'I came' },
-      { target: 'vorig jaar.', native: 'last year.', korean: 'vorig jaar.', english: 'last year.' },
-    ]),
-    createContentItem('Waar woon je?', '', 'Where do you live?', 'sentence', '', '', [
-      { target: 'Waar', native: 'Where', korean: 'Waar', english: 'Where' },
-      { target: 'woon', native: 'do', korean: 'woon', english: 'do' },
-      { target: 'je?', native: 'you', korean: 'je?', english: 'you' },
-    ]),
-    createContentItem('Ik woon in Seoel.', '', 'I live in Seoul.', 'sentence', '', '', [
-      { target: 'Ik woon', native: 'I live', korean: 'Ik woon', english: 'I live' },
-      { target: 'in Seoel.', native: 'in Seoul.', korean: 'in Seoel.', english: 'in Seoul.' },
-    ]),
-    createContentItem('Waar in Seoel woon je?', '', 'Where in Seoul do you live?', 'sentence', '', '', [
-      { target: 'Waar in Seoel', native: 'Where in Seoul', korean: 'Waar in Seoel', english: 'Where in Seoul' },
-      { target: 'woon je?', native: 'do you live?', korean: 'woon je?', english: 'do you live?' },
-    ]),
-    createContentItem('Ik woon in Gangnam.', '', 'I live in Gangnam.', 'sentence', '', '', [
-      { target: 'Ik woon', native: 'I live', korean: 'Ik woon', english: 'I live' },
-      { target: 'in Gangnam.', native: 'in Gangnam.', korean: 'in Gangnam.', english: 'in Gangnam.' },
-    ]),
-    createContentItem('Woont u alleen?', '', 'Do you live alone?', 'sentence', '', '', [
-      { target: 'Woont', native: 'Do', korean: 'Woont', english: 'Do' },
-      { target: 'u', native: 'you', korean: 'u', english: 'you' },
-      { target: 'alleen?', native: 'live', korean: 'alleen?', english: 'live' },
-    ]),
-    createContentItem('Nee, ik woon samen met een huisgenoot.', '', 'No, I live with a roommate.', 'sentence', '', '', [
-      { target: 'Nee, ik woon samen', native: 'No, I live', korean: 'Nee, ik woon samen', english: 'No, I live' },
-      { target: 'met een huisgenoot.', native: 'with a roommate.', korean: 'met een huisgenoot.', english: 'with a roommate.' },
-    ]),
-    createContentItem('Hoe is het met jouw huis?', '', 'How is your house?', 'sentence', '', '', [
-      { target: 'Hoe is het', native: 'How is', korean: 'Hoe is het', english: 'How is' },
-      { target: 'met jouw huis?', native: 'your house?', korean: 'met jouw huis?', english: 'your house?' },
-    ]),
-    createContentItem('Het is klein maar oké.', '', 'It is small but okay.', 'sentence', '', '', [
-      { target: 'Het is klein', native: 'It is small', korean: 'Het is klein', english: 'It is small' },
-      { target: 'maar oké.', native: 'but okay.', korean: 'maar oké.', english: 'but okay.' },
-    ]),
-    createContentItem('Waar is uw bedrijf?', '', 'Where is your company?', 'sentence', '', '', [
-      { target: 'Waar is', native: 'Where is', korean: 'Waar is', english: 'Where is' },
-      { target: 'uw bedrijf?', native: 'your company?', korean: 'uw bedrijf?', english: 'your company?' },
-    ]),
-    createContentItem('Het ligt vlakbij het Gangnam-station.', '', 'It is near Gangnam station.', 'sentence', '', '', [
-      { target: 'Het ligt vlakbij', native: 'It is near', korean: 'Het ligt vlakbij', english: 'It is near' },
-      { target: 'het Gangnam-station.', native: 'Gangnam station.', korean: 'het Gangnam-station.', english: 'Gangnam station.' },
-    ]),
-    createContentItem('Hoe lang is uw woon-werkverkeer?', '', 'How long is your commute?', 'sentence', '', '', [
-      { target: 'Hoe lang is', native: 'How long is', korean: 'Hoe lang is', english: 'How long is' },
-      { target: 'uw woon-werkverkeer?', native: 'your commute?', korean: 'uw woon-werkverkeer?', english: 'your commute?' },
-    ]),
-    createContentItem('Het duurt ongeveer een uur.', '', 'It takes about one hour.', 'sentence', '', '', [
-      { target: 'Het duurt ongeveer', native: 'It takes about', korean: 'Het duurt ongeveer', english: 'It takes about' },
-      { target: 'een uur.', native: 'one hour.', korean: 'een uur.', english: 'one hour.' },
-    ]),
-    createContentItem('Welke dag heb je vrij?', '', 'What day do you have off?', 'sentence', '', '', [
-      { target: 'Welke dag heb', native: 'What day do', korean: 'Welke dag heb', english: 'What day do' },
-      { target: 'je vrij?', native: 'you have off?', korean: 'je vrij?', english: 'you have off?' },
-    ]),
-    createContentItem('Zaterdag en zondag heb ik vrij.', '', 'I have off on Saturday and Sunday.', 'sentence', '', '', [
-      { target: 'Zaterdag en zondag', native: 'I have off on', korean: 'Zaterdag en zondag', english: 'I have off on' },
-      { target: 'heb ik vrij.', native: 'Saturday and Sunday.', korean: 'heb ik vrij.', english: 'Saturday and Sunday.' },
-    ]),
-    createContentItem('Ben je druk vandaag?', '', 'Are you busy today?', 'sentence', '', '', [
-      { target: 'Ben je', native: 'Are you', korean: 'Ben je', english: 'Are you' },
-      { target: 'druk vandaag?', native: 'busy today?', korean: 'druk vandaag?', english: 'busy today?' },
-    ]),
-    createContentItem('Nee, ik heb het niet druk.', '', 'No, I am not busy.', 'sentence', '', '', [
-      { target: 'Nee, ik heb', native: 'No, I am', korean: 'Nee, ik heb', english: 'No, I am' },
-      { target: 'het niet druk.', native: 'not busy.', korean: 'het niet druk.', english: 'not busy.' },
-    ]),
-    createContentItem('Wil je samen lunchen?', '', 'Do you want to have lunch together?', 'sentence', '', '', [
-      { target: 'Wil je', native: 'Do you want to', korean: 'Wil je', english: 'Do you want to' },
-      { target: 'samen lunchen?', native: 'have lunch together?', korean: 'samen lunchen?', english: 'have lunch together?' },
-    ]),
-    createContentItem('Klinkt goed, laten we samen eten.', '', 'Sounds good, let\'s eat together.', 'sentence', '', '', [
-      { target: 'Klinkt goed, laten', native: 'Sounds good, let\'s', korean: 'Klinkt goed, laten', english: 'Sounds good, let\'s' },
-      { target: 'we samen eten.', native: 'eat together.', korean: 'we samen eten.', english: 'eat together.' },
-    ]),
-    createContentItem('Wat wil je eten?', '', 'What do you want to eat?', 'sentence', '', '', [
-      { target: 'Wat wil', native: 'What do you', korean: 'Wat wil', english: 'What do you' },
-      { target: 'je eten?', native: 'want to eat?', korean: 'je eten?', english: 'want to eat?' },
-    ]),
-    createContentItem('Ik wil Koreaans eten eten.', '', 'I want to eat Korean food.', 'sentence', '', '', [
-      { target: 'Ik wil Koreaans', native: 'I want to', korean: 'Ik wil Koreaans', english: 'I want to' },
-      { target: 'eten eten.', native: 'eat Korean food.', korean: 'eten eten.', english: 'eat Korean food.' },
-    ]),
-    createContentItem('Heb je nu tijd?', '', 'Do you have time now?', 'sentence', '', '', [
-      { target: 'Heb je', native: 'Do you have', korean: 'Heb je', english: 'Do you have' },
-      { target: 'nu tijd?', native: 'time now?', korean: 'nu tijd?', english: 'time now?' },
-    ]),
-    createContentItem('Sorry, ik heb het nu druk.', '', 'Sorry, I am busy now.', 'sentence', '', '', [
-      { target: 'Sorry, ik heb', native: 'Sorry, I am', korean: 'Sorry, ik heb', english: 'Sorry, I am' },
-      { target: 'het nu druk.', native: 'busy now.', korean: 'het nu druk.', english: 'busy now.' },
-    ]),
-    createContentItem('Ik neem later contact met je op.', '', 'I will contact you later.', 'sentence', '', '', [
-      { target: 'Ik neem later contact', native: 'I will contact', korean: 'Ik neem later contact', english: 'I will contact' },
-      { target: 'met je op.', native: 'you later.', korean: 'met je op.', english: 'you later.' },
-    ]),
-    createContentItem('Oké, tot later.', '', 'Okay, see you later.', 'sentence', '', '', [
-      { target: 'Oké,', native: 'Okay,', korean: 'Oké,', english: 'Okay,' },
-      { target: 'tot', native: 'see', korean: 'tot', english: 'see' },
-      { target: 'later.', native: 'you', korean: 'later.', english: 'you' },
-    ]),
-    createContentItem('Tot ziens (voor iemand die weggaat).', '', 'Goodbye (to someone leaving).', 'sentence', '', '', [
-      { target: 'Tot ziens (voor', native: 'Goodbye (to', korean: 'Tot ziens (voor', english: 'Goodbye (to' },
-      { target: 'iemand die weggaat).', native: 'someone leaving).', korean: 'iemand die weggaat).', english: 'someone leaving).' },
-    ]),
-    createContentItem('Tot ziens (formeel, voor iemand die weggaat).', '', 'Goodbye (formal, to someone leaving).', 'sentence', '', '', [
-      { target: 'Tot ziens (formeel, voor', native: 'Goodbye (formal, to', korean: 'Tot ziens (formeel, voor', english: 'Goodbye (formal, to' },
-      { target: 'iemand die weggaat).', native: 'someone leaving).', korean: 'iemand die weggaat).', english: 'someone leaving).' },
-    ]),
-    createContentItem('Tot ziens (van iemand die blijft).', '', 'Goodbye (to someone staying).', 'sentence', '', '', [
-      { target: 'Tot ziens (van', native: 'Goodbye (to', korean: 'Tot ziens (van', english: 'Goodbye (to' },
-      { target: 'iemand die blijft).', native: 'someone staying).', korean: 'iemand die blijft).', english: 'someone staying).' },
-    ]),
-    createContentItem('Tot ziens.', '', 'See you again.', 'sentence', '', '', [
-      { target: 'Tot', native: 'See', korean: 'Tot', english: 'See' },
-      { target: 'ziens.', native: 'you', korean: 'ziens.', english: 'you' },
-    ]),
-    createContentItem('Zie je morgen.', '', 'See you tomorrow.', 'sentence', '', '', [
-      { target: 'Zie', native: 'See', korean: 'Zie', english: 'See' },
-      { target: 'je', native: 'you', korean: 'je', english: 'you' },
-      { target: 'morgen.', native: 'tomorrow.', korean: 'morgen.', english: 'tomorrow.' },
-    ]),
-    createContentItem('Tot volgende week.', '', 'See you next week.', 'sentence', '', '', [
-      { target: 'Tot', native: 'See', korean: 'Tot', english: 'See' },
-      { target: 'volgende', native: 'you', korean: 'volgende', english: 'you' },
-      { target: 'week.', native: 'next', korean: 'week.', english: 'next' },
-    ]),
-    createContentItem('Fijne dag.', '', 'Have a good day.', 'sentence', '', '', [
-      { target: 'Fijne', native: 'Have', korean: 'Fijne', english: 'Have' },
-      { target: 'dag.', native: 'a', korean: 'dag.', english: 'a' },
-    ]),
-    createContentItem('Dank je, jij ook.', '', 'Thank you, you too.', 'sentence', '', '', [
-      { target: 'Dank je,', native: 'Thank you,', korean: 'Dank je,', english: 'Thank you,' },
-      { target: 'jij ook.', native: 'you too.', korean: 'jij ook.', english: 'you too.' },
-    ]),
-    createContentItem('Goed gedaan (erkenning van hard werken).', '', 'Good job (acknowledgment of hard work).', 'sentence', '', '', [
-      { target: 'Goed gedaan (erkenning', native: 'Good job (acknowledgment', korean: 'Goed gedaan (erkenning', english: 'Good job (acknowledgment' },
-      { target: 'van hard werken).', native: 'of hard work).', korean: 'van hard werken).', english: 'of hard work).' },
-    ]),
+    createContentItem('Ik ben student.', '', 'I am a student.', 'sentence'),
+    createContentItem('Ik ben vijfentwintig jaar oud.', '', 'I am twenty-five years old.', 'sentence'),
+    createContentItem('Wat is je hobby?', '', 'What is your hobby?', 'sentence'),
+    createContentItem('Ik luister graag naar muziek.', '', 'I like listening to music.', 'sentence'),
+    createContentItem('Uit hoeveel personen bestaat uw familie?', '', 'How many people are in your family?', 'sentence'),
+    createContentItem('Er zijn vier mensen.', '', 'There are four people.', 'sentence'),
+    createContentItem('Heb je broers en zussen?', '', 'Do you have siblings?', 'sentence'),
+    createContentItem('Ja, ik heb één oudere zus.', '', 'Yes, I have one older sister.', 'sentence'),
+    createContentItem('Wat heb je in het weekend gedaan?', '', 'What did you do on the weekend?', 'sentence'),
+    createContentItem('Ik heb met vrienden een film gekeken.', '', 'I watched a movie with friends.', 'sentence'),
+    createContentItem('Het is mooi weer vandaag.', '', 'The weather is nice today.', 'sentence'),
+    createContentItem('Ja, het is echt leuk.', '', 'Yes, it is really nice.', 'sentence'),
+    createContentItem('Heb je morgen tijd?', '', 'Do you have time tomorrow?', 'sentence'),
+    createContentItem('Ja, ik heb tijd.', '', 'Yes, I have time.', 'sentence'),
+    createContentItem('Zullen we een kopje koffie drinken?', '', 'Shall we have a cup of coffee?', 'sentence'),
+    createContentItem('Klinkt goed, laten we dat doen.', '', 'Sounds good, let\'s do that.', 'sentence'),
+    createContentItem('Wat is uw telefoonnummer?', '', 'What is your phone number?', 'sentence'),
+    createContentItem('Het is 010-1234-5678.', '', 'It is 010-1234-5678.', 'sentence'),
+    createContentItem('Ik zal contact met je opnemen.', '', 'I will contact you.', 'sentence'),
+    createContentItem('Ja, neem contact met mij op.', '', 'Yes, please contact me.', 'sentence'),
+    createContentItem('Hoe gaat het tegenwoordig?', '', 'How are things these days?', 'sentence'),
+    createContentItem('Ik heb het druk, maar oké.', '', 'I am busy but okay.', 'sentence'),
+    createContentItem('Hoe is het met uw gezondheid?', '', 'How is your health?', 'sentence'),
+    createContentItem('Ik ben gezond, dank je.', '', 'I am healthy, thank you.', 'sentence'),
+    createContentItem('Is dit je eerste keer in Korea?', '', 'Is this your first time in Korea?', 'sentence'),
+    createContentItem('Ja, het is mijn eerste keer.', '', 'Yes, it is my first time.', 'sentence'),
+    createContentItem('Hou je van Koreaans eten?', '', 'Do you like Korean food?', 'sentence'),
+    createContentItem('Ja, ik vind het erg leuk.', '', 'Yes, I like it very much.', 'sentence'),
+    createContentItem('Kun je kimchi eten?', '', 'Can you eat kimchi?', 'sentence'),
+    createContentItem('Ja, ik hou van kimchi.', '', 'Yes, I like kimchi.', 'sentence'),
+    createContentItem('Hoe lang studeer je Koreaans?', '', 'How long have you been studying Korean?', 'sentence'),
+    createContentItem('Ongeveer een jaar.', '', 'About one year.', 'sentence'),
+    createContentItem('Is Koreaans moeilijk?', '', 'Is Korean difficult?', 'sentence'),
+    createContentItem('Het is een beetje moeilijk maar interessant.', '', 'It is a bit difficult but interesting.', 'sentence'),
+    createContentItem('Wat doe je in Korea?', '', 'What do you do in Korea?', 'sentence'),
+    createContentItem('Ik geef Engelse les.', '', 'I teach English.', 'sentence'),
+    createContentItem('Hoe is het leven in Korea?', '', 'How is life in Korea?', 'sentence'),
+    createContentItem('Het is echt goed.', '', 'It is really good.', 'sentence'),
+    createContentItem('Hoe lang blijf je in Korea?', '', 'How long will you be in Korea?', 'sentence'),
+    createContentItem('Ik blijf hier ongeveer 2 jaar.', '', 'I will be here for about 2 years.', 'sentence'),
+    createContentItem('Wat doe je meestal in het weekend?', '', 'What do you usually do on weekends?', 'sentence'),
+    createContentItem('Meestal rust ik thuis uit.', '', 'I usually rest at home.', 'sentence'),
+    createContentItem('Wanneer ben je naar Korea gekomen?', '', 'When did you come to Korea?', 'sentence'),
+    createContentItem('Ik kwam vorig jaar.', '', 'I came last year.', 'sentence'),
+    createContentItem('Waar woon je?', '', 'Where do you live?', 'sentence'),
+    createContentItem('Ik woon in Seoel.', '', 'I live in Seoul.', 'sentence'),
+    createContentItem('Waar in Seoel woon je?', '', 'Where in Seoul do you live?', 'sentence'),
+    createContentItem('Ik woon in Gangnam.', '', 'I live in Gangnam.', 'sentence'),
+    createContentItem('Woont u alleen?', '', 'Do you live alone?', 'sentence'),
+    createContentItem('Nee, ik woon samen met een huisgenoot.', '', 'No, I live with a roommate.', 'sentence'),
+    createContentItem('Hoe is het met jouw huis?', '', 'How is your house?', 'sentence'),
+    createContentItem('Het is klein maar oké.', '', 'It is small but okay.', 'sentence'),
+    createContentItem('Waar is uw bedrijf?', '', 'Where is your company?', 'sentence'),
+    createContentItem('Het ligt vlakbij het Gangnam-station.', '', 'It is near Gangnam station.', 'sentence'),
+    createContentItem('Hoe lang is uw woon-werkverkeer?', '', 'How long is your commute?', 'sentence'),
+    createContentItem('Het duurt ongeveer een uur.', '', 'It takes about one hour.', 'sentence'),
+    createContentItem('Welke dag heb je vrij?', '', 'What day do you have off?', 'sentence'),
+    createContentItem('Zaterdag en zondag heb ik vrij.', '', 'I have off on Saturday and Sunday.', 'sentence'),
+    createContentItem('Ben je druk vandaag?', '', 'Are you busy today?', 'sentence'),
+    createContentItem('Nee, ik heb het niet druk.', '', 'No, I am not busy.', 'sentence'),
+    createContentItem('Wil je samen lunchen?', '', 'Do you want to have lunch together?', 'sentence'),
+    createContentItem('Klinkt goed, laten we samen eten.', '', 'Sounds good, let\'s eat together.', 'sentence'),
+    createContentItem('Wat wil je eten?', '', 'What do you want to eat?', 'sentence'),
+    createContentItem('Ik wil Koreaans eten eten.', '', 'I want to eat Korean food.', 'sentence'),
+    createContentItem('Heb je nu tijd?', '', 'Do you have time now?', 'sentence'),
+    createContentItem('Sorry, ik heb het nu druk.', '', 'Sorry, I am busy now.', 'sentence'),
+    createContentItem('Ik neem later contact met je op.', '', 'I will contact you later.', 'sentence'),
+    createContentItem('Oké, tot later.', '', 'Okay, see you later.', 'sentence'),
+    createContentItem('Tot ziens (voor iemand die weggaat).', '', 'Goodbye (to someone leaving).', 'sentence'),
+    createContentItem('Tot ziens (formeel, voor iemand die weggaat).', '', 'Goodbye (formal, to someone leaving).', 'sentence'),
+    createContentItem('Tot ziens (van iemand die blijft).', '', 'Goodbye (to someone staying).', 'sentence'),
+    createContentItem('Tot ziens.', '', 'See you again.', 'sentence'),
+    createContentItem('Zie je morgen.', '', 'See you tomorrow.', 'sentence'),
+    createContentItem('Tot volgende week.', '', 'See you next week.', 'sentence'),
+    createContentItem('Fijne dag.', '', 'Have a good day.', 'sentence'),
+    createContentItem('Dank je, jij ook.', '', 'Thank you, you too.', 'sentence'),
+    createContentItem('Goed gedaan (erkenning van hard werken).', '', 'Good job (acknowledgment of hard work).', 'sentence'),
     createContentItem('Bedankt.', '', 'Thank you.', 'sentence'),
     createContentItem('Pardon.', '', 'Excuse me.', 'sentence'),
-    createContentItem('Het is oké.', '', 'It\'s okay.', 'sentence', '', '', [
-      { target: 'Het', native: 'It\'s', korean: 'Het', english: 'It\'s' },
-      { target: 'is', native: 'okay.', korean: 'is', english: 'okay.' },
-      { target: 'oké.', native: '', korean: 'oké.', english: '' },
-    ]),
-    createContentItem('Het spijt me.', '', 'I am sorry.', 'sentence', '', '', [
-      { target: 'Het', native: 'I', korean: 'Het', english: 'I' },
-      { target: 'spijt', native: 'am', korean: 'spijt', english: 'am' },
-      { target: 'me.', native: 'sorry.', korean: 'me.', english: 'sorry.' },
-    ]),
-    createContentItem('Het is oké, maak je er geen zorgen over.', '', 'It\'s okay, don\'t worry about it.', 'sentence', '', '', [
-      { target: 'Het is oké, maak je', native: 'It\'s okay, don\'t', korean: 'Het is oké, maak je', english: 'It\'s okay, don\'t' },
-      { target: 'er geen zorgen over.', native: 'worry about it.', korean: 'er geen zorgen over.', english: 'worry about it.' },
-    ]),
-    createContentItem('Bedankt voor het helpen.', '', 'Thank you for helping.', 'sentence', '', '', [
-      { target: 'Bedankt voor', native: 'Thank you', korean: 'Bedankt voor', english: 'Thank you' },
-      { target: 'het helpen.', native: 'for helping.', korean: 'het helpen.', english: 'for helping.' },
-    ]),
-    createContentItem('Graag gedaan.', '', 'You\'re welcome.', 'sentence', '', '', [
-      { target: 'Graag', native: 'You\'re', korean: 'Graag', english: 'You\'re' },
-      { target: 'gedaan.', native: 'welcome.', korean: 'gedaan.', english: 'welcome.' },
-    ]),
-    createContentItem('Wacht even.', '', 'Please wait a moment.', 'sentence', '', '', [
-      { target: 'Wacht', native: 'Please', korean: 'Wacht', english: 'Please' },
-      { target: 'even.', native: 'wait', korean: 'even.', english: 'wait' },
-    ]),
-    createContentItem('Ja, ik begrijp het.', '', 'Yes, I understand.', 'sentence', '', '', [
-      { target: 'Ja, ik', native: 'Yes, I', korean: 'Ja, ik', english: 'Yes, I' },
-      { target: 'begrijp het.', native: 'understand.', korean: 'begrijp het.', english: 'understand.' },
-    ]),
-    createContentItem('Zeg het alsjeblieft nog een keer.', '', 'Please say it one more time.', 'sentence', '', '', [
-      { target: 'Zeg het alsjeblieft', native: 'Please say it', korean: 'Zeg het alsjeblieft', english: 'Please say it' },
-      { target: 'nog een keer.', native: 'one more time.', korean: 'nog een keer.', english: 'one more time.' },
-    ]),
-    createContentItem('Spreek alstublieft langzaam.', '', 'Please speak slowly.', 'sentence', '', '', [
-      { target: 'Spreek', native: 'Please', korean: 'Spreek', english: 'Please' },
-      { target: 'alstublieft', native: 'speak', korean: 'alstublieft', english: 'speak' },
-      { target: 'langzaam.', native: 'slowly.', korean: 'langzaam.', english: 'slowly.' },
-    ]),
-    createContentItem('Wat betekent het?', '', 'What does it mean?', 'sentence', '', '', [
-      { target: 'Wat', native: 'What', korean: 'Wat', english: 'What' },
-      { target: 'betekent', native: 'does', korean: 'betekent', english: 'does' },
-      { target: 'het?', native: 'it', korean: 'het?', english: 'it' },
-    ]),
-    createContentItem('Ik weet het niet goed.', '', 'I don\'t know well.', 'sentence', '', '', [
-      { target: 'Ik weet het', native: 'I don\'t', korean: 'Ik weet het', english: 'I don\'t' },
-      { target: 'niet goed.', native: 'know well.', korean: 'niet goed.', english: 'know well.' },
-    ]),
-    createContentItem('Heb je het begrepen?', '', 'Did you understand?', 'sentence', '', '', [
-      { target: 'Heb je', native: 'Did you', korean: 'Heb je', english: 'Did you' },
-      { target: 'het begrepen?', native: 'understand?', korean: 'het begrepen?', english: 'understand?' },
-    ]),
-    createContentItem('Ja, ik begreep het.', '', 'Yes, I understood.', 'sentence', '', '', [
-      { target: 'Ja, ik', native: 'Yes, I', korean: 'Ja, ik', english: 'Yes, I' },
-      { target: 'begreep het.', native: 'understood.', korean: 'begreep het.', english: 'understood.' },
-    ]),
+    createContentItem('Het is oké.', '', 'It\'s okay.', 'sentence'),
+    createContentItem('Het spijt me.', '', 'I am sorry.', 'sentence'),
+    createContentItem('Het is oké, maak je er geen zorgen over.', '', 'It\'s okay, don\'t worry about it.', 'sentence'),
+    createContentItem('Bedankt voor het helpen.', '', 'Thank you for helping.', 'sentence'),
+    createContentItem('Graag gedaan.', '', 'You\'re welcome.', 'sentence'),
+    createContentItem('Wacht even.', '', 'Please wait a moment.', 'sentence'),
+    createContentItem('Ja, ik begrijp het.', '', 'Yes, I understand.', 'sentence'),
+    createContentItem('Zeg het alsjeblieft nog een keer.', '', 'Please say it one more time.', 'sentence'),
+    createContentItem('Spreek alstublieft langzaam.', '', 'Please speak slowly.', 'sentence'),
+    createContentItem('Wat betekent het?', '', 'What does it mean?', 'sentence'),
+    createContentItem('Ik weet het niet goed.', '', 'I don\'t know well.', 'sentence'),
+    createContentItem('Heb je het begrepen?', '', 'Did you understand?', 'sentence'),
+    createContentItem('Ja, ik begreep het.', '', 'Yes, I understood.', 'sentence'),
     createContentItem('Woorden/spraak', '', 'Words/Speech', 'sentence'),
     createContentItem('Verontschuldiging', '', 'Apology', 'sentence'),
     createContentItem('Resultaat', '', 'Result', 'sentence'),
@@ -1109,295 +822,77 @@ const dailyLifeSentences = {
   difficulty: 'sentences',
   targetLang: 'nl',
   content: [
-    createContentItem('Hoe vaak per week sport u?', '', 'How many times a week do you exercise?', 'sentence', '', '', [
-      { target: 'Hoe vaak per', native: 'How many times a', korean: 'Hoe vaak per', english: 'How many times a' },
-      { target: 'week sport u?', native: 'week do you exercise?', korean: 'week sport u?', english: 'week do you exercise?' },
-    ]),
-    createContentItem('Ik doe het ongeveer drie keer per week.', '', 'I do it about three times a week.', 'sentence', '', '', [
-      { target: 'Ik doe het ongeveer', native: 'I do it about', korean: 'Ik doe het ongeveer', english: 'I do it about' },
-      { target: 'drie keer per week.', native: 'three times a week.', korean: 'drie keer per week.', english: 'three times a week.' },
-    ]),
-    createContentItem('Ik hou van boeken lezen.', '', 'I like reading books.', 'sentence', '', '', [
-      { target: 'Ik hou van', native: 'I like', korean: 'Ik hou van', english: 'I like' },
-      { target: 'boeken lezen.', native: 'reading books.', korean: 'boeken lezen.', english: 'reading books.' },
-    ]),
-    createContentItem('Wat voor soort boeken vind je leuk?', '', 'What kind of books do you like?', 'sentence', '', '', [
-      { target: 'Wat voor soort boeken', native: 'What kind of books', korean: 'Wat voor soort boeken', english: 'What kind of books' },
-      { target: 'vind je leuk?', native: 'do you like?', korean: 'vind je leuk?', english: 'do you like?' },
-    ]),
-    createContentItem('Ik hou van romans.', '', 'I like novels.', 'sentence', '', '', [
-      { target: 'Ik hou', native: 'I like', korean: 'Ik hou', english: 'I like' },
-      { target: 'van romans.', native: 'novels.', korean: 'van romans.', english: 'novels.' },
-    ]),
-    createContentItem('Kijk je vaak films?', '', 'Do you often watch movies?', 'sentence', '', '', [
-      { target: 'Kijk je', native: 'Do you often', korean: 'Kijk je', english: 'Do you often' },
-      { target: 'vaak films?', native: 'watch movies?', korean: 'vaak films?', english: 'watch movies?' },
-    ]),
-    createContentItem('Ja, ik kijk vaak films.', '', 'Yes, I watch movies often.', 'sentence', '', '', [
-      { target: 'Ja, ik kijk', native: 'Yes, I watch', korean: 'Ja, ik kijk', english: 'Yes, I watch' },
-      { target: 'vaak films.', native: 'movies often.', korean: 'vaak films.', english: 'movies often.' },
-    ]),
-    createContentItem('Van wat voor soort films hou je?', '', 'What kind of movies do you like?', 'sentence', '', '', [
-      { target: 'Van wat voor soort', native: 'What kind of movies', korean: 'Van wat voor soort', english: 'What kind of movies' },
-      { target: 'films hou je?', native: 'do you like?', korean: 'films hou je?', english: 'do you like?' },
-    ]),
-    createContentItem('Ik hou van actiefilms.', '', 'I like action movies.', 'sentence', '', '', [
-      { target: 'Ik hou', native: 'I like', korean: 'Ik hou', english: 'I like' },
-      { target: 'van actiefilms.', native: 'action movies.', korean: 'van actiefilms.', english: 'action movies.' },
-    ]),
-    createContentItem('Luister je vaak naar muziek?', '', 'Do you often listen to music?', 'sentence', '', '', [
-      { target: 'Luister je vaak', native: 'Do you often', korean: 'Luister je vaak', english: 'Do you often' },
-      { target: 'naar muziek?', native: 'listen to music?', korean: 'naar muziek?', english: 'listen to music?' },
-    ]),
-    createContentItem('Ja, ik luister elke dag.', '', 'Yes, I listen every day.', 'sentence', '', '', [
-      { target: 'Ja, ik luister', native: 'Yes, I listen', korean: 'Ja, ik luister', english: 'Yes, I listen' },
-      { target: 'elke dag.', native: 'every day.', korean: 'elke dag.', english: 'every day.' },
-    ]),
-    createContentItem('Van wat voor soort muziek hou je?', '', 'What kind of music do you like?', 'sentence', '', '', [
-      { target: 'Van wat voor soort', native: 'What kind of music', korean: 'Van wat voor soort', english: 'What kind of music' },
-      { target: 'muziek hou je?', native: 'do you like?', korean: 'muziek hou je?', english: 'do you like?' },
-    ]),
-    createContentItem('Ik hou van K-pop.', '', 'I like K-pop.', 'sentence', '', '', [
-      { target: 'Ik hou', native: 'I like', korean: 'Ik hou', english: 'I like' },
-      { target: 'van K-pop.', native: 'K-pop.', korean: 'van K-pop.', english: 'K-pop.' },
-    ]),
-    createContentItem('Speel je spelletjes?', '', 'Do you play games?', 'sentence', '', '', [
-      { target: 'Speel', native: 'Do', korean: 'Speel', english: 'Do' },
-      { target: 'je', native: 'you', korean: 'je', english: 'you' },
-      { target: 'spelletjes?', native: 'play', korean: 'spelletjes?', english: 'play' },
-    ]),
-    createContentItem('Ja, ik speel soms.', '', 'Yes, I play sometimes.', 'sentence', '', '', [
-      { target: 'Ja, ik', native: 'Yes, I', korean: 'Ja, ik', english: 'Yes, I' },
-      { target: 'speel soms.', native: 'play sometimes.', korean: 'speel soms.', english: 'play sometimes.' },
-    ]),
-    createContentItem('Welke spellen speel je?', '', 'What games do you play?', 'sentence', '', '', [
-      { target: 'Welke spellen', native: 'What games do', korean: 'Welke spellen', english: 'What games do' },
-      { target: 'speel je?', native: 'you play?', korean: 'speel je?', english: 'you play?' },
-    ]),
-    createContentItem('Ik speel RPG-spellen.', '', 'I play RPG games.', 'sentence', '', '', [
-      { target: 'Ik', native: 'I', korean: 'Ik', english: 'I' },
-      { target: 'speel', native: 'play', korean: 'speel', english: 'play' },
-      { target: 'RPG-spellen.', native: 'RPG', korean: 'RPG-spellen.', english: 'RPG' },
-    ]),
-    createContentItem('Kijkt u vaak tv?', '', 'Do you often watch TV?', 'sentence', '', '', [
-      { target: 'Kijkt u', native: 'Do you often', korean: 'Kijkt u', english: 'Do you often' },
-      { target: 'vaak tv?', native: 'watch TV?', korean: 'vaak tv?', english: 'watch TV?' },
-    ]),
-    createContentItem('Nee, ik kijk er niet veel naar.', '', 'No, I don\'t watch it much.', 'sentence', '', '', [
-      { target: 'Nee, ik kijk er', native: 'No, I don\'t', korean: 'Nee, ik kijk er', english: 'No, I don\'t' },
-      { target: 'niet veel naar.', native: 'watch it much.', korean: 'niet veel naar.', english: 'watch it much.' },
-    ]),
-    createContentItem('Welke programma\'s vind je leuk?', '', 'What programs do you like?', 'sentence', '', '', [
-      { target: 'Welke programma\'s vind', native: 'What programs do', korean: 'Welke programma\'s vind', english: 'What programs do' },
-      { target: 'je leuk?', native: 'you like?', korean: 'je leuk?', english: 'you like?' },
-    ]),
-    createContentItem('Ik hou van variétéshows.', '', 'I like variety shows.', 'sentence', '', '', [
-      { target: 'Ik hou', native: 'I like', korean: 'Ik hou', english: 'I like' },
-      { target: 'van variétéshows.', native: 'variety shows.', korean: 'van variétéshows.', english: 'variety shows.' },
-    ]),
-    createContentItem('Reis je vaak?', '', 'Do you travel often?', 'sentence', '', '', [
-      { target: 'Reis', native: 'Do', korean: 'Reis', english: 'Do' },
-      { target: 'je', native: 'you', korean: 'je', english: 'you' },
-      { target: 'vaak?', native: 'travel', korean: 'vaak?', english: 'travel' },
-    ]),
-    createContentItem('Ik ga ongeveer een of twee keer per jaar.', '', 'I go about once or twice a year.', 'sentence', '', '', [
-      { target: 'Ik ga ongeveer een of', native: 'I go about once', korean: 'Ik ga ongeveer een of', english: 'I go about once' },
-      { target: 'twee keer per jaar.', native: 'or twice a year.', korean: 'twee keer per jaar.', english: 'or twice a year.' },
-    ]),
-    createContentItem('Waar wil je naartoe reizen?', '', 'Where do you want to travel?', 'sentence', '', '', [
-      { target: 'Waar wil je', native: 'Where do you', korean: 'Waar wil je', english: 'Where do you' },
-      { target: 'naartoe reizen?', native: 'want to travel?', korean: 'naartoe reizen?', english: 'want to travel?' },
-    ]),
-    createContentItem('Ik wil naar het eiland Jeju.', '', 'I want to go to Jeju Island.', 'sentence', '', '', [
-      { target: 'Ik wil naar', native: 'I want to go', korean: 'Ik wil naar', english: 'I want to go' },
-      { target: 'het eiland Jeju.', native: 'to Jeju Island.', korean: 'het eiland Jeju.', english: 'to Jeju Island.' },
-    ]),
-    createContentItem('Heeft u een huisdier?', '', 'Do you have a pet?', 'sentence', '', '', [
-      { target: 'Heeft u', native: 'Do you have', korean: 'Heeft u', english: 'Do you have' },
-      { target: 'een huisdier?', native: 'a pet?', korean: 'een huisdier?', english: 'a pet?' },
-    ]),
-    createContentItem('Ja, ik heb een kat.', '', 'Yes, I have a cat.', 'sentence', '', '', [
-      { target: 'Ja, ik heb', native: 'Yes, I have', korean: 'Ja, ik heb', english: 'Yes, I have' },
-      { target: 'een kat.', native: 'a cat.', korean: 'een kat.', english: 'a cat.' },
-    ]),
-    createContentItem('De naam is Nabi.', '', 'Its name is Nabi.', 'sentence', '', '', [
-      { target: 'De naam', native: 'Its name', korean: 'De naam', english: 'Its name' },
-      { target: 'is Nabi.', native: 'is Nabi.', korean: 'is Nabi.', english: 'is Nabi.' },
-    ]),
-    createContentItem('Wat doe je als je gestresst bent?', '', 'What do you do when you are stressed?', 'sentence', '', '', [
-      { target: 'Wat doe je als', native: 'What do you do', korean: 'Wat doe je als', english: 'What do you do' },
-      { target: 'je gestresst bent?', native: 'when you are stressed?', korean: 'je gestresst bent?', english: 'when you are stressed?' },
-    ]),
-    createContentItem('Ik luister naar muziek of ga wandelen.', '', 'I listen to music or go for a walk.', 'sentence', '', '', [
-      { target: 'Ik luister naar muziek', native: 'I listen to music or', korean: 'Ik luister naar muziek', english: 'I listen to music or' },
-      { target: 'of ga wandelen.', native: 'go for a walk.', korean: 'of ga wandelen.', english: 'go for a walk.' },
-    ]),
-    createContentItem('Ga je vaak naar cafés?', '', 'Do you often go to cafes?', 'sentence', '', '', [
-      { target: 'Ga je vaak', native: 'Do you often', korean: 'Ga je vaak', english: 'Do you often' },
-      { target: 'naar cafés?', native: 'go to cafes?', korean: 'naar cafés?', english: 'go to cafes?' },
-    ]),
-    createContentItem('Ja, ik ga twee of drie keer per week.', '', 'Yes, I go two or three times a week.', 'sentence', '', '', [
-      { target: 'Ja, ik ga twee of', native: 'Yes, I go two or', korean: 'Ja, ik ga twee of', english: 'Yes, I go two or' },
-      { target: 'drie keer per week.', native: 'three times a week.', korean: 'drie keer per week.', english: 'three times a week.' },
-    ]),
-    createContentItem('Van wat voor soort koffie hou jij?', '', 'What kind of coffee do you like?', 'sentence', '', '', [
-      { target: 'Van wat voor soort', native: 'What kind of coffee', korean: 'Van wat voor soort', english: 'What kind of coffee' },
-      { target: 'koffie hou jij?', native: 'do you like?', korean: 'koffie hou jij?', english: 'do you like?' },
-    ]),
-    createContentItem('Ik hou van Americano.', '', 'I like Americano.', 'sentence', '', '', [
-      { target: 'Ik hou', native: 'I like', korean: 'Ik hou', english: 'I like' },
-      { target: 'van Americano.', native: 'Americano.', korean: 'van Americano.', english: 'Americano.' },
-    ]),
-    createContentItem('Drinkt u vaak alcohol?', '', 'Do you often drink alcohol?', 'sentence', '', '', [
-      { target: 'Drinkt u', native: 'Do you often', korean: 'Drinkt u', english: 'Do you often' },
-      { target: 'vaak alcohol?', native: 'drink alcohol?', korean: 'vaak alcohol?', english: 'drink alcohol?' },
-    ]),
-    createContentItem('Ik drink soms met vrienden.', '', 'I sometimes drink with friends.', 'sentence', '', '', [
-      { target: 'Ik drink soms', native: 'I sometimes drink', korean: 'Ik drink soms', english: 'I sometimes drink' },
-      { target: 'met vrienden.', native: 'with friends.', korean: 'met vrienden.', english: 'with friends.' },
-    ]),
-    createContentItem('Van wat voor soort alcohol hou jij?', '', 'What kind of alcohol do you like?', 'sentence', '', '', [
-      { target: 'Van wat voor soort', native: 'What kind of alcohol', korean: 'Van wat voor soort', english: 'What kind of alcohol' },
-      { target: 'alcohol hou jij?', native: 'do you like?', korean: 'alcohol hou jij?', english: 'do you like?' },
-    ]),
-    createContentItem('Ik hou van bier.', '', 'I like beer.', 'sentence', '', '', [
-      { target: 'Ik hou', native: 'I like', korean: 'Ik hou', english: 'I like' },
-      { target: 'van bier.', native: 'beer.', korean: 'van bier.', english: 'beer.' },
-    ]),
-    createContentItem('Rook je?', '', 'Do you smoke?', 'sentence', '', '', [
-      { target: 'Rook', native: 'Do', korean: 'Rook', english: 'Do' },
-      { target: 'je?', native: 'you', korean: 'je?', english: 'you' },
-    ]),
-    createContentItem('Nee, ik rook niet.', '', 'No, I don\'t smoke.', 'sentence', '', '', [
-      { target: 'Nee, ik', native: 'No, I', korean: 'Nee, ik', english: 'No, I' },
-      { target: 'rook niet.', native: 'don\'t smoke.', korean: 'rook niet.', english: 'don\'t smoke.' },
-    ]),
-    createContentItem('Wat doe jij voor je gezondheid?', '', 'What do you do for your health?', 'sentence', '', '', [
-      { target: 'Wat doe jij', native: 'What do you do', korean: 'Wat doe jij', english: 'What do you do' },
-      { target: 'voor je gezondheid?', native: 'for your health?', korean: 'voor je gezondheid?', english: 'for your health?' },
-    ]),
-    createContentItem('Ik sport en eet gezond.', '', 'I exercise and eat healthy food.', 'sentence', '', '', [
-      { target: 'Ik sport en', native: 'I exercise and', korean: 'Ik sport en', english: 'I exercise and' },
-      { target: 'eet gezond.', native: 'eat healthy food.', korean: 'eet gezond.', english: 'eat healthy food.' },
-    ]),
-    createContentItem('Ga je vaak naar het ziekenhuis?', '', 'Do you often go to the hospital?', 'sentence', '', '', [
-      { target: 'Ga je vaak', native: 'Do you often go', korean: 'Ga je vaak', english: 'Do you often go' },
-      { target: 'naar het ziekenhuis?', native: 'to the hospital?', korean: 'naar het ziekenhuis?', english: 'to the hospital?' },
-    ]),
-    createContentItem('Nee, ik ben gezond, dus ik ga niet vaak.', '', 'No, I am healthy so I don\'t go often.', 'sentence', '', '', [
-      { target: 'Nee, ik ben gezond, dus', native: 'No, I am healthy so', korean: 'Nee, ik ben gezond, dus', english: 'No, I am healthy so' },
-      { target: 'ik ga niet vaak.', native: 'I don\'t go often.', korean: 'ik ga niet vaak.', english: 'I don\'t go often.' },
-    ]),
-    createContentItem('Gebruikt u regelmatig medicijnen?', '', 'Do you take medicine regularly?', 'sentence', '', '', [
-      { target: 'Gebruikt u', native: 'Do you take', korean: 'Gebruikt u', english: 'Do you take' },
-      { target: 'regelmatig medicijnen?', native: 'medicine regularly?', korean: 'regelmatig medicijnen?', english: 'medicine regularly?' },
-    ]),
-    createContentItem('Nee, ik gebruik geen specifieke medicijnen.', '', 'No, I don\'t take any medicine in particular.', 'sentence', '', '', [
-      { target: 'Nee, ik gebruik', native: 'No, I don\'t take', korean: 'Nee, ik gebruik', english: 'No, I don\'t take' },
-      { target: 'geen specifieke medicijnen.', native: 'any medicine in particular.', korean: 'geen specifieke medicijnen.', english: 'any medicine in particular.' },
-    ]),
-    createContentItem('Heeft u allergieën?', '', 'Do you have allergies?', 'sentence', '', '', [
-      { target: 'Heeft', native: 'Do', korean: 'Heeft', english: 'Do' },
-      { target: 'u', native: 'you', korean: 'u', english: 'you' },
-      { target: 'allergieën?', native: 'have', korean: 'allergieën?', english: 'have' },
-    ]),
-    createContentItem('Nee, dat doe ik niet.', '', 'No, I don\'t.', 'sentence', '', '', [
-      { target: 'Nee, dat doe', native: 'No, I', korean: 'Nee, dat doe', english: 'No, I' },
-      { target: 'ik niet.', native: 'don\'t.', korean: 'ik niet.', english: 'don\'t.' },
-    ]),
-    createContentItem('Slaap je goed?', '', 'Do you sleep well?', 'sentence', '', '', [
-      { target: 'Slaap', native: 'Do', korean: 'Slaap', english: 'Do' },
-      { target: 'je', native: 'you', korean: 'je', english: 'you' },
-      { target: 'goed?', native: 'sleep', korean: 'goed?', english: 'sleep' },
-    ]),
-    createContentItem('Droom jij vaak?', '', 'Do you often dream?', 'sentence', '', '', [
-      { target: 'Droom', native: 'Do', korean: 'Droom', english: 'Do' },
-      { target: 'jij', native: 'you', korean: 'jij', english: 'you' },
-      { target: 'vaak?', native: 'often', korean: 'vaak?', english: 'often' },
-    ]),
-    createContentItem('Ik droom soms.', '', 'I dream sometimes.', 'sentence', '', '', [
-      { target: 'Ik', native: 'I', korean: 'Ik', english: 'I' },
-      { target: 'droom', native: 'dream', korean: 'droom', english: 'dream' },
-      { target: 'soms.', native: 'sometimes.', korean: 'soms.', english: 'sometimes.' },
-    ]),
-    createContentItem('Heeft u ooit nachtmerries gehad?', '', 'Have you ever had nightmares?', 'sentence', '', '', [
-      { target: 'Heeft u ooit', native: 'Have you ever', korean: 'Heeft u ooit', english: 'Have you ever' },
-      { target: 'nachtmerries gehad?', native: 'had nightmares?', korean: 'nachtmerries gehad?', english: 'had nightmares?' },
-    ]),
-    createContentItem('Soms wel.', '', 'Sometimes I do.', 'sentence', '', '', [
-      { target: 'Soms', native: 'Sometimes', korean: 'Soms', english: 'Sometimes' },
-      { target: 'wel.', native: 'I', korean: 'wel.', english: 'I' },
-    ]),
-    createContentItem('Ben jij een ochtendmens of avondmens?', '', 'Are you a morning person or evening person?', 'sentence', '', '', [
-      { target: 'Ben jij een', native: 'Are you a morning', korean: 'Ben jij een', english: 'Are you a morning' },
-      { target: 'ochtendmens of avondmens?', native: 'person or evening person?', korean: 'ochtendmens of avondmens?', english: 'person or evening person?' },
-    ]),
-    createContentItem('Ik ben een avondmens.', '', 'I am an evening person.', 'sentence', '', '', [
-      { target: 'Ik ben', native: 'I am an', korean: 'Ik ben', english: 'I am an' },
-      { target: 'een avondmens.', native: 'evening person.', korean: 'een avondmens.', english: 'evening person.' },
-    ]),
-    createContentItem('Doe je dutjes?', '', 'Do you take naps?', 'sentence', '', '', [
-      { target: 'Doe', native: 'Do', korean: 'Doe', english: 'Do' },
-      { target: 'je', native: 'you', korean: 'je', english: 'you' },
-      { target: 'dutjes?', native: 'take', korean: 'dutjes?', english: 'take' },
-    ]),
-    createContentItem('In het weekend doe ik dat soms.', '', 'I sometimes do on weekends.', 'sentence', '', '', [
-      { target: 'In het weekend doe', native: 'I sometimes do', korean: 'In het weekend doe', english: 'I sometimes do' },
-      { target: 'ik dat soms.', native: 'on weekends.', korean: 'ik dat soms.', english: 'on weekends.' },
-    ]),
-    createContentItem('Drink je veel koffie?', '', 'Do you drink a lot of coffee?', 'sentence', '', '', [
-      { target: 'Drink je', native: 'Do you drink a', korean: 'Drink je', english: 'Do you drink a' },
-      { target: 'veel koffie?', native: 'lot of coffee?', korean: 'veel koffie?', english: 'lot of coffee?' },
-    ]),
-    createContentItem('Ja, ik drink twee of drie kopjes per dag.', '', 'Yes, I drink two or three cups a day.', 'sentence', '', '', [
-      { target: 'Ja, ik drink twee of', native: 'Yes, I drink two or', korean: 'Ja, ik drink twee of', english: 'Yes, I drink two or' },
-      { target: 'drie kopjes per dag.', native: 'three cups a day.', korean: 'drie kopjes per dag.', english: 'three cups a day.' },
-    ]),
-    createContentItem('Drink je veel water?', '', 'Do you drink a lot of water?', 'sentence', '', '', [
-      { target: 'Drink je', native: 'Do you drink a', korean: 'Drink je', english: 'Do you drink a' },
-      { target: 'veel water?', native: 'lot of water?', korean: 'veel water?', english: 'lot of water?' },
-    ]),
-    createContentItem('Ja, ik drink ongeveer 2 liter per dag.', '', 'Yes, I drink about 2 liters a day.', 'sentence', '', '', [
-      { target: 'Ja, ik drink ongeveer', native: 'Yes, I drink about', korean: 'Ja, ik drink ongeveer', english: 'Yes, I drink about' },
-      { target: '2 liter per dag.', native: '2 liters a day.', korean: '2 liter per dag.', english: '2 liters a day.' },
-    ]),
-    createContentItem('Eet jij vaak tussendoortjes?', '', 'Do you often eat snacks?', 'sentence', '', '', [
-      { target: 'Eet jij', native: 'Do you often', korean: 'Eet jij', english: 'Do you often' },
-      { target: 'vaak tussendoortjes?', native: 'eat snacks?', korean: 'vaak tussendoortjes?', english: 'eat snacks?' },
-    ]),
-    createContentItem('Ik eet ze soms.', '', 'I eat them sometimes.', 'sentence', '', '', [
-      { target: 'Ik eet', native: 'I eat', korean: 'Ik eet', english: 'I eat' },
-      { target: 'ze soms.', native: 'them sometimes.', korean: 'ze soms.', english: 'them sometimes.' },
-    ]),
-    createContentItem('Welke tussendoortjes vind jij lekker?', '', 'What snacks do you like?', 'sentence', '', '', [
-      { target: 'Welke tussendoortjes vind', native: 'What snacks do', korean: 'Welke tussendoortjes vind', english: 'What snacks do' },
-      { target: 'jij lekker?', native: 'you like?', korean: 'jij lekker?', english: 'you like?' },
-    ]),
-    createContentItem('Ik hou van koekjes.', '', 'I like cookies.', 'sentence', '', '', [
-      { target: 'Ik hou', native: 'I like', korean: 'Ik hou', english: 'I like' },
-      { target: 'van koekjes.', native: 'cookies.', korean: 'van koekjes.', english: 'cookies.' },
-    ]),
-    createContentItem('Bent u op dieet?', '', 'Are you on a diet?', 'sentence', '', '', [
-      { target: 'Bent u', native: 'Are you on', korean: 'Bent u', english: 'Are you on' },
-      { target: 'op dieet?', native: 'a diet?', korean: 'op dieet?', english: 'a diet?' },
-    ]),
-    createContentItem('Nee, dat ben ik nu niet.', '', 'No, I am not right now.', 'sentence', '', '', [
-      { target: 'Nee, dat ben', native: 'No, I am', korean: 'Nee, dat ben', english: 'No, I am' },
-      { target: 'ik nu niet.', native: 'not right now.', korean: 'ik nu niet.', english: 'not right now.' },
-    ]),
+    createContentItem('Hoe vaak per week sport u?', '', 'How many times a week do you exercise?', 'sentence'),
+    createContentItem('Ik doe het ongeveer drie keer per week.', '', 'I do it about three times a week.', 'sentence'),
+    createContentItem('Ik hou van boeken lezen.', '', 'I like reading books.', 'sentence'),
+    createContentItem('Wat voor soort boeken vind je leuk?', '', 'What kind of books do you like?', 'sentence'),
+    createContentItem('Ik hou van romans.', '', 'I like novels.', 'sentence'),
+    createContentItem('Kijk je vaak films?', '', 'Do you often watch movies?', 'sentence'),
+    createContentItem('Ja, ik kijk vaak films.', '', 'Yes, I watch movies often.', 'sentence'),
+    createContentItem('Van wat voor soort films hou je?', '', 'What kind of movies do you like?', 'sentence'),
+    createContentItem('Ik hou van actiefilms.', '', 'I like action movies.', 'sentence'),
+    createContentItem('Luister je vaak naar muziek?', '', 'Do you often listen to music?', 'sentence'),
+    createContentItem('Ja, ik luister elke dag.', '', 'Yes, I listen every day.', 'sentence'),
+    createContentItem('Van wat voor soort muziek hou je?', '', 'What kind of music do you like?', 'sentence'),
+    createContentItem('Ik hou van K-pop.', '', 'I like K-pop.', 'sentence'),
+    createContentItem('Speel je spelletjes?', '', 'Do you play games?', 'sentence'),
+    createContentItem('Ja, ik speel soms.', '', 'Yes, I play sometimes.', 'sentence'),
+    createContentItem('Welke spellen speel je?', '', 'What games do you play?', 'sentence'),
+    createContentItem('Ik speel RPG-spellen.', '', 'I play RPG games.', 'sentence'),
+    createContentItem('Kijkt u vaak tv?', '', 'Do you often watch TV?', 'sentence'),
+    createContentItem('Nee, ik kijk er niet veel naar.', '', 'No, I don\'t watch it much.', 'sentence'),
+    createContentItem('Welke programma\'s vind je leuk?', '', 'What programs do you like?', 'sentence'),
+    createContentItem('Ik hou van variétéshows.', '', 'I like variety shows.', 'sentence'),
+    createContentItem('Reis je vaak?', '', 'Do you travel often?', 'sentence'),
+    createContentItem('Ik ga ongeveer een of twee keer per jaar.', '', 'I go about once or twice a year.', 'sentence'),
+    createContentItem('Waar wil je naartoe reizen?', '', 'Where do you want to travel?', 'sentence'),
+    createContentItem('Ik wil naar het eiland Jeju.', '', 'I want to go to Jeju Island.', 'sentence'),
+    createContentItem('Heeft u een huisdier?', '', 'Do you have a pet?', 'sentence'),
+    createContentItem('Ja, ik heb een kat.', '', 'Yes, I have a cat.', 'sentence'),
+    createContentItem('De naam is Nabi.', '', 'Its name is Nabi.', 'sentence'),
+    createContentItem('Wat doe je als je gestresst bent?', '', 'What do you do when you are stressed?', 'sentence'),
+    createContentItem('Ik luister naar muziek of ga wandelen.', '', 'I listen to music or go for a walk.', 'sentence'),
+    createContentItem('Ga je vaak naar cafés?', '', 'Do you often go to cafes?', 'sentence'),
+    createContentItem('Ja, ik ga twee of drie keer per week.', '', 'Yes, I go two or three times a week.', 'sentence'),
+    createContentItem('Van wat voor soort koffie hou jij?', '', 'What kind of coffee do you like?', 'sentence'),
+    createContentItem('Ik hou van Americano.', '', 'I like Americano.', 'sentence'),
+    createContentItem('Drinkt u vaak alcohol?', '', 'Do you often drink alcohol?', 'sentence'),
+    createContentItem('Ik drink soms met vrienden.', '', 'I sometimes drink with friends.', 'sentence'),
+    createContentItem('Van wat voor soort alcohol hou jij?', '', 'What kind of alcohol do you like?', 'sentence'),
+    createContentItem('Ik hou van bier.', '', 'I like beer.', 'sentence'),
+    createContentItem('Rook je?', '', 'Do you smoke?', 'sentence'),
+    createContentItem('Nee, ik rook niet.', '', 'No, I don\'t smoke.', 'sentence'),
+    createContentItem('Wat doe jij voor je gezondheid?', '', 'What do you do for your health?', 'sentence'),
+    createContentItem('Ik sport en eet gezond.', '', 'I exercise and eat healthy food.', 'sentence'),
+    createContentItem('Ga je vaak naar het ziekenhuis?', '', 'Do you often go to the hospital?', 'sentence'),
+    createContentItem('Nee, ik ben gezond, dus ik ga niet vaak.', '', 'No, I am healthy so I don\'t go often.', 'sentence'),
+    createContentItem('Gebruikt u regelmatig medicijnen?', '', 'Do you take medicine regularly?', 'sentence'),
+    createContentItem('Nee, ik gebruik geen specifieke medicijnen.', '', 'No, I don\'t take any medicine in particular.', 'sentence'),
+    createContentItem('Heeft u allergieën?', '', 'Do you have allergies?', 'sentence'),
+    createContentItem('Nee, dat doe ik niet.', '', 'No, I don\'t.', 'sentence'),
+    createContentItem('Slaap je goed?', '', 'Do you sleep well?', 'sentence'),
+    createContentItem('Droom jij vaak?', '', 'Do you often dream?', 'sentence'),
+    createContentItem('Ik droom soms.', '', 'I dream sometimes.', 'sentence'),
+    createContentItem('Heeft u ooit nachtmerries gehad?', '', 'Have you ever had nightmares?', 'sentence'),
+    createContentItem('Soms wel.', '', 'Sometimes I do.', 'sentence'),
+    createContentItem('Ben jij een ochtendmens of avondmens?', '', 'Are you a morning person or evening person?', 'sentence'),
+    createContentItem('Ik ben een avondmens.', '', 'I am an evening person.', 'sentence'),
+    createContentItem('Doe je dutjes?', '', 'Do you take naps?', 'sentence'),
+    createContentItem('In het weekend doe ik dat soms.', '', 'I sometimes do on weekends.', 'sentence'),
+    createContentItem('Drink je veel koffie?', '', 'Do you drink a lot of coffee?', 'sentence'),
+    createContentItem('Ja, ik drink twee of drie kopjes per dag.', '', 'Yes, I drink two or three cups a day.', 'sentence'),
+    createContentItem('Drink je veel water?', '', 'Do you drink a lot of water?', 'sentence'),
+    createContentItem('Ja, ik drink ongeveer 2 liter per dag.', '', 'Yes, I drink about 2 liters a day.', 'sentence'),
+    createContentItem('Eet jij vaak tussendoortjes?', '', 'Do you often eat snacks?', 'sentence'),
+    createContentItem('Ik eet ze soms.', '', 'I eat them sometimes.', 'sentence'),
+    createContentItem('Welke tussendoortjes vind jij lekker?', '', 'What snacks do you like?', 'sentence'),
+    createContentItem('Ik hou van koekjes.', '', 'I like cookies.', 'sentence'),
+    createContentItem('Bent u op dieet?', '', 'Are you on a diet?', 'sentence'),
+    createContentItem('Nee, dat ben ik nu niet.', '', 'No, I am not right now.', 'sentence'),
     createContentItem('Sneeuw', '', 'Snow', 'sentence'),
-    createContentItem('Twee (Sino)', '', 'Two (Sino)', 'sentence', '', '', [
-      { target: 'Twee', native: 'Two', korean: 'Twee', english: 'Two' },
-      { target: '(Sino)', native: '(Sino)', korean: '(Sino)', english: '(Sino)' },
-    ]),
-    createContentItem('Acht (Sino)', '', 'Eight (Sino)', 'sentence', '', '', [
-      { target: 'Acht', native: 'Eight', korean: 'Acht', english: 'Eight' },
-      { target: '(Sino)', native: '(Sino)', korean: '(Sino)', english: '(Sino)' },
-    ]),
-    createContentItem('Tien (native)', '', 'Ten (native)', 'sentence', '', '', [
-      { target: 'Tien', native: 'Ten', korean: 'Tien', english: 'Ten' },
-      { target: '(native)', native: '(native)', korean: '(native)', english: '(native)' },
-    ]),
+    createContentItem('Twee (Sino)', '', 'Two (Sino)', 'sentence'),
+    createContentItem('Acht (Sino)', '', 'Eight (Sino)', 'sentence'),
+    createContentItem('Tien (native)', '', 'Ten (native)', 'sentence'),
     createContentItem('Nacht', '', 'Night', 'sentence'),
   ],
 };
@@ -1996,304 +1491,79 @@ const travelSentences = {
   difficulty: 'sentences',
   targetLang: 'nl',
   content: [
-    createContentItem('Je kunt het doen op metrostations of buurtwinkels.', '', 'You can do it at subway stations or convenience stores.', 'sentence', '', '', [
-      { target: 'Je kunt het doen', native: 'You can do it at', korean: 'Je kunt het doen', english: 'You can do it at' },
-      { target: 'op metrostations of buurtwinkels.', native: 'subway stations or convenience stores.', korean: 'op metrostations of buurtwinkels.', english: 'subway stations or convenience stores.' },
-    ]),
-    createContentItem('Ik wil een taxi nemen.', '', 'I want to take a taxi.', 'sentence', '', '', [
-      { target: 'Ik wil een', native: 'I want to', korean: 'Ik wil een', english: 'I want to' },
-      { target: 'taxi nemen.', native: 'take a taxi.', korean: 'taxi nemen.', english: 'take a taxi.' },
-    ]),
-    createContentItem('Er is daar een taxistandplaats.', '', 'There is a taxi stand over there.', 'sentence', '', '', [
-      { target: 'Er is daar', native: 'There is a taxi', korean: 'Er is daar', english: 'There is a taxi' },
-      { target: 'een taxistandplaats.', native: 'stand over there.', korean: 'een taxistandplaats.', english: 'stand over there.' },
-    ]),
-    createContentItem('Hoeveel zal het taxitarief bedragen?', '', 'How much will the taxi fare be?', 'sentence', '', '', [
-      { target: 'Hoeveel zal het', native: 'How much will the', korean: 'Hoeveel zal het', english: 'How much will the' },
-      { target: 'taxitarief bedragen?', native: 'taxi fare be?', korean: 'taxitarief bedragen?', english: 'taxi fare be?' },
-    ]),
-    createContentItem('Het zal ongeveer 20.000 gewonnen zijn.', '', 'It will be about 20,000 won.', 'sentence', '', '', [
-      { target: 'Het zal ongeveer', native: 'It will be', korean: 'Het zal ongeveer', english: 'It will be' },
-      { target: '20.000 gewonnen zijn.', native: 'about 20,000 won.', korean: '20.000 gewonnen zijn.', english: 'about 20,000 won.' },
-    ]),
-    createContentItem('Laat me hier alsjeblieft uit.', '', 'Please let me off here.', 'sentence', '', '', [
-      { target: 'Laat me hier', native: 'Please let me', korean: 'Laat me hier', english: 'Please let me' },
-      { target: 'alsjeblieft uit.', native: 'off here.', korean: 'alsjeblieft uit.', english: 'off here.' },
-    ]),
-    createContentItem('Welk busnummer is het?', '', 'Which bus number is it?', 'sentence', '', '', [
-      { target: 'Welk busnummer', native: 'Which bus number', korean: 'Welk busnummer', english: 'Which bus number' },
-      { target: 'is het?', native: 'is it?', korean: 'is het?', english: 'is it?' },
-    ]),
-    createContentItem('Het is busnummer 472.', '', 'It is bus number 472.', 'sentence', '', '', [
-      { target: 'Het is', native: 'It is bus', korean: 'Het is', english: 'It is bus' },
-      { target: 'busnummer 472.', native: 'number 472.', korean: 'busnummer 472.', english: 'number 472.' },
-    ]),
-    createContentItem('Waar is de bushalte?', '', 'Where is the bus stop?', 'sentence', '', '', [
-      { target: 'Waar is', native: 'Where is the', korean: 'Waar is', english: 'Where is the' },
-      { target: 'de bushalte?', native: 'bus stop?', korean: 'de bushalte?', english: 'bus stop?' },
-    ]),
-    createContentItem('Het is verderop.', '', 'It is up ahead.', 'sentence', '', '', [
-      { target: 'Het', native: 'It', korean: 'Het', english: 'It' },
-      { target: 'is', native: 'is', korean: 'is', english: 'is' },
-      { target: 'verderop.', native: 'up', korean: 'verderop.', english: 'up' },
-    ]),
-    createContentItem('Gaat deze bus naar Myeongdong?', '', 'Does this bus go to Myeongdong?', 'sentence', '', '', [
-      { target: 'Gaat deze bus', native: 'Does this bus', korean: 'Gaat deze bus', english: 'Does this bus' },
-      { target: 'naar Myeongdong?', native: 'go to Myeongdong?', korean: 'naar Myeongdong?', english: 'go to Myeongdong?' },
-    ]),
-    createContentItem('Ja, het gaat naar Myeongdong.', '', 'Yes, it goes to Myeongdong.', 'sentence', '', '', [
-      { target: 'Ja, het gaat', native: 'Yes, it goes', korean: 'Ja, het gaat', english: 'Yes, it goes' },
-      { target: 'naar Myeongdong.', native: 'to Myeongdong.', korean: 'naar Myeongdong.', english: 'to Myeongdong.' },
-    ]),
-    createContentItem('Moet ik hier uitstappen?', '', 'Should I get off here?', 'sentence', '', '', [
-      { target: 'Moet ik', native: 'Should I get', korean: 'Moet ik', english: 'Should I get' },
-      { target: 'hier uitstappen?', native: 'off here?', korean: 'hier uitstappen?', english: 'off here?' },
-    ]),
-    createContentItem('Nee, stap uit bij de volgende halte.', '', 'No, get off at the next stop.', 'sentence', '', '', [
-      { target: 'Nee, stap uit bij', native: 'No, get off at', korean: 'Nee, stap uit bij', english: 'No, get off at' },
-      { target: 'de volgende halte.', native: 'the next stop.', korean: 'de volgende halte.', english: 'the next stop.' },
-    ]),
-    createContentItem('Waar zijn de toeristische attracties?', '', 'Where are the tourist attractions?', 'sentence', '', '', [
-      { target: 'Waar zijn de', native: 'Where are the', korean: 'Waar zijn de', english: 'Where are the' },
-      { target: 'toeristische attracties?', native: 'tourist attractions?', korean: 'toeristische attracties?', english: 'tourist attractions?' },
-    ]),
-    createContentItem('Gyeongbokgung is beroemd.', '', 'Gyeongbokgung is famous.', 'sentence', '', '', [
-      { target: 'Gyeongbokgung', native: 'Gyeongbokgung', korean: 'Gyeongbokgung', english: 'Gyeongbokgung' },
-      { target: 'is', native: 'is', korean: 'is', english: 'is' },
-      { target: 'beroemd.', native: 'famous.', korean: 'beroemd.', english: 'famous.' },
-    ]),
-    createContentItem('Hoeveel bedraagt ​​de toegangsprijs?', '', 'How much is the entrance fee?', 'sentence', '', '', [
-      { target: 'Hoeveel bedraagt', native: 'How much is', korean: 'Hoeveel bedraagt', english: 'How much is' },
-      { target: '​​de toegangsprijs?', native: 'the entrance fee?', korean: '​​de toegangsprijs?', english: 'the entrance fee?' },
-    ]),
-    createContentItem('Het is 3.000 gewonnen.', '', 'It is 3,000 won.', 'sentence', '', '', [
-      { target: 'Het is', native: 'It is', korean: 'Het is', english: 'It is' },
-      { target: '3.000 gewonnen.', native: '3,000 won.', korean: '3.000 gewonnen.', english: '3,000 won.' },
-    ]),
-    createContentItem('Hoe laat gaat het open?', '', 'What time does it open?', 'sentence', '', '', [
-      { target: 'Hoe laat gaat', native: 'What time does', korean: 'Hoe laat gaat', english: 'What time does' },
-      { target: 'het open?', native: 'it open?', korean: 'het open?', english: 'it open?' },
-    ]),
-    createContentItem('Het gaat om 9 uur open.', '', 'It opens at 9 o\'clock.', 'sentence', '', '', [
-      { target: 'Het gaat om', native: 'It opens at', korean: 'Het gaat om', english: 'It opens at' },
-      { target: '9 uur open.', native: '9 o\'clock.', korean: '9 uur open.', english: '9 o\'clock.' },
-    ]),
-    createContentItem('Hoe laat sluit het?', '', 'What time does it close?', 'sentence', '', '', [
-      { target: 'Hoe laat', native: 'What time does', korean: 'Hoe laat', english: 'What time does' },
-      { target: 'sluit het?', native: 'it close?', korean: 'sluit het?', english: 'it close?' },
-    ]),
-    createContentItem('Het sluit om 6 uur.', '', 'It closes at 6 o\'clock.', 'sentence', '', '', [
-      { target: 'Het sluit om', native: 'It closes at', korean: 'Het sluit om', english: 'It closes at' },
-      { target: '6 uur.', native: '6 o\'clock.', korean: '6 uur.', english: '6 o\'clock.' },
-    ]),
-    createContentItem('Mag ik foto\'s maken?', '', 'Can I take pictures?', 'sentence', '', '', [
-      { target: 'Mag ik', native: 'Can I', korean: 'Mag ik', english: 'Can I' },
-      { target: 'foto\'s maken?', native: 'take pictures?', korean: 'foto\'s maken?', english: 'take pictures?' },
-    ]),
-    createContentItem('Ja, je mag foto\'s maken.', '', 'Yes, you can take pictures.', 'sentence', '', '', [
-      { target: 'Ja, je mag', native: 'Yes, you can', korean: 'Ja, je mag', english: 'Yes, you can' },
-      { target: 'foto\'s maken.', native: 'take pictures.', korean: 'foto\'s maken.', english: 'take pictures.' },
-    ]),
-    createContentItem('Is er een rondleiding?', '', 'Is there a guided tour?', 'sentence', '', '', [
-      { target: 'Is er', native: 'Is there a', korean: 'Is er', english: 'Is there a' },
-      { target: 'een rondleiding?', native: 'guided tour?', korean: 'een rondleiding?', english: 'guided tour?' },
-    ]),
-    createContentItem('Ja, er is er één om 10.00 uur.', '', 'Yes, there is one at 10 AM.', 'sentence', '', '', [
-      { target: 'Ja, er is er', native: 'Yes, there is one', korean: 'Ja, er is er', english: 'Yes, there is one' },
-      { target: 'één om 10.00 uur.', native: 'at 10 AM.', korean: 'één om 10.00 uur.', english: 'at 10 AM.' },
-    ]),
-    createContentItem('Is er alleen een Koreaanse gids?', '', 'Is there only a Korean guide?', 'sentence', '', '', [
-      { target: 'Is er alleen', native: 'Is there only', korean: 'Is er alleen', english: 'Is there only' },
-      { target: 'een Koreaanse gids?', native: 'a Korean guide?', korean: 'een Koreaanse gids?', english: 'a Korean guide?' },
-    ]),
-    createContentItem('Nee, er is ook een Engelstalige gids.', '', 'No, there is also an English guide.', 'sentence', '', '', [
-      { target: 'Nee, er is ook', native: 'No, there is also', korean: 'Nee, er is ook', english: 'No, there is also' },
-      { target: 'een Engelstalige gids.', native: 'an English guide.', korean: 'een Engelstalige gids.', english: 'an English guide.' },
-    ]),
-    createContentItem('Heb je een kaart?', '', 'Do you have a map?', 'sentence', '', '', [
-      { target: 'Heb je', native: 'Do you have', korean: 'Heb je', english: 'Do you have' },
-      { target: 'een kaart?', native: 'a map?', korean: 'een kaart?', english: 'a map?' },
-    ]),
-    createContentItem('Ja, hier is het.', '', 'Yes, here it is.', 'sentence', '', '', [
-      { target: 'Ja, hier', native: 'Yes, here', korean: 'Ja, hier', english: 'Yes, here' },
-      { target: 'is het.', native: 'it is.', korean: 'is het.', english: 'it is.' },
-    ]),
-    createContentItem('Het bevindt zich op de eerste verdieping.', '', 'It is on the first floor.', 'sentence', '', '', [
-      { target: 'Het bevindt zich op', native: 'It is on', korean: 'Het bevindt zich op', english: 'It is on' },
-      { target: 'de eerste verdieping.', native: 'the first floor.', korean: 'de eerste verdieping.', english: 'the first floor.' },
-    ]),
-    createContentItem('Is er een restaurant?', '', 'Is there a restaurant?', 'sentence', '', '', [
-      { target: 'Is er', native: 'Is there', korean: 'Is er', english: 'Is there' },
-      { target: 'een restaurant?', native: 'a restaurant?', korean: 'een restaurant?', english: 'a restaurant?' },
-    ]),
-    createContentItem('Het bevindt zich op de tweede verdieping.', '', 'It is on the second floor.', 'sentence', '', '', [
-      { target: 'Het bevindt zich op', native: 'It is on', korean: 'Het bevindt zich op', english: 'It is on' },
-      { target: 'de tweede verdieping.', native: 'the second floor.', korean: 'de tweede verdieping.', english: 'the second floor.' },
-    ]),
-    createContentItem('Waar is de souvenirwinkel?', '', 'Where is the souvenir shop?', 'sentence', '', '', [
-      { target: 'Waar is', native: 'Where is the', korean: 'Waar is', english: 'Where is the' },
-      { target: 'de souvenirwinkel?', native: 'souvenir shop?', korean: 'de souvenirwinkel?', english: 'souvenir shop?' },
-    ]),
-    createContentItem('Het ligt naast de uitgang.', '', 'It is next to the exit.', 'sentence', '', '', [
-      { target: 'Het ligt naast', native: 'It is next', korean: 'Het ligt naast', english: 'It is next' },
-      { target: 'de uitgang.', native: 'to the exit.', korean: 'de uitgang.', english: 'to the exit.' },
-    ]),
-    createContentItem('Is er korting?', '', 'Is there a discount?', 'sentence', '', '', [
-      { target: 'Is', native: 'Is', korean: 'Is', english: 'Is' },
-      { target: 'er', native: 'there', korean: 'er', english: 'there' },
-      { target: 'korting?', native: 'a', korean: 'korting?', english: 'a' },
-    ]),
-    createContentItem('Er geldt een studentenkorting.', '', 'There is a student discount.', 'sentence', '', '', [
-      { target: 'Er geldt', native: 'There is a', korean: 'Er geldt', english: 'There is a' },
-      { target: 'een studentenkorting.', native: 'student discount.', korean: 'een studentenkorting.', english: 'student discount.' },
-    ]),
-    createContentItem('Heb je een studentenkaart?', '', 'Do you have a student ID?', 'sentence', '', '', [
-      { target: 'Heb je', native: 'Do you have', korean: 'Heb je', english: 'Do you have' },
-      { target: 'een studentenkaart?', native: 'a student ID?', korean: 'een studentenkaart?', english: 'a student ID?' },
-    ]),
-    createContentItem('Is er ook een groepskorting?', '', 'Is there also a group discount?', 'sentence', '', '', [
-      { target: 'Is er ook', native: 'Is there also', korean: 'Is er ook', english: 'Is there also' },
-      { target: 'een groepskorting?', native: 'a group discount?', korean: 'een groepskorting?', english: 'a group discount?' },
-    ]),
-    createContentItem('Ja, er is korting vanaf 10 personen.', '', 'Yes, there is a discount for 10 or more people.', 'sentence', '', '', [
-      { target: 'Ja, er is korting', native: 'Yes, there is a discount', korean: 'Ja, er is korting', english: 'Yes, there is a discount' },
-      { target: 'vanaf 10 personen.', native: 'for 10 or more people.', korean: 'vanaf 10 personen.', english: 'for 10 or more people.' },
-    ]),
-    createContentItem('Beveel een hotel aan.', '', 'Please recommend a hotel.', 'sentence', '', '', [
-      { target: 'Beveel een', native: 'Please recommend', korean: 'Beveel een', english: 'Please recommend' },
-      { target: 'hotel aan.', native: 'a hotel.', korean: 'hotel aan.', english: 'a hotel.' },
-    ]),
-    createContentItem('Hotels in de buurt van Myeongdong zijn goed.', '', 'Hotels near Myeongdong are good.', 'sentence', '', '', [
-      { target: 'Hotels in de buurt', native: 'Hotels near Myeongdong', korean: 'Hotels in de buurt', english: 'Hotels near Myeongdong' },
-      { target: 'van Myeongdong zijn goed.', native: 'are good.', korean: 'van Myeongdong zijn goed.', english: 'are good.' },
-    ]),
-    createContentItem('Ik heb gereserveerd.', '', 'I made a reservation.', 'sentence', '', '', [
-      { target: 'Ik', native: 'I', korean: 'Ik', english: 'I' },
-      { target: 'heb', native: 'made', korean: 'heb', english: 'made' },
-      { target: 'gereserveerd.', native: 'a', korean: 'gereserveerd.', english: 'a' },
-    ]),
-    createContentItem('Wat is de naam op de reservering?', '', 'What is the name on the reservation?', 'sentence', '', '', [
-      { target: 'Wat is de naam', native: 'What is the name', korean: 'Wat is de naam', english: 'What is the name' },
-      { target: 'op de reservering?', native: 'on the reservation?', korean: 'op de reservering?', english: 'on the reservation?' },
-    ]),
-    createContentItem('Het is Kim Minsu.', '', 'It is Kim Minsu.', 'sentence', '', '', [
-      { target: 'Het is', native: 'It is', korean: 'Het is', english: 'It is' },
-      { target: 'Kim Minsu.', native: 'Kim Minsu.', korean: 'Kim Minsu.', english: 'Kim Minsu.' },
-    ]),
-    createContentItem('Bevestigd. Hier is je sleutel.', '', 'Confirmed. Here is your key.', 'sentence', '', '', [
-      { target: 'Bevestigd. Hier is', native: 'Confirmed. Here is', korean: 'Bevestigd. Hier is', english: 'Confirmed. Here is' },
-      { target: 'je sleutel.', native: 'your key.', korean: 'je sleutel.', english: 'your key.' },
-    ]),
-    createContentItem('Is het ontbijt inbegrepen?', '', 'Is breakfast included?', 'sentence', '', '', [
-      { target: 'Is het', native: 'Is breakfast', korean: 'Is het', english: 'Is breakfast' },
-      { target: 'ontbijt inbegrepen?', native: 'included?', korean: 'ontbijt inbegrepen?', english: 'included?' },
-    ]),
-    createContentItem('Ja, het is vanaf 07.00 uur in het restaurant op de eerste verdieping.', '', 'Yes, it is from 7 AM at the first floor restaurant.', 'sentence', '', '', [
-      { target: 'Ja, het is vanaf 07.00 uur in', native: 'Yes, it is from 7 AM', korean: 'Ja, het is vanaf 07.00 uur in', english: 'Yes, it is from 7 AM' },
-      { target: 'het restaurant op de eerste verdieping.', native: 'at the first floor restaurant.', korean: 'het restaurant op de eerste verdieping.', english: 'at the first floor restaurant.' },
-    ]),
-    createContentItem('Hoe laat is het uitchecken?', '', 'What time is check-out?', 'sentence', '', '', [
-      { target: 'Hoe laat is', native: 'What time', korean: 'Hoe laat is', english: 'What time' },
-      { target: 'het uitchecken?', native: 'is check-out?', korean: 'het uitchecken?', english: 'is check-out?' },
-    ]),
-    createContentItem('Het is 11 uur.', '', 'It is 11 o\'clock.', 'sentence', '', '', [
-      { target: 'Het is', native: 'It is', korean: 'Het is', english: 'It is' },
-      { target: '11 uur.', native: '11 o\'clock.', korean: '11 uur.', english: '11 o\'clock.' },
-    ]),
-    createContentItem('Kan ik mijn bagage achterlaten?', '', 'Can I leave my luggage?', 'sentence', '', '', [
-      { target: 'Kan ik mijn', native: 'Can I leave', korean: 'Kan ik mijn', english: 'Can I leave' },
-      { target: 'bagage achterlaten?', native: 'my luggage?', korean: 'bagage achterlaten?', english: 'my luggage?' },
-    ]),
-    createContentItem('Ja, laat het hier achter.', '', 'Yes, leave it here.', 'sentence', '', '', [
-      { target: 'Ja, laat het', native: 'Yes, leave', korean: 'Ja, laat het', english: 'Yes, leave' },
-      { target: 'hier achter.', native: 'it here.', korean: 'hier achter.', english: 'it here.' },
-    ]),
-    createContentItem('Wat is het wifi-wachtwoord?', '', 'What is the WiFi password?', 'sentence', '', '', [
-      { target: 'Wat is', native: 'What is the', korean: 'Wat is', english: 'What is the' },
-      { target: 'het wifi-wachtwoord?', native: 'WiFi password?', korean: 'het wifi-wachtwoord?', english: 'WiFi password?' },
-    ]),
-    createContentItem('Het staat hier geschreven.', '', 'It is written here.', 'sentence', '', '', [
-      { target: 'Het staat', native: 'It is', korean: 'Het staat', english: 'It is' },
-      { target: 'hier geschreven.', native: 'written here.', korean: 'hier geschreven.', english: 'written here.' },
-    ]),
-    createContentItem('De kamer is te koud.', '', 'The room is too cold.', 'sentence', '', '', [
-      { target: 'De kamer is', native: 'The room is', korean: 'De kamer is', english: 'The room is' },
-      { target: 'te koud.', native: 'too cold.', korean: 'te koud.', english: 'too cold.' },
-    ]),
-    createContentItem('Ik zal de temperatuur verhogen.', '', 'I will raise the temperature.', 'sentence', '', '', [
-      { target: 'Ik zal de', native: 'I will raise', korean: 'Ik zal de', english: 'I will raise' },
-      { target: 'temperatuur verhogen.', native: 'the temperature.', korean: 'temperatuur verhogen.', english: 'the temperature.' },
-    ]),
-    createContentItem('Er komt geen warm water uit.', '', 'Hot water is not coming out.', 'sentence', '', '', [
-      { target: 'Er komt geen', native: 'Hot water is', korean: 'Er komt geen', english: 'Hot water is' },
-      { target: 'warm water uit.', native: 'not coming out.', korean: 'warm water uit.', english: 'not coming out.' },
-    ]),
-    createContentItem('Het spijt me, ik zal het meteen oplossen.', '', 'I\'m sorry, I will fix it right away.', 'sentence', '', '', [
-      { target: 'Het spijt me, ik', native: 'I\'m sorry, I will', korean: 'Het spijt me, ik', english: 'I\'m sorry, I will' },
-      { target: 'zal het meteen oplossen.', native: 'fix it right away.', korean: 'zal het meteen oplossen.', english: 'fix it right away.' },
-    ]),
-    createContentItem('Waar wissel ik geld?', '', 'Where do I exchange money?', 'sentence', '', '', [
-      { target: 'Waar wissel', native: 'Where do I', korean: 'Waar wissel', english: 'Where do I' },
-      { target: 'ik geld?', native: 'exchange money?', korean: 'ik geld?', english: 'exchange money?' },
-    ]),
-    createContentItem('Doe het bij een bank of geldwisselkantoor.', '', 'Do it at a bank or money exchange.', 'sentence', '', '', [
-      { target: 'Doe het bij een', native: 'Do it at a', korean: 'Doe het bij een', english: 'Do it at a' },
-      { target: 'bank of geldwisselkantoor.', native: 'bank or money exchange.', korean: 'bank of geldwisselkantoor.', english: 'bank or money exchange.' },
-    ]),
-    createContentItem('Wat is de wisselkoers?', '', 'What is the exchange rate?', 'sentence', '', '', [
-      { target: 'Wat is', native: 'What is the', korean: 'Wat is', english: 'What is the' },
-      { target: 'de wisselkoers?', native: 'exchange rate?', korean: 'de wisselkoers?', english: 'exchange rate?' },
-    ]),
-    createContentItem('Tegenwoordig is dat 1.200 won per dollar.', '', 'Today it is 1,200 won per dollar.', 'sentence', '', '', [
-      { target: 'Tegenwoordig is dat 1.200', native: 'Today it is 1,200', korean: 'Tegenwoordig is dat 1.200', english: 'Today it is 1,200' },
-      { target: 'won per dollar.', native: 'won per dollar.', korean: 'won per dollar.', english: 'won per dollar.' },
-    ]),
-    createContentItem('Kan ik een creditcard gebruiken?', '', 'Can I use a credit card?', 'sentence', '', '', [
-      { target: 'Kan ik een', native: 'Can I use', korean: 'Kan ik een', english: 'Can I use' },
-      { target: 'creditcard gebruiken?', native: 'a credit card?', korean: 'creditcard gebruiken?', english: 'a credit card?' },
-    ]),
-    createContentItem('Ja, kaartbetaling is mogelijk.', '', 'Yes, card payment is possible.', 'sentence', '', '', [
-      { target: 'Ja, kaartbetaling', native: 'Yes, card payment', korean: 'Ja, kaartbetaling', english: 'Yes, card payment' },
-      { target: 'is mogelijk.', native: 'is possible.', korean: 'is mogelijk.', english: 'is possible.' },
-    ]),
-    createContentItem('Accepteert u alleen contant geld?', '', 'Do you only accept cash?', 'sentence', '', '', [
-      { target: 'Accepteert u alleen', native: 'Do you only', korean: 'Accepteert u alleen', english: 'Do you only' },
-      { target: 'contant geld?', native: 'accept cash?', korean: 'contant geld?', english: 'accept cash?' },
-    ]),
-    createContentItem('Nee, de kaart is ook oké.', '', 'No, card is okay too.', 'sentence', '', '', [
-      { target: 'Nee, de kaart', native: 'No, card is', korean: 'Nee, de kaart', english: 'No, card is' },
-      { target: 'is ook oké.', native: 'okay too.', korean: 'is ook oké.', english: 'okay too.' },
-    ]),
-    createContentItem('Waar is een geldautomaat?', '', 'Where is an ATM?', 'sentence', '', '', [
-      { target: 'Waar is', native: 'Where is', korean: 'Waar is', english: 'Where is' },
-      { target: 'een geldautomaat?', native: 'an ATM?', korean: 'een geldautomaat?', english: 'an ATM?' },
-    ]),
-    createContentItem('Het bevindt zich in de supermarkt.', '', 'It is inside the convenience store.', 'sentence', '', '', [
-      { target: 'Het bevindt zich', native: 'It is inside', korean: 'Het bevindt zich', english: 'It is inside' },
-      { target: 'in de supermarkt.', native: 'the convenience store.', korean: 'in de supermarkt.', english: 'the convenience store.' },
-    ]),
-    createContentItem('Spreek jij Engels?', '', 'Do you speak English?', 'sentence', '', '', [
-      { target: 'Spreek', native: 'Do', korean: 'Spreek', english: 'Do' },
-      { target: 'jij', native: 'you', korean: 'jij', english: 'you' },
-      { target: 'Engels?', native: 'speak', korean: 'Engels?', english: 'speak' },
-    ]),
-    createContentItem('Ik spreek een beetje.', '', 'I speak a little.', 'sentence', '', '', [
-      { target: 'Ik spreek', native: 'I speak', korean: 'Ik spreek', english: 'I speak' },
-      { target: 'een beetje.', native: 'a little.', korean: 'een beetje.', english: 'a little.' },
-    ]),
-    createContentItem('Ik ben verdwaald.', '', 'I am lost.', 'sentence', '', '', [
-      { target: 'Ik', native: 'I', korean: 'Ik', english: 'I' },
-      { target: 'ben', native: 'am', korean: 'ben', english: 'am' },
-      { target: 'verdwaald.', native: 'lost.', korean: 'verdwaald.', english: 'lost.' },
-    ]),
-    createContentItem('Waar probeer je heen te gaan?', '', 'Where are you trying to go?', 'sentence', '', '', [
-      { target: 'Waar probeer je', native: 'Where are you', korean: 'Waar probeer je', english: 'Where are you' },
-      { target: 'heen te gaan?', native: 'trying to go?', korean: 'heen te gaan?', english: 'trying to go?' },
-    ]),
-    createContentItem('Graag gedaan, ga veilig.', '', 'You\'re welcome, go safely.', 'sentence', '', '', [
-      { target: 'Graag gedaan,', native: 'You\'re welcome,', korean: 'Graag gedaan,', english: 'You\'re welcome,' },
-      { target: 'ga veilig.', native: 'go safely.', korean: 'ga veilig.', english: 'go safely.' },
-    ]),
+    createContentItem('Je kunt het doen op metrostations of buurtwinkels.', '', 'You can do it at subway stations or convenience stores.', 'sentence'),
+    createContentItem('Ik wil een taxi nemen.', '', 'I want to take a taxi.', 'sentence'),
+    createContentItem('Er is daar een taxistandplaats.', '', 'There is a taxi stand over there.', 'sentence'),
+    createContentItem('Hoeveel zal het taxitarief bedragen?', '', 'How much will the taxi fare be?', 'sentence'),
+    createContentItem('Het zal ongeveer 20.000 gewonnen zijn.', '', 'It will be about 20,000 won.', 'sentence'),
+    createContentItem('Laat me hier alsjeblieft uit.', '', 'Please let me off here.', 'sentence'),
+    createContentItem('Welk busnummer is het?', '', 'Which bus number is it?', 'sentence'),
+    createContentItem('Het is busnummer 472.', '', 'It is bus number 472.', 'sentence'),
+    createContentItem('Waar is de bushalte?', '', 'Where is the bus stop?', 'sentence'),
+    createContentItem('Het is verderop.', '', 'It is up ahead.', 'sentence'),
+    createContentItem('Gaat deze bus naar Myeongdong?', '', 'Does this bus go to Myeongdong?', 'sentence'),
+    createContentItem('Ja, het gaat naar Myeongdong.', '', 'Yes, it goes to Myeongdong.', 'sentence'),
+    createContentItem('Moet ik hier uitstappen?', '', 'Should I get off here?', 'sentence'),
+    createContentItem('Nee, stap uit bij de volgende halte.', '', 'No, get off at the next stop.', 'sentence'),
+    createContentItem('Waar zijn de toeristische attracties?', '', 'Where are the tourist attractions?', 'sentence'),
+    createContentItem('Gyeongbokgung is beroemd.', '', 'Gyeongbokgung is famous.', 'sentence'),
+    createContentItem('Hoeveel bedraagt ​​de toegangsprijs?', '', 'How much is the entrance fee?', 'sentence'),
+    createContentItem('Het is 3.000 gewonnen.', '', 'It is 3,000 won.', 'sentence'),
+    createContentItem('Hoe laat gaat het open?', '', 'What time does it open?', 'sentence'),
+    createContentItem('Het gaat om 9 uur open.', '', 'It opens at 9 o\'clock.', 'sentence'),
+    createContentItem('Hoe laat sluit het?', '', 'What time does it close?', 'sentence'),
+    createContentItem('Het sluit om 6 uur.', '', 'It closes at 6 o\'clock.', 'sentence'),
+    createContentItem('Mag ik foto\'s maken?', '', 'Can I take pictures?', 'sentence'),
+    createContentItem('Ja, je mag foto\'s maken.', '', 'Yes, you can take pictures.', 'sentence'),
+    createContentItem('Is er een rondleiding?', '', 'Is there a guided tour?', 'sentence'),
+    createContentItem('Ja, er is er één om 10.00 uur.', '', 'Yes, there is one at 10 AM.', 'sentence'),
+    createContentItem('Is er alleen een Koreaanse gids?', '', 'Is there only a Korean guide?', 'sentence'),
+    createContentItem('Nee, er is ook een Engelstalige gids.', '', 'No, there is also an English guide.', 'sentence'),
+    createContentItem('Heb je een kaart?', '', 'Do you have a map?', 'sentence'),
+    createContentItem('Ja, hier is het.', '', 'Yes, here it is.', 'sentence'),
+    createContentItem('Het bevindt zich op de eerste verdieping.', '', 'It is on the first floor.', 'sentence'),
+    createContentItem('Is er een restaurant?', '', 'Is there a restaurant?', 'sentence'),
+    createContentItem('Het bevindt zich op de tweede verdieping.', '', 'It is on the second floor.', 'sentence'),
+    createContentItem('Waar is de souvenirwinkel?', '', 'Where is the souvenir shop?', 'sentence'),
+    createContentItem('Het ligt naast de uitgang.', '', 'It is next to the exit.', 'sentence'),
+    createContentItem('Is er korting?', '', 'Is there a discount?', 'sentence'),
+    createContentItem('Er geldt een studentenkorting.', '', 'There is a student discount.', 'sentence'),
+    createContentItem('Heb je een studentenkaart?', '', 'Do you have a student ID?', 'sentence'),
+    createContentItem('Is er ook een groepskorting?', '', 'Is there also a group discount?', 'sentence'),
+    createContentItem('Ja, er is korting vanaf 10 personen.', '', 'Yes, there is a discount for 10 or more people.', 'sentence'),
+    createContentItem('Beveel een hotel aan.', '', 'Please recommend a hotel.', 'sentence'),
+    createContentItem('Hotels in de buurt van Myeongdong zijn goed.', '', 'Hotels near Myeongdong are good.', 'sentence'),
+    createContentItem('Ik heb gereserveerd.', '', 'I made a reservation.', 'sentence'),
+    createContentItem('Wat is de naam op de reservering?', '', 'What is the name on the reservation?', 'sentence'),
+    createContentItem('Het is Kim Minsu.', '', 'It is Kim Minsu.', 'sentence'),
+    createContentItem('Bevestigd. Hier is je sleutel.', '', 'Confirmed. Here is your key.', 'sentence'),
+    createContentItem('Is het ontbijt inbegrepen?', '', 'Is breakfast included?', 'sentence'),
+    createContentItem('Ja, het is vanaf 07.00 uur in het restaurant op de eerste verdieping.', '', 'Yes, it is from 7 AM at the first floor restaurant.', 'sentence'),
+    createContentItem('Hoe laat is het uitchecken?', '', 'What time is check-out?', 'sentence'),
+    createContentItem('Het is 11 uur.', '', 'It is 11 o\'clock.', 'sentence'),
+    createContentItem('Kan ik mijn bagage achterlaten?', '', 'Can I leave my luggage?', 'sentence'),
+    createContentItem('Ja, laat het hier achter.', '', 'Yes, leave it here.', 'sentence'),
+    createContentItem('Wat is het wifi-wachtwoord?', '', 'What is the WiFi password?', 'sentence'),
+    createContentItem('Het staat hier geschreven.', '', 'It is written here.', 'sentence'),
+    createContentItem('De kamer is te koud.', '', 'The room is too cold.', 'sentence'),
+    createContentItem('Ik zal de temperatuur verhogen.', '', 'I will raise the temperature.', 'sentence'),
+    createContentItem('Er komt geen warm water uit.', '', 'Hot water is not coming out.', 'sentence'),
+    createContentItem('Het spijt me, ik zal het meteen oplossen.', '', 'I\'m sorry, I will fix it right away.', 'sentence'),
+    createContentItem('Waar wissel ik geld?', '', 'Where do I exchange money?', 'sentence'),
+    createContentItem('Doe het bij een bank of geldwisselkantoor.', '', 'Do it at a bank or money exchange.', 'sentence'),
+    createContentItem('Wat is de wisselkoers?', '', 'What is the exchange rate?', 'sentence'),
+    createContentItem('Tegenwoordig is dat 1.200 won per dollar.', '', 'Today it is 1,200 won per dollar.', 'sentence'),
+    createContentItem('Kan ik een creditcard gebruiken?', '', 'Can I use a credit card?', 'sentence'),
+    createContentItem('Ja, kaartbetaling is mogelijk.', '', 'Yes, card payment is possible.', 'sentence'),
+    createContentItem('Accepteert u alleen contant geld?', '', 'Do you only accept cash?', 'sentence'),
+    createContentItem('Nee, de kaart is ook oké.', '', 'No, card is okay too.', 'sentence'),
+    createContentItem('Waar is een geldautomaat?', '', 'Where is an ATM?', 'sentence'),
+    createContentItem('Het bevindt zich in de supermarkt.', '', 'It is inside the convenience store.', 'sentence'),
+    createContentItem('Spreek jij Engels?', '', 'Do you speak English?', 'sentence'),
+    createContentItem('Ik spreek een beetje.', '', 'I speak a little.', 'sentence'),
+    createContentItem('Ik ben verdwaald.', '', 'I am lost.', 'sentence'),
+    createContentItem('Waar probeer je heen te gaan?', '', 'Where are you trying to go?', 'sentence'),
+    createContentItem('Graag gedaan, ga veilig.', '', 'You\'re welcome, go safely.', 'sentence'),
     createContentItem('Boot/schip', '', 'Boat/Ship', 'sentence'),
     createContentItem('Paard', '', 'Horse', 'sentence'),
     createContentItem('Auto', '', 'Car', 'sentence'),
@@ -2637,125 +1907,35 @@ const shoppingSentences = {
   difficulty: 'sentences',
   targetLang: 'nl',
   content: [
-    createContentItem('Ja, je kunt het kopen in het online winkelcentrum.', '', 'Yes, you can buy it at the online shopping mall.', 'sentence', '', '', [
-      { target: 'Ja, je kunt het kopen', native: 'Yes, you can buy it', korean: 'Ja, je kunt het kopen', english: 'Yes, you can buy it' },
-      { target: 'in het online winkelcentrum.', native: 'at the online shopping mall.', korean: 'in het online winkelcentrum.', english: 'at the online shopping mall.' },
-    ]),
-    createContentItem('Wat is het websiteadres?', '', 'What is the website address?', 'sentence', '', '', [
-      { target: 'Wat is', native: 'What is the', korean: 'Wat is', english: 'What is the' },
-      { target: 'het websiteadres?', native: 'website address?', korean: 'het websiteadres?', english: 'website address?' },
-    ]),
-    createContentItem('Het staat op deze kaart geschreven.', '', 'It is written on this card.', 'sentence', '', '', [
-      { target: 'Het staat op', native: 'It is written', korean: 'Het staat op', english: 'It is written' },
-      { target: 'deze kaart geschreven.', native: 'on this card.', korean: 'deze kaart geschreven.', english: 'on this card.' },
-    ]),
-    createContentItem('Heb je een app?', '', 'Do you have an app?', 'sentence', '', '', [
-      { target: 'Heb je', native: 'Do you have', korean: 'Heb je', english: 'Do you have' },
-      { target: 'een app?', native: 'an app?', korean: 'een app?', english: 'an app?' },
-    ]),
-    createContentItem('Ja, je krijgt een kortingsbon als je de app downloadt.', '', 'Yes, you get a coupon if you download the app.', 'sentence', '', '', [
-      { target: 'Ja, je krijgt een kortingsbon', native: 'Yes, you get a coupon', korean: 'Ja, je krijgt een kortingsbon', english: 'Yes, you get a coupon' },
-      { target: 'als je de app downloadt.', native: 'if you download the app.', korean: 'als je de app downloadt.', english: 'if you download the app.' },
-    ]),
-    createContentItem('Wanneer wordt deze aangevuld?', '', 'When will it be restocked?', 'sentence', '', '', [
-      { target: 'Wanneer wordt', native: 'When will it', korean: 'Wanneer wordt', english: 'When will it' },
-      { target: 'deze aangevuld?', native: 'be restocked?', korean: 'deze aangevuld?', english: 'be restocked?' },
-    ]),
-    createContentItem('De aankomst staat gepland voor volgende week.', '', 'It is scheduled to arrive next week.', 'sentence', '', '', [
-      { target: 'De aankomst staat gepland', native: 'It is scheduled to', korean: 'De aankomst staat gepland', english: 'It is scheduled to' },
-      { target: 'voor volgende week.', native: 'arrive next week.', korean: 'voor volgende week.', english: 'arrive next week.' },
-    ]),
-    createContentItem('Kunt u contact met mij opnemen als het aankomt?', '', 'Can you contact me when it arrives?', 'sentence', '', '', [
-      { target: 'Kunt u contact met mij', native: 'Can you contact me', korean: 'Kunt u contact met mij', english: 'Can you contact me' },
-      { target: 'opnemen als het aankomt?', native: 'when it arrives?', korean: 'opnemen als het aankomt?', english: 'when it arrives?' },
-    ]),
-    createContentItem('Ja, laat uw telefoonnummer achter.', '', 'Yes, please leave your phone number.', 'sentence', '', '', [
-      { target: 'Ja, laat uw', native: 'Yes, please leave', korean: 'Ja, laat uw', english: 'Yes, please leave' },
-      { target: 'telefoonnummer achter.', native: 'your phone number.', korean: 'telefoonnummer achter.', english: 'your phone number.' },
-    ]),
-    createContentItem('Is dit populair?', '', 'Is this popular?', 'sentence', '', '', [
-      { target: 'Is', native: 'Is', korean: 'Is', english: 'Is' },
-      { target: 'dit', native: 'this', korean: 'dit', english: 'this' },
-      { target: 'populair?', native: 'popular?', korean: 'populair?', english: 'popular?' },
-    ]),
-    createContentItem('Ja, er wordt tegenwoordig veel verkocht.', '', 'Yes, it sells a lot these days.', 'sentence', '', '', [
-      { target: 'Ja, er wordt', native: 'Yes, it sells a', korean: 'Ja, er wordt', english: 'Yes, it sells a' },
-      { target: 'tegenwoordig veel verkocht.', native: 'lot these days.', korean: 'tegenwoordig veel verkocht.', english: 'lot these days.' },
-    ]),
-    createContentItem('Zijn de recensies goed?', '', 'Are the reviews good?', 'sentence', '', '', [
-      { target: 'Zijn de', native: 'Are the', korean: 'Zijn de', english: 'Are the' },
-      { target: 'recensies goed?', native: 'reviews good?', korean: 'recensies goed?', english: 'reviews good?' },
-    ]),
-    createContentItem('Ja, de tevredenheid is groot.', '', 'Yes, the satisfaction is high.', 'sentence', '', '', [
-      { target: 'Ja, de tevredenheid', native: 'Yes, the satisfaction', korean: 'Ja, de tevredenheid', english: 'Yes, the satisfaction' },
-      { target: 'is groot.', native: 'is high.', korean: 'is groot.', english: 'is high.' },
-    ]),
-    createContentItem('Hoe is de kwaliteit?', '', 'How is the quality?', 'sentence', '', '', [
-      { target: 'Hoe is', native: 'How is', korean: 'Hoe is', english: 'How is' },
-      { target: 'de kwaliteit?', native: 'the quality?', korean: 'de kwaliteit?', english: 'the quality?' },
-    ]),
-    createContentItem('De kwaliteit is zeer goed.', '', 'The quality is very good.', 'sentence', '', '', [
-      { target: 'De kwaliteit is', native: 'The quality is', korean: 'De kwaliteit is', english: 'The quality is' },
-      { target: 'zeer goed.', native: 'very good.', korean: 'zeer goed.', english: 'very good.' },
-    ]),
-    createContentItem('Zou je het aanbevelen?', '', 'Would you recommend it?', 'sentence', '', '', [
-      { target: 'Zou je', native: 'Would you', korean: 'Zou je', english: 'Would you' },
-      { target: 'het aanbevelen?', native: 'recommend it?', korean: 'het aanbevelen?', english: 'recommend it?' },
-    ]),
-    createContentItem('Ja, ik raad het ten zeerste aan.', '', 'Yes, I highly recommend it.', 'sentence', '', '', [
-      { target: 'Ja, ik raad het', native: 'Yes, I highly', korean: 'Ja, ik raad het', english: 'Yes, I highly' },
-      { target: 'ten zeerste aan.', native: 'recommend it.', korean: 'ten zeerste aan.', english: 'recommend it.' },
-    ]),
-    createContentItem('Kan ik vergelijken?', '', 'Can I compare?', 'sentence', '', '', [
-      { target: 'Kan', native: 'Can', korean: 'Kan', english: 'Can' },
-      { target: 'ik', native: 'I', korean: 'ik', english: 'I' },
-      { target: 'vergelijken?', native: 'compare?', korean: 'vergelijken?', english: 'compare?' },
-    ]),
-    createContentItem('Ja, vergelijk het eens met dit.', '', 'Yes, compare it with this.', 'sentence', '', '', [
-      { target: 'Ja, vergelijk het', native: 'Yes, compare it', korean: 'Ja, vergelijk het', english: 'Yes, compare it' },
-      { target: 'eens met dit.', native: 'with this.', korean: 'eens met dit.', english: 'with this.' },
-    ]),
-    createContentItem('Wat is het verschil?', '', 'What is the difference?', 'sentence', '', '', [
-      { target: 'Wat is', native: 'What is', korean: 'Wat is', english: 'What is' },
-      { target: 'het verschil?', native: 'the difference?', korean: 'het verschil?', english: 'the difference?' },
-    ]),
-    createContentItem('Deze is lichter en die is steviger.', '', 'This one is lighter and that one is sturdier.', 'sentence', '', '', [
-      { target: 'Deze is lichter en', native: 'This one is lighter and', korean: 'Deze is lichter en', english: 'This one is lighter and' },
-      { target: 'die is steviger.', native: 'that one is sturdier.', korean: 'die is steviger.', english: 'that one is sturdier.' },
-    ]),
-    createContentItem('Welke is beter?', '', 'Which one is better?', 'sentence', '', '', [
-      { target: 'Welke', native: 'Which', korean: 'Welke', english: 'Which' },
-      { target: 'is', native: 'one', korean: 'is', english: 'one' },
-      { target: 'beter?', native: 'is', korean: 'beter?', english: 'is' },
-    ]),
-    createContentItem('Het hangt af van het doel, maar ik raad deze aan.', '', 'It depends on the purpose, but I recommend this one.', 'sentence', '', '', [
-      { target: 'Het hangt af van het doel,', native: 'It depends on the purpose,', korean: 'Het hangt af van het doel,', english: 'It depends on the purpose,' },
-      { target: 'maar ik raad deze aan.', native: 'but I recommend this one.', korean: 'maar ik raad deze aan.', english: 'but I recommend this one.' },
-    ]),
-    createContentItem('Hoeveel is het prijsverschil?', '', 'How much is the price difference?', 'sentence', '', '', [
-      { target: 'Hoeveel is', native: 'How much is', korean: 'Hoeveel is', english: 'How much is' },
-      { target: 'het prijsverschil?', native: 'the price difference?', korean: 'het prijsverschil?', english: 'the price difference?' },
-    ]),
-    createContentItem('Het is een verschil van 10.000 won.', '', 'It is a 10,000 won difference.', 'sentence', '', '', [
-      { target: 'Het is een verschil', native: 'It is a', korean: 'Het is een verschil', english: 'It is a' },
-      { target: 'van 10.000 won.', native: '10,000 won difference.', korean: 'van 10.000 won.', english: '10,000 won difference.' },
-    ]),
-    createContentItem('Ik weet het niet zeker.', '', 'I am not sure.', 'sentence', '', '', [
-      { target: 'Ik weet het', native: 'I am', korean: 'Ik weet het', english: 'I am' },
-      { target: 'niet zeker.', native: 'not sure.', korean: 'niet zeker.', english: 'not sure.' },
-    ]),
-    createContentItem('Neem de tijd om na te denken.', '', 'Take your time to think.', 'sentence', '', '', [
-      { target: 'Neem de tijd om', native: 'Take your time', korean: 'Neem de tijd om', english: 'Take your time' },
-      { target: 'na te denken.', native: 'to think.', korean: 'na te denken.', english: 'to think.' },
-    ]),
-    createContentItem('Ik kom later terug.', '', 'I will come back later.', 'sentence', '', '', [
-      { target: 'Ik kom', native: 'I will come', korean: 'Ik kom', english: 'I will come' },
-      { target: 'later terug.', native: 'back later.', korean: 'later terug.', english: 'back later.' },
-    ]),
-    createContentItem('Ja, kom wanneer dan ook.', '', 'Yes, come anytime.', 'sentence', '', '', [
-      { target: 'Ja, kom wanneer', native: 'Yes, come', korean: 'Ja, kom wanneer', english: 'Yes, come' },
-      { target: 'dan ook.', native: 'anytime.', korean: 'dan ook.', english: 'anytime.' },
-    ]),
+    createContentItem('Ja, je kunt het kopen in het online winkelcentrum.', '', 'Yes, you can buy it at the online shopping mall.', 'sentence'),
+    createContentItem('Wat is het websiteadres?', '', 'What is the website address?', 'sentence'),
+    createContentItem('Het staat op deze kaart geschreven.', '', 'It is written on this card.', 'sentence'),
+    createContentItem('Heb je een app?', '', 'Do you have an app?', 'sentence'),
+    createContentItem('Ja, je krijgt een kortingsbon als je de app downloadt.', '', 'Yes, you get a coupon if you download the app.', 'sentence'),
+    createContentItem('Wanneer wordt deze aangevuld?', '', 'When will it be restocked?', 'sentence'),
+    createContentItem('De aankomst staat gepland voor volgende week.', '', 'It is scheduled to arrive next week.', 'sentence'),
+    createContentItem('Kunt u contact met mij opnemen als het aankomt?', '', 'Can you contact me when it arrives?', 'sentence'),
+    createContentItem('Ja, laat uw telefoonnummer achter.', '', 'Yes, please leave your phone number.', 'sentence'),
+    createContentItem('Is dit populair?', '', 'Is this popular?', 'sentence'),
+    createContentItem('Ja, er wordt tegenwoordig veel verkocht.', '', 'Yes, it sells a lot these days.', 'sentence'),
+    createContentItem('Zijn de recensies goed?', '', 'Are the reviews good?', 'sentence'),
+    createContentItem('Ja, de tevredenheid is groot.', '', 'Yes, the satisfaction is high.', 'sentence'),
+    createContentItem('Hoe is de kwaliteit?', '', 'How is the quality?', 'sentence'),
+    createContentItem('De kwaliteit is zeer goed.', '', 'The quality is very good.', 'sentence'),
+    createContentItem('Zou je het aanbevelen?', '', 'Would you recommend it?', 'sentence'),
+    createContentItem('Ja, ik raad het ten zeerste aan.', '', 'Yes, I highly recommend it.', 'sentence'),
+    createContentItem('Kan ik vergelijken?', '', 'Can I compare?', 'sentence'),
+    createContentItem('Ja, vergelijk het eens met dit.', '', 'Yes, compare it with this.', 'sentence'),
+    createContentItem('Wat is het verschil?', '', 'What is the difference?', 'sentence'),
+    createContentItem('Deze is lichter en die is steviger.', '', 'This one is lighter and that one is sturdier.', 'sentence'),
+    createContentItem('Welke is beter?', '', 'Which one is better?', 'sentence'),
+    createContentItem('Het hangt af van het doel, maar ik raad deze aan.', '', 'It depends on the purpose, but I recommend this one.', 'sentence'),
+    createContentItem('Hoeveel is het prijsverschil?', '', 'How much is the price difference?', 'sentence'),
+    createContentItem('Het is een verschil van 10.000 won.', '', 'It is a 10,000 won difference.', 'sentence'),
+    createContentItem('Ik weet het niet zeker.', '', 'I am not sure.', 'sentence'),
+    createContentItem('Neem de tijd om na te denken.', '', 'Take your time to think.', 'sentence'),
+    createContentItem('Ik kom later terug.', '', 'I will come back later.', 'sentence'),
+    createContentItem('Ja, kom wanneer dan ook.', '', 'Yes, come anytime.', 'sentence'),
   ],
 };
 
@@ -3112,327 +2292,85 @@ const businessSentences = {
     createContentItem('Fusie', '', 'Merger', 'sentence'),
     createContentItem('Acquisitie', '', 'Acquisition', 'sentence'),
     createContentItem('Partnerschap', '', 'Partnership', 'sentence'),
-    createContentItem('Hoe laat is de bijeenkomst?', '', 'What time is the meeting?', 'sentence', '', '', [
-      { target: 'Hoe laat is', native: 'What time is', korean: 'Hoe laat is', english: 'What time is' },
-      { target: 'de bijeenkomst?', native: 'the meeting?', korean: 'de bijeenkomst?', english: 'the meeting?' },
-    ]),
-    createContentItem('Het is om 10.00 uur.', '', 'It is at 10 AM.', 'sentence', '', '', [
-      { target: 'Het is om', native: 'It is at', korean: 'Het is om', english: 'It is at' },
-      { target: '10.00 uur.', native: '10 AM.', korean: '10.00 uur.', english: '10 AM.' },
-    ]),
-    createContentItem('Waar is de vergaderruimte?', '', 'Where is the meeting room?', 'sentence', '', '', [
-      { target: 'Waar is', native: 'Where is the', korean: 'Waar is', english: 'Where is the' },
-      { target: 'de vergaderruimte?', native: 'meeting room?', korean: 'de vergaderruimte?', english: 'meeting room?' },
-    ]),
-    createContentItem('Het is de vergaderruimte op de 3e verdieping.', '', 'It is the meeting room on the 3rd floor.', 'sentence', '', '', [
-      { target: 'Het is de vergaderruimte', native: 'It is the meeting room', korean: 'Het is de vergaderruimte', english: 'It is the meeting room' },
-      { target: 'op de 3e verdieping.', native: 'on the 3rd floor.', korean: 'op de 3e verdieping.', english: 'on the 3rd floor.' },
-    ]),
-    createContentItem('Hebt u het vergadermateriaal voorbereid?', '', 'Did you prepare the meeting materials?', 'sentence', '', '', [
-      { target: 'Hebt u het', native: 'Did you prepare', korean: 'Hebt u het', english: 'Did you prepare' },
-      { target: 'vergadermateriaal voorbereid?', native: 'the meeting materials?', korean: 'vergadermateriaal voorbereid?', english: 'the meeting materials?' },
-    ]),
-    createContentItem('Ja, ik heb alles voorbereid.', '', 'Yes, I prepared everything.', 'sentence', '', '', [
-      { target: 'Ja, ik heb', native: 'Yes, I', korean: 'Ja, ik heb', english: 'Yes, I' },
-      { target: 'alles voorbereid.', native: 'prepared everything.', korean: 'alles voorbereid.', english: 'prepared everything.' },
-    ]),
-    createContentItem('Doe het goed met de presentatie.', '', 'Please do well with the presentation.', 'sentence', '', '', [
-      { target: 'Doe het goed', native: 'Please do well', korean: 'Doe het goed', english: 'Please do well' },
-      { target: 'met de presentatie.', native: 'with the presentation.', korean: 'met de presentatie.', english: 'with the presentation.' },
-    ]),
-    createContentItem('Ik zal mijn best doen.', '', 'I will do my best.', 'sentence', '', '', [
-      { target: 'Ik zal mijn', native: 'I will do', korean: 'Ik zal mijn', english: 'I will do' },
-      { target: 'best doen.', native: 'my best.', korean: 'best doen.', english: 'my best.' },
-    ]),
-    createContentItem('Wanneer moet ik de melding indienen?', '', 'When do I have to submit the report?', 'sentence', '', '', [
-      { target: 'Wanneer moet ik', native: 'When do I have', korean: 'Wanneer moet ik', english: 'When do I have' },
-      { target: 'de melding indienen?', native: 'to submit the report?', korean: 'de melding indienen?', english: 'to submit the report?' },
-    ]),
-    createContentItem('Gelieve deze uiterlijk vrijdag in te leveren.', '', 'Please submit it by Friday.', 'sentence', '', '', [
-      { target: 'Gelieve deze uiterlijk vrijdag', native: 'Please submit it', korean: 'Gelieve deze uiterlijk vrijdag', english: 'Please submit it' },
-      { target: 'in te leveren.', native: 'by Friday.', korean: 'in te leveren.', english: 'by Friday.' },
-    ]),
-    createContentItem('Kunt u de deadline verlengen?', '', 'Can you extend the deadline?', 'sentence', '', '', [
-      { target: 'Kunt u de', native: 'Can you extend', korean: 'Kunt u de', english: 'Can you extend' },
-      { target: 'deadline verlengen?', native: 'the deadline?', korean: 'deadline verlengen?', english: 'the deadline?' },
-    ]),
-    createContentItem('Deze keer geef ik je tot maandag.', '', 'Just this time, I will give you until Monday.', 'sentence', '', '', [
-      { target: 'Deze keer geef ik', native: 'Just this time, I will', korean: 'Deze keer geef ik', english: 'Just this time, I will' },
-      { target: 'je tot maandag.', native: 'give you until Monday.', korean: 'je tot maandag.', english: 'give you until Monday.' },
-    ]),
-    createContentItem('Moet ik op zakenreis gaan?', '', 'Do I have to go on a business trip?', 'sentence', '', '', [
-      { target: 'Moet ik op', native: 'Do I have to go', korean: 'Moet ik op', english: 'Do I have to go' },
-      { target: 'zakenreis gaan?', native: 'on a business trip?', korean: 'zakenreis gaan?', english: 'on a business trip?' },
-    ]),
-    createContentItem('Ja, volgende week is er een zakenreis naar Busan.', '', 'Yes, there is a business trip to Busan next week.', 'sentence', '', '', [
-      { target: 'Ja, volgende week is er', native: 'Yes, there is a business', korean: 'Ja, volgende week is er', english: 'Yes, there is a business' },
-      { target: 'een zakenreis naar Busan.', native: 'trip to Busan next week.', korean: 'een zakenreis naar Busan.', english: 'trip to Busan next week.' },
-    ]),
-    createContentItem('Voor hoeveel dagen?', '', 'For how many days?', 'sentence', '', '', [
-      { target: 'Voor', native: 'For', korean: 'Voor', english: 'For' },
-      { target: 'hoeveel', native: 'how', korean: 'hoeveel', english: 'how' },
-      { target: 'dagen?', native: 'many', korean: 'dagen?', english: 'many' },
-    ]),
-    createContentItem('Het zijn 2 nachten en 3 dagen.', '', 'It is 2 nights and 3 days.', 'sentence', '', '', [
-      { target: 'Het zijn 2 nachten', native: 'It is 2 nights', korean: 'Het zijn 2 nachten', english: 'It is 2 nights' },
-      { target: 'en 3 dagen.', native: 'and 3 days.', korean: 'en 3 dagen.', english: 'and 3 days.' },
-    ]),
-    createContentItem('Hoe declareer ik de zakenreiskosten?', '', 'How do I claim the business trip expenses?', 'sentence', '', '', [
-      { target: 'Hoe declareer ik', native: 'How do I claim', korean: 'Hoe declareer ik', english: 'How do I claim' },
-      { target: 'de zakenreiskosten?', native: 'the business trip expenses?', korean: 'de zakenreiskosten?', english: 'the business trip expenses?' },
-    ]),
-    createContentItem('Verzamel de bonnetjes en lever deze in.', '', 'Collect the receipts and submit them.', 'sentence', '', '', [
-      { target: 'Verzamel de bonnetjes en', native: 'Collect the receipts', korean: 'Verzamel de bonnetjes en', english: 'Collect the receipts' },
-      { target: 'lever deze in.', native: 'and submit them.', korean: 'lever deze in.', english: 'and submit them.' },
-    ]),
-    createContentItem('Ik wil vakantiedagen gebruiken.', '', 'I want to use vacation days.', 'sentence', '', '', [
-      { target: 'Ik wil', native: 'I want to', korean: 'Ik wil', english: 'I want to' },
-      { target: 'vakantiedagen gebruiken.', native: 'use vacation days.', korean: 'vakantiedagen gebruiken.', english: 'use vacation days.' },
-    ]),
-    createContentItem('Wanneer ga je ze gebruiken?', '', 'When will you use them?', 'sentence', '', '', [
-      { target: 'Wanneer ga je', native: 'When will you', korean: 'Wanneer ga je', english: 'When will you' },
-      { target: 'ze gebruiken?', native: 'use them?', korean: 'ze gebruiken?', english: 'use them?' },
-    ]),
-    createContentItem('Volgende vrijdag.', '', 'Next Friday.', 'sentence', '', '', [
-      { target: 'Volgende', native: 'Next', korean: 'Volgende', english: 'Next' },
-      { target: 'vrijdag.', native: 'Friday.', korean: 'vrijdag.', english: 'Friday.' },
-    ]),
-    createContentItem('Het is goedgekeurd.', '', 'It has been approved.', 'sentence', '', '', [
-      { target: 'Het', native: 'It', korean: 'Het', english: 'It' },
-      { target: 'is', native: 'has', korean: 'is', english: 'has' },
-      { target: 'goedgekeurd.', native: 'been', korean: 'goedgekeurd.', english: 'been' },
-    ]),
-    createContentItem('Mag ik eerder vertrekken?', '', 'May I leave early?', 'sentence', '', '', [
-      { target: 'Mag ik', native: 'May I', korean: 'Mag ik', english: 'May I' },
-      { target: 'eerder vertrekken?', native: 'leave early?', korean: 'eerder vertrekken?', english: 'leave early?' },
-    ]),
-    createContentItem('Is er iets mis?', '', 'Is something wrong?', 'sentence', '', '', [
-      { target: 'Is er', native: 'Is something', korean: 'Is er', english: 'Is something' },
-      { target: 'iets mis?', native: 'wrong?', korean: 'iets mis?', english: 'wrong?' },
-    ]),
-    createContentItem('Ik moet naar het ziekenhuis.', '', 'I have to go to the hospital.', 'sentence', '', '', [
-      { target: 'Ik moet naar', native: 'I have to go', korean: 'Ik moet naar', english: 'I have to go' },
-      { target: 'het ziekenhuis.', native: 'to the hospital.', korean: 'het ziekenhuis.', english: 'to the hospital.' },
-    ]),
-    createContentItem('Ja, ga je gang.', '', 'Yes, go ahead.', 'sentence', '', '', [
-      { target: 'Ja, ga', native: 'Yes, go', korean: 'Ja, ga', english: 'Yes, go' },
-      { target: 'je gang.', native: 'ahead.', korean: 'je gang.', english: 'ahead.' },
-    ]),
-    createContentItem('Moet ik overwerken?', '', 'Do I have to work overtime?', 'sentence', '', '', [
-      { target: 'Moet', native: 'Do', korean: 'Moet', english: 'Do' },
-      { target: 'ik', native: 'I', korean: 'ik', english: 'I' },
-      { target: 'overwerken?', native: 'have', korean: 'overwerken?', english: 'have' },
-    ]),
-    createContentItem('Deze week zullen er veel overuren plaatsvinden.', '', 'There will be a lot of overtime this week.', 'sentence', '', '', [
-      { target: 'Deze week zullen er', native: 'There will be a lot', korean: 'Deze week zullen er', english: 'There will be a lot' },
-      { target: 'veel overuren plaatsvinden.', native: 'of overtime this week.', korean: 'veel overuren plaatsvinden.', english: 'of overtime this week.' },
-    ]),
-    createContentItem('Krijg ik een overwerkvergoeding?', '', 'Do I get overtime pay?', 'sentence', '', '', [
-      { target: 'Krijg ik', native: 'Do I get', korean: 'Krijg ik', english: 'Do I get' },
-      { target: 'een overwerkvergoeding?', native: 'overtime pay?', korean: 'een overwerkvergoeding?', english: 'overtime pay?' },
-    ]),
-    createContentItem('Ja, dit is inbegrepen in het salaris.', '', 'Yes, it is included in the salary.', 'sentence', '', '', [
-      { target: 'Ja, dit is inbegrepen', native: 'Yes, it is included', korean: 'Ja, dit is inbegrepen', english: 'Yes, it is included' },
-      { target: 'in het salaris.', native: 'in the salary.', korean: 'in het salaris.', english: 'in the salary.' },
-    ]),
-    createContentItem('Wanneer is het bedrijfsdiner?', '', 'When is the company dinner?', 'sentence', '', '', [
-      { target: 'Wanneer is', native: 'When is the', korean: 'Wanneer is', english: 'When is the' },
-      { target: 'het bedrijfsdiner?', native: 'company dinner?', korean: 'het bedrijfsdiner?', english: 'company dinner?' },
-    ]),
-    createContentItem('Het is deze vrijdag.', '', 'It is this Friday.', 'sentence', '', '', [
-      { target: 'Het is', native: 'It is', korean: 'Het is', english: 'It is' },
-      { target: 'deze vrijdag.', native: 'this Friday.', korean: 'deze vrijdag.', english: 'this Friday.' },
-    ]),
-    createContentItem('Moet ik aanwezig zijn?', '', 'Do I have to attend?', 'sentence', '', '', [
-      { target: 'Moet ik', native: 'Do I have', korean: 'Moet ik', english: 'Do I have' },
-      { target: 'aanwezig zijn?', native: 'to attend?', korean: 'aanwezig zijn?', english: 'to attend?' },
-    ]),
-    createContentItem('Gelieve indien mogelijk aanwezig te zijn.', '', 'Please attend if possible.', 'sentence', '', '', [
-      { target: 'Gelieve indien mogelijk', native: 'Please attend', korean: 'Gelieve indien mogelijk', english: 'Please attend' },
-      { target: 'aanwezig te zijn.', native: 'if possible.', korean: 'aanwezig te zijn.', english: 'if possible.' },
-    ]),
-    createContentItem('Heb je de e-mail gecontroleerd?', '', 'Did you check the email?', 'sentence', '', '', [
-      { target: 'Heb je de', native: 'Did you check', korean: 'Heb je de', english: 'Did you check' },
-      { target: 'e-mail gecontroleerd?', native: 'the email?', korean: 'e-mail gecontroleerd?', english: 'the email?' },
-    ]),
-    createContentItem('Ja, ik heb het gecontroleerd.', '', 'Yes, I checked it.', 'sentence', '', '', [
-      { target: 'Ja, ik heb', native: 'Yes, I', korean: 'Ja, ik heb', english: 'Yes, I' },
-      { target: 'het gecontroleerd.', native: 'checked it.', korean: 'het gecontroleerd.', english: 'checked it.' },
-    ]),
-    createContentItem('Heb je een antwoord gestuurd?', '', 'Did you send a reply?', 'sentence', '', '', [
-      { target: 'Heb je een', native: 'Did you send', korean: 'Heb je een', english: 'Did you send' },
-      { target: 'antwoord gestuurd?', native: 'a reply?', korean: 'antwoord gestuurd?', english: 'a reply?' },
-    ]),
-    createContentItem('Ik heb het nog niet verzonden.', '', 'I haven\'t sent it yet.', 'sentence', '', '', [
-      { target: 'Ik heb het', native: 'I haven\'t sent', korean: 'Ik heb het', english: 'I haven\'t sent' },
-      { target: 'nog niet verzonden.', native: 'it yet.', korean: 'nog niet verzonden.', english: 'it yet.' },
-    ]),
-    createContentItem('Stuur dan snel een antwoord.', '', 'Please send a reply quickly.', 'sentence', '', '', [
-      { target: 'Stuur dan snel', native: 'Please send a', korean: 'Stuur dan snel', english: 'Please send a' },
-      { target: 'een antwoord.', native: 'reply quickly.', korean: 'een antwoord.', english: 'reply quickly.' },
-    ]),
-    createContentItem('Ik zal het nu verzenden.', '', 'I will send it right now.', 'sentence', '', '', [
-      { target: 'Ik zal het', native: 'I will send', korean: 'Ik zal het', english: 'I will send' },
-      { target: 'nu verzenden.', native: 'it right now.', korean: 'nu verzenden.', english: 'it right now.' },
-    ]),
-    createContentItem('Beantwoord de telefoon.', '', 'Please answer the phone.', 'sentence', '', '', [
-      { target: 'Beantwoord', native: 'Please', korean: 'Beantwoord', english: 'Please' },
-      { target: 'de', native: 'answer', korean: 'de', english: 'answer' },
-      { target: 'telefoon.', native: 'the', korean: 'telefoon.', english: 'the' },
-    ]),
-    createContentItem('Ik ben nu aan het bellen.', '', 'I am on a call now.', 'sentence', '', '', [
-      { target: 'Ik ben nu', native: 'I am on', korean: 'Ik ben nu', english: 'I am on' },
-      { target: 'aan het bellen.', native: 'a call now.', korean: 'aan het bellen.', english: 'a call now.' },
-    ]),
-    createContentItem('Zal ik een bericht achterlaten?', '', 'Shall I leave a message?', 'sentence', '', '', [
-      { target: 'Zal ik een', native: 'Shall I leave', korean: 'Zal ik een', english: 'Shall I leave' },
-      { target: 'bericht achterlaten?', native: 'a message?', korean: 'bericht achterlaten?', english: 'a message?' },
-    ]),
-    createContentItem('Ja, zeg alstublieft dat ze terug moeten bellen.', '', 'Yes, please tell them to call back.', 'sentence', '', '', [
-      { target: 'Ja, zeg alstublieft dat', native: 'Yes, please tell them', korean: 'Ja, zeg alstublieft dat', english: 'Yes, please tell them' },
-      { target: 'ze terug moeten bellen.', native: 'to call back.', korean: 'ze terug moeten bellen.', english: 'to call back.' },
-    ]),
-    createContentItem('Heeft u de fax verzonden?', '', 'Did you send the fax?', 'sentence', '', '', [
-      { target: 'Heeft u de', native: 'Did you send', korean: 'Heeft u de', english: 'Did you send' },
-      { target: 'fax verzonden?', native: 'the fax?', korean: 'fax verzonden?', english: 'the fax?' },
-    ]),
-    createContentItem('Ja, ik heb het net verzonden.', '', 'Yes, I just sent it.', 'sentence', '', '', [
-      { target: 'Ja, ik heb', native: 'Yes, I just', korean: 'Ja, ik heb', english: 'Yes, I just' },
-      { target: 'het net verzonden.', native: 'sent it.', korean: 'het net verzonden.', english: 'sent it.' },
-    ]),
-    createContentItem('Maak alstublieft enkele kopieën.', '', 'Please make some copies.', 'sentence', '', '', [
-      { target: 'Maak alstublieft', native: 'Please make', korean: 'Maak alstublieft', english: 'Please make' },
-      { target: 'enkele kopieën.', native: 'some copies.', korean: 'enkele kopieën.', english: 'some copies.' },
-    ]),
-    createContentItem('Hoeveel exemplaren heb je nodig?', '', 'How many copies do you need?', 'sentence', '', '', [
-      { target: 'Hoeveel exemplaren heb', native: 'How many copies', korean: 'Hoeveel exemplaren heb', english: 'How many copies' },
-      { target: 'je nodig?', native: 'do you need?', korean: 'je nodig?', english: 'do you need?' },
-    ]),
-    createContentItem('Maak alstublieft 10 kopieën.', '', 'Please make 10 copies.', 'sentence', '', '', [
-      { target: 'Maak alstublieft', native: 'Please make', korean: 'Maak alstublieft', english: 'Please make' },
-      { target: '10 kopieën.', native: '10 copies.', korean: '10 kopieën.', english: '10 copies.' },
-    ]),
-    createContentItem('Moet ik het in kleur doen?', '', 'Should I do it in color?', 'sentence', '', '', [
-      { target: 'Moet ik het', native: 'Should I do', korean: 'Moet ik het', english: 'Should I do' },
-      { target: 'in kleur doen?', native: 'it in color?', korean: 'in kleur doen?', english: 'it in color?' },
-    ]),
-    createContentItem('Nee, doe het zwart op wit.', '', 'No, do it in black and white.', 'sentence', '', '', [
-      { target: 'Nee, doe het', native: 'No, do it in', korean: 'Nee, doe het', english: 'No, do it in' },
-      { target: 'zwart op wit.', native: 'black and white.', korean: 'zwart op wit.', english: 'black and white.' },
-    ]),
-    createContentItem('De printer is kapot.', '', 'The printer is broken.', 'sentence', '', '', [
-      { target: 'De printer', native: 'The printer', korean: 'De printer', english: 'The printer' },
-      { target: 'is kapot.', native: 'is broken.', korean: 'is kapot.', english: 'is broken.' },
-    ]),
-    createContentItem('Heeft u een reparatie aangevraagd?', '', 'Did you request a repair?', 'sentence', '', '', [
-      { target: 'Heeft u een', native: 'Did you request', korean: 'Heeft u een', english: 'Did you request' },
-      { target: 'reparatie aangevraagd?', native: 'a repair?', korean: 'reparatie aangevraagd?', english: 'a repair?' },
-    ]),
-    createContentItem('Ja, de technicus komt.', '', 'Yes, the technician will come.', 'sentence', '', '', [
-      { target: 'Ja, de', native: 'Yes, the technician', korean: 'Ja, de', english: 'Yes, the technician' },
-      { target: 'technicus komt.', native: 'will come.', korean: 'technicus komt.', english: 'will come.' },
-    ]),
-    createContentItem('De computer gaat niet aan.', '', 'The computer won\'t turn on.', 'sentence', '', '', [
-      { target: 'De computer gaat', native: 'The computer won\'t', korean: 'De computer gaat', english: 'The computer won\'t' },
-      { target: 'niet aan.', native: 'turn on.', korean: 'niet aan.', english: 'turn on.' },
-    ]),
-    createContentItem('Neem contact op met het IT-team.', '', 'Contact the IT team.', 'sentence', '', '', [
-      { target: 'Neem contact op', native: 'Contact the', korean: 'Neem contact op', english: 'Contact the' },
-      { target: 'met het IT-team.', native: 'IT team.', korean: 'met het IT-team.', english: 'IT team.' },
-    ]),
-    createContentItem('Het internet is traag.', '', 'The internet is slow.', 'sentence', '', '', [
-      { target: 'Het internet', native: 'The internet', korean: 'Het internet', english: 'The internet' },
-      { target: 'is traag.', native: 'is slow.', korean: 'is traag.', english: 'is slow.' },
-    ]),
-    createContentItem('Probeer opnieuw verbinding te maken.', '', 'Try connecting again.', 'sentence', '', '', [
-      { target: 'Probeer opnieuw verbinding', native: 'Try connecting', korean: 'Probeer opnieuw verbinding', english: 'Try connecting' },
-      { target: 'te maken.', native: 'again.', korean: 'te maken.', english: 'again.' },
-    ]),
-    createContentItem('Het bestand wordt niet geopend.', '', 'The file won\'t open.', 'sentence', '', '', [
-      { target: 'Het bestand wordt', native: 'The file', korean: 'Het bestand wordt', english: 'The file' },
-      { target: 'niet geopend.', native: 'won\'t open.', korean: 'niet geopend.', english: 'won\'t open.' },
-    ]),
-    createContentItem('Probeer het eens te openen met een ander programma.', '', 'Try opening it with another program.', 'sentence', '', '', [
-      { target: 'Probeer het eens te openen', native: 'Try opening it', korean: 'Probeer het eens te openen', english: 'Try opening it' },
-      { target: 'met een ander programma.', native: 'with another program.', korean: 'met een ander programma.', english: 'with another program.' },
-    ]),
-    createContentItem('Heb je een back-up gemaakt?', '', 'Did you back it up?', 'sentence', '', '', [
-      { target: 'Heb je een', native: 'Did you back', korean: 'Heb je een', english: 'Did you back' },
-      { target: 'back-up gemaakt?', native: 'it up?', korean: 'back-up gemaakt?', english: 'it up?' },
-    ]),
-    createContentItem('Ik heb het nog niet gedaan.', '', 'I haven\'t done it yet.', 'sentence', '', '', [
-      { target: 'Ik heb het', native: 'I haven\'t done', korean: 'Ik heb het', english: 'I haven\'t done' },
-      { target: 'nog niet gedaan.', native: 'it yet.', korean: 'nog niet gedaan.', english: 'it yet.' },
-    ]),
-    createContentItem('Maak regelmatig een back-up.', '', 'Back up frequently.', 'sentence', '', '', [
-      { target: 'Maak regelmatig', native: 'Back up', korean: 'Maak regelmatig', english: 'Back up' },
-      { target: 'een back-up.', native: 'frequently.', korean: 'een back-up.', english: 'frequently.' },
-    ]),
-    createContentItem('Ik ben het wachtwoord vergeten.', '', 'I forgot the password.', 'sentence', '', '', [
-      { target: 'Ik ben het', native: 'I forgot', korean: 'Ik ben het', english: 'I forgot' },
-      { target: 'wachtwoord vergeten.', native: 'the password.', korean: 'wachtwoord vergeten.', english: 'the password.' },
-    ]),
-    createContentItem('Reset het.', '', 'Reset it.', 'sentence', '', '', [
-      { target: 'Reset', native: 'Reset', korean: 'Reset', english: 'Reset' },
-      { target: 'het.', native: 'it.', korean: 'het.', english: 'it.' },
-    ]),
-    createContentItem('Er kwam een ​​nieuwe medewerker bij.', '', 'A new employee joined.', 'sentence', '', '', [
-      { target: 'Er kwam een', native: 'A new', korean: 'Er kwam een', english: 'A new' },
-      { target: '​​nieuwe medewerker bij.', native: 'employee joined.', korean: '​​nieuwe medewerker bij.', english: 'employee joined.' },
-    ]),
-    createContentItem('Ik kijk ernaar uit om met je samen te werken.', '', 'I look forward to working with you.', 'sentence', '', '', [
-      { target: 'Ik kijk ernaar uit om', native: 'I look forward to', korean: 'Ik kijk ernaar uit om', english: 'I look forward to' },
-      { target: 'met je samen te werken.', native: 'working with you.', korean: 'met je samen te werken.', english: 'working with you.' },
-    ]),
-    createContentItem('Wanneer krijg ik een opleiding?', '', 'When do I receive training?', 'sentence', '', '', [
-      { target: 'Wanneer krijg ik', native: 'When do I', korean: 'Wanneer krijg ik', english: 'When do I' },
-      { target: 'een opleiding?', native: 'receive training?', korean: 'een opleiding?', english: 'receive training?' },
-    ]),
-    createContentItem('Vanaf volgende week begint het.', '', 'It starts from next week.', 'sentence', '', '', [
-      { target: 'Vanaf volgende week', native: 'It starts from', korean: 'Vanaf volgende week', english: 'It starts from' },
-      { target: 'begint het.', native: 'next week.', korean: 'begint het.', english: 'next week.' },
-    ]),
-    createContentItem('Wie is de mentor?', '', 'Who is the mentor?', 'sentence', '', '', [
-      { target: 'Wie is', native: 'Who is', korean: 'Wie is', english: 'Who is' },
-      { target: 'de mentor?', native: 'the mentor?', korean: 'de mentor?', english: 'the mentor?' },
-    ]),
-    createContentItem('Het is manager Kim.', '', 'It is Manager Kim.', 'sentence', '', '', [
-      { target: 'Het is', native: 'It is', korean: 'Het is', english: 'It is' },
-      { target: 'manager Kim.', native: 'Manager Kim.', korean: 'manager Kim.', english: 'Manager Kim.' },
-    ]),
-    createContentItem('Heeft u de werkoverdracht ontvangen?', '', 'Did you receive the work handover?', 'sentence', '', '', [
-      { target: 'Heeft u de', native: 'Did you receive', korean: 'Heeft u de', english: 'Did you receive' },
-      { target: 'werkoverdracht ontvangen?', native: 'the work handover?', korean: 'werkoverdracht ontvangen?', english: 'the work handover?' },
-    ]),
-    createContentItem('Ja, ik heb alles ontvangen.', '', 'Yes, I received everything.', 'sentence', '', '', [
-      { target: 'Ja, ik heb', native: 'Yes, I', korean: 'Ja, ik heb', english: 'Yes, I' },
-      { target: 'alles ontvangen.', native: 'received everything.', korean: 'alles ontvangen.', english: 'received everything.' },
-    ]),
-    createContentItem('Neemt u ontslag?', '', 'Are you resigning?', 'sentence', '', '', [
-      { target: 'Neemt', native: 'Are', korean: 'Neemt', english: 'Are' },
-      { target: 'u', native: 'you', korean: 'u', english: 'you' },
-      { target: 'ontslag?', native: 'resigning?', korean: 'ontslag?', english: 'resigning?' },
-    ]),
-    createContentItem('Ja, ik neem volgende maand ontslag.', '', 'Yes, I am resigning next month.', 'sentence', '', '', [
-      { target: 'Ja, ik neem', native: 'Yes, I am', korean: 'Ja, ik neem', english: 'Yes, I am' },
-      { target: 'volgende maand ontslag.', native: 'resigning next month.', korean: 'volgende maand ontslag.', english: 'resigning next month.' },
-    ]),
-    createContentItem('Heb je een nieuwe baan gevonden?', '', 'Did you find a new job?', 'sentence', '', '', [
-      { target: 'Heb je een', native: 'Did you find', korean: 'Heb je een', english: 'Did you find' },
-      { target: 'nieuwe baan gevonden?', native: 'a new job?', korean: 'nieuwe baan gevonden?', english: 'a new job?' },
-    ]),
-    createContentItem('Ja, ik heb een betere kans.', '', 'Yes, I got a better opportunity.', 'sentence', '', '', [
-      { target: 'Ja, ik heb', native: 'Yes, I got', korean: 'Ja, ik heb', english: 'Yes, I got' },
-      { target: 'een betere kans.', native: 'a better opportunity.', korean: 'een betere kans.', english: 'a better opportunity.' },
-    ]),
-    createContentItem('Gefeliciteerd met de promotie.', '', 'Congratulations on the promotion.', 'sentence', '', '', [
-      { target: 'Gefeliciteerd met', native: 'Congratulations on', korean: 'Gefeliciteerd met', english: 'Congratulations on' },
-      { target: 'de promotie.', native: 'the promotion.', korean: 'de promotie.', english: 'the promotion.' },
-    ]),
-    createContentItem('Heeft u het contract getekend?', '', 'Did you sign the contract?', 'sentence', '', '', [
-      { target: 'Heeft u het', native: 'Did you sign', korean: 'Heeft u het', english: 'Did you sign' },
-      { target: 'contract getekend?', native: 'the contract?', korean: 'contract getekend?', english: 'the contract?' },
-    ]),
+    createContentItem('Hoe laat is de bijeenkomst?', '', 'What time is the meeting?', 'sentence'),
+    createContentItem('Het is om 10.00 uur.', '', 'It is at 10 AM.', 'sentence'),
+    createContentItem('Waar is de vergaderruimte?', '', 'Where is the meeting room?', 'sentence'),
+    createContentItem('Het is de vergaderruimte op de 3e verdieping.', '', 'It is the meeting room on the 3rd floor.', 'sentence'),
+    createContentItem('Hebt u het vergadermateriaal voorbereid?', '', 'Did you prepare the meeting materials?', 'sentence'),
+    createContentItem('Ja, ik heb alles voorbereid.', '', 'Yes, I prepared everything.', 'sentence'),
+    createContentItem('Doe het goed met de presentatie.', '', 'Please do well with the presentation.', 'sentence'),
+    createContentItem('Ik zal mijn best doen.', '', 'I will do my best.', 'sentence'),
+    createContentItem('Wanneer moet ik de melding indienen?', '', 'When do I have to submit the report?', 'sentence'),
+    createContentItem('Gelieve deze uiterlijk vrijdag in te leveren.', '', 'Please submit it by Friday.', 'sentence'),
+    createContentItem('Kunt u de deadline verlengen?', '', 'Can you extend the deadline?', 'sentence'),
+    createContentItem('Deze keer geef ik je tot maandag.', '', 'Just this time, I will give you until Monday.', 'sentence'),
+    createContentItem('Moet ik op zakenreis gaan?', '', 'Do I have to go on a business trip?', 'sentence'),
+    createContentItem('Ja, volgende week is er een zakenreis naar Busan.', '', 'Yes, there is a business trip to Busan next week.', 'sentence'),
+    createContentItem('Voor hoeveel dagen?', '', 'For how many days?', 'sentence'),
+    createContentItem('Het zijn 2 nachten en 3 dagen.', '', 'It is 2 nights and 3 days.', 'sentence'),
+    createContentItem('Hoe declareer ik de zakenreiskosten?', '', 'How do I claim the business trip expenses?', 'sentence'),
+    createContentItem('Verzamel de bonnetjes en lever deze in.', '', 'Collect the receipts and submit them.', 'sentence'),
+    createContentItem('Ik wil vakantiedagen gebruiken.', '', 'I want to use vacation days.', 'sentence'),
+    createContentItem('Wanneer ga je ze gebruiken?', '', 'When will you use them?', 'sentence'),
+    createContentItem('Volgende vrijdag.', '', 'Next Friday.', 'sentence'),
+    createContentItem('Het is goedgekeurd.', '', 'It has been approved.', 'sentence'),
+    createContentItem('Mag ik eerder vertrekken?', '', 'May I leave early?', 'sentence'),
+    createContentItem('Is er iets mis?', '', 'Is something wrong?', 'sentence'),
+    createContentItem('Ik moet naar het ziekenhuis.', '', 'I have to go to the hospital.', 'sentence'),
+    createContentItem('Ja, ga je gang.', '', 'Yes, go ahead.', 'sentence'),
+    createContentItem('Moet ik overwerken?', '', 'Do I have to work overtime?', 'sentence'),
+    createContentItem('Deze week zullen er veel overuren plaatsvinden.', '', 'There will be a lot of overtime this week.', 'sentence'),
+    createContentItem('Krijg ik een overwerkvergoeding?', '', 'Do I get overtime pay?', 'sentence'),
+    createContentItem('Ja, dit is inbegrepen in het salaris.', '', 'Yes, it is included in the salary.', 'sentence'),
+    createContentItem('Wanneer is het bedrijfsdiner?', '', 'When is the company dinner?', 'sentence'),
+    createContentItem('Het is deze vrijdag.', '', 'It is this Friday.', 'sentence'),
+    createContentItem('Moet ik aanwezig zijn?', '', 'Do I have to attend?', 'sentence'),
+    createContentItem('Gelieve indien mogelijk aanwezig te zijn.', '', 'Please attend if possible.', 'sentence'),
+    createContentItem('Heb je de e-mail gecontroleerd?', '', 'Did you check the email?', 'sentence'),
+    createContentItem('Ja, ik heb het gecontroleerd.', '', 'Yes, I checked it.', 'sentence'),
+    createContentItem('Heb je een antwoord gestuurd?', '', 'Did you send a reply?', 'sentence'),
+    createContentItem('Ik heb het nog niet verzonden.', '', 'I haven\'t sent it yet.', 'sentence'),
+    createContentItem('Stuur dan snel een antwoord.', '', 'Please send a reply quickly.', 'sentence'),
+    createContentItem('Ik zal het nu verzenden.', '', 'I will send it right now.', 'sentence'),
+    createContentItem('Beantwoord de telefoon.', '', 'Please answer the phone.', 'sentence'),
+    createContentItem('Ik ben nu aan het bellen.', '', 'I am on a call now.', 'sentence'),
+    createContentItem('Zal ik een bericht achterlaten?', '', 'Shall I leave a message?', 'sentence'),
+    createContentItem('Ja, zeg alstublieft dat ze terug moeten bellen.', '', 'Yes, please tell them to call back.', 'sentence'),
+    createContentItem('Heeft u de fax verzonden?', '', 'Did you send the fax?', 'sentence'),
+    createContentItem('Ja, ik heb het net verzonden.', '', 'Yes, I just sent it.', 'sentence'),
+    createContentItem('Maak alstublieft enkele kopieën.', '', 'Please make some copies.', 'sentence'),
+    createContentItem('Hoeveel exemplaren heb je nodig?', '', 'How many copies do you need?', 'sentence'),
+    createContentItem('Maak alstublieft 10 kopieën.', '', 'Please make 10 copies.', 'sentence'),
+    createContentItem('Moet ik het in kleur doen?', '', 'Should I do it in color?', 'sentence'),
+    createContentItem('Nee, doe het zwart op wit.', '', 'No, do it in black and white.', 'sentence'),
+    createContentItem('De printer is kapot.', '', 'The printer is broken.', 'sentence'),
+    createContentItem('Heeft u een reparatie aangevraagd?', '', 'Did you request a repair?', 'sentence'),
+    createContentItem('Ja, de technicus komt.', '', 'Yes, the technician will come.', 'sentence'),
+    createContentItem('De computer gaat niet aan.', '', 'The computer won\'t turn on.', 'sentence'),
+    createContentItem('Neem contact op met het IT-team.', '', 'Contact the IT team.', 'sentence'),
+    createContentItem('Het internet is traag.', '', 'The internet is slow.', 'sentence'),
+    createContentItem('Probeer opnieuw verbinding te maken.', '', 'Try connecting again.', 'sentence'),
+    createContentItem('Het bestand wordt niet geopend.', '', 'The file won\'t open.', 'sentence'),
+    createContentItem('Probeer het eens te openen met een ander programma.', '', 'Try opening it with another program.', 'sentence'),
+    createContentItem('Heb je een back-up gemaakt?', '', 'Did you back it up?', 'sentence'),
+    createContentItem('Ik heb het nog niet gedaan.', '', 'I haven\'t done it yet.', 'sentence'),
+    createContentItem('Maak regelmatig een back-up.', '', 'Back up frequently.', 'sentence'),
+    createContentItem('Ik ben het wachtwoord vergeten.', '', 'I forgot the password.', 'sentence'),
+    createContentItem('Reset het.', '', 'Reset it.', 'sentence'),
+    createContentItem('Er kwam een ​​nieuwe medewerker bij.', '', 'A new employee joined.', 'sentence'),
+    createContentItem('Ik kijk ernaar uit om met je samen te werken.', '', 'I look forward to working with you.', 'sentence'),
+    createContentItem('Wanneer krijg ik een opleiding?', '', 'When do I receive training?', 'sentence'),
+    createContentItem('Vanaf volgende week begint het.', '', 'It starts from next week.', 'sentence'),
+    createContentItem('Wie is de mentor?', '', 'Who is the mentor?', 'sentence'),
+    createContentItem('Het is manager Kim.', '', 'It is Manager Kim.', 'sentence'),
+    createContentItem('Heeft u de werkoverdracht ontvangen?', '', 'Did you receive the work handover?', 'sentence'),
+    createContentItem('Ja, ik heb alles ontvangen.', '', 'Yes, I received everything.', 'sentence'),
+    createContentItem('Neemt u ontslag?', '', 'Are you resigning?', 'sentence'),
+    createContentItem('Ja, ik neem volgende maand ontslag.', '', 'Yes, I am resigning next month.', 'sentence'),
+    createContentItem('Heb je een nieuwe baan gevonden?', '', 'Did you find a new job?', 'sentence'),
+    createContentItem('Ja, ik heb een betere kans.', '', 'Yes, I got a better opportunity.', 'sentence'),
+    createContentItem('Gefeliciteerd met de promotie.', '', 'Congratulations on the promotion.', 'sentence'),
+    createContentItem('Heeft u het contract getekend?', '', 'Did you sign the contract?', 'sentence'),
   ],
 };
 
@@ -3768,189 +2706,51 @@ const healthcareSentences = {
   difficulty: 'sentences',
   targetLang: 'nl',
   content: [
-    createContentItem('Over 3 dagen zijn ze klaar.', '', 'They will be ready in 3 days.', 'sentence', '', '', [
-      { target: 'Over 3 dagen', native: 'They will be ready', korean: 'Over 3 dagen', english: 'They will be ready' },
-      { target: 'zijn ze klaar.', native: 'in 3 days.', korean: 'zijn ze klaar.', english: 'in 3 days.' },
-    ]),
-    createContentItem('Je moet een röntgenfoto laten maken.', '', 'You need to get an X-ray.', 'sentence', '', '', [
-      { target: 'Je moet een', native: 'You need to', korean: 'Je moet een', english: 'You need to' },
-      { target: 'röntgenfoto laten maken.', native: 'get an X-ray.', korean: 'röntgenfoto laten maken.', english: 'get an X-ray.' },
-    ]),
-    createContentItem('Waar neem je het mee?', '', 'Where do you take it?', 'sentence', '', '', [
-      { target: 'Waar neem je', native: 'Where do you', korean: 'Waar neem je', english: 'Where do you' },
-      { target: 'het mee?', native: 'take it?', korean: 'het mee?', english: 'take it?' },
-    ]),
-    createContentItem('Wij nemen het van je borst.', '', 'We take it of your chest.', 'sentence', '', '', [
-      { target: 'Wij nemen het', native: 'We take it', korean: 'Wij nemen het', english: 'We take it' },
-      { target: 'van je borst.', native: 'of your chest.', korean: 'van je borst.', english: 'of your chest.' },
-    ]),
-    createContentItem('Er is een CT-scan nodig.', '', 'A CT scan is needed.', 'sentence', '', '', [
-      { target: 'Er is een', native: 'A CT scan', korean: 'Er is een', english: 'A CT scan' },
-      { target: 'CT-scan nodig.', native: 'is needed.', korean: 'CT-scan nodig.', english: 'is needed.' },
-    ]),
-    createContentItem('Hoeveel kost het?', '', 'How much does it cost?', 'sentence', '', '', [
-      { target: 'Hoeveel', native: 'How', korean: 'Hoeveel', english: 'How' },
-      { target: 'kost', native: 'much', korean: 'kost', english: 'much' },
-      { target: 'het?', native: 'does', korean: 'het?', english: 'does' },
-    ]),
-    createContentItem('Met verzekering is het 20.000 won.', '', 'With insurance, it is 20,000 won.', 'sentence', '', '', [
-      { target: 'Met verzekering is', native: 'With insurance, it', korean: 'Met verzekering is', english: 'With insurance, it' },
-      { target: 'het 20.000 won.', native: 'is 20,000 won.', korean: 'het 20.000 won.', english: 'is 20,000 won.' },
-    ]),
-    createContentItem('Heeft u een recept gekregen?', '', 'Did you get a prescription?', 'sentence', '', '', [
-      { target: 'Heeft u een', native: 'Did you get', korean: 'Heeft u een', english: 'Did you get' },
-      { target: 'recept gekregen?', native: 'a prescription?', korean: 'recept gekregen?', english: 'a prescription?' },
-    ]),
-    createContentItem('Waar haal ik het medicijn?', '', 'Where do I get the medicine?', 'sentence', '', '', [
-      { target: 'Waar haal ik', native: 'Where do I', korean: 'Waar haal ik', english: 'Where do I' },
-      { target: 'het medicijn?', native: 'get the medicine?', korean: 'het medicijn?', english: 'get the medicine?' },
-    ]),
-    createContentItem('Haal het bij de apotheek op de eerste verdieping.', '', 'Get it at the pharmacy on the first floor.', 'sentence', '', '', [
-      { target: 'Haal het bij de apotheek', native: 'Get it at the pharmacy', korean: 'Haal het bij de apotheek', english: 'Get it at the pharmacy' },
-      { target: 'op de eerste verdieping.', native: 'on the first floor.', korean: 'op de eerste verdieping.', english: 'on the first floor.' },
-    ]),
-    createContentItem('Hoe vaak per dag neem ik het?', '', 'How many times a day do I take it?', 'sentence', '', '', [
-      { target: 'Hoe vaak per dag', native: 'How many times a day', korean: 'Hoe vaak per dag', english: 'How many times a day' },
-      { target: 'neem ik het?', native: 'do I take it?', korean: 'neem ik het?', english: 'do I take it?' },
-    ]),
-    createContentItem('Drie keer per dag, na de maaltijd.', '', 'Three times a day, after meals.', 'sentence', '', '', [
-      { target: 'Drie keer per dag,', native: 'Three times a', korean: 'Drie keer per dag,', english: 'Three times a' },
-      { target: 'na de maaltijd.', native: 'day, after meals.', korean: 'na de maaltijd.', english: 'day, after meals.' },
-    ]),
-    createContentItem('Zijn er bijwerkingen?', '', 'Are there side effects?', 'sentence', '', '', [
-      { target: 'Zijn', native: 'Are', korean: 'Zijn', english: 'Are' },
-      { target: 'er', native: 'there', korean: 'er', english: 'there' },
-      { target: 'bijwerkingen?', native: 'side', korean: 'bijwerkingen?', english: 'side' },
-    ]),
-    createContentItem('U kunt zich slaperig voelen.', '', 'You may feel drowsy.', 'sentence', '', '', [
-      { target: 'U kunt zich', native: 'You may', korean: 'U kunt zich', english: 'You may' },
-      { target: 'slaperig voelen.', native: 'feel drowsy.', korean: 'slaperig voelen.', english: 'feel drowsy.' },
-    ]),
-    createContentItem('Kan ik het niet met alcohol innemen?', '', 'Can I not take it with alcohol?', 'sentence', '', '', [
-      { target: 'Kan ik het niet', native: 'Can I not take', korean: 'Kan ik het niet', english: 'Can I not take' },
-      { target: 'met alcohol innemen?', native: 'it with alcohol?', korean: 'met alcohol innemen?', english: 'it with alcohol?' },
-    ]),
-    createContentItem('Ja, vermijd alcohol.', '', 'Yes, avoid alcohol.', 'sentence', '', '', [
-      { target: 'Ja,', native: 'Yes,', korean: 'Ja,', english: 'Yes,' },
-      { target: 'vermijd', native: 'avoid', korean: 'vermijd', english: 'avoid' },
-      { target: 'alcohol.', native: 'alcohol.', korean: 'alcohol.', english: 'alcohol.' },
-    ]),
-    createContentItem('Voor hoeveel dagen moet ik het innemen?', '', 'For how many days should I take it?', 'sentence', '', '', [
-      { target: 'Voor hoeveel dagen moet', native: 'For how many days', korean: 'Voor hoeveel dagen moet', english: 'For how many days' },
-      { target: 'ik het innemen?', native: 'should I take it?', korean: 'ik het innemen?', english: 'should I take it?' },
-    ]),
-    createContentItem('Neem het een week lang.', '', 'Take it for one week.', 'sentence', '', '', [
-      { target: 'Neem het een', native: 'Take it for', korean: 'Neem het een', english: 'Take it for' },
-      { target: 'week lang.', native: 'one week.', korean: 'week lang.', english: 'one week.' },
-    ]),
-    createContentItem('Wat moet ik doen als ik niet beter word nadat ik het medicijn heb beëindigd?', '', 'What if I don\'t get better after finishing the medicine?', 'sentence', '', '', [
-      { target: 'Wat moet ik doen als ik niet beter', native: 'What if I don\'t get', korean: 'Wat moet ik doen als ik niet beter', english: 'What if I don\'t get' },
-      { target: 'word nadat ik het medicijn heb beëindigd?', native: 'better after finishing the medicine?', korean: 'word nadat ik het medicijn heb beëindigd?', english: 'better after finishing the medicine?' },
-    ]),
-    createContentItem('Kom nog eens terug.', '', 'Come back again.', 'sentence', '', '', [
-      { target: 'Kom nog', native: 'Come back', korean: 'Kom nog', english: 'Come back' },
-      { target: 'eens terug.', native: 'again.', korean: 'eens terug.', english: 'again.' },
-    ]),
-    createContentItem('Zal ik een vervolgafspraak maken?', '', 'Shall I make a follow-up appointment?', 'sentence', '', '', [
-      { target: 'Zal ik een', native: 'Shall I make', korean: 'Zal ik een', english: 'Shall I make' },
-      { target: 'vervolgafspraak maken?', native: 'a follow-up appointment?', korean: 'vervolgafspraak maken?', english: 'a follow-up appointment?' },
-    ]),
-    createContentItem('Ja, maak gerust een afspraak voor volgende week.', '', 'Yes, please make an appointment for next week.', 'sentence', '', '', [
-      { target: 'Ja, maak gerust een', native: 'Yes, please make an', korean: 'Ja, maak gerust een', english: 'Yes, please make an' },
-      { target: 'afspraak voor volgende week.', native: 'appointment for next week.', korean: 'afspraak voor volgende week.', english: 'appointment for next week.' },
-    ]),
-    createContentItem('Moet ik in het ziekenhuis worden opgenomen?', '', 'Do I need to be hospitalized?', 'sentence', '', '', [
-      { target: 'Moet ik in het', native: 'Do I need', korean: 'Moet ik in het', english: 'Do I need' },
-      { target: 'ziekenhuis worden opgenomen?', native: 'to be hospitalized?', korean: 'ziekenhuis worden opgenomen?', english: 'to be hospitalized?' },
-    ]),
-    createContentItem('Nee, poliklinische behandeling is prima.', '', 'No, outpatient treatment is fine.', 'sentence', '', '', [
-      { target: 'Nee, poliklinische behandeling', native: 'No, outpatient treatment', korean: 'Nee, poliklinische behandeling', english: 'No, outpatient treatment' },
-      { target: 'is prima.', native: 'is fine.', korean: 'is prima.', english: 'is fine.' },
-    ]),
-    createContentItem('Is een operatie nodig?', '', 'Is surgery needed?', 'sentence', '', '', [
-      { target: 'Is een', native: 'Is surgery', korean: 'Is een', english: 'Is surgery' },
-      { target: 'operatie nodig?', native: 'needed?', korean: 'operatie nodig?', english: 'needed?' },
-    ]),
-    createContentItem('Ja, het zou goed zijn om een ​​operatie te ondergaan.', '', 'Yes, it would be good to have surgery.', 'sentence', '', '', [
-      { target: 'Ja, het zou goed zijn', native: 'Yes, it would be', korean: 'Ja, het zou goed zijn', english: 'Yes, it would be' },
-      { target: 'om een ​​operatie te ondergaan.', native: 'good to have surgery.', korean: 'om een ​​operatie te ondergaan.', english: 'good to have surgery.' },
-    ]),
-    createContentItem('Hoeveel kost de operatie?', '', 'How much does the surgery cost?', 'sentence', '', '', [
-      { target: 'Hoeveel kost', native: 'How much does', korean: 'Hoeveel kost', english: 'How much does' },
-      { target: 'de operatie?', native: 'the surgery cost?', korean: 'de operatie?', english: 'the surgery cost?' },
-    ]),
-    createContentItem('Met verzekering is het 500.000 won.', '', 'With insurance, it is 500,000 won.', 'sentence', '', '', [
-      { target: 'Met verzekering is', native: 'With insurance, it', korean: 'Met verzekering is', english: 'With insurance, it' },
-      { target: 'het 500.000 won.', native: 'is 500,000 won.', korean: 'het 500.000 won.', english: 'is 500,000 won.' },
-    ]),
-    createContentItem('Hoe lang is de herstelperiode?', '', 'How long is the recovery period?', 'sentence', '', '', [
-      { target: 'Hoe lang is', native: 'How long is', korean: 'Hoe lang is', english: 'How long is' },
-      { target: 'de herstelperiode?', native: 'the recovery period?', korean: 'de herstelperiode?', english: 'the recovery period?' },
-    ]),
-    createContentItem('Het duurt ongeveer 2 weken.', '', 'It takes about 2 weeks.', 'sentence', '', '', [
-      { target: 'Het duurt ongeveer', native: 'It takes about', korean: 'Het duurt ongeveer', english: 'It takes about' },
-      { target: '2 weken.', native: '2 weeks.', korean: '2 weken.', english: '2 weeks.' },
-    ]),
-    createContentItem('Wanneer kan ik ontslagen worden?', '', 'When can I be discharged?', 'sentence', '', '', [
-      { target: 'Wanneer kan ik', native: 'When can I', korean: 'Wanneer kan ik', english: 'When can I' },
-      { target: 'ontslagen worden?', native: 'be discharged?', korean: 'ontslagen worden?', english: 'be discharged?' },
-    ]),
-    createContentItem('U kunt overmorgen ontslagen worden.', '', 'You can be discharged the day after tomorrow.', 'sentence', '', '', [
-      { target: 'U kunt overmorgen', native: 'You can be discharged', korean: 'U kunt overmorgen', english: 'You can be discharged' },
-      { target: 'ontslagen worden.', native: 'the day after tomorrow.', korean: 'ontslagen worden.', english: 'the day after tomorrow.' },
-    ]),
-    createContentItem('Heb ik fysiotherapie nodig?', '', 'Do I need physical therapy?', 'sentence', '', '', [
-      { target: 'Heb ik', native: 'Do I need', korean: 'Heb ik', english: 'Do I need' },
-      { target: 'fysiotherapie nodig?', native: 'physical therapy?', korean: 'fysiotherapie nodig?', english: 'physical therapy?' },
-    ]),
-    createContentItem('Ja, ontvang het twee keer per week.', '', 'Yes, receive it twice a week.', 'sentence', '', '', [
-      { target: 'Ja, ontvang het twee', native: 'Yes, receive it', korean: 'Ja, ontvang het twee', english: 'Yes, receive it' },
-      { target: 'keer per week.', native: 'twice a week.', korean: 'keer per week.', english: 'twice a week.' },
-    ]),
-    createContentItem('Ik heb een afspraak gemaakt, maar wil annuleren.', '', 'I made an appointment but want to cancel.', 'sentence', '', '', [
-      { target: 'Ik heb een afspraak', native: 'I made an appointment', korean: 'Ik heb een afspraak', english: 'I made an appointment' },
-      { target: 'gemaakt, maar wil annuleren.', native: 'but want to cancel.', korean: 'gemaakt, maar wil annuleren.', english: 'but want to cancel.' },
-    ]),
-    createContentItem('U kunt telefonisch opzeggen.', '', 'You can cancel by phone.', 'sentence', '', '', [
-      { target: 'U kunt', native: 'You can cancel', korean: 'U kunt', english: 'You can cancel' },
-      { target: 'telefonisch opzeggen.', native: 'by phone.', korean: 'telefonisch opzeggen.', english: 'by phone.' },
-    ]),
-    createContentItem('Hoeveel bedraagt ​​de medische vergoeding?', '', 'How much is the medical fee?', 'sentence', '', '', [
-      { target: 'Hoeveel bedraagt ​​de', native: 'How much is', korean: 'Hoeveel bedraagt ​​de', english: 'How much is' },
-      { target: 'medische vergoeding?', native: 'the medical fee?', korean: 'medische vergoeding?', english: 'the medical fee?' },
-    ]),
-    createContentItem('Het is 50.000 gewonnen.', '', 'It is 50,000 won.', 'sentence', '', '', [
-      { target: 'Het is', native: 'It is', korean: 'Het is', english: 'It is' },
-      { target: '50.000 gewonnen.', native: '50,000 won.', korean: '50.000 gewonnen.', english: '50,000 won.' },
-    ]),
-    createContentItem('Wordt het gedekt door een verzekering?', '', 'Is it covered by insurance?', 'sentence', '', '', [
-      { target: 'Wordt het gedekt', native: 'Is it covered', korean: 'Wordt het gedekt', english: 'Is it covered' },
-      { target: 'door een verzekering?', native: 'by insurance?', korean: 'door een verzekering?', english: 'by insurance?' },
-    ]),
-    createContentItem('Ja, verzekeringsdekking is mogelijk.', '', 'Yes, insurance coverage is possible.', 'sentence', '', '', [
-      { target: 'Ja, verzekeringsdekking', native: 'Yes, insurance coverage', korean: 'Ja, verzekeringsdekking', english: 'Yes, insurance coverage' },
-      { target: 'is mogelijk.', native: 'is possible.', korean: 'is mogelijk.', english: 'is possible.' },
-    ]),
-    createContentItem('Ik wil een gezondheidscheck laten doen.', '', 'I want to get a health checkup.', 'sentence', '', '', [
-      { target: 'Ik wil een', native: 'I want to get', korean: 'Ik wil een', english: 'I want to get' },
-      { target: 'gezondheidscheck laten doen.', native: 'a health checkup.', korean: 'gezondheidscheck laten doen.', english: 'a health checkup.' },
-    ]),
-    createContentItem('Wilt u een afspraak maken?', '', 'Would you like to make an appointment?', 'sentence', '', '', [
-      { target: 'Wilt u een', native: 'Would you like to', korean: 'Wilt u een', english: 'Would you like to' },
-      { target: 'afspraak maken?', native: 'make an appointment?', korean: 'afspraak maken?', english: 'make an appointment?' },
-    ]),
-    createContentItem('Ja, vertel mij alstublieft de beschikbare data.', '', 'Yes, please tell me the available dates.', 'sentence', '', '', [
-      { target: 'Ja, vertel mij alstublieft', native: 'Yes, please tell me', korean: 'Ja, vertel mij alstublieft', english: 'Yes, please tell me' },
-      { target: 'de beschikbare data.', native: 'the available dates.', korean: 'de beschikbare data.', english: 'the available dates.' },
-    ]),
-    createContentItem('Hoe zit het met volgende maandag?', '', 'How about next Monday?', 'sentence', '', '', [
-      { target: 'Hoe zit het', native: 'How about', korean: 'Hoe zit het', english: 'How about' },
-      { target: 'met volgende maandag?', native: 'next Monday?', korean: 'met volgende maandag?', english: 'next Monday?' },
-    ]),
-    createContentItem('Klinkt goed, ik ga een afspraak maken voor die dag.', '', 'Sounds good, I will make an appointment for that day.', 'sentence', '', '', [
-      { target: 'Klinkt goed, ik ga een', native: 'Sounds good, I will make', korean: 'Klinkt goed, ik ga een', english: 'Sounds good, I will make' },
-      { target: 'afspraak maken voor die dag.', native: 'an appointment for that day.', korean: 'afspraak maken voor die dag.', english: 'an appointment for that day.' },
-    ]),
+    createContentItem('Over 3 dagen zijn ze klaar.', '', 'They will be ready in 3 days.', 'sentence'),
+    createContentItem('Je moet een röntgenfoto laten maken.', '', 'You need to get an X-ray.', 'sentence'),
+    createContentItem('Waar neem je het mee?', '', 'Where do you take it?', 'sentence'),
+    createContentItem('Wij nemen het van je borst.', '', 'We take it of your chest.', 'sentence'),
+    createContentItem('Er is een CT-scan nodig.', '', 'A CT scan is needed.', 'sentence'),
+    createContentItem('Hoeveel kost het?', '', 'How much does it cost?', 'sentence'),
+    createContentItem('Met verzekering is het 20.000 won.', '', 'With insurance, it is 20,000 won.', 'sentence'),
+    createContentItem('Heeft u een recept gekregen?', '', 'Did you get a prescription?', 'sentence'),
+    createContentItem('Waar haal ik het medicijn?', '', 'Where do I get the medicine?', 'sentence'),
+    createContentItem('Haal het bij de apotheek op de eerste verdieping.', '', 'Get it at the pharmacy on the first floor.', 'sentence'),
+    createContentItem('Hoe vaak per dag neem ik het?', '', 'How many times a day do I take it?', 'sentence'),
+    createContentItem('Drie keer per dag, na de maaltijd.', '', 'Three times a day, after meals.', 'sentence'),
+    createContentItem('Zijn er bijwerkingen?', '', 'Are there side effects?', 'sentence'),
+    createContentItem('U kunt zich slaperig voelen.', '', 'You may feel drowsy.', 'sentence'),
+    createContentItem('Kan ik het niet met alcohol innemen?', '', 'Can I not take it with alcohol?', 'sentence'),
+    createContentItem('Ja, vermijd alcohol.', '', 'Yes, avoid alcohol.', 'sentence'),
+    createContentItem('Voor hoeveel dagen moet ik het innemen?', '', 'For how many days should I take it?', 'sentence'),
+    createContentItem('Neem het een week lang.', '', 'Take it for one week.', 'sentence'),
+    createContentItem('Wat moet ik doen als ik niet beter word nadat ik het medicijn heb beëindigd?', '', 'What if I don\'t get better after finishing the medicine?', 'sentence'),
+    createContentItem('Kom nog eens terug.', '', 'Come back again.', 'sentence'),
+    createContentItem('Zal ik een vervolgafspraak maken?', '', 'Shall I make a follow-up appointment?', 'sentence'),
+    createContentItem('Ja, maak gerust een afspraak voor volgende week.', '', 'Yes, please make an appointment for next week.', 'sentence'),
+    createContentItem('Moet ik in het ziekenhuis worden opgenomen?', '', 'Do I need to be hospitalized?', 'sentence'),
+    createContentItem('Nee, poliklinische behandeling is prima.', '', 'No, outpatient treatment is fine.', 'sentence'),
+    createContentItem('Is een operatie nodig?', '', 'Is surgery needed?', 'sentence'),
+    createContentItem('Ja, het zou goed zijn om een ​​operatie te ondergaan.', '', 'Yes, it would be good to have surgery.', 'sentence'),
+    createContentItem('Hoeveel kost de operatie?', '', 'How much does the surgery cost?', 'sentence'),
+    createContentItem('Met verzekering is het 500.000 won.', '', 'With insurance, it is 500,000 won.', 'sentence'),
+    createContentItem('Hoe lang is de herstelperiode?', '', 'How long is the recovery period?', 'sentence'),
+    createContentItem('Het duurt ongeveer 2 weken.', '', 'It takes about 2 weeks.', 'sentence'),
+    createContentItem('Wanneer kan ik ontslagen worden?', '', 'When can I be discharged?', 'sentence'),
+    createContentItem('U kunt overmorgen ontslagen worden.', '', 'You can be discharged the day after tomorrow.', 'sentence'),
+    createContentItem('Heb ik fysiotherapie nodig?', '', 'Do I need physical therapy?', 'sentence'),
+    createContentItem('Ja, ontvang het twee keer per week.', '', 'Yes, receive it twice a week.', 'sentence'),
+    createContentItem('Ik heb een afspraak gemaakt, maar wil annuleren.', '', 'I made an appointment but want to cancel.', 'sentence'),
+    createContentItem('U kunt telefonisch opzeggen.', '', 'You can cancel by phone.', 'sentence'),
+    createContentItem('Hoeveel bedraagt ​​de medische vergoeding?', '', 'How much is the medical fee?', 'sentence'),
+    createContentItem('Het is 50.000 gewonnen.', '', 'It is 50,000 won.', 'sentence'),
+    createContentItem('Wordt het gedekt door een verzekering?', '', 'Is it covered by insurance?', 'sentence'),
+    createContentItem('Ja, verzekeringsdekking is mogelijk.', '', 'Yes, insurance coverage is possible.', 'sentence'),
+    createContentItem('Ik wil een gezondheidscheck laten doen.', '', 'I want to get a health checkup.', 'sentence'),
+    createContentItem('Wilt u een afspraak maken?', '', 'Would you like to make an appointment?', 'sentence'),
+    createContentItem('Ja, vertel mij alstublieft de beschikbare data.', '', 'Yes, please tell me the available dates.', 'sentence'),
+    createContentItem('Hoe zit het met volgende maandag?', '', 'How about next Monday?', 'sentence'),
+    createContentItem('Klinkt goed, ik ga een afspraak maken voor die dag.', '', 'Sounds good, I will make an appointment for that day.', 'sentence'),
     createContentItem('Oog', '', 'Eye', 'sentence'),
     createContentItem('Maag/buik', '', 'Stomach/Belly', 'sentence'),
     createContentItem('Tand/tanden', '', 'Tooth/Teeth', 'sentence'),

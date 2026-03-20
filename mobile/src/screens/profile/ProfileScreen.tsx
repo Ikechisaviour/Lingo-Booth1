@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
+  useWindowDimensions,
 } from 'react-native';
 import { Text, Button, TextInput, Card, Divider, SegmentedButtons, Switch } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
@@ -28,7 +29,8 @@ const ProfileScreen: React.FC = () => {
   const { userId, username, userRole, logout, setChallengeMode, challengeMode } = useAuthStore();
   const { nativeLanguage, targetLanguage, setLanguages, setVoice, preferredVoice } = useSettingsStore();
   const colors = useAppColors();
-
+  const { height: winHeight, width: winWidth } = useWindowDimensions();
+  const isCompact = winHeight < 450 || winWidth < 380;
 
   const [user, setUser] = useState<any>(null);
   const [progress, setProgress] = useState<any>(null);
@@ -52,7 +54,7 @@ const ProfileScreen: React.FC = () => {
   const [voices, setVoices] = useState<any[]>([]);
   const [loadingVoices, setLoadingVoices] = useState(false);
   const [previewingVoice, setPreviewingVoice] = useState<string | null>(null);
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const styles = useMemo(() => createStyles(colors, isCompact), [colors, isCompact]);
 
   const fetchData = useCallback(async () => {
     if (!userId) return;
@@ -236,7 +238,7 @@ const ProfileScreen: React.FC = () => {
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={[colors.primary]} />}
     >
       {/* Profile header */}
-      <View style={[styles.profileHeader, { paddingTop: insets.top + 20 }]}>
+      <View style={[styles.profileHeader, { paddingTop: insets.top + (isCompact ? 4 : 20) }]}>
         <View style={styles.avatar}>
           <Text style={styles.avatarText}>👤</Text>
         </View>
@@ -526,42 +528,42 @@ const ProfileScreen: React.FC = () => {
   );
 };
 
-const createStyles = (colors: AppColors) => StyleSheet.create({
+const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
-  container: { padding: 16, paddingTop: 0, paddingBottom: 32 },
+  container: { padding: isCompact ? 10 : 16, paddingTop: 0, paddingBottom: isCompact ? 16 : 32 },
   centered: { flex: 1, justifyContent: 'center', alignItems: 'center' },
 
   profileHeader: {
     alignItems: 'center',
-    paddingBottom: 24,
-    paddingHorizontal: 16,
-    marginLeft: -16,
-    marginRight: -16,
+    paddingBottom: isCompact ? 12 : 24,
+    paddingHorizontal: isCompact ? 10 : 16,
+    marginLeft: isCompact ? -10 : -16,
+    marginRight: isCompact ? -10 : -16,
     backgroundColor: colors.secondary,
-    marginBottom: 16,
+    marginBottom: isCompact ? 8 : 16,
   },
   avatar: {
-    width: 76,
-    height: 76,
-    borderRadius: 38,
+    width: isCompact ? 48 : 76,
+    height: isCompact ? 48 : 76,
+    borderRadius: isCompact ? 24 : 38,
     backgroundColor: 'rgba(255,255,255,0.15)',
     borderWidth: 2,
     borderColor: 'rgba(255,255,255,0.3)',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 12,
+    marginBottom: isCompact ? 6 : 12,
   },
-  avatarText: { fontSize: 38 },
+  avatarText: { fontSize: isCompact ? 24 : 38 },
   profileName: { fontWeight: '700', color: '#fff' },
   profileSince: { fontSize: 13, color: 'rgba(255,255,255,0.6)', marginTop: 4 },
-  profileStats: { flexDirection: 'row', gap: 40, marginTop: 16 },
+  profileStats: { flexDirection: 'row', gap: isCompact ? 24 : 40, marginTop: isCompact ? 8 : 16 },
   profileStat: { alignItems: 'center' },
-  statNumber: { fontSize: 18, fontWeight: '700', color: '#fff' },
-  statLabel: { fontSize: 12, color: 'rgba(255,255,255,0.65)' },
+  statNumber: { fontSize: isCompact ? 14 : 18, fontWeight: '700', color: '#fff' },
+  statLabel: { fontSize: isCompact ? 10 : 12, color: 'rgba(255,255,255,0.65)' },
 
   tabs: { marginBottom: 16 },
 
-  card: { backgroundColor: colors.surface, borderRadius: 14, marginBottom: 12, elevation: 1 },
+  card: { backgroundColor: colors.surface, borderRadius: isCompact ? 10 : 14, marginBottom: isCompact ? 8 : 12, elevation: 1 },
   cardTitleRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 },
   cardTitle: { fontWeight: '700' },
   successMsg: { color: colors.accentGreen, fontSize: 13, marginBottom: 8 },
@@ -574,9 +576,9 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
 
   modeRow: { marginTop: 8 },
   modeOption: { alignItems: 'center', paddingVertical: 12 },
-  modeIcon: { fontSize: 36, marginBottom: 4 },
-  modeLabel: { fontSize: 16, fontWeight: '700', color: colors.textPrimary },
-  modeDesc: { fontSize: 13, color: colors.textSecondary, textAlign: 'center', marginTop: 4 },
+  modeIcon: { fontSize: isCompact ? 24 : 36, marginBottom: 4 },
+  modeLabel: { fontSize: isCompact ? 14 : 16, fontWeight: '700', color: colors.textPrimary },
+  modeDesc: { fontSize: isCompact ? 11 : 13, color: colors.textSecondary, textAlign: 'center', marginTop: 4 },
 
   logoutBtn: { borderRadius: 8, borderColor: colors.error, marginTop: 8 },
 

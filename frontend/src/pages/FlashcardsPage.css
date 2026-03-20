@@ -1044,6 +1044,131 @@
   }
 }
 
+@media (max-width: 400px) {
+  .flashcards-header {
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+
+  .header-content h1 {
+    font-size: 1.2rem;
+  }
+
+  .header-tool-btn {
+    padding: 6px;
+    border-radius: 8px;
+  }
+
+  .flashcard {
+    height: clamp(120px, 24vh, 220px);
+    margin-bottom: 6px;
+  }
+
+  .flashcard-face {
+    border-radius: 14px;
+  }
+
+  .face-content {
+    padding: 14px;
+    gap: 6px;
+  }
+
+  .face-label {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+  }
+
+  .main-text {
+    font-size: clamp(1rem, 4vw, 1.4rem);
+  }
+
+  .romanization {
+    font-size: clamp(0.75rem, 2vw, 0.95rem);
+  }
+
+  .speak-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+  }
+
+  .study-progress {
+    padding: 6px 10px;
+    margin-bottom: 6px;
+    border-radius: 8px;
+  }
+
+  .progress-text {
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+  }
+
+  .card-nav-buttons {
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+
+  .nav-btn {
+    padding: 8px;
+    font-size: 0.8rem;
+    border-radius: 8px;
+  }
+
+  .card-actions {
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+
+  .action-btn {
+    padding: 8px 4px;
+    font-size: 0.75rem;
+    border-radius: 10px;
+  }
+
+  .action-icon {
+    font-size: 1.2rem;
+  }
+
+  .sidebar-toggle {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+    border-radius: 8px;
+  }
+
+  .mode-btn {
+    padding: 6px 10px;
+    font-size: 0.78rem;
+    border-radius: 8px;
+  }
+
+  .category-item {
+    padding: 10px 14px;
+    font-size: 0.82rem;
+  }
+
+  .card-list-item {
+    padding: 10px 14px;
+  }
+
+  .empty-state {
+    padding: 40px 14px;
+  }
+
+  .empty-state-icon {
+    font-size: 2.5rem;
+  }
+
+  .empty-state h3 {
+    font-size: 1.15rem;
+  }
+
+  .listening-play-btn {
+    width: 56px;
+    height: 56px;
+    font-size: 1.8rem;
+  }
+}
+
 /* Listening Mode (audio-only front face) */
 .listening-play-btn {
   width: 80px;
@@ -1072,6 +1197,78 @@
   font-size: 0.9rem;
   opacity: 0.7;
   margin-top: 8px;
+}
+
+/* Short viewport (landscape split-screen) — reduce vertical spacing */
+@media (max-height: 400px) {
+  .flashcards-container {
+    padding: 6px 0 0;
+  }
+
+  .flashcards-header {
+    margin-bottom: 4px;
+  }
+
+  .header-content h1 {
+    font-size: 1.2rem;
+  }
+
+  .flashcard {
+    height: clamp(100px, 35vh, 180px);
+    margin-bottom: 4px;
+  }
+
+  .face-content {
+    padding: 10px 16px;
+    gap: 4px;
+  }
+
+  .face-label {
+    font-size: 0.7rem;
+  }
+
+  .tap-hint {
+    display: none;
+  }
+
+  .study-progress {
+    padding: 4px 10px;
+    margin-bottom: 4px;
+  }
+
+  .progress-text {
+    margin-bottom: 4px;
+    font-size: 0.8rem;
+  }
+
+  .card-nav-buttons {
+    margin-bottom: 4px;
+  }
+
+  .nav-btn {
+    padding: 6px 8px;
+    font-size: 0.8rem;
+  }
+
+  .card-actions {
+    margin-bottom: 4px;
+  }
+
+  .action-btn {
+    padding: 6px 4px;
+    font-size: 0.75rem;
+  }
+
+  .action-icon {
+    font-size: 1.1rem;
+  }
+
+  .listening-play-btn {
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+    margin: 8px 0;
+  }
 }
 
 /* Landscape / wide layout: two-column when width > height */

@@ -758,6 +758,133 @@
   }
 }
 
+@media (max-width: 400px) {
+  .progress-container {
+    padding: 12px 0 24px;
+  }
+
+  .progress-header {
+    margin-bottom: 16px;
+    gap: 8px;
+  }
+
+  .header-content h1 {
+    font-size: 1.4rem;
+  }
+
+  .header-content p {
+    font-size: 0.9rem;
+  }
+
+  .achievement-banner {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .achievement-icon {
+    font-size: 1.75rem;
+  }
+
+  .achievement-text h3 {
+    font-size: 1rem;
+  }
+
+  .xp-amount {
+    font-size: 1.25rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .stat-card {
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .stat-icon {
+    font-size: 1.25rem;
+    margin-bottom: 6px;
+  }
+
+  .stat-count {
+    font-size: 1.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .skill-card {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .skill-progress-ring {
+    width: 70px;
+    height: 70px;
+  }
+
+  .ring-percent {
+    font-size: 1.1rem;
+  }
+
+  .skill-icon {
+    font-size: 1.5rem;
+  }
+
+  .tips-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .tip-card {
+    padding: 14px;
+  }
+
+  .tip-emoji {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+  }
+
+  .areas-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .area-card {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .section-header h2 {
+    font-size: 1.1rem;
+  }
+
+  .mastery-detail-item {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .chart-label {
+    min-width: 70px;
+    font-size: 0.8rem;
+    gap: 6px;
+  }
+
+  .chart-dot {
+    width: 8px;
+    height: 8px;
+  }
+}
+
 /* Challenge Theme overrides */
 .challenge-theme .achievement-banner {
   background: linear-gradient(135deg, #58cc02 0%, #7ed957 100%);

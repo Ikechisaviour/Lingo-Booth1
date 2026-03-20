@@ -2,7 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
-import { Alert } from 'react-native';
+import { Alert, useWindowDimensions } from 'react-native';
 import { useAuthStore } from '../stores/authStore';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useAppColors, shadows } from '../config/theme';
@@ -40,6 +40,8 @@ const MainTabs: React.FC = () => {
   const { t } = useTranslation();
   const colors = useAppColors();
   const { isGuest, logout } = useAuthStore();
+  const { width: winWidth, height: winHeight } = useWindowDimensions();
+  const isCompact = winHeight < 450 || winWidth < 380;
 
   return (
     <Tab.Navigator
@@ -50,15 +52,16 @@ const MainTabs: React.FC = () => {
         tabBarStyle: {
           backgroundColor: colors.surface,
           borderTopWidth: 0,
-          height: 64,
-          paddingBottom: 10,
-          paddingTop: 6,
+          height: isCompact ? 44 : 64,
+          paddingBottom: isCompact ? 4 : 10,
+          paddingTop: isCompact ? 4 : 6,
           ...shadows.up,
         },
         tabBarLabelStyle: {
           fontSize: 11,
           fontWeight: '600',
         },
+        tabBarShowLabel: !isCompact,
       }}
     >
       <Tab.Screen

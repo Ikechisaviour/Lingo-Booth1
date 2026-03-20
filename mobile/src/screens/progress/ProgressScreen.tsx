@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import { View, ScrollView, StyleSheet, TouchableOpacity, RefreshControl, ActivityIndicator } from 'react-native';
+import { View, ScrollView, StyleSheet, TouchableOpacity, RefreshControl, ActivityIndicator, useWindowDimensions } from 'react-native';
 import { Text, Button, Card, ProgressBar } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import { progressService } from '../../services/api';
@@ -23,14 +23,15 @@ const ProgressScreen: React.FC = () => {
   const { userId } = useAuthStore();
   const insets = useSafeAreaInsets();
   const colors = useAppColors();
-
+  const { height: winHeight, width: winWidth } = useWindowDimensions();
+  const isCompact = winHeight < 450 || winWidth < 380;
 
   const [progress, setProgress] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState('');
   const [selectedMastery, setSelectedMastery] = useState<string | null>(null);
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const styles = useMemo(() => createStyles(colors, isCompact), [colors, isCompact]);
 
   const fetchProgress = useCallback(async () => {
     if (!userId) return;
@@ -208,7 +209,7 @@ const ProgressScreen: React.FC = () => {
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={[colors.primary]} />}
     >
       {/* Header */}
-      <View style={[styles.header, { paddingTop: insets.top + 16 }]}>
+      <View style={[styles.header, { paddingTop: insets.top + (isCompact ? 4 : 16) }]}>
         <Text variant="headlineSmall" style={styles.headerTitle}>
           {t('progress.title', 'Your Progress')}
         </Text>
@@ -361,45 +362,45 @@ const ProgressScreen: React.FC = () => {
   );
 };
 
-const createStyles = (colors: AppColors) => StyleSheet.create({
+const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
-  container: { padding: 16, paddingTop: 0, paddingBottom: 32 },
+  container: { padding: isCompact ? 10 : 16, paddingTop: 0, paddingBottom: isCompact ? 16 : 32 },
   centered: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 24 },
   errorText: { color: colors.error, fontSize: 16, textAlign: 'center' },
 
   header: {
-    marginLeft: -16,
-    marginRight: -16,
-    paddingHorizontal: 16,
-    paddingBottom: 20,
+    marginLeft: isCompact ? -10 : -16,
+    marginRight: isCompact ? -10 : -16,
+    paddingHorizontal: isCompact ? 10 : 16,
+    paddingBottom: isCompact ? 10 : 20,
     backgroundColor: colors.accentGreen,
-    marginBottom: 16,
+    marginBottom: isCompact ? 8 : 16,
   },
   headerTitle: { fontWeight: '700', color: '#fff' },
   headerSubtitle: { color: 'rgba(255,255,255,0.85)', fontSize: 15, marginTop: 4 },
 
-  card: { backgroundColor: colors.surface, borderRadius: 14, marginBottom: 12, elevation: 1 },
+  card: { backgroundColor: colors.surface, borderRadius: isCompact ? 10 : 14, marginBottom: isCompact ? 8 : 12, elevation: 1 },
   achievementCard: { backgroundColor: '#fff5f0' },
   achievementContent: { flexDirection: 'row', alignItems: 'center', gap: 12 },
-  achievementIcon: { fontSize: 36 },
+  achievementIcon: { fontSize: isCompact ? 24 : 36 },
   achievementTitle: { fontSize: 16, fontWeight: '700', color: colors.textPrimary },
   achievementXp: { color: colors.primary, fontWeight: '600', marginTop: 2 },
 
   masteryGrid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', marginBottom: 12 },
   masteryCard: {
-    width: '48%',
+    width: isCompact ? '48%' : '48%',
     backgroundColor: colors.surface,
-    borderRadius: 14,
-    padding: 16,
+    borderRadius: isCompact ? 10 : 14,
+    padding: isCompact ? 10 : 16,
     alignItems: 'center',
-    marginBottom: 12,
+    marginBottom: isCompact ? 8 : 12,
     elevation: 1,
     borderWidth: 1,
     borderColor: 'transparent',
   },
-  masteryIcon: { fontSize: 28, marginBottom: 4 },
-  masteryCount: { fontSize: 24, fontWeight: '800', color: colors.textPrimary },
-  masteryLabel: { fontSize: 13, color: colors.textSecondary, marginBottom: 8 },
+  masteryIcon: { fontSize: isCompact ? 20 : 28, marginBottom: isCompact ? 2 : 4 },
+  masteryCount: { fontSize: isCompact ? 18 : 24, fontWeight: '800', color: colors.textPrimary },
+  masteryLabel: { fontSize: isCompact ? 11 : 13, color: colors.textSecondary, marginBottom: isCompact ? 4 : 8 },
   masteryBar: { width: '100%', height: 4, borderRadius: 2 },
 
   emptyText: { color: colors.textMuted, textAlign: 'center', paddingVertical: 12 },
@@ -422,18 +423,18 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
   skillsGrid: { flexDirection: 'row', justifyContent: 'space-around' },
   skillItem: { alignItems: 'center', width: '22%' },
   skillCircle: {
-    width: 56,
-    height: 56,
-    borderRadius: 28,
-    borderWidth: 4,
+    width: isCompact ? 42 : 56,
+    height: isCompact ? 42 : 56,
+    borderRadius: isCompact ? 21 : 28,
+    borderWidth: isCompact ? 3 : 4,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 6,
+    marginBottom: isCompact ? 4 : 6,
   },
-  skillPct: { fontSize: 14, fontWeight: '800' },
-  skillIcon: { fontSize: 18, marginBottom: 2 },
-  skillLabel: { fontSize: 11, fontWeight: '600', color: colors.textPrimary },
-  skillCount: { fontSize: 10, color: colors.textMuted },
+  skillPct: { fontSize: isCompact ? 11 : 14, fontWeight: '800' },
+  skillIcon: { fontSize: isCompact ? 14 : 18, marginBottom: 2 },
+  skillLabel: { fontSize: isCompact ? 10 : 11, fontWeight: '600', color: colors.textPrimary },
+  skillCount: { fontSize: isCompact ? 9 : 10, color: colors.textMuted },
 
   tipsCard: {
     borderLeftWidth: 4,
@@ -451,22 +452,22 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
   tipItem: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    gap: 12,
-    marginBottom: 14,
+    gap: isCompact ? 8 : 12,
+    marginBottom: isCompact ? 8 : 14,
     backgroundColor: colors.background,
-    borderRadius: 12,
-    padding: 12,
+    borderRadius: isCompact ? 8 : 12,
+    padding: isCompact ? 8 : 12,
   },
   tipIconBadge: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: isCompact ? 30 : 40,
+    height: isCompact ? 30 : 40,
+    borderRadius: isCompact ? 15 : 20,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  tipIcon: { fontSize: 20 },
-  tipTitle: { fontSize: 15, fontWeight: '700', color: colors.textPrimary },
-  tipDesc: { fontSize: 13, color: colors.textSecondary, marginTop: 3, lineHeight: 18 },
+  tipIcon: { fontSize: isCompact ? 16 : 20 },
+  tipTitle: { fontSize: isCompact ? 13 : 15, fontWeight: '700', color: colors.textPrimary },
+  tipDesc: { fontSize: isCompact ? 11 : 13, color: colors.textSecondary, marginTop: 3, lineHeight: isCompact ? 15 : 18 },
 });
 
 export default ProgressScreen;

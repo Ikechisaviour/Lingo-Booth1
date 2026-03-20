@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import { View, ScrollView, StyleSheet, TouchableOpacity, RefreshControl, Modal } from 'react-native';
+import { View, ScrollView, StyleSheet, TouchableOpacity, RefreshControl, Modal, useWindowDimensions } from 'react-native';
 import { Text, Button, Card, ProgressBar } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
@@ -28,7 +28,9 @@ const HomeScreen: React.FC = () => {
   const [claimingQuest, setClaimingQuest] = useState<string | null>(null);
 
   const activeColor = colors.primary;
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const { height: winHeight, width: winWidth } = useWindowDimensions();
+  const isCompact = winHeight < 450 || winWidth < 380;
+  const styles = useMemo(() => createStyles(colors, isCompact), [colors, isCompact]);
 
   const fetchData = useCallback(async () => {
     if (!userId) return;
@@ -125,7 +127,7 @@ const HomeScreen: React.FC = () => {
       }
     >
       {/* Hero Section — colored background */}
-      <View style={[styles.heroSection, { paddingTop: insets.top + 16 }]}>
+      <View style={[styles.heroSection, { paddingTop: insets.top + (isCompact ? 4 : 16) }]}>
         {isReturningUser ? (
           <>
             <Text variant="headlineSmall" style={styles.heroTitle}>
@@ -425,14 +427,14 @@ const HomeScreen: React.FC = () => {
   );
 };
 
-const createStyles = (colors: AppColors) => StyleSheet.create({
+const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create({
   scrollView: { flex: 1 },
-  container: { paddingBottom: 32 },
+  container: { paddingBottom: isCompact ? 12 : 32 },
 
   // Hero
   heroSection: {
-    paddingHorizontal: 20,
-    paddingBottom: 28,
+    paddingHorizontal: isCompact ? 12 : 20,
+    paddingBottom: isCompact ? 12 : 28,
   },
   heroTitle: { fontWeight: '700', color: '#fff', marginBottom: 8 },
   heroSubtitle: { color: 'rgba(255,255,255,0.85)', fontSize: 15, marginBottom: 16 },
@@ -451,9 +453,9 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
   // Main content sheet
   mainContent: {
     backgroundColor: '#faf7f2',
-    borderTopLeftRadius: 24,
-    borderTopRightRadius: 24,
-    padding: 16,
+    borderTopLeftRadius: isCompact ? 16 : 24,
+    borderTopRightRadius: isCompact ? 16 : 24,
+    padding: isCompact ? 10 : 16,
   },
 
   // Quick Actions
@@ -490,7 +492,7 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
 
   // Streak
   streakDisplay: { alignItems: 'center', marginVertical: 8 },
-  streakNumber: { fontSize: 42, fontWeight: '800' },
+  streakNumber: { fontSize: isCompact ? 28 : 42, fontWeight: '800' },
   streakLabel: { fontSize: 14, color: colors.textSecondary },
   streakCalendar: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 12 },
   calDay: {
@@ -550,7 +552,7 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
   badgeText_decaying: { color: '#ff4b4b', fontSize: 11, fontWeight: '600' },
   xpStatusText: { fontSize: 11, fontWeight: '600' },
   xpTotal: { alignItems: 'center', marginVertical: 8 },
-  xpNumber: { fontSize: 38, fontWeight: '800' },
+  xpNumber: { fontSize: isCompact ? 24 : 38, fontWeight: '800' },
   xpLabel: { fontSize: 13, color: colors.textSecondary },
   xpDetails: { gap: 6 },
   xpDetailRow: { flexDirection: 'row', justifyContent: 'space-between' },

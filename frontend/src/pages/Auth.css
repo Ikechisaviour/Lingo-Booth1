@@ -280,6 +280,58 @@
   }
 }
 
+@media (max-width: 400px) {
+  .auth-container {
+    padding: 12px;
+  }
+
+  .auth-card {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+
+  .auth-logo {
+    height: 40px;
+    margin-bottom: 16px;
+  }
+
+  .auth-card h1 {
+    font-size: 1.25rem;
+    margin-bottom: 4px;
+  }
+
+  .auth-subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 18px;
+  }
+
+  .form-group {
+    margin-bottom: 14px;
+  }
+
+  .form-group input {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  .auth-card .btn {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .auth-divider {
+    margin: 16px 0;
+  }
+
+  .suspended-notice {
+    padding: 16px;
+  }
+
+  .suspended-icon {
+    font-size: 2rem;
+  }
+}
+
 /* Google Sign-In button wrapper */
 .google-btn-wrapper {
   display: flex;

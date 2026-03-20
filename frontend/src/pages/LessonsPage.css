@@ -533,3 +533,66 @@
     margin-right: 0;
   }
 }
+
+@media (max-width: 400px) {
+  .lessons-container {
+    padding: 16px 0 32px;
+  }
+
+  .lessons-hero {
+    padding: 18px 16px;
+    border-radius: 12px;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .hero-text h1 {
+    font-size: 1.4rem;
+  }
+
+  .hero-text p {
+    font-size: 0.9rem;
+  }
+
+  .filter-bar {
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .filter-pill {
+    padding: 6px 10px;
+    font-size: 0.78rem;
+    border-radius: 8px;
+  }
+
+  .lessons-grid {
+    gap: 12px;
+  }
+
+  .card-body {
+    padding: 14px 16px 16px;
+  }
+
+  .lesson-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+  }
+
+  .lesson-card h3 {
+    font-size: 0.95rem;
+  }
+
+  .empty-state {
+    padding: 48px 16px;
+  }
+
+  .empty-state-icon {
+    font-size: 3rem;
+  }
+
+  .empty-state h3 {
+    font-size: 1.2rem;
+  }
+}

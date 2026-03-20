@@ -674,3 +674,83 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Short viewport (landscape split-screen) */
+@media (max-height: 400px) {
+  .home-container {
+    padding: 8px 0 16px;
+  }
+
+  .hero-section {
+    padding: 18px;
+    margin-bottom: 12px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-subtitle {
+    margin-bottom: 12px;
+  }
+
+  .quick-action {
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  .home-container {
+    padding: 10px 0 24px;
+  }
+
+  .hero-section {
+    padding: 18px;
+    border-radius: 14px;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.35rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+
+  .quick-action {
+    padding: 12px;
+    gap: 8px;
+    border-radius: 10px;
+  }
+
+  .quick-action-icon {
+    font-size: 1.2rem;
+  }
+
+  .quick-action-text strong {
+    font-size: 0.85rem;
+  }
+
+  .sidebar-card {
+    padding: 14px;
+  }
+
+  .streak-number {
+    font-size: 2.5rem;
+  }
+
+  .streak-calendar {
+    gap: 4px;
+  }
+
+  .leaderboard-modal {
+    padding: 20px;
+  }
+
+  .xp-tracker-number {
+    font-size: 2rem;
+  }
+}

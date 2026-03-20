@@ -7,6 +7,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   TouchableOpacity,
+  useWindowDimensions,
 } from 'react-native';
 import { Text, TextInput, Button, HelperText, Divider } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -37,6 +38,8 @@ const RegisterScreen: React.FC = () => {
   const { login, guestXP, clearGuestXP } = useAuthStore();
   const { nativeLanguage, targetLanguage, setLanguages, setVoice } = useSettingsStore();
   const insets = useSafeAreaInsets();
+  const { height: winHeight, width: winWidth } = useWindowDimensions();
+  const isCompact = winHeight < 450 || winWidth < 380;
 
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -127,14 +130,14 @@ const RegisterScreen: React.FC = () => {
     >
       <View style={styles.outer}>
         {/* Branded top section */}
-        <View style={[styles.brandTop, { paddingTop: insets.top + 24 }]}>
+        <View style={[styles.brandTop, { paddingTop: insets.top + (isCompact ? 8 : 24), paddingBottom: isCompact ? 12 : 28 }]}>
           <Image
             source={require('../../../assets/icon.png')}
-            style={styles.logo}
+            style={[styles.logo, isCompact && { width: 48, height: 48, marginBottom: 6 }]}
             resizeMode="contain"
           />
-          <Text style={styles.brandName}>Lingo Booth</Text>
-          <Text style={styles.brandTagline}>{t('register.brandTagline', 'Start your journey')}</Text>
+          {!isCompact && <Text style={styles.brandName}>Lingo Booth</Text>}
+          {!isCompact && <Text style={styles.brandTagline}>{t('register.brandTagline', 'Start your journey')}</Text>}
         </View>
 
         {/* Form card */}
@@ -144,7 +147,7 @@ const RegisterScreen: React.FC = () => {
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
         >
-          <View style={styles.formCard}>
+          <View style={[styles.formCard, isCompact && { paddingHorizontal: 18, paddingTop: 18, minHeight: 0 }]}>
             <Text variant="headlineMedium" style={styles.title}>
               {t('register.title')}
             </Text>

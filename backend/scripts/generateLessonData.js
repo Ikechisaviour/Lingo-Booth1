@@ -15,9 +15,6 @@ const cards = require('../flashcardData');
 
 const LANGS = ['es','fr','de','zh','ja','hi','ar','he','pt','it','nl','ru','id','tr','bn','ta','ms','fil'];
 
-// Languages that need romanization (non-Latin scripts)
-const ROMANIZATION_LANGS = new Set(['zh','ja','hi','ar','he','ru','bn','ta']);
-
 // Map flashcard categories to lesson categories
 const CATEGORY_MAP = {
   'greetings': 'greetings',
@@ -132,36 +129,10 @@ function genWordItem(targetText, romanization, english) {
   return `    createContentItem('${escapeStr(targetText)}', '${escapeStr(romanization)}', '${escapeStr(english)}'),`;
 }
 
-// Generate a sentence-type item with breakdown
+// Generate a sentence-type item (no breakdown — mechanical word-splitting produces
+// garbage for non-Korean languages; runtime translationService handles romanization)
 function genSentenceItem(targetText, romanization, english) {
-  // Split the target text into words for breakdown
-  const words = targetText.split(/\s+/).filter(w => w.length > 0);
-  const engWords = english.split(/\s+/).filter(w => w.length > 0);
-
-  if (words.length <= 1) {
-    return `    createContentItem('${escapeStr(targetText)}', '${escapeStr(romanization)}', '${escapeStr(english)}', 'sentence'),`;
-  }
-
-  // Create breakdown pairs
-  const breakdownParts = [];
-  if (words.length <= 3) {
-    words.forEach((w, i) => {
-      const eng = engWords[i] || '';
-      breakdownParts.push(`{ target: '${escapeStr(w)}', native: '${escapeStr(eng)}', korean: '${escapeStr(w)}', english: '${escapeStr(eng)}' }`);
-    });
-  } else {
-    // Group into 2-3 chunks
-    const mid = Math.ceil(words.length / 2);
-    const part1 = words.slice(0, mid).join(' ');
-    const part2 = words.slice(mid).join(' ');
-    const engMid = Math.ceil(engWords.length / 2);
-    const engPart1 = engWords.slice(0, engMid).join(' ');
-    const engPart2 = engWords.slice(engMid).join(' ');
-    breakdownParts.push(`{ target: '${escapeStr(part1)}', native: '${escapeStr(engPart1)}', korean: '${escapeStr(part1)}', english: '${escapeStr(engPart1)}' }`);
-    breakdownParts.push(`{ target: '${escapeStr(part2)}', native: '${escapeStr(engPart2)}', korean: '${escapeStr(part2)}', english: '${escapeStr(engPart2)}' }`);
-  }
-
-  return `    createContentItem('${escapeStr(targetText)}', '${escapeStr(romanization)}', '${escapeStr(english)}', 'sentence', '', '', [\n      ${breakdownParts.join(',\n      ')},\n    ]),`;
+  return `    createContentItem('${escapeStr(targetText)}', '${escapeStr(romanization)}', '${escapeStr(english)}', 'sentence'),`;
 }
 
 // Variable name mapping for categories
@@ -177,7 +148,6 @@ const VAR_NAMES = {
 
 function generateLangFile(lang) {
   const groups = groupByCategory();
-  const needsRoman = ROMANIZATION_LANGS.has(lang);
   const lines = [];
 
   // Header
@@ -192,11 +162,7 @@ function generateLangFile(lang) {
   lines.push('  pronunciation: romanization,');
   lines.push('  exampleTarget: exampleTarget || targetText,');
   lines.push('  exampleNative: exampleNative || nativeText,');
-  lines.push('  korean: targetText,');
-  lines.push('  english: nativeText,');
-  lines.push('  example: exampleTarget || targetText,');
-  lines.push('  exampleEnglish: exampleNative || nativeText,');
-  lines.push(`  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.korean || b.target, native: b.english || b.native, korean: b.korean || b.target, english: b.english || b.native })) } : {}),`);
+  lines.push(`  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.target, native: b.native })) } : {}),`);
   lines.push('});');
   lines.push('');
 
@@ -242,9 +208,9 @@ function generateLangFile(lang) {
       for (const card of items) {
         const targetText = card[lang] || '';
         const english = card.english || '';
-        // For non-Latin languages, use romanization from the Korean field as fallback
-        // (not ideal but better than empty for display purposes)
-        const romanization = needsRoman ? (card.romanization || '') : '';
+        // Leave romanization empty — runtime translationService.getOrCreateTranslation()
+        // generates correct romanization via Google Translate on first access, then caches it
+        const romanization = '';
 
         if (!targetText) continue;
 

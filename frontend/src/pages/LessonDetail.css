@@ -671,3 +671,106 @@
     flex-direction: column;
   }
 }
+
+/* Short viewport (landscape split-screen) */
+@media (max-height: 400px) {
+  .lesson-detail-container {
+    padding: 8px 0 16px;
+  }
+
+  .lesson-header {
+    margin-bottom: 8px;
+  }
+
+  .lesson-header h1 {
+    font-size: 1.1rem;
+  }
+
+  .lesson-content-card {
+    padding: 14px;
+    margin-bottom: 12px;
+  }
+
+  .content-item h2 {
+    font-size: 1.4rem;
+  }
+
+  .navigation-buttons {
+    margin-top: 12px;
+    padding-top: 12px;
+    gap: 8px;
+  }
+
+  .playlist-progress-bar-container {
+    padding: 8px 12px;
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 400px) {
+  .lesson-detail-container {
+    padding: 12px 0 24px;
+  }
+
+  .lesson-header h1 {
+    font-size: 1.1rem;
+  }
+
+  .lesson-content-card {
+    padding: 14px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+  }
+
+  .content-item h2 {
+    font-size: 1.3rem;
+  }
+
+  .romanization {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  .translation {
+    padding: 14px;
+  }
+
+  .translation h3 {
+    font-size: 1.1rem;
+  }
+
+  .breakdown-item {
+    padding: 6px 10px;
+  }
+
+  .breakdown-korean {
+    font-size: 0.95rem;
+  }
+
+  .quiz-container {
+    padding: 14px;
+  }
+
+  .quiz-option {
+    padding: 10px 14px;
+    font-size: 0.9rem;
+  }
+
+  .header-tool-btn {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+
+  .playlist-progress-bar-container {
+    padding: 12px 14px;
+  }
+
+  .continue-modal {
+    padding: 20px;
+  }
+
+  .mode-btn {
+    padding: 8px 12px;
+    font-size: 0.82rem;
+  }
+}

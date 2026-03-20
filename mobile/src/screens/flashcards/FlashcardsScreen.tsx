@@ -5,13 +5,14 @@ import {
   StyleSheet,
   TouchableOpacity,
   Animated,
-  Dimensions,
+  useWindowDimensions,
   ActivityIndicator,
   Modal,
   FlatList,
   AppState,
   KeyboardAvoidingView,
   Platform,
+  PanResponder,
 } from 'react-native';
 import { Text, Button, IconButton, TextInput, FAB, Chip, ProgressBar } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
@@ -27,7 +28,6 @@ import { useSettingsStore } from '../../stores/settingsStore';
 import LANGUAGES, { getLangName, getLangField, langHasRomanization } from '../../config/languages';
 import { useAppColors, type AppColors } from '../../config/theme';
 
-const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
 const normalizeCategory = (cat: any): string[] => {
   if (Array.isArray(cat)) return cat.length > 0 ? cat : ['uncategorized'];
@@ -41,7 +41,9 @@ const FlashcardsScreen: React.FC = () => {
   const { userId, isGuest, guestXP, addGuestXP } = useAuthStore();
   const { targetLanguage, nativeLanguage } = useSettingsStore();
   const colors = useAppColors();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const { width: winWidth, height: winHeight } = useWindowDimensions();
+  const isCompact = winHeight < 450 || winWidth < 380;
+  const styles = useMemo(() => createStyles(colors, winWidth, winHeight, isCompact), [colors, winWidth, winHeight, isCompact]);
 
   const [flashcards, setFlashcards] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -73,6 +75,25 @@ const FlashcardsScreen: React.FC = () => {
   const autoPlayRef = useRef(false);
   const transitioningRef = useRef(false);
   const flipAnim = useRef(new Animated.Value(0)).current;
+
+  // Swipe left/right to navigate cards
+  const swipePan = useRef(
+    PanResponder.create({
+      onMoveShouldSetPanResponder: (_evt, gestureState) =>
+        Math.abs(gestureState.dx) > 20 && Math.abs(gestureState.dx) > Math.abs(gestureState.dy * 2),
+      onPanResponderRelease: (_evt, gestureState) => {
+        if (gestureState.dx < -50) {
+          // Swipe left → next card
+          handleNextRef.current?.();
+        } else if (gestureState.dx > 50) {
+          // Swipe right → prev card
+          handlePrevRef.current?.();
+        }
+      },
+    }),
+  ).current;
+  const handleNextRef = useRef<(() => void) | null>(null);
+  const handlePrevRef = useRef<(() => void) | null>(null);
 
   const targetField = getLangField(targetLanguage);
   const nativeField = getLangField(nativeLanguage);
@@ -515,6 +536,10 @@ const FlashcardsScreen: React.FC = () => {
     setShowsTargetFirst(determineCardDisplay());
   };
 
+  // Keep swipe refs in sync
+  handleNextRef.current = handleNext;
+  handlePrevRef.current = handlePrev;
+
   // Mastery: correct / incorrect
   const handleCorrect = async () => {
     const card = displayedCards[currentIndex];
@@ -684,13 +709,13 @@ const FlashcardsScreen: React.FC = () => {
       </View>
 
       {/* Shuffle badge */}
-      {isShuffled && (
+      {!isCompact && isShuffled && (
         <View style={styles.shuffleBadge}>
           <Text style={styles.shuffleBadgeText}>🔀 {t('flashcards.shuffleOn', 'Shuffled')}</Text>
         </View>
       )}
       {/* Selection badge — shows categories and/or individual cards */}
-      {(selectedCategories.size > 0 || selectedCardIds.size > 0) && (
+      {!isCompact && (selectedCategories.size > 0 || selectedCardIds.size > 0) && (
         <View style={styles.selectionBadge}>
           <Text style={styles.selectionBadgeText}>
             ☑{selectedCategories.size > 0 ? ` ${selectedCategories.size} ${selectedCategories.size === 1 ? 'category' : 'categories'}` : ''}
@@ -714,7 +739,7 @@ const FlashcardsScreen: React.FC = () => {
       />
 
       {/* Card */}
-      <View style={styles.cardContainer}>
+      <View style={styles.cardContainer} {...swipePan.panHandlers}>
         <TouchableOpacity activeOpacity={0.9} onPress={handleFlip} style={styles.cardTouchable}>
           {/* Front */}
           <Animated.View
@@ -735,7 +760,7 @@ const FlashcardsScreen: React.FC = () => {
             {card.romanization && studyStyle !== 'audio' && showsTargetFirst && langHasRomanization(targetLanguage) && (
               <Text style={styles.romanization}>{card.romanization}</Text>
             )}
-            <Text style={styles.tapHint}>{t('flashcards.tapToFlip', 'Tap to flip')}</Text>
+            {!isCompact && <Text style={styles.tapHint}>{t('flashcards.tapToFlip', 'Tap to flip')}</Text>}
           </Animated.View>
 
           {/* Back */}
@@ -756,26 +781,38 @@ const FlashcardsScreen: React.FC = () => {
       </View>
 
       {/* Mastery stars */}
-      <View style={styles.masteryRow}>
-        {[1, 2, 3, 4, 5].map((star) => (
-          <Text key={star} style={[styles.masteryStar, star <= mastery && styles.masteryStarActive]}>
-            ★
-          </Text>
-        ))}
-      </View>
+      {!isCompact && (
+        <View style={styles.masteryRow}>
+          {[1, 2, 3, 4, 5].map((star) => (
+            <Text key={star} style={[styles.masteryStar, star <= mastery && styles.masteryStarActive]}>
+              ★
+            </Text>
+          ))}
+        </View>
+      )}
 
       {/* Action buttons */}
       <View style={styles.actionRow}>
         <IconButton
           icon="thumb-down-outline"
-          size={28}
+          size={isCompact ? 24 : 28}
           iconColor={colors.accentRed}
           onPress={handleIncorrect}
           style={styles.actionBtn}
         />
+        {isCompact && (
+          <IconButton
+            icon="chevron-left"
+            size={24}
+            iconColor={currentIndex <= 0 ? colors.border : colors.textSecondary}
+            onPress={handlePrev}
+            disabled={currentIndex <= 0}
+            style={styles.actionBtn}
+          />
+        )}
         <IconButton
           icon="volume-high"
-          size={28}
+          size={isCompact ? 24 : 28}
           iconColor={isSpeaking ? colors.primary : colors.textSecondary}
           onPress={() => {
             const text = isFlipped ? backText : frontText;
@@ -784,9 +821,19 @@ const FlashcardsScreen: React.FC = () => {
           }}
           style={styles.actionBtn}
         />
+        {isCompact && (
+          <IconButton
+            icon="chevron-right"
+            size={24}
+            iconColor={currentIndex >= displayedCards.length - 1 ? colors.border : colors.textSecondary}
+            onPress={handleNext}
+            disabled={currentIndex >= displayedCards.length - 1}
+            style={styles.actionBtn}
+          />
+        )}
         <IconButton
           icon="thumb-up-outline"
-          size={28}
+          size={isCompact ? 24 : 28}
           iconColor={colors.accentGreen}
           onPress={handleCorrect}
           style={styles.actionBtn}
@@ -794,30 +841,32 @@ const FlashcardsScreen: React.FC = () => {
       </View>
 
       {/* Navigation */}
-      <View style={styles.navRow}>
-        <Button
-          mode="outlined"
-          onPress={handlePrev}
-          disabled={currentIndex <= 0}
-          icon="chevron-left"
-          style={styles.navBtn}
-        >
-          {t('flashcards.prev', 'Prev')}
-        </Button>
-        <Button
-          mode="contained"
-          onPress={handleNext}
-          disabled={currentIndex >= displayedCards.length - 1}
-          icon="chevron-right"
-          contentStyle={{ flexDirection: 'row-reverse' }}
-          style={[styles.navBtn, { backgroundColor: colors.primary }]}
-        >
-          {t('flashcards.next', 'Next')}
-        </Button>
-      </View>
+      {!isCompact && (
+        <View style={styles.navRow}>
+          <Button
+            mode="outlined"
+            onPress={handlePrev}
+            disabled={currentIndex <= 0}
+            icon="chevron-left"
+            style={styles.navBtn}
+          >
+            {t('flashcards.prev', 'Prev')}
+          </Button>
+          <Button
+            mode="contained"
+            onPress={handleNext}
+            disabled={currentIndex >= displayedCards.length - 1}
+            icon="chevron-right"
+            contentStyle={{ flexDirection: 'row-reverse' }}
+            style={[styles.navBtn, { backgroundColor: colors.primary }]}
+          >
+            {t('flashcards.next', 'Next')}
+          </Button>
+        </View>
+      )}
 
       {/* Add card FAB */}
-      {!isGuest && (
+      {!isGuest && !isCompact && (
         <FAB icon="plus" style={styles.fab} onPress={() => setShowAddForm(true)} color="#fff" />
       )}
 
@@ -1043,7 +1092,7 @@ const FlashcardsScreen: React.FC = () => {
   );
 };
 
-const createStyles = (colors: AppColors) => StyleSheet.create({
+const createStyles = (colors: AppColors, winWidth: number, winHeight: number, isCompact: boolean) => StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
   centered: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 24 },
   loadingText: { marginTop: 12, color: colors.textSecondary },
@@ -1057,12 +1106,12 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingTop: 48,
-    paddingBottom: 8,
+    paddingHorizontal: isCompact ? 8 : 16,
+    paddingTop: isCompact ? 8 : 48,
+    paddingBottom: isCompact ? 4 : 8,
     backgroundColor: colors.surface,
   },
-  counter: { fontSize: 16, fontWeight: '700', color: colors.textPrimary },
+  counter: { fontSize: isCompact ? 14 : 16, fontWeight: '700', color: colors.textPrimary },
   headerActions: { flexDirection: 'row' },
 
   shuffleBadge: {
@@ -1075,25 +1124,26 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
   },
   shuffleBadgeText: { fontSize: 12, color: colors.primary, fontWeight: '600' },
 
-  progressBar: { height: 4, backgroundColor: colors.border },
+  progressBar: { height: isCompact ? 3 : 4, backgroundColor: colors.border },
 
   // Card
   cardContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 20,
+    paddingHorizontal: isCompact ? 10 : 20,
+    paddingVertical: isCompact ? 4 : 0,
   },
   cardTouchable: {
-    width: SCREEN_WIDTH - 40,
-    height: 280,
+    width: winWidth - (isCompact ? 20 : 40),
+    height: isCompact ? Math.max(winHeight * 0.45, 120) : 280,
   },
   card: {
     position: 'absolute',
     width: '100%',
     height: '100%',
-    borderRadius: 20,
-    padding: 24,
+    borderRadius: isCompact ? 14 : 20,
+    padding: isCompact ? 14 : 24,
     justifyContent: 'center',
     alignItems: 'center',
     backfaceVisibility: 'hidden',
@@ -1108,15 +1158,15 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
   cardAudioOnly: { justifyContent: 'center' },
   cardLabel: {
     position: 'absolute',
-    top: 16,
-    left: 20,
-    fontSize: 12,
+    top: isCompact ? 8 : 16,
+    left: isCompact ? 12 : 20,
+    fontSize: isCompact ? 10 : 12,
     color: colors.textMuted,
     fontWeight: '600',
     textTransform: 'uppercase',
   },
-  cardText: { fontSize: 28, fontWeight: '700', color: colors.textPrimary, textAlign: 'center' },
-  romanization: { fontSize: 16, color: colors.textSecondary, marginTop: 8 },
+  cardText: { fontSize: isCompact ? 22 : 28, fontWeight: '700', color: colors.textPrimary, textAlign: 'center' },
+  romanization: { fontSize: isCompact ? 13 : 16, color: colors.textSecondary, marginTop: isCompact ? 4 : 8 },
   tapHint: {
     position: 'absolute',
     bottom: 16,
@@ -1133,12 +1183,13 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
   actionRow: {
     flexDirection: 'row',
     justifyContent: 'center',
-    gap: 24,
-    paddingVertical: 4,
+    gap: isCompact ? 8 : 24,
+    paddingVertical: isCompact ? 2 : 4,
   },
   actionBtn: {
     backgroundColor: colors.surface,
     elevation: 2,
+    ...(isCompact ? { margin: 0 } : {}),
   },
 
   // Navigation

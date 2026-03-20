@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   Modal,
+  useWindowDimensions,
 } from 'react-native';
 import { Text, Button, IconButton, ProgressBar, Chip } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
@@ -35,7 +36,9 @@ const LessonDetailScreen: React.FC = () => {
   const { userId, isGuest, addGuestXP } = useAuthStore();
   const { targetLanguage, nativeLanguage } = useSettingsStore();
   const colors = useAppColors();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const { height: winHeight, width: winWidth } = useWindowDimensions();
+  const isCompact = winHeight < 450 || winWidth < 380;
+  const styles = useMemo(() => createStyles(colors, isCompact), [colors, isCompact]);
   const lessonId = route.params.lessonId;
   const playlist = route.params.playlist;
   const playlistIndex = route.params.playlistIndex ?? -1;
@@ -553,7 +556,7 @@ const LessonDetailScreen: React.FC = () => {
   );
 };
 
-const createStyles = (colors: AppColors) => StyleSheet.create({
+const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
   centered: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 24 },
   errorText: { color: colors.error, fontSize: 16, textAlign: 'center' },
@@ -561,7 +564,7 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingTop: 40,
+    paddingTop: isCompact ? 8 : 40,
     backgroundColor: colors.surface,
   },
   headerCenter: { flex: 1, alignItems: 'center' },
@@ -570,12 +573,12 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
   playlistBadge: { fontSize: 12, color: colors.primary },
   progressBar: { height: 4, backgroundColor: colors.border },
 
-  contentArea: { padding: 20, paddingBottom: 100 },
+  contentArea: { padding: isCompact ? 12 : 20, paddingBottom: isCompact ? 60 : 100 },
 
   contentCard: {
     backgroundColor: colors.surface,
-    borderRadius: 16,
-    padding: 32,
+    borderRadius: isCompact ? 12 : 16,
+    padding: isCompact ? 16 : 32,
     alignItems: 'center',
     elevation: 3,
     shadowColor: '#000',
@@ -584,7 +587,7 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
     shadowRadius: 6,
     marginBottom: 20,
   },
-  contentKorean: { fontSize: 32, fontWeight: '700', color: colors.textPrimary, textAlign: 'center' },
+  contentKorean: { fontSize: isCompact ? 22 : 32, fontWeight: '700', color: colors.textPrimary, textAlign: 'center' },
   romanization: { fontSize: 16, color: colors.textSecondary, marginTop: 8 },
 
   audioRow: { alignItems: 'center', marginBottom: 20 },
@@ -637,9 +640,9 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 32,
+    padding: isCompact ? 16 : 32,
   },
-  completionEmoji: { fontSize: 72, marginBottom: 16 },
+  completionEmoji: { fontSize: isCompact ? 48 : 72, marginBottom: isCompact ? 8 : 16 },
   completionTitle: { fontWeight: '700', color: colors.textPrimary, marginBottom: 8, textAlign: 'center' },
   completionScore: { fontSize: 24, fontWeight: '800', color: colors.primary, marginBottom: 4 },
   completionQuiz: { fontSize: 15, color: colors.textSecondary, marginBottom: 8 },

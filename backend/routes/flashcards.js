@@ -5,7 +5,7 @@ const UserCardPreference = require('../models/UserCardPreference');
 const GuestSession = require('../models/GuestSession');
 const { verifyToken, isOwner } = require('../middleware/auth');
 const { getClientIp, getGeoInfo } = require('../utils/geo');
-const { batchTranslateRaw, batchNativePhonetic, ROMANIZATION_LANGS, NON_LATIN_LANGS } = require('../utils/translationService');
+const { batchTranslateRaw, batchRomanize, batchNativePhonetic, ROMANIZATION_LANGS, NON_LATIN_LANGS } = require('../utils/translationService');
 
 // Normalize category: handles old string format and new array format
 const normalizeCategory = (cat) => {
@@ -17,6 +17,62 @@ const normalizeCategory = (cat) => {
 // --- Native-script phonetic cache (nativeLang:targetLang -> Map<text, phonetic>) ---
 const phoneticCache = new Map();
 const PHONETIC_CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours
+
+// --- Romanization cache for non-Korean target languages ---
+const romanCache = new Map(); // `${targetLang}:${text}` -> romanization
+const ROMAN_CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours
+let romanCacheTimestamp = Date.now();
+
+/**
+ * Generate correct romanization for non-Korean non-Latin target languages.
+ * Korean cards already have romanization; Latin-script languages don't need it.
+ * For non-Latin targets (zh, ja, ar, hi, etc.), uses batchRomanize via Google Translate.
+ */
+async function fillTargetRomanization(cards, targetLang) {
+  if (targetLang === 'ko') return; // Korean cards already have correct romanization
+
+  if (!ROMANIZATION_LANGS.has(targetLang)) {
+    // Latin-script language — no romanization needed
+    cards.forEach(c => { c.romanization = ''; });
+    return;
+  }
+
+  // Expire cache periodically
+  if (Date.now() - romanCacheTimestamp > ROMAN_CACHE_TTL) {
+    romanCache.clear();
+    romanCacheTimestamp = Date.now();
+  }
+
+  const uncached = [];
+  const uncachedIndices = [];
+
+  for (let i = 0; i < cards.length; i++) {
+    const text = cards[i].korean || cards[i][targetLang] || '';
+    if (!text.trim()) { cards[i].romanization = ''; continue; }
+    const key = `${targetLang}:${text}`;
+    if (romanCache.has(key)) {
+      cards[i].romanization = romanCache.get(key);
+    } else {
+      uncached.push(text);
+      uncachedIndices.push(i);
+    }
+  }
+
+  if (uncached.length > 0) {
+    try {
+      const romanizations = await batchRomanize(uncached, targetLang);
+      for (let k = 0; k < romanizations.length; k++) {
+        const rom = romanizations[k] || '';
+        cards[uncachedIndices[k]].romanization = rom;
+        romanCache.set(`${targetLang}:${uncached[k]}`, rom);
+      }
+    } catch (err) {
+      console.error('Romanization generation failed:', err.message);
+      // Fallback: clear romanization rather than show wrong Korean pronunciation
+      uncachedIndices.forEach(i => { cards[i].romanization = ''; });
+    }
+  }
+}
 
 /**
  * For non-Latin native speakers learning a non-Latin target language,
@@ -138,17 +194,19 @@ async function translateAndPersist(texts, cardIds, nativeField, nativeLang) {
   }
 }
 
-// --- In-memory cache for default cards per targetLang+nativeLang ---
-const defaultCardsCache = new Map(); // `${targetLang}:${nativeLang}` -> { cards, timestamp }
+// --- In-memory cache for default cards per targetLang ---
+// Default cards contain translations for ALL native languages as fields on each
+// document, so we only filter by targetLang (not nativeLang).
+const defaultCardsCache = new Map(); // `${targetLang}` -> { cards, timestamp }
 const CACHE_TTL = 60 * 60 * 1000; // 1 hour
 
-async function getDefaultCards(targetLang = 'ko', nativeLang = 'en') {
-  const cacheKey = `${targetLang}:${nativeLang}`;
+async function getDefaultCards(targetLang = 'ko') {
+  const cacheKey = targetLang;
   const cached = defaultCardsCache.get(cacheKey);
   if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
     return cached.cards;
   }
-  const cards = await Flashcard.find({ isDefault: true, targetLang, nativeLang })
+  const cards = await Flashcard.find({ isDefault: true, targetLang })
     .sort({ defaultIndex: 1 })
     .lean();
   defaultCardsCache.set(cacheKey, { cards, timestamp: Date.now() });
@@ -201,7 +259,7 @@ router.get('/categories', async (req, res) => {
   try {
     const targetLang = req.query.targetLang || 'ko';
     const nativeLang = req.query.nativeLang || 'en';
-    const defaultCards = await getDefaultCards(targetLang, nativeLang);
+    const defaultCards = await getDefaultCards(targetLang);
     const categoryMap = {};
     for (const card of defaultCards) {
       const primary = normalizeCategory(card.category)[0];
@@ -225,7 +283,7 @@ router.get('/category-cards', async (req, res) => {
     const category = (req.query.category || '').toLowerCase();
     if (!category) return res.status(400).json({ message: 'category is required' });
 
-    const defaultCards = await getDefaultCards(targetLang, nativeLang);
+    const defaultCards = await getDefaultCards(targetLang);
     const targetField = targetLang === 'ko' ? 'korean' : targetLang === 'en' ? 'english' : targetLang;
     const nativeField = nativeLang === 'ko' ? 'korean' : nativeLang === 'en' ? 'english' : nativeLang;
 
@@ -288,7 +346,7 @@ router.get('/guest', async (req, res) => {
     const limit = Math.min(200, Math.max(1, parseInt(req.query.limit) || 50));
     const { shuffle, seed, categoryFilter } = parseFilterParams(req.query);
 
-    const defaultCards = await getDefaultCards(targetLang, nativeLang);
+    const defaultCards = await getDefaultCards(targetLang);
     const targetFieldName = targetLang === 'ko' ? 'korean' : targetLang === 'en' ? 'english' : targetLang;
 
     // Prepare guest cards with default mastery
@@ -311,11 +369,8 @@ router.get('/guest', async (req, res) => {
     // Replace romanization with native-script phonetics for non-Latin native speakers
     await applyNativePhonetics(pageCards, targetLang, nativeLang);
 
-    // Default cards were seeded with Korean romanization. Clear it for non-Korean targets
-    // so learners of other languages don't see Korean pronunciation text.
-    if (targetLang !== 'ko') {
-      pageCards.forEach(c => { c.romanization = ''; });
-    }
+    // Generate correct romanization for non-Korean non-Latin target languages
+    await fillTargetRomanization(pageCards, targetLang);
 
     res.json({ cards: pageCards, total, page, limit, hasMore: start + limit < total, seed });
   } catch (error) {
@@ -337,8 +392,8 @@ router.get('/user/:userId', isOwner('userId'), async (req, res) => {
     const limit = Math.min(200, Math.max(1, parseInt(req.query.limit) || 50));
     const { shuffle, seed, categoryFilter } = parseFilterParams(req.query);
 
-    // Default cards from DB (cached, filtered by targetLang + nativeLang)
-    const defaultCards = await getDefaultCards(targetLang, nativeLang);
+    // Default cards from DB (cached, filtered by targetLang)
+    const defaultCards = await getDefaultCards(targetLang);
 
     // User's own private flashcards (filtered by targetLang + nativeLang)
     const userFlashcards = await Flashcard.find({ userId, targetLang, nativeLang }).lean();
@@ -381,11 +436,14 @@ router.get('/user/:userId', isOwner('userId'), async (req, res) => {
     // Replace romanization with native-script phonetics for non-Latin native speakers
     await applyNativePhonetics(pageCards, targetLang, nativeLang);
 
-    // Default cards were seeded with Korean romanization. Clear it for non-Korean targets
-    // so learners of other languages don't see Korean pronunciation text.
-    // User-created cards keep their romanization (they entered it themselves).
-    if (targetLang !== 'ko') {
-      pageCards.forEach(c => { if (c.isDefault) c.romanization = ''; });
+    // Generate correct romanization for non-Korean non-Latin target languages.
+    // Only applies to default cards; user-created cards keep their own romanization.
+    const defaultPageCards = pageCards.filter(c => c.isDefault);
+    const userPageCards = pageCards.filter(c => !c.isDefault);
+    await fillTargetRomanization(defaultPageCards, targetLang);
+    // User-created cards for Latin-script targets: clear Korean romanization
+    if (targetLang !== 'ko' && !ROMANIZATION_LANGS.has(targetLang)) {
+      userPageCards.forEach(c => { if (!c.romanization || c.romanization === c.korean) c.romanization = ''; });
     }
 
     res.json({ cards: pageCards, total, page, limit, hasMore: start + limit < total, seed });

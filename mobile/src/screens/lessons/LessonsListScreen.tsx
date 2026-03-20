@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   RefreshControl,
+  useWindowDimensions,
 } from 'react-native';
 import { Text, Chip, Button, FAB } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
@@ -44,7 +45,9 @@ const LessonsListScreen: React.FC = () => {
   const { userId } = useAuthStore();
   const { targetLanguage } = useSettingsStore();
   const colors = useAppColors();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const { height: winHeight, width: winWidth } = useWindowDimensions();
+  const isCompact = winHeight < 450 || winWidth < 380;
+  const styles = useMemo(() => createStyles(colors, isCompact), [colors, isCompact]);
 
   const [lessons, setLessons] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -181,7 +184,7 @@ const LessonsListScreen: React.FC = () => {
   return (
     <View style={styles.screen}>
       {/* Header */}
-      <View style={[styles.header, { paddingTop: insets.top + 16 }]}>
+      <View style={[styles.header, { paddingTop: insets.top + (isCompact ? 4 : 16) }]}>
         <View style={styles.headerTop}>
           <View>
             <Text variant="headlineSmall" style={styles.headerTitle}>
@@ -292,8 +295,9 @@ const LessonsListScreen: React.FC = () => {
           data={lessons}
           keyExtractor={(item) => item._id}
           renderItem={renderLesson}
-          numColumns={2}
-          columnWrapperStyle={styles.row}
+          key={isCompact ? 'compact-1col' : 'normal-2col'}
+          numColumns={isCompact ? 1 : 2}
+          columnWrapperStyle={isCompact ? undefined : styles.row}
           contentContainerStyle={[styles.listContent, { paddingBottom: 96 }]}
           refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={[colors.primary]} />}
         />
@@ -313,11 +317,11 @@ const LessonsListScreen: React.FC = () => {
   );
 };
 
-const createStyles = (colors: AppColors) => StyleSheet.create({
+const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
   header: {
-    paddingHorizontal: 16,
-    paddingBottom: 12,
+    paddingHorizontal: isCompact ? 10 : 16,
+    paddingBottom: isCompact ? 6 : 12,
     backgroundColor: colors.primary,
   },
   headerTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' },
@@ -348,10 +352,10 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
 
   lessonCard: {
     backgroundColor: colors.surface,
-    borderRadius: 14,
-    padding: 16,
-    marginBottom: 12,
-    width: '48%',
+    borderRadius: isCompact ? 10 : 14,
+    padding: isCompact ? 12 : 16,
+    marginBottom: isCompact ? 8 : 12,
+    width: isCompact ? '100%' : '48%',
     elevation: 2,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
