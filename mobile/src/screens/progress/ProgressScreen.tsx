@@ -57,45 +57,9 @@ const ProgressScreen: React.FC = () => {
     setRefreshing(false);
   };
 
-  if (loading) {
-    return (
-      <View style={styles.centered}>
-        <ActivityIndicator size="large" color={colors.primary} />
-      </View>
-    );
-  }
-
-  if (error || !progress) {
-    return (
-      <View style={styles.centered}>
-        <Text style={styles.errorText}>{error}</Text>
-        <Button mode="contained" onPress={fetchProgress} style={{ marginTop: 16 }}>
-          {t('common.retry', 'Retry')}
-        </Button>
-      </View>
-    );
-  }
-
-  const masteryLevels = [
-    { key: 'mastered', label: t('progress.mastered', 'Mastered'), icon: '🏆', color: '#10b981', areas: progress.masteredAreas },
-    { key: 'comfortable', label: t('progress.comfortable', 'Comfortable'), icon: '😊', color: '#1cb0f6', areas: progress.comfortableAreas },
-    { key: 'learning', label: t('progress.learning', 'Learning'), icon: '📚', color: '#f59e0b', areas: progress.learningAreas },
-    { key: 'struggling', label: t('progress.struggling', 'Struggling'), icon: '💪', color: '#ef4444', areas: progress.strugglingAreas },
-  ];
-
-  const total = (progress.mastered || 0) + (progress.comfortable || 0) + (progress.learning || 0) + (progress.struggling || 0);
-
-  const skills = progress.skillStats
-    ? [
-        { key: 'listening', label: t('progress.listening', 'Listening'), icon: '👂', color: '#1cb0f6' },
-        { key: 'reading', label: t('progress.reading', 'Reading'), icon: '📖', color: '#a560e8' },
-        { key: 'writing', label: t('progress.writing', 'Writing'), icon: '✍️', color: '#f59e0b' },
-        { key: 'speaking', label: t('progress.speaking', 'Speaking'), icon: '🗣️', color: '#10b981' },
-      ]
-    : [];
-
-  // Dynamic tips based on actual progress
+  // Dynamic tips based on actual progress — must be before early returns to keep hook order stable
   const dynamicTips = useMemo(() => {
+    if (!progress) return [];
     const tips: { icon: string; title: string; desc: string; color: string }[] = [];
     const strugglingCount = progress.strugglingAreas?.length || 0;
     const masteredCount = progress.mastered || 0;
@@ -201,6 +165,43 @@ const ProgressScreen: React.FC = () => {
     // Show max 4 tips, prioritized by the order above
     return tips.slice(0, 4);
   }, [progress, t]);
+
+  if (loading) {
+    return (
+      <View style={styles.centered}>
+        <ActivityIndicator size="large" color={colors.primary} />
+      </View>
+    );
+  }
+
+  if (error || !progress) {
+    return (
+      <View style={styles.centered}>
+        <Text style={styles.errorText}>{error}</Text>
+        <Button mode="contained" onPress={fetchProgress} style={{ marginTop: 16 }}>
+          {t('common.retry', 'Retry')}
+        </Button>
+      </View>
+    );
+  }
+
+  const masteryLevels = [
+    { key: 'mastered', label: t('progress.mastered', 'Mastered'), icon: '🏆', color: '#10b981', areas: progress.masteredAreas },
+    { key: 'comfortable', label: t('progress.comfortable', 'Comfortable'), icon: '😊', color: '#1cb0f6', areas: progress.comfortableAreas },
+    { key: 'learning', label: t('progress.learning', 'Learning'), icon: '📚', color: '#f59e0b', areas: progress.learningAreas },
+    { key: 'struggling', label: t('progress.struggling', 'Struggling'), icon: '💪', color: '#ef4444', areas: progress.strugglingAreas },
+  ];
+
+  const total = (progress.mastered || 0) + (progress.comfortable || 0) + (progress.learning || 0) + (progress.struggling || 0);
+
+  const skills = progress.skillStats
+    ? [
+        { key: 'listening', label: t('progress.listening', 'Listening'), icon: '👂', color: '#1cb0f6' },
+        { key: 'reading', label: t('progress.reading', 'Reading'), icon: '📖', color: '#a560e8' },
+        { key: 'writing', label: t('progress.writing', 'Writing'), icon: '✍️', color: '#f59e0b' },
+        { key: 'speaking', label: t('progress.speaking', 'Speaking'), icon: '🗣️', color: '#10b981' },
+      ]
+    : [];
 
   return (
     <ScrollView
