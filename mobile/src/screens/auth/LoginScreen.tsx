@@ -8,6 +8,7 @@ import {
   Platform,
   TouchableOpacity,
   useWindowDimensions,
+  Alert,
 } from 'react-native';
 import { Text, TextInput, Button, HelperText, Divider } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -56,21 +57,25 @@ const LoginScreen: React.FC = () => {
     try {
       await GoogleSignin.hasPlayServices();
       const response = await GoogleSignin.signIn();
+      Alert.alert('DEBUG signIn response', JSON.stringify(response, null, 2));
       if (isSuccessResponse(response)) {
         const idToken = response.data.idToken;
         if (idToken) {
           await handleGoogleToken(idToken);
         } else {
-          setError(t('login.googleFailed', 'Google sign-in failed. Please try again.'));
+          setError('idToken was null — check webClientId & SHA-1 config');
         }
+      } else {
+        setError('signIn response was not a success: ' + JSON.stringify(response));
       }
     } catch (err: any) {
+      Alert.alert('DEBUG signIn error', `code: ${err.code}\nmessage: ${err.message}`);
       if (err.code === statusCodes.SIGN_IN_CANCELLED) {
         // User cancelled — do nothing
       } else if (err.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
         setError(t('login.playServicesRequired', 'Google Play Services required.'));
       } else {
-        setError(t('login.googleFailed', 'Google sign-in failed. Please try again.'));
+        setError(`Google error [${err.code}]: ${err.message}`);
       }
     } finally {
       setGoogleLoading(false);
