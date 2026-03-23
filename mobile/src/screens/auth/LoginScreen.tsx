@@ -49,6 +49,7 @@ const LoginScreen: React.FC = () => {
 
   const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
     clientId: GOOGLE_WEB_CLIENT_ID,
+    androidClientId: '185911237323-2m86p5chgg6t71v5tf3m91n46qltd336.apps.googleusercontent.com',
   });
 
   // Handle Google auth response

@@ -219,17 +219,15 @@ const ProgressScreen: React.FC = () => {
 
       {/* Achievement Banner */}
       {(progress.mastered || 0) > 0 && (
-        <Card style={[styles.card, styles.achievementCard]}>
-          <Card.Content style={styles.achievementContent}>
-            <Text style={styles.achievementIcon}>🏆</Text>
-            <View>
-              <Text style={styles.achievementTitle}>
-                {t('progress.masteredCount', { count: progress.mastered })}
-              </Text>
-              <Text style={styles.achievementXp}>⚡ {progress.mastered * 10} {t('common.xp')}</Text>
-            </View>
-          </Card.Content>
-        </Card>
+        <View style={styles.achievementBanner}>
+          <Text style={styles.achievementIcon}>🏆</Text>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.achievementTitle}>
+              {progress.mastered} {t('progress.mastered', 'Mastered')}!
+            </Text>
+            <Text style={styles.achievementXp}>⚡ {progress.mastered * 10} XP {t('progress.xpEarned', 'earned')}</Text>
+          </View>
+        </View>
       )}
 
       {/* Mastery Stats */}
@@ -237,17 +235,24 @@ const ProgressScreen: React.FC = () => {
         {masteryLevels.map((level) => {
           const count = progress[level.key] || 0;
           const pct = total > 0 ? count / total : 0;
+          const isSelected = selectedMastery === level.key;
           return (
             <TouchableOpacity
               key={level.key}
-              style={[styles.masteryCard, selectedMastery === level.key && { borderColor: level.color, borderWidth: 2 }]}
-              onPress={() => setSelectedMastery(selectedMastery === level.key ? null : level.key)}
+              style={[
+                styles.masteryCard,
+                { borderColor: isSelected ? level.color : level.color + '30', borderTopWidth: 3, borderTopColor: level.color },
+              ]}
+              onPress={() => setSelectedMastery(isSelected ? null : level.key)}
               activeOpacity={0.7}
             >
               <Text style={styles.masteryIcon}>{level.icon}</Text>
-              <Text style={styles.masteryCount}>{count}</Text>
+              <Text style={[styles.masteryCount, { color: level.color }]}>{count}</Text>
               <Text style={styles.masteryLabel}>{level.label}</Text>
-              <ProgressBar progress={pct} color={level.color} style={styles.masteryBar} />
+              <View style={styles.masteryBarContainer}>
+                <ProgressBar progress={pct} color={level.color} style={styles.masteryBar} />
+                <Text style={[styles.masteryPct, { color: level.color }]}>{Math.round(pct * 100)}%</Text>
+              </View>
             </TouchableOpacity>
           );
         })}
@@ -300,12 +305,13 @@ const ProgressScreen: React.FC = () => {
             <View style={styles.skillsGrid}>
               {skills.map((skill) => {
                 const stat = progress.skillStats[skill.key];
-                const avg = stat?.averageScore || 0;
+                const avg = Math.round(stat?.averageScore || 0);
                 const count = stat?.count || 0;
                 return (
                   <View key={skill.key} style={styles.skillItem}>
-                    <View style={[styles.skillCircle, { borderColor: skill.color }]}>
-                      <Text style={[styles.skillPct, { color: skill.color }]}>{avg}%</Text>
+                    <View style={[styles.skillCircle, { borderColor: skill.color, backgroundColor: skill.color + '10' }]}>
+                      <Text style={[styles.skillPct, { color: skill.color }]}>{avg}</Text>
+                      <Text style={[styles.skillPctSign, { color: skill.color }]}>%</Text>
                     </View>
                     <Text style={styles.skillIcon}>{skill.icon}</Text>
                     <Text style={styles.skillLabel}>{skill.label}</Text>
@@ -374,35 +380,45 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
     marginRight: isCompact ? -10 : -16,
     paddingHorizontal: isCompact ? 10 : 16,
     paddingBottom: isCompact ? 10 : 20,
-    backgroundColor: colors.accentGreen,
+    backgroundColor: colors.primary,
     marginBottom: isCompact ? 8 : 16,
   },
   headerTitle: { fontWeight: '700', color: '#fff' },
   headerSubtitle: { color: 'rgba(255,255,255,0.85)', fontSize: 15, marginTop: 4 },
 
   card: { backgroundColor: colors.surface, borderRadius: isCompact ? 10 : 14, marginBottom: isCompact ? 8 : 12, elevation: 1 },
-  achievementCard: { backgroundColor: '#fff5f0' },
-  achievementContent: { flexDirection: 'row', alignItems: 'center', gap: 12 },
-  achievementIcon: { fontSize: isCompact ? 24 : 36 },
-  achievementTitle: { fontSize: 16, fontWeight: '700', color: colors.textPrimary },
-  achievementXp: { color: colors.primary, fontWeight: '600', marginTop: 2 },
+  achievementBanner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 14,
+    backgroundColor: '#10b981',
+    borderRadius: isCompact ? 10 : 14,
+    padding: isCompact ? 12 : 16,
+    marginBottom: isCompact ? 8 : 12,
+    elevation: 2,
+  },
+  achievementIcon: { fontSize: isCompact ? 32 : 40 },
+  achievementTitle: { fontSize: isCompact ? 18 : 20, fontWeight: '800', color: '#fff' },
+  achievementXp: { color: 'rgba(255,255,255,0.9)', fontWeight: '600', fontSize: 14, marginTop: 2 },
 
-  masteryGrid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', marginBottom: 12 },
+  masteryGrid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', marginBottom: 8 },
   masteryCard: {
-    width: isCompact ? '48%' : '48%',
+    width: '48%',
     backgroundColor: colors.surface,
     borderRadius: isCompact ? 10 : 14,
-    padding: isCompact ? 10 : 16,
+    padding: isCompact ? 10 : 14,
     alignItems: 'center',
-    marginBottom: isCompact ? 8 : 12,
+    marginBottom: isCompact ? 8 : 10,
     elevation: 1,
     borderWidth: 1,
     borderColor: 'transparent',
   },
-  masteryIcon: { fontSize: isCompact ? 20 : 28, marginBottom: isCompact ? 2 : 4 },
-  masteryCount: { fontSize: isCompact ? 18 : 24, fontWeight: '800', color: colors.textPrimary },
+  masteryIcon: { fontSize: isCompact ? 20 : 26, marginBottom: isCompact ? 2 : 4 },
+  masteryCount: { fontSize: isCompact ? 22 : 28, fontWeight: '800' },
   masteryLabel: { fontSize: isCompact ? 11 : 13, color: colors.textSecondary, marginBottom: isCompact ? 4 : 8 },
-  masteryBar: { width: '100%', height: 4, borderRadius: 2 },
+  masteryBarContainer: { width: '100%', flexDirection: 'row', alignItems: 'center', gap: 6 },
+  masteryBar: { flex: 1, height: 6, borderRadius: 3 },
+  masteryPct: { fontSize: 11, fontWeight: '700' },
 
   emptyText: { color: colors.textMuted, textAlign: 'center', paddingVertical: 12 },
 
@@ -422,19 +438,20 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
   areaAttempts: { fontSize: 11, color: colors.textMuted },
 
   skillsGrid: { flexDirection: 'row', justifyContent: 'space-around' },
-  skillItem: { alignItems: 'center', width: '22%' },
+  skillItem: { alignItems: 'center', width: '23%' },
   skillCircle: {
-    width: isCompact ? 42 : 56,
-    height: isCompact ? 42 : 56,
-    borderRadius: isCompact ? 21 : 28,
+    width: isCompact ? 48 : 60,
+    height: isCompact ? 48 : 60,
+    borderRadius: isCompact ? 24 : 30,
     borderWidth: isCompact ? 3 : 4,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: isCompact ? 4 : 6,
   },
-  skillPct: { fontSize: isCompact ? 11 : 14, fontWeight: '800' },
+  skillPct: { fontSize: isCompact ? 13 : 16, fontWeight: '800', lineHeight: isCompact ? 15 : 18 },
+  skillPctSign: { fontSize: isCompact ? 8 : 9, fontWeight: '700', marginTop: -2 },
   skillIcon: { fontSize: isCompact ? 14 : 18, marginBottom: 2 },
-  skillLabel: { fontSize: isCompact ? 10 : 11, fontWeight: '600', color: colors.textPrimary },
+  skillLabel: { fontSize: isCompact ? 10 : 12, fontWeight: '600', color: colors.textPrimary },
   skillCount: { fontSize: isCompact ? 9 : 10, color: colors.textMuted },
 
   tipsCard: {
