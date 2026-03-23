@@ -116,6 +116,16 @@ function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
   return (
     <div className="auth-container">
       <div className="auth-card">
+        <button
+          type="button"
+          className="auth-back-btn"
+          onClick={() => navigate('/select-language?mode=register')}
+          aria-label={t('common.back', 'Back')}
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </button>
         <img src="/images/logo.png" alt="Lingo Booth" className="auth-logo" />
         <h1>{t('register.title')}</h1>
         <p className="auth-subtitle">{t('register.subtitle')}</p>

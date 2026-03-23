@@ -14,6 +14,28 @@
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   width: 100%;
   max-width: 420px;
+  position: relative;
+}
+
+.auth-back-btn {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  padding: 6px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.auth-back-btn:hover {
+  color: var(--primary);
+  background: var(--bg-secondary);
 }
 
 .auth-logo {
