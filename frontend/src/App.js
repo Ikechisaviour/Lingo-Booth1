@@ -225,6 +225,7 @@ function App() {
     localStorage.removeItem('emailVerified');
     localStorage.removeItem('nativeLanguage');
     localStorage.removeItem('targetLanguage');
+    localStorage.removeItem('needsLanguageSetup');
     setIsAuthenticated(false);
     setIsGuest(false);
     setChallengeMode(false);
@@ -244,6 +245,7 @@ function App() {
 
   // Check if user can access the app (either authenticated or guest)
   const canAccessApp = isAuthenticated || isGuest;
+  const needsLanguageSetup = localStorage.getItem('needsLanguageSetup') === 'true';
 
   return (
     <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
@@ -274,6 +276,7 @@ function App() {
           <Route
             path="/login"
             element={
+              isAuthenticated && needsLanguageSetup ? <Navigate to="/select-language?mode=google-setup" /> :
               isAuthenticated ? <Navigate to="/" /> : (
                 <LoginPage
                   setIsAuthenticated={setIsAuthenticated}
@@ -313,6 +316,7 @@ function App() {
           <Route
             path="/"
             element={
+              isAuthenticated && needsLanguageSetup ? <Navigate to="/select-language?mode=google-setup" /> :
               canAccessApp ? <HomePage isGuest={isGuest} /> : <Navigate to="/login" />
             }
           />

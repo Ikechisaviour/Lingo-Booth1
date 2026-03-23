@@ -59,6 +59,7 @@ function LanguageSelectPage({ setIsGuest }) {
       if (userId) {
         userService.updateProfile(userId, { nativeLanguage, targetLanguage }).catch(() => {});
       }
+      localStorage.removeItem('needsLanguageSetup');
       navigate('/');
     } else {
       navigate('/register');

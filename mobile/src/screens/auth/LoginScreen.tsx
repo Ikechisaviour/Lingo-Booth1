@@ -15,20 +15,23 @@ import { useTranslation } from 'react-i18next';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 import Constants from 'expo-constants';
-import * as WebBrowser from 'expo-web-browser';
-import * as Google from 'expo-auth-session/providers/google';
+import { GoogleSignin, isSuccessResponse, statusCodes } from '@react-native-google-signin/google-signin';
 import { AuthStackParamList } from '../../navigation/AuthStack';
 import { authService } from '../../services/api';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { colors } from '../../config/theme';
 
-WebBrowser.maybeCompleteAuthSession();
-
-type LoginNavProp = NativeStackNavigationProp<AuthStackParamList, 'Login'>;
-
 const GOOGLE_WEB_CLIENT_ID =
   (Constants.expoConfig?.extra?.googleWebClientId as string | undefined) || '';
+
+GoogleSignin.configure({
+  webClientId: GOOGLE_WEB_CLIENT_ID,
+  offlineAccess: true,
+  scopes: ['profile', 'email'],
+});
+
+type LoginNavProp = NativeStackNavigationProp<AuthStackParamList, 'Login'>;
 
 const LoginScreen: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -47,27 +50,32 @@ const LoginScreen: React.FC = () => {
   const [googleLoading, setGoogleLoading] = useState(false);
   const [suspended, setSuspended] = useState<{ message: string; reason: string } | null>(null);
 
-  const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
-    clientId: GOOGLE_WEB_CLIENT_ID,
-    androidClientId: '185911237323-2m86p5chgg6t71v5tf3m91n46qltd336.apps.googleusercontent.com',
-    iosClientId: '185911237323-1emudeqdbf3kkuvvjm19evvqeap8ul56.apps.googleusercontent.com',
-  });
-
-  // Handle Google auth response
-  useEffect(() => {
-    if (response?.type === 'success') {
-      const idToken = response.params.id_token;
-      if (idToken) {
-        handleGoogleToken(idToken);
+  const handleGooglePress = async () => {
+    setError('');
+    setGoogleLoading(true);
+    try {
+      await GoogleSignin.hasPlayServices();
+      const response = await GoogleSignin.signIn();
+      if (isSuccessResponse(response)) {
+        const idToken = response.data.idToken;
+        if (idToken) {
+          await handleGoogleToken(idToken);
+        } else {
+          setError(t('login.googleFailed', 'Google sign-in failed. Please try again.'));
+        }
       }
-    } else if (response?.type === 'error') {
-      setGoogleLoading(false);
-      setError(t('login.googleFailed', 'Google sign-in failed. Please try again.'));
-    } else if (response?.type === 'dismiss') {
+    } catch (err: any) {
+      if (err.code === statusCodes.SIGN_IN_CANCELLED) {
+        // User cancelled — do nothing
+      } else if (err.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        setError(t('login.playServicesRequired', 'Google Play Services required.'));
+      } else {
+        setError(t('login.googleFailed', 'Google sign-in failed. Please try again.'));
+      }
+    } finally {
       setGoogleLoading(false);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [response]);
+  };
 
   const handleGoogleToken = async (idToken: string) => {
     setGoogleLoading(true);
@@ -81,13 +89,12 @@ const LoginScreen: React.FC = () => {
       clearGuestXP();
       if (user.preferredVoice) setVoice(user.preferredVoice);
 
-      if (isNewUser) {
-        // New Google user — let them pick their language pair
-        navigation.navigate('LanguageSelect', { mode: 'google-setup' });
-      } else {
+      if (!isNewUser) {
+        // Existing user — apply their saved language preferences
         setLanguages(user.nativeLanguage || 'en', user.targetLanguage || 'ko');
         i18n.changeLanguage(user.nativeLanguage || 'en');
       }
+      // New Google users: RootNavigator will show LanguageSelect via needsLanguageSetup
     } catch (err: any) {
       if (err.response?.status === 403 && err.response?.data?.reason) {
         setSuspended({
@@ -132,12 +139,6 @@ const LoginScreen: React.FC = () => {
 
   const handleGuestMode = () => {
     navigation.navigate('LanguageSelect', { mode: 'guest' });
-  };
-
-  const handleGooglePress = () => {
-    setError('');
-    setGoogleLoading(true);
-    promptAsync();
   };
 
   return (
@@ -192,9 +193,9 @@ const LoginScreen: React.FC = () => {
             {/* Google Sign-In */}
             {!!GOOGLE_WEB_CLIENT_ID && (
               <TouchableOpacity
-                style={[styles.googleButton, (googleLoading || !request) && styles.googleButtonDisabled]}
+                style={[styles.googleButton, googleLoading && styles.googleButtonDisabled]}
                 onPress={handleGooglePress}
-                disabled={googleLoading || !request}
+                disabled={googleLoading}
                 activeOpacity={0.8}
               >
                 <Image

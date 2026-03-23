@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   View,
   ScrollView,
@@ -15,15 +15,12 @@ import { useTranslation } from 'react-i18next';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 import Constants from 'expo-constants';
-import * as WebBrowser from 'expo-web-browser';
-import * as Google from 'expo-auth-session/providers/google';
+import { GoogleSignin, isSuccessResponse, statusCodes } from '@react-native-google-signin/google-signin';
 import { AuthStackParamList } from '../../navigation/AuthStack';
 import { authService } from '../../services/api';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { colors } from '../../config/theme';
-
-WebBrowser.maybeCompleteAuthSession();
 
 const GOOGLE_WEB_CLIENT_ID =
   (Constants.expoConfig?.extra?.googleWebClientId as string | undefined) || '';
@@ -51,39 +48,36 @@ const RegisterScreen: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
 
-  const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
-    clientId: GOOGLE_WEB_CLIENT_ID,
-    androidClientId: '185911237323-2m86p5chgg6t71v5tf3m91n46qltd336.apps.googleusercontent.com',
-    iosClientId: '185911237323-1emudeqdbf3kkuvvjm19evvqeap8ul56.apps.googleusercontent.com',
-  });
-
-  useEffect(() => {
-    if (response?.type === 'success') {
-      const idToken = response.params.id_token;
-      if (idToken) handleGoogleToken(idToken);
-    } else if (response?.type === 'error' || response?.type === 'dismiss') {
-      setGoogleLoading(false);
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [response]);
-
-  const handleGoogleToken = async (idToken: string) => {
-    setGoogleLoading(true);
+  const handleGooglePress = async () => {
     setError('');
+    setGoogleLoading(true);
     try {
-      const res = await authService.googleLogin(idToken, guestXP, nativeLanguage, targetLanguage);
-      const { token, user, isNewUser } = res.data;
-      login({ token, user });
-      clearGuestXP();
-      if (user.preferredVoice) setVoice(user.preferredVoice);
-      if (isNewUser) {
-        navigation.navigate('LanguageSelect', { mode: 'google-setup' });
-      } else {
-        setLanguages(user.nativeLanguage || 'en', user.targetLanguage || 'ko');
-        i18n.changeLanguage(user.nativeLanguage || 'en');
+      await GoogleSignin.hasPlayServices();
+      const response = await GoogleSignin.signIn();
+      if (isSuccessResponse(response)) {
+        const idToken = response.data.idToken;
+        if (idToken) {
+          const res = await authService.googleLogin(idToken, guestXP, nativeLanguage, targetLanguage);
+          const { token, user, isNewUser } = res.data;
+          login({ token, user });
+          clearGuestXP();
+          if (user.preferredVoice) setVoice(user.preferredVoice);
+          if (!isNewUser) {
+            setLanguages(user.nativeLanguage || 'en', user.targetLanguage || 'ko');
+            i18n.changeLanguage(user.nativeLanguage || 'en');
+          }
+        } else {
+          setError(t('login.googleFailed', 'Google sign-in failed.'));
+        }
       }
     } catch (err: any) {
-      setError(err.response?.data?.message || t('login.googleFailed', 'Google sign-in failed.'));
+      if (err.code === statusCodes.SIGN_IN_CANCELLED) {
+        // User cancelled
+      } else if (err.response?.data?.message) {
+        setError(err.response.data.message);
+      } else {
+        setError(t('login.googleFailed', 'Google sign-in failed.'));
+      }
     } finally {
       setGoogleLoading(false);
     }
@@ -254,9 +248,9 @@ const RegisterScreen: React.FC = () => {
                   <Divider style={styles.dividerLine} />
                 </View>
                 <TouchableOpacity
-                  style={[styles.googleButton, (googleLoading || !request) && styles.googleButtonDisabled]}
-                  onPress={() => { setError(''); setGoogleLoading(true); promptAsync(); }}
-                  disabled={googleLoading || !request}
+                  style={[styles.googleButton, googleLoading && styles.googleButtonDisabled]}
+                  onPress={handleGooglePress}
+                  disabled={googleLoading}
                   activeOpacity={0.8}
                 >
                   <Image

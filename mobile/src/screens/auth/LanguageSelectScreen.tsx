@@ -22,7 +22,7 @@ const LanguageSelectScreen: React.FC = () => {
   const mode = route.params.mode;
   const insets = useSafeAreaInsets();
 
-  const { enterGuestMode, userId } = useAuthStore();
+  const { enterGuestMode, userId, setNeedsLanguageSetup } = useAuthStore();
   const { nativeLanguage: savedNative, targetLanguage: savedTarget, setLanguages } = useSettingsStore();
 
   const [nativeLang, setNativeLang] = useState(savedNative || 'en');
@@ -65,7 +65,8 @@ const LanguageSelectScreen: React.FC = () => {
       } finally {
         setSaving(false);
       }
-      // Navigation handled automatically by RootNavigator (user is now authenticated)
+      // Clear the flag so RootNavigator switches to MainTabs
+      setNeedsLanguageSetup(false);
     } else {
       navigation.navigate('Register');
     }

@@ -27,6 +27,7 @@ function buildUserResponse(user) {
     nativeLanguage: user.nativeLanguage,
     targetLanguage: user.targetLanguage,
     emailVerified: !!user.emailVerified,
+    languageSetupComplete: user.languageSetupComplete !== false,
   };
 }
 
@@ -350,6 +351,7 @@ router.post('/google', async (req, res) => {
         lastActive: new Date(),
         nativeLanguage: nativeLanguage || 'en',
         targetLanguage: targetLanguage || 'ko',
+        languageSetupComplete: false,
         lastIp: loginIp,
         lastCountry: loginGeo.country,
         lastCity: loginGeo.city,

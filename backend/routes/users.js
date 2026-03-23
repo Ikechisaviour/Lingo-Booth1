@@ -50,6 +50,9 @@ router.put('/:userId', isOwner('userId'), async (req, res) => {
     if (preferredVoice !== undefined) updateData.preferredVoice = preferredVoice;
     if (nativeLanguage !== undefined) updateData.nativeLanguage = nativeLanguage;
     if (targetLanguage !== undefined) updateData.targetLanguage = targetLanguage;
+    if (nativeLanguage !== undefined || targetLanguage !== undefined) {
+      updateData.languageSetupComplete = true;
+    }
 
     const user = await User.findByIdAndUpdate(
       req.params.userId,

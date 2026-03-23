@@ -114,6 +114,7 @@ function LoginPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
         setIsGuest(false);
         setIsAuthenticated(true);
         setEmailVerified(!!user.emailVerified);
+        localStorage.setItem('needsLanguageSetup', 'true');
         navigate('/select-language?mode=google-setup');
         return;
       }

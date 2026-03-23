@@ -10,6 +10,7 @@ interface AuthState {
   isGuest: boolean;
   challengeMode: boolean;
   guestXP: number;
+  needsLanguageSetup: boolean;
 
   login: (data: {
     token: string;
@@ -18,6 +19,7 @@ interface AuthState {
       username: string;
       role: string;
       xpDecayEnabled?: boolean;
+      languageSetupComplete?: boolean;
     };
   }) => void;
   logout: () => void;
@@ -27,6 +29,7 @@ interface AuthState {
   addGuestXP: (points: number) => void;
   clearGuestXP: () => void;
   setUsername: (username: string) => void;
+  setNeedsLanguageSetup: (val: boolean) => void;
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -39,6 +42,7 @@ export const useAuthStore = create<AuthState>()(
       isGuest: false,
       challengeMode: false,
       guestXP: 0,
+      needsLanguageSetup: false,
 
       login: (data) =>
         set({
@@ -48,6 +52,7 @@ export const useAuthStore = create<AuthState>()(
           userRole: data.user.role,
           isGuest: false,
           challengeMode: data.user.xpDecayEnabled || false,
+          needsLanguageSetup: data.user.languageSetupComplete === false,
         }),
 
       logout: () =>
@@ -58,6 +63,7 @@ export const useAuthStore = create<AuthState>()(
           userRole: null,
           isGuest: false,
           challengeMode: false,
+          needsLanguageSetup: false,
         }),
 
       enterGuestMode: () =>
@@ -77,6 +83,9 @@ export const useAuthStore = create<AuthState>()(
 
       setUsername: (username) =>
         set({ username }),
+
+      setNeedsLanguageSetup: (val) =>
+        set({ needsLanguageSetup: val }),
     }),
     {
       name: 'auth-storage',

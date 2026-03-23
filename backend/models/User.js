@@ -83,6 +83,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: 'ko',
   },
+  languageSetupComplete: {
+    type: Boolean,
+    default: true,
+  },
   totalXP: {
     type: Number,
     default: 0,
