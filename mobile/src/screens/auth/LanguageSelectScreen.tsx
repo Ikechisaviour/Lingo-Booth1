@@ -44,10 +44,11 @@ const LanguageSelectScreen: React.FC = () => {
 
   const canContinue = nativeLang && targetLang && nativeLang !== targetLang;
 
-  const handleBack = async () => {
+  const handleBack = () => {
     if (mode === 'google-setup') {
-      // Clear Google session so account picker shows next time, then log out
-      try { await GoogleSignin.signOut(); } catch {}
+      // Fire-and-forget: clear Google session so account picker shows next time
+      GoogleSignin.signOut().catch(() => {});
+      // Immediately log out so RootNavigator switches to AuthStack
       logout();
     } else if (navigation.canGoBack()) {
       navigation.goBack();

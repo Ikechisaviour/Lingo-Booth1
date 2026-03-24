@@ -308,13 +308,9 @@ router.post('/google', async (req, res) => {
       user.verificationToken = null;
       user.verificationTokenExpires = null;
 
-      // If user was created via Google but never completed language setup, keep the flag
+      // Legacy users (created before languageSetupComplete field existed) — treat as complete
       if (user.languageSetupComplete === undefined || user.languageSetupComplete === null) {
-        // Legacy user — check if they only have Google auth (never picked languages manually)
-        const onlyGoogle = user.authProviders?.length === 1 && user.authProviders[0].provider === 'google';
-        if (onlyGoogle && !user.password) {
-          user.languageSetupComplete = false;
-        }
+        user.languageSetupComplete = true;
       }
 
       // Transfer guest XP
