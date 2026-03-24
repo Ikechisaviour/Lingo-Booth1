@@ -19,6 +19,7 @@ import speechService from '../../services/speechService';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import LANGUAGES, { getLangName } from '../../config/languages';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useAppColors, type AppColors } from '../../config/theme';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -217,7 +218,8 @@ const ProfileScreen: React.FC = () => {
     );
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    try { await GoogleSignin.signOut(); } catch {}
     logout();
   };
 
