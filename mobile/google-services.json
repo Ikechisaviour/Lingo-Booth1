@@ -14,14 +14,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "185911237323-2m86p5chgg6t71v5tf3m91n46qltd336.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.lingobooth.app",
-            "certificate_hash": "ca6baeddcfd3c3e604e93a71fb2324f8703b1659"
-          }
-        },
-        {
           "client_id": "185911237323-s79tga5o3b53bsnri35sibmn1srg0en5.apps.googleusercontent.com",
           "client_type": 3
         }
