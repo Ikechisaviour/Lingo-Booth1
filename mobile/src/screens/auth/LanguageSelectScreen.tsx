@@ -22,7 +22,7 @@ const LanguageSelectScreen: React.FC = () => {
   const mode = route.params.mode;
   const insets = useSafeAreaInsets();
 
-  const { enterGuestMode, userId, setNeedsLanguageSetup } = useAuthStore();
+  const { enterGuestMode, userId, setNeedsLanguageSetup, logout } = useAuthStore();
   const { nativeLanguage: savedNative, targetLanguage: savedTarget, setLanguages } = useSettingsStore();
 
   const [nativeLang, setNativeLang] = useState(savedNative || 'en');
@@ -42,6 +42,15 @@ const LanguageSelectScreen: React.FC = () => {
   };
 
   const canContinue = nativeLang && targetLang && nativeLang !== targetLang;
+
+  const handleBack = () => {
+    if (mode === 'google-setup') {
+      // Log out and return to login screen
+      logout();
+    } else if (navigation.canGoBack()) {
+      navigation.goBack();
+    }
+  };
 
   const handleContinue = async () => {
     if (!canContinue) return;
@@ -109,6 +118,9 @@ const LanguageSelectScreen: React.FC = () => {
     <View style={styles.outer}>
       {/* Branded header */}
       <View style={[styles.brandHeader, { paddingTop: insets.top + 16 }]}>
+        <TouchableOpacity style={styles.backButton} onPress={handleBack}>
+          <Text style={styles.backButtonText}>← {t('common.back', 'Back')}</Text>
+        </TouchableOpacity>
         <Image
           source={require('../../../assets/icon.png')}
           style={styles.logo}
@@ -179,6 +191,15 @@ const LanguageSelectScreen: React.FC = () => {
 const styles = StyleSheet.create({
   outer: { flex: 1, backgroundColor: colors.primary },
 
+  backButton: {
+    alignSelf: 'flex-start',
+    marginBottom: 8,
+  },
+  backButtonText: {
+    color: '#fff',
+    fontSize: 15,
+    fontWeight: '600',
+  },
   brandHeader: {
     paddingHorizontal: 24,
     paddingBottom: 20,

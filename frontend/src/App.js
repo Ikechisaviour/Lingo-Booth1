@@ -321,6 +321,7 @@ function App() {
             element={
               <LanguageSelectPage
                 setIsGuest={setIsGuest}
+                onLogout={handleLogout}
               />
             }
           />

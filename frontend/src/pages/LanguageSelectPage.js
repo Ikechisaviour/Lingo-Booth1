@@ -5,7 +5,7 @@ import LANGUAGES from '../config/languages';
 import { userService } from '../services/api';
 import './LanguageSelectPage.css';
 
-function LanguageSelectPage({ setIsGuest }) {
+function LanguageSelectPage({ setIsGuest, onLogout }) {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -35,6 +35,13 @@ function LanguageSelectPage({ setIsGuest }) {
 
   const handleTargetChange = (code) => {
     setTargetLanguage(code);
+  };
+
+  const handleBack = () => {
+    if (mode === 'google-setup' && onLogout) {
+      onLogout();
+    }
+    navigate('/login');
   };
 
   const canContinue = nativeLanguage && targetLanguage && nativeLanguage !== targetLanguage;
@@ -69,6 +76,9 @@ function LanguageSelectPage({ setIsGuest }) {
   return (
     <div className="auth-container">
       <div className="auth-card language-select-card">
+        <button className="back-to-login" onClick={handleBack} type="button">
+          ← {t('common.back', 'Back')}
+        </button>
         <img src="/images/logo.png" alt="Lingo Booth" className="auth-logo" />
         <h1>{t('languageSelect.title')}</h1>
         <p className="auth-subtitle">{t('languageSelect.subtitle')}</p>

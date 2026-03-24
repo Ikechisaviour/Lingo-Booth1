@@ -9,6 +9,22 @@
   margin-bottom: 20px;
 }
 
+.back-to-login {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 12px;
+}
+
+.back-to-login:hover {
+  text-decoration: underline;
+}
+
 .lang-section {
   margin-bottom: 24px;
 }
