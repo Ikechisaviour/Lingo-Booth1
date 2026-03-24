@@ -27,7 +27,7 @@ function buildUserResponse(user) {
     nativeLanguage: user.nativeLanguage,
     targetLanguage: user.targetLanguage,
     emailVerified: !!user.emailVerified,
-    languageSetupComplete: user.languageSetupComplete !== false,
+    languageSetupComplete: user.languageSetupComplete === true,
   };
 }
 
@@ -84,6 +84,7 @@ router.post('/register', async (req, res) => {
       emailVerified: false,
       nativeLanguage: nativeLanguage || 'en',
       targetLanguage: targetLanguage || 'ko',
+      languageSetupComplete: true,
       lastIp: regIp,
       lastCountry: regGeo.country,
       lastCity: regGeo.city,
@@ -306,6 +307,15 @@ router.post('/google', async (req, res) => {
       user.emailVerified = true;
       user.verificationToken = null;
       user.verificationTokenExpires = null;
+
+      // If user was created via Google but never completed language setup, keep the flag
+      if (user.languageSetupComplete === undefined || user.languageSetupComplete === null) {
+        // Legacy user — check if they only have Google auth (never picked languages manually)
+        const onlyGoogle = user.authProviders?.length === 1 && user.authProviders[0].provider === 'google';
+        if (onlyGoogle && !user.password) {
+          user.languageSetupComplete = false;
+        }
+      }
 
       // Transfer guest XP
       if (typeof guestXP === 'number' && guestXP > 0 && !user.xpDecayEnabled) {

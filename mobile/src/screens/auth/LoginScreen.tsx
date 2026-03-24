@@ -36,7 +36,7 @@ type LoginNavProp = NativeStackNavigationProp<AuthStackParamList, 'Login'>;
 const LoginScreen: React.FC = () => {
   const { t, i18n } = useTranslation();
   const navigation = useNavigation<LoginNavProp>();
-  const { login, guestXP, clearGuestXP } = useAuthStore();
+  const { login, guestXP, clearGuestXP, setNeedsLanguageSetup } = useAuthStore();
   const { setLanguages, setVoice, nativeLanguage, targetLanguage } = useSettingsStore();
   const insets = useSafeAreaInsets();
   const { height: winHeight, width: winWidth } = useWindowDimensions();
@@ -92,12 +92,14 @@ const LoginScreen: React.FC = () => {
       clearGuestXP();
       if (user.preferredVoice) setVoice(user.preferredVoice);
 
-      if (!isNewUser) {
+      if (isNewUser) {
+        // Force language setup for new Google users
+        setNeedsLanguageSetup(true);
+      } else {
         // Existing user — apply their saved language preferences
         setLanguages(user.nativeLanguage || 'en', user.targetLanguage || 'ko');
         i18n.changeLanguage(user.nativeLanguage || 'en');
       }
-      // New Google users: RootNavigator will show LanguageSelect via needsLanguageSetup
     } catch (err: any) {
       if (err.response?.status === 403 && err.response?.data?.reason) {
         setSuspended({
