@@ -38,32 +38,33 @@ const SetupStack: React.FC = () => (
 );
 
 const RootNavigator: React.FC = () => {
-  const { token, userId, isGuest, needsLanguageSetup, setNeedsLanguageSetup, logout } = useAuthStore();
+  const { token, userId, isGuest, needsLanguageSetup } = useAuthStore();
   const canAccess = !!token || isGuest;
 
-  // Verify account status from the backend
+  // Verify account status from the backend (uses getState to avoid stale closures)
   const verifyAccount = useCallback(() => {
-    if (!token || !userId || isGuest) return;
+    const { token: t, userId: uid, isGuest: guest, needsLanguageSetup: nls } = useAuthStore.getState();
+    if (!t || !uid || guest) return;
 
-    userService.getProfile(userId)
+    userService.getProfile(uid)
       .then((res) => {
         const user = res.data;
-        if (user.languageSetupComplete === false && !needsLanguageSetup) {
-          setNeedsLanguageSetup(true);
+        if (user.languageSetupComplete === false && !nls) {
+          useAuthStore.getState().setNeedsLanguageSetup(true);
         }
       })
       .catch((err) => {
         // Account deleted or token invalid — force logout
         if (err.response?.status === 404 || err.response?.status === 401) {
-          logout();
+          useAuthStore.getState().logout();
         }
       });
-  }, [token, userId, isGuest, needsLanguageSetup]);
+  }, []);
 
   // Check on initial load
   useEffect(() => {
     verifyAccount();
-  }, [token, userId]);
+  }, [token, userId, verifyAccount]);
 
   // Re-check when app comes back to foreground
   useEffect(() => {

@@ -7,6 +7,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { AuthStackParamList } from '../../navigation/AuthStack';
 import LANGUAGES, { Language } from '../../config/languages';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { userService } from '../../services/api';
@@ -43,9 +44,10 @@ const LanguageSelectScreen: React.FC = () => {
 
   const canContinue = nativeLang && targetLang && nativeLang !== targetLang;
 
-  const handleBack = () => {
+  const handleBack = async () => {
     if (mode === 'google-setup') {
-      // Log out and return to login screen
+      // Clear Google session so account picker shows next time, then log out
+      try { await GoogleSignin.signOut(); } catch {}
       logout();
     } else if (navigation.canGoBack()) {
       navigation.goBack();

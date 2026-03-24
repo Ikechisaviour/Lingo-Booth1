@@ -32,7 +32,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const RegisterScreen: React.FC = () => {
   const { t, i18n } = useTranslation();
   const navigation = useNavigation<RegisterNavProp>();
-  const { login, guestXP, clearGuestXP, setNeedsLanguageSetup } = useAuthStore();
+  const { login, guestXP, clearGuestXP } = useAuthStore();
   const { nativeLanguage, targetLanguage, setLanguages, setVoice } = useSettingsStore();
   const insets = useSafeAreaInsets();
   const { height: winHeight, width: winWidth } = useWindowDimensions();
@@ -63,9 +63,8 @@ const RegisterScreen: React.FC = () => {
           login({ token, user });
           clearGuestXP();
           if (user.preferredVoice) setVoice(user.preferredVoice);
-          if (isNewUser || !user.languageSetupComplete) {
-            setNeedsLanguageSetup(true);
-          } else {
+          // login() already sets needsLanguageSetup from user.languageSetupComplete
+          if (user.languageSetupComplete) {
             setLanguages(user.nativeLanguage || 'en', user.targetLanguage || 'ko');
             i18n.changeLanguage(user.nativeLanguage || 'en');
           }

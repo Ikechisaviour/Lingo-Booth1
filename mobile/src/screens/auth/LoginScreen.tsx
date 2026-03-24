@@ -36,7 +36,7 @@ type LoginNavProp = NativeStackNavigationProp<AuthStackParamList, 'Login'>;
 const LoginScreen: React.FC = () => {
   const { t, i18n } = useTranslation();
   const navigation = useNavigation<LoginNavProp>();
-  const { login, guestXP, clearGuestXP, setNeedsLanguageSetup } = useAuthStore();
+  const { login, guestXP, clearGuestXP } = useAuthStore();
   const { setLanguages, setVoice, nativeLanguage, targetLanguage } = useSettingsStore();
   const insets = useSafeAreaInsets();
   const { height: winHeight, width: winWidth } = useWindowDimensions();
@@ -92,11 +92,8 @@ const LoginScreen: React.FC = () => {
       clearGuestXP();
       if (user.preferredVoice) setVoice(user.preferredVoice);
 
-      if (isNewUser || !user.languageSetupComplete) {
-        // Force language setup for new or incomplete users
-        setNeedsLanguageSetup(true);
-      } else {
-        // Existing user — apply their saved language preferences
+      // login() already sets needsLanguageSetup from user.languageSetupComplete
+      if (user.languageSetupComplete) {
         setLanguages(user.nativeLanguage || 'en', user.targetLanguage || 'ko');
         i18n.changeLanguage(user.nativeLanguage || 'en');
       }

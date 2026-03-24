@@ -27,7 +27,7 @@ function buildUserResponse(user) {
     nativeLanguage: user.nativeLanguage,
     targetLanguage: user.targetLanguage,
     emailVerified: !!user.emailVerified,
-    languageSetupComplete: user.languageSetupComplete === true,
+    languageSetupComplete: user.languageSetupComplete !== false,
   };
 }
 
