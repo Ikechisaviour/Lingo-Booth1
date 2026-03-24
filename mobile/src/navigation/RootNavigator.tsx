@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
+import { AppState } from 'react-native';
 import { NavigationContainer, LinkingOptions } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as Linking from 'expo-linking';
@@ -37,22 +38,40 @@ const SetupStack: React.FC = () => (
 );
 
 const RootNavigator: React.FC = () => {
-  const { token, userId, isGuest, needsLanguageSetup, setNeedsLanguageSetup } = useAuthStore();
+  const { token, userId, isGuest, needsLanguageSetup, setNeedsLanguageSetup, logout } = useAuthStore();
   const canAccess = !!token || isGuest;
 
-  // Safety net: verify language setup status from the backend on app load
-  useEffect(() => {
-    if (!token || !userId || isGuest || needsLanguageSetup) return;
+  // Verify account status from the backend
+  const verifyAccount = useCallback(() => {
+    if (!token || !userId || isGuest) return;
 
     userService.getProfile(userId)
       .then((res) => {
         const user = res.data;
-        if (user.languageSetupComplete === false) {
+        if (user.languageSetupComplete === false && !needsLanguageSetup) {
           setNeedsLanguageSetup(true);
         }
       })
-      .catch(() => {});
+      .catch((err) => {
+        // Account deleted or token invalid — force logout
+        if (err.response?.status === 404 || err.response?.status === 401) {
+          logout();
+        }
+      });
+  }, [token, userId, isGuest, needsLanguageSetup]);
+
+  // Check on initial load
+  useEffect(() => {
+    verifyAccount();
   }, [token, userId]);
+
+  // Re-check when app comes back to foreground
+  useEffect(() => {
+    const sub = AppState.addEventListener('change', (state) => {
+      if (state === 'active') verifyAccount();
+    });
+    return () => sub.remove();
+  }, [verifyAccount]);
 
   return (
     <NavigationContainer linking={linking}>
