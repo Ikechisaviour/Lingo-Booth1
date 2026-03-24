@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavigationContainer, LinkingOptions } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as Linking from 'expo-linking';
 import { useAuthStore } from '../stores/authStore';
+import { userService } from '../services/api';
 import AuthStack from './AuthStack';
 import MainTabs from './MainTabs';
 import LanguageSelectScreen from '../screens/auth/LanguageSelectScreen';
@@ -36,8 +37,22 @@ const SetupStack: React.FC = () => (
 );
 
 const RootNavigator: React.FC = () => {
-  const { token, isGuest, needsLanguageSetup } = useAuthStore();
+  const { token, userId, isGuest, needsLanguageSetup, setNeedsLanguageSetup } = useAuthStore();
   const canAccess = !!token || isGuest;
+
+  // Safety net: verify language setup status from the backend on app load
+  useEffect(() => {
+    if (!token || !userId || isGuest || needsLanguageSetup) return;
+
+    userService.getProfile(userId)
+      .then((res) => {
+        const user = res.data;
+        if (user.languageSetupComplete === false) {
+          setNeedsLanguageSetup(true);
+        }
+      })
+      .catch(() => {});
+  }, [token, userId]);
 
   return (
     <NavigationContainer linking={linking}>

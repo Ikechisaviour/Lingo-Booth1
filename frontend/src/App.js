@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import { guestXPHelper, authService } from './services/api';
+import { guestXPHelper, authService, userService } from './services/api';
 import guestActivityTracker from './services/guestActivityTracker';
 import Navbar from './components/Navbar';
 import EmailVerificationBanner from './components/EmailVerificationBanner';
@@ -172,6 +172,22 @@ function App() {
     window.addEventListener('emailVerified', handler);
     return () => window.removeEventListener('emailVerified', handler);
   }, []);
+
+  // Safety net: verify language setup status from the backend on load
+  useEffect(() => {
+    if (!isAuthenticated || isGuest) return;
+    const userId = localStorage.getItem('userId');
+    if (!userId || localStorage.getItem('needsLanguageSetup') === 'true') return;
+
+    userService.getProfile(userId)
+      .then((res) => {
+        if (res.data.languageSetupComplete === false) {
+          localStorage.setItem('needsLanguageSetup', 'true');
+          window.location.replace('/select-language?mode=google-setup');
+        }
+      })
+      .catch(() => {});
+  }, [isAuthenticated, isGuest]);
 
   // Track time spent on platform for authenticated users
   useEffect(() => {
