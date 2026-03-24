@@ -100,8 +100,8 @@ function LoginPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
         nativeLang,
         targetLang
       );
-      // New Google user — let them pick languages first
-      if (response.data.isNewUser) {
+      // New or incomplete Google user — let them pick languages first
+      if (response.data.isNewUser || !response.data.user.languageSetupComplete) {
         const data = response.data;
         const user = data.user;
         localStorage.setItem('token', data.token);

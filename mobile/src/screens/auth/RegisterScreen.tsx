@@ -63,7 +63,7 @@ const RegisterScreen: React.FC = () => {
           login({ token, user });
           clearGuestXP();
           if (user.preferredVoice) setVoice(user.preferredVoice);
-          if (isNewUser) {
+          if (isNewUser || !user.languageSetupComplete) {
             setNeedsLanguageSetup(true);
           } else {
             setLanguages(user.nativeLanguage || 'en', user.targetLanguage || 'ko');

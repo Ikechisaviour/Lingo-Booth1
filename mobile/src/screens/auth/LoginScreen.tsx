@@ -92,8 +92,8 @@ const LoginScreen: React.FC = () => {
       clearGuestXP();
       if (user.preferredVoice) setVoice(user.preferredVoice);
 
-      if (isNewUser) {
-        // Force language setup for new Google users
+      if (isNewUser || !user.languageSetupComplete) {
+        // Force language setup for new or incomplete users
         setNeedsLanguageSetup(true);
       } else {
         // Existing user — apply their saved language preferences
