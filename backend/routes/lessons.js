@@ -20,8 +20,10 @@ router.get('/', optionalAuth, async (req, res) => {
     if (difficulty && VALID_DIFFICULTIES.includes(difficulty)) {
       filter.difficulty = difficulty;
     }
-    // Always filter by target language (default to 'ko' for backward compatibility)
-    filter.targetLang = targetLang || 'ko';
+    if (!targetLang) {
+      return res.status(400).json({ message: 'targetLang query parameter is required' });
+    }
+    filter.targetLang = targetLang;
 
     const lessons = await Lesson.find(filter);
     const lessonsJson = lessons.map(l => l.toJSON());
