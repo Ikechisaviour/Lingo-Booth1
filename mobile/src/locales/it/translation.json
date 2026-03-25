@@ -18,7 +18,8 @@
     "on": "Sì",
     "off": "No",
     "done": "Fatto",
-    "clearAll": "Cancella tutto"
+    "clearAll": "Cancella tutto",
+    "sending": "Invio in corso..."
   },
   "languages": {
     "en": "Inglese",
@@ -69,7 +70,13 @@
     "suspendedLoggedOut": "Il tuo account è stato sospeso. Sei stato disconnesso.",
     "contactSupport": "Contatta il supporto per maggiori informazioni.",
     "suspendedMistake": "Se ritieni che sia un errore, contatta il supporto.",
-    "reason": "Motivo"
+    "reason": "Motivo",
+    "brandTagline": "Impara qualsiasi lingua",
+    "continueWithGoogle": "Continua con Google",
+    "signingInGoogle": "Accesso in corso...",
+    "forgotPassword": "Password dimenticata?",
+    "googleFailed": "Accesso con Google fallito.",
+    "playServicesRequired": "Google Play Services richiesto."
   },
   "register": {
     "title": "Crea il tuo account",
@@ -90,7 +97,9 @@
     "validEmail": "Indirizzo email valido",
     "invalidEmail": "Inserisci un indirizzo email valido",
     "passwordsMatch": "Le password corrispondono",
-    "registrationFailed": "Registrazione fallita"
+    "registrationFailed": "Registrazione fallita",
+    "brandTagline": "Inizia il tuo viaggio",
+    "googleFailed": "Registrazione con Google fallita. Riprova."
   },
   "navbar": {
     "continue": "Continua",
@@ -428,7 +437,24 @@
     "diversifyLearning": "Diversifica l'apprendimento",
     "diversifyLearningTip": "Pratica tutte e quattro le competenze in modo equilibrato",
     "stayConsistent": "Sii costante",
-    "stayConsistentTip": "Studia un po' ogni giorno per i migliori risultati"
+    "stayConsistentTip": "Studia un po' ogni giorno per i migliori risultati",
+    "tipFocusWeak": "Concentrati sulle aree deboli",
+    "tipFocusWeakDesc": "Hai {{count}} aree in difficoltà. Ripassale ogni giorno per migliorare più velocemente.",
+    "tipBoostSkill": "Migliora il tuo {{skill}}",
+    "tipBoostSkillDesc": "La tua media in {{skill}} è {{avg}}%. Prova più esercizi di {{skill}}.",
+    "tipDeepen": "Approfondisci le tue conoscenze",
+    "tipDeepenDesc": "Hai molti elementi ancora in corso. Rivedi le lezioni prima di proseguire.",
+    "tipChallenge": "Sfida te stesso",
+    "tipChallengeDesc": "Hai padroneggiato {{count}} aree! Prova lezioni più difficili per continuare a crescere.",
+    "tipStrength": "{{skill}} è il tuo punto di forza!",
+    "tipStrengthDesc": "Ottimo lavoro con {{avg}}%! Continua così e prova contenuti avanzati.",
+    "tipMasterNext": "Verso la padronanza",
+    "tipMasterNextDesc": "{{count}} aree sono quasi padroneggiate. Ancora qualche ripasso e ce la farai!",
+    "tipRepetition": "Ripetizione spaziata",
+    "tipRepetitionDesc": "Ripassa le flashcard regolarmente per consolidare la memoria a lungo termine.",
+    "noAreas": "Nessun elemento in questa categoria ancora.",
+    "needsAttention": "Richiede attenzione",
+    "personalizedTips": "Consigli per te"
   },
   "profilePage": {
     "memberSince": "Membro dal {{date}}",
@@ -476,7 +502,7 @@
     "challengeDetail": "In Modalità Sfida, i tuoi XP diminuiscono del 15% al giorno dopo 48 ore di inattività. Solo rispondendo alle domande si resetta il timer.",
     "resetAndEnable": "Resetta XP e attiva Modalità Sfida",
     "switching": "Cambio in corso...",
-    "switchToRelaxed": "Passare alla Modalità Rilassata?",
+    "switchToRelaxed": "Passa alla modalità rilassata",
     "relaxedWarning": "I tuoi XP attuali saranno <strong>preservati</strong> in Modalità Rilassata. Tuttavia, se torni alla Modalità Sfida in futuro, i tuoi XP saranno azzerati.",
     "switchRelaxedBtn": "Passa alla Modalità Rilassata",
     "resetProgress": "Resetta progressi",
@@ -496,7 +522,35 @@
     "passwordsNoMatch": "Le nuove password non corrispondono",
     "loadingProfile": "Caricamento profilo...",
     "failedToLoad": "Impossibile caricare il profilo",
-    "unknown": "Sconosciuto"
+    "unknown": "Sconosciuto",
+    "edit": "Modifica",
+    "save": "Salva",
+    "saved": "Salvato!",
+    "role": "Ruolo",
+    "logout": "Esci",
+    "setPassword": "Imposta password",
+    "passwordTooShort": "La password deve avere almeno 6 caratteri",
+    "languagePrefs": "Preferenze lingua",
+    "langChangeHint": "Le modifiche alla lingua si applicano a tutta l'app",
+    "voiceHint": "Seleziona la voce per leggere il testo coreano",
+    "noVoicesShort": "Nessuna voce disponibile",
+    "defaultVoice": "Voce predefinita",
+    "systemDefault": "Predefinito di sistema",
+    "studyMode": "Modalità di studio",
+    "enableChallenge": "Attiva modalità sfida",
+    "disableChallenge": "Disattiva modalità sfida",
+    "challengeWarningShort": "La modalità sfida registra XP e serie",
+    "relaxedInfo": "La modalità rilassata ti permette di imparare senza pressione",
+    "enableButton": "Attiva",
+    "switchButton": "Cambia",
+    "resetXP": "Reimposta XP",
+    "resetXPDesc": "Tutti i progressi e gli XP verranno reimpostati",
+    "resetXPButton": "Reimposta XP",
+    "resetXPTitle": "Reimpostare gli XP?",
+    "resetButton": "Reimposta",
+    "deleteAccountButton": "Elimina account",
+    "deleteAccountTitle": "Eliminare l'account?",
+    "deleteButton": "Elimina"
   },
   "verifyEmail": {
     "verifying": "Verifica della tua email...",
@@ -508,7 +562,24 @@
     "failedMessage": "La verifica è fallita. Il link potrebbe essere scaduto.",
     "needNewLink": "Hai bisogno di un nuovo link?",
     "registerAgain": "Registrati di nuovo",
-    "orContactSupport": "o contatta il supporto."
+    "orContactSupport": "o contatta il supporto.",
+    "verified": "Email verificata!",
+    "failedTitle": "Verifica fallita",
+    "backToLogin": "Torna al login"
+  },
+  "forgotPassword": {
+    "title": "Password dimenticata",
+    "subtitle": "Inserisci la tua email e ti invieremo un link per reimpostare la password.",
+    "error": "Qualcosa è andato storto. Riprova.",
+    "checkEmail": "Controlla la tua email",
+    "sentMessage": "Se esiste un account con quella email, abbiamo inviato un link per reimpostare la password.",
+    "sendLink": "Invia link di reimpostazione",
+    "backToLogin": "Torna al login"
+  },
+  "emailBanner": {
+    "message": "Verifica il tuo indirizzo email.",
+    "resend": "Reinvia",
+    "sent": "Email di verifica inviata! Controlla la tua casella di posta."
   },
   "admin": {
     "title": "Pannello di Amministrazione",
@@ -602,6 +673,15 @@
     "hours": "{{count}}h {{minutes}}m",
     "overview": "Panoramica",
     "userGrowth": "Crescita utenti",
-    "recentActiveUsers": "Utenti attivi recenti"
+    "recentActiveUsers": "Utenti attivi recenti",
+    "guests": "Ospiti",
+    "avgTime": "Tempo medio",
+    "activeToday": "Attivi oggi",
+    "lessons": "Lezioni",
+    "flashcards": "Flashcard",
+    "recentActive": "Utenti attivi recenti",
+    "modeBreakdown": "Suddivisione modalità",
+    "searchUsers": "Cerca utenti...",
+    "all": "Tutti"
   }
 }

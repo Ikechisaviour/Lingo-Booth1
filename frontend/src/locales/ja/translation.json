@@ -37,7 +37,9 @@
     "logout": "ログアウト",
     "retry": "再試行",
     "done": "完了",
-    "clearAll": "全て解除"
+    "clearAll": "全て解除",
+    "sending": "送信中",
+    "saving": "保存中"
   },
   "languageSelect": {
     "title": "言語を選択",
@@ -66,7 +68,8 @@
     "suspendedLoggedOut": "アカウントが停止されました。ログアウトされました。",
     "contactSupport": "詳細についてはサポートにお問い合わせください。",
     "suspendedMistake": "間違いだと思われる場合は、サポートにお問い合わせください。",
-    "reason": "理由"
+    "reason": "理由",
+    "forgotPassword": "パスワードをお忘れですか？"
   },
   "register": {
     "title": "アカウントを作成",
@@ -335,7 +338,8 @@
     "translationFailed": "翻訳不可",
     "retryTranslation": "再試行",
     "clickCategoryHint": "カテゴリーを選択して学習",
-    "familiarity": "習熟度"
+    "familiarity": "習熟度",
+    "topicLabel": "トピック"
   },
   "progress": {
     "title": "あなたの<1>進捗</1>",
@@ -445,7 +449,8 @@
     "passwordsNoMatch": "新しいパスワードが一致しません",
     "loadingProfile": "プロフィール読み込み中...",
     "failedToLoad": "プロフィールの読み込みに失敗しました",
-    "unknown": "不明"
+    "unknown": "不明",
+    "setPassword": "パスワードを設定"
   },
   "verifyEmail": {
     "verifying": "メールを確認中...",
@@ -555,6 +560,27 @@
     "overview": "概要",
     "userGrowth": "ユーザーの成長",
     "recentActiveUsers": "最近のアクティブユーザー"
+  },
+  "forgotPassword": {
+    "title": "パスワードをお忘れですか",
+    "subtitle": "メールアドレスを入力してください。パスワードリセットリンクをお送りします。",
+    "error": "リセットリンクの送信に失敗しました。もう一度お試しください。",
+    "checkEmail": "メールを確認してください",
+    "sentMessage": "パスワードリセットリンクを{{email}}に送信しました。",
+    "sendLink": "リセットリンクを送信",
+    "backToLogin": "ログインに戻る"
+  },
+  "resetPassword": {
+    "title": "パスワードをリセット",
+    "subtitle": "新しいパスワードを入力してください。",
+    "error": "パスワードのリセットに失敗しました。もう一度お試しください。",
+    "invalidLink": "このリセットリンクは無効または期限切れです。",
+    "noToken": "リセットトークンがありません。新しいリセットリンクをリクエストしてください。",
+    "requestNew": "新しいリセットリンクをリクエスト",
+    "success": "パスワードが正常にリセットされました。",
+    "goToLogin": "ログインへ",
+    "newPasswordPlaceholder": "新しいパスワード",
+    "resetButton": "パスワードをリセット"
   },
   "emailBanner": {
     "message": "メールアドレスを認証してください。受信トレイ（および迷惑メールフォルダ）で認証リンクを確認してください。",

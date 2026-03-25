@@ -18,7 +18,8 @@
     "on": "Aan",
     "off": "Uit",
     "done": "Klaar",
-    "clearAll": "Alles wissen"
+    "clearAll": "Alles wissen",
+    "sending": "Verzenden..."
   },
   "languages": {
     "en": "Engels",
@@ -69,7 +70,13 @@
     "suspendedLoggedOut": "Je account is geschorst. Je bent uitgelogd.",
     "contactSupport": "Neem contact op met support voor meer informatie.",
     "suspendedMistake": "Als je denkt dat dit een fout is, neem dan contact op met support.",
-    "reason": "Reden"
+    "reason": "Reden",
+    "brandTagline": "Leer elke taal",
+    "continueWithGoogle": "Doorgaan met Google",
+    "signingInGoogle": "Inloggen...",
+    "forgotPassword": "Wachtwoord vergeten?",
+    "googleFailed": "Google-aanmelding mislukt.",
+    "playServicesRequired": "Google Play Services vereist."
   },
   "register": {
     "title": "Maak je account aan",
@@ -90,7 +97,9 @@
     "validEmail": "Geldig e-mailadres",
     "invalidEmail": "Voer een geldig e-mailadres in",
     "passwordsMatch": "Wachtwoorden komen overeen",
-    "registrationFailed": "Registratie mislukt"
+    "registrationFailed": "Registratie mislukt",
+    "brandTagline": "Begin je reis",
+    "googleFailed": "Google-registratie mislukt. Probeer het opnieuw."
   },
   "navbar": {
     "continue": "Doorgaan",
@@ -428,7 +437,24 @@
     "diversifyLearning": "Diversifieer het leren",
     "diversifyLearningTip": "Oefen alle vier vaardigheden gelijkmatig",
     "stayConsistent": "Wees consistent",
-    "stayConsistentTip": "Studeer elke dag een beetje voor de beste resultaten"
+    "stayConsistentTip": "Studeer elke dag een beetje voor de beste resultaten",
+    "tipFocusWeak": "Focus op zwakke punten",
+    "tipFocusWeakDesc": "Je hebt {{count}} moeilijke gebieden. Herhaal ze dagelijks om sneller te verbeteren.",
+    "tipBoostSkill": "Verbeter je {{skill}}",
+    "tipBoostSkillDesc": "Je {{skill}} gemiddelde is {{avg}}%. Probeer meer {{skill}} oefeningen.",
+    "tipDeepen": "Verdiep je kennis",
+    "tipDeepenDesc": "Je hebt veel items nog in uitvoering. Herhaal lessen voordat je verdergaat.",
+    "tipChallenge": "Daag jezelf uit",
+    "tipChallengeDesc": "Je hebt {{count}} gebieden beheerst! Probeer moeilijkere lessen om te blijven groeien.",
+    "tipStrength": "{{skill}} is je sterke punt!",
+    "tipStrengthDesc": "Geweldig werk met {{avg}}%! Ga zo door en probeer geavanceerde inhoud.",
+    "tipMasterNext": "Streven naar beheersing",
+    "tipMasterNextDesc": "{{count}} gebieden zijn bijna beheerst. Nog een paar herhalingen en je bent er!",
+    "tipRepetition": "Gespreid herhalen",
+    "tipRepetitionDesc": "Herhaal flashcards regelmatig om het langetermijngeheugen te versterken.",
+    "noAreas": "Nog geen items in deze categorie.",
+    "needsAttention": "Heeft aandacht nodig",
+    "personalizedTips": "Tips voor jou"
   },
   "profilePage": {
     "memberSince": "Lid sinds {{date}}",
@@ -476,7 +502,7 @@
     "challengeDetail": "In Uitdagingsmodus neemt je XP 15% per dag af na 48 uur inactiviteit. Alleen het beantwoorden van vragen reset de timer.",
     "resetAndEnable": "XP resetten en Uitdagingsmodus inschakelen",
     "switching": "Overschakelen...",
-    "switchToRelaxed": "Overstappen naar Ontspannen modus?",
+    "switchToRelaxed": "Overschakelen naar ontspannen modus",
     "relaxedWarning": "Je huidige XP wordt <strong>bewaard</strong> in Ontspannen modus. Als je in de toekomst terugschakelt naar Uitdagingsmodus, wordt je XP naar 0 gereset.",
     "switchRelaxedBtn": "Overstappen naar Ontspannen modus",
     "resetProgress": "Voortgang resetten",
@@ -496,7 +522,35 @@
     "passwordsNoMatch": "Nieuwe wachtwoorden komen niet overeen",
     "loadingProfile": "Profiel laden...",
     "failedToLoad": "Profiel laden mislukt",
-    "unknown": "Onbekend"
+    "unknown": "Onbekend",
+    "edit": "Bewerken",
+    "save": "Opslaan",
+    "saved": "Opgeslagen!",
+    "role": "Rol",
+    "logout": "Uitloggen",
+    "setPassword": "Wachtwoord instellen",
+    "passwordTooShort": "Wachtwoord moet minimaal 6 tekens bevatten",
+    "languagePrefs": "Taalvoorkeuren",
+    "langChangeHint": "Taalwijzigingen gelden voor de hele app",
+    "voiceHint": "Kies de stem voor het voorlezen van Koreaanse tekst",
+    "noVoicesShort": "Geen stemmen beschikbaar",
+    "defaultVoice": "Standaardstem",
+    "systemDefault": "Systeemstandaard",
+    "studyMode": "Studiemodus",
+    "enableChallenge": "Uitdagingsmodus inschakelen",
+    "disableChallenge": "Uitdagingsmodus uitschakelen",
+    "challengeWarningShort": "Uitdagingsmodus houdt XP en reeksen bij",
+    "relaxedInfo": "Ontspannen modus laat je leren zonder druk",
+    "enableButton": "Inschakelen",
+    "switchButton": "Wisselen",
+    "resetXP": "XP resetten",
+    "resetXPDesc": "Alle voortgang en XP worden gereset",
+    "resetXPButton": "XP resetten",
+    "resetXPTitle": "XP resetten?",
+    "resetButton": "Resetten",
+    "deleteAccountButton": "Account verwijderen",
+    "deleteAccountTitle": "Account verwijderen?",
+    "deleteButton": "Verwijderen"
   },
   "verifyEmail": {
     "verifying": "Je e-mail verifiëren...",
@@ -508,7 +562,24 @@
     "failedMessage": "Verificatie mislukt. De link is mogelijk verlopen.",
     "needNewLink": "Een nieuwe link nodig?",
     "registerAgain": "Registreer opnieuw",
-    "orContactSupport": "of neem contact op met support."
+    "orContactSupport": "of neem contact op met support.",
+    "verified": "E-mail geverifieerd!",
+    "failedTitle": "Verificatie mislukt",
+    "backToLogin": "Terug naar inloggen"
+  },
+  "forgotPassword": {
+    "title": "Wachtwoord vergeten",
+    "subtitle": "Voer je e-mail in en we sturen je een link om je wachtwoord te resetten.",
+    "error": "Er ging iets mis. Probeer het opnieuw.",
+    "checkEmail": "Controleer je e-mail",
+    "sentMessage": "Als er een account met dat e-mailadres bestaat, hebben we een resetlink gestuurd.",
+    "sendLink": "Resetlink versturen",
+    "backToLogin": "Terug naar inloggen"
+  },
+  "emailBanner": {
+    "message": "Verifieer je e-mailadres.",
+    "resend": "Opnieuw versturen",
+    "sent": "Verificatie-e-mail verstuurd! Controleer je inbox."
   },
   "admin": {
     "title": "Admin-dashboard",
@@ -602,6 +673,15 @@
     "hours": "{{count}}u {{minutes}}m",
     "overview": "Overzicht",
     "userGrowth": "Gebruikersgroei",
-    "recentActiveUsers": "Recent actieve gebruikers"
+    "recentActiveUsers": "Recent actieve gebruikers",
+    "guests": "Gasten",
+    "avgTime": "Gem. tijd",
+    "activeToday": "Vandaag actief",
+    "lessons": "Lessen",
+    "flashcards": "Flashcards",
+    "recentActive": "Recent actieve gebruikers",
+    "modeBreakdown": "Modusoverzicht",
+    "searchUsers": "Gebruikers zoeken...",
+    "all": "Alle"
   }
 }

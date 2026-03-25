@@ -18,7 +18,8 @@
     "on": "开",
     "off": "关",
     "done": "完成",
-    "clearAll": "全部清除"
+    "clearAll": "全部清除",
+    "sending": "发送中..."
   },
   "languages": {
     "en": "英语",
@@ -69,7 +70,13 @@
     "suspendedLoggedOut": "你的账号已被停用。你已被退出登录。",
     "contactSupport": "请联系客服了解更多信息。",
     "suspendedMistake": "如果你认为这是个错误，请联系客服。",
-    "reason": "原因"
+    "reason": "原因",
+    "brandTagline": "学习任何语言",
+    "continueWithGoogle": "使用Google继续",
+    "signingInGoogle": "登录中...",
+    "forgotPassword": "忘记密码？",
+    "googleFailed": "Google登录失败。",
+    "playServicesRequired": "需要Google Play服务。"
   },
   "register": {
     "title": "创建你的账号",
@@ -90,7 +97,9 @@
     "validEmail": "有效的邮箱地址",
     "invalidEmail": "请输入有效的邮箱地址",
     "passwordsMatch": "密码匹配",
-    "registrationFailed": "注册失败"
+    "registrationFailed": "注册失败",
+    "brandTagline": "开启你的学习之旅",
+    "googleFailed": "Google注册失败。请重试。"
   },
   "navbar": {
     "continue": "继续",
@@ -428,7 +437,24 @@
     "diversifyLearning": "多元化学习",
     "diversifyLearningTip": "均衡练习四种技能",
     "stayConsistent": "保持坚持",
-    "stayConsistentTip": "每天学一点，效果最佳"
+    "stayConsistentTip": "每天学一点，效果最佳",
+    "tipFocusWeak": "关注薄弱环节",
+    "tipFocusWeakDesc": "你有{{count}}个薄弱领域。每天复习可以更快进步。",
+    "tipBoostSkill": "提升你的{{skill}}",
+    "tipBoostSkillDesc": "你的{{skill}}平均分为{{avg}}%。多做一些{{skill}}练习吧。",
+    "tipDeepen": "深化你的知识",
+    "tipDeepenDesc": "你有很多项目仍在学习中。继续之前先复习课程。",
+    "tipChallenge": "挑战自我",
+    "tipChallengeDesc": "你已掌握{{count}}个领域！尝试更难的课程继续成长。",
+    "tipStrength": "{{skill}}是你的强项！",
+    "tipStrengthDesc": "{{avg}}%的优秀成绩！继续保持并尝试高级内容。",
+    "tipMasterNext": "向精通迈进",
+    "tipMasterNextDesc": "{{count}}个领域即将精通。再复习几次就能达成！",
+    "tipRepetition": "间隔重复",
+    "tipRepetitionDesc": "定期复习闪卡以巩固长期记忆。",
+    "noAreas": "此类别暂无项目。",
+    "needsAttention": "需要关注",
+    "personalizedTips": "专属建议"
   },
   "profilePage": {
     "memberSince": "{{date}}加入",
@@ -476,7 +502,7 @@
     "challengeDetail": "在挑战模式中，48小时不活跃后你的XP每天减少15%。只有回答问题才能重置计时器。",
     "resetAndEnable": "重置XP并开启挑战模式",
     "switching": "切换中...",
-    "switchToRelaxed": "切换到轻松模式？",
+    "switchToRelaxed": "切换到轻松模式",
     "relaxedWarning": "你当前的XP将在轻松模式中<strong>保留</strong>。但如果将来你切换回挑战模式，XP将被重置为0。",
     "switchRelaxedBtn": "切换到轻松模式",
     "resetProgress": "重置进度",
@@ -496,7 +522,35 @@
     "passwordsNoMatch": "新密码不匹配",
     "loadingProfile": "加载个人资料中...",
     "failedToLoad": "个人资料加载失败",
-    "unknown": "未知"
+    "unknown": "未知",
+    "edit": "编辑",
+    "save": "保存",
+    "saved": "已保存！",
+    "role": "角色",
+    "logout": "退出登录",
+    "setPassword": "设置密码",
+    "passwordTooShort": "密码至少需要6个字符",
+    "languagePrefs": "语言偏好",
+    "langChangeHint": "语言更改将应用于整个应用",
+    "voiceHint": "选择用于朗读韩语文本的语音",
+    "noVoicesShort": "没有可用的语音",
+    "defaultVoice": "默认语音",
+    "systemDefault": "系统默认",
+    "studyMode": "学习模式",
+    "enableChallenge": "启用挑战模式",
+    "disableChallenge": "禁用挑战模式",
+    "challengeWarningShort": "挑战模式会记录经验值和连续学习天数",
+    "relaxedInfo": "轻松模式让您无压力地学习",
+    "enableButton": "启用",
+    "switchButton": "切换",
+    "resetXP": "重置经验值",
+    "resetXPDesc": "所有进度和经验值将被重置",
+    "resetXPButton": "重置经验值",
+    "resetXPTitle": "确定要重置经验值吗？",
+    "resetButton": "重置",
+    "deleteAccountButton": "删除账户",
+    "deleteAccountTitle": "确定要删除账户吗？",
+    "deleteButton": "删除"
   },
   "verifyEmail": {
     "verifying": "正在验证你的邮箱...",
@@ -508,7 +562,24 @@
     "failedMessage": "验证失败。链接可能已过期。",
     "needNewLink": "需要新链接？",
     "registerAgain": "重新注册",
-    "orContactSupport": "或联系客服。"
+    "orContactSupport": "或联系客服。",
+    "verified": "邮箱已验证！",
+    "failedTitle": "验证失败",
+    "backToLogin": "返回登录"
+  },
+  "forgotPassword": {
+    "title": "忘记密码",
+    "subtitle": "输入你的邮箱，我们将发送密码重置链接。",
+    "error": "出了点问题。请重试。",
+    "checkEmail": "检查你的邮箱",
+    "sentMessage": "如果该邮箱对应的账号存在，我们已发送密码重置链接。",
+    "sendLink": "发送重置链接",
+    "backToLogin": "返回登录"
+  },
+  "emailBanner": {
+    "message": "请验证你的邮箱地址。",
+    "resend": "重新发送",
+    "sent": "验证邮件已发送！请检查你的收件箱。"
   },
   "admin": {
     "title": "管理控制台",
@@ -602,6 +673,15 @@
     "hours": "{{count}}小时{{minutes}}分钟",
     "overview": "概览",
     "userGrowth": "用户增长",
-    "recentActiveUsers": "最近活跃用户"
+    "recentActiveUsers": "最近活跃用户",
+    "guests": "访客",
+    "avgTime": "平均时间",
+    "activeToday": "今日活跃",
+    "lessons": "课程",
+    "flashcards": "闪卡",
+    "recentActive": "最近活跃用户",
+    "modeBreakdown": "模式分布",
+    "searchUsers": "搜索用户...",
+    "all": "全部"
   }
 }

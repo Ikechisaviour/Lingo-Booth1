@@ -37,7 +37,9 @@
     "logout": "Uitloggen",
     "retry": "Opnieuw",
     "done": "Klaar",
-    "clearAll": "Alles wissen"
+    "clearAll": "Alles wissen",
+    "sending": "Verzenden",
+    "saving": "Opslaan"
   },
   "languageSelect": {
     "title": "Kies je talen",
@@ -66,7 +68,8 @@
     "suspendedLoggedOut": "Je account is geschorst. Je bent uitgelogd.",
     "contactSupport": "Neem contact op met support voor meer informatie.",
     "suspendedMistake": "Als je denkt dat dit een fout is, neem dan contact op met support.",
-    "reason": "Reden"
+    "reason": "Reden",
+    "forgotPassword": "Wachtwoord vergeten?"
   },
   "register": {
     "title": "Maak je account aan",
@@ -335,7 +338,8 @@
     "translationFailed": "Vertaling niet beschikbaar",
     "retryTranslation": "Opnieuw",
     "clickCategoryHint": "Selecteer categorieën om te studeren",
-    "familiarity": "Bekendheid"
+    "familiarity": "Bekendheid",
+    "topicLabel": "Onderwerp"
   },
   "progress": {
     "title": "Je <1>voortgang</1>",
@@ -445,7 +449,8 @@
     "passwordsNoMatch": "Nieuwe wachtwoorden komen niet overeen",
     "loadingProfile": "Profiel laden...",
     "failedToLoad": "Profiel laden mislukt",
-    "unknown": "Onbekend"
+    "unknown": "Onbekend",
+    "setPassword": "Wachtwoord instellen"
   },
   "verifyEmail": {
     "verifying": "Je e-mail verifiëren...",
@@ -555,6 +560,27 @@
     "overview": "Overzicht",
     "userGrowth": "Gebruikersgroei",
     "recentActiveUsers": "Recent actieve gebruikers"
+  },
+  "forgotPassword": {
+    "title": "Wachtwoord vergeten",
+    "subtitle": "Voer je e-mailadres in en we sturen je een link om je wachtwoord opnieuw in te stellen.",
+    "error": "Kan de resetlink niet verzenden. Probeer het opnieuw.",
+    "checkEmail": "Controleer je e-mail",
+    "sentMessage": "Er is een resetlink verzonden naar {{email}}.",
+    "sendLink": "Resetlink verzenden",
+    "backToLogin": "Terug naar inloggen"
+  },
+  "resetPassword": {
+    "title": "Wachtwoord opnieuw instellen",
+    "subtitle": "Voer je nieuwe wachtwoord in.",
+    "error": "Kan het wachtwoord niet opnieuw instellen. Probeer het opnieuw.",
+    "invalidLink": "Deze resetlink is ongeldig of verlopen.",
+    "noToken": "Resettoken ontbreekt. Vraag een nieuwe link aan.",
+    "requestNew": "Nieuwe link aanvragen",
+    "success": "Je wachtwoord is succesvol opnieuw ingesteld.",
+    "goToLogin": "Ga naar inloggen",
+    "newPasswordPlaceholder": "Nieuw wachtwoord",
+    "resetButton": "Wachtwoord opnieuw instellen"
   },
   "emailBanner": {
     "message": "Verifieer je e-mailadres. Controleer je inbox (en de spam-/ongewenste map) voor de verificatielink.",

@@ -18,7 +18,8 @@
     "on": "Bukas",
     "off": "Sarado",
     "done": "Tapos",
-    "clearAll": "Burahin lahat"
+    "clearAll": "Burahin lahat",
+    "sending": "Ipinapadala..."
   },
   "languages": {
     "en": "Ingles",
@@ -69,7 +70,13 @@
     "suspendedLoggedOut": "Na-suspend ang iyong account. Na-log out ka na.",
     "contactSupport": "Mangyaring makipag-ugnayan sa support para sa karagdagang impormasyon.",
     "suspendedMistake": "Kung sa tingin mo ay mali ito, mangyaring makipag-ugnayan sa support.",
-    "reason": "Dahilan"
+    "reason": "Dahilan",
+    "brandTagline": "Matuto ng Koreano para sa totoong pakikipag-usap",
+    "continueWithGoogle": "Magpatuloy gamit ang Google",
+    "signingInGoogle": "Nagsa-sign in gamit ang Google...",
+    "forgotPassword": "Nakalimutan ang password?",
+    "googleFailed": "Hindi nagtagumpay ang pag-sign in gamit ang Google. Pakisubukan muli.",
+    "playServicesRequired": "Kailangan ang Google Play Services para sa pag-sign in gamit ang Google."
   },
   "register": {
     "title": "Gumawa ng Account",
@@ -90,7 +97,9 @@
     "validEmail": "Valid na email address",
     "invalidEmail": "Mangyaring maglagay ng valid na email address",
     "passwordsMatch": "Magkatugma ang mga password",
-    "registrationFailed": "Hindi makapag-rehistro"
+    "registrationFailed": "Hindi makapag-rehistro",
+    "brandTagline": "Matuto ng Koreano para sa totoong pakikipag-usap",
+    "googleFailed": "Hindi nagtagumpay ang pag-sign in gamit ang Google. Pakisubukan muli."
   },
   "navbar": {
     "continue": "Magpatuloy",
@@ -428,7 +437,28 @@
     "diversifyLearning": "Pag-iba-ibahin ang Pag-aaral",
     "diversifyLearningTip": "Magsanay sa lahat ng apat na kasanayan nang pantay-pantay",
     "stayConsistent": "Manatiling Consistent",
-    "stayConsistentTip": "Mag-aral nang kaunti araw-araw para sa pinakamahusay na resulta"
+    "stayConsistentTip": "Mag-aral nang kaunti araw-araw para sa pinakamahusay na resulta",
+    "tipFocusWeak": "Mag-focus sa Mahihinang Bahagi",
+    "tipFocusWeakDesc": "Mag-focus sa {{skill}} gamit ang {{category}} content para mapabuti",
+    "tipMixSkills": "Paghaluin ang mga Kasanayan",
+    "tipMixSkillsDesc": "Subukang magsanay sa iba't ibang kasanayan — hindi lang ang iyong paborito!",
+    "tipReviewMistakes": "I-review ang mga Pagkakamali",
+    "tipReviewMistakesDesc": "Bumalik sa mga tanong na mali ang sagot mo at subukang muli",
+    "tipSetGoals": "Magtakda ng Maliliit na Layunin",
+    "tipSetGoalsDesc": "Magtakda ng layunin tulad ng 5 flashcards o 1 aralin bawat araw",
+    "tipListenMore": "Makinig nang Higit Pa",
+    "tipListenMoreDesc": "Gamitin ang audio mode para mapahusay ang iyong pag-unawa sa pakikinig",
+    "tipSpeakAloud": "Magsalita nang Malakas",
+    "tipSpeakAloudDesc": "Basahin nang malakas ang mga salita para mapabuti ang iyong pagbigkas",
+    "tipUseCategories": "Gamitin ang mga Kategorya",
+    "tipUseCategoriesDesc": "Mag-focus sa isang kategorya bago lumipat sa susunod",
+    "tipTrackProgress": "Subaybayan ang Progreso",
+    "tipTrackProgressDesc": "Regular na tingnan ang iyong stats para makita ang mga trend sa pagpapabuti",
+    "tipStayMotivated": "Manatiling Motivated",
+    "tipStayMotivatedDesc": "Tandaan kung bakit ka nagsimulang matuto at ipagdiwang ang maliliit na tagumpay",
+    "noTipsYet": "Wala pang available na mga tip — simulan ang pag-aaral para makakuha ng personalized na payo!",
+    "overallAvg": "Kabuuang Average: {{avg}}%",
+    "personalizedTips": "Personalized na mga Tip"
   },
   "profilePage": {
     "memberSince": "Miyembro mula {{date}}",
@@ -496,7 +526,38 @@
     "passwordsNoMatch": "Hindi magkatugma ang mga bagong password",
     "loadingProfile": "Naglo-load ng profile...",
     "failedToLoad": "Hindi na-load ang profile",
-    "unknown": "Hindi alam"
+    "unknown": "Hindi alam",
+    "edit": "I-edit ang Profile",
+    "editProfile": "I-edit ang Profile",
+    "editProfileDesc": "I-update ang iyong username at personal na impormasyon",
+    "usernamePlaceholder": "Ilagay ang bagong username",
+    "saveChanges": "I-save ang mga Pagbabago",
+    "saving": "Nagse-save...",
+    "appSettings": "Mga Setting ng App",
+    "notifications": "Mga Notification",
+    "notificationsDesc": "Tumanggap ng mga paalala sa pag-aaral at update",
+    "soundEffects": "Mga Sound Effect",
+    "soundEffectsDesc": "Patugtugin ang mga tunog para sa tama/maling sagot",
+    "autoPlayAudio": "Auto-play ng Audio",
+    "autoPlayAudioDesc": "Awtomatikong patugtugin ang audio sa mga aralin at flashcard",
+    "romanization": "Romanisasyon",
+    "romanizationDesc": "Ipakita ang mga romanized na pagbigkas",
+    "theme": "Tema",
+    "themeDesc": "Pumili ng hitsura ng app",
+    "themeSystem": "System",
+    "themeLight": "Maliwanag",
+    "themeDark": "Madilim",
+    "interfaceLanguage": "Wika ng Interface",
+    "interfaceLanguageDesc": "Piliin ang wika ng app",
+    "security": "Seguridad",
+    "emailVerification": "Pag-verify ng Email",
+    "emailVerified": "Na-verify ang email",
+    "emailNotVerified": "Hindi pa na-verify ang email",
+    "verifyNow": "I-verify Ngayon",
+    "resendVerification": "Ipadala Muli ang Verification",
+    "sending": "Ipinapadala...",
+    "verificationSent": "Naipadala na ang verification email!",
+    "deleteButton": "Burahin ang Account"
   },
   "verifyEmail": {
     "verifying": "Vine-verify ang iyong email...",
@@ -508,7 +569,25 @@
     "failedMessage": "Nabigo ang verification. Maaaring nag-expire na ang link.",
     "needNewLink": "Kailangan ng bagong link?",
     "registerAgain": "Mag-rehistro muli",
-    "orContactSupport": "o makipag-ugnayan sa support."
+    "orContactSupport": "o makipag-ugnayan sa support.",
+    "verified": "Na-verify na",
+    "failedTitle": "Nabigo ang Pag-verify",
+    "backToLogin": "Bumalik sa Log In"
+  },
+  "forgotPassword": {
+    "title": "I-reset ang Password",
+    "subtitle": "Ilagay ang iyong email address at magpapadala kami ng link para ma-reset ang iyong password.",
+    "emailPlaceholder": "Ilagay ang iyong email",
+    "sendResetLink": "Ipadala ang Reset Link",
+    "backToLogin": "Bumalik sa Log In",
+    "successTitle": "Tingnan ang iyong email",
+    "successMessage": "Nagpadala kami ng link para ma-reset ang password sa {{email}}",
+    "failedToSend": "Hindi naipadala ang reset link. Pakisubukan muli."
+  },
+  "emailBanner": {
+    "message": "Pakikumpirmahin ang iyong email para ma-secure ang iyong account.",
+    "resend": "Ipadala muli",
+    "dismissed": "Na-dismiss ang paalala. Puwede mo itong mahanap sa mga setting ng iyong profile."
   },
   "admin": {
     "title": "Dashboard ng Admin",
@@ -602,6 +681,15 @@
     "hours": "{{count}}o {{minutes}}m",
     "overview": "Pangkalahatang-tanaw",
     "userGrowth": "Paglago ng User",
-    "recentActiveUsers": "Kamakailang Aktibong mga User"
+    "recentActiveUsers": "Kamakailang Aktibong mga User",
+    "guests": "Mga Bisita",
+    "guestsFilter": "Mga Bisita",
+    "guest": "Bisita",
+    "guestTag": "Bisita",
+    "registered": "Rehistrado",
+    "registeredFilter": "Rehistrado",
+    "registeredTag": "Rehistrado",
+    "type": "Uri",
+    "all": "Lahat"
   }
 }

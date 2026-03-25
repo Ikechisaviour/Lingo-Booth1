@@ -70,7 +70,7 @@ const ProfileScreen: React.FC = () => {
       setEditUsername(userRes.data.username);
       setError('');
     } catch {
-      setError(t('profile.failedToLoad', 'Failed to load profile'));
+      setError(t('profilePage.failedToLoad', 'Failed to load profile'));
     } finally {
       setLoading(false);
     }
@@ -124,7 +124,7 @@ const ProfileScreen: React.FC = () => {
       await userService.updateProfile(userId, { username: editUsername.trim() });
       useAuthStore.getState().setUsername(editUsername.trim());
       setIsEditing(false);
-      setSaveMessage(t('profile.saved', 'Saved!'));
+      setSaveMessage(t('profilePage.saved', 'Saved!'));
       setTimeout(() => setSaveMessage(''), 2000);
     } catch (err: any) {
       Alert.alert('Error', err.response?.data?.message || 'Failed to update');
@@ -137,14 +137,14 @@ const ProfileScreen: React.FC = () => {
       return;
     }
     if (newPassword.length < 6) {
-      setPasswordMsg(t('profile.passwordTooShort', 'Password must be at least 6 characters'));
+      setPasswordMsg(t('profilePage.passwordTooShort', 'Password must be at least 6 characters'));
       return;
     }
     try {
       const payload: any = { newPassword };
       if (user?.hasPassword) payload.currentPassword = currentPassword;
       await userService.changePassword(userId!, payload);
-      setPasswordMsg(t('profile.passwordChanged', 'Password changed successfully!'));
+      setPasswordMsg(t('profilePage.passwordChanged', 'Password changed successfully!'));
       setCurrentPassword('');
       setNewPassword('');
       setConfirmPassword('');
@@ -156,16 +156,16 @@ const ProfileScreen: React.FC = () => {
   const handleToggleChallengeMode = () => {
     const enable = !challengeMode;
     const title = enable
-      ? t('profile.enableChallenge', 'Enable Challenge Mode?')
-      : t('profile.disableChallenge', 'Switch to Relaxed Mode?');
+      ? t('profilePage.enableChallenge', 'Enable Challenge Mode?')
+      : t('profilePage.disableChallenge', 'Switch to Relaxed Mode?');
     const msg = enable
-      ? t('profile.challengeWarning', 'XP will decay daily if you don\'t study. Your XP will be reset to 0.')
-      : t('profile.relaxedInfo', 'XP will no longer decay. Your current XP is preserved.');
+      ? t('profilePage.challengeWarning', 'XP will decay daily if you don\'t study. Your XP will be reset to 0.')
+      : t('profilePage.relaxedInfo', 'XP will no longer decay. Your current XP is preserved.');
 
     Alert.alert(title, msg, [
       { text: t('common.cancel', 'Cancel'), style: 'cancel' },
       {
-        text: enable ? t('profile.enableButton', 'Enable') : t('profile.switchButton', 'Switch'),
+        text: enable ? t('profilePage.enableButton', 'Enable') : t('profilePage.switchButton', 'Switch'),
         style: enable ? 'destructive' : 'default',
         onPress: async () => {
           try {
@@ -180,12 +180,12 @@ const ProfileScreen: React.FC = () => {
 
   const handleResetXP = () => {
     Alert.alert(
-      t('profile.resetXPTitle', 'Reset XP?'),
-      t('profile.resetXPDesc', 'This will clear all XP history. This cannot be undone.'),
+      t('profilePage.resetXPTitle', 'Reset XP?'),
+      t('profilePage.resetXPDesc', 'This will clear all XP history. This cannot be undone.'),
       [
         { text: t('common.cancel', 'Cancel'), style: 'cancel' },
         {
-          text: t('profile.resetButton', 'Reset'),
+          text: t('profilePage.resetButton', 'Reset'),
           style: 'destructive',
           onPress: async () => {
             try {
@@ -200,12 +200,12 @@ const ProfileScreen: React.FC = () => {
 
   const handleDeleteAccount = () => {
     Alert.alert(
-      t('profile.deleteAccountTitle', 'Delete Account?'),
-      t('profile.deleteAccountDesc', 'This action is permanent. All your data will be deleted.'),
+      t('profilePage.deleteAccountTitle', 'Delete Account?'),
+      t('profilePage.deleteAccountDesc', 'This action is permanent. All your data will be deleted.'),
       [
         { text: t('common.cancel', 'Cancel'), style: 'cancel' },
         {
-          text: t('profile.deleteButton', 'Delete'),
+          text: t('profilePage.deleteButton', 'Delete'),
           style: 'destructive',
           onPress: async () => {
             try {
@@ -246,7 +246,7 @@ const ProfileScreen: React.FC = () => {
         </View>
         <Text variant="titleLarge" style={styles.profileName}>{user?.username || username}</Text>
         <Text style={styles.profileSince}>
-          {t('profile.memberSince', 'Member since')} {user?.createdAt ? new Date(user.createdAt).toLocaleDateString() : ''}
+          {t('profilePage.memberSince', 'Member since')} {user?.createdAt ? new Date(user.createdAt).toLocaleDateString() : ''}
         </Text>
         <View style={styles.profileStats}>
           <View style={styles.profileStat}>
@@ -265,9 +265,9 @@ const ProfileScreen: React.FC = () => {
         value={activeTab}
         onValueChange={setActiveTab}
         buttons={[
-          { value: 'profile', label: t('profile.profileTab', 'Profile') },
-          { value: 'settings', label: t('profile.settingsTab', 'Settings') },
-          { value: 'account', label: t('profile.accountTab', 'Account') },
+          { value: 'profile', label: t('profilePage.profileTab', 'Profile') },
+          { value: 'settings', label: t('profilePage.settingsTab', 'Settings') },
+          { value: 'account', label: t('profilePage.accountTab', 'Account') },
         ]}
         style={styles.tabs}
       />
@@ -279,11 +279,11 @@ const ProfileScreen: React.FC = () => {
             <Card.Content>
               <View style={styles.cardTitleRow}>
                 <Text variant="titleMedium" style={styles.cardTitle}>
-                  {t('profile.personalInfo', 'Personal Info')}
+                  {t('profilePage.personalInfo', 'Personal Info')}
                 </Text>
                 {!isEditing ? (
                   <Button mode="text" onPress={() => setIsEditing(true)} compact>
-                    {t('profile.edit', 'Edit')}
+                    {t('profilePage.edit', 'Edit')}
                   </Button>
                 ) : (
                   <View style={{ flexDirection: 'row', gap: 8 }}>
@@ -291,7 +291,7 @@ const ProfileScreen: React.FC = () => {
                       {t('common.cancel', 'Cancel')}
                     </Button>
                     <Button mode="contained" onPress={handleSaveUsername} compact>
-                      {t('profile.save', 'Save')}
+                      {t('profilePage.save', 'Save')}
                     </Button>
                   </View>
                 )}
@@ -300,7 +300,7 @@ const ProfileScreen: React.FC = () => {
 
               {isEditing ? (
                 <TextInput
-                  label={t('profile.username', 'Username')}
+                  label={t('profilePage.username', 'Username')}
                   value={editUsername}
                   onChangeText={setEditUsername}
                   mode="outlined"
@@ -309,15 +309,15 @@ const ProfileScreen: React.FC = () => {
               ) : (
                 <>
                   <View style={styles.infoRow}>
-                    <Text style={styles.infoLabel}>{t('profile.username', 'Username')}</Text>
+                    <Text style={styles.infoLabel}>{t('profilePage.username', 'Username')}</Text>
                     <Text style={styles.infoValue}>{user?.username}</Text>
                   </View>
                   <View style={styles.infoRow}>
-                    <Text style={styles.infoLabel}>{t('profile.email', 'Email')}</Text>
+                    <Text style={styles.infoLabel}>{t('profilePage.email', 'Email')}</Text>
                     <Text style={styles.infoValue}>{user?.email}</Text>
                   </View>
                   <View style={styles.infoRow}>
-                    <Text style={styles.infoLabel}>{t('profile.role', 'Role')}</Text>
+                    <Text style={styles.infoLabel}>{t('profilePage.role', 'Role')}</Text>
                     <Text style={styles.infoValue}>{user?.role === 'admin' ? 'Admin' : 'User'}</Text>
                   </View>
                 </>
@@ -338,7 +338,7 @@ const ProfileScreen: React.FC = () => {
           )}
 
           <Button mode="outlined" onPress={handleLogout} style={styles.logoutBtn} textColor={colors.error}>
-            {t('profile.logout', 'Log Out')}
+            {t('profilePage.logout', 'Log Out')}
           </Button>
         </>
       )}
@@ -350,7 +350,7 @@ const ProfileScreen: React.FC = () => {
           <Card style={styles.card}>
             <Card.Content>
               <Text variant="titleMedium" style={styles.cardTitle}>
-                {user?.hasPassword ? t('profile.changePassword', 'Change Password') : t('profile.setPassword', 'Set Password')}
+                {user?.hasPassword ? t('profilePage.changePassword', 'Change Password') : t('profilePage.setPassword', 'Set Password')}
               </Text>
               {!!passwordMsg && (
                 <Text style={[styles.successMsg, passwordMsg.includes('Failed') && { color: colors.error }]}>
@@ -358,12 +358,12 @@ const ProfileScreen: React.FC = () => {
                 </Text>
               )}
               {user?.hasPassword && (
-                <TextInput label={t('profile.currentPassword', 'Current Password')} value={currentPassword} onChangeText={setCurrentPassword} mode="outlined" secureTextEntry style={styles.input} />
+                <TextInput label={t('profilePage.currentPassword', 'Current Password')} value={currentPassword} onChangeText={setCurrentPassword} mode="outlined" secureTextEntry style={styles.input} />
               )}
-              <TextInput label={t('profile.newPassword', 'New Password')} value={newPassword} onChangeText={setNewPassword} mode="outlined" secureTextEntry style={styles.input} />
-              <TextInput label={t('profile.confirmNewPassword', 'Confirm New Password')} value={confirmPassword} onChangeText={setConfirmPassword} mode="outlined" secureTextEntry style={styles.input} />
+              <TextInput label={t('profilePage.newPassword', 'New Password')} value={newPassword} onChangeText={setNewPassword} mode="outlined" secureTextEntry style={styles.input} />
+              <TextInput label={t('profilePage.confirmNewPassword', 'Confirm New Password')} value={confirmPassword} onChangeText={setConfirmPassword} mode="outlined" secureTextEntry style={styles.input} />
               <Button mode="contained" onPress={handleChangePassword} style={{ marginTop: 8 }}>
-                {t('profile.updatePassword', 'Update Password')}
+                {t('profilePage.updatePassword', 'Update Password')}
               </Button>
             </Card.Content>
           </Card>
@@ -372,7 +372,7 @@ const ProfileScreen: React.FC = () => {
           <Card style={styles.card}>
             <Card.Content>
               <Text variant="titleMedium" style={styles.cardTitle}>
-                {t('profile.languagePrefs', 'Language Preferences')}
+                {t('profilePage.languagePrefs', 'Language Preferences')}
               </Text>
               <View style={styles.infoRow}>
                 <Text style={styles.infoLabel}>{t('languageSelect.iSpeak')}</Text>
@@ -383,7 +383,7 @@ const ProfileScreen: React.FC = () => {
                 <Text style={styles.infoValue}>{LANGUAGES[targetLanguage]?.flag} {getLangName(targetLanguage)}</Text>
               </View>
               <Text style={styles.hintText}>
-                {t('profile.langChangeHint', 'To change languages, log out and select new languages when logging back in.')}
+                {t('profilePage.langChangeHint', 'To change languages, log out and select new languages when logging back in.')}
               </Text>
             </Card.Content>
           </Card>
@@ -393,20 +393,20 @@ const ProfileScreen: React.FC = () => {
             <Card.Content>
               <View style={styles.cardTitleRow}>
                 <Text variant="titleMedium" style={styles.cardTitle}>
-                  {t('profile.voiceSettings', 'Voice Settings')}
+                  {t('profilePage.voiceSettings', 'Voice Settings')}
                 </Text>
                 <Button mode="text" compact onPress={fetchVoices} loading={loadingVoices}>
                   {t('common.refresh', 'Refresh')}
                 </Button>
               </View>
               <Text style={styles.hintText}>
-                {t('profile.voiceHint', 'Choose the voice used for audio playback.')}
+                {t('profilePage.voiceHint', 'Choose the voice used for audio playback.')}
               </Text>
 
               {loadingVoices ? (
                 <ActivityIndicator size="small" color={colors.primary} style={{ marginVertical: 12 }} />
               ) : voices.length === 0 ? (
-                <Text style={styles.hintText}>{t('profile.noVoices', 'No voices available. Tap refresh to load.')}</Text>
+                <Text style={styles.hintText}>{t('profilePage.noVoices', 'No voices available. Tap refresh to load.')}</Text>
               ) : (
                 <>
                   {/* Default option */}
@@ -416,8 +416,8 @@ const ProfileScreen: React.FC = () => {
                     activeOpacity={0.7}
                   >
                     <View style={{ flex: 1 }}>
-                      <Text style={styles.voiceName}>{t('profile.defaultVoice', 'Default Voice')}</Text>
-                      <Text style={styles.voiceMeta}>{t('profile.systemDefault', 'System default')}</Text>
+                      <Text style={styles.voiceName}>{t('profilePage.defaultVoice', 'Default Voice')}</Text>
+                      <Text style={styles.voiceMeta}>{t('profilePage.systemDefault', 'System default')}</Text>
                     </View>
                     {!preferredVoice && <Text style={styles.voiceCheck}>✓</Text>}
                   </TouchableOpacity>
@@ -463,18 +463,18 @@ const ProfileScreen: React.FC = () => {
           <Card style={styles.card}>
             <Card.Content>
               <Text variant="titleMedium" style={styles.cardTitle}>
-                {t('profile.studyMode', 'Study Mode')}
+                {t('profilePage.studyMode', 'Study Mode')}
               </Text>
               <View style={styles.modeRow}>
                 <View style={styles.modeOption}>
                   <Text style={styles.modeIcon}>{challengeMode ? '🔥' : '🌿'}</Text>
                   <Text style={styles.modeLabel}>
-                    {challengeMode ? t('profile.challengeMode', 'Challenge Mode') : t('profile.relaxedMode', 'Relaxed Mode')}
+                    {challengeMode ? t('profilePage.challengeMode', 'Challenge Mode') : t('profilePage.relaxedMode', 'Relaxed Mode')}
                   </Text>
                   <Text style={styles.modeDesc}>
                     {challengeMode
-                      ? t('profile.challengeDesc', 'XP decays daily — study to stay ahead!')
-                      : t('profile.relaxedDesc', 'XP never decays — learn at your own pace.')}
+                      ? t('profilePage.challengeDesc', 'XP decays daily — study to stay ahead!')
+                      : t('profilePage.relaxedDesc', 'XP never decays — learn at your own pace.')}
                   </Text>
                 </View>
               </View>
@@ -485,8 +485,8 @@ const ProfileScreen: React.FC = () => {
                 textColor={colors.primary}
               >
                 {challengeMode
-                  ? t('profile.switchToRelaxed', 'Switch to Relaxed')
-                  : t('profile.enableChallenge', 'Enable Challenge Mode')}
+                  ? t('profilePage.switchToRelaxed', 'Switch to Relaxed')
+                  : t('profilePage.enableChallenge', 'Enable Challenge Mode')}
               </Button>
             </Card.Content>
           </Card>
@@ -499,13 +499,13 @@ const ProfileScreen: React.FC = () => {
           <Card style={[styles.card, styles.dangerCard]}>
             <Card.Content>
               <Text variant="titleMedium" style={styles.cardTitle}>
-                {t('profile.resetXP', 'Reset XP')}
+                {t('profilePage.resetXP', 'Reset XP')}
               </Text>
               <Text style={styles.dangerText}>
-                {t('profile.resetXPDesc', 'Clear all XP history. This cannot be undone.')}
+                {t('profilePage.resetXPDesc', 'Clear all XP history. This cannot be undone.')}
               </Text>
               <Button mode="contained" onPress={handleResetXP} buttonColor={colors.error} style={{ marginTop: 12 }}>
-                {t('profile.resetXPButton', 'Reset XP History')}
+                {t('profilePage.resetXPButton', 'Reset XP History')}
               </Button>
             </Card.Content>
           </Card>
@@ -513,13 +513,13 @@ const ProfileScreen: React.FC = () => {
           <Card style={[styles.card, styles.dangerCard]}>
             <Card.Content>
               <Text variant="titleMedium" style={styles.cardTitle}>
-                {t('profile.deleteAccount', 'Delete Account')}
+                {t('profilePage.deleteAccount', 'Delete Account')}
               </Text>
               <Text style={styles.dangerText}>
-                {t('profile.deleteAccountDesc', 'Permanently delete your account and all data.')}
+                {t('profilePage.deleteAccountDesc', 'Permanently delete your account and all data.')}
               </Text>
               <Button mode="contained" onPress={handleDeleteAccount} buttonColor={colors.error} style={{ marginTop: 12 }}>
-                {t('profile.deleteAccountButton', 'Delete Account')}
+                {t('profilePage.deleteAccountButton', 'Delete Account')}
               </Button>
             </Card.Content>
           </Card>

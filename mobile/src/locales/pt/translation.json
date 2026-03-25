@@ -18,7 +18,8 @@
     "on": "Sim",
     "off": "Não",
     "done": "Pronto",
-    "clearAll": "Limpar tudo"
+    "clearAll": "Limpar tudo",
+    "sending": "Enviando..."
   },
   "languages": {
     "en": "Inglês",
@@ -69,7 +70,13 @@
     "suspendedLoggedOut": "Sua conta foi suspensa. Você foi desconectado.",
     "contactSupport": "Entre em contato com o suporte para mais informações.",
     "suspendedMistake": "Se você acredita que isso é um erro, entre em contato com o suporte.",
-    "reason": "Motivo"
+    "reason": "Motivo",
+    "brandTagline": "Aprenda qualquer idioma",
+    "continueWithGoogle": "Continuar com Google",
+    "signingInGoogle": "Entrando...",
+    "forgotPassword": "Esqueceu a senha?",
+    "googleFailed": "Falha no login com Google.",
+    "playServicesRequired": "Google Play Services necessário."
   },
   "register": {
     "title": "Crie sua conta",
@@ -90,7 +97,9 @@
     "validEmail": "Endereço de e-mail válido",
     "invalidEmail": "Por favor, insira um endereço de e-mail válido",
     "passwordsMatch": "As senhas coincidem",
-    "registrationFailed": "Falha no cadastro"
+    "registrationFailed": "Falha no cadastro",
+    "brandTagline": "Comece sua jornada",
+    "googleFailed": "Falha no cadastro com Google. Tente novamente."
   },
   "navbar": {
     "continue": "Continuar",
@@ -428,7 +437,24 @@
     "diversifyLearning": "Diversifique o aprendizado",
     "diversifyLearningTip": "Pratique as quatro habilidades igualmente",
     "stayConsistent": "Seja consistente",
-    "stayConsistentTip": "Estude um pouco todos os dias para melhores resultados"
+    "stayConsistentTip": "Estude um pouco todos os dias para melhores resultados",
+    "tipFocusWeak": "Foque nas áreas fracas",
+    "tipFocusWeakDesc": "Você tem {{count}} áreas com dificuldade. Revise-as diariamente para melhorar mais rápido.",
+    "tipBoostSkill": "Melhore seu {{skill}}",
+    "tipBoostSkillDesc": "Sua média de {{skill}} é {{avg}}%. Tente mais exercícios de {{skill}}.",
+    "tipDeepen": "Aprofunde seu conhecimento",
+    "tipDeepenDesc": "Você tem muitos itens ainda em progresso. Revise as lições antes de avançar.",
+    "tipChallenge": "Desafie-se",
+    "tipChallengeDesc": "Você dominou {{count}} áreas! Tente lições mais difíceis para continuar crescendo.",
+    "tipStrength": "{{skill}} é seu ponto forte!",
+    "tipStrengthDesc": "Ótimo trabalho com {{avg}}%! Continue assim e tente conteúdo avançado.",
+    "tipMasterNext": "Rumo ao domínio",
+    "tipMasterNextDesc": "{{count}} áreas estão quase dominadas. Mais algumas revisões e você consegue!",
+    "tipRepetition": "Repetição espaçada",
+    "tipRepetitionDesc": "Revise flashcards regularmente para fixar a memória de longo prazo.",
+    "noAreas": "Nenhum item nesta categoria ainda.",
+    "needsAttention": "Precisa de atenção",
+    "personalizedTips": "Dicas para você"
   },
   "profilePage": {
     "memberSince": "Membro desde {{date}}",
@@ -476,7 +502,7 @@
     "challengeDetail": "No Modo Desafio, seu XP diminui 15% por dia após 48 horas de inatividade. Apenas respondendo perguntas o timer é reiniciado.",
     "resetAndEnable": "Redefinir XP e ativar Modo Desafio",
     "switching": "Alterando...",
-    "switchToRelaxed": "Mudar para Modo Relaxado?",
+    "switchToRelaxed": "Mudar para modo relaxado",
     "relaxedWarning": "Seu XP atual será <strong>preservado</strong> no Modo Relaxado. No entanto, se voltar ao Modo Desafio no futuro, seu XP será redefinido para 0.",
     "switchRelaxedBtn": "Mudar para Modo Relaxado",
     "resetProgress": "Redefinir progresso",
@@ -496,7 +522,35 @@
     "passwordsNoMatch": "As novas senhas não coincidem",
     "loadingProfile": "Carregando perfil...",
     "failedToLoad": "Falha ao carregar perfil",
-    "unknown": "Desconhecido"
+    "unknown": "Desconhecido",
+    "edit": "Editar",
+    "save": "Salvar",
+    "saved": "Salvo!",
+    "role": "Função",
+    "logout": "Sair",
+    "setPassword": "Definir senha",
+    "passwordTooShort": "A senha deve ter pelo menos 6 caracteres",
+    "languagePrefs": "Preferências de idioma",
+    "langChangeHint": "As alterações de idioma se aplicam a todo o app",
+    "voiceHint": "Selecione a voz para ler texto em coreano",
+    "noVoicesShort": "Nenhuma voz disponível",
+    "defaultVoice": "Voz padrão",
+    "systemDefault": "Padrão do sistema",
+    "studyMode": "Modo de estudo",
+    "enableChallenge": "Ativar modo desafio",
+    "disableChallenge": "Desativar modo desafio",
+    "challengeWarningShort": "O modo desafio registra XP e sequências",
+    "relaxedInfo": "O modo relaxado permite aprender sem pressão",
+    "enableButton": "Ativar",
+    "switchButton": "Alternar",
+    "resetXP": "Redefinir XP",
+    "resetXPDesc": "Todo o progresso e XP serão redefinidos",
+    "resetXPButton": "Redefinir XP",
+    "resetXPTitle": "Redefinir XP?",
+    "resetButton": "Redefinir",
+    "deleteAccountButton": "Excluir conta",
+    "deleteAccountTitle": "Excluir conta?",
+    "deleteButton": "Excluir"
   },
   "verifyEmail": {
     "verifying": "Verificando seu e-mail...",
@@ -508,7 +562,24 @@
     "failedMessage": "A verificação falhou. O link pode ter expirado.",
     "needNewLink": "Precisa de um novo link?",
     "registerAgain": "Cadastre-se novamente",
-    "orContactSupport": "ou entre em contato com o suporte."
+    "orContactSupport": "ou entre em contato com o suporte.",
+    "verified": "E-mail verificado!",
+    "failedTitle": "Verificação falhou",
+    "backToLogin": "Voltar ao login"
+  },
+  "forgotPassword": {
+    "title": "Esqueci minha senha",
+    "subtitle": "Digite seu e-mail e enviaremos um link para redefinir sua senha.",
+    "error": "Algo deu errado. Tente novamente.",
+    "checkEmail": "Verifique seu e-mail",
+    "sentMessage": "Se existir uma conta com esse e-mail, enviamos um link de redefinição de senha.",
+    "sendLink": "Enviar link de redefinição",
+    "backToLogin": "Voltar ao login"
+  },
+  "emailBanner": {
+    "message": "Por favor, verifique seu endereço de e-mail.",
+    "resend": "Reenviar",
+    "sent": "E-mail de verificação enviado! Verifique sua caixa de entrada."
   },
   "admin": {
     "title": "Painel de Administração",
@@ -602,6 +673,15 @@
     "hours": "{{count}}h {{minutes}}m",
     "overview": "Visão geral",
     "userGrowth": "Crescimento de usuários",
-    "recentActiveUsers": "Usuários ativos recentes"
+    "recentActiveUsers": "Usuários ativos recentes",
+    "guests": "Convidados",
+    "avgTime": "Tempo médio",
+    "activeToday": "Ativos hoje",
+    "lessons": "Lições",
+    "flashcards": "Flashcards",
+    "recentActive": "Usuários ativos recentes",
+    "modeBreakdown": "Distribuição de modos",
+    "searchUsers": "Pesquisar usuários...",
+    "all": "Todos"
   }
 }

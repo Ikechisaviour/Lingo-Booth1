@@ -18,7 +18,8 @@
     "on": "켜기",
     "off": "끄기",
     "done": "완료",
-    "clearAll": "모두 해제"
+    "clearAll": "모두 해제",
+    "sending": "전송 중..."
   },
   "languages": {
     "en": "영어",
@@ -69,7 +70,13 @@
     "suspendedLoggedOut": "계정이 정지되었습니다. 로그아웃 처리되었습니다.",
     "contactSupport": "자세한 내용은 고객 지원에 문의하세요.",
     "suspendedMistake": "오류라고 생각되시면 고객 지원에 문의하세요.",
-    "reason": "사유"
+    "reason": "사유",
+    "brandTagline": "어떤 언어든 배워보세요",
+    "continueWithGoogle": "Google로 계속하기",
+    "signingInGoogle": "로그인 중...",
+    "forgotPassword": "비밀번호를 잊으셨나요?",
+    "googleFailed": "Google 로그인에 실패했습니다.",
+    "playServicesRequired": "Google Play 서비스가 필요합니다."
   },
   "register": {
     "title": "계정 만들기",
@@ -90,7 +97,9 @@
     "validEmail": "유효한 이메일 주소",
     "invalidEmail": "유효한 이메일 주소를 입력하세요",
     "passwordsMatch": "비밀번호가 일치합니다",
-    "registrationFailed": "가입 실패"
+    "registrationFailed": "가입 실패",
+    "brandTagline": "학습 여정을 시작하세요",
+    "googleFailed": "Google 회원가입에 실패했습니다. 다시 시도해 주세요."
   },
   "navbar": {
     "continue": "계속",
@@ -428,7 +437,24 @@
     "diversifyLearning": "다양한 학습",
     "diversifyLearningTip": "네 가지 기술을 골고루 연습하세요",
     "stayConsistent": "꾸준한 학습",
-    "stayConsistentTip": "최고의 결과를 위해 매일 조금씩 학습하세요"
+    "stayConsistentTip": "최고의 결과를 위해 매일 조금씩 학습하세요",
+    "tipFocusWeak": "약한 영역에 집중하세요",
+    "tipFocusWeakDesc": "{{count}}개의 어려운 영역이 있습니다. 매일 복습하면 더 빨리 향상됩니다.",
+    "tipBoostSkill": "{{skill}} 향상시키기",
+    "tipBoostSkillDesc": "{{skill}} 평균이 {{avg}}%입니다. {{skill}} 연습을 더 해보세요.",
+    "tipDeepen": "지식을 심화하세요",
+    "tipDeepenDesc": "아직 학습 중인 항목이 많습니다. 다음으로 넘어가기 전에 레슨을 복습하세요.",
+    "tipChallenge": "자신에게 도전하세요",
+    "tipChallengeDesc": "{{count}}개의 영역을 마스터했습니다! 더 어려운 레슨에 도전해 보세요.",
+    "tipStrength": "{{skill}}이(가) 당신의 강점입니다!",
+    "tipStrengthDesc": "{{avg}}%의 훌륭한 성적입니다! 계속 유지하고 고급 콘텐츠에 도전하세요.",
+    "tipMasterNext": "마스터를 향해 나아가세요",
+    "tipMasterNextDesc": "{{count}}개의 영역이 거의 마스터 단계입니다. 몇 번만 더 복습하면 달성할 수 있습니다!",
+    "tipRepetition": "간격 반복 학습",
+    "tipRepetitionDesc": "플래시카드를 정기적으로 복습하여 장기 기억에 저장하세요.",
+    "noAreas": "이 카테고리에 아직 항목이 없습니다.",
+    "needsAttention": "보강 필요",
+    "personalizedTips": "맞춤 팁"
   },
   "profilePage": {
     "memberSince": "{{date}}부터 회원",
@@ -476,7 +502,7 @@
     "challengeDetail": "챌린지 모드에서는 48시간 비활동 후 하루 15%의 XP가 감소합니다. 문제를 풀어야만 타이머가 초기화됩니다.",
     "resetAndEnable": "XP 초기화 및 챌린지 모드 활성화",
     "switching": "전환 중...",
-    "switchToRelaxed": "편안한 모드로 전환하시겠습니까?",
+    "switchToRelaxed": "편안한 모드로 전환",
     "relaxedWarning": "현재 XP는 편안한 모드에서 <strong>보존</strong>됩니다. 하지만 향후 챌린지 모드로 다시 전환하면 XP가 0으로 초기화됩니다.",
     "switchRelaxedBtn": "편안한 모드로 전환",
     "resetProgress": "진도 초기화",
@@ -496,7 +522,35 @@
     "passwordsNoMatch": "새 비밀번호가 일치하지 않습니다",
     "loadingProfile": "프로필 로딩 중...",
     "failedToLoad": "프로필을 불러오지 못했습니다",
-    "unknown": "알 수 없음"
+    "unknown": "알 수 없음",
+    "edit": "편집",
+    "save": "저장",
+    "saved": "저장됨!",
+    "role": "역할",
+    "logout": "로그아웃",
+    "setPassword": "비밀번호 설정",
+    "passwordTooShort": "비밀번호는 6자 이상이어야 합니다",
+    "languagePrefs": "언어 설정",
+    "langChangeHint": "언어 변경은 앱 전체에 적용됩니다",
+    "voiceHint": "한국어 텍스트 읽기에 사용할 음성을 선택하세요",
+    "noVoicesShort": "사용 가능한 음성이 없습니다",
+    "defaultVoice": "기본 음성",
+    "systemDefault": "시스템 기본값",
+    "studyMode": "학습 모드",
+    "enableChallenge": "챌린지 모드 활성화",
+    "disableChallenge": "챌린지 모드 비활성화",
+    "challengeWarningShort": "챌린지 모드에서는 XP와 연속 학습이 추적됩니다",
+    "relaxedInfo": "편안한 모드에서는 부담 없이 학습할 수 있습니다",
+    "enableButton": "활성화",
+    "switchButton": "전환",
+    "resetXP": "XP 초기화",
+    "resetXPDesc": "모든 진행 상황과 XP가 초기화됩니다",
+    "resetXPButton": "XP 초기화",
+    "resetXPTitle": "XP를 초기화하시겠습니까?",
+    "resetButton": "초기화",
+    "deleteAccountButton": "계정 삭제",
+    "deleteAccountTitle": "계정을 삭제하시겠습니까?",
+    "deleteButton": "삭제"
   },
   "verifyEmail": {
     "verifying": "이메일 인증 중...",
@@ -508,7 +562,24 @@
     "failedMessage": "인증에 실패했습니다. 링크가 만료되었을 수 있습니다.",
     "needNewLink": "새 링크가 필요하신가요?",
     "registerAgain": "다시 가입하기",
-    "orContactSupport": "또는 고객 지원에 문의하세요."
+    "orContactSupport": "또는 고객 지원에 문의하세요.",
+    "verified": "이메일 인증 완료!",
+    "failedTitle": "인증 실패",
+    "backToLogin": "로그인으로 돌아가기"
+  },
+  "forgotPassword": {
+    "title": "비밀번호 찾기",
+    "subtitle": "이메일을 입력하시면 비밀번호 재설정 링크를 보내드립니다.",
+    "error": "문제가 발생했습니다. 다시 시도해 주세요.",
+    "checkEmail": "이메일을 확인하세요",
+    "sentMessage": "해당 이메일의 계정이 존재하는 경우, 비밀번호 재설정 링크를 보냈습니다.",
+    "sendLink": "재설정 링크 보내기",
+    "backToLogin": "로그인으로 돌아가기"
+  },
+  "emailBanner": {
+    "message": "이메일 주소를 인증해 주세요.",
+    "resend": "재전송",
+    "sent": "인증 이메일을 보냈습니다! 받은 편지함을 확인하세요."
   },
   "admin": {
     "title": "관리자 대시보드",
@@ -602,6 +673,15 @@
     "hours": "{{count}}시간 {{minutes}}분",
     "overview": "개요",
     "userGrowth": "사용자 성장",
-    "recentActiveUsers": "최근 활성 사용자"
+    "recentActiveUsers": "최근 활성 사용자",
+    "guests": "게스트",
+    "avgTime": "평균 시간",
+    "activeToday": "오늘 활동",
+    "lessons": "레슨",
+    "flashcards": "플래시카드",
+    "recentActive": "최근 활동 사용자",
+    "modeBreakdown": "모드 분류",
+    "searchUsers": "사용자 검색...",
+    "all": "전체"
   }
 }

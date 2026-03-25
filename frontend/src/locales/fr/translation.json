@@ -37,7 +37,9 @@
     "logout": "Déconnexion",
     "retry": "Réessayer",
     "done": "Terminé",
-    "clearAll": "Tout effacer"
+    "clearAll": "Tout effacer",
+    "sending": "Envoi en cours",
+    "saving": "Enregistrement"
   },
   "languageSelect": {
     "title": "Choisissez vos langues",
@@ -66,7 +68,8 @@
     "suspendedLoggedOut": "Votre compte a été suspendu. Vous avez été déconnecté.",
     "contactSupport": "Veuillez contacter le support pour plus d'informations.",
     "suspendedMistake": "Si vous pensez qu'il s'agit d'une erreur, veuillez contacter le support.",
-    "reason": "Raison"
+    "reason": "Raison",
+    "forgotPassword": "Mot de passe oublié ?"
   },
   "register": {
     "title": "Créez votre compte",
@@ -335,7 +338,8 @@
     "translationFailed": "Traduction indisponible",
     "retryTranslation": "Réessayer",
     "clickCategoryHint": "Sélectionnez des catégories à étudier",
-    "familiarity": "Familiarité"
+    "familiarity": "Familiarité",
+    "topicLabel": "Sujet"
   },
   "progress": {
     "title": "Vos <1>progrès</1>",
@@ -445,7 +449,8 @@
     "passwordsNoMatch": "Les nouveaux mots de passe ne correspondent pas",
     "loadingProfile": "Chargement du profil...",
     "failedToLoad": "Échec du chargement du profil",
-    "unknown": "Inconnu"
+    "unknown": "Inconnu",
+    "setPassword": "Définir le mot de passe"
   },
   "verifyEmail": {
     "verifying": "Vérification de votre e-mail...",
@@ -555,6 +560,27 @@
     "overview": "Aperçu",
     "userGrowth": "Croissance des utilisateurs",
     "recentActiveUsers": "Utilisateurs actifs récents"
+  },
+  "forgotPassword": {
+    "title": "Mot de passe oublié",
+    "subtitle": "Entrez votre adresse e-mail et nous vous enverrons un lien de réinitialisation.",
+    "error": "Échec de l'envoi du lien de réinitialisation. Veuillez réessayer.",
+    "checkEmail": "Vérifiez votre e-mail",
+    "sentMessage": "Un lien de réinitialisation a été envoyé à {{email}}.",
+    "sendLink": "Envoyer le lien de réinitialisation",
+    "backToLogin": "Retour à la connexion"
+  },
+  "resetPassword": {
+    "title": "Réinitialiser le mot de passe",
+    "subtitle": "Entrez votre nouveau mot de passe.",
+    "error": "Échec de la réinitialisation du mot de passe. Veuillez réessayer.",
+    "invalidLink": "Ce lien de réinitialisation est invalide ou a expiré.",
+    "noToken": "Jeton de réinitialisation manquant. Veuillez demander un nouveau lien.",
+    "requestNew": "Demander un nouveau lien",
+    "success": "Votre mot de passe a été réinitialisé avec succès.",
+    "goToLogin": "Aller à la connexion",
+    "newPasswordPlaceholder": "Nouveau mot de passe",
+    "resetButton": "Réinitialiser le mot de passe"
   },
   "emailBanner": {
     "message": "Veuillez vérifier votre adresse e-mail. Consultez votre boîte de réception (et le dossier spam/courrier indésirable) pour trouver le lien de vérification.",

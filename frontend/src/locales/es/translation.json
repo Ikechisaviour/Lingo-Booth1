@@ -37,7 +37,9 @@
     "logout": "Cerrar sesión",
     "retry": "Reintentar",
     "done": "Listo",
-    "clearAll": "Borrar todo"
+    "clearAll": "Borrar todo",
+    "sending": "Enviando",
+    "saving": "Guardando"
   },
   "languageSelect": {
     "title": "Elige tus idiomas",
@@ -66,7 +68,8 @@
     "suspendedLoggedOut": "Tu cuenta ha sido suspendida. Se ha cerrado tu sesión.",
     "contactSupport": "Contacta al soporte para más información.",
     "suspendedMistake": "Si crees que esto es un error, contacta al soporte.",
-    "reason": "Razón"
+    "reason": "Razón",
+    "forgotPassword": "¿Olvidaste tu contraseña?"
   },
   "register": {
     "title": "Crea tu cuenta",
@@ -335,7 +338,8 @@
     "translationFailed": "Traducción no disponible",
     "retryTranslation": "Reintentar",
     "clickCategoryHint": "Selecciona categorías para estudiar",
-    "familiarity": "Familiaridad"
+    "familiarity": "Familiaridad",
+    "topicLabel": "Tema"
   },
   "progress": {
     "title": "Tu <1>progreso</1>",
@@ -445,7 +449,8 @@
     "passwordsNoMatch": "Las nuevas contraseñas no coinciden",
     "loadingProfile": "Cargando perfil...",
     "failedToLoad": "Error al cargar perfil",
-    "unknown": "Desconocido"
+    "unknown": "Desconocido",
+    "setPassword": "Establecer contraseña"
   },
   "verifyEmail": {
     "verifying": "Verificando tu correo...",
@@ -555,6 +560,27 @@
     "overview": "Resumen",
     "userGrowth": "Crecimiento de usuarios",
     "recentActiveUsers": "Usuarios activos recientes"
+  },
+  "forgotPassword": {
+    "title": "¿Olvidaste tu contraseña?",
+    "subtitle": "Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.",
+    "error": "No se pudo enviar el enlace de restablecimiento. Inténtalo de nuevo.",
+    "checkEmail": "Revisa tu correo",
+    "sentMessage": "Se envió un enlace de restablecimiento de contraseña a {{email}}.",
+    "sendLink": "Enviar enlace de restablecimiento",
+    "backToLogin": "Volver al inicio de sesión"
+  },
+  "resetPassword": {
+    "title": "Restablecer contraseña",
+    "subtitle": "Ingresa tu nueva contraseña.",
+    "error": "No se pudo restablecer la contraseña. Inténtalo de nuevo.",
+    "invalidLink": "Este enlace de restablecimiento es inválido o ha expirado.",
+    "noToken": "Falta el token de restablecimiento. Solicita un nuevo enlace.",
+    "requestNew": "Solicitar nuevo enlace",
+    "success": "Tu contraseña se restableció correctamente.",
+    "goToLogin": "Ir al inicio de sesión",
+    "newPasswordPlaceholder": "Nueva contraseña",
+    "resetButton": "Restablecer contraseña"
   },
   "emailBanner": {
     "message": "Por favor, verifica tu correo electrónico. Revisa tu bandeja de entrada (y la carpeta de spam/correo no deseado) para encontrar el enlace de verificación.",

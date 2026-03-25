@@ -37,7 +37,9 @@
     "logout": "退出登录",
     "retry": "重试",
     "done": "完成",
-    "clearAll": "全部清除"
+    "clearAll": "全部清除",
+    "sending": "发送中",
+    "saving": "保存中"
   },
   "languageSelect": {
     "title": "选择你的语言",
@@ -66,7 +68,8 @@
     "suspendedLoggedOut": "你的账号已被停用。你已被退出登录。",
     "contactSupport": "请联系客服了解更多信息。",
     "suspendedMistake": "如果你认为这是个错误，请联系客服。",
-    "reason": "原因"
+    "reason": "原因",
+    "forgotPassword": "忘记密码？"
   },
   "register": {
     "title": "创建你的账号",
@@ -335,7 +338,8 @@
     "translationFailed": "翻译不可用",
     "retryTranslation": "重试",
     "clickCategoryHint": "选择分类学习",
-    "familiarity": "熟悉度"
+    "familiarity": "熟悉度",
+    "topicLabel": "主题"
   },
   "progress": {
     "title": "你的<1>进度</1>",
@@ -445,7 +449,8 @@
     "passwordsNoMatch": "新密码不匹配",
     "loadingProfile": "加载个人资料中...",
     "failedToLoad": "个人资料加载失败",
-    "unknown": "未知"
+    "unknown": "未知",
+    "setPassword": "设置密码"
   },
   "verifyEmail": {
     "verifying": "正在验证你的邮箱...",
@@ -555,6 +560,27 @@
     "overview": "概览",
     "userGrowth": "用户增长",
     "recentActiveUsers": "最近活跃用户"
+  },
+  "forgotPassword": {
+    "title": "忘记密码",
+    "subtitle": "请输入您的电子邮件地址，我们将向您发送密码重置链接。",
+    "error": "发送重置链接失败，请重试。",
+    "checkEmail": "请检查您的邮箱",
+    "sentMessage": "密码重置链接已发送至 {{email}}。",
+    "sendLink": "发送重置链接",
+    "backToLogin": "返回登录"
+  },
+  "resetPassword": {
+    "title": "重置密码",
+    "subtitle": "请输入您的新密码。",
+    "error": "重置密码失败，请重试。",
+    "invalidLink": "此重置链接无效或已过期。",
+    "noToken": "缺少重置令牌。请申请新的重置链接。",
+    "requestNew": "申请新的重置链接",
+    "success": "密码已成功重置。",
+    "goToLogin": "前往登录",
+    "newPasswordPlaceholder": "新密码",
+    "resetButton": "重置密码"
   },
   "emailBanner": {
     "message": "请验证您的电子邮件地址。请检查您的收件箱（和垃圾邮件文件夹）中的验证链接。",

@@ -663,7 +663,7 @@ const FlashcardsScreen: React.FC = () => {
     return (
       <View style={styles.centered}>
         <ActivityIndicator size="large" color={colors.primary} />
-        <Text style={styles.loadingText}>{t('flashcards.loading')}</Text>
+        <Text style={styles.loadingText}>{t('flashcards.loadingFlashcards')}</Text>
       </View>
     );
   }
@@ -684,7 +684,7 @@ const FlashcardsScreen: React.FC = () => {
       <View style={styles.centered}>
         <Text style={styles.emptyIcon}>🎴</Text>
         <Text variant="titleLarge" style={styles.emptyTitle}>
-          {t('flashcards.noCards')}
+          {t('flashcards.noFlashcards')}
         </Text>
         <Text style={styles.emptyDesc}>{t('flashcards.noCardsDesc', 'No flashcards available for this selection.')}</Text>
         {!isGuest && (

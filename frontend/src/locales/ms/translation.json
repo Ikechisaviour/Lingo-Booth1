@@ -37,7 +37,9 @@
     "logout": "Log Keluar",
     "retry": "Cuba lagi",
     "done": "Selesai",
-    "clearAll": "Padam semua"
+    "clearAll": "Padam semua",
+    "sending": "Menghantar",
+    "saving": "Menyimpan"
   },
   "languageSelect": {
     "title": "Pilih Bahasa Anda",
@@ -66,7 +68,8 @@
     "suspendedLoggedOut": "Akaun anda telah digantung. Anda telah dilog keluar.",
     "contactSupport": "Sila hubungi sokongan untuk maklumat lanjut.",
     "suspendedMistake": "Jika anda percaya ini adalah kesilapan, sila hubungi sokongan.",
-    "reason": "Sebab"
+    "reason": "Sebab",
+    "forgotPassword": "Lupa kata laluan?"
   },
   "register": {
     "title": "Cipta Akaun Anda",
@@ -335,7 +338,8 @@
     "translationFailed": "Terjemahan tidak tersedia",
     "retryTranslation": "Cuba lagi",
     "clickCategoryHint": "Pilih kategori untuk dipelajari",
-    "familiarity": "Kebiasaan"
+    "familiarity": "Kebiasaan",
+    "topicLabel": "Topik"
   },
   "progress": {
     "title": "<1>Kemajuan</1> Anda",
@@ -445,7 +449,8 @@
     "passwordsNoMatch": "Kata laluan baharu tidak sepadan",
     "loadingProfile": "Memuatkan profil...",
     "failedToLoad": "Gagal memuatkan profil",
-    "unknown": "Tidak diketahui"
+    "unknown": "Tidak diketahui",
+    "setPassword": "Tetapkan kata laluan"
   },
   "verifyEmail": {
     "verifying": "Mengesahkan e-mel anda...",
@@ -555,6 +560,27 @@
     "overview": "Gambaran Keseluruhan",
     "userGrowth": "Pertumbuhan Pengguna",
     "recentActiveUsers": "Pengguna Aktif Terkini"
+  },
+  "forgotPassword": {
+    "title": "Lupa kata laluan",
+    "subtitle": "Masukkan alamat e-mel anda dan kami akan menghantar pautan tetapan semula kata laluan.",
+    "error": "Gagal menghantar pautan tetapan semula. Sila cuba lagi.",
+    "checkEmail": "Semak e-mel anda",
+    "sentMessage": "Pautan tetapan semula kata laluan telah dihantar ke {{email}}.",
+    "sendLink": "Hantar pautan tetapan semula",
+    "backToLogin": "Kembali ke log masuk"
+  },
+  "resetPassword": {
+    "title": "Tetapkan semula kata laluan",
+    "subtitle": "Masukkan kata laluan baharu anda.",
+    "error": "Gagal menetapkan semula kata laluan. Sila cuba lagi.",
+    "invalidLink": "Pautan tetapan semula ini tidak sah atau telah tamat tempoh.",
+    "noToken": "Token tetapan semula tiada. Sila minta pautan baharu.",
+    "requestNew": "Minta pautan baharu",
+    "success": "Kata laluan anda telah berjaya ditetapkan semula.",
+    "goToLogin": "Pergi ke log masuk",
+    "newPasswordPlaceholder": "Kata laluan baharu",
+    "resetButton": "Tetapkan semula kata laluan"
   },
   "emailBanner": {
     "message": "Sila sahkan alamat e-mel anda. Semak peti masuk (dan folder spam/sampah) untuk pautan pengesahan.",
