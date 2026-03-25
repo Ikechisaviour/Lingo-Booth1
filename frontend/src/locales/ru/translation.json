@@ -334,7 +334,8 @@
     "translating": "Перевод...",
     "translationFailed": "Перевод недоступен",
     "retryTranslation": "Повторить",
-    "clickCategoryHint": "Выберите категории для изучения"
+    "clickCategoryHint": "Выберите категории для изучения",
+    "familiarity": "Знакомство"
   },
   "progress": {
     "title": "Ваш <1>прогресс</1>",

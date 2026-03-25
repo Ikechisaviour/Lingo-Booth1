@@ -334,7 +334,8 @@
     "translating": "번역 중...",
     "translationFailed": "번역 불가",
     "retryTranslation": "다시 시도",
-    "clickCategoryHint": "카테고리를 선택하여 학습"
+    "clickCategoryHint": "카테고리를 선택하여 학습",
+    "familiarity": "친숙도"
   },
   "progress": {
     "title": "나의 <1>진도</1>",

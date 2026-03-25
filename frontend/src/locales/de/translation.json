@@ -334,7 +334,8 @@
     "translating": "Übersetze...",
     "translationFailed": "Übersetzung nicht verfügbar",
     "retryTranslation": "Wiederholen",
-    "clickCategoryHint": "Kategorien zum Lernen auswählen"
+    "clickCategoryHint": "Kategorien zum Lernen auswählen",
+    "familiarity": "Vertrautheit"
   },
   "progress": {
     "title": "Dein <1>Fortschritt</1>",

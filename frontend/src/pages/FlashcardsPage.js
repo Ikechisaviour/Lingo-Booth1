@@ -1060,6 +1060,7 @@ function FlashcardsPage() {
                 <div className="progress-text">
                   <span>{t('flashcards.cardXOfY', { current: currentIndex + 1, total: (selectedCategories.size > 0 || selectedCardIds.size > 0) ? activeFlashcards.length : (totalCards || activeFlashcards.length) })}</span>
                   <span className="mastery-display">
+                    <span className="mastery-label">{t('flashcards.familiarity', 'Familiarity')}</span>
                     {getMasteryStars(current?.masteryLevel, true)}
                   </span>
                 </div>

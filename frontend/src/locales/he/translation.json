@@ -334,7 +334,8 @@
     "translating": "מתרגם...",
     "translationFailed": "התרגום לא זמין",
     "retryTranslation": "נסה שוב",
-    "clickCategoryHint": "בחר קטגוריות ללמידה"
+    "clickCategoryHint": "בחר קטגוריות ללמידה",
+    "familiarity": "היכרות"
   },
   "progress": {
     "title": "<1>ההתקדמות</1> שלך",

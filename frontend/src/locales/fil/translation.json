@@ -334,7 +334,8 @@
     "translating": "Isinasalin...",
     "translationFailed": "Hindi available ang salin",
     "retryTranslation": "Subukan muli",
-    "clickCategoryHint": "Pumili ng mga kategorya para pag-aralan"
+    "clickCategoryHint": "Pumili ng mga kategorya para pag-aralan",
+    "familiarity": "Pamilyaridad"
   },
   "progress": {
     "title": "Ang Iyong <1>Progreso</1>",

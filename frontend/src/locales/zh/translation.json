@@ -334,7 +334,8 @@
     "translating": "翻译中...",
     "translationFailed": "翻译不可用",
     "retryTranslation": "重试",
-    "clickCategoryHint": "选择分类学习"
+    "clickCategoryHint": "选择分类学习",
+    "familiarity": "熟悉度"
   },
   "progress": {
     "title": "你的<1>进度</1>",

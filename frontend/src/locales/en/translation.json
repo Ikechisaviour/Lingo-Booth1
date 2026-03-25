@@ -337,7 +337,8 @@
     "translating": "Translating...",
     "translationFailed": "Translation unavailable",
     "retryTranslation": "Retry",
-    "clickCategoryHint": "Select categories to study"
+    "clickCategoryHint": "Select categories to study",
+    "familiarity": "Familiarity"
   },
   "progress": {
     "title": "Your <1>Progress</1>",
