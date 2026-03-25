@@ -132,6 +132,7 @@
 
 .password-toggle:hover {
   color: var(--text-primary);
+  transform: translateY(calc(-50% - 0.8px));
 }
 
 .auth-card .btn {
