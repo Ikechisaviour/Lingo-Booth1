@@ -334,7 +334,8 @@
     "translating": "Vertalen...",
     "translationFailed": "Vertaling niet beschikbaar",
     "retryTranslation": "Opnieuw",
-    "clickCategoryHint": "Selecteer categorieën om te studeren"
+    "clickCategoryHint": "Selecteer categorieën om te studeren",
+    "familiarity": "Bekendheid"
   },
   "progress": {
     "title": "Je <1>voortgang</1>",

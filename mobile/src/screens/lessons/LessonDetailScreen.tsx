@@ -583,7 +583,7 @@ const LessonDetailScreen: React.FC = () => {
             </View>
 
             <View style={styles.toggleRow}>
-              <Text style={styles.settingLabel}>{t('lessonDetail.romanization', 'Show Romanization')}</Text>
+              <Text style={styles.settingLabel}>{t('lessonDetail.showRomanization', 'Show Romanization')}</Text>
               <Chip selected={showRomanization} onPress={() => setShowRomanization(!showRomanization)}>
                 {showRomanization ? t('common.on', 'On') : t('common.off', 'Off')}
               </Chip>

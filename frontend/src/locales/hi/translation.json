@@ -334,7 +334,8 @@
     "translating": "अनुवाद हो रहा है...",
     "translationFailed": "अनुवाद अनुपलब्ध",
     "retryTranslation": "पुनः प्रयास",
-    "clickCategoryHint": "अध्ययन के लिए श्रेणियाँ चुनें"
+    "clickCategoryHint": "अध्ययन के लिए श्रेणियाँ चुनें",
+    "familiarity": "परिचितता"
   },
   "progress": {
     "title": "आपकी <1>प्रगति</1>",

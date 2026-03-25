@@ -334,7 +334,8 @@
     "translating": "翻訳中...",
     "translationFailed": "翻訳不可",
     "retryTranslation": "再試行",
-    "clickCategoryHint": "カテゴリーを選択して学習"
+    "clickCategoryHint": "カテゴリーを選択して学習",
+    "familiarity": "習熟度"
   },
   "progress": {
     "title": "あなたの<1>進捗</1>",

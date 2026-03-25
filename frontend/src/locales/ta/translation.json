@@ -334,7 +334,8 @@
     "translating": "மொழிபெயர்க்கிறது...",
     "translationFailed": "மொழிபெயர்ப்பு கிடைக்கவில்லை",
     "retryTranslation": "மீண்டும் முயற்சி",
-    "clickCategoryHint": "படிக்க வகைகளைத் தேர்ந்தெடுக்கவும்"
+    "clickCategoryHint": "படிக்க வகைகளைத் தேர்ந்தெடுக்கவும்",
+    "familiarity": "பரிச்சயம்"
   },
   "progress": {
     "title": "உங்கள் <1>முன்னேற்றம்</1>",

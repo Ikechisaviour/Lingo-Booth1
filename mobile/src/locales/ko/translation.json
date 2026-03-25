@@ -382,6 +382,7 @@
     "random": "랜덤",
     "deckOrder": "덱 순서",
     "inOrder": "순서대로",
+    "familiarity": "친숙도",
     "romanization": "로마자",
     "category": "카테고리",
     "topic": "주제 (선택 사항)",

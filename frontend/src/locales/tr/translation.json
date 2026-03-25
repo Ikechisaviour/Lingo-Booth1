@@ -334,7 +334,8 @@
     "translating": "Çevriliyor...",
     "translationFailed": "Çeviri mevcut değil",
     "retryTranslation": "Tekrar dene",
-    "clickCategoryHint": "Çalışmak için kategorileri seçin"
+    "clickCategoryHint": "Çalışmak için kategorileri seçin",
+    "familiarity": "Aşinalık"
   },
   "progress": {
     "title": "İlerlemeniz <1>Raporu</1>",

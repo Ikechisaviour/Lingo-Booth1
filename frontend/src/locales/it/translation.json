@@ -334,7 +334,8 @@
     "translating": "Traduzione in corso...",
     "translationFailed": "Traduzione non disponibile",
     "retryTranslation": "Riprova",
-    "clickCategoryHint": "Seleziona categorie da studiare"
+    "clickCategoryHint": "Seleziona categorie da studiare",
+    "familiarity": "Familiarità"
   },
   "progress": {
     "title": "I tuoi <1>progressi</1>",

@@ -334,7 +334,8 @@
     "translating": "جارٍ الترجمة...",
     "translationFailed": "الترجمة غير متاحة",
     "retryTranslation": "إعادة المحاولة",
-    "clickCategoryHint": "اختر الفئات للدراسة"
+    "clickCategoryHint": "اختر الفئات للدراسة",
+    "familiarity": "الألفة"
   },
   "progress": {
     "title": "<1>تقدمك</1>",

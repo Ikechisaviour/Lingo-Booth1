@@ -334,7 +334,8 @@
     "translating": "Menerjemahkan...",
     "translationFailed": "Terjemahan tidak tersedia",
     "retryTranslation": "Coba lagi",
-    "clickCategoryHint": "Pilih kategori untuk dipelajari"
+    "clickCategoryHint": "Pilih kategori untuk dipelajari",
+    "familiarity": "Keakraban"
   },
   "progress": {
     "title": "<1>Kemajuan</1> Anda",

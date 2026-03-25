@@ -699,8 +699,12 @@ const FlashcardsScreen: React.FC = () => {
   const card = displayedCards[currentIndex];
   const frontText = showsTargetFirst ? card[targetField] : card[nativeField];
   const backText = showsTargetFirst ? card[nativeField] : card[targetField];
-  const frontLabel = showsTargetFirst ? getLangName(targetLanguage) : getLangName(nativeLanguage);
-  const backLabel = showsTargetFirst ? getLangName(nativeLanguage) : getLangName(targetLanguage);
+  const frontLabel = showsTargetFirst
+    ? t(`languages.${targetLanguage}`, getLangName(targetLanguage))
+    : t(`languages.${nativeLanguage}`, getLangName(nativeLanguage));
+  const backLabel = showsTargetFirst
+    ? t(`languages.${nativeLanguage}`, getLangName(nativeLanguage))
+    : t(`languages.${targetLanguage}`, getLangName(targetLanguage));
   const frontLocale = showsTargetFirst ? targetLocale : nativeLocale;
   const backLocale = showsTargetFirst ? nativeLocale : targetLocale;
   const translationPending = !!(card as any)?._translationPending && !backText;
@@ -838,11 +842,14 @@ const FlashcardsScreen: React.FC = () => {
       {/* Mastery stars */}
       {!isCompact && (
         <View style={styles.masteryRow}>
-          {[1, 2, 3, 4, 5].map((star) => (
-            <Text key={star} style={[styles.masteryStar, star <= mastery && styles.masteryStarActive]}>
-              ★
-            </Text>
-          ))}
+          <Text style={styles.masteryLabel}>{t('flashcards.familiarity', 'Familiarity')}</Text>
+          <View style={styles.masteryStars}>
+            {[1, 2, 3, 4, 5].map((star) => (
+              <Text key={star} style={[styles.masteryStar, star <= mastery && styles.masteryStarActive]}>
+                ★
+              </Text>
+            ))}
+          </View>
         </View>
       )}
 
@@ -965,7 +972,7 @@ const FlashcardsScreen: React.FC = () => {
                         <Text style={styles.categoryCheck}>
                           {isCatSelected ? '✓' : ''}
                         </Text>
-                        <Text style={[styles.categoryName, { flex: 1 }]}>{primary}</Text>
+                        <Text style={[styles.categoryName, { flex: 1 }]}>{t(`flashcards.categoryNames.${primary.toLowerCase()}`, primary)}</Text>
                         <View style={styles.categoryItemRight}>
                           <Text style={styles.categoryCount}>{totalCount}</Text>
                           {totalCount > 0 && (
@@ -1036,14 +1043,14 @@ const FlashcardsScreen: React.FC = () => {
                 onPress={() => { setDisplayMode('target'); setShowsTargetFirst(true); }}
                 style={styles.chip}
               >
-                {getLangName(targetLanguage)} {t('flashcards.first', 'first')}
+                {t(`languages.${targetLanguage}`, getLangName(targetLanguage))} {t('flashcards.first', 'first')}
               </Chip>
               <Chip
                 selected={displayMode === 'native'}
                 onPress={() => { setDisplayMode('native'); setShowsTargetFirst(false); }}
                 style={styles.chip}
               >
-                {getLangName(nativeLanguage)} {t('flashcards.first', 'first')}
+                {t(`languages.${nativeLanguage}`, getLangName(nativeLanguage))} {t('flashcards.first', 'first')}
               </Chip>
               <Chip
                 selected={displayMode === 'random'}
@@ -1230,7 +1237,9 @@ const createStyles = (colors: AppColors, winWidth: number, winHeight: number, is
   },
 
   // Mastery
-  masteryRow: { flexDirection: 'row', justifyContent: 'center', paddingVertical: 8, gap: 4 },
+  masteryRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingVertical: 8, gap: 6 },
+  masteryLabel: { fontSize: 12, color: colors.textMuted, marginRight: 4 },
+  masteryStars: { flexDirection: 'row', gap: 4 },
   masteryStar: { fontSize: 24, color: colors.border },
   masteryStarActive: { color: colors.accentYellow },
 

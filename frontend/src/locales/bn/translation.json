@@ -334,7 +334,8 @@
     "translating": "অনুবাদ হচ্ছে...",
     "translationFailed": "অনুবাদ অনুপলব্ধ",
     "retryTranslation": "পুনরায় চেষ্টা",
-    "clickCategoryHint": "অধ্যয়নের জন্য বিভাগ নির্বাচন করুন"
+    "clickCategoryHint": "অধ্যয়নের জন্য বিভাগ নির্বাচন করুন",
+    "familiarity": "পরিচিতি"
   },
   "progress": {
     "title": "আপনার <1>অগ্রগতি</1>",
