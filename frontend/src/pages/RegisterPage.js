@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { GoogleLogin } from '@react-oauth/google';
 import { authService, guestXPHelper } from '../services/api';
 import './Auth.css';
 
@@ -22,6 +23,61 @@ function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const handleGoogleSuccess = async (credentialResponse) => {
+    setError('');
+    setLoading(true);
+    try {
+      const guestXP = guestXPHelper.get();
+      const nativeLang = localStorage.getItem('nativeLanguage') || '';
+      const targetLang = localStorage.getItem('targetLanguage') || '';
+      const response = await authService.googleLogin(
+        credentialResponse.credential,
+        guestXP,
+        nativeLang,
+        targetLang
+      );
+      if (response.data.isNewUser || !response.data.user.languageSetupComplete) {
+        const data = response.data;
+        const user = data.user;
+        localStorage.setItem('token', data.token);
+        if (data.refreshToken) localStorage.setItem('refreshToken', data.refreshToken);
+        localStorage.setItem('userId', user.id);
+        localStorage.setItem('username', user.username);
+        localStorage.setItem('userRole', user.role || 'user');
+        localStorage.setItem('emailVerified', String(!!user.emailVerified));
+        localStorage.removeItem('guestMode');
+        guestXPHelper.clear();
+        setIsGuest(false);
+        setIsAuthenticated(true);
+        setEmailVerified(!!user.emailVerified);
+        localStorage.setItem('needsLanguageSetup', 'true');
+        navigate('/select-language?mode=google-setup');
+        return;
+      }
+      // Existing user — store auth and go home
+      const data = response.data;
+      const user = data.user;
+      localStorage.setItem('token', data.token);
+      if (data.refreshToken) localStorage.setItem('refreshToken', data.refreshToken);
+      localStorage.setItem('userId', user.id);
+      localStorage.setItem('username', user.username);
+      localStorage.setItem('userRole', user.role || 'user');
+      localStorage.setItem('nativeLanguage', user.nativeLanguage || '');
+      localStorage.setItem('targetLanguage', user.targetLanguage || '');
+      localStorage.setItem('emailVerified', String(!!user.emailVerified));
+      localStorage.removeItem('guestMode');
+      guestXPHelper.clear();
+      setIsAuthenticated(true);
+      setIsGuest(false);
+      setEmailVerified(!!user.emailVerified);
+      navigate('/');
+    } catch (err) {
+      setError(err.response?.data?.message || t('login.googleFailed'));
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Guard: if no language was selected, redirect to language selection
   if (!nativeLanguage) {
@@ -59,8 +115,8 @@ function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
         formData.email,
         formData.password,
         guestXP,
-        nativeLanguage || 'en',
-        targetLanguage || 'ko'
+        nativeLanguage || '',
+        targetLanguage || ''
       );
       const data = response.data;
       const user = data.user;
@@ -69,8 +125,8 @@ function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
       localStorage.setItem('userId', user.id);
       localStorage.setItem('username', user.username);
       localStorage.setItem('userRole', user.role);
-      localStorage.setItem('nativeLanguage', user.nativeLanguage || 'en');
-      localStorage.setItem('targetLanguage', user.targetLanguage || 'ko');
+      localStorage.setItem('nativeLanguage', user.nativeLanguage || '');
+      localStorage.setItem('targetLanguage', user.targetLanguage || '');
       localStorage.setItem('emailVerified', String(!!user.emailVerified));
       localStorage.removeItem('guestMode');
       guestXPHelper.clear();
@@ -103,6 +159,19 @@ function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
         <p className="auth-subtitle">{t('register.subtitle')}</p>
 
         {error && <div className="error">{error}</div>}
+
+        <div className="google-btn-wrapper">
+          <GoogleLogin
+            onSuccess={handleGoogleSuccess}
+            onError={() => setError(t('login.googleFailed'))}
+            theme="outline"
+            size="large"
+            width="340"
+            text="signup_with"
+            shape="pill"
+          />
+        </div>
+        <div className="auth-divider"><span>{t('common.or', 'or')}</span></div>
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">

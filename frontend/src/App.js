@@ -265,6 +265,7 @@ function App() {
   // Check if user can access the app (either authenticated or guest)
   const canAccessApp = isAuthenticated || isGuest;
   const needsLanguageSetup = localStorage.getItem('needsLanguageSetup') === 'true';
+  const languagesReady = !!localStorage.getItem('nativeLanguage') && !!localStorage.getItem('targetLanguage');
 
   return (
     <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
@@ -338,7 +339,7 @@ function App() {
           <Route
             path="/"
             element={
-              isAuthenticated && needsLanguageSetup ? <Navigate to="/select-language?mode=google-setup" /> :
+              isAuthenticated && (needsLanguageSetup || !languagesReady) ? <Navigate to="/select-language?mode=google-setup" /> :
               canAccessApp ? <HomePage isGuest={isGuest} /> : <Navigate to="/login" />
             }
           />

@@ -145,7 +145,8 @@ const FlashcardsScreen: React.FC = () => {
       setTotalCards(total);
       setCurrentPage(page);
       setError('');
-    } catch {
+    } catch (err: any) {
+      if (err?._forcedLogout) return;
       if (page === 1) setError(t('flashcards.failedToLoad'));
     } finally {
       setLoading(false);

@@ -26,8 +26,8 @@ const LanguageSelectScreen: React.FC = () => {
   const { enterGuestMode, userId, setNeedsLanguageSetup, logout } = useAuthStore();
   const { nativeLanguage: savedNative, targetLanguage: savedTarget, setLanguages } = useSettingsStore();
 
-  const [nativeLang, setNativeLang] = useState(savedNative || 'en');
-  const [targetLang, setTargetLang] = useState(savedTarget || 'ko');
+  const [nativeLang, setNativeLang] = useState(savedNative || '');
+  const [targetLang, setTargetLang] = useState(savedTarget || '');
   const [saving, setSaving] = useState(false);
 
   const langEntries = Object.entries(LANGUAGES);

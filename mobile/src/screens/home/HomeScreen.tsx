@@ -41,7 +41,9 @@ const HomeScreen: React.FC = () => {
       ]);
       setXpStats(xpRes.data);
       setGamification(gamRes.data);
-    } catch {}
+    } catch (err: any) {
+      if (err?._forcedLogout) return;
+    }
 
     try {
       const actRes = await userService.getActivityState(userId);
@@ -55,7 +57,9 @@ const HomeScreen: React.FC = () => {
       } else if (state.activityType === 'flashcard' && state.flashcardIndex > 0) {
         setLastActivity({ type: 'flashcard', index: state.flashcardIndex });
       }
-    } catch {}
+    } catch (err: any) {
+      if (err?._forcedLogout) return;
+    }
   }, [userId]);
 
   useEffect(() => {
