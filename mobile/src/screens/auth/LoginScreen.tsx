@@ -260,6 +260,13 @@ const LoginScreen: React.FC = () => {
               {loading ? t('login.loggingIn') : t('login.loginButton')}
             </Button>
 
+            <Text
+              style={styles.forgotPassword}
+              onPress={() => navigation.navigate('ForgotPassword')}
+            >
+              {t('login.forgotPassword', 'Forgot password?')}
+            </Text>
+
             <View style={styles.divider}>
               <Divider style={styles.dividerLine} />
               <Text style={styles.dividerText}>{t('common.or', 'or')}</Text>
@@ -353,6 +360,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     paddingVertical: 4,
+  },
+  forgotPassword: {
+    textAlign: 'right',
+    color: colors.primary,
+    fontSize: 13,
+    fontWeight: '500',
+    marginTop: 8,
   },
 
   googleButton: {

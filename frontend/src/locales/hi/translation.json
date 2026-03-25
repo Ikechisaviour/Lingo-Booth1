@@ -34,7 +34,10 @@
     "or": "या",
     "xp": "XP",
     "refresh": "रीफ्रेश करें",
-    "logout": "लॉग आउट"
+    "logout": "लॉग आउट",
+    "retry": "पुनः प्रयास करें",
+    "done": "हो गया",
+    "clearAll": "सब साफ़ करें"
   },
   "languageSelect": {
     "title": "अपनी भाषाएं चुनें",
@@ -249,7 +252,11 @@
     "category": "श्रेणी:",
     "difficulty": "कठिनाई:",
     "exitPlaylist": "प्लेलिस्ट से बाहर निकलें",
-    "failedToLoad": "पाठ लोड करने में विफल"
+    "failedToLoad": "पाठ लोड करने में विफल",
+    "translating": "अनुवाद हो रहा है...",
+    "translationUnavailable": "अनुवाद लोड हो रहा है...",
+    "retryTranslation": "पुनः प्रयास",
+    "quizUnavailable": "क्विज़ अनुपलब्ध — अनुवाद लोड हो रहा है..."
   },
   "flashcards": {
     "title": "<1>फ्लैशकार्ड</1> अभ्यास",
@@ -323,7 +330,11 @@
       "healthcare": "स्वास्थ्य सेवा",
       "daily-life": "दैनिक जीवन"
     },
-    "clearFilters": "फिल्टर साफ करें ({{count}} चयनित)"
+    "clearFilters": "फिल्टर साफ करें ({{count}} चयनित)",
+    "translating": "अनुवाद हो रहा है...",
+    "translationFailed": "अनुवाद अनुपलब्ध",
+    "retryTranslation": "पुनः प्रयास",
+    "clickCategoryHint": "अध्ययन के लिए श्रेणियाँ चुनें"
   },
   "progress": {
     "title": "आपकी <1>प्रगति</1>",

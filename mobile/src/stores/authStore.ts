@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface AuthState {
   token: string | null;
+  refreshToken: string | null;
   userId: string | null;
   username: string | null;
   userRole: string | null;
@@ -14,6 +15,7 @@ interface AuthState {
 
   login: (data: {
     token: string;
+    refreshToken?: string;
     user: {
       id: string;
       username: string;
@@ -22,6 +24,7 @@ interface AuthState {
       languageSetupComplete?: boolean;
     };
   }) => void;
+  setToken: (token: string) => void;
   logout: () => void;
   enterGuestMode: () => void;
   exitGuestMode: () => void;
@@ -36,6 +39,7 @@ export const useAuthStore = create<AuthState>()(
   persist(
     (set, get) => ({
       token: null,
+      refreshToken: null,
       userId: null,
       username: null,
       userRole: null,
@@ -47,6 +51,7 @@ export const useAuthStore = create<AuthState>()(
       login: (data) =>
         set({
           token: data.token,
+          refreshToken: data.refreshToken || null,
           userId: data.user.id,
           username: data.user.username,
           userRole: data.user.role,
@@ -55,9 +60,12 @@ export const useAuthStore = create<AuthState>()(
           needsLanguageSetup: data.user.languageSetupComplete === false,
         }),
 
+      setToken: (token) => set({ token }),
+
       logout: () =>
         set({
           token: null,
+          refreshToken: null,
           userId: null,
           username: null,
           userRole: null,
@@ -90,6 +98,13 @@ export const useAuthStore = create<AuthState>()(
     {
       name: 'auth-storage',
       storage: createJSONStorage(() => AsyncStorage),
+      onRehydrateStorage: () => () => {
+        useAuthStore.setState({ _hasHydrated: true } as any);
+      },
     }
   )
 );
+
+// Non-persisted selector for hydration status
+export const useHasHydrated = () =>
+  useAuthStore((s: any) => !!s._hasHydrated);

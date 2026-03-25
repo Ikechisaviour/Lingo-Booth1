@@ -146,6 +146,18 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: null,
   },
+  passwordResetToken: {
+    type: String,
+    default: null,
+  },
+  passwordResetExpires: {
+    type: Date,
+    default: null,
+  },
+  refreshToken: {
+    type: String,
+    default: null,
+  },
   // Location (captured on login/register via geoip-lite)
   lastCountry:   { type: String, default: null },
   lastCity:      { type: String, default: null },

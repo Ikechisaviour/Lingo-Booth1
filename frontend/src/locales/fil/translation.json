@@ -34,7 +34,10 @@
     "or": "o",
     "xp": "XP",
     "refresh": "I-refresh",
-    "logout": "Mag-logout"
+    "logout": "Mag-logout",
+    "retry": "Subukan muli",
+    "done": "Tapos",
+    "clearAll": "Burahin lahat"
   },
   "languageSelect": {
     "title": "Piliin ang Iyong mga Wika",
@@ -249,7 +252,11 @@
     "category": "Kategorya:",
     "difficulty": "Antas ng Kahirapan:",
     "exitPlaylist": "Lumabas sa Playlist",
-    "failedToLoad": "Hindi na-load ang aralin"
+    "failedToLoad": "Hindi na-load ang aralin",
+    "translating": "Isinasalin...",
+    "translationUnavailable": "Naglo-load ng salin...",
+    "retryTranslation": "Subukan muli",
+    "quizUnavailable": "Hindi available ang pagsusulit — naglo-load ng salin..."
   },
   "flashcards": {
     "title": "Magsanay ng <1>Flashcards</1>",
@@ -323,7 +330,11 @@
       "healthcare": "Pangangalagang Pangkalusugan",
       "daily-life": "Pang-araw-araw na Buhay"
     },
-    "clearFilters": "I-clear ang mga filter ({{count}} napili)"
+    "clearFilters": "I-clear ang mga filter ({{count}} napili)",
+    "translating": "Isinasalin...",
+    "translationFailed": "Hindi available ang salin",
+    "retryTranslation": "Subukan muli",
+    "clickCategoryHint": "Pumili ng mga kategorya para pag-aralan"
   },
   "progress": {
     "title": "Ang Iyong <1>Progreso</1>",

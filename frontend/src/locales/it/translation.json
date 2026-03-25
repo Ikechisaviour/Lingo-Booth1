@@ -34,7 +34,10 @@
     "or": "o",
     "xp": "XP",
     "refresh": "Aggiorna",
-    "logout": "Esci"
+    "logout": "Esci",
+    "retry": "Riprova",
+    "done": "Fatto",
+    "clearAll": "Cancella tutto"
   },
   "languageSelect": {
     "title": "Scegli le tue lingue",
@@ -249,7 +252,11 @@
     "category": "Categoria:",
     "difficulty": "Difficoltà:",
     "exitPlaylist": "Esci dalla playlist",
-    "failedToLoad": "Impossibile caricare la lezione"
+    "failedToLoad": "Impossibile caricare la lezione",
+    "translating": "Traduzione in corso...",
+    "translationUnavailable": "Caricamento traduzione...",
+    "retryTranslation": "Riprova",
+    "quizUnavailable": "Quiz non disponibile — traduzione in corso..."
   },
   "flashcards": {
     "title": "Pratica <1>Flashcard</1>",
@@ -323,7 +330,11 @@
       "healthcare": "Salute",
       "daily-life": "Vita Quotidiana"
     },
-    "clearFilters": "Cancella filtri ({{count}} selezionati)"
+    "clearFilters": "Cancella filtri ({{count}} selezionati)",
+    "translating": "Traduzione in corso...",
+    "translationFailed": "Traduzione non disponibile",
+    "retryTranslation": "Riprova",
+    "clickCategoryHint": "Seleziona categorie da studiare"
   },
   "progress": {
     "title": "I tuoi <1>progressi</1>",

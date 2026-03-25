@@ -34,7 +34,10 @@
     "or": "অথবা",
     "xp": "XP",
     "refresh": "রিফ্রেশ",
-    "logout": "লগ আউট"
+    "logout": "লগ আউট",
+    "retry": "পুনরায় চেষ্টা করুন",
+    "done": "সম্পন্ন",
+    "clearAll": "সব মুছুন"
   },
   "languageSelect": {
     "title": "আপনার ভাষা নির্বাচন করুন",
@@ -249,7 +252,11 @@
     "category": "বিভাগ:",
     "difficulty": "কঠিনতা:",
     "exitPlaylist": "প্লেলিস্ট থেকে বের হন",
-    "failedToLoad": "পাঠ লোড করা যায়নি"
+    "failedToLoad": "পাঠ লোড করা যায়নি",
+    "translating": "অনুবাদ হচ্ছে...",
+    "translationUnavailable": "অনুবাদ লোড হচ্ছে...",
+    "retryTranslation": "পুনরায় চেষ্টা",
+    "quizUnavailable": "কুইজ অনুপলব্ধ — অনুবাদ লোড হচ্ছে..."
   },
   "flashcards": {
     "title": "ফ্ল্যাশকার্ড <1>অনুশীলন</1>",
@@ -323,7 +330,11 @@
       "healthcare": "স্বাস্থ্যসেবা",
       "daily-life": "দৈনন্দিন জীবন"
     },
-    "clearFilters": "ফিল্টার মুছুন ({{count}}টি নির্বাচিত)"
+    "clearFilters": "ফিল্টার মুছুন ({{count}}টি নির্বাচিত)",
+    "translating": "অনুবাদ হচ্ছে...",
+    "translationFailed": "অনুবাদ অনুপলব্ধ",
+    "retryTranslation": "পুনরায় চেষ্টা",
+    "clickCategoryHint": "অধ্যয়নের জন্য বিভাগ নির্বাচন করুন"
   },
   "progress": {
     "title": "আপনার <1>অগ্রগতি</1>",

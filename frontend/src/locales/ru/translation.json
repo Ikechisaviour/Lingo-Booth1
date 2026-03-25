@@ -34,7 +34,10 @@
     "or": "или",
     "xp": "XP",
     "refresh": "Обновить",
-    "logout": "Выйти"
+    "logout": "Выйти",
+    "retry": "Повторить",
+    "done": "Готово",
+    "clearAll": "Очистить все"
   },
   "languageSelect": {
     "title": "Выберите языки",
@@ -249,7 +252,11 @@
     "category": "Категория:",
     "difficulty": "Сложность:",
     "exitPlaylist": "Выйти из плейлиста",
-    "failedToLoad": "Не удалось загрузить урок"
+    "failedToLoad": "Не удалось загрузить урок",
+    "translating": "Перевод...",
+    "translationUnavailable": "Загрузка перевода...",
+    "retryTranslation": "Повторить",
+    "quizUnavailable": "Тест недоступен — загрузка перевода..."
   },
   "flashcards": {
     "title": "Практика с <1>карточками</1>",
@@ -323,7 +330,11 @@
       "healthcare": "Здравоохранение",
       "daily-life": "Повседневная жизнь"
     },
-    "clearFilters": "Сбросить фильтры (выбрано {{count}})"
+    "clearFilters": "Сбросить фильтры (выбрано {{count}})",
+    "translating": "Перевод...",
+    "translationFailed": "Перевод недоступен",
+    "retryTranslation": "Повторить",
+    "clickCategoryHint": "Выберите категории для изучения"
   },
   "progress": {
     "title": "Ваш <1>прогресс</1>",

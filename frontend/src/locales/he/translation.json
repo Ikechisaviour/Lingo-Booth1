@@ -34,7 +34,10 @@
     "or": "או",
     "xp": "XP",
     "refresh": "רענון",
-    "logout": "התנתקות"
+    "logout": "התנתקות",
+    "retry": "נסה שוב",
+    "done": "סיום",
+    "clearAll": "נקה הכל"
   },
   "languageSelect": {
     "title": "בחר את השפות שלך",
@@ -249,7 +252,11 @@
     "category": "קטגוריה:",
     "difficulty": "רמת קושי:",
     "exitPlaylist": "צא מרשימת ההשמעה",
-    "failedToLoad": "טעינת השיעור נכשלה"
+    "failedToLoad": "טעינת השיעור נכשלה",
+    "translating": "מתרגם...",
+    "translationUnavailable": "טוען תרגום...",
+    "retryTranslation": "נסה שוב",
+    "quizUnavailable": "החידון לא זמין — טוען תרגום..."
   },
   "flashcards": {
     "title": "תרגול <1>כרטיסיות</1>",
@@ -323,7 +330,11 @@
       "healthcare": "בריאות",
       "daily-life": "חיי יומיום"
     },
-    "clearFilters": "נקה פילטרים ({{count}} נבחרו)"
+    "clearFilters": "נקה פילטרים ({{count}} נבחרו)",
+    "translating": "מתרגם...",
+    "translationFailed": "התרגום לא זמין",
+    "retryTranslation": "נסה שוב",
+    "clickCategoryHint": "בחר קטגוריות ללמידה"
   },
   "progress": {
     "title": "<1>ההתקדמות</1> שלך",

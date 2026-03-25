@@ -9,21 +9,16 @@ import {
   TouchableOpacity,
   useWindowDimensions,
 } from 'react-native';
-import { Text, TextInput, Button, HelperText, Divider } from 'react-native-paper';
+import { Text, TextInput, Button, HelperText } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
-import Constants from 'expo-constants';
-import { GoogleSignin, isSuccessResponse, statusCodes } from '@react-native-google-signin/google-signin';
 import { AuthStackParamList } from '../../navigation/AuthStack';
 import { authService } from '../../services/api';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { colors } from '../../config/theme';
-
-const GOOGLE_WEB_CLIENT_ID =
-  (Constants.expoConfig?.extra?.googleWebClientId as string | undefined) || '';
 
 type RegisterNavProp = NativeStackNavigationProp<AuthStackParamList, 'Register'>;
 
@@ -33,7 +28,7 @@ const RegisterScreen: React.FC = () => {
   const { t, i18n } = useTranslation();
   const navigation = useNavigation<RegisterNavProp>();
   const { login, guestXP, clearGuestXP } = useAuthStore();
-  const { nativeLanguage, targetLanguage, setLanguages, setVoice } = useSettingsStore();
+  const { nativeLanguage, targetLanguage } = useSettingsStore();
   const insets = useSafeAreaInsets();
   const { height: winHeight, width: winWidth } = useWindowDimensions();
   const isCompact = winHeight < 450 || winWidth < 380;
@@ -46,44 +41,6 @@ const RegisterScreen: React.FC = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [googleLoading, setGoogleLoading] = useState(false);
-
-  const handleGooglePress = async () => {
-    setError('');
-    setGoogleLoading(true);
-    try {
-      await GoogleSignin.hasPlayServices();
-      await GoogleSignin.signOut();
-      const response = await GoogleSignin.signIn();
-      if (isSuccessResponse(response)) {
-        const idToken = response.data.idToken;
-        if (idToken) {
-          const res = await authService.googleLogin(idToken, guestXP, nativeLanguage, targetLanguage);
-          const { token, user, isNewUser } = res.data;
-          login({ token, user });
-          clearGuestXP();
-          if (user.preferredVoice) setVoice(user.preferredVoice);
-          // login() already sets needsLanguageSetup from user.languageSetupComplete
-          if (user.languageSetupComplete) {
-            setLanguages(user.nativeLanguage || 'en', user.targetLanguage || 'ko');
-            i18n.changeLanguage(user.nativeLanguage || 'en');
-          }
-        } else {
-          setError(t('login.googleFailed', 'Google sign-in failed.'));
-        }
-      }
-    } catch (err: any) {
-      if (err.code === statusCodes.SIGN_IN_CANCELLED) {
-        // User cancelled
-      } else if (err.response?.data?.message) {
-        setError(err.response.data.message);
-      } else {
-        setError(t('login.googleFailed', 'Google sign-in failed.'));
-      }
-    } finally {
-      setGoogleLoading(false);
-    }
-  };
 
   const emailTouched = email.length > 0;
   const emailValid = EMAIL_REGEX.test(email);
@@ -242,32 +199,6 @@ const RegisterScreen: React.FC = () => {
               {loading ? t('register.creatingAccount') : t('register.signUpButton')}
             </Button>
 
-            {!!GOOGLE_WEB_CLIENT_ID && (
-              <>
-                <View style={styles.divider}>
-                  <Divider style={styles.dividerLine} />
-                  <Text style={styles.dividerText}>{t('common.or', 'or')}</Text>
-                  <Divider style={styles.dividerLine} />
-                </View>
-                <TouchableOpacity
-                  style={[styles.googleButton, googleLoading && styles.googleButtonDisabled]}
-                  onPress={handleGooglePress}
-                  disabled={googleLoading}
-                  activeOpacity={0.8}
-                >
-                  <Image
-                    source={{ uri: 'https://www.google.com/favicon.ico' }}
-                    style={styles.googleIcon}
-                  />
-                  <Text style={styles.googleButtonText}>
-                    {googleLoading
-                      ? t('login.signingInGoogle', 'Signing in...')
-                      : t('register.continueWithGoogle', 'Sign up with Google')}
-                  </Text>
-                </TouchableOpacity>
-              </>
-            )}
-
             <View style={styles.linkRow}>
               <Text style={styles.linkText}>{t('register.hasAccount')} </Text>
               <Text style={styles.link} onPress={() => navigation.navigate('Login')}>
@@ -326,9 +257,6 @@ const styles = StyleSheet.create({
   validationText: { fontSize: 13, marginTop: -8, marginBottom: 8, marginLeft: 4 },
   primaryButton: { marginTop: 8, borderRadius: 10, backgroundColor: colors.primary },
   buttonLabel: { fontSize: 16, fontWeight: '600', paddingVertical: 4 },
-  divider: { flexDirection: 'row', alignItems: 'center', marginVertical: 16 },
-  dividerLine: { flex: 1, backgroundColor: colors.border },
-  dividerText: { marginHorizontal: 12, color: colors.textMuted, fontSize: 13 },
   googleButton: {
     flexDirection: 'row',
     alignItems: 'center',

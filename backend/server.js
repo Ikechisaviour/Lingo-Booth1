@@ -83,6 +83,13 @@ app.use('/api/auth/register', authLimiter);
 app.use('/api/auth/login', authLimiter);
 app.use('/api/auth/google', authLimiter);
 app.use('/api/auth/resend-verification', authLimiter);
+app.use('/api/auth/forgot-password', authLimiter);
+app.use('/api/auth/reset-password', authLimiter);
+app.use('/api/auth/refresh', rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 60,
+  handler: (req, res) => res.status(429).json({ message: 'Too many refresh attempts' }),
+}));
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/korean-learning', { family: 4 })

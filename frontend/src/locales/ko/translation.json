@@ -34,7 +34,10 @@
     "or": "또는",
     "xp": "XP",
     "refresh": "새로고침",
-    "logout": "로그아웃"
+    "logout": "로그아웃",
+    "retry": "다시 시도",
+    "done": "완료",
+    "clearAll": "모두 해제"
   },
   "languageSelect": {
     "title": "언어를 선택하세요",
@@ -91,7 +94,7 @@
     "guestMode": "게스트 모드",
     "home": "홈",
     "lessons": "레슨",
-    "flashcards": "플래시카드",
+    "flashcards": "카드",
     "progress": "진도",
     "admin": "관리자",
     "login": "로그인",
@@ -249,7 +252,11 @@
     "category": "카테고리:",
     "difficulty": "난이도:",
     "exitPlaylist": "재생목록 나가기",
-    "failedToLoad": "레슨을 불러오지 못했습니다"
+    "failedToLoad": "레슨을 불러오지 못했습니다",
+    "translating": "번역 중...",
+    "translationUnavailable": "번역 로딩 중...",
+    "retryTranslation": "다시 시도",
+    "quizUnavailable": "퀴즈 사용 불가 — 번역 로딩 중..."
   },
   "flashcards": {
     "title": "<1>플래시카드</1> 연습",
@@ -323,7 +330,11 @@
       "healthcare": "의료",
       "daily-life": "일상생활"
     },
-    "clearFilters": "필터 초기화 ({{count}}개 선택됨)"
+    "clearFilters": "필터 초기화 ({{count}}개 선택됨)",
+    "translating": "번역 중...",
+    "translationFailed": "번역 불가",
+    "retryTranslation": "다시 시도",
+    "clickCategoryHint": "카테고리를 선택하여 학습"
   },
   "progress": {
     "title": "나의 <1>진도</1>",
