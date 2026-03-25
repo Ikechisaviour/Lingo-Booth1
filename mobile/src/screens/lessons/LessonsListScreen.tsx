@@ -67,7 +67,8 @@ const LessonsListScreen: React.FC = () => {
       const res = await lessonService.getLessons(catFilter || undefined, diffFilter || undefined);
       setLessons(res.data);
       setError('');
-    } catch {
+    } catch (err: any) {
+      if (err?._forcedLogout) return;
       setError(t('lessons.failedToLoad'));
     } finally {
       setLoading(false);

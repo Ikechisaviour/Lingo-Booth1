@@ -5,6 +5,7 @@ import { NavigationContainer, LinkingOptions } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as Linking from 'expo-linking';
 import { useAuthStore, useHasHydrated } from '../stores/authStore';
+import { useLanguagesReady } from '../stores/settingsStore';
 import { userService } from '../services/api';
 import { colors } from '../config/theme';
 import AuthStack from './AuthStack';
@@ -67,6 +68,7 @@ const splashStyles = StyleSheet.create({
 const RootNavigator: React.FC = () => {
   const hasHydrated = useHasHydrated();
   const { token, userId, isGuest, needsLanguageSetup } = useAuthStore();
+  const languagesReady = useLanguagesReady();
   const canAccess = !!token || isGuest;
 
   // Verify account status from the backend (uses getState to avoid stale closures)
@@ -108,7 +110,7 @@ const RootNavigator: React.FC = () => {
     <NavigationContainer linking={linking}>
       {!canAccess ? (
         <AuthStack />
-      ) : needsLanguageSetup ? (
+      ) : needsLanguageSetup || !languagesReady ? (
         <SetupStack />
       ) : (
         <View style={{ flex: 1 }}>

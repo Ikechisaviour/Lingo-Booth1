@@ -94,8 +94,8 @@ const LoginScreen: React.FC = () => {
 
       // login() already sets needsLanguageSetup from user.languageSetupComplete
       if (user.languageSetupComplete) {
-        setLanguages(user.nativeLanguage || 'en', user.targetLanguage || 'ko');
-        i18n.changeLanguage(user.nativeLanguage || 'en');
+        setLanguages(user.nativeLanguage || '', user.targetLanguage || '');
+        i18n.changeLanguage(user.nativeLanguage || '');
       }
     } catch (err: any) {
       if (err.response?.status === 403 && err.response?.data?.reason) {
@@ -122,9 +122,9 @@ const LoginScreen: React.FC = () => {
       const { token, user } = response.data;
       login({ token, user });
       clearGuestXP();
-      setLanguages(user.nativeLanguage || 'en', user.targetLanguage || 'ko');
+      setLanguages(user.nativeLanguage || '', user.targetLanguage || '');
       if (user.preferredVoice) setVoice(user.preferredVoice);
-      i18n.changeLanguage(user.nativeLanguage || 'en');
+      i18n.changeLanguage(user.nativeLanguage || '');
     } catch (err: any) {
       if (err.response?.status === 403 && err.response?.data?.reason) {
         setSuspended({

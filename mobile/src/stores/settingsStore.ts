@@ -17,8 +17,8 @@ interface SettingsState {
 export const useSettingsStore = create<SettingsState>()(
   persist(
     (set) => ({
-      nativeLanguage: 'en',
-      targetLanguage: 'ko',
+      nativeLanguage: '',
+      targetLanguage: '',
       preferredVoice: null,
 
       setLanguages: (native, target) => {
@@ -43,3 +43,6 @@ export const useSettingsStore = create<SettingsState>()(
     }
   )
 );
+
+export const useLanguagesReady = () =>
+  useSettingsStore((s) => !!s.nativeLanguage && !!s.targetLanguage);

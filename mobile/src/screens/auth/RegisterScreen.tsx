@@ -9,16 +9,27 @@ import {
   TouchableOpacity,
   useWindowDimensions,
 } from 'react-native';
-import { Text, TextInput, Button, HelperText } from 'react-native-paper';
+import { Text, TextInput, Button, HelperText, Divider } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
+import Constants from 'expo-constants';
+import { GoogleSignin, isSuccessResponse, statusCodes } from '@react-native-google-signin/google-signin';
 import { AuthStackParamList } from '../../navigation/AuthStack';
 import { authService } from '../../services/api';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { colors } from '../../config/theme';
+
+const GOOGLE_WEB_CLIENT_ID =
+  (Constants.expoConfig?.extra?.googleWebClientId as string | undefined) || '';
+
+GoogleSignin.configure({
+  webClientId: GOOGLE_WEB_CLIENT_ID,
+  offlineAccess: true,
+  scopes: ['profile', 'email'],
+});
 
 type RegisterNavProp = NativeStackNavigationProp<AuthStackParamList, 'Register'>;
 
@@ -28,7 +39,7 @@ const RegisterScreen: React.FC = () => {
   const { t, i18n } = useTranslation();
   const navigation = useNavigation<RegisterNavProp>();
   const { login, guestXP, clearGuestXP } = useAuthStore();
-  const { nativeLanguage, targetLanguage } = useSettingsStore();
+  const { nativeLanguage, targetLanguage, setLanguages, setVoice } = useSettingsStore();
   const insets = useSafeAreaInsets();
   const { height: winHeight, width: winWidth } = useWindowDimensions();
   const isCompact = winHeight < 450 || winWidth < 380;
@@ -41,6 +52,59 @@ const RegisterScreen: React.FC = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
+
+  const handleGooglePress = async () => {
+    setError('');
+    setGoogleLoading(true);
+    try {
+      await GoogleSignin.hasPlayServices();
+      await GoogleSignin.signOut();
+      const response = await GoogleSignin.signIn();
+      if (isSuccessResponse(response)) {
+        const idToken = response.data.idToken;
+        if (idToken) {
+          await handleGoogleToken(idToken);
+        } else {
+          setError(t('login.googleFailed', 'Google sign-in failed.'));
+        }
+      }
+    } catch (err: any) {
+      if (err.code === statusCodes.SIGN_IN_CANCELLED) {
+        // User cancelled
+      } else if (err.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        setError(t('login.playServicesRequired', 'Google Play Services required.'));
+      } else if (err.response?.data?.message) {
+        setError(err.response.data.message);
+      } else {
+        setError(t('login.googleFailed', 'Google sign-in failed.'));
+      }
+    } finally {
+      setGoogleLoading(false);
+    }
+  };
+
+  const handleGoogleToken = async (idToken: string) => {
+    setGoogleLoading(true);
+    setError('');
+    try {
+      const res = await authService.googleLogin(idToken, guestXP, nativeLanguage, targetLanguage);
+      const { token, user } = res.data;
+
+      login({ token, user });
+      clearGuestXP();
+      if (user.preferredVoice) setVoice(user.preferredVoice);
+
+      if (user.languageSetupComplete) {
+        setLanguages(user.nativeLanguage || '', user.targetLanguage || '');
+        i18n.changeLanguage(user.nativeLanguage || '');
+      }
+    } catch (err: any) {
+      setError(err.response?.data?.message || t('login.googleFailed', 'Google sign-in failed.'));
+    } finally {
+      setGoogleLoading(false);
+    }
+  };
 
   const emailTouched = email.length > 0;
   const emailValid = EMAIL_REGEX.test(email);
@@ -65,8 +129,8 @@ const RegisterScreen: React.FC = () => {
         email.trim(),
         password,
         guestXP,
-        nativeLanguage || 'en',
-        targetLanguage || 'ko',
+        nativeLanguage,
+        targetLanguage,
       );
       clearGuestXP();
       const { token, user } = response.data;
@@ -115,6 +179,32 @@ const RegisterScreen: React.FC = () => {
                 {error}
               </HelperText>
             )}
+
+            {/* Google Sign-Up */}
+            {!!GOOGLE_WEB_CLIENT_ID && (
+              <TouchableOpacity
+                style={[styles.googleButton, googleLoading && styles.googleButtonDisabled]}
+                onPress={handleGooglePress}
+                disabled={googleLoading}
+                activeOpacity={0.8}
+              >
+                <Image
+                  source={{ uri: 'https://www.google.com/favicon.ico' }}
+                  style={styles.googleIcon}
+                />
+                <Text style={styles.googleButtonText}>
+                  {googleLoading
+                    ? t('login.signingInGoogle', 'Signing in...')
+                    : t('register.signUpWithGoogle', 'Sign up with Google')}
+                </Text>
+              </TouchableOpacity>
+            )}
+
+            <View style={styles.divider}>
+              <Divider style={styles.dividerLine} />
+              <Text style={styles.dividerText}>{t('common.or', 'or')}</Text>
+              <Divider style={styles.dividerLine} />
+            </View>
 
             <TextInput
               label={t('register.username')}
@@ -271,6 +361,9 @@ const styles = StyleSheet.create({
   googleButtonDisabled: { opacity: 0.6 },
   googleIcon: { width: 20, height: 20, marginRight: 10 },
   googleButtonText: { fontSize: 15, fontWeight: '600', color: '#3c4043' },
+  divider: { flexDirection: 'row', alignItems: 'center', marginVertical: 16 },
+  dividerLine: { flex: 1, height: 1, backgroundColor: colors.border },
+  dividerText: { marginHorizontal: 12, color: colors.textMuted, fontSize: 13 },
   linkRow: { flexDirection: 'row', justifyContent: 'center', marginTop: 20 },
   linkText: { color: colors.textSecondary, fontSize: 14 },
   link: { color: colors.primary, fontSize: 14, fontWeight: '600' },

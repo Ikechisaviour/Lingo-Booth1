@@ -69,7 +69,8 @@ const ProfileScreen: React.FC = () => {
       setProgress(progRes.data);
       setEditUsername(userRes.data.username);
       setError('');
-    } catch {
+    } catch (err: any) {
+      if (err?._forcedLogout) return;
       setError(t('profilePage.failedToLoad', 'Failed to load profile'));
     } finally {
       setLoading(false);
@@ -246,7 +247,7 @@ const ProfileScreen: React.FC = () => {
         </View>
         <Text variant="titleLarge" style={styles.profileName}>{user?.username || username}</Text>
         <Text style={styles.profileSince}>
-          {t('profilePage.memberSince', 'Member since')} {user?.createdAt ? new Date(user.createdAt).toLocaleDateString() : ''}
+          {t('profilePage.memberSince', { date: user?.createdAt ? new Date(user.createdAt).toLocaleDateString() : '' })}
         </Text>
         <View style={styles.profileStats}>
           <View style={styles.profileStat}>
@@ -310,15 +311,15 @@ const ProfileScreen: React.FC = () => {
                 <>
                   <View style={styles.infoRow}>
                     <Text style={styles.infoLabel}>{t('profilePage.username', 'Username')}</Text>
-                    <Text style={styles.infoValue}>{user?.username}</Text>
+                    <Text style={styles.infoValue}>{user?.username || username || t('profilePage.unknown', 'Unknown')}</Text>
                   </View>
                   <View style={styles.infoRow}>
                     <Text style={styles.infoLabel}>{t('profilePage.email', 'Email')}</Text>
-                    <Text style={styles.infoValue}>{user?.email}</Text>
+                    <Text style={styles.infoValue}>{user?.email || t('profilePage.unknown', 'Unknown')}</Text>
                   </View>
                   <View style={styles.infoRow}>
                     <Text style={styles.infoLabel}>{t('profilePage.role', 'Role')}</Text>
-                    <Text style={styles.infoValue}>{user?.role === 'admin' ? 'Admin' : 'User'}</Text>
+                    <Text style={styles.infoValue}>{user?.role === 'admin' ? t('profilePage.adminRole', 'Admin') : t('profilePage.userRole', 'User')}</Text>
                   </View>
                 </>
               )}

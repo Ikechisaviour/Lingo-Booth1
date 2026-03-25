@@ -40,7 +40,8 @@ const ProgressScreen: React.FC = () => {
       const res = await progressService.getSummary(userId);
       setProgress(res.data);
       setError('');
-    } catch {
+    } catch (err: any) {
+      if (err?._forcedLogout) return;
       setError(t('progress.failedToLoad', 'Failed to load progress'));
     } finally {
       setLoading(false);

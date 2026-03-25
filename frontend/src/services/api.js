@@ -91,6 +91,21 @@ api.interceptors.response.use(
       localStorage.removeItem('guestMode');
       window.dispatchEvent(new CustomEvent('accountSuspended'));
     }
+    // Detect deleted account (404 on non-auth endpoints)
+    if (
+      error.response?.status === 404 &&
+      config &&
+      !config.url?.includes('/auth/') &&
+      localStorage.getItem('token')
+    ) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('refreshToken');
+      localStorage.removeItem('userId');
+      localStorage.removeItem('username');
+      localStorage.removeItem('userRole');
+      localStorage.removeItem('guestMode');
+      window.dispatchEvent(new CustomEvent('accountSuspended'));
+    }
     return Promise.reject(error);
   }
 );
@@ -127,12 +142,12 @@ export const authService = {
 
 export const lessonService = {
   getLessons: (category, difficulty) => {
-    const targetLang = localStorage.getItem('targetLanguage') || 'ko';
-    const nativeLang = localStorage.getItem('nativeLanguage') || 'en';
+    const targetLang = localStorage.getItem('targetLanguage') || '';
+    const nativeLang = localStorage.getItem('nativeLanguage') || '';
     return api.get('/lessons', { params: { category, difficulty, targetLang, nativeLang } });
   },
   getLesson: (id) => {
-    const nativeLang = localStorage.getItem('nativeLanguage') || 'en';
+    const nativeLang = localStorage.getItem('nativeLanguage') || '';
     return api.get(`/lessons/${id}`, { params: { nativeLang }, timeout: 30000 });
   },
   createLesson: (lessonData) =>
@@ -141,18 +156,18 @@ export const lessonService = {
 
 export const flashcardService = {
   getCategories: () => {
-    const targetLang = localStorage.getItem('targetLanguage') || 'ko';
-    const nativeLang = localStorage.getItem('nativeLanguage') || 'en';
+    const targetLang = localStorage.getItem('targetLanguage') || '';
+    const nativeLang = localStorage.getItem('nativeLanguage') || '';
     return api.get('/flashcards/categories', { params: { targetLang, nativeLang } });
   },
   getCategoryCards: (category) => {
-    const targetLang = localStorage.getItem('targetLanguage') || 'ko';
-    const nativeLang = localStorage.getItem('nativeLanguage') || 'en';
+    const targetLang = localStorage.getItem('targetLanguage') || '';
+    const nativeLang = localStorage.getItem('nativeLanguage') || '';
     return api.get('/flashcards/category-cards', { params: { targetLang, nativeLang, category } });
   },
   getFlashcards: (userId, page = 1, limit = 50, opts = {}) => {
-    const targetLang = localStorage.getItem('targetLanguage') || 'ko';
-    const nativeLang = localStorage.getItem('nativeLanguage') || 'en';
+    const targetLang = localStorage.getItem('targetLanguage') || '';
+    const nativeLang = localStorage.getItem('nativeLanguage') || '';
     const params = { targetLang, nativeLang, page, limit };
     if (opts.categories) params.categories = opts.categories;
     if (opts.shuffle !== undefined) params.shuffle = opts.shuffle;
@@ -160,8 +175,8 @@ export const flashcardService = {
     return api.get(`/flashcards/user/${userId}`, { params });
   },
   getGuestFlashcards: (page = 1, limit = 50, opts = {}) => {
-    const nativeLang = localStorage.getItem('nativeLanguage') || 'en';
-    const targetLang = localStorage.getItem('targetLanguage') || 'ko';
+    const nativeLang = localStorage.getItem('nativeLanguage') || '';
+    const targetLang = localStorage.getItem('targetLanguage') || '';
     const params = { nativeLang, targetLang, page, limit };
     if (opts.categories) params.categories = opts.categories;
     if (opts.shuffle !== undefined) params.shuffle = opts.shuffle;

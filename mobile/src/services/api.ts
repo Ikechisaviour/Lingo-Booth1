@@ -56,6 +56,7 @@ api.interceptors.response.use(
         } catch {
           // Refresh failed — force logout
           useAuthStore.getState().logout();
+          error._forcedLogout = true;
           return Promise.reject(error);
         }
       }
@@ -81,6 +82,17 @@ api.interceptors.response.use(
       useAuthStore.getState().token
     ) {
       useAuthStore.getState().logout();
+      error._forcedLogout = true;
+    }
+    // Detect deleted account (404 on non-auth endpoints)
+    if (
+      error.response?.status === 404 &&
+      config &&
+      !config.url?.includes('/auth/') &&
+      useAuthStore.getState().token
+    ) {
+      useAuthStore.getState().logout();
+      error._forcedLogout = true;
     }
     return Promise.reject(error);
   },
@@ -112,12 +124,12 @@ export const authService = {
 export const lessonService = {
   getLessons: (category?: string, difficulty?: string) => {
     const { targetLanguage, nativeLanguage } = useSettingsStore.getState();
-    const targetLang = targetLanguage || 'ko';
-    const nativeLang = nativeLanguage || 'en';
+    const targetLang = targetLanguage;
+    const nativeLang = nativeLanguage;
     return api.get('/lessons', { params: { category, difficulty, targetLang, nativeLang } });
   },
   getLesson: (id: string) => {
-    const nativeLang = useSettingsStore.getState().nativeLanguage || 'en';
+    const nativeLang = useSettingsStore.getState().nativeLanguage;
     return api.get(`/lessons/${id}`, { params: { nativeLang }, timeout: 30000 });
   },
   createLesson: (lessonData: object) =>
@@ -127,15 +139,15 @@ export const lessonService = {
 export const flashcardService = {
   getCategories: () => {
     const { targetLanguage, nativeLanguage } = useSettingsStore.getState();
-    return api.get('/flashcards/categories', { params: { targetLang: targetLanguage || 'ko', nativeLang: nativeLanguage || 'en' } });
+    return api.get('/flashcards/categories', { params: { targetLang: targetLanguage, nativeLang: nativeLanguage } });
   },
   getCategoryCards: (category: string) => {
     const { targetLanguage, nativeLanguage } = useSettingsStore.getState();
-    return api.get('/flashcards/category-cards', { params: { targetLang: targetLanguage || 'ko', nativeLang: nativeLanguage || 'en', category } });
+    return api.get('/flashcards/category-cards', { params: { targetLang: targetLanguage, nativeLang: nativeLanguage, category } });
   },
   getFlashcards: (userId: string, page = 1, limit = 50, opts: { categories?: string; shuffle?: boolean; seed?: number } = {}) => {
     const { targetLanguage, nativeLanguage } = useSettingsStore.getState();
-    const params: Record<string, any> = { targetLang: targetLanguage || 'ko', nativeLang: nativeLanguage || 'en', page, limit };
+    const params: Record<string, any> = { targetLang: targetLanguage, nativeLang: nativeLanguage, page, limit };
     if (opts.categories) params.categories = opts.categories;
     if (opts.shuffle !== undefined) params.shuffle = opts.shuffle;
     if (opts.seed !== undefined) params.seed = opts.seed;
@@ -143,7 +155,7 @@ export const flashcardService = {
   },
   getGuestFlashcards: (page = 1, limit = 50, opts: { categories?: string; shuffle?: boolean; seed?: number } = {}) => {
     const { nativeLanguage, targetLanguage } = useSettingsStore.getState();
-    const params: Record<string, any> = { nativeLang: nativeLanguage || 'en', targetLang: targetLanguage || 'ko', page, limit };
+    const params: Record<string, any> = { nativeLang: nativeLanguage, targetLang: targetLanguage, page, limit };
     if (opts.categories) params.categories = opts.categories;
     if (opts.shuffle !== undefined) params.shuffle = opts.shuffle;
     if (opts.seed !== undefined) params.seed = opts.seed;

@@ -35,8 +35,8 @@ function LoginPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
     if (user.preferredVoice) {
       localStorage.setItem('preferredVoice', user.preferredVoice);
     }
-    localStorage.setItem('nativeLanguage', user.nativeLanguage || 'en');
-    localStorage.setItem('targetLanguage', user.targetLanguage || 'ko');
+    localStorage.setItem('nativeLanguage', user.nativeLanguage || '');
+    localStorage.setItem('targetLanguage', user.targetLanguage || '');
     localStorage.removeItem('guestMode');
     guestXPHelper.clear();
     setIsGuest(false);
@@ -44,7 +44,7 @@ function LoginPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
     setEmailVerified(!!user.emailVerified);
 
     // Switch UI language to user's saved preference
-    i18n.changeLanguage(user.nativeLanguage || 'en');
+    i18n.changeLanguage(user.nativeLanguage || '');
 
     // Redirect to last activity if available, otherwise home
     try {
@@ -93,8 +93,8 @@ function LoginPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
     setLoading(true);
     try {
       const guestXP = guestXPHelper.get();
-      const nativeLang = localStorage.getItem('nativeLanguage') || 'en';
-      const targetLang = localStorage.getItem('targetLanguage') || 'ko';
+      const nativeLang = localStorage.getItem('nativeLanguage') || '';
+      const targetLang = localStorage.getItem('targetLanguage') || '';
       const response = await authService.googleLogin(
         credentialResponse.credential,
         guestXP,
