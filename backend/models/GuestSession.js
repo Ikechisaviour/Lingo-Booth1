@@ -8,8 +8,8 @@ const guestSessionSchema = new mongoose.Schema({
   city:            { type: String, default: '' },
 
   // Language pair
-  nativeLanguage:  { type: String, default: 'en' },
-  targetLanguage:  { type: String, default: 'ko' },
+  nativeLanguage:  { type: String, default: '' },
+  targetLanguage:  { type: String, default: '' },
 
   // Navigation
   pageViews:       { type: Number, default: 1 },

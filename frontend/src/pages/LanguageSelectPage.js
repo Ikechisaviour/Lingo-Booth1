@@ -12,10 +12,10 @@ function LanguageSelectPage({ setIsGuest, onLogout }) {
   const mode = searchParams.get('mode'); // 'register' or 'guest'
 
   const [nativeLanguage, setNativeLanguage] = useState(
-    localStorage.getItem('nativeLanguage') || 'en'
+    localStorage.getItem('nativeLanguage') || ''
   );
   const [targetLanguage, setTargetLanguage] = useState(
-    localStorage.getItem('targetLanguage') || 'ko'
+    localStorage.getItem('targetLanguage') || ''
   );
 
   // If no valid mode, redirect to login

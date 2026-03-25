@@ -333,8 +333,8 @@ router.get('/guest', async (req, res) => {
   // Track guest session (fire-and-forget, non-blocking)
   try {
     const ip = getClientIp(req);
-    const nativeLang = req.query.nativeLang || 'en';
-    const targetLang = req.query.targetLang || 'ko';
+    const nativeLang = req.query.nativeLang || '';
+    const targetLang = req.query.targetLang || '';
     const geo = getGeoInfo(ip);
     const ua = (req.headers['user-agent'] || '').substring(0, 500);
     const referrer = (req.headers['referer'] || req.headers['referrer'] || '').substring(0, 500);
@@ -366,8 +366,11 @@ router.get('/guest', async (req, res) => {
   } catch (_) {}
 
   try {
-    const targetLang = req.query.targetLang || 'ko';
-    const nativeLang = req.query.nativeLang || 'en';
+    const targetLang = req.query.targetLang;
+    const nativeLang = req.query.nativeLang;
+    if (!targetLang || !nativeLang) {
+      return res.status(400).json({ message: 'nativeLang and targetLang query parameters are required' });
+    }
     const page = Math.max(1, parseInt(req.query.page) || 1);
     const limit = Math.min(200, Math.max(1, parseInt(req.query.limit) || 50));
     const { shuffle, seed, categoryFilter } = parseFilterParams(req.query);
@@ -412,8 +415,11 @@ router.use(verifyToken);
 router.get('/user/:userId', isOwner('userId'), async (req, res) => {
   try {
     const { userId } = req.params;
-    const targetLang = req.query.targetLang || 'ko';
-    const nativeLang = req.query.nativeLang || 'en';
+    const targetLang = req.query.targetLang;
+    const nativeLang = req.query.nativeLang;
+    if (!targetLang || !nativeLang) {
+      return res.status(400).json({ message: 'nativeLang and targetLang query parameters are required' });
+    }
     const page = Math.max(1, parseInt(req.query.page) || 1);
     const limit = Math.min(200, Math.max(1, parseInt(req.query.limit) || 50));
     const { shuffle, seed, categoryFilter } = parseFilterParams(req.query);
@@ -487,6 +493,10 @@ router.post('/', async (req, res) => {
   try {
     const { romanization, audioUrl, category, targetLang, nativeLang } = req.body;
 
+    if (!targetLang || !nativeLang) {
+      return res.status(400).json({ message: 'targetLang and nativeLang are required' });
+    }
+
     // Accept any recognised language field names from the body
     const langData = {};
     for (const field of LANG_FIELDS) {
@@ -504,8 +514,8 @@ router.post('/', async (req, res) => {
       romanization,
       audioUrl,
       category: normalizeCategory(category),
-      targetLang: targetLang || 'ko',
-      nativeLang: nativeLang || 'en',
+      targetLang,
+      nativeLang,
     });
 
     await flashcard.save();
