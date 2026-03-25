@@ -18,7 +18,8 @@
     "on": "চালু",
     "off": "বন্ধ",
     "done": "সম্পন্ন",
-    "clearAll": "সব মুছুন"
+    "clearAll": "সব মুছুন",
+    "sending": "পাঠানো হচ্ছে..."
   },
   "languages": {
     "en": "ইংরেজি",
@@ -69,7 +70,13 @@
     "suspendedLoggedOut": "আপনার অ্যাকাউন্ট স্থগিত করা হয়েছে। আপনাকে লগ আউট করা হয়েছে।",
     "contactSupport": "আরও তথ্যের জন্য অনুগ্রহ করে সহায়তা দলের সাথে যোগাযোগ করুন।",
     "suspendedMistake": "আপনি যদি মনে করেন এটি একটি ভুল, অনুগ্রহ করে সহায়তা দলের সাথে যোগাযোগ করুন।",
-    "reason": "কারণ"
+    "reason": "কারণ",
+    "brandTagline": "যেকোনো ভাষা শিখুন",
+    "continueWithGoogle": "Google দিয়ে চালিয়ে যান",
+    "signingInGoogle": "সাইন ইন হচ্ছে...",
+    "forgotPassword": "পাসওয়ার্ড ভুলে গেছেন?",
+    "googleFailed": "Google সাইন-ইন ব্যর্থ হয়েছে।",
+    "playServicesRequired": "Google Play পরিষেবা প্রয়োজন।"
   },
   "register": {
     "title": "আপনার অ্যাকাউন্ট তৈরি করুন",
@@ -90,7 +97,9 @@
     "validEmail": "বৈধ ইমেইল ঠিকানা",
     "invalidEmail": "অনুগ্রহ করে একটি বৈধ ইমেইল ঠিকানা লিখুন",
     "passwordsMatch": "পাসওয়ার্ড মিলেছে",
-    "registrationFailed": "নিবন্ধন ব্যর্থ হয়েছে"
+    "registrationFailed": "নিবন্ধন ব্যর্থ হয়েছে",
+    "brandTagline": "আপনার যাত্রা শুরু করুন",
+    "googleFailed": "Google সাইন-আপ ব্যর্থ হয়েছে। আবার চেষ্টা করুন।"
   },
   "navbar": {
     "continue": "চালিয়ে যান",
@@ -428,7 +437,24 @@
     "diversifyLearning": "শেখার বৈচিত্র্য আনুন",
     "diversifyLearningTip": "চারটি দক্ষতাই সমানভাবে অনুশীলন করুন",
     "stayConsistent": "ধারাবাহিক থাকুন",
-    "stayConsistentTip": "সেরা ফলাফলের জন্য প্রতিদিন একটু একটু পড়ুন"
+    "stayConsistentTip": "সেরা ফলাফলের জন্য প্রতিদিন একটু একটু পড়ুন",
+    "tipFocusWeak": "দুর্বল ক্ষেত্রগুলোতে মনোযোগ দিন",
+    "tipFocusWeakDesc": "আপনার {{count}}টি কঠিন ক্ষেত্র আছে। দ্রুত উন্নতির জন্য প্রতিদিন পর্যালোচনা করুন।",
+    "tipBoostSkill": "আপনার {{skill}} বাড়ান",
+    "tipBoostSkillDesc": "আপনার {{skill}} গড় {{avg}}%। আরও {{skill}} অনুশীলন করুন।",
+    "tipDeepen": "আপনার জ্ঞান গভীর করুন",
+    "tipDeepenDesc": "আপনার অনেক আইটেম এখনও চলমান আছে। এগিয়ে যাওয়ার আগে পাঠগুলো পুনরায় দেখুন।",
+    "tipChallenge": "নিজেকে চ্যালেঞ্জ করুন",
+    "tipChallengeDesc": "আপনি {{count}}টি ক্ষেত্র আয়ত্ত করেছেন! বৃদ্ধি অব্যাহত রাখতে কঠিন পাঠ চেষ্টা করুন।",
+    "tipStrength": "{{skill}} আপনার শক্তি!",
+    "tipStrengthDesc": "{{avg}}% এ চমৎকার কাজ! চালিয়ে যান এবং উন্নত বিষয়বস্তু চেষ্টা করুন।",
+    "tipMasterNext": "দক্ষতার দিকে এগিয়ে যান",
+    "tipMasterNextDesc": "{{count}}টি ক্ষেত্র প্রায় আয়ত্ত হয়ে গেছে। আর কিছু পর্যালোচনা করলেই পৌঁছে যাবেন!",
+    "tipRepetition": "স্পেসড রিপিটিশন",
+    "tipRepetitionDesc": "দীর্ঘমেয়াদী স্মৃতি ধরে রাখতে নিয়মিত ফ্ল্যাশকার্ড পর্যালোচনা করুন।",
+    "noAreas": "এই বিভাগে এখনও কোনো আইটেম নেই।",
+    "needsAttention": "মনোযোগ প্রয়োজন",
+    "personalizedTips": "আপনার জন্য টিপস"
   },
   "profilePage": {
     "memberSince": "{{date}} থেকে সদস্য",
@@ -496,7 +522,36 @@
     "passwordsNoMatch": "নতুন পাসওয়ার্ড মিলছে না",
     "loadingProfile": "প্রোফাইল লোড হচ্ছে...",
     "failedToLoad": "প্রোফাইল লোড করা যায়নি",
-    "unknown": "অজানা"
+    "unknown": "অজানা",
+    "edit": "সম্পাদনা",
+    "save": "সংরক্ষণ",
+    "saved": "সংরক্ষিত!",
+    "role": "ভূমিকা",
+    "logout": "লগ আউট",
+    "setPassword": "পাসওয়ার্ড সেট করুন",
+    "passwordTooShort": "পাসওয়ার্ড অন্তত ৬ অক্ষরের হতে হবে",
+    "languagePrefs": "ভাষার পছন্দ",
+    "langChangeHint": "ভাষা পরিবর্তন করতে, লগ আউট করুন এবং পুনরায় লগ ইন করার সময় নতুন ভাষা নির্বাচন করুন।",
+    "voiceHint": "অডিও প্লেব্যাকের জন্য ব্যবহৃত ভয়েস নির্বাচন করুন।",
+    "noVoicesShort": "কোনো ভয়েস উপলব্ধ নেই। লোড করতে রিফ্রেশে ট্যাপ করুন।",
+    "defaultVoice": "ডিফল্ট ভয়েস",
+    "systemDefault": "সিস্টেম ডিফল্ট",
+    "studyMode": "অধ্যয়ন মোড",
+    "enableChallenge": "চ্যালেঞ্জ মোড সক্রিয় করবেন?",
+    "disableChallenge": "স্বচ্ছন্দ মোডে পরিবর্তন করবেন?",
+    "challengeWarningShort": "আপনি না পড়লে প্রতিদিন XP কমবে। আপনার XP শূন্য হয়ে যাবে।",
+    "relaxedInfo": "XP আর কমবে না। আপনার বর্তমান XP সংরক্ষিত।",
+    "enableButton": "সক্রিয় করুন",
+    "switchButton": "পরিবর্তন",
+    "switchToRelaxed": "স্বচ্ছন্দ মোডে পরিবর্তন",
+    "resetXP": "XP রিসেট",
+    "resetXPDesc": "সমস্ত XP ইতিহাস মুছুন। এটি পূর্বাবস্থায় ফেরানো যাবে না।",
+    "resetXPButton": "XP ইতিহাস রিসেট করুন",
+    "resetXPTitle": "XP রিসেট করবেন?",
+    "resetButton": "রিসেট",
+    "deleteAccountButton": "অ্যাকাউন্ট মুছুন",
+    "deleteAccountTitle": "অ্যাকাউন্ট মুছবেন?",
+    "deleteButton": "মুছুন"
   },
   "verifyEmail": {
     "verifying": "আপনার ইমেইল যাচাই করা হচ্ছে...",
@@ -508,7 +563,24 @@
     "failedMessage": "যাচাই ব্যর্থ হয়েছে। লিঙ্কটির মেয়াদ শেষ হয়ে থাকতে পারে।",
     "needNewLink": "নতুন লিঙ্ক দরকার?",
     "registerAgain": "আবার নিবন্ধন করুন",
-    "orContactSupport": "অথবা সহায়তা দলের সাথে যোগাযোগ করুন।"
+    "orContactSupport": "অথবা সহায়তা দলের সাথে যোগাযোগ করুন।",
+    "verified": "ইমেইল যাচাই সম্পন্ন!",
+    "failedTitle": "যাচাই ব্যর্থ",
+    "backToLogin": "লগ ইনে ফিরে যান"
+  },
+  "forgotPassword": {
+    "title": "পাসওয়ার্ড ভুলে গেছেন",
+    "subtitle": "আপনার ইমেইল দিন এবং আমরা আপনাকে পাসওয়ার্ড রিসেট লিঙ্ক পাঠাব।",
+    "error": "কিছু ভুল হয়েছে। আবার চেষ্টা করুন।",
+    "checkEmail": "আপনার ইমেইল দেখুন",
+    "sentMessage": "যদি সেই ইমেইলে কোনো অ্যাকাউন্ট থাকে, আমরা পাসওয়ার্ড রিসেট লিঙ্ক পাঠিয়েছি।",
+    "sendLink": "রিসেট লিঙ্ক পাঠান",
+    "backToLogin": "লগ ইনে ফিরে যান"
+  },
+  "emailBanner": {
+    "message": "অনুগ্রহ করে আপনার ইমেইল ঠিকানা যাচাই করুন।",
+    "resend": "পুনরায় পাঠান",
+    "sent": "যাচাই ইমেইল পাঠানো হয়েছে! আপনার ইনবক্স দেখুন।"
   },
   "admin": {
     "title": "অ্যাডমিন ড্যাশবোর্ড",
@@ -602,6 +674,15 @@
     "hours": "{{count}}ঘ {{minutes}}মি",
     "overview": "সারসংক্ষেপ",
     "userGrowth": "ব্যবহারকারী বৃদ্ধি",
-    "recentActiveUsers": "সাম্প্রতিক সক্রিয় ব্যবহারকারী"
+    "recentActiveUsers": "সাম্প্রতিক সক্রিয় ব্যবহারকারী",
+    "guests": "অতিথি",
+    "avgTime": "গড় সময়",
+    "activeToday": "আজ সক্রিয়",
+    "lessons": "পাঠ",
+    "flashcards": "ফ্ল্যাশকার্ড",
+    "recentActive": "সম্প্রতি সক্রিয়",
+    "modeBreakdown": "অধ্যয়ন মোড",
+    "searchUsers": "ব্যবহারকারী খুঁজুন...",
+    "all": "সব"
   }
 }

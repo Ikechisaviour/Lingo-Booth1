@@ -37,7 +37,9 @@
     "logout": "Esci",
     "retry": "Riprova",
     "done": "Fatto",
-    "clearAll": "Cancella tutto"
+    "clearAll": "Cancella tutto",
+    "sending": "Invio in corso",
+    "saving": "Salvataggio"
   },
   "languageSelect": {
     "title": "Scegli le tue lingue",
@@ -66,7 +68,8 @@
     "suspendedLoggedOut": "Il tuo account è stato sospeso. Sei stato disconnesso.",
     "contactSupport": "Contatta il supporto per maggiori informazioni.",
     "suspendedMistake": "Se ritieni che sia un errore, contatta il supporto.",
-    "reason": "Motivo"
+    "reason": "Motivo",
+    "forgotPassword": "Hai dimenticato la password?"
   },
   "register": {
     "title": "Crea il tuo account",
@@ -335,7 +338,8 @@
     "translationFailed": "Traduzione non disponibile",
     "retryTranslation": "Riprova",
     "clickCategoryHint": "Seleziona categorie da studiare",
-    "familiarity": "Familiarità"
+    "familiarity": "Familiarità",
+    "topicLabel": "Argomento"
   },
   "progress": {
     "title": "I tuoi <1>progressi</1>",
@@ -445,7 +449,8 @@
     "passwordsNoMatch": "Le nuove password non corrispondono",
     "loadingProfile": "Caricamento profilo...",
     "failedToLoad": "Impossibile caricare il profilo",
-    "unknown": "Sconosciuto"
+    "unknown": "Sconosciuto",
+    "setPassword": "Imposta password"
   },
   "verifyEmail": {
     "verifying": "Verifica della tua email...",
@@ -555,6 +560,27 @@
     "overview": "Panoramica",
     "userGrowth": "Crescita utenti",
     "recentActiveUsers": "Utenti attivi recenti"
+  },
+  "forgotPassword": {
+    "title": "Password dimenticata",
+    "subtitle": "Inserisci il tuo indirizzo email e ti invieremo un link per reimpostare la password.",
+    "error": "Impossibile inviare il link di reimpostazione. Riprova.",
+    "checkEmail": "Controlla la tua email",
+    "sentMessage": "Un link di reimpostazione è stato inviato a {{email}}.",
+    "sendLink": "Invia link di reimpostazione",
+    "backToLogin": "Torna al login"
+  },
+  "resetPassword": {
+    "title": "Reimposta password",
+    "subtitle": "Inserisci la tua nuova password.",
+    "error": "Impossibile reimpostare la password. Riprova.",
+    "invalidLink": "Questo link di reimpostazione non è valido o è scaduto.",
+    "noToken": "Token di reimpostazione mancante. Richiedi un nuovo link.",
+    "requestNew": "Richiedi nuovo link",
+    "success": "La tua password è stata reimpostata con successo.",
+    "goToLogin": "Vai al login",
+    "newPasswordPlaceholder": "Nuova password",
+    "resetButton": "Reimposta password"
   },
   "emailBanner": {
     "message": "Verifica il tuo indirizzo email. Controlla la tua casella di posta (e la cartella spam/posta indesiderata) per il link di verifica.",

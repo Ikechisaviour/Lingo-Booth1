@@ -37,7 +37,9 @@
     "logout": "Çıkış Yap",
     "retry": "Tekrar dene",
     "done": "Tamam",
-    "clearAll": "Hepsini temizle"
+    "clearAll": "Hepsini temizle",
+    "sending": "Gönderiliyor",
+    "saving": "Kaydediliyor"
   },
   "languageSelect": {
     "title": "Dillerinizi Seçin",
@@ -66,7 +68,8 @@
     "suspendedLoggedOut": "Hesabınız askıya alındı. Oturumunuz kapatıldı.",
     "contactSupport": "Daha fazla bilgi için lütfen destek ekibiyle iletişime geçin.",
     "suspendedMistake": "Bunun bir hata olduğunu düşünüyorsanız lütfen destek ekibiyle iletişime geçin.",
-    "reason": "Neden"
+    "reason": "Neden",
+    "forgotPassword": "Şifrenizi mi unuttunuz?"
   },
   "register": {
     "title": "Hesabınızı Oluşturun",
@@ -335,7 +338,8 @@
     "translationFailed": "Çeviri mevcut değil",
     "retryTranslation": "Tekrar dene",
     "clickCategoryHint": "Çalışmak için kategorileri seçin",
-    "familiarity": "Aşinalık"
+    "familiarity": "Aşinalık",
+    "topicLabel": "Konu"
   },
   "progress": {
     "title": "İlerlemeniz <1>Raporu</1>",
@@ -445,7 +449,8 @@
     "passwordsNoMatch": "Yeni şifreler eşleşmiyor",
     "loadingProfile": "Profil yükleniyor...",
     "failedToLoad": "Profil yüklenemedi",
-    "unknown": "Bilinmiyor"
+    "unknown": "Bilinmiyor",
+    "setPassword": "Şifre belirle"
   },
   "verifyEmail": {
     "verifying": "E-postanız doğrulanıyor...",
@@ -555,6 +560,27 @@
     "overview": "Genel Bakış",
     "userGrowth": "Kullanıcı Artışı",
     "recentActiveUsers": "Son Aktif Kullanıcılar"
+  },
+  "forgotPassword": {
+    "title": "Şifrenizi mi unuttunuz",
+    "subtitle": "E-posta adresinizi girin, size şifre sıfırlama bağlantısı gönderelim.",
+    "error": "Sıfırlama bağlantısı gönderilemedi. Lütfen tekrar deneyin.",
+    "checkEmail": "E-postanızı kontrol edin",
+    "sentMessage": "Şifre sıfırlama bağlantısı {{email}} adresine gönderildi.",
+    "sendLink": "Sıfırlama bağlantısı gönder",
+    "backToLogin": "Girişe dön"
+  },
+  "resetPassword": {
+    "title": "Şifre sıfırla",
+    "subtitle": "Yeni şifrenizi girin.",
+    "error": "Şifre sıfırlanamadı. Lütfen tekrar deneyin.",
+    "invalidLink": "Bu sıfırlama bağlantısı geçersiz veya süresi dolmuş.",
+    "noToken": "Sıfırlama jetonu eksik. Lütfen yeni bir bağlantı talep edin.",
+    "requestNew": "Yeni bağlantı talep et",
+    "success": "Şifreniz başarıyla sıfırlandı.",
+    "goToLogin": "Girişe git",
+    "newPasswordPlaceholder": "Yeni şifre",
+    "resetButton": "Şifreyi sıfırla"
   },
   "emailBanner": {
     "message": "Lütfen e-posta adresinizi doğrulayın. Doğrulama bağlantısı için gelen kutunuzu (ve spam/gereksiz posta klasörünü) kontrol edin.",

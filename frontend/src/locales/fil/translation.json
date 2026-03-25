@@ -37,7 +37,9 @@
     "logout": "Mag-logout",
     "retry": "Subukan muli",
     "done": "Tapos",
-    "clearAll": "Burahin lahat"
+    "clearAll": "Burahin lahat",
+    "sending": "Ipinapadala",
+    "saving": "Sine-save"
   },
   "languageSelect": {
     "title": "Piliin ang Iyong mga Wika",
@@ -66,7 +68,8 @@
     "suspendedLoggedOut": "Na-suspend ang iyong account. Na-log out ka na.",
     "contactSupport": "Mangyaring makipag-ugnayan sa support para sa karagdagang impormasyon.",
     "suspendedMistake": "Kung sa tingin mo ay mali ito, mangyaring makipag-ugnayan sa support.",
-    "reason": "Dahilan"
+    "reason": "Dahilan",
+    "forgotPassword": "Nakalimutan ang password?"
   },
   "register": {
     "title": "Gumawa ng Account",
@@ -335,7 +338,8 @@
     "translationFailed": "Hindi available ang salin",
     "retryTranslation": "Subukan muli",
     "clickCategoryHint": "Pumili ng mga kategorya para pag-aralan",
-    "familiarity": "Pamilyaridad"
+    "familiarity": "Pamilyaridad",
+    "topicLabel": "Paksa"
   },
   "progress": {
     "title": "Ang Iyong <1>Progreso</1>",
@@ -445,7 +449,8 @@
     "passwordsNoMatch": "Hindi magkatugma ang mga bagong password",
     "loadingProfile": "Naglo-load ng profile...",
     "failedToLoad": "Hindi na-load ang profile",
-    "unknown": "Hindi alam"
+    "unknown": "Hindi alam",
+    "setPassword": "Itakda ang password"
   },
   "verifyEmail": {
     "verifying": "Vine-verify ang iyong email...",
@@ -555,6 +560,27 @@
     "overview": "Pangkalahatang-tanaw",
     "userGrowth": "Paglago ng User",
     "recentActiveUsers": "Kamakailang Aktibong mga User"
+  },
+  "forgotPassword": {
+    "title": "Nakalimutan ang password",
+    "subtitle": "Ilagay ang iyong email address at magpapadala kami ng link para i-reset ang password.",
+    "error": "Hindi maipadala ang reset link. Pakisubukang muli.",
+    "checkEmail": "Suriin ang iyong email",
+    "sentMessage": "Naipadala na ang password reset link sa {{email}}.",
+    "sendLink": "Ipadala ang reset link",
+    "backToLogin": "Bumalik sa login"
+  },
+  "resetPassword": {
+    "title": "I-reset ang password",
+    "subtitle": "Ilagay ang iyong bagong password.",
+    "error": "Hindi ma-reset ang password. Pakisubukang muli.",
+    "invalidLink": "Ang reset link na ito ay hindi wasto o expired na.",
+    "noToken": "Walang reset token. Mangyaring humiling ng bagong link.",
+    "requestNew": "Humiling ng bagong link",
+    "success": "Matagumpay na na-reset ang iyong password.",
+    "goToLogin": "Pumunta sa login",
+    "newPasswordPlaceholder": "Bagong password",
+    "resetButton": "I-reset ang password"
   },
   "emailBanner": {
     "message": "Pakikumpirma ang iyong email address. Tingnan ang iyong inbox (at spam/junk folder) para sa verification link.",

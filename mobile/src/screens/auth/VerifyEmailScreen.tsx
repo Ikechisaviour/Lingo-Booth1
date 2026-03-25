@@ -20,7 +20,7 @@ const VerifyEmailScreen: React.FC = () => {
   useEffect(() => {
     if (!token) {
       setStatus('error');
-      setMessage(t('verify.noToken', 'No verification token found.'));
+      setMessage(t('verifyEmail.noToken', 'No verification token found.'));
       return;
     }
 
@@ -28,10 +28,10 @@ const VerifyEmailScreen: React.FC = () => {
       try {
         const res = await authService.verifyEmail(token);
         setStatus('success');
-        setMessage(res.data?.message || t('verify.success', 'Email verified successfully!'));
+        setMessage(res.data?.message || t('verifyEmail.success', 'Email verified successfully!'));
       } catch (err: any) {
         setStatus('error');
-        setMessage(err.response?.data?.message || t('verify.failed', 'Verification failed. The link may have expired.'));
+        setMessage(err.response?.data?.message || t('verifyEmail.failed', 'Verification failed. The link may have expired.'));
       }
     };
 
@@ -43,17 +43,17 @@ const VerifyEmailScreen: React.FC = () => {
       {status === 'loading' && (
         <>
           <ActivityIndicator size="large" color={colors.primary} />
-          <Text style={styles.text}>{t('verify.verifying', 'Verifying your email...')}</Text>
+          <Text style={styles.text}>{t('verifyEmail.verifying', 'Verifying your email...')}</Text>
         </>
       )}
 
       {status === 'success' && (
         <>
           <Text style={styles.icon}>✅</Text>
-          <Text variant="titleLarge" style={styles.title}>{t('verify.verified', 'Email Verified!')}</Text>
+          <Text variant="titleLarge" style={styles.title}>{t('verifyEmail.verified', 'Email Verified!')}</Text>
           <Text style={styles.text}>{message}</Text>
           <Button mode="contained" onPress={() => navigation.navigate('Login')} style={styles.button}>
-            {t('verify.goToLogin', 'Go to Login')}
+            {t('verifyEmail.goToLogin', 'Go to Login')}
           </Button>
         </>
       )}
@@ -61,10 +61,10 @@ const VerifyEmailScreen: React.FC = () => {
       {status === 'error' && (
         <>
           <Text style={styles.icon}>❌</Text>
-          <Text variant="titleLarge" style={styles.title}>{t('verify.failedTitle', 'Verification Failed')}</Text>
+          <Text variant="titleLarge" style={styles.title}>{t('verifyEmail.failedTitle', 'Verification Failed')}</Text>
           <Text style={styles.text}>{message}</Text>
           <Button mode="contained" onPress={() => navigation.navigate('Login')} style={styles.button}>
-            {t('verify.backToLogin', 'Back to Login')}
+            {t('verifyEmail.backToLogin', 'Back to Login')}
           </Button>
         </>
       )}

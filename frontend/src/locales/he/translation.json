@@ -37,7 +37,9 @@
     "logout": "התנתקות",
     "retry": "נסה שוב",
     "done": "סיום",
-    "clearAll": "נקה הכל"
+    "clearAll": "נקה הכל",
+    "sending": "שולח",
+    "saving": "שומר"
   },
   "languageSelect": {
     "title": "בחר את השפות שלך",
@@ -66,7 +68,8 @@
     "suspendedLoggedOut": "החשבון שלך הושעה. התנתקת מהמערכת.",
     "contactSupport": "אנא צור קשר עם התמיכה למידע נוסף.",
     "suspendedMistake": "אם אתה מאמין שזו טעות, אנא צור קשר עם התמיכה.",
-    "reason": "סיבה"
+    "reason": "סיבה",
+    "forgotPassword": "שכחת סיסמה?"
   },
   "register": {
     "title": "צור את החשבון שלך",
@@ -335,7 +338,8 @@
     "translationFailed": "התרגום לא זמין",
     "retryTranslation": "נסה שוב",
     "clickCategoryHint": "בחר קטגוריות ללמידה",
-    "familiarity": "היכרות"
+    "familiarity": "היכרות",
+    "topicLabel": "נושא"
   },
   "progress": {
     "title": "<1>ההתקדמות</1> שלך",
@@ -445,7 +449,8 @@
     "passwordsNoMatch": "הסיסמאות החדשות לא תואמות",
     "loadingProfile": "טוען פרופיל...",
     "failedToLoad": "טעינת הפרופיל נכשלה",
-    "unknown": "לא ידוע"
+    "unknown": "לא ידוע",
+    "setPassword": "הגדר סיסמה"
   },
   "verifyEmail": {
     "verifying": "מאמת את האימייל שלך...",
@@ -555,6 +560,27 @@
     "overview": "סקירה כללית",
     "userGrowth": "גידול משתמשים",
     "recentActiveUsers": "משתמשים פעילים לאחרונה"
+  },
+  "forgotPassword": {
+    "title": "שכחת סיסמה",
+    "subtitle": "הזן את כתובת האימייל שלך ונשלח לך קישור לאיפוס הסיסמה.",
+    "error": "שליחת קישור האיפוס נכשלה. נסה שוב.",
+    "checkEmail": "בדוק את האימייל שלך",
+    "sentMessage": "קישור לאיפוס סיסמה נשלח אל {{email}}.",
+    "sendLink": "שלח קישור איפוס",
+    "backToLogin": "חזרה להתחברות"
+  },
+  "resetPassword": {
+    "title": "איפוס סיסמה",
+    "subtitle": "הזן את הסיסמה החדשה שלך.",
+    "error": "איפוס הסיסמה נכשל. נסה שוב.",
+    "invalidLink": "קישור איפוס זה אינו תקף או שפג תוקפו.",
+    "noToken": "אסימון איפוס חסר. בקש קישור חדש.",
+    "requestNew": "בקש קישור חדש",
+    "success": "הסיסמה אופסה בהצלחה.",
+    "goToLogin": "עבור להתחברות",
+    "newPasswordPlaceholder": "סיסמה חדשה",
+    "resetButton": "אפס סיסמה"
   },
   "emailBanner": {
     "message": "אנא אמת את כתובת הדוא\"ל שלך. בדוק את תיבת הדואר הנכנס (ואת תיקיית הספאם/דואר זבל) לקישור האימות.",

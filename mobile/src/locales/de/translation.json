@@ -18,7 +18,8 @@
     "on": "An",
     "off": "Aus",
     "done": "Fertig",
-    "clearAll": "Alle löschen"
+    "clearAll": "Alle löschen",
+    "sending": "Wird gesendet..."
   },
   "languages": {
     "en": "Englisch",
@@ -69,7 +70,13 @@
     "suspendedLoggedOut": "Dein Konto wurde gesperrt. Du wurdest abgemeldet.",
     "contactSupport": "Bitte kontaktiere den Support für weitere Informationen.",
     "suspendedMistake": "Wenn du glaubst, dass dies ein Fehler ist, kontaktiere bitte den Support.",
-    "reason": "Grund"
+    "reason": "Grund",
+    "brandTagline": "Lerne jede Sprache",
+    "continueWithGoogle": "Weiter mit Google",
+    "signingInGoogle": "Anmeldung läuft...",
+    "forgotPassword": "Passwort vergessen?",
+    "googleFailed": "Google-Anmeldung fehlgeschlagen.",
+    "playServicesRequired": "Google Play Services erforderlich."
   },
   "register": {
     "title": "Erstelle dein Konto",
@@ -90,7 +97,9 @@
     "validEmail": "Gültige E-Mail-Adresse",
     "invalidEmail": "Bitte gib eine gültige E-Mail-Adresse ein",
     "passwordsMatch": "Passwörter stimmen überein",
-    "registrationFailed": "Registrierung fehlgeschlagen"
+    "registrationFailed": "Registrierung fehlgeschlagen",
+    "brandTagline": "Starte deine Reise",
+    "googleFailed": "Google-Registrierung fehlgeschlagen. Bitte versuche es erneut."
   },
   "navbar": {
     "continue": "Weiter",
@@ -428,7 +437,24 @@
     "diversifyLearning": "Lernen diversifizieren",
     "diversifyLearningTip": "Übe alle vier Fähigkeiten gleichmäßig",
     "stayConsistent": "Bleib dran",
-    "stayConsistentTip": "Lerne jeden Tag ein bisschen für die besten Ergebnisse"
+    "stayConsistentTip": "Lerne jeden Tag ein bisschen für die besten Ergebnisse",
+    "tipFocusWeak": "Konzentriere dich auf Schwachstellen",
+    "tipFocusWeakDesc": "Du hast {{count}} schwierige Bereiche. Wiederhole sie täglich, um schneller besser zu werden.",
+    "tipBoostSkill": "Verbessere dein {{skill}}",
+    "tipBoostSkillDesc": "Dein {{skill}}-Durchschnitt liegt bei {{avg}}%. Versuche mehr {{skill}}-Übungen.",
+    "tipDeepen": "Vertiefe dein Wissen",
+    "tipDeepenDesc": "Du hast viele Elemente noch in Bearbeitung. Wiederhole Lektionen, bevor du weitergehst.",
+    "tipChallenge": "Fordere dich heraus",
+    "tipChallengeDesc": "Du hast {{count}} Bereiche gemeistert! Versuche schwierigere Lektionen, um weiter zu wachsen.",
+    "tipStrength": "{{skill}} ist deine Stärke!",
+    "tipStrengthDesc": "Tolle Arbeit mit {{avg}}%! Mach weiter so und probiere fortgeschrittene Inhalte.",
+    "tipMasterNext": "Zur Meisterschaft",
+    "tipMasterNextDesc": "{{count}} Bereiche sind fast gemeistert. Noch ein paar Wiederholungen und du schaffst es!",
+    "tipRepetition": "Verteiltes Wiederholen",
+    "tipRepetitionDesc": "Wiederhole Karteikarten regelmäßig, um das Langzeitgedächtnis zu stärken.",
+    "noAreas": "Noch keine Elemente in dieser Kategorie.",
+    "needsAttention": "Braucht Aufmerksamkeit",
+    "personalizedTips": "Tipps für dich"
   },
   "profilePage": {
     "memberSince": "Mitglied seit {{date}}",
@@ -476,7 +502,7 @@
     "challengeDetail": "Im Herausforderungsmodus sinken deine XP um 15 % pro Tag nach 48 Stunden Inaktivität. Nur das Beantworten von Fragen setzt den Timer zurück.",
     "resetAndEnable": "XP zurücksetzen und Herausforderungsmodus aktivieren",
     "switching": "Wechsel läuft...",
-    "switchToRelaxed": "Zum entspannten Modus wechseln?",
+    "switchToRelaxed": "Zum entspannten Modus wechseln",
     "relaxedWarning": "Deine aktuellen XP werden im entspannten Modus <strong>beibehalten</strong>. Wenn du jedoch in Zukunft zum Herausforderungsmodus zurückwechselst, werden deine XP auf 0 zurückgesetzt.",
     "switchRelaxedBtn": "Zum entspannten Modus wechseln",
     "resetProgress": "Fortschritt zurücksetzen",
@@ -496,7 +522,35 @@
     "passwordsNoMatch": "Neue Passwörter stimmen nicht überein",
     "loadingProfile": "Profil wird geladen...",
     "failedToLoad": "Profil konnte nicht geladen werden",
-    "unknown": "Unbekannt"
+    "unknown": "Unbekannt",
+    "edit": "Bearbeiten",
+    "save": "Speichern",
+    "saved": "Gespeichert!",
+    "role": "Rolle",
+    "logout": "Abmelden",
+    "setPassword": "Passwort festlegen",
+    "passwordTooShort": "Passwort muss mindestens 6 Zeichen lang sein",
+    "languagePrefs": "Spracheinstellungen",
+    "langChangeHint": "Sprachänderungen gelten für die gesamte App",
+    "voiceHint": "Wähle die Stimme zum Vorlesen koreanischer Texte",
+    "noVoicesShort": "Keine Stimmen verfügbar",
+    "defaultVoice": "Standardstimme",
+    "systemDefault": "Systemstandard",
+    "studyMode": "Lernmodus",
+    "enableChallenge": "Challenge-Modus aktivieren",
+    "disableChallenge": "Challenge-Modus deaktivieren",
+    "challengeWarningShort": "Im Challenge-Modus werden XP und Serien aufgezeichnet",
+    "relaxedInfo": "Im entspannten Modus kannst du ohne Druck lernen",
+    "enableButton": "Aktivieren",
+    "switchButton": "Wechseln",
+    "resetXP": "XP zurücksetzen",
+    "resetXPDesc": "Alle Fortschritte und XP werden zurückgesetzt",
+    "resetXPButton": "XP zurücksetzen",
+    "resetXPTitle": "XP zurücksetzen?",
+    "resetButton": "Zurücksetzen",
+    "deleteAccountButton": "Konto löschen",
+    "deleteAccountTitle": "Konto löschen?",
+    "deleteButton": "Löschen"
   },
   "verifyEmail": {
     "verifying": "E-Mail wird verifiziert...",
@@ -508,7 +562,24 @@
     "failedMessage": "Die Verifizierung ist fehlgeschlagen. Der Link ist möglicherweise abgelaufen.",
     "needNewLink": "Brauchst du einen neuen Link?",
     "registerAgain": "Erneut registrieren",
-    "orContactSupport": "oder kontaktiere den Support."
+    "orContactSupport": "oder kontaktiere den Support.",
+    "verified": "E-Mail bestätigt!",
+    "failedTitle": "Bestätigung fehlgeschlagen",
+    "backToLogin": "Zurück zur Anmeldung"
+  },
+  "forgotPassword": {
+    "title": "Passwort vergessen",
+    "subtitle": "Gib deine E-Mail-Adresse ein und wir senden dir einen Link zum Zurücksetzen deines Passworts.",
+    "error": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+    "checkEmail": "Überprüfe deine E-Mail",
+    "sentMessage": "Falls ein Konto mit dieser E-Mail existiert, haben wir einen Link zum Zurücksetzen gesendet.",
+    "sendLink": "Link zum Zurücksetzen senden",
+    "backToLogin": "Zurück zur Anmeldung"
+  },
+  "emailBanner": {
+    "message": "Bitte bestätige deine E-Mail-Adresse.",
+    "resend": "Erneut senden",
+    "sent": "Bestätigungs-E-Mail gesendet! Überprüfe deinen Posteingang."
   },
   "admin": {
     "title": "Admin-Dashboard",
@@ -602,6 +673,15 @@
     "hours": "{{count}}Std {{minutes}}Min",
     "overview": "Übersicht",
     "userGrowth": "Benutzerwachstum",
-    "recentActiveUsers": "Kürzlich aktive Benutzer"
+    "recentActiveUsers": "Kürzlich aktive Benutzer",
+    "guests": "Gäste",
+    "avgTime": "Durchschn. Zeit",
+    "activeToday": "Heute aktiv",
+    "lessons": "Lektionen",
+    "flashcards": "Karteikarten",
+    "recentActive": "Kürzlich aktive Benutzer",
+    "modeBreakdown": "Modusverteilung",
+    "searchUsers": "Benutzer suchen...",
+    "all": "Alle"
   }
 }

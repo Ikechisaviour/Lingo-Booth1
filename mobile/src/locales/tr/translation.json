@@ -18,7 +18,8 @@
     "on": "Açık",
     "off": "Kapalı",
     "done": "Tamam",
-    "clearAll": "Hepsini temizle"
+    "clearAll": "Hepsini temizle",
+    "sending": "Gönderiliyor..."
   },
   "languages": {
     "en": "İngilizce",
@@ -69,7 +70,13 @@
     "suspendedLoggedOut": "Hesabınız askıya alındı. Oturumunuz kapatıldı.",
     "contactSupport": "Daha fazla bilgi için lütfen destek ekibiyle iletişime geçin.",
     "suspendedMistake": "Bunun bir hata olduğunu düşünüyorsanız lütfen destek ekibiyle iletişime geçin.",
-    "reason": "Neden"
+    "reason": "Neden",
+    "brandTagline": "Herhangi bir dili öğren",
+    "continueWithGoogle": "Google ile devam et",
+    "signingInGoogle": "Giriş yapılıyor...",
+    "forgotPassword": "Şifrenizi mi unuttunuz?",
+    "googleFailed": "Google ile giriş başarısız.",
+    "playServicesRequired": "Google Play Hizmetleri gerekli."
   },
   "register": {
     "title": "Hesabınızı Oluşturun",
@@ -90,7 +97,9 @@
     "validEmail": "Geçerli e-posta adresi",
     "invalidEmail": "Lütfen geçerli bir e-posta adresi girin",
     "passwordsMatch": "Şifreler eşleşiyor",
-    "registrationFailed": "Kayıt başarısız"
+    "registrationFailed": "Kayıt başarısız",
+    "brandTagline": "Yolculuğunuza başlayın",
+    "googleFailed": "Google ile kayıt başarısız. Lütfen tekrar deneyin."
   },
   "navbar": {
     "continue": "Devam Et",
@@ -428,7 +437,24 @@
     "diversifyLearning": "Öğrenmeyi Çeşitlendirin",
     "diversifyLearningTip": "Dört beceriyi de eşit şekilde çalışın",
     "stayConsistent": "Tutarlı Olun",
-    "stayConsistentTip": "En iyi sonuçlar için her gün biraz çalışın"
+    "stayConsistentTip": "En iyi sonuçlar için her gün biraz çalışın",
+    "tipFocusWeak": "Zayıf Alanlara Odaklan",
+    "tipFocusWeakDesc": "{{count}} zorlandığınız alan var. Daha hızlı gelişmek için günlük tekrar yapın.",
+    "tipBoostSkill": "{{skill}} Becerinizi Güçlendirin",
+    "tipBoostSkillDesc": "{{skill}} ortalamanız {{avg}}%. Daha fazla {{skill}} alıştırması deneyin.",
+    "tipDeepen": "Bilginizi Derinleştirin",
+    "tipDeepenDesc": "Hâlâ devam eden birçok öğeniz var. İlerlemeden önce dersleri tekrar gözden geçirin.",
+    "tipChallenge": "Kendinize Meydan Okuyun",
+    "tipChallengeDesc": "{{count}} alanda ustalaştınız! Gelişmeye devam etmek için daha zor dersler deneyin.",
+    "tipStrength": "{{skill}} Güçlü Yanınız!",
+    "tipStrengthDesc": "{{avg}}% ile harika iş! Devam edin ve ileri düzey içerik deneyin.",
+    "tipMasterNext": "Ustalığa Doğru İlerleyin",
+    "tipMasterNextDesc": "{{count}} alan neredeyse ustalaşıldı. Birkaç tekrar daha ve başaracaksınız!",
+    "tipRepetition": "Aralıklı Tekrar",
+    "tipRepetitionDesc": "Uzun vadeli hafızayı pekiştirmek için kartları düzenli olarak gözden geçirin.",
+    "noAreas": "Bu kategoride henüz öğe yok.",
+    "needsAttention": "İlgi Gerektiriyor",
+    "personalizedTips": "Size Özel İpuçları"
   },
   "profilePage": {
     "memberSince": "{{date}} tarihinden beri üye",
@@ -496,7 +522,36 @@
     "passwordsNoMatch": "Yeni şifreler eşleşmiyor",
     "loadingProfile": "Profil yükleniyor...",
     "failedToLoad": "Profil yüklenemedi",
-    "unknown": "Bilinmiyor"
+    "unknown": "Bilinmiyor",
+    "edit": "Düzenle",
+    "save": "Kaydet",
+    "saved": "Kaydedildi!",
+    "role": "Rol",
+    "logout": "Çıkış Yap",
+    "setPassword": "Şifre Belirle",
+    "passwordTooShort": "Şifre en az 6 karakter olmalıdır",
+    "languagePrefs": "Dil Tercihleri",
+    "langChangeHint": "Dilleri değiştirmek için çıkış yapın ve tekrar giriş yaparken yeni diller seçin.",
+    "voiceHint": "Ses çalma için kullanılacak sesi seçin.",
+    "noVoicesShort": "Ses mevcut değil. Yüklemek için yenile'ye dokunun.",
+    "defaultVoice": "Varsayılan Ses",
+    "systemDefault": "Sistem varsayılanı",
+    "studyMode": "Çalışma Modu",
+    "enableChallenge": "Yarışma Modu etkinleştirilsin mi?",
+    "disableChallenge": "Rahat Moda geçilsin mi?",
+    "challengeWarningShort": "Çalışmazsanız XP günlük azalacak. XP'niz 0'a sıfırlanacak.",
+    "relaxedInfo": "XP artık azalmayacak. Mevcut XP'niz korunacak.",
+    "enableButton": "Etkinleştir",
+    "switchButton": "Geçiş Yap",
+    "switchToRelaxed": "Rahat Moda Geç",
+    "resetXP": "XP Sıfırla",
+    "resetXPDesc": "Tüm XP geçmişini temizle. Bu geri alınamaz.",
+    "resetXPButton": "XP Geçmişini Sıfırla",
+    "resetXPTitle": "XP Sıfırlansın mı?",
+    "resetButton": "Sıfırla",
+    "deleteAccountButton": "Hesabı Sil",
+    "deleteAccountTitle": "Hesap Silinsin mi?",
+    "deleteButton": "Sil"
   },
   "verifyEmail": {
     "verifying": "E-postanız doğrulanıyor...",
@@ -508,7 +563,24 @@
     "failedMessage": "Doğrulama başarısız oldu. Bağlantının süresi dolmuş olabilir.",
     "needNewLink": "Yeni bir bağlantıya mı ihtiyacınız var?",
     "registerAgain": "Tekrar kaydolun",
-    "orContactSupport": "veya destek ekibiyle iletişime geçin."
+    "orContactSupport": "veya destek ekibiyle iletişime geçin.",
+    "verified": "E-posta Doğrulandı!",
+    "failedTitle": "Doğrulama Başarısız",
+    "backToLogin": "Girişe Dön"
+  },
+  "forgotPassword": {
+    "title": "Şifremi Unuttum",
+    "subtitle": "E-posta adresinizi girin, size şifre sıfırlama bağlantısı gönderelim.",
+    "error": "Bir şeyler yanlış gitti. Lütfen tekrar deneyin.",
+    "checkEmail": "E-postanızı kontrol edin",
+    "sentMessage": "Bu e-posta ile bir hesap varsa, şifre sıfırlama bağlantısı gönderdik.",
+    "sendLink": "Sıfırlama Bağlantısı Gönder",
+    "backToLogin": "Girişe Dön"
+  },
+  "emailBanner": {
+    "message": "Lütfen e-posta adresinizi doğrulayın.",
+    "resend": "Tekrar Gönder",
+    "sent": "Doğrulama e-postası gönderildi! Gelen kutunuzu kontrol edin."
   },
   "admin": {
     "title": "Yönetici Paneli",
@@ -602,6 +674,15 @@
     "hours": "{{count}}s {{minutes}}dk",
     "overview": "Genel Bakış",
     "userGrowth": "Kullanıcı Artışı",
-    "recentActiveUsers": "Son Aktif Kullanıcılar"
+    "recentActiveUsers": "Son Aktif Kullanıcılar",
+    "guests": "Misafirler",
+    "avgTime": "Ort. Süre",
+    "activeToday": "Bugün Aktif",
+    "lessons": "Dersler",
+    "flashcards": "Kartlar",
+    "recentActive": "Son Aktif",
+    "modeBreakdown": "Çalışma Modu",
+    "searchUsers": "Kullanıcı ara...",
+    "all": "Tümü"
   }
 }

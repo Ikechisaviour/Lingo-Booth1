@@ -18,7 +18,8 @@
     "on": "オン",
     "off": "オフ",
     "done": "完了",
-    "clearAll": "全て解除"
+    "clearAll": "全て解除",
+    "sending": "送信中..."
   },
   "languages": {
     "en": "英語",
@@ -69,7 +70,13 @@
     "suspendedLoggedOut": "アカウントが停止されました。ログアウトされました。",
     "contactSupport": "詳細についてはサポートにお問い合わせください。",
     "suspendedMistake": "間違いだと思われる場合は、サポートにお問い合わせください。",
-    "reason": "理由"
+    "reason": "理由",
+    "brandTagline": "どの言語でも学べる",
+    "continueWithGoogle": "Googleで続ける",
+    "signingInGoogle": "ログイン中...",
+    "forgotPassword": "パスワードをお忘れですか？",
+    "googleFailed": "Googleログインに失敗しました。",
+    "playServicesRequired": "Google Play Servicesが必要です。"
   },
   "register": {
     "title": "アカウントを作成",
@@ -90,7 +97,9 @@
     "validEmail": "有効なメールアドレス",
     "invalidEmail": "有効なメールアドレスを入力してください",
     "passwordsMatch": "パスワードが一致しました",
-    "registrationFailed": "登録失敗"
+    "registrationFailed": "登録失敗",
+    "brandTagline": "学習の旅を始めよう",
+    "googleFailed": "Googleサインアップに失敗しました。もう一度お試しください。"
   },
   "navbar": {
     "continue": "続ける",
@@ -428,7 +437,24 @@
     "diversifyLearning": "学習の多様化",
     "diversifyLearningTip": "4つのスキルを均等に練習しましょう",
     "stayConsistent": "継続は力なり",
-    "stayConsistentTip": "最良の結果のために毎日少しずつ学習しましょう"
+    "stayConsistentTip": "最良の結果のために毎日少しずつ学習しましょう",
+    "tipFocusWeak": "苦手な分野に集中",
+    "tipFocusWeakDesc": "{{count}}個の苦手な分野があります。毎日復習してより速く上達しましょう。",
+    "tipBoostSkill": "{{skill}}を強化しよう",
+    "tipBoostSkillDesc": "{{skill}}の平均は{{avg}}%です。もっと{{skill}}の練習をしましょう。",
+    "tipDeepen": "知識を深めよう",
+    "tipDeepenDesc": "まだ学習中の項目がたくさんあります。次に進む前にレッスンを復習しましょう。",
+    "tipChallenge": "自分に挑戦しよう",
+    "tipChallengeDesc": "{{count}}個の分野をマスターしました！より難しいレッスンに挑戦して成長を続けましょう。",
+    "tipStrength": "{{skill}}はあなたの強みです！",
+    "tipStrengthDesc": "{{avg}}%の素晴らしい成績です！この調子で上級コンテンツにも挑戦しましょう。",
+    "tipMasterNext": "マスターを目指そう",
+    "tipMasterNextDesc": "{{count}}個の分野がもうすぐマスターできます。あと少しの復習で達成できます！",
+    "tipRepetition": "間隔反復学習",
+    "tipRepetitionDesc": "フラッシュカードを定期的に復習して長期記憶に定着させましょう。",
+    "noAreas": "このカテゴリーにはまだ項目がありません。",
+    "needsAttention": "注意が必要",
+    "personalizedTips": "あなたへのヒント"
   },
   "profilePage": {
     "memberSince": "{{date}}から会員",
@@ -476,7 +502,7 @@
     "challengeDetail": "チャレンジモードでは、48時間の非活動後にXPが1日15%ずつ減少します。問題に答えることでのみタイマーがリセットされます。",
     "resetAndEnable": "XPをリセットしてチャレンジモードを有効にする",
     "switching": "切り替え中...",
-    "switchToRelaxed": "リラックスモードに切り替えますか？",
+    "switchToRelaxed": "リラックスモードに切り替え",
     "relaxedWarning": "現在のXPはリラックスモードで<strong>保持</strong>されます。ただし、将来チャレンジモードに戻す場合、XPは0にリセットされます。",
     "switchRelaxedBtn": "リラックスモードに切り替える",
     "resetProgress": "進捗をリセット",
@@ -496,7 +522,35 @@
     "passwordsNoMatch": "新しいパスワードが一致しません",
     "loadingProfile": "プロフィール読み込み中...",
     "failedToLoad": "プロフィールの読み込みに失敗しました",
-    "unknown": "不明"
+    "unknown": "不明",
+    "edit": "編集",
+    "save": "保存",
+    "saved": "保存しました！",
+    "role": "役割",
+    "logout": "ログアウト",
+    "setPassword": "パスワードを設定",
+    "passwordTooShort": "パスワードは6文字以上必要です",
+    "languagePrefs": "言語設定",
+    "langChangeHint": "言語の変更はアプリ全体に適用されます",
+    "voiceHint": "韓国語音声の読み上げに使用する音声を選択",
+    "noVoicesShort": "利用可能な音声がありません",
+    "defaultVoice": "デフォルト音声",
+    "systemDefault": "システムデフォルト",
+    "studyMode": "学習モード",
+    "enableChallenge": "チャレンジモードを有効にする",
+    "disableChallenge": "チャレンジモードを無効にする",
+    "challengeWarningShort": "チャレンジモードではXPとストリークが記録されます",
+    "relaxedInfo": "リラックスモードではプレッシャーなく学習できます",
+    "enableButton": "有効にする",
+    "switchButton": "切り替え",
+    "resetXP": "XPをリセット",
+    "resetXPDesc": "進捗とXPがすべてリセットされます",
+    "resetXPButton": "XPをリセット",
+    "resetXPTitle": "XPをリセットしますか？",
+    "resetButton": "リセット",
+    "deleteAccountButton": "アカウントを削除",
+    "deleteAccountTitle": "アカウントを削除しますか？",
+    "deleteButton": "削除"
   },
   "verifyEmail": {
     "verifying": "メールを確認中...",
@@ -508,7 +562,24 @@
     "failedMessage": "確認に失敗しました。リンクの有効期限が切れている可能性があります。",
     "needNewLink": "新しいリンクが必要ですか？",
     "registerAgain": "再度登録",
-    "orContactSupport": "またはサポートにお問い合わせください。"
+    "orContactSupport": "またはサポートにお問い合わせください。",
+    "verified": "メール確認完了！",
+    "failedTitle": "確認に失敗しました",
+    "backToLogin": "ログインに戻る"
+  },
+  "forgotPassword": {
+    "title": "パスワードを忘れた場合",
+    "subtitle": "メールアドレスを入力してください。パスワードリセット用のリンクを送信します。",
+    "error": "問題が発生しました。もう一度お試しください。",
+    "checkEmail": "メールを確認してください",
+    "sentMessage": "そのメールアドレスのアカウントが存在する場合、パスワードリセットリンクを送信しました。",
+    "sendLink": "リセットリンクを送信",
+    "backToLogin": "ログインに戻る"
+  },
+  "emailBanner": {
+    "message": "メールアドレスを確認してください。",
+    "resend": "再送信",
+    "sent": "確認メールを送信しました！受信トレイを確認してください。"
   },
   "admin": {
     "title": "管理ダッシュボード",
@@ -602,6 +673,15 @@
     "hours": "{{count}}時間{{minutes}}分",
     "overview": "概要",
     "userGrowth": "ユーザーの成長",
-    "recentActiveUsers": "最近のアクティブユーザー"
+    "recentActiveUsers": "最近のアクティブユーザー",
+    "guests": "ゲスト",
+    "avgTime": "平均時間",
+    "activeToday": "本日アクティブ",
+    "lessons": "レッスン",
+    "flashcards": "フラッシュカード",
+    "recentActive": "最近のアクティブユーザー",
+    "modeBreakdown": "モード内訳",
+    "searchUsers": "ユーザーを検索...",
+    "all": "すべて"
   }
 }

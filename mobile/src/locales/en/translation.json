@@ -18,7 +18,8 @@
     "on": "On",
     "off": "Off",
     "done": "Done",
-    "clearAll": "Clear All"
+    "clearAll": "Clear All",
+    "sending": "Sending..."
   },
   "languages": {
     "en": "English",
@@ -69,7 +70,13 @@
     "suspendedLoggedOut": "Your account has been suspended. You have been logged out.",
     "contactSupport": "Please contact support for more information.",
     "suspendedMistake": "If you believe this is a mistake, please contact support.",
-    "reason": "Reason"
+    "reason": "Reason",
+    "brandTagline": "Learn any language",
+    "continueWithGoogle": "Continue with Google",
+    "signingInGoogle": "Signing in...",
+    "forgotPassword": "Forgot password?",
+    "googleFailed": "Google sign-in failed.",
+    "playServicesRequired": "Google Play Services required."
   },
   "register": {
     "title": "Create Your Account",
@@ -90,7 +97,9 @@
     "validEmail": "Valid email address",
     "invalidEmail": "Please enter a valid email address",
     "passwordsMatch": "Passwords match",
-    "registrationFailed": "Registration failed"
+    "registrationFailed": "Registration failed",
+    "brandTagline": "Start your journey",
+    "googleFailed": "Google sign-up failed. Please try again."
   },
   "navbar": {
     "continue": "Continue",
@@ -428,7 +437,24 @@
     "diversifyLearning": "Diversify Learning",
     "diversifyLearningTip": "Practice all four skills evenly",
     "stayConsistent": "Stay Consistent",
-    "stayConsistentTip": "Study a little bit every day for best results"
+    "stayConsistentTip": "Study a little bit every day for best results",
+    "tipFocusWeak": "Focus on Weak Areas",
+    "tipFocusWeakDesc": "You have {{count}} struggling areas. Review them daily to improve faster.",
+    "tipBoostSkill": "Boost Your {{skill}}",
+    "tipBoostSkillDesc": "Your {{skill}} average is {{avg}}%. Try more {{skill}} exercises.",
+    "tipDeepen": "Deepen Your Knowledge",
+    "tipDeepenDesc": "You have many items still in progress. Revisit lessons before moving on.",
+    "tipChallenge": "Challenge Yourself",
+    "tipChallengeDesc": "You've mastered {{count}} areas! Try harder lessons to keep growing.",
+    "tipStrength": "{{skill}} is Your Strength!",
+    "tipStrengthDesc": "Great work at {{avg}}%! Keep it up and try advanced content.",
+    "tipMasterNext": "Push to Mastery",
+    "tipMasterNextDesc": "{{count}} areas are almost mastered. A few more reviews and you'll get there!",
+    "tipRepetition": "Spaced Repetition",
+    "tipRepetitionDesc": "Review flashcards regularly to lock in long-term memory.",
+    "noAreas": "No items in this category yet.",
+    "needsAttention": "Needs Attention",
+    "personalizedTips": "Tips For You"
   },
   "profilePage": {
     "memberSince": "Member since {{date}}",
@@ -496,6 +522,35 @@
     "passwordsNoMatch": "New passwords do not match",
     "loadingProfile": "Loading profile...",
     "failedToLoad": "Failed to load profile",
+    "edit": "Edit",
+    "save": "Save",
+    "saved": "Saved!",
+    "role": "Role",
+    "logout": "Log Out",
+    "setPassword": "Set Password",
+    "passwordTooShort": "Password must be at least 6 characters",
+    "languagePrefs": "Language Preferences",
+    "langChangeHint": "To change languages, log out and select new languages when logging back in.",
+    "voiceHint": "Choose the voice used for audio playback.",
+    "noVoicesShort": "No voices available. Tap refresh to load.",
+    "defaultVoice": "Default Voice",
+    "systemDefault": "System default",
+    "studyMode": "Study Mode",
+    "enableChallenge": "Enable Challenge Mode?",
+    "disableChallenge": "Switch to Relaxed Mode?",
+    "challengeWarningShort": "XP will decay daily if you don't study. Your XP will be reset to 0.",
+    "relaxedInfo": "XP will no longer decay. Your current XP is preserved.",
+    "enableButton": "Enable",
+    "switchButton": "Switch",
+    "switchToRelaxed": "Switch to Relaxed",
+    "resetXP": "Reset XP",
+    "resetXPDesc": "Clear all XP history. This cannot be undone.",
+    "resetXPButton": "Reset XP History",
+    "resetXPTitle": "Reset XP?",
+    "resetButton": "Reset",
+    "deleteAccountButton": "Delete Account",
+    "deleteAccountTitle": "Delete Account?",
+    "deleteButton": "Delete",
     "unknown": "Unknown"
   },
   "verifyEmail": {
@@ -508,7 +563,24 @@
     "failedMessage": "Verification failed. The link may have expired.",
     "needNewLink": "Need a new link?",
     "registerAgain": "Register again",
-    "orContactSupport": "or contact support."
+    "orContactSupport": "or contact support.",
+    "verified": "Email Verified!",
+    "failedTitle": "Verification Failed",
+    "backToLogin": "Back to Login"
+  },
+  "forgotPassword": {
+    "title": "Forgot Password",
+    "subtitle": "Enter your email and we'll send you a link to reset your password.",
+    "error": "Something went wrong. Please try again.",
+    "checkEmail": "Check your email",
+    "sentMessage": "If an account with that email exists, we sent a password reset link.",
+    "sendLink": "Send Reset Link",
+    "backToLogin": "Back to Login"
+  },
+  "emailBanner": {
+    "message": "Please verify your email address.",
+    "resend": "Resend",
+    "sent": "Verification email sent! Check your inbox."
   },
   "admin": {
     "title": "Admin Dashboard",
@@ -602,6 +674,15 @@
     "hours": "{{count}}h {{minutes}}m",
     "overview": "Overview",
     "userGrowth": "User Growth",
-    "recentActiveUsers": "Recent Active Users"
+    "recentActiveUsers": "Recent Active Users",
+    "guests": "Guests",
+    "avgTime": "Avg Time",
+    "activeToday": "Active Today",
+    "lessons": "Lessons",
+    "flashcards": "Flashcards",
+    "recentActive": "Recently Active",
+    "modeBreakdown": "Study Mode",
+    "searchUsers": "Search users...",
+    "all": "All"
   }
 }

@@ -18,7 +18,8 @@
     "on": "تشغيل",
     "off": "إيقاف",
     "done": "تم",
-    "clearAll": "مسح الكل"
+    "clearAll": "مسح الكل",
+    "sending": "جاري الإرسال..."
   },
   "languages": {
     "en": "الإنجليزية",
@@ -69,7 +70,13 @@
     "suspendedLoggedOut": "تم تعليق حسابك. تم تسجيل خروجك.",
     "contactSupport": "يرجى التواصل مع الدعم للمزيد من المعلومات.",
     "suspendedMistake": "إذا كنت تعتقد أن هذا خطأ، يرجى التواصل مع الدعم.",
-    "reason": "السبب"
+    "reason": "السبب",
+    "brandTagline": "تعلم أي لغة",
+    "continueWithGoogle": "المتابعة مع Google",
+    "signingInGoogle": "جاري تسجيل الدخول...",
+    "forgotPassword": "نسيت كلمة المرور؟",
+    "googleFailed": "فشل تسجيل الدخول عبر Google.",
+    "playServicesRequired": "مطلوب خدمات Google Play."
   },
   "register": {
     "title": "أنشئ حسابك",
@@ -90,7 +97,9 @@
     "validEmail": "عنوان بريد إلكتروني صالح",
     "invalidEmail": "يرجى إدخال عنوان بريد إلكتروني صالح",
     "passwordsMatch": "كلمتا المرور متطابقتان",
-    "registrationFailed": "فشل التسجيل"
+    "registrationFailed": "فشل التسجيل",
+    "brandTagline": "ابدأ رحلتك",
+    "googleFailed": "فشل التسجيل عبر Google. يرجى المحاولة مرة أخرى."
   },
   "navbar": {
     "continue": "متابعة",
@@ -428,7 +437,24 @@
     "diversifyLearning": "تنويع التعلم",
     "diversifyLearningTip": "تدرب على المهارات الأربع بالتساوي",
     "stayConsistent": "كن مستمرًا",
-    "stayConsistentTip": "ادرس قليلاً كل يوم للحصول على أفضل النتائج"
+    "stayConsistentTip": "ادرس قليلاً كل يوم للحصول على أفضل النتائج",
+    "tipFocusWeak": "ركز على نقاط الضعف",
+    "tipFocusWeakDesc": "لديك {{count}} مجالات صعبة. راجعها يوميًا للتحسن أسرع.",
+    "tipBoostSkill": "عزز مهارة {{skill}}",
+    "tipBoostSkillDesc": "متوسط {{skill}} لديك هو {{avg}}%. جرب المزيد من تمارين {{skill}}.",
+    "tipDeepen": "عمّق معرفتك",
+    "tipDeepenDesc": "لديك عناصر كثيرة قيد التقدم. أعد مراجعة الدروس قبل الانتقال.",
+    "tipChallenge": "تحدَّ نفسك",
+    "tipChallengeDesc": "لقد أتقنت {{count}} مجالات! جرب دروسًا أصعب لمواصلة النمو.",
+    "tipStrength": "{{skill}} هي نقطة قوتك!",
+    "tipStrengthDesc": "عمل رائع بنسبة {{avg}}%! واصل وجرب محتوى متقدمًا.",
+    "tipMasterNext": "ادفع نحو الإتقان",
+    "tipMasterNextDesc": "{{count}} مجالات قريبة من الإتقان. مراجعات قليلة أخرى وستصل!",
+    "tipRepetition": "التكرار المتباعد",
+    "tipRepetitionDesc": "راجع البطاقات التعليمية بانتظام لتثبيت الذاكرة طويلة المدى.",
+    "noAreas": "لا توجد عناصر في هذه الفئة بعد.",
+    "needsAttention": "يحتاج اهتمامًا",
+    "personalizedTips": "نصائح مخصصة لك"
   },
   "profilePage": {
     "memberSince": "عضو منذ {{date}}",
@@ -496,7 +522,36 @@
     "passwordsNoMatch": "كلمتا المرور الجديدتان غير متطابقتين",
     "loadingProfile": "جاري تحميل الملف الشخصي...",
     "failedToLoad": "فشل تحميل الملف الشخصي",
-    "unknown": "غير معروف"
+    "unknown": "غير معروف",
+    "edit": "تعديل",
+    "save": "حفظ",
+    "saved": "تم الحفظ!",
+    "role": "الدور",
+    "logout": "تسجيل الخروج",
+    "setPassword": "تعيين كلمة المرور",
+    "passwordTooShort": "يجب أن تكون كلمة المرور 6 أحرف على الأقل",
+    "languagePrefs": "تفضيلات اللغة",
+    "langChangeHint": "لتغيير اللغات، سجّل الخروج واختر لغات جديدة عند تسجيل الدخول مرة أخرى.",
+    "voiceHint": "اختر الصوت المستخدم لتشغيل الصوت.",
+    "noVoicesShort": "لا تتوفر أصوات. اضغط على تحديث للتحميل.",
+    "defaultVoice": "الصوت الافتراضي",
+    "systemDefault": "الافتراضي للنظام",
+    "studyMode": "وضع الدراسة",
+    "enableChallenge": "تفعيل وضع التحدي؟",
+    "disableChallenge": "التبديل إلى الوضع المريح؟",
+    "challengeWarningShort": "سينخفض XP يوميًا إذا لم تدرس. سيتم إعادة تعيين XP إلى 0.",
+    "relaxedInfo": "لن ينخفض XP بعد الآن. يتم الحفاظ على XP الحالي.",
+    "enableButton": "تفعيل",
+    "switchButton": "تبديل",
+    "switchToRelaxed": "التبديل إلى الوضع المريح",
+    "resetXP": "إعادة تعيين XP",
+    "resetXPDesc": "مسح كل سجل XP. لا يمكن التراجع عن هذا.",
+    "resetXPButton": "إعادة تعيين سجل XP",
+    "resetXPTitle": "إعادة تعيين XP؟",
+    "resetButton": "إعادة تعيين",
+    "deleteAccountButton": "حذف الحساب",
+    "deleteAccountTitle": "حذف الحساب؟",
+    "deleteButton": "حذف"
   },
   "verifyEmail": {
     "verifying": "جاري التحقق من بريدك الإلكتروني...",
@@ -508,7 +563,24 @@
     "failedMessage": "فشل التحقق. ربما انتهت صلاحية الرابط.",
     "needNewLink": "تحتاج رابطًا جديدًا؟",
     "registerAgain": "سجّل مرة أخرى",
-    "orContactSupport": "أو تواصل مع الدعم."
+    "orContactSupport": "أو تواصل مع الدعم.",
+    "verified": "تم التحقق من البريد الإلكتروني!",
+    "failedTitle": "فشل التحقق",
+    "backToLogin": "العودة لتسجيل الدخول"
+  },
+  "forgotPassword": {
+    "title": "نسيت كلمة المرور",
+    "subtitle": "أدخل بريدك الإلكتروني وسنرسل لك رابطًا لإعادة تعيين كلمة المرور.",
+    "error": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+    "checkEmail": "تحقق من بريدك الإلكتروني",
+    "sentMessage": "إذا كان هناك حساب بهذا البريد الإلكتروني، فقد أرسلنا رابط إعادة تعيين كلمة المرور.",
+    "sendLink": "إرسال رابط إعادة التعيين",
+    "backToLogin": "العودة لتسجيل الدخول"
+  },
+  "emailBanner": {
+    "message": "يرجى التحقق من عنوان بريدك الإلكتروني.",
+    "resend": "إعادة الإرسال",
+    "sent": "تم إرسال بريد التحقق! تحقق من صندوق الوارد."
   },
   "admin": {
     "title": "لوحة الإدارة",
@@ -602,6 +674,15 @@
     "hours": "{{count}}س {{minutes}}د",
     "overview": "نظرة عامة",
     "userGrowth": "نمو المستخدمين",
-    "recentActiveUsers": "المستخدمون النشطون مؤخرًا"
+    "recentActiveUsers": "المستخدمون النشطون مؤخرًا",
+    "guests": "الضيوف",
+    "avgTime": "متوسط الوقت",
+    "activeToday": "نشط اليوم",
+    "lessons": "الدروس",
+    "flashcards": "البطاقات التعليمية",
+    "recentActive": "نشط مؤخرًا",
+    "modeBreakdown": "وضع الدراسة",
+    "searchUsers": "البحث عن مستخدمين...",
+    "all": "الكل"
   }
 }

@@ -18,7 +18,8 @@
     "on": "चालू",
     "off": "बंद",
     "done": "हो गया",
-    "clearAll": "सब हटाएं"
+    "clearAll": "सब हटाएं",
+    "sending": "भेजा जा रहा है..."
   },
   "languages": {
     "en": "अंग्रेज़ी",
@@ -69,7 +70,13 @@
     "suspendedLoggedOut": "आपका खाता निलंबित कर दिया गया है। आपको लॉग आउट कर दिया गया है।",
     "contactSupport": "अधिक जानकारी के लिए कृपया सहायता से संपर्क करें।",
     "suspendedMistake": "यदि आपको लगता है कि यह गलती है, तो कृपया सहायता से संपर्क करें।",
-    "reason": "कारण"
+    "reason": "कारण",
+    "brandTagline": "कोई भी भाषा सीखें",
+    "continueWithGoogle": "Google से जारी रखें",
+    "signingInGoogle": "साइन इन हो रहा है...",
+    "forgotPassword": "पासवर्ड भूल गए?",
+    "googleFailed": "Google साइन-इन विफल।",
+    "playServicesRequired": "Google Play सेवाएं आवश्यक हैं।"
   },
   "register": {
     "title": "अपना खाता बनाएं",
@@ -90,7 +97,9 @@
     "validEmail": "मान्य ईमेल पता",
     "invalidEmail": "कृपया एक मान्य ईमेल पता दर्ज करें",
     "passwordsMatch": "पासवर्ड मेल खाते हैं",
-    "registrationFailed": "पंजीकरण विफल"
+    "registrationFailed": "पंजीकरण विफल",
+    "brandTagline": "अपनी यात्रा शुरू करें",
+    "googleFailed": "Google साइन-अप विफल। कृपया पुनः प्रयास करें।"
   },
   "navbar": {
     "continue": "जारी रखें",
@@ -428,7 +437,24 @@
     "diversifyLearning": "विविध सीखना",
     "diversifyLearningTip": "चारों कौशल का समान रूप से अभ्यास करें",
     "stayConsistent": "निरंतर रहें",
-    "stayConsistentTip": "सर्वोत्तम परिणामों के लिए हर दिन थोड़ा अध्ययन करें"
+    "stayConsistentTip": "सर्वोत्तम परिणामों के लिए हर दिन थोड़ा अध्ययन करें",
+    "tipFocusWeak": "कमज़ोर क्षेत्रों पर ध्यान दें",
+    "tipFocusWeakDesc": "आपके {{count}} कठिन क्षेत्र हैं। तेज़ी से सुधार के लिए रोज़ उनकी समीक्षा करें।",
+    "tipBoostSkill": "अपनी {{skill}} बढ़ाएं",
+    "tipBoostSkillDesc": "आपकी {{skill}} का औसत {{avg}}% है। और {{skill}} अभ्यास करें।",
+    "tipDeepen": "अपना ज्ञान गहरा करें",
+    "tipDeepenDesc": "आपके कई आइटम अभी भी प्रगति पर हैं। आगे बढ़ने से पहले पाठों की समीक्षा करें।",
+    "tipChallenge": "खुद को चुनौती दें",
+    "tipChallengeDesc": "आपने {{count}} क्षेत्रों में महारत हासिल कर ली! बढ़ते रहने के लिए कठिन पाठ आज़माएं।",
+    "tipStrength": "{{skill}} आपकी ताकत है!",
+    "tipStrengthDesc": "{{avg}}% पर शानदार काम! जारी रखें और उन्नत सामग्री आज़माएं।",
+    "tipMasterNext": "महारत की ओर बढ़ें",
+    "tipMasterNextDesc": "{{count}} क्षेत्र लगभग महारत हासिल कर चुके हैं। कुछ और समीक्षाएं और आप पहुंच जाएंगे!",
+    "tipRepetition": "अंतराल दोहराव",
+    "tipRepetitionDesc": "दीर्घकालिक स्मृति के लिए नियमित रूप से फ्लैशकार्ड की समीक्षा करें।",
+    "noAreas": "इस श्रेणी में अभी तक कोई आइटम नहीं।",
+    "needsAttention": "ध्यान देने की आवश्यकता है",
+    "personalizedTips": "आपके लिए सुझाव"
   },
   "profilePage": {
     "memberSince": "{{date}} से सदस्य",
@@ -496,7 +522,36 @@
     "passwordsNoMatch": "नए पासवर्ड मेल नहीं खाते",
     "loadingProfile": "प्रोफ़ाइल लोड हो रही है...",
     "failedToLoad": "प्रोफ़ाइल लोड करने में विफल",
-    "unknown": "अज्ञात"
+    "unknown": "अज्ञात",
+    "edit": "संपादित करें",
+    "save": "सहेजें",
+    "saved": "सहेजा गया!",
+    "role": "भूमिका",
+    "logout": "लॉग आउट",
+    "setPassword": "पासवर्ड सेट करें",
+    "passwordTooShort": "पासवर्ड कम से कम 6 अक्षर का होना चाहिए",
+    "languagePrefs": "भाषा प्राथमिकताएं",
+    "langChangeHint": "भाषाएं बदलने के लिए, लॉग आउट करें और दोबारा लॉग इन करते समय नई भाषाएं चुनें।",
+    "voiceHint": "ऑडियो प्लेबैक के लिए उपयोग की जाने वाली आवाज़ चुनें।",
+    "noVoicesShort": "कोई आवाज़ उपलब्ध नहीं। लोड करने के लिए रीफ्रेश टैप करें।",
+    "defaultVoice": "डिफ़ॉल्ट आवाज़",
+    "systemDefault": "सिस्टम डिफ़ॉल्ट",
+    "studyMode": "अध्ययन मोड",
+    "enableChallenge": "चैलेंज मोड सक्षम करें?",
+    "disableChallenge": "आरामदायक मोड में बदलें?",
+    "challengeWarningShort": "अगर आप नहीं पढ़ेंगे तो XP रोज़ घटेगा। आपका XP 0 पर रीसेट हो जाएगा।",
+    "relaxedInfo": "XP अब और नहीं घटेगा। आपका वर्तमान XP संरक्षित है।",
+    "enableButton": "सक्षम करें",
+    "switchButton": "बदलें",
+    "switchToRelaxed": "आरामदायक मोड में बदलें",
+    "resetXP": "XP रीसेट करें",
+    "resetXPDesc": "सभी XP इतिहास मिटाएं। यह पूर्ववत नहीं हो सकता।",
+    "resetXPButton": "XP इतिहास रीसेट करें",
+    "resetXPTitle": "XP रीसेट करें?",
+    "resetButton": "रीसेट करें",
+    "deleteAccountButton": "खाता हटाएं",
+    "deleteAccountTitle": "खाता हटाएं?",
+    "deleteButton": "हटाएं"
   },
   "verifyEmail": {
     "verifying": "आपका ईमेल सत्यापित हो रहा है...",
@@ -508,7 +563,24 @@
     "failedMessage": "सत्यापन विफल रहा। लिंक समाप्त हो सकता है।",
     "needNewLink": "नए लिंक की आवश्यकता है?",
     "registerAgain": "फिर से पंजीकरण करें",
-    "orContactSupport": "या सहायता से संपर्क करें।"
+    "orContactSupport": "या सहायता से संपर्क करें।",
+    "verified": "ईमेल सत्यापित!",
+    "failedTitle": "सत्यापन विफल",
+    "backToLogin": "लॉग इन पर वापस जाएं"
+  },
+  "forgotPassword": {
+    "title": "पासवर्ड भूल गए",
+    "subtitle": "अपना ईमेल दर्ज करें और हम आपको पासवर्ड रीसेट लिंक भेजेंगे।",
+    "error": "कुछ गलत हो गया। कृपया पुनः प्रयास करें।",
+    "checkEmail": "अपना ईमेल जांचें",
+    "sentMessage": "यदि उस ईमेल से कोई खाता मौजूद है, तो हमने पासवर्ड रीसेट लिंक भेजा है।",
+    "sendLink": "रीसेट लिंक भेजें",
+    "backToLogin": "लॉग इन पर वापस जाएं"
+  },
+  "emailBanner": {
+    "message": "कृपया अपना ईमेल पता सत्यापित करें।",
+    "resend": "पुनः भेजें",
+    "sent": "सत्यापन ईमेल भेजा गया! अपना इनबॉक्स जांचें।"
   },
   "admin": {
     "title": "एडमिन डैशबोर्ड",
@@ -602,6 +674,15 @@
     "hours": "{{count}}घं {{minutes}}मि",
     "overview": "अवलोकन",
     "userGrowth": "उपयोगकर्ता वृद्धि",
-    "recentActiveUsers": "हाल के सक्रिय उपयोगकर्ता"
+    "recentActiveUsers": "हाल के सक्रिय उपयोगकर्ता",
+    "guests": "अतिथि",
+    "avgTime": "औसत समय",
+    "activeToday": "आज सक्रिय",
+    "lessons": "पाठ",
+    "flashcards": "फ्लैशकार्ड",
+    "recentActive": "हाल ही में सक्रिय",
+    "modeBreakdown": "अध्ययन मोड",
+    "searchUsers": "उपयोगकर्ता खोजें...",
+    "all": "सभी"
   }
 }

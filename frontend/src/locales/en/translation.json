@@ -37,7 +37,9 @@
     "logout": "Logout",
     "retry": "Retry",
     "done": "Done",
-    "clearAll": "Clear All"
+    "clearAll": "Clear All",
+    "sending": "Sending...",
+    "saving": "Saving..."
   },
   "languageSelect": {
     "title": "Choose Your Languages",
@@ -67,7 +69,8 @@
     "suspendedLoggedOut": "Your account has been suspended. You have been logged out.",
     "contactSupport": "Please contact support for more information.",
     "suspendedMistake": "If you believe this is a mistake, please contact support.",
-    "reason": "Reason"
+    "reason": "Reason",
+    "forgotPassword": "Forgot password?"
   },
   "register": {
     "title": "Create Your Account",
@@ -338,6 +341,7 @@
     "translationFailed": "Translation unavailable",
     "retryTranslation": "Retry",
     "clickCategoryHint": "Select categories to study",
+    "topicLabel": "Topic (optional)",
     "familiarity": "Familiarity"
   },
   "progress": {
@@ -448,7 +452,29 @@
     "passwordsNoMatch": "New passwords do not match",
     "loadingProfile": "Loading profile...",
     "failedToLoad": "Failed to load profile",
-    "unknown": "Unknown"
+    "unknown": "Unknown",
+    "setPassword": "Set Password"
+  },
+  "forgotPassword": {
+    "title": "Forgot Password",
+    "subtitle": "Enter your email and we'll send you a link to reset your password.",
+    "error": "Something went wrong. Please try again.",
+    "checkEmail": "Check your email",
+    "sentMessage": "If an account with that email exists, we sent a password reset link.",
+    "sendLink": "Send Reset Link",
+    "backToLogin": "Back to Login"
+  },
+  "resetPassword": {
+    "title": "Reset Password",
+    "subtitle": "Enter your new password below.",
+    "error": "Failed to reset password.",
+    "invalidLink": "Invalid Link",
+    "noToken": "This password reset link is invalid or has expired.",
+    "requestNew": "Request a new reset link",
+    "success": "Password reset successfully!",
+    "goToLogin": "Go to Login",
+    "newPasswordPlaceholder": "At least 6 characters",
+    "resetButton": "Reset Password"
   },
   "emailBanner": {
     "message": "Please verify your email address. Check your inbox (and spam/junk folder) for a verification link.",

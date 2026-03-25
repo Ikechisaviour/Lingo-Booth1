@@ -18,7 +18,8 @@
     "on": "Oui",
     "off": "Non",
     "done": "Terminé",
-    "clearAll": "Tout effacer"
+    "clearAll": "Tout effacer",
+    "sending": "Envoi en cours..."
   },
   "languages": {
     "en": "Anglais",
@@ -69,7 +70,13 @@
     "suspendedLoggedOut": "Votre compte a été suspendu. Vous avez été déconnecté.",
     "contactSupport": "Veuillez contacter le support pour plus d'informations.",
     "suspendedMistake": "Si vous pensez qu'il s'agit d'une erreur, veuillez contacter le support.",
-    "reason": "Raison"
+    "reason": "Raison",
+    "brandTagline": "Apprenez n'importe quelle langue",
+    "continueWithGoogle": "Continuer avec Google",
+    "signingInGoogle": "Connexion en cours...",
+    "forgotPassword": "Mot de passe oublié ?",
+    "googleFailed": "Échec de la connexion Google.",
+    "playServicesRequired": "Google Play Services requis."
   },
   "register": {
     "title": "Créez votre compte",
@@ -90,7 +97,9 @@
     "validEmail": "Adresse e-mail valide",
     "invalidEmail": "Veuillez entrer une adresse e-mail valide",
     "passwordsMatch": "Les mots de passe correspondent",
-    "registrationFailed": "Échec de l'inscription"
+    "registrationFailed": "Échec de l'inscription",
+    "brandTagline": "Commencez votre parcours",
+    "googleFailed": "Échec de l'inscription Google. Veuillez réessayer."
   },
   "navbar": {
     "continue": "Continuer",
@@ -428,7 +437,24 @@
     "diversifyLearning": "Diversifiez l'apprentissage",
     "diversifyLearningTip": "Pratiquez les quatre compétences de manière équilibrée",
     "stayConsistent": "Soyez régulier",
-    "stayConsistentTip": "Étudiez un peu chaque jour pour de meilleurs résultats"
+    "stayConsistentTip": "Étudiez un peu chaque jour pour de meilleurs résultats",
+    "tipFocusWeak": "Concentrez-vous sur les points faibles",
+    "tipFocusWeakDesc": "Vous avez {{count}} domaines en difficulté. Révisez-les quotidiennement pour progresser plus vite.",
+    "tipBoostSkill": "Améliorez votre {{skill}}",
+    "tipBoostSkillDesc": "Votre moyenne en {{skill}} est de {{avg}}%. Essayez plus d'exercices de {{skill}}.",
+    "tipDeepen": "Approfondissez vos connaissances",
+    "tipDeepenDesc": "Vous avez de nombreux éléments encore en cours. Révisez les leçons avant de passer à la suite.",
+    "tipChallenge": "Lancez-vous un défi",
+    "tipChallengeDesc": "Vous avez maîtrisé {{count}} domaines ! Essayez des leçons plus difficiles pour continuer à progresser.",
+    "tipStrength": "{{skill}} est votre force !",
+    "tipStrengthDesc": "Excellent travail à {{avg}}% ! Continuez et essayez du contenu avancé.",
+    "tipMasterNext": "Vers la maîtrise",
+    "tipMasterNextDesc": "{{count}} domaines sont presque maîtrisés. Encore quelques révisions et vous y êtes !",
+    "tipRepetition": "Répétition espacée",
+    "tipRepetitionDesc": "Révisez les cartes régulièrement pour ancrer la mémoire à long terme.",
+    "noAreas": "Aucun élément dans cette catégorie pour le moment.",
+    "needsAttention": "À améliorer",
+    "personalizedTips": "Conseils pour vous"
   },
   "profilePage": {
     "memberSince": "Membre depuis {{date}}",
@@ -476,7 +502,7 @@
     "challengeDetail": "En Mode Défi, vos XP diminuent de 15 % par jour après 48 heures d'inactivité. Seules les réponses aux questions réinitialisent le minuteur.",
     "resetAndEnable": "Réinitialiser les XP et activer le Mode Défi",
     "switching": "Changement en cours...",
-    "switchToRelaxed": "Passer au Mode Détendu ?",
+    "switchToRelaxed": "Passer au mode détendu",
     "relaxedWarning": "Vos XP actuels seront <strong>conservés</strong> en Mode Détendu. Cependant, si vous repassez en Mode Défi à l'avenir, vos XP seront remis à 0.",
     "switchRelaxedBtn": "Passer au Mode Détendu",
     "resetProgress": "Réinitialiser les progrès",
@@ -496,7 +522,35 @@
     "passwordsNoMatch": "Les nouveaux mots de passe ne correspondent pas",
     "loadingProfile": "Chargement du profil...",
     "failedToLoad": "Échec du chargement du profil",
-    "unknown": "Inconnu"
+    "unknown": "Inconnu",
+    "edit": "Modifier",
+    "save": "Enregistrer",
+    "saved": "Enregistré !",
+    "role": "Rôle",
+    "logout": "Déconnexion",
+    "setPassword": "Définir le mot de passe",
+    "passwordTooShort": "Le mot de passe doit comporter au moins 6 caractères",
+    "languagePrefs": "Préférences linguistiques",
+    "langChangeHint": "Les changements de langue s'appliquent à toute l'application",
+    "voiceHint": "Sélectionnez la voix pour lire le texte coréen",
+    "noVoicesShort": "Aucune voix disponible",
+    "defaultVoice": "Voix par défaut",
+    "systemDefault": "Par défaut du système",
+    "studyMode": "Mode d'étude",
+    "enableChallenge": "Activer le mode défi",
+    "disableChallenge": "Désactiver le mode défi",
+    "challengeWarningShort": "Le mode défi enregistre les XP et les séries",
+    "relaxedInfo": "Le mode détendu vous permet d'apprendre sans pression",
+    "enableButton": "Activer",
+    "switchButton": "Changer",
+    "resetXP": "Réinitialiser les XP",
+    "resetXPDesc": "Toute la progression et les XP seront réinitialisées",
+    "resetXPButton": "Réinitialiser les XP",
+    "resetXPTitle": "Réinitialiser les XP ?",
+    "resetButton": "Réinitialiser",
+    "deleteAccountButton": "Supprimer le compte",
+    "deleteAccountTitle": "Supprimer le compte ?",
+    "deleteButton": "Supprimer"
   },
   "verifyEmail": {
     "verifying": "Vérification de votre e-mail...",
@@ -508,7 +562,24 @@
     "failedMessage": "La vérification a échoué. Le lien a peut-être expiré.",
     "needNewLink": "Besoin d'un nouveau lien ?",
     "registerAgain": "Inscrivez-vous à nouveau",
-    "orContactSupport": "ou contactez le support."
+    "orContactSupport": "ou contactez le support.",
+    "verified": "E-mail vérifié !",
+    "failedTitle": "Vérification échouée",
+    "backToLogin": "Retour à la connexion"
+  },
+  "forgotPassword": {
+    "title": "Mot de passe oublié",
+    "subtitle": "Entrez votre e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.",
+    "error": "Une erreur s'est produite. Veuillez réessayer.",
+    "checkEmail": "Vérifiez votre e-mail",
+    "sentMessage": "Si un compte avec cet e-mail existe, nous avons envoyé un lien de réinitialisation.",
+    "sendLink": "Envoyer le lien de réinitialisation",
+    "backToLogin": "Retour à la connexion"
+  },
+  "emailBanner": {
+    "message": "Veuillez vérifier votre adresse e-mail.",
+    "resend": "Renvoyer",
+    "sent": "E-mail de vérification envoyé ! Vérifiez votre boîte de réception."
   },
   "admin": {
     "title": "Tableau de bord Admin",
@@ -602,6 +673,15 @@
     "hours": "{{count}}h {{minutes}}m",
     "overview": "Aperçu",
     "userGrowth": "Croissance des utilisateurs",
-    "recentActiveUsers": "Utilisateurs actifs récents"
+    "recentActiveUsers": "Utilisateurs actifs récents",
+    "guests": "Invités",
+    "avgTime": "Temps moyen",
+    "activeToday": "Actifs aujourd'hui",
+    "lessons": "Leçons",
+    "flashcards": "Flashcards",
+    "recentActive": "Utilisateurs actifs récents",
+    "modeBreakdown": "Répartition des modes",
+    "searchUsers": "Rechercher des utilisateurs...",
+    "all": "Tous"
   }
 }

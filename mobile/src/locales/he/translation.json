@@ -18,7 +18,8 @@
     "on": "פועל",
     "off": "כבוי",
     "done": "סיום",
-    "clearAll": "נקה הכל"
+    "clearAll": "נקה הכל",
+    "sending": "שולח..."
   },
   "languages": {
     "en": "אנגלית",
@@ -69,7 +70,13 @@
     "suspendedLoggedOut": "החשבון שלך הושעה. התנתקת מהמערכת.",
     "contactSupport": "אנא צור קשר עם התמיכה למידע נוסף.",
     "suspendedMistake": "אם אתה מאמין שזו טעות, אנא צור קשר עם התמיכה.",
-    "reason": "סיבה"
+    "reason": "סיבה",
+    "brandTagline": "למד כל שפה",
+    "continueWithGoogle": "המשך עם Google",
+    "signingInGoogle": "מתחבר...",
+    "forgotPassword": "שכחת סיסמה?",
+    "googleFailed": "ההתחברות עם Google נכשלה.",
+    "playServicesRequired": "נדרשים שירותי Google Play."
   },
   "register": {
     "title": "צור את החשבון שלך",
@@ -90,7 +97,9 @@
     "validEmail": "כתובת אימייל תקינה",
     "invalidEmail": "אנא הזן כתובת אימייל תקינה",
     "passwordsMatch": "הסיסמאות תואמות",
-    "registrationFailed": "ההרשמה נכשלה"
+    "registrationFailed": "ההרשמה נכשלה",
+    "brandTagline": "התחל את המסע שלך",
+    "googleFailed": "ההרשמה עם Google נכשלה. אנא נסה שוב."
   },
   "navbar": {
     "continue": "המשך",
@@ -428,7 +437,24 @@
     "diversifyLearning": "גוון את הלמידה",
     "diversifyLearningTip": "תרגל את כל ארבע המיומנויות באופן שווה",
     "stayConsistent": "היה עקבי",
-    "stayConsistentTip": "למד קצת כל יום לתוצאות הטובות ביותר"
+    "stayConsistentTip": "למד קצת כל יום לתוצאות הטובות ביותר",
+    "tipFocusWeak": "התמקד בנקודות חולשה",
+    "tipFocusWeakDesc": "יש לך {{count}} תחומים מאתגרים. חזור עליהם מדי יום לשיפור מהיר יותר.",
+    "tipBoostSkill": "חזק את ה{{skill}} שלך",
+    "tipBoostSkillDesc": "הממוצע שלך ב{{skill}} הוא {{avg}}%. נסה עוד תרגילי {{skill}}.",
+    "tipDeepen": "העמק את הידע שלך",
+    "tipDeepenDesc": "יש לך פריטים רבים עדיין בתהליך. חזור על השיעורים לפני שתמשיך הלאה.",
+    "tipChallenge": "אתגר את עצמך",
+    "tipChallengeDesc": "שלטת ב-{{count}} תחומים! נסה שיעורים קשים יותר כדי להמשיך לצמוח.",
+    "tipStrength": "{{skill}} הוא החוזק שלך!",
+    "tipStrengthDesc": "עבודה מצוינת ב-{{avg}}%! המשך ונסה תוכן מתקדם.",
+    "tipMasterNext": "דחוף לשליטה מלאה",
+    "tipMasterNextDesc": "{{count}} תחומים כמעט נשלטים. עוד כמה חזרות ותגיע!",
+    "tipRepetition": "חזרה מרווחת",
+    "tipRepetitionDesc": "חזור על כרטיסיות באופן קבוע לשמירה על זיכרון ארוך טווח.",
+    "noAreas": "אין פריטים בקטגוריה זו עדיין.",
+    "needsAttention": "דורש תשומת לב",
+    "personalizedTips": "טיפים מותאמים אישית"
   },
   "profilePage": {
     "memberSince": "חבר מאז {{date}}",
@@ -496,7 +522,36 @@
     "passwordsNoMatch": "הסיסמאות החדשות לא תואמות",
     "loadingProfile": "טוען פרופיל...",
     "failedToLoad": "טעינת הפרופיל נכשלה",
-    "unknown": "לא ידוע"
+    "unknown": "לא ידוע",
+    "edit": "עריכה",
+    "save": "שמירה",
+    "saved": "נשמר!",
+    "role": "תפקיד",
+    "logout": "התנתקות",
+    "setPassword": "הגדר סיסמה",
+    "passwordTooShort": "הסיסמה חייבת להכיל לפחות 6 תווים",
+    "languagePrefs": "העדפות שפה",
+    "langChangeHint": "כדי לשנות שפות, התנתק ובחר שפות חדשות בהתחברות מחדש.",
+    "voiceHint": "בחר את הקול לנגינת אודיו.",
+    "noVoicesShort": "אין קולות זמינים. הקש על רענון לטעינה.",
+    "defaultVoice": "קול ברירת מחדל",
+    "systemDefault": "ברירת מחדל של המערכת",
+    "studyMode": "מצב לימוד",
+    "enableChallenge": "להפעיל מצב אתגר?",
+    "disableChallenge": "לעבור למצב רגוע?",
+    "challengeWarningShort": "ה-XP ירד מדי יום אם לא תלמד. ה-XP שלך יאופס ל-0.",
+    "relaxedInfo": "ה-XP לא ירד יותר. ה-XP הנוכחי שלך נשמר.",
+    "enableButton": "הפעל",
+    "switchButton": "עבור",
+    "switchToRelaxed": "עבור למצב רגוע",
+    "resetXP": "אפס XP",
+    "resetXPDesc": "נקה את כל היסטוריית ה-XP. לא ניתן לבטל.",
+    "resetXPButton": "אפס היסטוריית XP",
+    "resetXPTitle": "לאפס XP?",
+    "resetButton": "אפס",
+    "deleteAccountButton": "מחק חשבון",
+    "deleteAccountTitle": "למחוק חשבון?",
+    "deleteButton": "מחק"
   },
   "verifyEmail": {
     "verifying": "מאמת את האימייל שלך...",
@@ -508,7 +563,24 @@
     "failedMessage": "האימות נכשל. ייתכן שהקישור פג תוקף.",
     "needNewLink": "צריך קישור חדש?",
     "registerAgain": "הירשם שוב",
-    "orContactSupport": "או צור קשר עם התמיכה."
+    "orContactSupport": "או צור קשר עם התמיכה.",
+    "verified": "האימייל אומת!",
+    "failedTitle": "האימות נכשל",
+    "backToLogin": "חזרה להתחברות"
+  },
+  "forgotPassword": {
+    "title": "שכחתי סיסמה",
+    "subtitle": "הזן את האימייל שלך ונשלח לך קישור לאיפוס הסיסמה.",
+    "error": "משהו השתבש. אנא נסה שוב.",
+    "checkEmail": "בדוק את האימייל שלך",
+    "sentMessage": "אם קיים חשבון עם האימייל הזה, שלחנו קישור לאיפוס סיסמה.",
+    "sendLink": "שלח קישור איפוס",
+    "backToLogin": "חזרה להתחברות"
+  },
+  "emailBanner": {
+    "message": "אנא אמת את כתובת האימייל שלך.",
+    "resend": "שלח שוב",
+    "sent": "אימייל אימות נשלח! בדוק את תיבת הדואר."
   },
   "admin": {
     "title": "לוח בקרה לניהול",
@@ -602,6 +674,15 @@
     "hours": "{{count}}ש {{minutes}}ד",
     "overview": "סקירה כללית",
     "userGrowth": "גידול משתמשים",
-    "recentActiveUsers": "משתמשים פעילים לאחרונה"
+    "recentActiveUsers": "משתמשים פעילים לאחרונה",
+    "guests": "אורחים",
+    "avgTime": "זמן ממוצע",
+    "activeToday": "פעילים היום",
+    "lessons": "שיעורים",
+    "flashcards": "כרטיסיות",
+    "recentActive": "פעילים לאחרונה",
+    "modeBreakdown": "מצב לימוד",
+    "searchUsers": "חפש משתמשים...",
+    "all": "הכל"
   }
 }

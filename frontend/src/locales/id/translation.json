@@ -37,7 +37,9 @@
     "logout": "Keluar",
     "retry": "Coba lagi",
     "done": "Selesai",
-    "clearAll": "Hapus semua"
+    "clearAll": "Hapus semua",
+    "sending": "Mengirim",
+    "saving": "Menyimpan"
   },
   "languageSelect": {
     "title": "Pilih Bahasa Anda",
@@ -66,7 +68,8 @@
     "suspendedLoggedOut": "Akun Anda telah ditangguhkan. Anda telah dikeluarkan.",
     "contactSupport": "Silakan hubungi dukungan untuk informasi lebih lanjut.",
     "suspendedMistake": "Jika Anda merasa ini adalah kesalahan, silakan hubungi dukungan.",
-    "reason": "Alasan"
+    "reason": "Alasan",
+    "forgotPassword": "Lupa kata sandi?"
   },
   "register": {
     "title": "Buat Akun Anda",
@@ -335,7 +338,8 @@
     "translationFailed": "Terjemahan tidak tersedia",
     "retryTranslation": "Coba lagi",
     "clickCategoryHint": "Pilih kategori untuk dipelajari",
-    "familiarity": "Keakraban"
+    "familiarity": "Keakraban",
+    "topicLabel": "Topik"
   },
   "progress": {
     "title": "<1>Kemajuan</1> Anda",
@@ -445,7 +449,8 @@
     "passwordsNoMatch": "Kata sandi baru tidak cocok",
     "loadingProfile": "Memuat profil...",
     "failedToLoad": "Gagal memuat profil",
-    "unknown": "Tidak diketahui"
+    "unknown": "Tidak diketahui",
+    "setPassword": "Atur kata sandi"
   },
   "verifyEmail": {
     "verifying": "Memverifikasi email Anda...",
@@ -555,6 +560,27 @@
     "overview": "Ringkasan",
     "userGrowth": "Pertumbuhan Pengguna",
     "recentActiveUsers": "Pengguna Aktif Terbaru"
+  },
+  "forgotPassword": {
+    "title": "Lupa kata sandi",
+    "subtitle": "Masukkan alamat email Anda dan kami akan mengirimkan tautan pengaturan ulang kata sandi.",
+    "error": "Gagal mengirim tautan pengaturan ulang. Silakan coba lagi.",
+    "checkEmail": "Periksa email Anda",
+    "sentMessage": "Tautan pengaturan ulang kata sandi telah dikirim ke {{email}}.",
+    "sendLink": "Kirim tautan pengaturan ulang",
+    "backToLogin": "Kembali ke login"
+  },
+  "resetPassword": {
+    "title": "Atur ulang kata sandi",
+    "subtitle": "Masukkan kata sandi baru Anda.",
+    "error": "Gagal mengatur ulang kata sandi. Silakan coba lagi.",
+    "invalidLink": "Tautan pengaturan ulang ini tidak valid atau telah kedaluwarsa.",
+    "noToken": "Token pengaturan ulang tidak ditemukan. Silakan minta tautan baru.",
+    "requestNew": "Minta tautan baru",
+    "success": "Kata sandi Anda berhasil diatur ulang.",
+    "goToLogin": "Ke halaman login",
+    "newPasswordPlaceholder": "Kata sandi baru",
+    "resetButton": "Atur ulang kata sandi"
   },
   "emailBanner": {
     "message": "Silakan verifikasi alamat email Anda. Periksa kotak masuk (dan folder spam/sampah) untuk menemukan tautan verifikasi.",

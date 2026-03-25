@@ -18,7 +18,8 @@
     "on": "Aktif",
     "off": "Nonaktif",
     "done": "Selesai",
-    "clearAll": "Hapus semua"
+    "clearAll": "Hapus semua",
+    "sending": "Mengirim..."
   },
   "languages": {
     "en": "Inggris",
@@ -69,7 +70,13 @@
     "suspendedLoggedOut": "Akun Anda telah ditangguhkan. Anda telah dikeluarkan.",
     "contactSupport": "Silakan hubungi dukungan untuk informasi lebih lanjut.",
     "suspendedMistake": "Jika Anda merasa ini adalah kesalahan, silakan hubungi dukungan.",
-    "reason": "Alasan"
+    "reason": "Alasan",
+    "brandTagline": "Pelajari bahasa apa pun",
+    "continueWithGoogle": "Lanjutkan dengan Google",
+    "signingInGoogle": "Sedang masuk...",
+    "forgotPassword": "Lupa kata sandi?",
+    "googleFailed": "Gagal masuk dengan Google.",
+    "playServicesRequired": "Google Play Services diperlukan."
   },
   "register": {
     "title": "Buat Akun Anda",
@@ -90,7 +97,9 @@
     "validEmail": "Alamat email valid",
     "invalidEmail": "Masukkan alamat email yang valid",
     "passwordsMatch": "Kata sandi cocok",
-    "registrationFailed": "Pendaftaran gagal"
+    "registrationFailed": "Pendaftaran gagal",
+    "brandTagline": "Mulai perjalanan Anda",
+    "googleFailed": "Gagal mendaftar dengan Google. Silakan coba lagi."
   },
   "navbar": {
     "continue": "Lanjutkan",
@@ -428,7 +437,24 @@
     "diversifyLearning": "Variasikan Pembelajaran",
     "diversifyLearningTip": "Latih keempat keterampilan secara merata",
     "stayConsistent": "Tetap Konsisten",
-    "stayConsistentTip": "Belajar sedikit setiap hari untuk hasil terbaik"
+    "stayConsistentTip": "Belajar sedikit setiap hari untuk hasil terbaik",
+    "tipFocusWeak": "Fokus pada Area Lemah",
+    "tipFocusWeakDesc": "Anda memiliki {{count}} area yang perlu perhatian. Tinjau setiap hari untuk kemajuan lebih cepat.",
+    "tipBoostSkill": "Tingkatkan {{skill}} Anda",
+    "tipBoostSkillDesc": "Rata-rata {{skill}} Anda adalah {{avg}}%. Coba lebih banyak latihan {{skill}}.",
+    "tipDeepen": "Perdalam Pengetahuan Anda",
+    "tipDeepenDesc": "Anda masih memiliki banyak item yang sedang berlangsung. Tinjau pelajaran sebelum melanjutkan.",
+    "tipChallenge": "Tantang Diri Anda",
+    "tipChallengeDesc": "Anda telah menguasai {{count}} area! Coba pelajaran yang lebih sulit untuk terus berkembang.",
+    "tipStrength": "{{skill}} adalah Kekuatan Anda!",
+    "tipStrengthDesc": "Kerja bagus di {{avg}}%! Terus semangat dan coba konten tingkat lanjut.",
+    "tipMasterNext": "Dorong ke Penguasaan",
+    "tipMasterNextDesc": "{{count}} area hampir dikuasai. Beberapa ulasan lagi dan Anda akan sampai!",
+    "tipRepetition": "Pengulangan Berjarak",
+    "tipRepetitionDesc": "Tinjau kartu secara rutin untuk mengunci memori jangka panjang.",
+    "noAreas": "Belum ada item dalam kategori ini.",
+    "needsAttention": "Perlu Perhatian",
+    "personalizedTips": "Tips untuk Anda"
   },
   "profilePage": {
     "memberSince": "Anggota sejak {{date}}",
@@ -496,7 +522,36 @@
     "passwordsNoMatch": "Kata sandi baru tidak cocok",
     "loadingProfile": "Memuat profil...",
     "failedToLoad": "Gagal memuat profil",
-    "unknown": "Tidak diketahui"
+    "unknown": "Tidak diketahui",
+    "edit": "Edit",
+    "save": "Simpan",
+    "saved": "Tersimpan!",
+    "role": "Peran",
+    "logout": "Keluar",
+    "setPassword": "Atur Kata Sandi",
+    "passwordTooShort": "Kata sandi harus minimal 6 karakter",
+    "languagePrefs": "Preferensi Bahasa",
+    "langChangeHint": "Untuk mengubah bahasa, keluar dan pilih bahasa baru saat masuk kembali.",
+    "voiceHint": "Pilih suara yang digunakan untuk pemutaran audio.",
+    "noVoicesShort": "Tidak ada suara tersedia. Ketuk segarkan untuk memuat.",
+    "defaultVoice": "Suara Default",
+    "systemDefault": "Default sistem",
+    "studyMode": "Mode Belajar",
+    "enableChallenge": "Aktifkan Mode Tantangan?",
+    "disableChallenge": "Beralih ke Mode Santai?",
+    "challengeWarningShort": "XP akan meluruh setiap hari jika Anda tidak belajar. XP Anda akan diatur ulang ke 0.",
+    "relaxedInfo": "XP tidak akan meluruh lagi. XP Anda saat ini dipertahankan.",
+    "enableButton": "Aktifkan",
+    "switchButton": "Beralih",
+    "switchToRelaxed": "Beralih ke Mode Santai",
+    "resetXP": "Atur Ulang XP",
+    "resetXPDesc": "Hapus semua riwayat XP. Ini tidak dapat dibatalkan.",
+    "resetXPButton": "Atur Ulang Riwayat XP",
+    "resetXPTitle": "Atur Ulang XP?",
+    "resetButton": "Atur Ulang",
+    "deleteAccountButton": "Hapus Akun",
+    "deleteAccountTitle": "Hapus Akun?",
+    "deleteButton": "Hapus"
   },
   "verifyEmail": {
     "verifying": "Memverifikasi email Anda...",
@@ -508,7 +563,24 @@
     "failedMessage": "Verifikasi gagal. Tautan mungkin sudah kedaluwarsa.",
     "needNewLink": "Butuh tautan baru?",
     "registerAgain": "Daftar lagi",
-    "orContactSupport": "atau hubungi dukungan."
+    "orContactSupport": "atau hubungi dukungan.",
+    "verified": "Email Terverifikasi!",
+    "failedTitle": "Verifikasi Gagal",
+    "backToLogin": "Kembali ke Login"
+  },
+  "forgotPassword": {
+    "title": "Lupa Kata Sandi",
+    "subtitle": "Masukkan email Anda dan kami akan mengirimkan tautan untuk mengatur ulang kata sandi.",
+    "error": "Terjadi kesalahan. Silakan coba lagi.",
+    "checkEmail": "Periksa email Anda",
+    "sentMessage": "Jika akun dengan email tersebut ada, kami telah mengirimkan tautan pengaturan ulang kata sandi.",
+    "sendLink": "Kirim Tautan Reset",
+    "backToLogin": "Kembali ke Login"
+  },
+  "emailBanner": {
+    "message": "Silakan verifikasi alamat email Anda.",
+    "resend": "Kirim Ulang",
+    "sent": "Email verifikasi terkirim! Periksa kotak masuk Anda."
   },
   "admin": {
     "title": "Dasbor Admin",
@@ -602,6 +674,15 @@
     "hours": "{{count}}j {{minutes}}m",
     "overview": "Ringkasan",
     "userGrowth": "Pertumbuhan Pengguna",
-    "recentActiveUsers": "Pengguna Aktif Terbaru"
+    "recentActiveUsers": "Pengguna Aktif Terbaru",
+    "guests": "Tamu",
+    "avgTime": "Rata-rata Waktu",
+    "activeToday": "Aktif Hari Ini",
+    "lessons": "Pelajaran",
+    "flashcards": "Kartu",
+    "recentActive": "Baru Aktif",
+    "modeBreakdown": "Mode Belajar",
+    "searchUsers": "Cari pengguna...",
+    "all": "Semua"
   }
 }

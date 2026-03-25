@@ -18,7 +18,8 @@
     "on": "Hidup",
     "off": "Mati",
     "done": "Selesai",
-    "clearAll": "Padam semua"
+    "clearAll": "Padam semua",
+    "sending": "Menghantar..."
   },
   "languages": {
     "en": "Inggeris",
@@ -69,7 +70,13 @@
     "suspendedLoggedOut": "Akaun anda telah digantung. Anda telah dilog keluar.",
     "contactSupport": "Sila hubungi sokongan untuk maklumat lanjut.",
     "suspendedMistake": "Jika anda percaya ini adalah kesilapan, sila hubungi sokongan.",
-    "reason": "Sebab"
+    "reason": "Sebab",
+    "brandTagline": "Belajar mana-mana bahasa",
+    "continueWithGoogle": "Teruskan dengan Google",
+    "signingInGoogle": "Sedang log masuk...",
+    "forgotPassword": "Lupa kata laluan?",
+    "googleFailed": "Log masuk Google gagal.",
+    "playServicesRequired": "Perkhidmatan Google Play diperlukan."
   },
   "register": {
     "title": "Cipta Akaun Anda",
@@ -90,7 +97,9 @@
     "validEmail": "Alamat e-mel sah",
     "invalidEmail": "Sila masukkan alamat e-mel yang sah",
     "passwordsMatch": "Kata laluan sepadan",
-    "registrationFailed": "Pendaftaran gagal"
+    "registrationFailed": "Pendaftaran gagal",
+    "brandTagline": "Mulakan perjalanan anda",
+    "googleFailed": "Pendaftaran Google gagal. Sila cuba lagi."
   },
   "navbar": {
     "continue": "Teruskan",
@@ -428,7 +437,24 @@
     "diversifyLearning": "Pelbagaikan Pembelajaran",
     "diversifyLearningTip": "Latih keempat-empat kemahiran secara seimbang",
     "stayConsistent": "Kekal Konsisten",
-    "stayConsistentTip": "Belajar sedikit setiap hari untuk keputusan terbaik"
+    "stayConsistentTip": "Belajar sedikit setiap hari untuk keputusan terbaik",
+    "tipFocusWeak": "Fokus pada Bidang Lemah",
+    "tipFocusWeakDesc": "Anda mempunyai {{count}} bidang yang sukar. Ulang kaji setiap hari untuk kemajuan lebih pantas.",
+    "tipBoostSkill": "Tingkatkan {{skill}} Anda",
+    "tipBoostSkillDesc": "Purata {{skill}} anda ialah {{avg}}%. Cuba lebih banyak latihan {{skill}}.",
+    "tipDeepen": "Dalami Pengetahuan Anda",
+    "tipDeepenDesc": "Anda mempunyai banyak item yang masih dalam kemajuan. Ulang kaji pelajaran sebelum meneruskan.",
+    "tipChallenge": "Cabar Diri Anda",
+    "tipChallengeDesc": "Anda telah menguasai {{count}} bidang! Cuba pelajaran lebih sukar untuk terus berkembang.",
+    "tipStrength": "{{skill}} adalah Kekuatan Anda!",
+    "tipStrengthDesc": "Kerja yang hebat di {{avg}}%! Teruskan dan cuba kandungan lanjutan.",
+    "tipMasterNext": "Terus ke Penguasaan",
+    "tipMasterNextDesc": "{{count}} bidang hampir dikuasai. Beberapa ulang kaji lagi dan anda akan berjaya!",
+    "tipRepetition": "Ulangan Berjarak",
+    "tipRepetitionDesc": "Ulang kaji kad imbas secara tetap untuk mengunci memori jangka panjang.",
+    "noAreas": "Tiada item dalam kategori ini lagi.",
+    "needsAttention": "Memerlukan Perhatian",
+    "personalizedTips": "Tips untuk Anda"
   },
   "profilePage": {
     "memberSince": "Ahli sejak {{date}}",
@@ -496,7 +522,36 @@
     "passwordsNoMatch": "Kata laluan baharu tidak sepadan",
     "loadingProfile": "Memuatkan profil...",
     "failedToLoad": "Gagal memuatkan profil",
-    "unknown": "Tidak diketahui"
+    "unknown": "Tidak diketahui",
+    "edit": "Sunting",
+    "save": "Simpan",
+    "saved": "Disimpan!",
+    "role": "Peranan",
+    "logout": "Log Keluar",
+    "setPassword": "Tetapkan Kata Laluan",
+    "passwordTooShort": "Kata laluan mesti sekurang-kurangnya 6 aksara",
+    "languagePrefs": "Keutamaan Bahasa",
+    "langChangeHint": "Untuk menukar bahasa, log keluar dan pilih bahasa baharu apabila log masuk semula.",
+    "voiceHint": "Pilih suara yang digunakan untuk main balik audio.",
+    "noVoicesShort": "Tiada suara tersedia. Ketik muat semula untuk memuatkan.",
+    "defaultVoice": "Suara Lalai",
+    "systemDefault": "Lalai sistem",
+    "studyMode": "Mod Belajar",
+    "enableChallenge": "Aktifkan Mod Cabaran?",
+    "disableChallenge": "Beralih ke Mod Santai?",
+    "challengeWarningShort": "XP akan menyusut setiap hari jika anda tidak belajar. XP anda akan ditetapkan semula ke 0.",
+    "relaxedInfo": "XP tidak akan menyusut lagi. XP semasa anda dikekalkan.",
+    "enableButton": "Aktifkan",
+    "switchButton": "Beralih",
+    "switchToRelaxed": "Beralih ke Mod Santai",
+    "resetXP": "Tetapkan Semula XP",
+    "resetXPDesc": "Padam semua sejarah XP. Ini tidak boleh dibatalkan.",
+    "resetXPButton": "Tetapkan Semula Sejarah XP",
+    "resetXPTitle": "Tetapkan Semula XP?",
+    "resetButton": "Tetapkan Semula",
+    "deleteAccountButton": "Padam Akaun",
+    "deleteAccountTitle": "Padam Akaun?",
+    "deleteButton": "Padam"
   },
   "verifyEmail": {
     "verifying": "Mengesahkan e-mel anda...",
@@ -508,7 +563,24 @@
     "failedMessage": "Pengesahan gagal. Pautan mungkin telah tamat tempoh.",
     "needNewLink": "Perlukan pautan baharu?",
     "registerAgain": "Daftar semula",
-    "orContactSupport": "atau hubungi sokongan."
+    "orContactSupport": "atau hubungi sokongan.",
+    "verified": "E-mel Disahkan!",
+    "failedTitle": "Pengesahan Gagal",
+    "backToLogin": "Kembali ke Log Masuk"
+  },
+  "forgotPassword": {
+    "title": "Lupa Kata Laluan",
+    "subtitle": "Masukkan e-mel anda dan kami akan hantar pautan untuk menetapkan semula kata laluan.",
+    "error": "Sesuatu telah berlaku. Sila cuba lagi.",
+    "checkEmail": "Semak e-mel anda",
+    "sentMessage": "Jika akaun dengan e-mel tersebut wujud, kami telah hantar pautan penetapan semula kata laluan.",
+    "sendLink": "Hantar Pautan Tetapan Semula",
+    "backToLogin": "Kembali ke Log Masuk"
+  },
+  "emailBanner": {
+    "message": "Sila sahkan alamat e-mel anda.",
+    "resend": "Hantar Semula",
+    "sent": "E-mel pengesahan dihantar! Semak peti masuk anda."
   },
   "admin": {
     "title": "Papan Pemuka Admin",
@@ -602,6 +674,15 @@
     "hours": "{{count}}j {{minutes}}m",
     "overview": "Gambaran Keseluruhan",
     "userGrowth": "Pertumbuhan Pengguna",
-    "recentActiveUsers": "Pengguna Aktif Terkini"
+    "recentActiveUsers": "Pengguna Aktif Terkini",
+    "guests": "Tetamu",
+    "avgTime": "Purata Masa",
+    "activeToday": "Aktif Hari Ini",
+    "lessons": "Pelajaran",
+    "flashcards": "Kad Imbas",
+    "recentActive": "Baru Aktif",
+    "modeBreakdown": "Mod Belajar",
+    "searchUsers": "Cari pengguna...",
+    "all": "Semua"
   }
 }

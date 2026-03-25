@@ -37,7 +37,9 @@
     "logout": "Abmelden",
     "retry": "Wiederholen",
     "done": "Fertig",
-    "clearAll": "Alle löschen"
+    "clearAll": "Alle löschen",
+    "sending": "Wird gesendet",
+    "saving": "Wird gespeichert"
   },
   "languageSelect": {
     "title": "Wähle deine Sprachen",
@@ -66,7 +68,8 @@
     "suspendedLoggedOut": "Dein Konto wurde gesperrt. Du wurdest abgemeldet.",
     "contactSupport": "Bitte kontaktiere den Support für weitere Informationen.",
     "suspendedMistake": "Wenn du glaubst, dass dies ein Fehler ist, kontaktiere bitte den Support.",
-    "reason": "Grund"
+    "reason": "Grund",
+    "forgotPassword": "Passwort vergessen?"
   },
   "register": {
     "title": "Erstelle dein Konto",
@@ -335,7 +338,8 @@
     "translationFailed": "Übersetzung nicht verfügbar",
     "retryTranslation": "Wiederholen",
     "clickCategoryHint": "Kategorien zum Lernen auswählen",
-    "familiarity": "Vertrautheit"
+    "familiarity": "Vertrautheit",
+    "topicLabel": "Thema"
   },
   "progress": {
     "title": "Dein <1>Fortschritt</1>",
@@ -445,7 +449,8 @@
     "passwordsNoMatch": "Neue Passwörter stimmen nicht überein",
     "loadingProfile": "Profil wird geladen...",
     "failedToLoad": "Profil konnte nicht geladen werden",
-    "unknown": "Unbekannt"
+    "unknown": "Unbekannt",
+    "setPassword": "Passwort festlegen"
   },
   "verifyEmail": {
     "verifying": "E-Mail wird verifiziert...",
@@ -555,6 +560,27 @@
     "overview": "Übersicht",
     "userGrowth": "Benutzerwachstum",
     "recentActiveUsers": "Kürzlich aktive Benutzer"
+  },
+  "forgotPassword": {
+    "title": "Passwort vergessen",
+    "subtitle": "Geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen einen Link zum Zurücksetzen.",
+    "error": "Der Link konnte nicht gesendet werden. Bitte versuchen Sie es erneut.",
+    "checkEmail": "Überprüfen Sie Ihre E-Mail",
+    "sentMessage": "Ein Link zum Zurücksetzen wurde an {{email}} gesendet.",
+    "sendLink": "Link zum Zurücksetzen senden",
+    "backToLogin": "Zurück zur Anmeldung"
+  },
+  "resetPassword": {
+    "title": "Passwort zurücksetzen",
+    "subtitle": "Geben Sie Ihr neues Passwort ein.",
+    "error": "Das Passwort konnte nicht zurückgesetzt werden. Bitte versuchen Sie es erneut.",
+    "invalidLink": "Dieser Link ist ungültig oder abgelaufen.",
+    "noToken": "Kein Token vorhanden. Bitte fordern Sie einen neuen Link an.",
+    "requestNew": "Neuen Link anfordern",
+    "success": "Ihr Passwort wurde erfolgreich zurückgesetzt.",
+    "goToLogin": "Zur Anmeldung",
+    "newPasswordPlaceholder": "Neues Passwort",
+    "resetButton": "Passwort zurücksetzen"
   },
   "emailBanner": {
     "message": "Bitte bestätigen Sie Ihre E-Mail-Adresse. Überprüfen Sie Ihren Posteingang (und den Spam-/Junk-Ordner) auf den Bestätigungslink.",
