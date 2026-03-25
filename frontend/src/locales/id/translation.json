@@ -34,7 +34,10 @@
     "or": "atau",
     "xp": "XP",
     "refresh": "Segarkan",
-    "logout": "Keluar"
+    "logout": "Keluar",
+    "retry": "Coba lagi",
+    "done": "Selesai",
+    "clearAll": "Hapus semua"
   },
   "languageSelect": {
     "title": "Pilih Bahasa Anda",
@@ -249,7 +252,11 @@
     "category": "Kategori:",
     "difficulty": "Tingkat Kesulitan:",
     "exitPlaylist": "Keluar Playlist",
-    "failedToLoad": "Gagal memuat pelajaran"
+    "failedToLoad": "Gagal memuat pelajaran",
+    "translating": "Menerjemahkan...",
+    "translationUnavailable": "Memuat terjemahan...",
+    "retryTranslation": "Coba lagi",
+    "quizUnavailable": "Kuis tidak tersedia — memuat terjemahan..."
   },
   "flashcards": {
     "title": "Latihan <1>Kartu</1>",
@@ -323,7 +330,11 @@
       "healthcare": "Kesehatan",
       "daily-life": "Kehidupan Sehari-hari"
     },
-    "clearFilters": "Hapus filter ({{count}} dipilih)"
+    "clearFilters": "Hapus filter ({{count}} dipilih)",
+    "translating": "Menerjemahkan...",
+    "translationFailed": "Terjemahan tidak tersedia",
+    "retryTranslation": "Coba lagi",
+    "clickCategoryHint": "Pilih kategori untuk dipelajari"
   },
   "progress": {
     "title": "<1>Kemajuan</1> Anda",

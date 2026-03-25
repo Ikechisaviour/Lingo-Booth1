@@ -34,7 +34,10 @@
     "or": "ou",
     "xp": "XP",
     "refresh": "Actualiser",
-    "logout": "Déconnexion"
+    "logout": "Déconnexion",
+    "retry": "Réessayer",
+    "done": "Terminé",
+    "clearAll": "Tout effacer"
   },
   "languageSelect": {
     "title": "Choisissez vos langues",
@@ -249,7 +252,11 @@
     "category": "Catégorie :",
     "difficulty": "Difficulté :",
     "exitPlaylist": "Quitter la liste",
-    "failedToLoad": "Échec du chargement de la leçon"
+    "failedToLoad": "Échec du chargement de la leçon",
+    "translating": "Traduction en cours...",
+    "translationUnavailable": "Chargement de la traduction...",
+    "retryTranslation": "Réessayer",
+    "quizUnavailable": "Quiz indisponible — traduction en cours..."
   },
   "flashcards": {
     "title": "Pratiquer les <1>cartes mémoire</1>",
@@ -323,7 +330,11 @@
       "healthcare": "Santé",
       "daily-life": "Vie Quotidienne"
     },
-    "clearFilters": "Effacer les filtres ({{count}} sélectionnés)"
+    "clearFilters": "Effacer les filtres ({{count}} sélectionnés)",
+    "translating": "Traduction en cours...",
+    "translationFailed": "Traduction indisponible",
+    "retryTranslation": "Réessayer",
+    "clickCategoryHint": "Sélectionnez des catégories à étudier"
   },
   "progress": {
     "title": "Vos <1>progrès</1>",

@@ -26,6 +26,7 @@ function LoginPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
   const storeAuthAndNavigate = async (data) => {
     const user = data.user;
     localStorage.setItem('token', data.token);
+    if (data.refreshToken) localStorage.setItem('refreshToken', data.refreshToken);
     localStorage.setItem('userId', user.id);
     localStorage.setItem('username', user.username);
     localStorage.setItem('userRole', user.role || 'user');
@@ -105,6 +106,7 @@ function LoginPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
         const data = response.data;
         const user = data.user;
         localStorage.setItem('token', data.token);
+        if (data.refreshToken) localStorage.setItem('refreshToken', data.refreshToken);
         localStorage.setItem('userId', user.id);
         localStorage.setItem('username', user.username);
         localStorage.setItem('userRole', user.role || 'user');
@@ -233,6 +235,12 @@ function LoginPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
             {loading ? t('login.loggingIn') : t('login.loginButton')}
           </button>
         </form>
+
+        <p style={{ textAlign: 'right', marginTop: '8px' }}>
+          <Link to="/forgot-password" style={{ color: 'var(--primary)', fontSize: '0.85rem', textDecoration: 'none', fontWeight: 500 }}>
+            {t('login.forgotPassword', 'Forgot password?')}
+          </Link>
+        </p>
 
         <div className="auth-divider">
           <span>{t('common.or')}</span>

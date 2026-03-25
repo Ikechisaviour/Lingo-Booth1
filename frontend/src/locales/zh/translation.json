@@ -34,7 +34,10 @@
     "or": "或",
     "xp": "XP",
     "refresh": "刷新",
-    "logout": "退出登录"
+    "logout": "退出登录",
+    "retry": "重试",
+    "done": "完成",
+    "clearAll": "全部清除"
   },
   "languageSelect": {
     "title": "选择你的语言",
@@ -91,7 +94,7 @@
     "guestMode": "访客模式",
     "home": "首页",
     "lessons": "课程",
-    "flashcards": "闪卡",
+    "flashcards": "卡片",
     "progress": "进度",
     "admin": "管理",
     "login": "登录",
@@ -249,7 +252,11 @@
     "category": "类别：",
     "difficulty": "难度：",
     "exitPlaylist": "退出播放列表",
-    "failedToLoad": "课程加载失败"
+    "failedToLoad": "课程加载失败",
+    "translating": "翻译中...",
+    "translationUnavailable": "翻译加载中...",
+    "retryTranslation": "重试",
+    "quizUnavailable": "测验不可用 — 翻译加载中..."
   },
   "flashcards": {
     "title": "练习<1>闪卡</1>",
@@ -323,7 +330,11 @@
       "healthcare": "医疗",
       "daily-life": "日常生活"
     },
-    "clearFilters": "清除筛选（已选 {{count}} 个）"
+    "clearFilters": "清除筛选（已选 {{count}} 个）",
+    "translating": "翻译中...",
+    "translationFailed": "翻译不可用",
+    "retryTranslation": "重试",
+    "clickCategoryHint": "选择分类学习"
   },
   "progress": {
     "title": "你的<1>进度</1>",

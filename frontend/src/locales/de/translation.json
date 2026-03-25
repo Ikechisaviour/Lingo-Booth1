@@ -34,7 +34,10 @@
     "or": "oder",
     "xp": "XP",
     "refresh": "Aktualisieren",
-    "logout": "Abmelden"
+    "logout": "Abmelden",
+    "retry": "Wiederholen",
+    "done": "Fertig",
+    "clearAll": "Alle löschen"
   },
   "languageSelect": {
     "title": "Wähle deine Sprachen",
@@ -249,7 +252,11 @@
     "category": "Kategorie:",
     "difficulty": "Schwierigkeit:",
     "exitPlaylist": "Playlist verlassen",
-    "failedToLoad": "Lektion konnte nicht geladen werden"
+    "failedToLoad": "Lektion konnte nicht geladen werden",
+    "translating": "Übersetze...",
+    "translationUnavailable": "Übersetzung wird geladen...",
+    "retryTranslation": "Wiederholen",
+    "quizUnavailable": "Quiz nicht verfügbar — Übersetzung wird geladen..."
   },
   "flashcards": {
     "title": "<1>Karteikarten</1> üben",
@@ -323,7 +330,11 @@
       "healthcare": "Gesundheit",
       "daily-life": "Alltag"
     },
-    "clearFilters": "Filter löschen ({{count}} ausgewählt)"
+    "clearFilters": "Filter löschen ({{count}} ausgewählt)",
+    "translating": "Übersetze...",
+    "translationFailed": "Übersetzung nicht verfügbar",
+    "retryTranslation": "Wiederholen",
+    "clickCategoryHint": "Kategorien zum Lernen auswählen"
   },
   "progress": {
     "title": "Dein <1>Fortschritt</1>",

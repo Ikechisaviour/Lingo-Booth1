@@ -1,13 +1,16 @@
 import React, { useEffect, useCallback } from 'react';
-import { AppState } from 'react-native';
+import { AppState, View, StyleSheet, Image, ActivityIndicator } from 'react-native';
+import { Text } from 'react-native-paper';
 import { NavigationContainer, LinkingOptions } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as Linking from 'expo-linking';
-import { useAuthStore } from '../stores/authStore';
+import { useAuthStore, useHasHydrated } from '../stores/authStore';
 import { userService } from '../services/api';
+import { colors } from '../config/theme';
 import AuthStack from './AuthStack';
 import MainTabs from './MainTabs';
 import LanguageSelectScreen from '../screens/auth/LanguageSelectScreen';
+import EmailVerificationBanner from '../components/EmailVerificationBanner';
 
 const prefix = Linking.createURL('/');
 
@@ -37,7 +40,32 @@ const SetupStack: React.FC = () => (
   </Stack.Navigator>
 );
 
+const SplashScreen: React.FC = () => (
+  <View style={splashStyles.container}>
+    <Image
+      source={require('../../assets/icon.png')}
+      style={splashStyles.logo}
+      resizeMode="contain"
+    />
+    <Text style={splashStyles.brandName}>Lingo Booth</Text>
+    <ActivityIndicator size="small" color="#fff" style={splashStyles.spinner} />
+  </View>
+);
+
+const splashStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.primary,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logo: { width: 100, height: 100, marginBottom: 16 },
+  brandName: { color: '#fff', fontSize: 32, fontWeight: '800', letterSpacing: 0.5 },
+  spinner: { marginTop: 32 },
+});
+
 const RootNavigator: React.FC = () => {
+  const hasHydrated = useHasHydrated();
   const { token, userId, isGuest, needsLanguageSetup } = useAuthStore();
   const canAccess = !!token || isGuest;
 
@@ -74,6 +102,8 @@ const RootNavigator: React.FC = () => {
     return () => sub.remove();
   }, [verifyAccount]);
 
+  if (!hasHydrated) return <SplashScreen />;
+
   return (
     <NavigationContainer linking={linking}>
       {!canAccess ? (
@@ -81,7 +111,10 @@ const RootNavigator: React.FC = () => {
       ) : needsLanguageSetup ? (
         <SetupStack />
       ) : (
-        <MainTabs />
+        <View style={{ flex: 1 }}>
+          <EmailVerificationBanner />
+          <MainTabs />
+        </View>
       )}
     </NavigationContainer>
   );

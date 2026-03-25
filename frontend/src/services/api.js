@@ -15,11 +15,55 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// Retry logic for network errors and 5xx server errors
+// Track whether a token refresh is in progress to avoid concurrent refreshes
+let refreshPromise = null;
+
+// Retry logic for network errors and 5xx server errors + auto-refresh on 401
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
     const config = error.config;
+
+    // Auto-refresh on 401 (expired access token)
+    if (
+      error.response?.status === 401 &&
+      config &&
+      !config._refreshed &&
+      !config.url?.includes('/auth/refresh') &&
+      !config.url?.includes('/auth/login') &&
+      !config.url?.includes('/auth/register')
+    ) {
+      const refreshToken = localStorage.getItem('refreshToken');
+      if (refreshToken) {
+        config._refreshed = true;
+        try {
+          if (!refreshPromise) {
+            refreshPromise = axios
+              .post(`${API_URL}/auth/refresh`, { refreshToken })
+              .then((res) => {
+                const newToken = res.data.token;
+                localStorage.setItem('token', newToken);
+                return newToken;
+              })
+              .finally(() => { refreshPromise = null; });
+          }
+          const newToken = await refreshPromise;
+          config.headers.Authorization = `Bearer ${newToken}`;
+          return api(config);
+        } catch {
+          // Refresh failed — force logout
+          localStorage.removeItem('token');
+          localStorage.removeItem('refreshToken');
+          localStorage.removeItem('userId');
+          localStorage.removeItem('username');
+          localStorage.removeItem('userRole');
+          localStorage.removeItem('guestMode');
+          window.dispatchEvent(new CustomEvent('accountSuspended'));
+          return Promise.reject(error);
+        }
+      }
+    }
+
     // Only retry GET requests, max 2 retries
     if (
       config &&
@@ -40,6 +84,7 @@ api.interceptors.response.use(
       localStorage.getItem('token')
     ) {
       localStorage.removeItem('token');
+      localStorage.removeItem('refreshToken');
       localStorage.removeItem('userId');
       localStorage.removeItem('username');
       localStorage.removeItem('userRole');
@@ -72,6 +117,10 @@ export const authService = {
     api.post('/auth/google', { credential, guestXP, nativeLanguage, targetLanguage }),
   resendVerification: () =>
     api.post('/auth/resend-verification'),
+  forgotPassword: (email) =>
+    api.post('/auth/forgot-password', { email }),
+  resetPassword: (token, password) =>
+    api.post('/auth/reset-password', { token, password }),
   trackActivity: (userId, timeSpent) =>
     api.post('/auth/activity', { userId, timeSpent }),
 };

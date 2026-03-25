@@ -34,7 +34,10 @@
     "or": "atau",
     "xp": "XP",
     "refresh": "Muat Semula",
-    "logout": "Log Keluar"
+    "logout": "Log Keluar",
+    "retry": "Cuba lagi",
+    "done": "Selesai",
+    "clearAll": "Padam semua"
   },
   "languageSelect": {
     "title": "Pilih Bahasa Anda",
@@ -249,7 +252,11 @@
     "category": "Kategori:",
     "difficulty": "Tahap Kesukaran:",
     "exitPlaylist": "Keluar Senarai Main",
-    "failedToLoad": "Gagal memuatkan pelajaran"
+    "failedToLoad": "Gagal memuatkan pelajaran",
+    "translating": "Menterjemah...",
+    "translationUnavailable": "Memuatkan terjemahan...",
+    "retryTranslation": "Cuba lagi",
+    "quizUnavailable": "Kuiz tidak tersedia — memuatkan terjemahan..."
   },
   "flashcards": {
     "title": "Latihan <1>Kad Imbas</1>",
@@ -323,7 +330,11 @@
       "healthcare": "Penjagaan Kesihatan",
       "daily-life": "Kehidupan Harian"
     },
-    "clearFilters": "Kosongkan penapis ({{count}} dipilih)"
+    "clearFilters": "Kosongkan penapis ({{count}} dipilih)",
+    "translating": "Menterjemah...",
+    "translationFailed": "Terjemahan tidak tersedia",
+    "retryTranslation": "Cuba lagi",
+    "clickCategoryHint": "Pilih kategori untuk dipelajari"
   },
   "progress": {
     "title": "<1>Kemajuan</1> Anda",

@@ -316,4 +316,84 @@ async function sendVerificationEmail(to, username, token, lang = 'en') {
   }
 }
 
-module.exports = { sendVerificationEmail };
+// --- Password Reset Email ---
+
+const RESET_STRINGS = {
+  en: {
+    subject: 'Reset your Lingo Booth password',
+    heading: 'Reset your password',
+    greeting: (name) => `Hi <strong>${name}</strong>, we received a request to reset your password. Click the button below to choose a new one.`,
+    button: 'Reset Password',
+    copyLink: 'Or copy and paste this link into your browser:',
+    expiry: "This link expires in 1 hour. If you didn't request a password reset, you can safely ignore this email.",
+  },
+};
+
+function getResetStrings(lang) {
+  return RESET_STRINGS[lang] || RESET_STRINGS.en;
+}
+
+function buildResetTemplate(username, resetUrl, lang) {
+  const s = getResetStrings(lang);
+  const dir = (lang === 'ar' || lang === 'he') ? 'rtl' : 'ltr';
+  return `
+<!DOCTYPE html>
+<html dir="${dir}" lang="${lang}">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#faf7f2;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#faf7f2;padding:40px 20px;">
+    <tr><td align="center">
+      <table width="520" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+        <tr>
+          <td style="background:linear-gradient(135deg,#ff6b35,#ff8f5e);padding:32px 40px;text-align:center;">
+            <h1 style="margin:0;color:#ffffff;font-size:24px;font-weight:700;">Lingo Booth</h1>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:40px;">
+            <h2 style="margin:0 0 8px;color:#1a1a2e;font-size:22px;">${s.heading}</h2>
+            <p style="margin:0 0 24px;color:#6b7280;font-size:15px;line-height:1.6;">${s.greeting(username)}</p>
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr><td align="center" style="padding:8px 0 32px;">
+                <a href="${resetUrl}" style="display:inline-block;background:#ff6b35;color:#ffffff;text-decoration:none;padding:14px 40px;border-radius:10px;font-size:16px;font-weight:600;">${s.button}</a>
+              </td></tr>
+            </table>
+            <p style="margin:0 0 8px;color:#9ca3af;font-size:13px;">${s.copyLink}</p>
+            <p style="margin:0 0 24px;color:#ff6b35;font-size:13px;word-break:break-all;">${resetUrl}</p>
+            <p style="margin:0;color:#9ca3af;font-size:13px;">${s.expiry}</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:20px 40px;background:#f9fafb;text-align:center;border-top:1px solid #f0f0f0;">
+            <p style="margin:0;color:#9ca3af;font-size:12px;">&copy; ${new Date().getFullYear()} Lingo Booth</p>
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`;
+}
+
+async function sendPasswordResetEmail(to, username, token, lang = 'en') {
+  const s = getResetStrings(lang);
+  const resetUrl = `${FRONTEND_URL}/reset-password?token=${token}`;
+  const html = buildResetTemplate(username, resetUrl, lang);
+  const text = `${s.textGreeting ? s.textGreeting(username) : `Hi ${username},\n\nWe received a request to reset your Lingo Booth password. Visit this link:`}\n\n${resetUrl}\n\nThis link expires in 1 hour.\n\n— Lingo Booth`;
+
+  const { error } = await getResend().emails.send({
+    from: 'Lingo Booth <info@lingobooth.com>',
+    reply_to: 'info@lingobooth.com',
+    to,
+    subject: s.subject,
+    html,
+    text,
+  });
+
+  if (error) {
+    console.error('Resend email error:', error);
+    throw new Error(error.message || 'Failed to send password reset email');
+  }
+}
+
+module.exports = { sendVerificationEmail, sendPasswordResetEmail };

@@ -34,7 +34,10 @@
     "or": "veya",
     "xp": "XP",
     "refresh": "Yenile",
-    "logout": "Çıkış Yap"
+    "logout": "Çıkış Yap",
+    "retry": "Tekrar dene",
+    "done": "Tamam",
+    "clearAll": "Hepsini temizle"
   },
   "languageSelect": {
     "title": "Dillerinizi Seçin",
@@ -249,7 +252,11 @@
     "category": "Kategori:",
     "difficulty": "Zorluk:",
     "exitPlaylist": "Oynatma Listesinden Çık",
-    "failedToLoad": "Ders yüklenemedi"
+    "failedToLoad": "Ders yüklenemedi",
+    "translating": "Çevriliyor...",
+    "translationUnavailable": "Çeviri yükleniyor...",
+    "retryTranslation": "Tekrar dene",
+    "quizUnavailable": "Sınav mevcut değil — çeviri yükleniyor..."
   },
   "flashcards": {
     "title": "Kart <1>Pratiği</1>",
@@ -323,7 +330,11 @@
       "healthcare": "Sağlık",
       "daily-life": "Günlük Yaşam"
     },
-    "clearFilters": "Filtreleri temizle ({{count}} seçildi)"
+    "clearFilters": "Filtreleri temizle ({{count}} seçildi)",
+    "translating": "Çevriliyor...",
+    "translationFailed": "Çeviri mevcut değil",
+    "retryTranslation": "Tekrar dene",
+    "clickCategoryHint": "Çalışmak için kategorileri seçin"
   },
   "progress": {
     "title": "İlerlemeniz <1>Raporu</1>",

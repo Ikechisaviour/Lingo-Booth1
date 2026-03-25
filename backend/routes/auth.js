@@ -7,7 +7,7 @@ const { OAuth2Client } = require('google-auth-library');
 const User = require('../models/User');
 const GuestSession = require('../models/GuestSession');
 const { getClientIp, getGeoInfo } = require('../utils/geo');
-const { sendVerificationEmail } = require('../utils/emailService');
+const { sendVerificationEmail, sendPasswordResetEmail } = require('../utils/emailService');
 const { verifyToken } = require('../middleware/auth');
 
 const JWT_SECRET = process.env.JWT_SECRET;
@@ -31,9 +31,23 @@ function buildUserResponse(user) {
   };
 }
 
-// Helper: generate JWT
+// Helper: generate short-lived access token (1 hour)
 function generateToken(userId) {
-  return jwt.sign({ userId }, JWT_SECRET, { expiresIn: '7d' });
+  return jwt.sign({ userId }, JWT_SECRET, { expiresIn: '1h' });
+}
+
+// Helper: generate long-lived refresh token (30 days)
+function generateRefreshToken(userId) {
+  return jwt.sign({ userId, type: 'refresh' }, JWT_SECRET, { expiresIn: '30d' });
+}
+
+// Helper: issue both tokens and store refresh token on user
+async function issueTokens(user) {
+  const token = generateToken(user._id);
+  const refreshToken = generateRefreshToken(user._id);
+  user.refreshToken = refreshToken;
+  await user.save();
+  return { token, refreshToken };
 }
 
 // Helper: generate verification token and set on user
@@ -112,10 +126,11 @@ router.post('/register', async (req, res) => {
       ).catch(() => {});
     } catch (_) {}
 
-    const token = generateToken(user._id);
+    const { token, refreshToken } = await issueTokens(user);
 
     res.status(201).json({
       token,
+      refreshToken,
       user: buildUserResponse(user),
       guestXPTransferred: transferXP,
     });
@@ -177,12 +192,12 @@ router.post('/login', async (req, res) => {
     user.lastIp = loginIp;
     user.lastCountry = loginGeo.country;
     user.lastCity = loginGeo.city;
-    await user.save();
 
-    const token = generateToken(user._id);
+    const { token, refreshToken } = await issueTokens(user);
 
     res.json({
       token,
+      refreshToken,
       user: buildUserResponse(user),
       guestXPTransferred,
     });
@@ -375,16 +390,132 @@ router.post('/google', async (req, res) => {
       } catch (_) {}
     }
 
-    const token = generateToken(user._id);
+    const { token, refreshToken } = await issueTokens(user);
 
     res.json({
       token,
+      refreshToken,
       user: buildUserResponse(user),
       guestXPTransferred,
       isNewUser,
     });
   } catch (error) {
     console.error('Google auth error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Refresh access token using a valid refresh token
+router.post('/refresh', async (req, res) => {
+  try {
+    const { refreshToken } = req.body;
+    if (!refreshToken) {
+      return res.status(400).json({ message: 'Refresh token is required' });
+    }
+
+    let decoded;
+    try {
+      decoded = jwt.verify(refreshToken, JWT_SECRET);
+    } catch (err) {
+      return res.status(401).json({ message: 'Invalid or expired refresh token' });
+    }
+
+    if (decoded.type !== 'refresh') {
+      return res.status(401).json({ message: 'Invalid token type' });
+    }
+
+    const user = await User.findById(decoded.userId);
+    if (!user || user.refreshToken !== refreshToken) {
+      return res.status(401).json({ message: 'Invalid refresh token' });
+    }
+
+    if (user.status === 'suspended') {
+      return res.status(403).json({ message: 'Account suspended' });
+    }
+
+    // Issue new access token (keep same refresh token until it expires)
+    const token = generateToken(user._id);
+
+    res.json({ token });
+  } catch (error) {
+    console.error('Token refresh error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Forgot password — send reset email
+router.post('/forgot-password', async (req, res) => {
+  try {
+    const { email } = req.body;
+    if (!email || !EMAIL_REGEX.test(email)) {
+      return res.status(400).json({ message: 'Please enter a valid email address' });
+    }
+
+    const user = await User.findOne({ email });
+    if (!user) {
+      // Don't reveal whether email exists
+      return res.json({ message: 'If an account with that email exists, a reset link has been sent.' });
+    }
+
+    // Google-only users have no password to reset
+    if (!user.password) {
+      return res.json({ message: 'If an account with that email exists, a reset link has been sent.' });
+    }
+
+    // Rate limit: 60-second cooldown
+    if (user.passwordResetExpires && user.passwordResetToken) {
+      const tokenAge = Date.now() - (user.passwordResetExpires.getTime() - 60 * 60 * 1000);
+      if (tokenAge < 60000) {
+        return res.json({ message: 'If an account with that email exists, a reset link has been sent.' });
+      }
+    }
+
+    const resetToken = crypto.randomBytes(32).toString('hex');
+    user.passwordResetToken = resetToken;
+    user.passwordResetExpires = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
+    await user.save();
+
+    sendPasswordResetEmail(user.email, user.username, resetToken, user.nativeLanguage || 'en').catch(err => {
+      console.error('Failed to send password reset email:', err.message);
+    });
+
+    res.json({ message: 'If an account with that email exists, a reset link has been sent.' });
+  } catch (error) {
+    console.error('Forgot password error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Reset password with token
+router.post('/reset-password', async (req, res) => {
+  try {
+    const { token, password } = req.body;
+    if (!token || !password) {
+      return res.status(400).json({ message: 'Token and new password are required' });
+    }
+
+    if (password.length < 6) {
+      return res.status(400).json({ message: 'Password must be at least 6 characters' });
+    }
+
+    const user = await User.findOne({
+      passwordResetToken: token,
+      passwordResetExpires: { $gt: new Date() },
+    });
+
+    if (!user) {
+      return res.status(400).json({ message: 'Invalid or expired reset link' });
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(password, salt);
+    user.passwordResetToken = null;
+    user.passwordResetExpires = null;
+    await user.save();
+
+    res.json({ message: 'Password reset successfully' });
+  } catch (error) {
+    console.error('Reset password error:', error);
     res.status(500).json({ message: 'Server error' });
   }
 });

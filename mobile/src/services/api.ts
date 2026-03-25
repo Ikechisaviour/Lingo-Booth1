@@ -17,11 +17,51 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// Retry logic for GET 5xx / network errors + mid-session suspension detection
+// Track whether a token refresh is already in progress to avoid concurrent refreshes
+let refreshPromise: Promise<string> | null = null;
+
+// Retry logic for GET 5xx / network errors + auto-refresh on 401 + suspension detection
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
     const config = error.config;
+
+    // Auto-refresh on 401 (expired access token)
+    if (
+      error.response?.status === 401 &&
+      config &&
+      !config._refreshed &&
+      !config.url?.includes('/auth/refresh') &&
+      !config.url?.includes('/auth/login') &&
+      !config.url?.includes('/auth/register')
+    ) {
+      const { refreshToken } = useAuthStore.getState();
+      if (refreshToken) {
+        config._refreshed = true;
+        try {
+          // Deduplicate concurrent refresh calls
+          if (!refreshPromise) {
+            refreshPromise = axios
+              .post(`${API_URL}/auth/refresh`, { refreshToken })
+              .then((res) => {
+                const newToken = res.data.token;
+                useAuthStore.getState().setToken(newToken);
+                return newToken;
+              })
+              .finally(() => { refreshPromise = null; });
+          }
+          const newToken = await refreshPromise;
+          config.headers.Authorization = `Bearer ${newToken}`;
+          return api(config);
+        } catch {
+          // Refresh failed — force logout
+          useAuthStore.getState().logout();
+          return Promise.reject(error);
+        }
+      }
+    }
+
+    // Retry GET 5xx / network errors
     if (
       config &&
       !config._retryCount &&
@@ -61,6 +101,12 @@ export const authService = {
     api.get(`/auth/verify-email/${token}`),
   googleLogin: (credential: string, guestXP: number, nativeLanguage: string, targetLanguage: string) =>
     api.post('/auth/google', { credential, guestXP, nativeLanguage, targetLanguage }),
+  forgotPassword: (email: string) =>
+    api.post('/auth/forgot-password', { email }),
+  resetPassword: (token: string, password: string) =>
+    api.post('/auth/reset-password', { token, password }),
+  resendVerification: () =>
+    api.post('/auth/resend-verification'),
 };
 
 export const lessonService = {
