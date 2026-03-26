@@ -45,18 +45,10 @@ const LanguageSelectScreen: React.FC = () => {
   const canContinue = nativeLang && targetLang && nativeLang !== targetLang;
 
   const handleBack = () => {
-    if (mode === 'google-setup') {
-      // Fire-and-forget: clear Google session so account picker shows next time
-      GoogleSignin.signOut().catch(() => {});
-      // Always log out — SetupStack has no other screen to go back to
-      logout();
-      return;
-    }
-    if (navigation.canGoBack()) {
-      navigation.goBack();
-    } else {
-      logout();
-    }
+    // Clear any Google session, wrapped in try-catch to prevent crashes for non-Google users
+    try { GoogleSignin.signOut().catch(() => {}); } catch {}
+    // Always log out to return to the login screen
+    logout();
   };
 
   const handleContinue = async () => {
