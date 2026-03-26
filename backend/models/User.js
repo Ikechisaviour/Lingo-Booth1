@@ -77,15 +77,15 @@ const userSchema = new mongoose.Schema({
   },
   nativeLanguage: {
     type: String,
-    default: 'en',
+    default: null,
   },
   targetLanguage: {
     type: String,
-    default: 'ko',
+    default: null,
   },
   languageSetupComplete: {
     type: Boolean,
-    default: true,
+    default: false,
   },
   totalXP: {
     type: Number,

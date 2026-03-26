@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, ScrollView, StyleSheet, Image, TouchableOpacity, SafeAreaView } from 'react-native';
+import { View, ScrollView, StyleSheet, Image, TouchableOpacity, SafeAreaView, Alert } from 'react-native';
 import { Text, Button } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
@@ -46,12 +46,12 @@ const LanguageSelectScreen: React.FC = () => {
 
   const handleBack = () => {
     if (mode === 'google-setup') {
-      // Fire-and-forget: clear Google session so account picker shows next time
-      GoogleSignin.signOut().catch(() => {});
-      // Immediately log out so RootNavigator switches to AuthStack
+      // Post-login setup (SetupStack) — log out to switch back to AuthStack/Login
+      try { GoogleSignin.signOut().catch(() => {}); } catch {}
       logout();
-    } else if (navigation.canGoBack()) {
-      navigation.goBack();
+    } else {
+      // Pre-login (AuthStack: register/guest) — navigate back to Login screen
+      navigation.navigate('Login' as any);
     }
   };
 
@@ -63,22 +63,23 @@ const LanguageSelectScreen: React.FC = () => {
     if (mode === 'guest') {
       enterGuestMode();
     } else if (mode === 'google-setup') {
-      // User already logged in via Google — save language prefs to backend
-      setSaving(true);
-      try {
-        if (userId) {
+      if (userId) {
+        setSaving(true);
+        try {
           await userService.updateProfile(userId, {
             nativeLanguage: nativeLang,
             targetLanguage: targetLang,
           });
+          setNeedsLanguageSetup(false);
+        } catch {
+          setSaving(false);
+          Alert.alert(
+            t('common.error', 'Error'),
+            t('languageSelect.saveFailed', 'Could not save your languages. Please check your connection and try again.'),
+          );
+          return;
         }
-      } catch {
-        // Non-fatal — languages are saved locally anyway
-      } finally {
-        setSaving(false);
       }
-      // Clear the flag so RootNavigator switches to MainTabs
-      setNeedsLanguageSetup(false);
     } else {
       navigation.navigate('Register');
     }

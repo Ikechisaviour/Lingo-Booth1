@@ -10,6 +10,8 @@ import {
   KeyboardAvoidingView,
   Platform,
   useWindowDimensions,
+  Modal,
+  FlatList,
 } from 'react-native';
 import { Text, Button, TextInput, Card, Divider, SegmentedButtons, Switch } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
@@ -18,7 +20,7 @@ import { userService, progressService, ttsService } from '../../services/api';
 import speechService from '../../services/speechService';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
-import LANGUAGES, { getLangName } from '../../config/languages';
+import LANGUAGES from '../../config/languages';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useAppColors, type AppColors } from '../../config/theme';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -28,7 +30,7 @@ const ProfileScreen: React.FC = () => {
   const navigation = useNavigation<any>();
   const insets = useSafeAreaInsets();
   const { userId, username, userRole, logout, setChallengeMode, challengeMode } = useAuthStore();
-  const { nativeLanguage, targetLanguage, setLanguages, setVoice, preferredVoice } = useSettingsStore();
+  const { nativeLanguage, targetLanguage, setLanguages, setNativeLanguage, setTargetLanguage, setVoice, preferredVoice } = useSettingsStore();
   const colors = useAppColors();
   const { height: winHeight, width: winWidth } = useWindowDimensions();
   const isCompact = winHeight < 450 || winWidth < 380;
@@ -50,6 +52,10 @@ const ProfileScreen: React.FC = () => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordMsg, setPasswordMsg] = useState('');
+
+  // Language dropdown state
+  const [showNativePicker, setShowNativePicker] = useState(false);
+  const [showTargetPicker, setShowTargetPicker] = useState(false);
 
   // Voice state
   const [voices, setVoices] = useState<any[]>([]);
@@ -375,17 +381,82 @@ const ProfileScreen: React.FC = () => {
               <Text variant="titleMedium" style={styles.cardTitle}>
                 {t('profilePage.languagePrefs', 'Language Preferences')}
               </Text>
-              <View style={styles.infoRow}>
-                <Text style={styles.infoLabel}>{t('languageSelect.iSpeak')}</Text>
-                <Text style={styles.infoValue}>{LANGUAGES[nativeLanguage]?.flag} {getLangName(nativeLanguage)}</Text>
-              </View>
-              <View style={styles.infoRow}>
-                <Text style={styles.infoLabel}>{t('languageSelect.iWantToLearn')}</Text>
-                <Text style={styles.infoValue}>{LANGUAGES[targetLanguage]?.flag} {getLangName(targetLanguage)}</Text>
-              </View>
-              <Text style={styles.hintText}>
-                {t('profilePage.langChangeHint', 'To change languages, log out and select new languages when logging back in.')}
-              </Text>
+
+              {/* Native language dropdown */}
+              <Text style={[styles.infoLabel, { marginBottom: 8, marginTop: 4 }]}>{t('languageSelect.iSpeak')}</Text>
+              <TouchableOpacity
+                style={styles.dropdownButton}
+                onPress={() => setShowNativePicker(!showNativePicker)}
+                activeOpacity={0.7}
+              >
+                <Text style={styles.dropdownText}>
+                  {LANGUAGES[nativeLanguage]?.flag} {LANGUAGES[nativeLanguage]?.name || t('profilePage.selectLanguage', 'Select language')}
+                </Text>
+                <Text style={styles.dropdownArrow}>{showNativePicker ? '▲' : '▼'}</Text>
+              </TouchableOpacity>
+              {showNativePicker && (
+                <View style={styles.dropdownList}>
+                  <FlatList
+                    data={Object.entries(LANGUAGES).filter(([code]) => code !== targetLanguage)}
+                    keyExtractor={([code]) => code}
+                    style={{ maxHeight: 200 }}
+                    renderItem={({ item: [code, lang] }) => (
+                      <TouchableOpacity
+                        style={[styles.dropdownItem, nativeLanguage === code && styles.dropdownItemSelected]}
+                        onPress={async () => {
+                          setNativeLanguage(code);
+                          setShowNativePicker(false);
+                          if (userId) {
+                            try { await userService.updateProfile(userId, { nativeLanguage: code }); } catch {}
+                          }
+                        }}
+                      >
+                        <Text style={styles.dropdownItemText}>{lang.flag}  {lang.name}</Text>
+                        {nativeLanguage === code && <Text style={styles.langCheck}>✓</Text>}
+                      </TouchableOpacity>
+                    )}
+                  />
+                </View>
+              )}
+
+              {/* Target language dropdown */}
+              <Text style={[styles.infoLabel, { marginBottom: 8, marginTop: 16 }]}>{t('languageSelect.iWantToLearn')}</Text>
+              <TouchableOpacity
+                style={styles.dropdownButton}
+                onPress={() => setShowTargetPicker(!showTargetPicker)}
+                activeOpacity={0.7}
+              >
+                <Text style={styles.dropdownText}>
+                  {LANGUAGES[targetLanguage]?.flag} {LANGUAGES[targetLanguage]?.name || t('profilePage.selectLanguage', 'Select language')}
+                </Text>
+                <Text style={styles.dropdownArrow}>{showTargetPicker ? '▲' : '▼'}</Text>
+              </TouchableOpacity>
+              {showTargetPicker && (
+                <View style={styles.dropdownList}>
+                  <FlatList
+                    data={Object.entries(LANGUAGES).filter(([code]) => code !== nativeLanguage)}
+                    keyExtractor={([code]) => code}
+                    style={{ maxHeight: 200 }}
+                    renderItem={({ item: [code, lang] }) => (
+                      <TouchableOpacity
+                        style={[styles.dropdownItem, targetLanguage === code && styles.dropdownItemSelected]}
+                        onPress={async () => {
+                          setTargetLanguage(code);
+                          setVoice(null);
+                          setShowTargetPicker(false);
+                          if (userId) {
+                            try { await userService.updateProfile(userId, { targetLanguage: code }); } catch {}
+                          }
+                          fetchVoices();
+                        }}
+                      >
+                        <Text style={styles.dropdownItemText}>{lang.flag}  {lang.name}</Text>
+                        {targetLanguage === code && <Text style={styles.langCheck}>✓</Text>}
+                      </TouchableOpacity>
+                    )}
+                  />
+                </View>
+              )}
             </Card.Content>
           </Card>
 
@@ -615,6 +686,43 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
     alignItems: 'center',
   },
   previewBtnText: { color: '#fff', fontSize: 12 },
+
+  // Language dropdown
+  dropdownButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 12,
+    paddingHorizontal: 14,
+    borderRadius: 8,
+    borderWidth: 1.5,
+    borderColor: colors.border,
+    backgroundColor: colors.surface,
+  },
+  dropdownText: { fontSize: 15, fontWeight: '600', color: colors.textPrimary },
+  dropdownArrow: { fontSize: 12, color: colors.textMuted },
+  dropdownList: {
+    borderWidth: 1,
+    borderColor: colors.border,
+    borderRadius: 8,
+    marginTop: 4,
+    backgroundColor: colors.surface,
+    overflow: 'hidden',
+  },
+  dropdownItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.border,
+  },
+  dropdownItemSelected: {
+    backgroundColor: '#eff6ff',
+  },
+  dropdownItemText: { fontSize: 14, color: colors.textPrimary },
+  langCheck: { fontSize: 14, color: colors.primary, fontWeight: '700', marginLeft: 4 },
 });
 
 export default ProfileScreen;

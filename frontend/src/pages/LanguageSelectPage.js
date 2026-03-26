@@ -12,10 +12,10 @@ function LanguageSelectPage({ setIsGuest, onLogout }) {
   const mode = searchParams.get('mode'); // 'register' or 'guest'
 
   const [nativeLanguage, setNativeLanguage] = useState(
-    localStorage.getItem('nativeLanguage') || 'en'
+    localStorage.getItem('nativeLanguage') || ''
   );
   const [targetLanguage, setTargetLanguage] = useState(
-    localStorage.getItem('targetLanguage') || 'ko'
+    localStorage.getItem('targetLanguage') || ''
   );
 
   // If no valid mode, redirect to login
@@ -46,7 +46,9 @@ function LanguageSelectPage({ setIsGuest, onLogout }) {
 
   const canContinue = nativeLanguage && targetLanguage && nativeLanguage !== targetLanguage;
 
-  const handleContinue = () => {
+  const [saving, setSaving] = useState(false);
+
+  const handleContinue = async () => {
     if (!canContinue) return;
     localStorage.setItem('nativeLanguage', nativeLanguage);
     localStorage.setItem('targetLanguage', targetLanguage);
@@ -61,13 +63,18 @@ function LanguageSelectPage({ setIsGuest, onLogout }) {
       if (setIsGuest) setIsGuest(true);
       navigate('/');
     } else if (mode === 'google-setup') {
-      // New Google user — save languages to backend and go home
       const userId = localStorage.getItem('userId');
       if (userId) {
-        userService.updateProfile(userId, { nativeLanguage, targetLanguage }).catch(() => {});
+        setSaving(true);
+        try {
+          await userService.updateProfile(userId, { nativeLanguage, targetLanguage });
+          localStorage.removeItem('needsLanguageSetup');
+          navigate('/');
+        } catch {
+          setSaving(false);
+          alert(t('languageSelect.saveFailed', 'Could not save your languages. Please check your connection and try again.'));
+        }
       }
-      localStorage.removeItem('needsLanguageSetup');
-      navigate('/');
     } else {
       navigate('/register');
     }
@@ -131,7 +138,7 @@ function LanguageSelectPage({ setIsGuest, onLogout }) {
           </div>
         </div>
 
-        <button className="btn btn-primary" onClick={handleContinue} disabled={!canContinue}>
+        <button className="btn btn-primary" onClick={handleContinue} disabled={!canContinue || saving}>
           {t('languageSelect.continue')} →
         </button>
       </div>
