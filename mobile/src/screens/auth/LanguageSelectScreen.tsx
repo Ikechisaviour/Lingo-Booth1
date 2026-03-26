@@ -48,11 +48,13 @@ const LanguageSelectScreen: React.FC = () => {
     if (mode === 'google-setup') {
       // Fire-and-forget: clear Google session so account picker shows next time
       GoogleSignin.signOut().catch(() => {});
+      // Always log out — SetupStack has no other screen to go back to
+      logout();
+      return;
     }
     if (navigation.canGoBack()) {
       navigation.goBack();
     } else {
-      // No screen to go back to (e.g. SetupStack) — log out to return to auth
       logout();
     }
   };
@@ -65,22 +67,15 @@ const LanguageSelectScreen: React.FC = () => {
     if (mode === 'guest') {
       enterGuestMode();
     } else if (mode === 'google-setup') {
-      // User already logged in via Google — save language prefs to backend
-      setSaving(true);
-      try {
-        if (userId) {
-          await userService.updateProfile(userId, {
-            nativeLanguage: nativeLang,
-            targetLanguage: targetLang,
-          });
-        }
-      } catch {
-        // Non-fatal — languages are saved locally anyway
-      } finally {
-        setSaving(false);
-      }
-      // Clear the flag so RootNavigator switches to MainTabs
+      // Clear the flag first so RootNavigator switches to MainTabs immediately
       setNeedsLanguageSetup(false);
+      // Sync language prefs to backend in the background (non-blocking)
+      if (userId) {
+        userService.updateProfile(userId, {
+          nativeLanguage: nativeLang,
+          targetLanguage: targetLang,
+        }).catch(() => {});
+      }
     } else {
       navigation.navigate('Register');
     }
