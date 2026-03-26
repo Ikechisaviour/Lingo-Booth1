@@ -18,7 +18,7 @@ import { userService, progressService, ttsService } from '../../services/api';
 import speechService from '../../services/speechService';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
-import LANGUAGES, { getLangName } from '../../config/languages';
+import LANGUAGES from '../../config/languages';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useAppColors, type AppColors } from '../../config/theme';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -28,7 +28,7 @@ const ProfileScreen: React.FC = () => {
   const navigation = useNavigation<any>();
   const insets = useSafeAreaInsets();
   const { userId, username, userRole, logout, setChallengeMode, challengeMode } = useAuthStore();
-  const { nativeLanguage, targetLanguage, setLanguages, setVoice, preferredVoice } = useSettingsStore();
+  const { nativeLanguage, targetLanguage, setLanguages, setNativeLanguage, setTargetLanguage, setVoice, preferredVoice } = useSettingsStore();
   const colors = useAppColors();
   const { height: winHeight, width: winWidth } = useWindowDimensions();
   const isCompact = winHeight < 450 || winWidth < 380;
@@ -375,17 +375,62 @@ const ProfileScreen: React.FC = () => {
               <Text variant="titleMedium" style={styles.cardTitle}>
                 {t('profilePage.languagePrefs', 'Language Preferences')}
               </Text>
-              <View style={styles.infoRow}>
-                <Text style={styles.infoLabel}>{t('languageSelect.iSpeak')}</Text>
-                <Text style={styles.infoValue}>{LANGUAGES[nativeLanguage]?.flag} {getLangName(nativeLanguage)}</Text>
+
+              {/* Native language picker */}
+              <Text style={[styles.infoLabel, { marginBottom: 8, marginTop: 4 }]}>{t('languageSelect.iSpeak')}</Text>
+              <View style={styles.languageGrid}>
+                {Object.entries(LANGUAGES).map(([code, lang]) => {
+                  const selected = nativeLanguage === code;
+                  const disabled = targetLanguage === code;
+                  return (
+                    <TouchableOpacity
+                      key={code}
+                      style={[styles.langOption, selected && styles.langOptionSelected, disabled && styles.langOptionDisabled]}
+                      disabled={disabled}
+                      activeOpacity={0.7}
+                      onPress={async () => {
+                        setNativeLanguage(code);
+                        if (userId) {
+                          try { await userService.updateProfile(userId, { nativeLanguage: code }); } catch {}
+                        }
+                      }}
+                    >
+                      <Text style={styles.langFlag}>{lang.flag}</Text>
+                      <Text style={[styles.langName, disabled && { color: colors.textMuted }]} numberOfLines={1}>{lang.name}</Text>
+                      {selected && <Text style={styles.langCheck}>✓</Text>}
+                    </TouchableOpacity>
+                  );
+                })}
               </View>
-              <View style={styles.infoRow}>
-                <Text style={styles.infoLabel}>{t('languageSelect.iWantToLearn')}</Text>
-                <Text style={styles.infoValue}>{LANGUAGES[targetLanguage]?.flag} {getLangName(targetLanguage)}</Text>
+
+              {/* Target language picker */}
+              <Text style={[styles.infoLabel, { marginBottom: 8, marginTop: 16 }]}>{t('languageSelect.iWantToLearn')}</Text>
+              <View style={styles.languageGrid}>
+                {Object.entries(LANGUAGES).map(([code, lang]) => {
+                  const selected = targetLanguage === code;
+                  const disabled = nativeLanguage === code;
+                  return (
+                    <TouchableOpacity
+                      key={code}
+                      style={[styles.langOption, selected && styles.langOptionSelected, disabled && styles.langOptionDisabled]}
+                      disabled={disabled}
+                      activeOpacity={0.7}
+                      onPress={async () => {
+                        setTargetLanguage(code);
+                        setVoice(null);
+                        if (userId) {
+                          try { await userService.updateProfile(userId, { targetLanguage: code }); } catch {}
+                        }
+                        fetchVoices();
+                      }}
+                    >
+                      <Text style={styles.langFlag}>{lang.flag}</Text>
+                      <Text style={[styles.langName, disabled && { color: colors.textMuted }]} numberOfLines={1}>{lang.name}</Text>
+                      {selected && <Text style={styles.langCheck}>✓</Text>}
+                    </TouchableOpacity>
+                  );
+                })}
               </View>
-              <Text style={styles.hintText}>
-                {t('profilePage.langChangeHint', 'To change languages, log out and select new languages when logging back in.')}
-              </Text>
             </Card.Content>
           </Card>
 
@@ -615,6 +660,31 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
     alignItems: 'center',
   },
   previewBtnText: { color: '#fff', fontSize: 12 },
+
+  // Language picker
+  languageGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 6,
+  },
+  langOption: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 8,
+    paddingHorizontal: 10,
+    borderRadius: 8,
+    borderWidth: 1.5,
+    borderColor: colors.border,
+    width: '48%',
+  },
+  langOptionSelected: {
+    borderColor: colors.primary,
+    backgroundColor: '#eff6ff',
+  },
+  langOptionDisabled: { opacity: 0.35 },
+  langFlag: { fontSize: 18, marginRight: 6 },
+  langName: { fontSize: 12, fontWeight: '600', color: colors.textPrimary, flex: 1 },
+  langCheck: { fontSize: 14, color: colors.primary, fontWeight: '700', marginLeft: 4 },
 });
 
 export default ProfileScreen;

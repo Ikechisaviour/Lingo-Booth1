@@ -272,7 +272,7 @@ function App() {
     <Router>
       <SuspensionListener onSuspended={handleSuspended} />
       <div className={`App${challengeMode ? ' challenge-theme' : ''}`}>
-        {canAccessApp && (
+        {canAccessApp && !needsLanguageSetup && languagesReady && (
           <Navbar
             onLogout={handleLogout}
             isGuest={isGuest}
