@@ -48,10 +48,12 @@ const LanguageSelectScreen: React.FC = () => {
     if (mode === 'google-setup') {
       // Fire-and-forget: clear Google session so account picker shows next time
       GoogleSignin.signOut().catch(() => {});
-      // Immediately log out so RootNavigator switches to AuthStack
-      logout();
-    } else if (navigation.canGoBack()) {
+    }
+    if (navigation.canGoBack()) {
       navigation.goBack();
+    } else {
+      // No screen to go back to (e.g. SetupStack) — log out to return to auth
+      logout();
     }
   };
 
