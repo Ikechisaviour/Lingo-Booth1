@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, ScrollView, StyleSheet, Image, TouchableOpacity, SafeAreaView } from 'react-native';
+import { View, ScrollView, StyleSheet, Image, TouchableOpacity, SafeAreaView, Alert } from 'react-native';
 import { Text, Button } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
@@ -63,14 +63,22 @@ const LanguageSelectScreen: React.FC = () => {
     if (mode === 'guest') {
       enterGuestMode();
     } else if (mode === 'google-setup') {
-      // Clear the flag first so RootNavigator switches to MainTabs immediately
-      setNeedsLanguageSetup(false);
-      // Sync language prefs to backend in the background (non-blocking)
       if (userId) {
-        userService.updateProfile(userId, {
-          nativeLanguage: nativeLang,
-          targetLanguage: targetLang,
-        }).catch(() => {});
+        setSaving(true);
+        try {
+          await userService.updateProfile(userId, {
+            nativeLanguage: nativeLang,
+            targetLanguage: targetLang,
+          });
+          setNeedsLanguageSetup(false);
+        } catch {
+          setSaving(false);
+          Alert.alert(
+            t('common.error', 'Error'),
+            t('languageSelect.saveFailed', 'Could not save your languages. Please check your connection and try again.'),
+          );
+          return;
+        }
       }
     } else {
       navigation.navigate('Register');
