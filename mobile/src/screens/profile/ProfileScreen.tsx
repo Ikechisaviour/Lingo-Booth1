@@ -10,6 +10,8 @@ import {
   KeyboardAvoidingView,
   Platform,
   useWindowDimensions,
+  Modal,
+  FlatList,
 } from 'react-native';
 import { Text, Button, TextInput, Card, Divider, SegmentedButtons, Switch } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
@@ -50,6 +52,10 @@ const ProfileScreen: React.FC = () => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordMsg, setPasswordMsg] = useState('');
+
+  // Language dropdown state
+  const [showNativePicker, setShowNativePicker] = useState(false);
+  const [showTargetPicker, setShowTargetPicker] = useState(false);
 
   // Voice state
   const [voices, setVoices] = useState<any[]>([]);
@@ -376,61 +382,81 @@ const ProfileScreen: React.FC = () => {
                 {t('profilePage.languagePrefs', 'Language Preferences')}
               </Text>
 
-              {/* Native language picker */}
+              {/* Native language dropdown */}
               <Text style={[styles.infoLabel, { marginBottom: 8, marginTop: 4 }]}>{t('languageSelect.iSpeak')}</Text>
-              <View style={styles.languageGrid}>
-                {Object.entries(LANGUAGES).map(([code, lang]) => {
-                  const selected = nativeLanguage === code;
-                  const disabled = targetLanguage === code;
-                  return (
-                    <TouchableOpacity
-                      key={code}
-                      style={[styles.langOption, selected && styles.langOptionSelected, disabled && styles.langOptionDisabled]}
-                      disabled={disabled}
-                      activeOpacity={0.7}
-                      onPress={async () => {
-                        setNativeLanguage(code);
-                        if (userId) {
-                          try { await userService.updateProfile(userId, { nativeLanguage: code }); } catch {}
-                        }
-                      }}
-                    >
-                      <Text style={styles.langFlag}>{lang.flag}</Text>
-                      <Text style={[styles.langName, disabled && { color: colors.textMuted }]} numberOfLines={1}>{lang.name}</Text>
-                      {selected && <Text style={styles.langCheck}>✓</Text>}
-                    </TouchableOpacity>
-                  );
-                })}
-              </View>
+              <TouchableOpacity
+                style={styles.dropdownButton}
+                onPress={() => setShowNativePicker(!showNativePicker)}
+                activeOpacity={0.7}
+              >
+                <Text style={styles.dropdownText}>
+                  {LANGUAGES[nativeLanguage]?.flag} {LANGUAGES[nativeLanguage]?.name || t('profilePage.selectLanguage', 'Select language')}
+                </Text>
+                <Text style={styles.dropdownArrow}>{showNativePicker ? '▲' : '▼'}</Text>
+              </TouchableOpacity>
+              {showNativePicker && (
+                <View style={styles.dropdownList}>
+                  <FlatList
+                    data={Object.entries(LANGUAGES).filter(([code]) => code !== targetLanguage)}
+                    keyExtractor={([code]) => code}
+                    style={{ maxHeight: 200 }}
+                    renderItem={({ item: [code, lang] }) => (
+                      <TouchableOpacity
+                        style={[styles.dropdownItem, nativeLanguage === code && styles.dropdownItemSelected]}
+                        onPress={async () => {
+                          setNativeLanguage(code);
+                          setShowNativePicker(false);
+                          if (userId) {
+                            try { await userService.updateProfile(userId, { nativeLanguage: code }); } catch {}
+                          }
+                        }}
+                      >
+                        <Text style={styles.dropdownItemText}>{lang.flag}  {lang.name}</Text>
+                        {nativeLanguage === code && <Text style={styles.langCheck}>✓</Text>}
+                      </TouchableOpacity>
+                    )}
+                  />
+                </View>
+              )}
 
-              {/* Target language picker */}
+              {/* Target language dropdown */}
               <Text style={[styles.infoLabel, { marginBottom: 8, marginTop: 16 }]}>{t('languageSelect.iWantToLearn')}</Text>
-              <View style={styles.languageGrid}>
-                {Object.entries(LANGUAGES).map(([code, lang]) => {
-                  const selected = targetLanguage === code;
-                  const disabled = nativeLanguage === code;
-                  return (
-                    <TouchableOpacity
-                      key={code}
-                      style={[styles.langOption, selected && styles.langOptionSelected, disabled && styles.langOptionDisabled]}
-                      disabled={disabled}
-                      activeOpacity={0.7}
-                      onPress={async () => {
-                        setTargetLanguage(code);
-                        setVoice(null);
-                        if (userId) {
-                          try { await userService.updateProfile(userId, { targetLanguage: code }); } catch {}
-                        }
-                        fetchVoices();
-                      }}
-                    >
-                      <Text style={styles.langFlag}>{lang.flag}</Text>
-                      <Text style={[styles.langName, disabled && { color: colors.textMuted }]} numberOfLines={1}>{lang.name}</Text>
-                      {selected && <Text style={styles.langCheck}>✓</Text>}
-                    </TouchableOpacity>
-                  );
-                })}
-              </View>
+              <TouchableOpacity
+                style={styles.dropdownButton}
+                onPress={() => setShowTargetPicker(!showTargetPicker)}
+                activeOpacity={0.7}
+              >
+                <Text style={styles.dropdownText}>
+                  {LANGUAGES[targetLanguage]?.flag} {LANGUAGES[targetLanguage]?.name || t('profilePage.selectLanguage', 'Select language')}
+                </Text>
+                <Text style={styles.dropdownArrow}>{showTargetPicker ? '▲' : '▼'}</Text>
+              </TouchableOpacity>
+              {showTargetPicker && (
+                <View style={styles.dropdownList}>
+                  <FlatList
+                    data={Object.entries(LANGUAGES).filter(([code]) => code !== nativeLanguage)}
+                    keyExtractor={([code]) => code}
+                    style={{ maxHeight: 200 }}
+                    renderItem={({ item: [code, lang] }) => (
+                      <TouchableOpacity
+                        style={[styles.dropdownItem, targetLanguage === code && styles.dropdownItemSelected]}
+                        onPress={async () => {
+                          setTargetLanguage(code);
+                          setVoice(null);
+                          setShowTargetPicker(false);
+                          if (userId) {
+                            try { await userService.updateProfile(userId, { targetLanguage: code }); } catch {}
+                          }
+                          fetchVoices();
+                        }}
+                      >
+                        <Text style={styles.dropdownItemText}>{lang.flag}  {lang.name}</Text>
+                        {targetLanguage === code && <Text style={styles.langCheck}>✓</Text>}
+                      </TouchableOpacity>
+                    )}
+                  />
+                </View>
+              )}
             </Card.Content>
           </Card>
 
@@ -661,29 +687,41 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
   },
   previewBtnText: { color: '#fff', fontSize: 12 },
 
-  // Language picker
-  languageGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 6,
-  },
-  langOption: {
+  // Language dropdown
+  dropdownButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 8,
-    paddingHorizontal: 10,
+    justifyContent: 'space-between',
+    paddingVertical: 12,
+    paddingHorizontal: 14,
     borderRadius: 8,
     borderWidth: 1.5,
     borderColor: colors.border,
-    width: '48%',
+    backgroundColor: colors.surface,
   },
-  langOptionSelected: {
-    borderColor: colors.primary,
+  dropdownText: { fontSize: 15, fontWeight: '600', color: colors.textPrimary },
+  dropdownArrow: { fontSize: 12, color: colors.textMuted },
+  dropdownList: {
+    borderWidth: 1,
+    borderColor: colors.border,
+    borderRadius: 8,
+    marginTop: 4,
+    backgroundColor: colors.surface,
+    overflow: 'hidden',
+  },
+  dropdownItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.border,
+  },
+  dropdownItemSelected: {
     backgroundColor: '#eff6ff',
   },
-  langOptionDisabled: { opacity: 0.35 },
-  langFlag: { fontSize: 18, marginRight: 6 },
-  langName: { fontSize: 12, fontWeight: '600', color: colors.textPrimary, flex: 1 },
+  dropdownItemText: { fontSize: 14, color: colors.textPrimary },
   langCheck: { fontSize: 14, color: colors.primary, fontWeight: '700', marginLeft: 4 },
 });
 

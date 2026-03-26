@@ -45,10 +45,14 @@ const LanguageSelectScreen: React.FC = () => {
   const canContinue = nativeLang && targetLang && nativeLang !== targetLang;
 
   const handleBack = () => {
-    // Clear any Google session, wrapped in try-catch to prevent crashes for non-Google users
-    try { GoogleSignin.signOut().catch(() => {}); } catch {}
-    // Always log out to return to the login screen
-    logout();
+    if (mode === 'google-setup') {
+      // Post-login setup (SetupStack) — log out to switch back to AuthStack/Login
+      try { GoogleSignin.signOut().catch(() => {}); } catch {}
+      logout();
+    } else {
+      // Pre-login (AuthStack: register/guest) — navigate back to Login screen
+      navigation.navigate('Login' as any);
+    }
   };
 
   const handleContinue = async () => {
