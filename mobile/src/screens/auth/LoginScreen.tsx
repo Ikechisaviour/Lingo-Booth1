@@ -220,6 +220,7 @@ const LoginScreen: React.FC = () => {
 
             <TextInput
               label={t('login.email')}
+              accessibilityLabel={t('login.email')}
               value={email}
               onChangeText={setEmail}
               mode="outlined"
@@ -233,6 +234,7 @@ const LoginScreen: React.FC = () => {
 
             <TextInput
               label={t('login.password')}
+              accessibilityLabel={t('login.password')}
               value={password}
               onChangeText={setPassword}
               mode="outlined"

@@ -31,6 +31,18 @@ const HomeScreen: React.FC = () => {
   const { height: winHeight, width: winWidth } = useWindowDimensions();
   const isCompact = winHeight < 450 || winWidth < 380;
   const styles = useMemo(() => createStyles(colors, isCompact), [colors, isCompact]);
+  const xpBadgeStyles = useMemo(() => ({
+    off: styles.badge_off,
+    safe: styles.badge_safe,
+    grace: styles.badge_grace,
+    decaying: styles.badge_decaying,
+  }), [styles]);
+  const xpBadgeTextStyles = useMemo(() => ({
+    off: styles.badgeText_off,
+    safe: styles.badgeText_safe,
+    grace: styles.badgeText_grace,
+    decaying: styles.badgeText_decaying,
+  }), [styles]);
 
   const fetchData = useCallback(async () => {
     if (!userId) return;
@@ -105,6 +117,9 @@ const HomeScreen: React.FC = () => {
   };
 
   const isReturningUser = !!userId && (!!lastActivity || !!xpStats);
+  const xpStatus = ['off', 'safe', 'grace', 'decaying'].includes(xpStats?.status)
+    ? xpStats.status as keyof typeof xpBadgeStyles
+    : 'safe';
   const questIcons: Record<string, string> = { xp: '⚡', lessons: '🎯', time: '⏱️' };
   const leagueBadges: Record<string, string> = { bronze: '🥉', silver: '🥈', gold: '🥇', diamond: '💎' };
 
@@ -344,8 +359,8 @@ const HomeScreen: React.FC = () => {
                   {xpStats.status === 'off' ? '🌿' : xpStats.status === 'decaying' ? '📉' : xpStats.status === 'grace' ? '⏳' : '✨'}
                 </Text>
                 <Text style={styles.cardTitle}>{t('home.xpTracker')}</Text>
-                <View style={[styles.xpStatusBadge, styles[`badge_${xpStats.status}` as keyof typeof styles] || styles.badge_safe]}>
-                  <Text style={[styles.xpStatusText, styles[`badgeText_${xpStats.status}` as keyof typeof styles] || styles.badgeText_safe]}>
+                <View style={[styles.xpStatusBadge, xpBadgeStyles[xpStatus]]}>
+                  <Text style={[styles.xpStatusText, xpBadgeTextStyles[xpStatus]]}>
                     {xpStats.status === 'off' ? t('home.relaxed') : t('home.intense')}
                   </Text>
                 </View>
