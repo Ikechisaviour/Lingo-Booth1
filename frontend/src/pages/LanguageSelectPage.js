@@ -18,11 +18,6 @@ function LanguageSelectPage({ setIsGuest, onLogout }) {
     localStorage.getItem('targetLanguage') || ''
   );
 
-  // If no valid mode, redirect to login
-  if (mode !== 'register' && mode !== 'guest' && mode !== 'google-setup') {
-    return <Navigate to="/login" />;
-  }
-
   const handleNativeChange = (code) => {
     setNativeLanguage(code);
     // If native and target are now the same, reset target
@@ -47,6 +42,11 @@ function LanguageSelectPage({ setIsGuest, onLogout }) {
   const canContinue = nativeLanguage && targetLanguage && nativeLanguage !== targetLanguage;
 
   const [saving, setSaving] = useState(false);
+
+  // If no valid mode, redirect to login
+  if (mode !== 'register' && mode !== 'guest' && mode !== 'google-setup') {
+    return <Navigate to="/login" />;
+  }
 
   const handleContinue = async () => {
     if (!canContinue) return;
