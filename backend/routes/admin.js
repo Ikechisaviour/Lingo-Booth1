@@ -73,23 +73,36 @@ router.get('/stats', async (req, res) => {
     const usersRateLimited = rateLimitStats ? rateLimitStats.usersRateLimited : 0;
 
     // User growth data (last 7 days)
-    const userGrowth = [];
+    const growthDays = [];
     for (let i = 6; i >= 0; i--) {
       const dayStart = new Date(now);
       dayStart.setDate(dayStart.getDate() - i);
       dayStart.setHours(0, 0, 0, 0);
       const dayEnd = new Date(dayStart);
       dayEnd.setHours(23, 59, 59, 999);
-
-      const count = await User.countDocuments({
-        createdAt: { $gte: dayStart, $lte: dayEnd }
-      });
-
-      userGrowth.push({
+      growthDays.push({
         date: dayStart.toISOString().split('T')[0],
-        count
+        dayStart,
+        dayEnd,
+        count: 0,
       });
     }
+    const growthStart = growthDays[0].dayStart;
+    const growthEnd = growthDays[growthDays.length - 1].dayEnd;
+    const userGrowthCounts = await User.aggregate([
+      { $match: { createdAt: { $gte: growthStart, $lte: growthEnd } } },
+      {
+        $group: {
+          _id: { $dateToString: { format: '%Y-%m-%d', date: '$createdAt' } },
+          count: { $sum: 1 },
+        },
+      },
+    ]);
+    const growthCountMap = new Map(userGrowthCounts.map(day => [day._id, day.count]));
+    const userGrowth = growthDays.map(({ date }) => ({
+      date,
+      count: growthCountMap.get(date) || 0,
+    }));
 
     // Recent activity (last 10 users who were active)
     const recentActiveUsers = await User.find({ lastActive: { $exists: true } })
@@ -317,7 +330,7 @@ router.put('/users/:userId/reset-rate-limit', async (req, res) => {
 
 // Delete a user (with transaction for data consistency)
 router.delete('/users/:userId', async (req, res) => {
-  const session = await mongoose.startSession();
+  let session;
   try {
     const user = await User.findById(req.params.userId);
 
@@ -335,6 +348,7 @@ router.delete('/users/:userId', async (req, res) => {
       return res.status(400).json({ message: 'Cannot delete an admin account' });
     }
 
+    session = await mongoose.startSession();
     await session.withTransaction(async () => {
       await Progress.deleteMany({ userId: req.params.userId }, { session });
       await Flashcard.deleteMany({ userId: req.params.userId }, { session });
@@ -346,7 +360,7 @@ router.delete('/users/:userId', async (req, res) => {
     console.error('Admin delete user error:', error);
     res.status(500).json({ message: 'Server error' });
   } finally {
-    session.endSession();
+    if (session) session.endSession();
   }
 });
 
