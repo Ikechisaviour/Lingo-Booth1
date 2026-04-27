@@ -7,6 +7,26 @@ const api = axios.create({
   timeout: 15000, // 15-second timeout to avoid hanging requests
 });
 
+const clearSession = () => {
+  [
+    'token',
+    'refreshToken',
+    'userId',
+    'username',
+    'userRole',
+    'guestMode',
+    'emailVerified',
+    'needsLanguageSetup',
+  ].forEach((key) => localStorage.removeItem(key));
+};
+
+const isCurrentUserProfileRequest = (config) => {
+  const userId = localStorage.getItem('userId');
+  if (!userId || !config?.url) return false;
+  const url = config.url.split('?')[0];
+  return url === `/users/${userId}` || url.startsWith(`/users/${userId}/`);
+};
+
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
   if (token) {
@@ -52,12 +72,7 @@ api.interceptors.response.use(
           return api(config);
         } catch {
           // Refresh failed — force logout
-          localStorage.removeItem('token');
-          localStorage.removeItem('refreshToken');
-          localStorage.removeItem('userId');
-          localStorage.removeItem('username');
-          localStorage.removeItem('userRole');
-          localStorage.removeItem('guestMode');
+          clearSession();
           window.dispatchEvent(new CustomEvent('accountSuspended'));
           return Promise.reject(error);
         }
@@ -83,27 +98,16 @@ api.interceptors.response.use(
       error.response?.data?.message === 'Account suspended' &&
       localStorage.getItem('token')
     ) {
-      localStorage.removeItem('token');
-      localStorage.removeItem('refreshToken');
-      localStorage.removeItem('userId');
-      localStorage.removeItem('username');
-      localStorage.removeItem('userRole');
-      localStorage.removeItem('guestMode');
+      clearSession();
       window.dispatchEvent(new CustomEvent('accountSuspended'));
     }
-    // Detect deleted account (404 on non-auth endpoints)
+    // Detect deleted current account without logging out for ordinary missing content.
     if (
       error.response?.status === 404 &&
-      config &&
-      !config.url?.includes('/auth/') &&
+      isCurrentUserProfileRequest(config) &&
       localStorage.getItem('token')
     ) {
-      localStorage.removeItem('token');
-      localStorage.removeItem('refreshToken');
-      localStorage.removeItem('userId');
-      localStorage.removeItem('username');
-      localStorage.removeItem('userRole');
-      localStorage.removeItem('guestMode');
+      clearSession();
       window.dispatchEvent(new CustomEvent('accountSuspended'));
     }
     return Promise.reject(error);
