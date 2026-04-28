@@ -3,12 +3,14 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminNavbar from './pages/AdminNavbar';
+import AdminSpeakingDemo from './pages/AdminSpeakingDemo';
 import './App.css';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
+  const localDemoPreviewAllowed = ['localhost', '127.0.0.1'].includes(window.location.hostname);
 
   useEffect(() => {
     checkAuth();
@@ -68,6 +70,26 @@ function App() {
             element={
               isAuthenticated && isAdmin ? (
                 <AdminDashboard />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
+          />
+          <Route
+            path="/demo"
+            element={
+              isAuthenticated && isAdmin ? (
+                <AdminSpeakingDemo />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
+          />
+          <Route
+            path="/demo-preview"
+            element={
+              localDemoPreviewAllowed ? (
+                <AdminSpeakingDemo demoBypass />
               ) : (
                 <Navigate to="/login" />
               )

@@ -16,6 +16,7 @@ import LanguageSelectPage from './pages/LanguageSelectPage';
 import LessonDetail from './pages/LessonDetail';
 import ProfilePage from './pages/ProfilePage';
 import AdminDashboard from './pages/AdminDashboard';
+import AdminSpeakingDemo from './pages/AdminSpeakingDemo';
 import VerifyEmailPage from './pages/VerifyEmailPage';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import ResetPasswordPage from './pages/ResetPasswordPage';
@@ -266,6 +267,7 @@ function App() {
   const canAccessApp = isAuthenticated || isGuest;
   const needsLanguageSetup = localStorage.getItem('needsLanguageSetup') === 'true';
   const languagesReady = !!localStorage.getItem('nativeLanguage') && !!localStorage.getItem('targetLanguage');
+  const localDemoPreviewAllowed = ['localhost', '127.0.0.1'].includes(window.location.hostname);
 
   return (
     <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
@@ -334,6 +336,16 @@ function App() {
           <Route path="/verify-email" element={<VerifyEmailPage />} />
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
           <Route path="/reset-password" element={<ResetPasswordPage />} />
+          <Route
+            path="/demo-preview"
+            element={
+              localDemoPreviewAllowed ? (
+                <AdminSpeakingDemo demoBypass />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
+          />
 
           {/* Main App Routes - Accessible by authenticated users and guests */}
           <Route

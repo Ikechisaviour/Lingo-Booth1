@@ -126,10 +126,12 @@ async function synthesize(text, lang, voice, rate, res) {
   const voiceLocale = lang || primaryVoice.split('-').slice(0, 2).join('-');
   const escapedText = escapeXml(text.trim());
 
-  // Build list of voices to try: primary first, then fallback if different
+  // Build list of voices to try: requested/familiar voice first, female default next.
+  const defaultVoice = DEFAULT_VOICES[lang] || DEFAULT_VOICES['en-US'];
   const fallbackVoice = FALLBACK_VOICES[lang];
   const voicesToTry = [primaryVoice];
-  if (fallbackVoice && fallbackVoice !== primaryVoice) voicesToTry.push(fallbackVoice);
+  if (defaultVoice && defaultVoice !== primaryVoice) voicesToTry.push(defaultVoice);
+  if (fallbackVoice && fallbackVoice !== primaryVoice && fallbackVoice !== defaultVoice) voicesToTry.push(fallbackVoice);
 
   for (const voiceName of voicesToTry) {
     try {

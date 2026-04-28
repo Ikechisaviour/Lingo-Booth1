@@ -8,7 +8,214 @@ const Progress = require('../models/Progress');
 const GuestSession = require('../models/GuestSession');
 const { verifyToken, isAdmin } = require('../middleware/auth');
 
-// Apply auth middleware to all routes
+const OPENAI_API_URL = 'https://api.openai.com/v1/chat/completions';
+
+function safeConversationHistory(history = []) {
+  if (!Array.isArray(history)) return [];
+  return history
+    .slice(-8)
+    .filter(turn => turn && ['user', 'assistant'].includes(turn.role) && typeof turn.content === 'string')
+    .map(turn => ({
+      role: turn.role,
+      content: turn.content.slice(0, 800),
+    }));
+}
+
+function detectDominantLanguage(text, targetLanguage = 'ko', nativeLanguage = 'en') {
+  const value = String(text || '');
+  const hangulCount = (value.match(/[ㄱ-ㅎㅏ-ㅣ가-힣]/g) || []).length;
+  const latinCount = (value.match(/[A-Za-z]/g) || []).length;
+  return latinCount > hangulCount * 1.5 ? nativeLanguage : targetLanguage;
+}
+
+function extractRequestedPhrase(text = '') {
+  const value = String(text || '').trim();
+  const quoted = value.match(/["'“‘]([^"'”’]+)["'”’]/);
+  if (quoted?.[1]) return quoted[1].trim().slice(0, 120);
+
+  const meaningMatch = value.match(/(?:what does|what is|explain|meaning of)\s+(.+?)\s+(?:mean|means|in english|in korean|\?)/i);
+  if (meaningMatch?.[1]) return meaningMatch[1].trim().slice(0, 120);
+
+  const targetScriptMatch = value.match(/[ㄱ-ㅎㅏ-ㅣ가-힣][ㄱ-ㅎㅏ-ㅣ가-힣\s]*/);
+  return targetScriptMatch?.[0]?.trim().slice(0, 120) || '';
+}
+
+async function callOpenAIConversation({ scenario, targetLanguage, nativeLanguage, inputLanguage, transcript, history, difficulty }) {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    return {
+      aiEnabled: false,
+      reply: 'AI conversation is not configured yet. Add OPENAI_API_KEY on the backend to enable live roleplay.',
+      expectedLanguage: targetLanguage || 'ko',
+      coachingTip: 'Backend fallback is active, so this is not a model-generated reply.',
+    };
+  }
+
+  const model = process.env.OPENAI_CONVERSATION_MODEL || process.env.OPENAI_MODEL || 'gpt-4o-mini';
+  const learnerLanguage = inputLanguage || detectDominantLanguage(transcript, targetLanguage || 'ko', nativeLanguage || 'en');
+  const learnerUsedNativeLanguage = learnerLanguage === (nativeLanguage || 'en');
+  const requestedPhrase = extractRequestedPhrase(transcript);
+  const systemPrompt = [
+    'You are the admin-only speaking demo engine for Lingo Booth.',
+    'Run a live language-learning roleplay, not a fixed database exercise.',
+    'Act like a flexible conversation partner or friend, not a pronunciation drill coach.',
+    'Stay inside the named scenario and choose the obvious scene role, such as barista, taxi driver, clerk, hotel staff, or new acquaintance.',
+    'Do not say "repeat after me", do not ask the learner to repeat a phrase, and do not loop the same prompt.',
+    'Do not provide Korean for the learner to copy unless they explicitly ask for a phrase suggestion.',
+    'Each reply must advance the discussion with one natural, short response or question.',
+    'If the learner orders coffee, respond like cafe staff; if the learner gives a destination, respond like a taxi driver.',
+    'The learner may interrupt, change topic, ask for easier or harder language, or ask about words and phrases from inside or outside the discussion.',
+    'If the learner uses their native language, first answer in the native language, then add a brief target-language continuation or natural version.',
+    'For native-language turns, do not reply only in the target language.',
+    'For native-language turns, return speechParts with one native-language part and one target-language part.',
+    'If the learner asks what a word or phrase means, explain the exact word or phrase they asked about; do not substitute a different word.',
+    'If requestedPhrase is provided, your explanation must be about requestedPhrase exactly.',
+    'When explaining words or phrases in the native language, set expectedLanguage to the native language unless speechParts are provided.',
+    'If the learner switches topic, follow the new topic naturally.',
+    'If the learner asks for difficulty changes, adapt immediately.',
+    'Keep replies short enough to be spoken aloud safely in hands-free mode.',
+    'Prefer the target language, but include brief coaching in the native language when useful.',
+    'Never ask the learner to look at the screen while driving or moving.',
+    'Return strict JSON with keys: reply, coachingTip, expectedLanguage, nextSuggestedIntent, speechParts.',
+    'Use short language codes such as ko, en, es, fr, de, ja, zh, hi, ar, he, pt, it, nl, ru, id, ms, fil, tr, bn, or ta for expectedLanguage and speechParts[].language.',
+  ].join(' ');
+
+  const messages = [
+    { role: 'system', content: systemPrompt },
+    ...safeConversationHistory(history),
+    {
+      role: 'user',
+      content: JSON.stringify({
+        scenario: scenario || 'Casual conversation practice',
+        targetLanguage: targetLanguage || 'ko',
+        nativeLanguage: nativeLanguage || 'en',
+        inputLanguage: inputLanguage || '',
+        difficulty: difficulty || 'friendly beginner',
+        learnerLanguage,
+        learnerUsedNativeLanguage,
+        requestedPhrase,
+        latestLearnerTranscript: transcript,
+        instruction: [
+          'Continue naturally as a conversation partner.',
+          'Stay in the scenario and make the next practical turn in that scene.',
+          'If the learner asks a question, changes topic, requests an explanation, or asks to adjust difficulty, handle that request directly before continuing.',
+          learnerUsedNativeLanguage
+            ? 'The learner used their native language. Reply in two parts: first a direct native-language answer, then a short target-language continuation. Put both parts in reply, and also provide speechParts with matching language codes.'
+            : 'The learner used the target language. Continue mostly in the target language, with light native-language support only if useful.',
+          'For an explanation request in the native language, explain the exact requested word or phrase mostly in the native language, then include a short target-language example or continuation.',
+          requestedPhrase ? `The exact requested phrase is: ${requestedPhrase}. Explain this phrase, not any other phrase.` : '',
+          'Do not correct every sentence. Keep coaching light and only include it when it helps.',
+          'Never use drill language such as "repeat after me" or "say it again" unless the learner explicitly asks for pronunciation practice.',
+        ].join(' '),
+      }),
+    },
+  ];
+
+  const response = await fetch(OPENAI_API_URL, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model,
+      temperature: 0.7,
+      response_format: { type: 'json_object' },
+      messages,
+    }),
+  });
+
+  if (!response.ok) {
+    const detail = await response.text();
+    throw new Error(`OpenAI request failed (${response.status}): ${detail.slice(0, 300)}`);
+  }
+
+  const data = await response.json();
+  const content = data.choices?.[0]?.message?.content || '{}';
+  let parsed;
+  try {
+    parsed = JSON.parse(content);
+  } catch (_) {
+    parsed = { reply: content };
+  }
+
+  const reply = String(parsed.reply || '').slice(0, 800);
+  const fallbackLanguage = detectDominantLanguage(reply, targetLanguage || 'ko', nativeLanguage || 'en');
+  const parsedLanguage = String(parsed.expectedLanguage || '').slice(0, 20);
+  const expectedLanguage = fallbackLanguage !== parsedLanguage
+    ? fallbackLanguage
+    : (parsedLanguage || fallbackLanguage);
+  const speechParts = Array.isArray(parsed.speechParts)
+    ? parsed.speechParts
+      .filter(part => part && typeof part.text === 'string')
+      .slice(0, 3)
+      .map(part => ({
+        language: String(part.language || detectDominantLanguage(part.text, targetLanguage || 'ko', nativeLanguage || 'en')).slice(0, 20),
+        text: part.text.slice(0, 500),
+      }))
+    : [];
+
+  return {
+    aiEnabled: true,
+    reply,
+    coachingTip: String(parsed.coachingTip || '').slice(0, 400),
+    expectedLanguage,
+    nextSuggestedIntent: String(parsed.nextSuggestedIntent || '').slice(0, 200),
+    speechParts,
+    model,
+  };
+}
+
+function isLocalDemoRequest(req) {
+  if (process.env.NODE_ENV === 'production') return false;
+  if (process.env.ENABLE_LOCAL_DEMO_BYPASS === 'false') return false;
+
+  const host = (req.hostname || req.headers.host || '').split(':')[0];
+  const remoteAddress = req.ip || req.socket?.remoteAddress || '';
+  const localHosts = new Set(['localhost', '127.0.0.1', '::1']);
+  const localRemotes = new Set(['127.0.0.1', '::1', '::ffff:127.0.0.1']);
+
+  return localHosts.has(host) || localRemotes.has(remoteAddress);
+}
+
+async function handleSpeakingDemoConversation(req, res) {
+  try {
+    const { scenario, targetLanguage, nativeLanguage, inputLanguage, transcript, history, difficulty } = req.body || {};
+
+    if (!transcript || typeof transcript !== 'string' || transcript.trim().length === 0) {
+      return res.status(400).json({ message: 'Transcript is required' });
+    }
+
+    if (transcript.length > 1200) {
+      return res.status(400).json({ message: 'Transcript too long for demo conversation' });
+    }
+
+    const result = await callOpenAIConversation({
+      scenario,
+      targetLanguage,
+      nativeLanguage,
+      inputLanguage,
+      transcript: transcript.trim(),
+      history,
+      difficulty,
+    });
+
+    return res.json(result);
+  } catch (error) {
+    console.error('Admin speaking demo conversation error:', error.message || error);
+    return res.status(500).json({ message: 'AI conversation failed', detail: error.message });
+  }
+}
+
+// Temporary local-only demo bypass. Remove this route when the demo no longer needs no-login access.
+router.post('/local-demo/speaking-demo/conversation', async (req, res) => {
+  if (!isLocalDemoRequest(req)) {
+    return res.status(404).json({ message: 'Not found' });
+  }
+  return handleSpeakingDemoConversation(req, res);
+});
+
+// Apply auth middleware to all routes below this line.
 router.use(verifyToken);
 router.use(isAdmin);
 
@@ -140,6 +347,12 @@ router.get('/stats', async (req, res) => {
     console.error('Admin stats error:', error);
     res.status(500).json({ message: 'Server error' });
   }
+});
+
+// Admin-only AI speaking demo conversation turn.
+// This is intentionally kept under /api/admin so it cannot be reached by learners.
+router.post('/speaking-demo/conversation', async (req, res) => {
+  return handleSpeakingDemoConversation(req, res);
 });
 
 // Get all users with detailed info

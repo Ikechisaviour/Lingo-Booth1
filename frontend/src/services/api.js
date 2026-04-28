@@ -276,6 +276,10 @@ export const adminService = {
     api.delete(`/admin/flashcards/${flashcardId}`),
   getGuests: (page = 1) =>
     api.get(`/admin/guests?page=${page}`),
+  sendSpeakingDemoTurn: (data) =>
+    api.post('/admin/speaking-demo/conversation', data),
+  sendLocalSpeakingDemoTurn: (data) =>
+    api.post('/admin/local-demo/speaking-demo/conversation', data),
 };
 
 export default api;

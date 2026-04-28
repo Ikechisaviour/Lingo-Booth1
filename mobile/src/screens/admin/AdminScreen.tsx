@@ -11,16 +11,45 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
-import { Text, Button, Card, TextInput, Searchbar, Chip } from 'react-native-paper';
+import { Text, Button, Card, TextInput, Searchbar, Chip, SegmentedButtons } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import { adminService } from '../../services/api';
+import speechService from '../../services/speechService';
 import { useAppColors, type AppColors } from '../../config/theme';
+import { useSettingsStore } from '../../stores/settingsStore';
+import LANGUAGES from '../../config/languages';
 
-type Tab = 'dashboard' | 'users' | 'guests';
+type Tab = 'dashboard' | 'users' | 'guests' | 'demo';
+
+const languageOptions = Object.entries(LANGUAGES).map(([value, language]) => ({
+  value,
+  label: language.name,
+  speech: language.ttsLocale,
+}));
+
+const difficultyOptions = [
+  { value: 'casual beginner', label: 'Beginner' },
+  { value: 'balanced', label: 'Balanced' },
+  { value: 'more natural', label: 'Natural' },
+  { value: 'challenge me', label: 'Challenge' },
+];
+
+const demoScenarios = [
+  'Friendly chat while practicing Korean',
+  'Talking with a cafe worker',
+  'Asking a taxi driver for help',
+  'Meeting someone new',
+];
+
+type SpeechPart = {
+  language?: string;
+  text?: string;
+};
 
 const AdminScreen: React.FC = () => {
   const { t } = useTranslation();
   const colors = useAppColors();
+  const preferredVoice = useSettingsStore((state) => state.preferredVoice);
 
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
   const [stats, setStats] = useState<any>(null);
@@ -34,6 +63,17 @@ const AdminScreen: React.FC = () => {
   const [statusFilter, setStatusFilter] = useState('all');
   const [suspendModal, setSuspendModal] = useState<{ userId: string; username: string } | null>(null);
   const [suspendReason, setSuspendReason] = useState('');
+  const [demoScenario, setDemoScenario] = useState(demoScenarios[0]);
+  const [demoTurn, setDemoTurn] = useState('');
+  const [demoTranscript, setDemoTranscript] = useState('');
+  const [demoReply, setDemoReply] = useState('The AI response will appear here.');
+  const [demoTip, setDemoTip] = useState('Ask in English or Korean. You can change topic, ask for meanings, or request easier wording.');
+  const [demoLoading, setDemoLoading] = useState(false);
+  const [demoTargetLanguage, setDemoTargetLanguage] = useState('ko');
+  const [demoNativeLanguage, setDemoNativeLanguage] = useState('en');
+  const [demoInputLanguage, setDemoInputLanguage] = useState('ko');
+  const [demoDifficulty, setDemoDifficulty] = useState('casual beginner');
+  const [demoHistory, setDemoHistory] = useState<Array<{ role: 'user' | 'assistant'; content: string }>>([]);
 
   // User detail modal
   const [userDetail, setUserDetail] = useState<any>(null);
@@ -172,6 +212,79 @@ const AdminScreen: React.FC = () => {
       return u.username?.toLowerCase().includes(q) || u.email?.toLowerCase().includes(q);
     });
 
+  const resetDemo = () => {
+    setDemoHistory([]);
+    setDemoTranscript('');
+    setDemoReply('The AI response will appear here.');
+    setDemoTip('Conversation reset.');
+  };
+
+  const voiceForDemoLanguage = (languageId?: string) => (
+    languageId === demoTargetLanguage ? preferredVoice || undefined : undefined
+  );
+
+  const speakDemoReply = async (data: any, reply: string) => {
+    const speechParts: SpeechPart[] = Array.isArray(data.speechParts) ? data.speechParts : [];
+    if (speechParts.length) {
+      for (const part of speechParts) {
+        if (part.text) {
+          const speechLang = languageOptions.find((language) => language.value === part.language)?.speech || 'ko-KR';
+          await speechService.speakAsync(part.text, {
+            lang: speechLang,
+            voice: voiceForDemoLanguage(part.language),
+          });
+        }
+      }
+      return;
+    }
+
+    if (reply) {
+      const speechLang = data.expectedLanguage === demoNativeLanguage
+        ? languageOptions.find((language) => language.value === demoNativeLanguage)?.speech
+        : languageOptions.find((language) => language.value === demoTargetLanguage)?.speech;
+      await speechService.speakAsync(reply, {
+        lang: speechLang || 'ko-KR',
+        voice: voiceForDemoLanguage(data.expectedLanguage),
+      });
+    }
+  };
+
+  const sendDemoTurn = async () => {
+    const text = demoTurn.trim();
+    if (!text) return;
+    await speechService.cancel();
+    setDemoLoading(true);
+    setDemoTranscript(text);
+    setDemoTurn('');
+
+    try {
+      const response = await adminService.sendSpeakingDemoTurn({
+        scenario: demoScenario,
+        targetLanguage: demoTargetLanguage,
+        nativeLanguage: demoNativeLanguage,
+        inputLanguage: demoInputLanguage,
+        difficulty: demoDifficulty,
+        transcript: text,
+        history: demoHistory,
+      });
+      const data = response.data || {};
+      const reply = data.reply || '';
+      setDemoReply(reply || 'No reply returned.');
+      setDemoTip(data.coachingTip || 'No coaching note.');
+      setDemoHistory((prev) => [
+        ...prev.slice(-6),
+        { role: 'user', content: text },
+        { role: 'assistant', content: reply },
+      ]);
+      await speakDemoReply(data, reply);
+    } catch (error: any) {
+      setDemoReply('AI conversation failed.');
+      setDemoTip(error.response?.data?.message || 'Check backend connection and admin access.');
+    } finally {
+      setDemoLoading(false);
+    }
+  };
+
   if (loading) {
     return (
       <View style={styles.centered}>
@@ -199,6 +312,9 @@ const AdminScreen: React.FC = () => {
         </Chip>
         <Chip selected={activeTab === 'guests'} onPress={() => setActiveTab('guests')} style={styles.tabChip}>
           👤 {t('admin.guests', 'Guests')}
+        </Chip>
+        <Chip selected={activeTab === 'demo'} onPress={() => setActiveTab('demo')} style={styles.tabChip}>
+          Demo
         </Chip>
       </View>
 
@@ -532,6 +648,107 @@ const AdminScreen: React.FC = () => {
             )}
           </>
         )}
+
+        {activeTab === 'demo' && (
+          <>
+            <Card style={styles.card}>
+              <Card.Content>
+                <Text variant="titleMedium" style={styles.cardTitle}>Speaking Demo</Text>
+                <Text style={styles.demoIntro}>
+                  Admin-only AI conversation preview. It does not save audio or learner progress.
+                </Text>
+
+                <Text style={styles.demoLabel}>Scenario</Text>
+                <SegmentedButtons
+                  value={demoScenario}
+                  onValueChange={(value) => {
+                    setDemoScenario(value);
+                    resetDemo();
+                  }}
+                  buttons={demoScenarios.map((scenario) => ({
+                    value: scenario,
+                    label: scenario.replace(' while practicing Korean', ''),
+                  }))}
+                  style={styles.segmented}
+                />
+
+                <TextInput
+                  label="Custom scenario"
+                  value={demoScenario}
+                  onChangeText={setDemoScenario}
+                  mode="outlined"
+                  style={styles.input}
+                />
+
+                <Text style={styles.demoLabel}>Learning language</Text>
+                <SegmentedButtons
+                  value={demoTargetLanguage}
+                  onValueChange={setDemoTargetLanguage}
+                  buttons={languageOptions.map(({ value, label }) => ({ value, label }))}
+                  style={styles.segmented}
+                />
+
+                <Text style={styles.demoLabel}>Native language</Text>
+                <SegmentedButtons
+                  value={demoNativeLanguage}
+                  onValueChange={setDemoNativeLanguage}
+                  buttons={languageOptions.map(({ value, label }) => ({ value, label }))}
+                  style={styles.segmented}
+                />
+
+                <Text style={styles.demoLabel}>Listen for</Text>
+                <SegmentedButtons
+                  value={demoInputLanguage}
+                  onValueChange={setDemoInputLanguage}
+                  buttons={languageOptions.map(({ value, label }) => ({ value, label }))}
+                  style={styles.segmented}
+                />
+
+                <Text style={styles.demoLabel}>Difficulty</Text>
+                <SegmentedButtons
+                  value={demoDifficulty}
+                  onValueChange={setDemoDifficulty}
+                  buttons={difficultyOptions}
+                  style={styles.segmented}
+                />
+
+                <TextInput
+                  label="Type or paste what the learner said"
+                  value={demoTurn}
+                  onChangeText={setDemoTurn}
+                  mode="outlined"
+                  multiline
+                  numberOfLines={3}
+                  style={styles.input}
+                />
+
+                <View style={styles.demoActions}>
+                  <Button mode="contained" loading={demoLoading} disabled={!demoTurn.trim() || demoLoading} onPress={sendDemoTurn}>
+                    Send to AI
+                  </Button>
+                  <Button mode="outlined" onPress={() => speechService.cancel()}>
+                    Interrupt
+                  </Button>
+                  <Button mode="outlined" onPress={resetDemo}>
+                    Reset
+                  </Button>
+                </View>
+              </Card.Content>
+            </Card>
+
+            <Card style={styles.card}>
+              <Card.Content>
+                <Text variant="titleMedium" style={styles.cardTitle}>Conversation State</Text>
+                <Text style={styles.demoLabel}>Last learner turn</Text>
+                <Text style={styles.demoBox}>{demoTranscript || 'No turn sent yet.'}</Text>
+                <Text style={styles.demoLabel}>AI response</Text>
+                <Text style={styles.demoBox}>{demoReply}</Text>
+                <Text style={styles.demoLabel}>Coach note</Text>
+                <Text style={styles.demoBox}>{demoTip}</Text>
+              </Card.Content>
+            </Card>
+          </>
+        )}
       </ScrollView>
 
       {/* Suspend modal */}
@@ -719,6 +936,21 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
   detailSection: { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 10, borderBottomWidth: 1, borderBottomColor: colors.border },
   detailLabel: { fontSize: 14, color: colors.textSecondary },
   detailValue: { fontSize: 14, fontWeight: '600', color: colors.textPrimary, maxWidth: '60%', textAlign: 'right' },
+
+  demoIntro: { color: colors.textSecondary, marginBottom: 12, lineHeight: 20 },
+  demoLabel: { color: colors.textSecondary, fontSize: 12, fontWeight: '700', marginBottom: 6, marginTop: 8 },
+  segmented: { marginBottom: 10 },
+  demoActions: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 4 },
+  demoBox: {
+    backgroundColor: colors.background,
+    borderColor: colors.border,
+    borderWidth: 1,
+    borderRadius: 10,
+    color: colors.textPrimary,
+    lineHeight: 20,
+    padding: 12,
+    marginBottom: 8,
+  },
 });
 
 export default AdminScreen;
