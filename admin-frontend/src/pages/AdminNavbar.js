@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './AdminNavbar.css';
 
 function AdminNavbar({ onLogout }) {
@@ -16,6 +17,8 @@ function AdminNavbar({ onLogout }) {
         </div>
 
         <div className="admin-nav-right">
+          <Link className="btn-demo" to="/demo">Demo</Link>
+          <Link className="btn-demo secondary" to="/">Dashboard</Link>
           <div className="admin-user">
             <div className="admin-avatar">{username?.charAt(0).toUpperCase() || 'A'}</div>
             <span className="admin-username">{username || 'Admin'}</span>

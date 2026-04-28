@@ -53,6 +53,25 @@
   gap: 20px;
 }
 
+.btn-demo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: var(--primary);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.btn-demo.secondary {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 2px solid var(--border-light);
+}
+
 .admin-user {
   display: flex;
   align-items: center;
@@ -121,6 +140,10 @@
   }
 
   .logout-text {
+    display: none;
+  }
+
+  .btn-demo.secondary {
     display: none;
   }
 

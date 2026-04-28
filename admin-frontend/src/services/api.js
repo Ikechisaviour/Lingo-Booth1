@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
 
 const api = axios.create({
   baseURL: API_URL,
@@ -17,6 +17,19 @@ api.interceptors.request.use((config) => {
 export const authService = {
   login: (email, password) =>
     api.post('/auth/login', { email, password }),
+};
+
+export const ttsService = {
+  speak: (text, lang, voice, rate) =>
+    api.post('/tts', { text, lang, voice, rate }, { responseType: 'blob' }),
+  getVoices: (lang) =>
+    api.get('/tts/voices', { params: lang ? { lang } : {} }),
+  buildSpeakUrl: (text, lang, voice, rate) => {
+    const params = new URLSearchParams({ text, lang });
+    if (voice) params.set('voice', voice);
+    if (rate) params.set('rate', rate);
+    return `${API_URL}/tts?${params.toString()}`;
+  },
 };
 
 export const adminService = {
@@ -36,6 +49,10 @@ export const adminService = {
     api.delete(`/admin/users/${userId}`),
   resetRateLimit: (userId) =>
     api.put(`/admin/users/${userId}/reset-rate-limit`),
+  sendSpeakingDemoTurn: (data) =>
+    api.post('/admin/speaking-demo/conversation', data),
+  sendLocalSpeakingDemoTurn: (data) =>
+    api.post('/admin/local-demo/speaking-demo/conversation', data),
 };
 
 export default api;

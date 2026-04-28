@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { adminService } from '../services/api';
 import LANGUAGES, { getTargetLangName, getNativeLangName, getTargetLangCode, getNativeLangCode, getTargetField, getNativeField } from '../config/languages';
+import AdminSpeakingDemo from './AdminSpeakingDemo';
 import './AdminDashboard.css';
 
 // Country code → flag emoji
@@ -318,6 +319,7 @@ function AdminDashboard() {
             { id: 'activity', icon: '📈', label: t('admin.activity') },
             { id: 'guests', icon: '👤', label: `Guests (${guests.total})` },
             { id: 'flashcards', icon: '🎴', label: `${t('admin.userFlashcards')} (${userFlashcards.length})` },
+            { id: 'demo', icon: '▶', label: 'Demo' },
           ].map(tab => (
             <button key={tab.id} className={`tab-btn ${activeTab === tab.id ? 'active' : ''}`} onClick={() => setActiveTab(tab.id)}>
               <span className="tab-icon">{tab.icon}</span>{tab.label}
@@ -886,6 +888,8 @@ function AdminDashboard() {
               </div>
             </div>
           )}
+
+          {activeTab === 'demo' && <AdminSpeakingDemo />}
         </div>
 
         {/* ── Suspend Modal ── */}
