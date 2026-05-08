@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import { Text, Button, Card, TextInput, Searchbar, Chip, SegmentedButtons } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
-import { adminService } from '../../services/api';
+import { adminService, aiService } from '../../services/api';
 import speechService from '../../services/speechService';
 import { useAppColors, type AppColors } from '../../config/theme';
 import { useSettingsStore } from '../../stores/settingsStore';
@@ -66,7 +66,7 @@ const AdminScreen: React.FC = () => {
   const [demoScenario, setDemoScenario] = useState(demoScenarios[0]);
   const [demoTurn, setDemoTurn] = useState('');
   const [demoTranscript, setDemoTranscript] = useState('');
-  const [demoReply, setDemoReply] = useState('The AI response will appear here.');
+  const [demoReply, setDemoReply] = useState('The practice partner response will appear here.');
   const [demoTip, setDemoTip] = useState('Ask in English or Korean. You can change topic, ask for meanings, or request easier wording.');
   const [demoLoading, setDemoLoading] = useState(false);
   const [demoTargetLanguage, setDemoTargetLanguage] = useState('ko');
@@ -215,7 +215,7 @@ const AdminScreen: React.FC = () => {
   const resetDemo = () => {
     setDemoHistory([]);
     setDemoTranscript('');
-    setDemoReply('The AI response will appear here.');
+    setDemoReply('The practice partner response will appear here.');
     setDemoTip('Conversation reset.');
   };
 
@@ -258,7 +258,8 @@ const AdminScreen: React.FC = () => {
     setDemoTurn('');
 
     try {
-      const response = await adminService.sendSpeakingDemoTurn({
+      const response = await aiService.sendConversationTurn({
+        sessionId: 'admin-speaking-demo',
         scenario: demoScenario,
         targetLanguage: demoTargetLanguage,
         nativeLanguage: demoNativeLanguage,
@@ -278,8 +279,8 @@ const AdminScreen: React.FC = () => {
       ]);
       await speakDemoReply(data, reply);
     } catch (error: any) {
-      setDemoReply('AI conversation failed.');
-      setDemoTip(error.response?.data?.message || 'Check backend connection and admin access.');
+      setDemoReply('I could not respond this time. Please try again.');
+      setDemoTip(error.response?.data?.message || 'Connection issue. Try again in a moment.');
     } finally {
       setDemoLoading(false);
     }
@@ -655,7 +656,7 @@ const AdminScreen: React.FC = () => {
               <Card.Content>
                 <Text variant="titleMedium" style={styles.cardTitle}>Speaking Demo</Text>
                 <Text style={styles.demoIntro}>
-                  Admin-only AI conversation preview. It does not save audio or learner progress.
+                  Admin-only conversation preview. It does not save audio or learner progress.
                 </Text>
 
                 <Text style={styles.demoLabel}>Scenario</Text>
@@ -724,7 +725,7 @@ const AdminScreen: React.FC = () => {
 
                 <View style={styles.demoActions}>
                   <Button mode="contained" loading={demoLoading} disabled={!demoTurn.trim() || demoLoading} onPress={sendDemoTurn}>
-                    Send to AI
+                    Send
                   </Button>
                   <Button mode="outlined" onPress={() => speechService.cancel()}>
                     Interrupt
@@ -741,7 +742,7 @@ const AdminScreen: React.FC = () => {
                 <Text variant="titleMedium" style={styles.cardTitle}>Conversation State</Text>
                 <Text style={styles.demoLabel}>Last learner turn</Text>
                 <Text style={styles.demoBox}>{demoTranscript || 'No turn sent yet.'}</Text>
-                <Text style={styles.demoLabel}>AI response</Text>
+                <Text style={styles.demoLabel}>Practice partner response</Text>
                 <Text style={styles.demoBox}>{demoReply}</Text>
                 <Text style={styles.demoLabel}>Coach note</Text>
                 <Text style={styles.demoBox}>{demoTip}</Text>

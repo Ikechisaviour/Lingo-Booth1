@@ -10,6 +10,7 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
   const location = useLocation();
   const username = localStorage.getItem('username');
   const userId = localStorage.getItem('userId');
+  const hasToken = !!localStorage.getItem('token');
   const [activityState, setActivityState] = useState(null);
   const [totalXP, setTotalXP] = useState(null);
 
@@ -19,7 +20,7 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
       setTotalXP(guestXPHelper.get());
       return;
     }
-    if (!userId) return;
+    if (!userId || !hasToken) return;
     userService.getProfile(userId).then(res => {
       if (res.data && res.data.totalXP !== undefined) {
         setTotalXP(res.data.totalXP);
@@ -33,11 +34,11 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
         }
       }
     }).catch(() => {});
-  }, [userId, isGuest]);
+  }, [userId, hasToken, isGuest]);
 
   // Refresh activity state on route changes (lightweight call)
   useEffect(() => {
-    if (!userId || isGuest) return;
+    if (!userId || !hasToken || isGuest) return;
     userService.getActivityState(userId).then(res => {
       if (res.data && res.data.activityType) {
         setActivityState(res.data);
@@ -45,7 +46,7 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
         setActivityState(null);
       }
     }).catch(() => setActivityState(null));
-  }, [userId, isGuest, location.pathname]);
+  }, [userId, hasToken, isGuest, location.pathname]);
 
   // Listen for XP updates from awardXP calls and mode changes
   useEffect(() => {
@@ -133,6 +134,13 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
             <Link to="/flashcards" className={`nav-link ${isActive('/flashcards') ? 'active' : ''}`}>
               <span className="nav-icon">🎴</span>
               <span className="nav-text">{t('navbar.flashcards')}</span>
+            </Link>
+          </li>
+
+          <li className="nav-item">
+            <Link to="/conversation" className={`nav-link ${isActive('/conversation') ? 'active' : ''}`}>
+              <span className="nav-icon">AI</span>
+              <span className="nav-text">Practice</span>
             </Link>
           </li>
 

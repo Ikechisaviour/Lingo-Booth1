@@ -9,6 +9,7 @@ import EmailVerificationBanner from './components/EmailVerificationBanner';
 import HomePage from './pages/HomePage';
 import LessonsPage from './pages/LessonsPage';
 import FlashcardsPage from './pages/FlashcardsPage';
+import ConversationPage from './pages/ConversationPage';
 import ProgressPage from './pages/ProgressPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
@@ -24,18 +25,28 @@ import './App.css';
 
 const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID || '';
 
-// Listens for mid-session suspension and redirects to login
-function SuspensionListener({ onSuspended }) {
+// Listens for auth changes that should remove the current user from the app.
+function AuthSessionListener({ onSessionEnded }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const handler = () => {
-      onSuspended();
+    const handleSuspended = () => {
+      onSessionEnded();
       navigate('/login', { state: { suspended: true } });
     };
-    window.addEventListener('accountSuspended', handler);
-    return () => window.removeEventListener('accountSuspended', handler);
-  }, [navigate, onSuspended]);
+
+    const handleExpired = () => {
+      onSessionEnded();
+      navigate('/login', { state: { sessionExpired: true } });
+    };
+
+    window.addEventListener('accountSuspended', handleSuspended);
+    window.addEventListener('sessionExpired', handleExpired);
+    return () => {
+      window.removeEventListener('accountSuspended', handleSuspended);
+      window.removeEventListener('sessionExpired', handleExpired);
+    };
+  }, [navigate, onSessionEnded]);
 
   return null;
 }
@@ -179,6 +190,7 @@ function App() {
   // Safety net: verify language setup status from the backend on load
   useEffect(() => {
     if (!isAuthenticated || isGuest) return;
+    if (!localStorage.getItem('token')) return;
     const userId = localStorage.getItem('userId');
     if (!userId || localStorage.getItem('needsLanguageSetup') === 'true') return;
 
@@ -195,6 +207,7 @@ function App() {
   // Track time spent on platform for authenticated users
   useEffect(() => {
     if (!isAuthenticated) return;
+    if (!localStorage.getItem('token')) return;
     const userId = localStorage.getItem('userId');
     if (!userId) return;
 
@@ -240,6 +253,8 @@ function App() {
     localStorage.removeItem('userId');
     localStorage.removeItem('username');
     localStorage.removeItem('userRole');
+    localStorage.removeItem('subscriptionTier');
+    localStorage.removeItem('aiEntitlements');
     localStorage.removeItem('guestMode');
     localStorage.removeItem('xpDecayEnabled');
     localStorage.removeItem('emailVerified');
@@ -253,7 +268,7 @@ function App() {
     i18n.changeLanguage('en');
   };
 
-  const handleSuspended = useCallback(() => {
+  const handleSessionEnded = useCallback(() => {
     setIsAuthenticated(false);
     setIsGuest(false);
   }, []);
@@ -271,8 +286,8 @@ function App() {
 
   return (
     <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
-    <Router>
-      <SuspensionListener onSuspended={handleSuspended} />
+    <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+      <AuthSessionListener onSessionEnded={handleSessionEnded} />
       <div className={`App${challengeMode ? ' challenge-theme' : ''}`}>
         {canAccessApp && !needsLanguageSetup && languagesReady && (
           <Navbar
@@ -371,6 +386,12 @@ function App() {
             path="/flashcards"
             element={
               canAccessApp ? <FlashcardsPage isGuest={isGuest} /> : <Navigate to="/login" />
+            }
+          />
+          <Route
+            path="/conversation"
+            element={
+              canAccessApp ? <ConversationPage /> : <Navigate to="/login" />
             }
           />
 

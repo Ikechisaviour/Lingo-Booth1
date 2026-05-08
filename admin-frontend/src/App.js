@@ -6,6 +6,13 @@ import AdminNavbar from './pages/AdminNavbar';
 import AdminSpeakingDemo from './pages/AdminSpeakingDemo';
 import './App.css';
 
+const clearAdminSession = () => {
+  localStorage.removeItem('adminToken');
+  localStorage.removeItem('adminUserId');
+  localStorage.removeItem('adminUsername');
+  localStorage.removeItem('adminRole');
+};
+
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -14,6 +21,17 @@ function App() {
 
   useEffect(() => {
     checkAuth();
+  }, []);
+
+  useEffect(() => {
+    const handleUnauthorized = () => {
+      clearAdminSession();
+      setIsAuthenticated(false);
+      setIsAdmin(false);
+    };
+
+    window.addEventListener('adminUnauthorized', handleUnauthorized);
+    return () => window.removeEventListener('adminUnauthorized', handleUnauthorized);
   }, []);
 
   const checkAuth = () => {
@@ -38,10 +56,7 @@ function App() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('adminToken');
-    localStorage.removeItem('adminUserId');
-    localStorage.removeItem('adminUsername');
-    localStorage.removeItem('adminRole');
+    clearAdminSession();
     setIsAuthenticated(false);
     setIsAdmin(false);
   };

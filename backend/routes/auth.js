@@ -9,6 +9,7 @@ const GuestSession = require('../models/GuestSession');
 const { getClientIp, getGeoInfo } = require('../utils/geo');
 const { sendVerificationEmail, sendPasswordResetEmail } = require('../utils/emailService');
 const { verifyToken } = require('../middleware/auth');
+const { getAiEntitlements } = require('../utils/subscription');
 
 const JWT_SECRET = process.env.JWT_SECRET;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -16,11 +17,14 @@ const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 
 // Helper: build user response object
 function buildUserResponse(user) {
+  const aiEntitlements = getAiEntitlements(user);
   return {
     id: user._id,
     username: user.username,
     email: user.email,
     role: user.role,
+    subscriptionTier: aiEntitlements.subscriptionTier,
+    aiEntitlements,
     status: user.status,
     preferredVoice: user.preferredVoice,
     xpDecayEnabled: !!user.xpDecayEnabled,

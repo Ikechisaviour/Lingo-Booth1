@@ -5,6 +5,24 @@ import { GoogleLogin } from '@react-oauth/google';
 import { authService, userService, guestXPHelper } from '../services/api';
 import './Auth.css';
 
+function getEffectiveSubscriptionTier(user = {}) {
+  if (user.role === 'admin') return 'pro';
+  return user.subscriptionTier || 'plus';
+}
+
+function getEffectiveAiEntitlements(user = {}) {
+  if (user.role === 'admin') {
+    return {
+      ...(user.aiEntitlements || {}),
+      subscriptionTier: 'pro',
+      canUseAI: true,
+      canSyncAIMemory: true,
+      aiMemoryScope: 'cloud',
+    };
+  }
+  return user.aiEntitlements || {};
+}
+
 function LoginPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
   const { t, i18n } = useTranslation();
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -17,6 +35,7 @@ function LoginPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
 
   // Check if user was redirected here after mid-session suspension
   const wasSuspendedMidSession = location.state?.suspended;
+  const sessionExpired = location.state?.sessionExpired;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,6 +49,8 @@ function LoginPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
     localStorage.setItem('userId', user.id);
     localStorage.setItem('username', user.username);
     localStorage.setItem('userRole', user.role || 'user');
+    localStorage.setItem('subscriptionTier', getEffectiveSubscriptionTier(user));
+    localStorage.setItem('aiEntitlements', JSON.stringify(getEffectiveAiEntitlements(user)));
     localStorage.setItem('xpDecayEnabled', String(!!user.xpDecayEnabled));
     localStorage.setItem('emailVerified', String(!!user.emailVerified));
     if (user.preferredVoice) {
@@ -110,6 +131,8 @@ function LoginPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
         localStorage.setItem('userId', user.id);
         localStorage.setItem('username', user.username);
         localStorage.setItem('userRole', user.role || 'user');
+        localStorage.setItem('subscriptionTier', getEffectiveSubscriptionTier(user));
+        localStorage.setItem('aiEntitlements', JSON.stringify(getEffectiveAiEntitlements(user)));
         localStorage.setItem('emailVerified', String(!!user.emailVerified));
         localStorage.removeItem('guestMode');
         guestXPHelper.clear();
@@ -154,6 +177,12 @@ function LoginPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
             <h3>{t('login.accountSuspended')}</h3>
             <p>{t('login.suspendedLoggedOut')}</p>
             <p className="suspended-contact">{t('login.contactSupport')}</p>
+          </div>
+        )}
+
+        {sessionExpired && !suspended && (
+          <div className="error">
+            Your session expired. Please sign in again.
           </div>
         )}
 

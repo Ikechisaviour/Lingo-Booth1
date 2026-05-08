@@ -5,6 +5,24 @@ import { GoogleLogin } from '@react-oauth/google';
 import { authService, guestXPHelper } from '../services/api';
 import './Auth.css';
 
+function getEffectiveSubscriptionTier(user = {}) {
+  if (user.role === 'admin') return 'pro';
+  return user.subscriptionTier || 'plus';
+}
+
+function getEffectiveAiEntitlements(user = {}) {
+  if (user.role === 'admin') {
+    return {
+      ...(user.aiEntitlements || {}),
+      subscriptionTier: 'pro',
+      canUseAI: true,
+      canSyncAIMemory: true,
+      aiMemoryScope: 'cloud',
+    };
+  }
+  return user.aiEntitlements || {};
+}
+
 function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -45,6 +63,8 @@ function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
         localStorage.setItem('userId', user.id);
         localStorage.setItem('username', user.username);
         localStorage.setItem('userRole', user.role || 'user');
+        localStorage.setItem('subscriptionTier', getEffectiveSubscriptionTier(user));
+        localStorage.setItem('aiEntitlements', JSON.stringify(getEffectiveAiEntitlements(user)));
         localStorage.setItem('emailVerified', String(!!user.emailVerified));
         localStorage.removeItem('guestMode');
         guestXPHelper.clear();
@@ -63,6 +83,8 @@ function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
       localStorage.setItem('userId', user.id);
       localStorage.setItem('username', user.username);
       localStorage.setItem('userRole', user.role || 'user');
+      localStorage.setItem('subscriptionTier', getEffectiveSubscriptionTier(user));
+      localStorage.setItem('aiEntitlements', JSON.stringify(getEffectiveAiEntitlements(user)));
       localStorage.setItem('nativeLanguage', user.nativeLanguage || '');
       localStorage.setItem('targetLanguage', user.targetLanguage || '');
       localStorage.setItem('emailVerified', String(!!user.emailVerified));
@@ -125,6 +147,8 @@ function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
       localStorage.setItem('userId', user.id);
       localStorage.setItem('username', user.username);
       localStorage.setItem('userRole', user.role);
+      localStorage.setItem('subscriptionTier', getEffectiveSubscriptionTier(user));
+      localStorage.setItem('aiEntitlements', JSON.stringify(getEffectiveAiEntitlements(user)));
       localStorage.setItem('nativeLanguage', user.nativeLanguage || '');
       localStorage.setItem('targetLanguage', user.targetLanguage || '');
       localStorage.setItem('emailVerified', String(!!user.emailVerified));

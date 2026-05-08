@@ -60,6 +60,14 @@ function LanguageSelectPage({ setIsGuest, onLogout }) {
       localStorage.removeItem('userId');
       localStorage.removeItem('username');
       localStorage.removeItem('userRole');
+      localStorage.setItem('subscriptionTier', 'free');
+      localStorage.setItem('aiEntitlements', JSON.stringify({
+        subscriptionTier: 'free',
+        canUseAI: true,
+        canSendAI: true,
+        canSyncAIMemory: false,
+        aiMemoryScope: 'none',
+      }));
       if (setIsGuest) setIsGuest(true);
       navigate('/');
     } else if (mode === 'google-setup') {

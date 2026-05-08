@@ -7,8 +7,19 @@ const Flashcard = require('../models/Flashcard');
 const Progress = require('../models/Progress');
 const GuestSession = require('../models/GuestSession');
 const { verifyToken, isAdmin } = require('../middleware/auth');
+const { getAiEntitlements } = require('../utils/subscription');
 
-const OPENAI_API_URL = 'https://api.openai.com/v1/chat/completions';
+const DEEPSEEK_API_URL = 'https://api.deepseek.com/chat/completions';
+
+function withEffectiveSubscription(user) {
+  const userObj = typeof user.toObject === 'function' ? user.toObject() : { ...user };
+  const aiEntitlements = getAiEntitlements(userObj);
+  return {
+    ...userObj,
+    subscriptionTier: aiEntitlements.subscriptionTier,
+    aiEntitlements,
+  };
+}
 
 function safeConversationHistory(history = []) {
   if (!Array.isArray(history)) return [];
@@ -21,11 +32,58 @@ function safeConversationHistory(history = []) {
     }));
 }
 
-function detectDominantLanguage(text, targetLanguage = 'ko', nativeLanguage = 'en') {
+const SCRIPT_LANGUAGE_PATTERNS = [
+  { language: 'ko', pattern: /[\u3131-\u314e\u314f-\u3163\uac00-\ud7a3]/g },
+  { language: 'ja', pattern: /[\u3040-\u30ff]/g },
+  { language: 'zh', pattern: /[\u3400-\u9fff]/g },
+  { language: 'ar', pattern: /[\u0600-\u06ff]/g },
+  { language: 'he', pattern: /[\u0590-\u05ff]/g },
+  { language: 'hi', pattern: /[\u0900-\u097f]/g },
+  { language: 'bn', pattern: /[\u0980-\u09ff]/g },
+  { language: 'ta', pattern: /[\u0b80-\u0bff]/g },
+  { language: 'ru', pattern: /[\u0400-\u04ff]/g },
+];
+
+const LATIN_LANGUAGE_CODES = new Set(['en', 'es', 'fr', 'de', 'pt', 'it', 'nl', 'id', 'ms', 'fil', 'tr']);
+
+function normalizeLanguageCode(language) {
+  const value = String(language || '').trim().toLowerCase();
+  if (!value || value === 'auto') return '';
+  return value.split('-')[0];
+}
+
+function detectScriptLanguage(text) {
   const value = String(text || '');
-  const hangulCount = (value.match(/[ㄱ-ㅎㅏ-ㅣ가-힣]/g) || []).length;
+  let winner = { language: '', count: 0 };
+
+  for (const entry of SCRIPT_LANGUAGE_PATTERNS) {
+    const count = (value.match(entry.pattern) || []).length;
+    if (count > winner.count) {
+      winner = { language: entry.language, count };
+    }
+  }
+
+  return winner.count > 0 ? winner.language : '';
+}
+
+function detectDominantLanguage(text, targetLanguage = 'ko', nativeLanguage = 'en', selectedInputLanguage = '') {
+  const value = String(text || '');
+  const target = normalizeLanguageCode(targetLanguage) || 'ko';
+  const native = normalizeLanguageCode(nativeLanguage) || 'en';
+  const selected = normalizeLanguageCode(selectedInputLanguage);
+  const scriptLanguage = detectScriptLanguage(value);
+
+  if (scriptLanguage) return scriptLanguage;
+
   const latinCount = (value.match(/[A-Za-z]/g) || []).length;
-  return latinCount > hangulCount * 1.5 ? nativeLanguage : targetLanguage;
+  if (latinCount > 0) {
+    if (LATIN_LANGUAGE_CODES.has(selected)) return selected;
+    if (LATIN_LANGUAGE_CODES.has(native)) return native;
+    if (LATIN_LANGUAGE_CODES.has(target)) return target;
+    return native;
+  }
+
+  return selected || target || native;
 }
 
 function extractRequestedPhrase(text = '') {
@@ -40,20 +98,23 @@ function extractRequestedPhrase(text = '') {
   return targetScriptMatch?.[0]?.trim().slice(0, 120) || '';
 }
 
-async function callOpenAIConversation({ scenario, targetLanguage, nativeLanguage, inputLanguage, transcript, history, difficulty }) {
-  const apiKey = process.env.OPENAI_API_KEY;
+async function callDeepSeekConversation({ scenario, targetLanguage, nativeLanguage, inputLanguage, transcript, history, difficulty }) {
+  const apiKey = process.env.DEEPSEEK_API_KEY;
   if (!apiKey) {
     return {
       aiEnabled: false,
-      reply: 'AI conversation is not configured yet. Add OPENAI_API_KEY on the backend to enable live roleplay.',
+      reply: 'I could not respond this time. Please try again.',
       expectedLanguage: targetLanguage || 'ko',
-      coachingTip: 'Backend fallback is active, so this is not a model-generated reply.',
+      coachingTip: 'Practice partner is temporarily unavailable.',
     };
   }
 
-  const model = process.env.OPENAI_CONVERSATION_MODEL || process.env.OPENAI_MODEL || 'gpt-4o-mini';
-  const learnerLanguage = inputLanguage || detectDominantLanguage(transcript, targetLanguage || 'ko', nativeLanguage || 'en');
-  const learnerUsedNativeLanguage = learnerLanguage === (nativeLanguage || 'en');
+  const model = process.env.DEEPSEEK_CONVERSATION_MODEL || process.env.DEEPSEEK_MODEL || 'deepseek-v4-flash';
+  const selectedInputLanguage = normalizeLanguageCode(inputLanguage);
+  const detectedScriptLanguage = detectScriptLanguage(transcript);
+  const learnerLanguage = detectDominantLanguage(transcript, targetLanguage || 'ko', nativeLanguage || 'en', inputLanguage);
+  const learnerUsedNativeLanguage = learnerLanguage === normalizeLanguageCode(nativeLanguage || 'en');
+  const learnerUsedTargetLanguage = learnerLanguage === normalizeLanguageCode(targetLanguage || 'ko');
   const requestedPhrase = extractRequestedPhrase(transcript);
   const systemPrompt = [
     'You are the admin-only speaking demo engine for Lingo Booth.',
@@ -68,6 +129,8 @@ async function callOpenAIConversation({ scenario, targetLanguage, nativeLanguage
     'If the learner uses their native language, first answer in the native language, then add a brief target-language continuation or natural version.',
     'For native-language turns, do not reply only in the target language.',
     'For native-language turns, return speechParts with one native-language part and one target-language part.',
+    'If latestLearnerTranscript contains the target-language script, treat it as target-language learner speech even when the microphone selector was wrong.',
+    'If the learner speaks Korean Hangul and targetLanguage is ko, respond to the Korean meaning naturally; do not pretend the learner asked an English meta-question.',
     'If the learner asks what a word or phrase means, explain the exact word or phrase they asked about; do not substitute a different word.',
     'If requestedPhrase is provided, your explanation must be about requestedPhrase exactly.',
     'When explaining words or phrases in the native language, set expectedLanguage to the native language unless speechParts are provided.',
@@ -90,9 +153,12 @@ async function callOpenAIConversation({ scenario, targetLanguage, nativeLanguage
         targetLanguage: targetLanguage || 'ko',
         nativeLanguage: nativeLanguage || 'en',
         inputLanguage: inputLanguage || '',
+        selectedInputLanguage,
+        detectedScriptLanguage,
         difficulty: difficulty || 'friendly beginner',
         learnerLanguage,
         learnerUsedNativeLanguage,
+        learnerUsedTargetLanguage,
         requestedPhrase,
         latestLearnerTranscript: transcript,
         instruction: [
@@ -101,7 +167,10 @@ async function callOpenAIConversation({ scenario, targetLanguage, nativeLanguage
           'If the learner asks a question, changes topic, requests an explanation, or asks to adjust difficulty, handle that request directly before continuing.',
           learnerUsedNativeLanguage
             ? 'The learner used their native language. Reply in two parts: first a direct native-language answer, then a short target-language continuation. Put both parts in reply, and also provide speechParts with matching language codes.'
-            : 'The learner used the target language. Continue mostly in the target language, with light native-language support only if useful.',
+            : 'The learner used the target language or another non-native language. Continue mostly in the target language, with light native-language support only if useful.',
+          learnerUsedTargetLanguage
+            ? 'The learner used the target language. Respond to what they actually said and continue the roleplay naturally; do not switch into a translation lesson unless they ask for one.'
+            : '',
           'For an explanation request in the native language, explain the exact requested word or phrase mostly in the native language, then include a short target-language example or continuation.',
           requestedPhrase ? `The exact requested phrase is: ${requestedPhrase}. Explain this phrase, not any other phrase.` : '',
           'Do not correct every sentence. Keep coaching light and only include it when it helps.',
@@ -111,7 +180,7 @@ async function callOpenAIConversation({ scenario, targetLanguage, nativeLanguage
     },
   ];
 
-  const response = await fetch(OPENAI_API_URL, {
+  const response = await fetch(DEEPSEEK_API_URL, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${apiKey}`,
@@ -127,7 +196,7 @@ async function callOpenAIConversation({ scenario, targetLanguage, nativeLanguage
 
   if (!response.ok) {
     const detail = await response.text();
-    throw new Error(`OpenAI request failed (${response.status}): ${detail.slice(0, 300)}`);
+    throw new Error(`DeepSeek request failed (${response.status}): ${detail.slice(0, 300)}`);
   }
 
   const data = await response.json();
@@ -141,16 +210,14 @@ async function callOpenAIConversation({ scenario, targetLanguage, nativeLanguage
 
   const reply = String(parsed.reply || '').slice(0, 800);
   const fallbackLanguage = detectDominantLanguage(reply, targetLanguage || 'ko', nativeLanguage || 'en');
-  const parsedLanguage = String(parsed.expectedLanguage || '').slice(0, 20);
-  const expectedLanguage = fallbackLanguage !== parsedLanguage
-    ? fallbackLanguage
-    : (parsedLanguage || fallbackLanguage);
+  const parsedLanguage = normalizeLanguageCode(String(parsed.expectedLanguage || '').slice(0, 20));
+  const expectedLanguage = parsedLanguage || fallbackLanguage;
   const speechParts = Array.isArray(parsed.speechParts)
     ? parsed.speechParts
       .filter(part => part && typeof part.text === 'string')
       .slice(0, 3)
       .map(part => ({
-        language: String(part.language || detectDominantLanguage(part.text, targetLanguage || 'ko', nativeLanguage || 'en')).slice(0, 20),
+        language: normalizeLanguageCode(part.language) || detectDominantLanguage(part.text, targetLanguage || 'ko', nativeLanguage || 'en'),
         text: part.text.slice(0, 500),
       }))
     : [];
@@ -190,7 +257,7 @@ async function handleSpeakingDemoConversation(req, res) {
       return res.status(400).json({ message: 'Transcript too long for demo conversation' });
     }
 
-    const result = await callOpenAIConversation({
+    const result = await callDeepSeekConversation({
       scenario,
       targetLanguage,
       nativeLanguage,
@@ -203,7 +270,7 @@ async function handleSpeakingDemoConversation(req, res) {
     return res.json(result);
   } catch (error) {
     console.error('Admin speaking demo conversation error:', error.message || error);
-    return res.status(500).json({ message: 'AI conversation failed', detail: error.message });
+    return res.status(500).json({ message: 'Conversation partner is temporarily unavailable. Please try again.' });
   }
 }
 
@@ -361,7 +428,7 @@ router.get('/users', async (req, res) => {
     const users = await User.find()
       .select('-password')
       .sort({ createdAt: -1 });
-    res.json(users);
+    res.json(users.map(withEffectiveSubscription));
   } catch (error) {
     console.error('Admin get users error:', error);
     res.status(500).json({ message: 'Server error' });
@@ -393,7 +460,7 @@ router.get('/users/:userId', async (req, res) => {
     progressBreakdown.forEach(p => { breakdown[p._id || 'unknown'] = p.count; });
 
     res.json({
-      user,
+      user: withEffectiveSubscription(user),
       stats: {
         progressCount,
         flashcardCount,
@@ -500,7 +567,7 @@ router.put('/users/:userId/role', async (req, res) => {
 
     const user = await User.findByIdAndUpdate(
       req.params.userId,
-      { role },
+      { role, subscriptionTier: role === 'admin' ? 'pro' : 'plus' },
       { new: true }
     ).select('-password');
 

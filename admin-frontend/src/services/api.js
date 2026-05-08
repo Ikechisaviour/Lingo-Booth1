@@ -6,13 +6,47 @@ const api = axios.create({
   baseURL: API_URL,
 });
 
+const DEVICE_ID_KEY = 'lingoAdminDeviceId';
+
+const createDeviceId = () => {
+  if (window.crypto?.randomUUID) return window.crypto.randomUUID();
+  return `admin-web-${Date.now()}-${Math.random().toString(36).slice(2, 14)}`;
+};
+
+const getDeviceId = () => {
+  let deviceId = localStorage.getItem(DEVICE_ID_KEY);
+  if (!deviceId) {
+    deviceId = createDeviceId();
+    localStorage.setItem(DEVICE_ID_KEY, deviceId);
+  }
+  return deviceId;
+};
+
 api.interceptors.request.use((config) => {
+  config.headers = config.headers || {};
   const token = localStorage.getItem('adminToken');
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
+  config.headers['X-Lingo-Device-Id'] = getDeviceId();
   return config;
 });
+
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const status = error.response?.status;
+    const requestUrl = error.config?.url || '';
+    if (status === 401 && !requestUrl.includes('/auth/login')) {
+      localStorage.removeItem('adminToken');
+      localStorage.removeItem('adminUserId');
+      localStorage.removeItem('adminUsername');
+      localStorage.removeItem('adminRole');
+      window.dispatchEvent(new Event('adminUnauthorized'));
+    }
+    return Promise.reject(error);
+  }
+);
 
 export const authService = {
   login: (email, password) =>
@@ -53,6 +87,13 @@ export const adminService = {
     api.post('/admin/speaking-demo/conversation', data),
   sendLocalSpeakingDemoTurn: (data) =>
     api.post('/admin/local-demo/speaking-demo/conversation', data),
+};
+
+export const aiService = {
+  getEntitlements: () =>
+    api.get('/ai/entitlements'),
+  sendConversationTurn: (data) =>
+    api.post('/ai/conversation', data),
 };
 
 export default api;

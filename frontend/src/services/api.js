@@ -7,17 +7,37 @@ const api = axios.create({
   timeout: 15000, // 15-second timeout to avoid hanging requests
 });
 
-const clearSession = () => {
+const DEVICE_ID_KEY = 'lingoDeviceId';
+
+const createDeviceId = () => {
+  if (window.crypto?.randomUUID) return window.crypto.randomUUID();
+  return `web-${Date.now()}-${Math.random().toString(36).slice(2, 14)}`;
+};
+
+const getDeviceId = () => {
+  let deviceId = localStorage.getItem(DEVICE_ID_KEY);
+  if (!deviceId) {
+    deviceId = createDeviceId();
+    localStorage.setItem(DEVICE_ID_KEY, deviceId);
+  }
+  return deviceId;
+};
+
+const clearSession = ({ preserveGuest = false } = {}) => {
   [
     'token',
     'refreshToken',
     'userId',
     'username',
     'userRole',
-    'guestMode',
+    'subscriptionTier',
+    'aiEntitlements',
     'emailVerified',
     'needsLanguageSetup',
   ].forEach((key) => localStorage.removeItem(key));
+  if (!preserveGuest) {
+    localStorage.removeItem('guestMode');
+  }
 };
 
 const isCurrentUserProfileRequest = (config) => {
@@ -27,16 +47,55 @@ const isCurrentUserProfileRequest = (config) => {
   return url === `/users/${userId}` || url.startsWith(`/users/${userId}/`);
 };
 
+const isProtectedRequest = (url = '') => {
+  const cleanUrl = url.split('?')[0];
+  return (
+    cleanUrl.startsWith('/users/') ||
+    cleanUrl.startsWith('/progress/') ||
+    cleanUrl.startsWith('/flashcards/user/') ||
+    cleanUrl === '/auth/activity'
+  );
+};
+
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token');
+  config.headers = config.headers || {};
+  const isGuest = localStorage.getItem('guestMode') === 'true';
+  let token = localStorage.getItem('token');
+  const url = config.url || '';
+
+  if (isGuest && token) {
+    clearSession({ preserveGuest: true });
+    token = null;
+  }
+
+  if (!token && isProtectedRequest(url)) {
+    clearSession({ preserveGuest: isGuest });
+    const error = new axios.Cancel('Skipped protected request without an active session.');
+    error.code = 'ERR_AUTH_REQUIRED';
+    throw error;
+  }
+
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
+  config.headers['X-Lingo-Device-Id'] = getDeviceId();
   return config;
 });
 
 // Track whether a token refresh is in progress to avoid concurrent refreshes
 let refreshPromise = null;
+
+const isAuthRequest = (url = '') => (
+  url.includes('/auth/refresh') ||
+  url.includes('/auth/login') ||
+  url.includes('/auth/register') ||
+  url.includes('/auth/google')
+);
+
+const endExpiredSession = () => {
+  clearSession();
+  window.dispatchEvent(new CustomEvent('sessionExpired'));
+};
 
 // Retry logic for network errors and 5xx server errors + auto-refresh on 401
 api.interceptors.response.use(
@@ -49,9 +108,7 @@ api.interceptors.response.use(
       error.response?.status === 401 &&
       config &&
       !config._refreshed &&
-      !config.url?.includes('/auth/refresh') &&
-      !config.url?.includes('/auth/login') &&
-      !config.url?.includes('/auth/register')
+      !isAuthRequest(config.url)
     ) {
       const refreshToken = localStorage.getItem('refreshToken');
       if (refreshToken) {
@@ -72,11 +129,11 @@ api.interceptors.response.use(
           return api(config);
         } catch {
           // Refresh failed — force logout
-          clearSession();
-          window.dispatchEvent(new CustomEvent('accountSuspended'));
+          endExpiredSession();
           return Promise.reject(error);
         }
       }
+      endExpiredSession();
     }
 
     // Only retry GET requests, max 2 retries
@@ -280,6 +337,13 @@ export const adminService = {
     api.post('/admin/speaking-demo/conversation', data),
   sendLocalSpeakingDemoTurn: (data) =>
     api.post('/admin/local-demo/speaking-demo/conversation', data),
+};
+
+export const aiService = {
+  getEntitlements: () =>
+    api.get('/ai/entitlements'),
+  sendConversationTurn: (data) =>
+    api.post('/ai/conversation', data),
 };
 
 export default api;

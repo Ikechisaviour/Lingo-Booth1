@@ -11,6 +11,7 @@ import HomeScreen from '../screens/home/HomeScreen';
 import LessonsListScreen from '../screens/lessons/LessonsListScreen';
 import LessonDetailScreen from '../screens/lessons/LessonDetailScreen';
 import FlashcardsScreen from '../screens/flashcards/FlashcardsScreen';
+import ConversationScreen from '../screens/ai/ConversationScreen';
 import ProgressScreen from '../screens/progress/ProgressScreen';
 import ProfileScreen from '../screens/profile/ProfileScreen';
 import AdminScreen from '../screens/admin/AdminScreen';
@@ -91,6 +92,16 @@ const MainTabs: React.FC = () => {
           tabBarLabel: t('navbar.flashcards', 'Flashcards'),
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="cards" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Conversation"
+        component={ConversationScreen}
+        options={{
+          tabBarLabel: 'Practice',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="message-text" color={color} size={size} />
           ),
         }}
       />
