@@ -60,6 +60,24 @@ function ProfilePage({ onLogout }) {
       setUser(userResponse.data);
       setProgress(progressResponse.data);
       setEditData({ username: userResponse.data.username });
+      const effectiveTier = userResponse.data.role === 'admin'
+        ? 'pro'
+        : userResponse.data.subscriptionTier;
+      if (effectiveTier) {
+        localStorage.setItem('subscriptionTier', effectiveTier);
+      }
+      if (userResponse.data.aiEntitlements) {
+        const effectiveEntitlements = userResponse.data.role === 'admin'
+          ? {
+            ...userResponse.data.aiEntitlements,
+            subscriptionTier: 'pro',
+            canUseAI: true,
+            canSyncAIMemory: true,
+            aiMemoryScope: 'cloud',
+          }
+          : userResponse.data.aiEntitlements;
+        localStorage.setItem('aiEntitlements', JSON.stringify(effectiveEntitlements));
+      }
       const isChallenge = !!userResponse.data.xpDecayEnabled;
       setXpDecayEnabled(isChallenge);
       // Sync localStorage & App theme in case session predates the login fix
@@ -286,7 +304,11 @@ function ProfilePage({ onLogout }) {
                   </div>
                   <div className="info-item">
                     <label>{t('profilePage.accountType')}</label>
-                    <span className="badge">{user?.role === 'admin' ? t('profilePage.administrator') : t('profilePage.standardUser')}</span>
+                    <span className="badge">
+                      {user?.role === 'admin'
+                        ? `${t('profilePage.administrator')} · Pro`
+                        : `${t('profilePage.standardUser')} · ${(user?.subscriptionTier || 'plus').toUpperCase()}`}
+                    </span>
                   </div>
                 </div>
               </div>

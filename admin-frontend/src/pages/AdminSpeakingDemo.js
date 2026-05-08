@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { adminService, ttsService } from '../services/api';
+import { adminService, aiService, ttsService } from '../services/api';
 import './AdminSpeakingDemo.css';
 
 const DEMO_PROMPTS = {
@@ -58,6 +58,43 @@ const LANGUAGE_OPTIONS = [
 ];
 
 const DIFFICULTY_OPTIONS = ['casual beginner', 'balanced', 'more natural', 'challenge me'];
+const CONVERSATION_SESSION_ID = 'admin-speaking-demo';
+const CONVERSATION_MEMORY_KEY = `lingoConversation:${CONVERSATION_SESSION_ID}`;
+
+function createTurnId(role) {
+  return `${role}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+}
+
+function loadConversationMemory() {
+  try {
+    return JSON.parse(localStorage.getItem(CONVERSATION_MEMORY_KEY) || '{}');
+  } catch (_) {
+    return {};
+  }
+}
+
+function saveConversationMemory(data = {}) {
+  try {
+    localStorage.setItem(CONVERSATION_MEMORY_KEY, JSON.stringify({
+      summary: data.summary || '',
+      memory: data.memory || {},
+      history: Array.isArray(data.history) ? data.history.slice(-12) : [],
+    }));
+  } catch (_) {}
+}
+
+function clearConversationMemory() {
+  localStorage.removeItem(CONVERSATION_MEMORY_KEY);
+}
+
+function loadStoredConversationHistory() {
+  const stored = loadConversationMemory();
+  if (!Array.isArray(stored.history)) return [];
+  return stored.history
+    .filter(turn => turn && ['user', 'assistant'].includes(turn.role) && turn.content)
+    .slice(-12)
+    .map((turn) => ({ id: createTurnId(turn.role), ...turn }));
+}
 
 function normalize(text) {
   return (text || '')
@@ -118,10 +155,9 @@ function AdminSpeakingDemo({ demoBypass = false }) {
   const [handsFreeActive, setHandsFreeActive] = useState(false);
   const [lastCommand, setLastCommand] = useState('');
   const [aiReply, setAiReply] = useState('');
-  const [aiTip, setAiTip] = useState('');
   const [aiLoading, setAiLoading] = useState(false);
   const [aiEnabled, setAiEnabled] = useState(null);
-  const [conversationHistory, setConversationHistory] = useState([]);
+  const [conversationHistory, setConversationHistory] = useState(loadStoredConversationHistory);
   const [targetLanguage, setTargetLanguage] = useState('ko');
   const [nativeLanguage, setNativeLanguage] = useState('en');
   const [inputLanguage, setInputLanguage] = useState('ko');
@@ -131,6 +167,7 @@ function AdminSpeakingDemo({ demoBypass = false }) {
   const handsFreeRef = useRef(false);
   const suppressPromptReplayRef = useRef(false);
   const audioRef = useRef(null);
+  const conversationThreadRef = useRef(null);
 
   const recognitionSupported = !!getSpeechRecognition();
   const currentPrompt = customPrompt || DEMO_PROMPTS[mode][promptIndex % DEMO_PROMPTS[mode].length];
@@ -140,6 +177,14 @@ function AdminSpeakingDemo({ demoBypass = false }) {
   useEffect(() => {
     handsFreeRef.current = handsFreeActive;
   }, [handsFreeActive]);
+
+  useEffect(() => {
+    if (!isAiConversation || !conversationThreadRef.current) return;
+    conversationThreadRef.current.scrollTo({
+      top: conversationThreadRef.current.scrollHeight,
+      behavior: 'smooth',
+    });
+  }, [conversationHistory, aiLoading, isAiConversation]);
 
   const stopSpeech = useCallback(() => {
     audioRef.current?.pause?.();
@@ -156,8 +201,9 @@ function AdminSpeakingDemo({ demoBypass = false }) {
   const movePrompt = (direction) => {
     setTranscript('');
     setAiReply('');
-    setAiTip('');
+    setTypedTurn('');
     setConversationHistory([]);
+    clearConversationMemory();
     setPromptIndex(prev => {
       const prompts = DEMO_PROMPTS[mode];
       return (prev + direction + prompts.length) % prompts.length;
@@ -175,6 +221,17 @@ function AdminSpeakingDemo({ demoBypass = false }) {
     setListening(false);
     setStatus('Hands-free stopped.');
     recognitionRef.current?.abort?.();
+    stopSpeech();
+  };
+
+  const resetConversation = () => {
+    setTranscript('');
+    setAiReply('');
+    setAiEnabled(null);
+    setTypedTurn('');
+    setConversationHistory([]);
+    clearConversationMemory();
+    setStatus('Conversation reset.');
     stopSpeech();
   };
 
@@ -293,7 +350,21 @@ function AdminSpeakingDemo({ demoBypass = false }) {
 
   const sendAiConversationTurn = async (text, { autoContinue = false } = {}) => {
     setAiLoading(true);
-    setStatus('Asking AI conversation coach...');
+    setStatus('Asking practice partner...');
+    const storedConversation = loadConversationMemory();
+    const historyForRequest = conversationHistory
+      .filter(turn => ['user', 'assistant'].includes(turn.role) && turn.content)
+      .map(({ role, content }) => ({ role, content }))
+      .slice(-12);
+    setConversationHistory(prev => [
+      ...prev.slice(-12),
+      {
+        id: createTurnId('user'),
+        role: 'user',
+        content: text,
+        language: inputLanguage,
+      },
+    ]);
     try {
       const payload = {
         scenario: currentPrompt,
@@ -302,21 +373,38 @@ function AdminSpeakingDemo({ demoBypass = false }) {
         inputLanguage,
         difficulty: conversationDifficulty,
         transcript: text,
-        history: conversationHistory,
+        history: historyForRequest,
+        summary: storedConversation.summary || '',
+        memory: storedConversation.memory || {},
+        sessionId: CONVERSATION_SESSION_ID,
       };
       const response = demoBypass
         ? await adminService.sendLocalSpeakingDemoTurn(payload)
-        : await adminService.sendSpeakingDemoTurn(payload);
+        : await aiService.sendConversationTurn(payload);
       const data = response.data || {};
       setAiEnabled(!!data.aiEnabled);
       setAiReply(data.reply || '');
-      setAiTip(data.coachingTip || '');
       setConversationHistory(prev => [
-        ...prev.slice(-6),
-        { role: 'user', content: text },
-        { role: 'assistant', content: data.reply || '' },
+        ...prev.slice(-11),
+        {
+          id: createTurnId('assistant'),
+          role: 'assistant',
+          content: data.reply || 'I could not respond this time. Please try again.',
+          language: data.expectedLanguage || targetLanguage,
+          coachingTip: data.coachingTip || '',
+          aiEnabled: !!data.aiEnabled,
+        },
       ]);
-      setStatus(data.aiEnabled ? 'AI replied with the next conversation turn.' : 'AI fallback active.');
+      saveConversationMemory({
+        summary: data.summary || storedConversation.summary || '',
+        memory: data.memory || storedConversation.memory || {},
+        history: (data.history || [
+          ...historyForRequest,
+          { role: 'user', content: text },
+          { role: 'assistant', content: data.reply || 'I could not respond this time. Please try again.' },
+        ]).map(({ role, content }) => ({ role, content })),
+      });
+      setStatus(data.aiEnabled ? 'Practice partner replied.' : 'Practice partner is temporarily unavailable.');
       if (data.reply) {
         const speechParts = Array.isArray(data.speechParts) ? data.speechParts : [];
         if (data.aiEnabled && speechParts.length) {
@@ -336,8 +424,17 @@ function AdminSpeakingDemo({ demoBypass = false }) {
         setTimeout(() => startListening({ autoContinue: true }), 800);
       }
     } catch (error) {
-      setStatus(error.response?.data?.message || 'AI conversation failed.');
-      setAiTip(error.response?.data?.detail || 'Check backend logs and OPENAI_API_KEY.');
+      setStatus(error.response?.data?.message || 'Connection issue. Try again in a moment.');
+      setConversationHistory(prev => [
+        ...prev.slice(-12),
+        {
+          id: createTurnId('assistant'),
+          role: 'assistant',
+          content: 'I could not respond this time. Please try again.',
+          coachingTip: 'Your conversation was not submitted again.',
+          error: true,
+        },
+      ]);
     } finally {
       setAiLoading(false);
     }
@@ -410,9 +507,10 @@ function AdminSpeakingDemo({ demoBypass = false }) {
               setTranscript('');
               setCustomPrompt('');
               setAiReply('');
-              setAiTip('');
               setConversationHistory([]);
+              setTypedTurn('');
               setAiEnabled(null);
+              clearConversationMemory();
               stopHandsFree();
             }}
           >
@@ -430,7 +528,7 @@ function AdminSpeakingDemo({ demoBypass = false }) {
       <div className="demo-workspace">
         <section className="demo-panel prompt-panel">
           <div className="panel-heading">
-            <h3>Prompt</h3>
+            <h3>{isAiConversation ? 'Scenario' : 'Prompt'}</h3>
             <div className="prompt-controls">
               <button type="button" onClick={() => movePrompt(-1)}>Previous</button>
               <button type="button" onClick={() => movePrompt(1)}>Next</button>
@@ -484,54 +582,128 @@ function AdminSpeakingDemo({ demoBypass = false }) {
             placeholder={isAiConversation ? 'Optional custom AI roleplay scenario...' : 'Optional custom target phrase for this demo...'}
             rows={3}
           />
-          {isAiConversation && (
-            <div className="typed-turn">
-              <textarea
-                value={typedTurn}
-                onChange={(event) => setTypedTurn(event.target.value)}
-                placeholder="Type a test turn here if speech capture is unreliable..."
-                rows={2}
-              />
-              <button type="button" onClick={submitTypedTurn} disabled={!typedTurn.trim() || aiLoading}>
-                Send typed turn
-              </button>
-            </div>
-          )}
           <div className="demo-actions">
-            <button type="button" onClick={() => speak(currentPrompt)} disabled={!currentPrompt}>
-              {isAiConversation ? 'Play scenario' : 'Play prompt'}
-            </button>
-            <button type="button" onClick={() => startListening()} disabled={!recognitionSupported || listening}>
-              {listening ? 'Listening...' : isAiConversation ? 'Interrupt / Speak' : 'Record answer'}
-            </button>
-            <button type="button" onClick={stopListening} disabled={!listening}>
-              Stop mic
-            </button>
+            {isAiConversation ? (
+              <>
+                <button type="button" onClick={() => speak(currentPrompt)} disabled={!currentPrompt}>
+                  Play scenario
+                </button>
+                <button type="button" onClick={resetConversation}>
+                  Reset conversation
+                </button>
+              </>
+            ) : (
+              <>
+                <button type="button" onClick={() => speak(currentPrompt)} disabled={!currentPrompt}>
+                  Play prompt
+                </button>
+                <button type="button" onClick={() => startListening()} disabled={!recognitionSupported || listening}>
+                  {listening ? 'Listening...' : 'Record answer'}
+                </button>
+                <button type="button" onClick={stopListening} disabled={!listening}>
+                  Stop mic
+                </button>
+              </>
+            )}
           </div>
         </section>
 
-        <section className="demo-panel result-panel">
+        <section className={`demo-panel result-panel ${isAiConversation ? 'conversation-panel' : ''}`}>
           <div className="panel-heading">
-            <h3>Feedback</h3>
-            <span className={`score-badge ${result.quality}`}>{result.score}</span>
+            <h3>{isAiConversation ? 'Conversation' : 'Feedback'}</h3>
+            {isAiConversation ? (
+              <span className={`ai-state ${aiEnabled === false ? 'fallback' : aiEnabled ? 'live' : 'idle'}`}>
+                {aiLoading ? 'Thinking' : aiEnabled === false ? 'Temporarily unavailable' : aiEnabled ? 'Partner ready' : 'Ready'}
+              </span>
+            ) : (
+              <span className={`score-badge ${result.quality}`}>{result.score}</span>
+            )}
           </div>
-          <label>Transcript</label>
-          <div className="transcript-box">{transcript || 'No transcript yet.'}</div>
-          <label>Status</label>
-          <div className="status-box">{status}</div>
           {isAiConversation && (
             <>
-              <label>AI response {aiEnabled === false ? '(fallback)' : ''}</label>
-              <div className="transcript-box ai-reply">
-                {aiLoading ? 'Thinking...' : aiReply || 'Speak to the AI to start the roleplay.'}
+              <div className="conversation-status">
+                <span>{status}</span>
+                <span>{LANGUAGE_OPTIONS.find(language => language.id === inputLanguage)?.label || inputLanguage} mic</span>
               </div>
-              <label>Coach note</label>
-              <div className="status-box">{aiTip || 'No coaching note yet.'}</div>
+              <div className="conversation-thread" ref={conversationThreadRef}>
+                {conversationHistory.length === 0 && !aiLoading && (
+                  <div className="conversation-empty">
+                    <strong>Start the roleplay</strong>
+                    <span>The full exchange will appear here as learner and AI turns.</span>
+                  </div>
+                )}
+                {conversationHistory.map((turn, index) => (
+                  <div
+                    key={turn.id || `${turn.role}-${index}`}
+                    className={`conversation-turn ${turn.role} ${turn.error ? 'error' : ''}`}
+                  >
+                    <div className="turn-avatar">{turn.role === 'user' ? 'You' : 'Coach'}</div>
+                    <div className="turn-card">
+                      <div className="turn-meta">
+                        <span>{turn.role === 'user' ? 'Learner' : 'Practice partner'}</span>
+                        {turn.language && <small>{turn.language}</small>}
+                      </div>
+                      <div className="turn-content">{turn.content}</div>
+                      {turn.coachingTip && (
+                        <div className="turn-tip">{turn.coachingTip}</div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+                {aiLoading && (
+                  <div className="conversation-turn assistant pending">
+                    <div className="turn-avatar">Coach</div>
+                    <div className="turn-card">
+                      <div className="turn-meta">
+                        <span>Practice partner</span>
+                      </div>
+                      <div className="typing-dots">
+                        <span />
+                        <span />
+                        <span />
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+              <div className="typed-turn conversation-composer">
+                <textarea
+                  value={typedTurn}
+                  onChange={(event) => setTypedTurn(event.target.value)}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter' && !event.shiftKey) {
+                      event.preventDefault();
+                      submitTypedTurn();
+                    }
+                  }}
+                  placeholder="Type a learner turn..."
+                  rows={2}
+                />
+                <div className="composer-actions">
+                  <button type="button" onClick={() => startListening()} disabled={!recognitionSupported || listening || aiLoading}>
+                    {listening ? 'Listening...' : 'Speak'}
+                  </button>
+                  <button type="button" onClick={stopListening} disabled={!listening}>
+                    Stop
+                  </button>
+                  <button type="button" onClick={submitTypedTurn} disabled={!typedTurn.trim() || aiLoading}>
+                    Send
+                  </button>
+                </div>
+              </div>
             </>
           )}
-          <div className="score-meter">
-            <span style={{ width: `${result.score}%` }} />
-          </div>
+          {!isAiConversation && (
+            <>
+              <label>Transcript</label>
+              <div className="transcript-box">{transcript || 'No transcript yet.'}</div>
+              <label>Status</label>
+              <div className="status-box">{status}</div>
+              <div className="score-meter">
+                <span style={{ width: `${result.score}%` }} />
+              </div>
+            </>
+          )}
         </section>
       </div>
 

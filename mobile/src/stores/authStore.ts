@@ -8,6 +8,20 @@ interface AuthState {
   userId: string | null;
   username: string | null;
   userRole: string | null;
+  subscriptionTier: 'free' | 'plus' | 'pro';
+  aiEntitlements: {
+    subscriptionTier?: 'free' | 'plus' | 'pro';
+    canUseAI?: boolean;
+    canSendAI?: boolean;
+    canSyncAIMemory?: boolean;
+    aiMemoryScope?: 'none' | 'device' | 'cloud';
+    tokenUsage?: {
+      quotaExceeded: boolean;
+      resetAt: string;
+      resetInMs?: number;
+      dateKey?: string;
+    };
+  } | null;
   isGuest: boolean;
   challengeMode: boolean;
   guestXP: number;
@@ -20,6 +34,20 @@ interface AuthState {
       id: string;
       username: string;
       role: string;
+      subscriptionTier?: 'free' | 'plus' | 'pro';
+      aiEntitlements?: {
+        subscriptionTier?: 'free' | 'plus' | 'pro';
+        canUseAI?: boolean;
+        canSendAI?: boolean;
+        canSyncAIMemory?: boolean;
+        aiMemoryScope?: 'none' | 'device' | 'cloud';
+        tokenUsage?: {
+          quotaExceeded: boolean;
+          resetAt: string;
+          resetInMs?: number;
+          dateKey?: string;
+        };
+      };
       xpDecayEnabled?: boolean;
       languageSetupComplete?: boolean;
     };
@@ -35,6 +63,34 @@ interface AuthState {
   setNeedsLanguageSetup: (val: boolean) => void;
 }
 
+type SubscriptionTier = 'free' | 'plus' | 'pro';
+
+const effectiveSubscriptionTier = (user: { role?: string; subscriptionTier?: SubscriptionTier }): SubscriptionTier => {
+  if (user.role === 'admin') return 'pro';
+  return user.subscriptionTier || 'plus';
+};
+
+const effectiveAiEntitlements = (user: {
+  role?: string;
+  aiEntitlements?: AuthState['aiEntitlements'];
+}) => {
+  if (user.role === 'admin') {
+    return {
+      ...(user.aiEntitlements || {}),
+      subscriptionTier: 'pro' as const,
+      canUseAI: true,
+      canSyncAIMemory: true,
+      aiMemoryScope: 'cloud' as const,
+    };
+  }
+  return user.aiEntitlements || {
+    subscriptionTier: 'plus' as const,
+    canUseAI: true,
+    canSyncAIMemory: false,
+    aiMemoryScope: 'device' as const,
+  };
+};
+
 export const useAuthStore = create<AuthState>()(
   persist(
     (set, get) => ({
@@ -43,6 +99,8 @@ export const useAuthStore = create<AuthState>()(
       userId: null,
       username: null,
       userRole: null,
+      subscriptionTier: 'free',
+      aiEntitlements: null,
       isGuest: false,
       challengeMode: false,
       guestXP: 0,
@@ -55,6 +113,8 @@ export const useAuthStore = create<AuthState>()(
           userId: data.user.id,
           username: data.user.username,
           userRole: data.user.role,
+          subscriptionTier: effectiveSubscriptionTier(data.user),
+          aiEntitlements: effectiveAiEntitlements(data.user),
           isGuest: false,
           challengeMode: data.user.xpDecayEnabled || false,
           needsLanguageSetup: data.user.languageSetupComplete === false,
@@ -69,13 +129,15 @@ export const useAuthStore = create<AuthState>()(
           userId: null,
           username: null,
           userRole: null,
+          subscriptionTier: 'free',
+          aiEntitlements: null,
           isGuest: false,
           challengeMode: false,
           needsLanguageSetup: false,
         }),
 
       enterGuestMode: () =>
-        set({ isGuest: true, token: null, userId: null, username: null, userRole: null }),
+        set({ isGuest: true, token: null, userId: null, username: null, userRole: null, subscriptionTier: 'free', aiEntitlements: null }),
 
       exitGuestMode: () =>
         set({ isGuest: false, guestXP: 0 }),

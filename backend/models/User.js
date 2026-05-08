@@ -24,6 +24,11 @@ const userSchema = new mongoose.Schema({
     enum: ['user', 'admin'],
     default: 'user',
   },
+  subscriptionTier: {
+    type: String,
+    enum: ['free', 'plus', 'pro'],
+    default: 'plus',
+  },
   status: {
     type: String,
     enum: ['active', 'suspended'],
@@ -166,5 +171,14 @@ const userSchema = new mongoose.Schema({
 
 // Index for leaderboard queries
 userSchema.index({ xpDecayEnabled: 1, weekResetDate: 1, weeklyXP: -1 });
+
+userSchema.pre('save', function syncAdminSubscriptionTier(next) {
+  if (this.role === 'admin') {
+    this.subscriptionTier = 'pro';
+  } else if (!this.subscriptionTier) {
+    this.subscriptionTier = 'plus';
+  }
+  next();
+});
 
 module.exports = mongoose.model('User', userSchema);

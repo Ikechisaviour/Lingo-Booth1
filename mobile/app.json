@@ -16,6 +16,8 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.lingobooth.app",
       "infoPlist": {
+        "NSMicrophoneUsageDescription": "Lingo Booth uses the microphone for hands-free speaking practice.",
+        "NSSpeechRecognitionUsageDescription": "Lingo Booth uses speech recognition to turn your spoken practice into text.",
         "UIBackgroundModes": [
           "audio"
         ]
@@ -31,6 +33,7 @@
       "permissions": [
         "android.permission.FOREGROUND_SERVICE",
         "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK",
+        "android.permission.RECORD_AUDIO",
         "android.permission.POST_NOTIFICATIONS",
         "android.permission.RECEIVE_BOOT_COMPLETED"
       ]
@@ -47,6 +50,16 @@
     "plugins": [
       "expo-asset",
       "expo-font",
+      [
+        "expo-speech-recognition",
+        {
+          "microphonePermission": "Allow Lingo Booth to use the microphone for speaking practice.",
+          "speechRecognitionPermission": "Allow Lingo Booth to use speech recognition for hands-free practice.",
+          "androidSpeechServicePackages": [
+            "com.google.android.googlequicksearchbox"
+          ]
+        }
+      ],
       [
         "expo-notifications",
         {

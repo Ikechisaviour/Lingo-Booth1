@@ -8,6 +8,7 @@ const { verifyToken, isOwner } = require('../middleware/auth');
 const { checkInactivityPenalty } = require('../middleware/xpPenalty');
 const { getTodayUTC, getCurrentMondayUTC, getDayIndex } = require('../utils/dateHelpers');
 const { ensureResetsApplied } = require('../utils/gamificationReset');
+const { getAiEntitlements } = require('../utils/subscription');
 
 // All user routes require authentication + ownership check
 router.use(verifyToken);
@@ -21,6 +22,8 @@ router.get('/:userId', isOwner('userId'), checkInactivityPenalty(), async (req, 
     }
     const userObj = user.toObject();
     userObj.hasPassword = !!user.password;
+    userObj.aiEntitlements = getAiEntitlements(user);
+    userObj.subscriptionTier = userObj.aiEntitlements.subscriptionTier;
     delete userObj.password;
     res.json(userObj);
   } catch (error) {

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { API_URL } from '../config/api';
 import { useAuthStore } from '../stores/authStore';
 import { useSettingsStore } from '../stores/settingsStore';
@@ -8,12 +9,32 @@ const api = axios.create({
   timeout: 15000,
 });
 
+const DEVICE_ID_KEY = 'lingoDeviceId';
+let cachedDeviceId: string | null = null;
+
+const createDeviceId = () => `mobile-${Date.now()}-${Math.random().toString(36).slice(2, 14)}`;
+
+const getDeviceId = async () => {
+  if (cachedDeviceId) return cachedDeviceId;
+  const stored = await AsyncStorage.getItem(DEVICE_ID_KEY);
+  if (stored) {
+    cachedDeviceId = stored;
+    return stored;
+  }
+  const created = createDeviceId();
+  await AsyncStorage.setItem(DEVICE_ID_KEY, created);
+  cachedDeviceId = created;
+  return created;
+};
+
 // Attach JWT token to every request
-api.interceptors.request.use((config) => {
+api.interceptors.request.use(async (config) => {
+  config.headers = config.headers || {};
   const token = useAuthStore.getState().token;
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
+  config.headers['X-Lingo-Device-Id'] = await getDeviceId();
   return config;
 });
 
@@ -249,6 +270,13 @@ export const adminService = {
     api.post('/admin/speaking-demo/conversation', data),
   sendLocalSpeakingDemoTurn: (data: object) =>
     api.post('/admin/local-demo/speaking-demo/conversation', data),
+};
+
+export const aiService = {
+  getEntitlements: () =>
+    api.get('/ai/entitlements'),
+  sendConversationTurn: (data: object) =>
+    api.post('/ai/conversation', data),
 };
 
 export default api;

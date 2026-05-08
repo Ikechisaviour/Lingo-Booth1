@@ -36,7 +36,7 @@ const corsOptions = {
   },
   credentials: true,
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'X-Lingo-Device-Id']
 };
 
 app.use(cors(corsOptions));
@@ -107,6 +107,7 @@ app.use('/api/progress', require('./routes/progress'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/admin', require('./routes/admin'));
 app.use('/api/tts', require('./routes/tts'));
+app.use('/api/ai', require('./routes/ai'));
 
 // Health check
 app.get('/health', (req, res) => {

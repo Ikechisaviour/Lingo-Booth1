@@ -28,6 +28,10 @@ function AdminDashboard() {
       setUsers(usersResponse.data);
       setError('');
     } catch (err) {
+      if (err.response?.status === 401) {
+        setError('Your admin session expired. Please sign in again.');
+        return;
+      }
       setError('Failed to load admin data. Make sure you have admin privileges.');
       console.error(err);
     } finally {
