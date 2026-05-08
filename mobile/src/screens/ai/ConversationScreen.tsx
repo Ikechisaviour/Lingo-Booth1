@@ -549,11 +549,41 @@ function formatResetCountdown(resetAt?: string, now = Date.now()) {
   return `${seconds}s`;
 }
 
-function quotaResetText(resetAt?: string, now = Date.now()) {
+function quotaLimitCopy(tier = 'free', resetAt?: string, now = Date.now()) {
+  const normalizedTier = String(tier || 'free').toLowerCase();
   const countdown = formatResetCountdown(resetAt, now);
-  return countdown
+  const resetText = countdown
     ? `You can continue in ${countdown}.`
-    : 'You can continue when the daily limit resets.';
+    : 'You can continue when your daily conversation allowance resets.';
+
+  if (normalizedTier === 'pro') {
+    return {
+      title: "You've practiced a lot today.",
+      body: countdown
+        ? `Take a short break to protect your focus and avoid burnout. You can continue in ${countdown}.`
+        : 'Take a short break to protect your focus and avoid burnout. You can continue after the daily reset.',
+      status: countdown
+        ? `You've practiced a lot today. You can continue in ${countdown}.`
+        : "You've practiced a lot today. You can continue after the daily reset.",
+      tip: 'A short rest helps the practice stick.',
+    };
+  }
+
+  if (normalizedTier === 'plus') {
+    return {
+      title: 'Daily Plus account conversation limit reached.',
+      body: `${resetText} Upgrade to Pro for a higher daily conversation allowance.`,
+      status: `Daily Plus account conversation limit reached. ${resetText}`,
+      tip: 'Upgrade to Pro for a higher daily conversation allowance.',
+    };
+  }
+
+  return {
+    title: 'Daily Free account conversation limit reached.',
+    body: `${resetText} Upgrade to Plus to keep practicing today.`,
+    status: `Daily Free account conversation limit reached. ${resetText}`,
+    tip: 'Upgrade to Plus to keep practicing today.',
+  };
 }
 
 const stopCommands = new Set([
@@ -649,7 +679,7 @@ const ConversationScreen: React.FC = () => {
   const memoryScope = entitlements?.aiMemoryScope || (tier === 'pro' || entitlements?.canSyncAIMemory ? 'cloud' : canUseAI ? 'device' : 'none');
   const tokenUsage = entitlements?.tokenUsage || null;
   const quotaExceeded = Boolean(tokenUsage?.quotaExceeded || entitlements?.canSendAI === false);
-  const quotaMessage = quotaResetText(tokenUsage?.resetAt, countdownNow);
+  const quotaCopy = quotaLimitCopy(tier, tokenUsage?.resetAt, countdownNow);
   const languageLabel = `${LANGUAGES[nativeLanguage]?.name || nativeLanguage || 'Native'} -> ${LANGUAGES[targetLanguage]?.name || targetLanguage || 'Target'}`;
   const activeScenarioTitle = isCustomScenario && customIsReady ? customRoleplayTitle(customRoleplay) : scenario.title;
   const activeScenarioGoal = isCustomScenario ? (customRoleplay.goal || scenario.goal) : scenario.goal;
@@ -841,7 +871,7 @@ const ConversationScreen: React.FC = () => {
   };
 
   const quotaResetMessage = (usage = tokenUsage) => (
-    `Daily AI limit reached. ${quotaResetText(usage?.resetAt)}`
+    quotaLimitCopy(tier, usage?.resetAt).status
   );
 
   const stopHandsFree = () => {
@@ -1162,7 +1192,7 @@ const ConversationScreen: React.FC = () => {
           ? 'Conversation Practice is not available on this plan.'
           : 'The practice partner had trouble replying. Please try again.',
         quotaDenied
-          ? 'Your daily AI access resets automatically.'
+          ? quotaLimitCopy(tier, error.response?.data?.tokenUsage?.resetAt).tip
           : planDenied
             ? 'Your plan settings were refreshed.'
             : 'Your message was not sent again.',
@@ -1353,8 +1383,8 @@ const ConversationScreen: React.FC = () => {
         )}
         {canUseAI && quotaExceeded && (
           <View style={styles.empty}>
-            <Text style={styles.emptyTitle}>Daily AI limit reached.</Text>
-            <Text style={styles.emptyText}>{quotaMessage}</Text>
+            <Text style={styles.emptyTitle}>{quotaCopy.title}</Text>
+            <Text style={styles.emptyText}>{quotaCopy.body}</Text>
           </View>
         )}
         {canUseAI && !quotaExceeded && history.length === 0 && !loading && (

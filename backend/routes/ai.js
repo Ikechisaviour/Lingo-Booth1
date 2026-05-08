@@ -93,7 +93,7 @@ router.post('/conversation', async (req, res) => {
       || tokenUsage.remainingTokens <= 0
       || estimatedRequestTokens >= tokenUsage.remainingTokens
     ) {
-      const message = buildQuotaExceededMessage(tokenUsage);
+      const message = buildQuotaExceededMessage(tokenUsage, entitlements.subscriptionTier);
       const limitedEntitlements = getAiEntitlements(req.user, {
         ...tokenUsage,
         quotaExceeded: true,

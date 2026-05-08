@@ -3,7 +3,10 @@
     "allow": [
       "Bash(npm run dev:*)",
       "Bash(npm start)",
-      "Bash(git check-ignore *)"
+      "Bash(git check-ignore *)",
+      "PowerShell(if \\(Test-Path 'C:\\\\m'\\) { \"C:\\\\m already exists: $\\(\\(Get-Item 'C:\\\\m'\\).LinkType\\) -> $\\(\\(Get-Item 'C:\\\\m'\\).Target\\)\" } else { New-Item -ItemType Junction -Path 'C:\\\\m' -Target 'C:\\\\Users\\\\Saviour ICT-CRC\\\\Desktop\\\\Personal Project\\\\Personal Projects2\\\\korean-learning-app\\\\mobile' | Out-Null; \"Created junction C:\\\\m\" }; if \\(Test-Path 'C:\\\\m\\\\android\\\\app\\\\build'\\) { Remove-Item -Recurse -Force 'C:\\\\m\\\\android\\\\app\\\\build'; \"cleaned app/build\" }; if \\(Test-Path 'C:\\\\m\\\\android\\\\.gradle'\\) { Remove-Item -Recurse -Force 'C:\\\\m\\\\android\\\\.gradle'; \"cleaned .gradle\" }; Get-ChildItem -Path 'C:\\\\m\\\\node_modules' -Filter '.cxx' -Recurse -Directory -ErrorAction SilentlyContinue | ForEach-Object { Remove-Item -Recurse -Force $_.FullName; \"cleaned $\\($_.FullName\\)\" })",
+      "Bash(ls -lh /c/rn/android/app/build/outputs/apk/release/ 2>&1)",
+      "Read(//c/rn/android/app/build/outputs/apk/**)"
     ]
   }
 }
