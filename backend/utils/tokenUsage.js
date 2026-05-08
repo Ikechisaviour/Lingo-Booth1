@@ -187,9 +187,20 @@ async function recordTokenUsage(identity, tier, usage = {}, now = new Date()) {
   return formatUsage(doc, tier, now);
 }
 
-function buildQuotaExceededMessage(usage) {
+function buildQuotaExceededMessage(usage, tier = 'free') {
   const resetAt = usage?.resetAt ? new Date(usage.resetAt) : getResetAt();
-  return `Daily AI limit reached. You can continue using AI after ${resetAt.toLocaleString('en-US', { timeZone: 'UTC', hour12: false })} UTC.`;
+  const resetText = `You can continue after ${resetAt.toLocaleString('en-US', { timeZone: 'UTC', hour12: false })} UTC.`;
+  const normalizedTier = String(tier || 'free').toLowerCase();
+
+  if (normalizedTier === 'pro') {
+    return `You've practiced a lot today. Take a short break to protect your focus and avoid burnout. ${resetText}`;
+  }
+
+  if (normalizedTier === 'plus') {
+    return `Daily Plus account conversation limit reached. ${resetText} Upgrade to Pro for a higher daily conversation allowance.`;
+  }
+
+  return `Daily Free account conversation limit reached. ${resetText} Upgrade to Plus to keep practicing today.`;
 }
 
 module.exports = {

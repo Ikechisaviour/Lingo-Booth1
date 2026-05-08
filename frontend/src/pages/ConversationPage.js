@@ -532,11 +532,41 @@ function formatResetCountdown(resetAt, now = Date.now()) {
   return `${seconds}s`;
 }
 
-function quotaResetText(resetAt, now = Date.now()) {
+function quotaLimitCopy(tier = 'free', resetAt, now = Date.now()) {
+  const normalizedTier = String(tier || 'free').toLowerCase();
   const countdown = formatResetCountdown(resetAt, now);
-  return countdown
+  const resetText = countdown
     ? `You can continue in ${countdown}.`
-    : 'You can continue when the daily limit resets.';
+    : 'You can continue when your daily conversation allowance resets.';
+
+  if (normalizedTier === 'pro') {
+    return {
+      title: "You've practiced a lot today.",
+      body: countdown
+        ? `Take a short break to protect your focus and avoid burnout. You can continue in ${countdown}.`
+        : 'Take a short break to protect your focus and avoid burnout. You can continue after the daily reset.',
+      status: countdown
+        ? `You've practiced a lot today. You can continue in ${countdown}.`
+        : "You've practiced a lot today. You can continue after the daily reset.",
+      tip: 'A short rest helps the practice stick.',
+    };
+  }
+
+  if (normalizedTier === 'plus') {
+    return {
+      title: 'Daily Plus account conversation limit reached.',
+      body: `${resetText} Upgrade to Pro for a higher daily conversation allowance.`,
+      status: `Daily Plus account conversation limit reached. ${resetText}`,
+      tip: 'Upgrade to Pro for a higher daily conversation allowance.',
+    };
+  }
+
+  return {
+    title: 'Daily Free account conversation limit reached.',
+    body: `${resetText} Upgrade to Plus to keep practicing today.`,
+    status: `Daily Free account conversation limit reached. ${resetText}`,
+    tip: 'Upgrade to Plus to keep practicing today.',
+  };
 }
 
 function normalizeVoiceCommand(value = '') {
@@ -636,7 +666,7 @@ function ConversationPage() {
   const canUseAI = entitlements.canUseAI !== false;
   const tokenUsage = entitlements.tokenUsage || null;
   const quotaExceeded = Boolean(tokenUsage?.quotaExceeded || entitlements.canSendAI === false);
-  const quotaMessage = quotaResetText(tokenUsage?.resetAt, countdownNow);
+  const quotaCopy = quotaLimitCopy(tier, tokenUsage?.resetAt, countdownNow);
   const speechSupported = !!getSpeechRecognition();
 
   const languageLabel = useMemo(() => {
@@ -820,7 +850,7 @@ function ConversationPage() {
   };
 
   const quotaResetMessage = (usage = tokenUsage) => (
-    `Daily AI limit reached. ${quotaResetText(usage?.resetAt)}`
+    quotaLimitCopy(tier, usage?.resetAt).status
   );
 
   const handleCustomSetupTurn = async (text, options = {}) => {
@@ -1018,7 +1048,7 @@ function ConversationPage() {
         planDenied
           ? 'Your plan settings were refreshed.'
           : quotaDenied
-            ? 'Your daily AI access resets automatically.'
+            ? quotaLimitCopy(tier, error.response?.data?.tokenUsage?.resetAt).tip
             : 'Your message was not sent again.',
       );
       setStatus(quotaDenied ? resetMessage : (error.response?.data?.message || message));
@@ -1208,14 +1238,26 @@ function ConversationPage() {
         <header className="conversation-header">
           <div>
             <p className="conversation-kicker">Conversation Practice</p>
-            <label className="conversation-header-scenario">
-              <span>Scenario</span>
-              <select value={scenarioId} onChange={(event) => setScenarioId(event.target.value)}>
-                {SCENARIOS.map((item) => (
-                  <option key={item.id} value={item.id}>{item.title}</option>
-                ))}
-              </select>
-            </label>
+            <div className="conversation-scenario-row">
+              <label className="conversation-header-scenario">
+                <span>Scenario</span>
+                <select value={scenarioId} onChange={(event) => setScenarioId(event.target.value)}>
+                  {SCENARIOS.map((item) => (
+                    <option key={item.id} value={item.id}>{item.title}</option>
+                  ))}
+                </select>
+              </label>
+              <button
+                type="button"
+                className={`conversation-header-handsfree ${handsFreeActive ? 'active' : ''}`}
+                onClick={handsFreeActive ? stopHandsFree : startHandsFree}
+                disabled={!canUseAI || quotaExceeded || !speechSupported || loading}
+                title={speechSupported ? 'Start hands-free conversation' : 'Speech input is not available in this browser'}
+              >
+                <FiMic aria-hidden="true" />
+                {handsFreeActive ? 'Stop hands-free' : 'Hands-free'}
+              </button>
+            </div>
           </div>
           <div className="conversation-badges" aria-label="Plan and memory status">
             <span className={`conversation-plan ${tier} ${memoryScope}`}>{tier.toUpperCase()}</span>
@@ -1296,21 +1338,6 @@ function ConversationPage() {
                 {speechEnabled ? <FiVolume2 aria-hidden="true" /> : <FiVolumeX aria-hidden="true" />}
                 {speechEnabled ? 'Spoken replies on' : 'Spoken replies off'}
               </button>
-              <button
-                type="button"
-                className={`conversation-reset conversation-handsfree-button ${handsFreeActive ? 'active' : ''}`}
-                onClick={handsFreeActive ? stopHandsFree : startHandsFree}
-                disabled={!canUseAI || quotaExceeded || !speechSupported || loading}
-                title={speechSupported ? 'Start hands-free conversation' : 'Speech input is not available in this browser'}
-              >
-                <FiMic aria-hidden="true" />
-                {handsFreeActive ? 'Stop hands-free' : 'Start hands-free'}
-              </button>
-              <p className="conversation-handsfree-note">
-                {handsFreeActive
-                  ? 'Listening resumes after each reply. Use the stop button anytime.'
-                  : 'Hands-free keeps the roleplay moving while your hands are busy.'}
-              </p>
             </div>
           </aside>
 
@@ -1327,8 +1354,8 @@ function ConversationPage() {
               {canUseAI && quotaExceeded && (
                 <div className="conversation-locked">
                   <FiWifiOff aria-hidden="true" />
-                  <strong>Daily AI limit reached.</strong>
-                  <span>{quotaMessage}</span>
+                  <strong>{quotaCopy.title}</strong>
+                  <span>{quotaCopy.body}</span>
                 </div>
               )}
 

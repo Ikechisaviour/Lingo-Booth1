@@ -51,6 +51,13 @@
   text-transform: uppercase;
 }
 
+.conversation-scenario-row {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 .conversation-badges {
   display: flex;
   width: 100%;
@@ -64,6 +71,7 @@
 .conversation-header-scenario {
   display: inline-flex;
   align-items: center;
+  flex: 0 1 auto;
   gap: 7px;
   color: var(--text-secondary);
   font-size: 0.76rem;
@@ -72,7 +80,7 @@
 }
 
 .conversation-header-scenario select {
-  width: min(440px, calc(100vw - 120px));
+  width: min(300px, calc(100vw - 220px));
   min-height: 36px;
   padding: 7px 30px 7px 10px;
   border: 1px solid var(--border-light);
@@ -80,6 +88,40 @@
   background: #fff;
   color: var(--text-primary);
   font-weight: 800;
+}
+
+.conversation-header-handsfree {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 7px 12px;
+  border: 1px solid var(--border-light);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.conversation-header-handsfree:hover {
+  border-color: rgba(28, 176, 246, 0.42);
+  background: rgba(28, 176, 246, 0.08);
+  color: var(--accent-blue);
+}
+
+.conversation-header-handsfree.active {
+  border-color: rgba(255, 150, 0, 0.45);
+  background: rgba(255, 150, 0, 0.1);
+  color: #c66a00;
+}
+
+.conversation-header-handsfree:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
 }
 
 .conversation-language-badge {
@@ -540,6 +582,10 @@
     font-size: 0.68rem;
   }
 
+  .conversation-scenario-row {
+    align-items: center;
+  }
+
   .conversation-badges {
     width: 100%;
     align-items: flex-start;
@@ -549,11 +595,17 @@
   }
 
   .conversation-header-scenario {
-    width: 100%;
+    flex: 1 1 210px;
+    min-width: 0;
+    max-width: 330px;
   }
 
   .conversation-header-scenario select {
     width: 100%;
+  }
+
+  .conversation-header-handsfree {
+    flex: 0 0 auto;
   }
 
   .conversation-body {
