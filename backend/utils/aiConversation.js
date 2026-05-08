@@ -105,6 +105,58 @@ const LANGUAGE_PAIR_REDIRECT_COPY = {
   },
 };
 
+const SCENARIO_ROLE_CONFIGS = {
+  cafe: {
+    defaultLearnerRoleKey: 'customer',
+    defaultPartnerRoleKey: 'cafeStaff',
+    roles: {
+      customer: 'customer',
+      cafeStaff: 'cafe staff',
+    },
+    learnerRoleRequests: [
+      {
+        roleKey: 'cafeStaff',
+        patterns: [
+          /\b(i want|i would like|i'd like|let me|can i|may i|i will|i'll)\b.{0,50}\b(be|play|act as|take the role of)\b.{0,50}\b(barista|cafe staff|staff|server|waiter|cashier)\b/,
+          /\b(make me|switch me|change me)\b.{0,50}\b(barista|cafe staff|staff|server|waiter|cashier)\b/,
+          /\b(barista|cafe staff|staff|server|waiter|cashier)\b.{0,30}\b(role)\b/,
+        ],
+      },
+      {
+        roleKey: 'customer',
+        patterns: [
+          /\b(i want|i would like|i'd like|let me|can i|may i|i will|i'll)\b.{0,50}\b(be|play|act as|take the role of)\b.{0,50}\b(customer|buyer|guest)\b/,
+          /\b(make me|switch me|change me)\b.{0,50}\b(customer|buyer|guest)\b/,
+        ],
+      },
+    ],
+  },
+  directions: {
+    defaultLearnerRoleKey: 'traveler',
+    defaultPartnerRoleKey: 'localGuide',
+    roles: {
+      traveler: 'traveler',
+      localGuide: 'local guide',
+    },
+  },
+  introductions: {
+    defaultLearnerRoleKey: 'learnerSelf',
+    defaultPartnerRoleKey: 'newAcquaintance',
+    roles: {
+      learnerSelf: 'conversation starter',
+      newAcquaintance: 'new acquaintance',
+    },
+  },
+  hotel: {
+    defaultLearnerRoleKey: 'guest',
+    defaultPartnerRoleKey: 'frontDesk',
+    roles: {
+      guest: 'hotel guest',
+      frontDesk: 'hotel front desk staff',
+    },
+  },
+};
+
 const LATIN_LANGUAGE_MARKERS = {
   en: {
     strong: ['hello', 'hi', 'thanks', 'thank', 'please', 'goodbye', 'yes', 'no'],
@@ -266,6 +318,71 @@ function getLanguageName(language, uiLanguage = '') {
   return LANGUAGE_NAMES[code] || code || 'the selected language';
 }
 
+function detectScenarioKey(scenario = '') {
+  const value = normalizeLatinText(scenario);
+  if (value.includes('cafe') || value.includes('coffee') || value.includes('barista')) return 'cafe';
+  if (value.includes('direction') || value.includes('station') || value.includes('route')) return 'directions';
+  if (value.includes('meeting') || value.includes('introduc')) return 'introductions';
+  if (value.includes('hotel') || value.includes('check in')) return 'hotel';
+  return 'cafe';
+}
+
+function normalizeRoleState(roleState = {}, scenario = '') {
+  const scenarioKey = detectScenarioKey(roleState.scenarioKey || scenario);
+  const config = SCENARIO_ROLE_CONFIGS[scenarioKey] || SCENARIO_ROLE_CONFIGS.cafe;
+  const learnerRoleKey = config.roles[roleState.learnerRoleKey]
+    ? roleState.learnerRoleKey
+    : config.defaultLearnerRoleKey;
+  const partnerRoleKey = config.roles[roleState.partnerRoleKey]
+    ? roleState.partnerRoleKey
+    : config.defaultPartnerRoleKey;
+
+  return {
+    scenarioKey,
+    learnerRoleKey,
+    partnerRoleKey,
+    learnerRole: config.roles[learnerRoleKey],
+    partnerRole: config.roles[partnerRoleKey],
+  };
+}
+
+function requestedLearnerRoleKey(transcript = '', scenario = '') {
+  const scenarioKey = detectScenarioKey(scenario);
+  const config = SCENARIO_ROLE_CONFIGS[scenarioKey];
+  if (!config?.learnerRoleRequests) return '';
+
+  const normalized = normalizeLatinText(transcript);
+  if (!normalized) return '';
+
+  const request = config.learnerRoleRequests.find(item => (
+    item.patterns.some(pattern => pattern.test(normalized))
+  ));
+
+  return request?.roleKey || '';
+}
+
+function resolveConversationRoleState({ scenario = '', memory = {}, transcript = '' } = {}) {
+  const scenarioKey = detectScenarioKey(scenario);
+  const config = SCENARIO_ROLE_CONFIGS[scenarioKey] || SCENARIO_ROLE_CONFIGS.cafe;
+  const current = normalizeRoleState(memory?.roleState || {}, scenario);
+  const requestedRoleKey = requestedLearnerRoleKey(transcript, scenario);
+
+  if (!requestedRoleKey || !config.roles[requestedRoleKey]) {
+    return {
+      ...current,
+      roleSwitchRequested: false,
+    };
+  }
+
+  const partnerRoleKey = Object.keys(config.roles).find(key => key !== requestedRoleKey)
+    || config.defaultPartnerRoleKey;
+
+  return {
+    ...normalizeRoleState({ scenarioKey, learnerRoleKey: requestedRoleKey, partnerRoleKey }, scenario),
+    roleSwitchRequested: true,
+  };
+}
+
 function detectOutOfPairLanguage({
   transcript,
   targetLanguage = 'ko',
@@ -338,6 +455,26 @@ function sanitizeMemory(memory) {
 
 function sanitizeSummary(summary) {
   return String(summary || '').slice(0, 2500);
+}
+
+function sanitizeCustomRoleplay(customRoleplay) {
+  if (!customRoleplay || typeof customRoleplay !== 'object' || Array.isArray(customRoleplay)) return null;
+  const learnerRole = String(customRoleplay.learnerRole || '').trim().slice(0, 80);
+  const partnerRole = String(customRoleplay.partnerRole || '').trim().slice(0, 80);
+  const situation = String(customRoleplay.situation || '').trim().slice(0, 300);
+  const goal = String(customRoleplay.goal || '').trim().slice(0, 300);
+  const title = String(customRoleplay.title || `${learnerRole} and ${partnerRole}`).trim().slice(0, 120);
+
+  if (!learnerRole || !partnerRole || !situation || !goal) return null;
+
+  return {
+    id: String(customRoleplay.id || 'custom-roleplay').trim().slice(0, 120),
+    title,
+    learnerRole,
+    partnerRole,
+    situation,
+    goal,
+  };
 }
 
 function estimateTextTokens(value) {
@@ -573,6 +710,7 @@ async function callAIConversation({
   memory,
   productContext = 'Lingo Booth language-learning app',
   maxCompletionTokens,
+  customRoleplay,
 }) {
   const apiKey = process.env.DEEPSEEK_API_KEY;
   const safeTargetLanguage = normalizeLanguageCode(targetLanguage) || 'ko';
@@ -598,12 +736,37 @@ async function callAIConversation({
   const learnerRequestedNativeFirst = learnerRequestedNativeFirstOrder(transcript, safeTargetLanguage, safeNativeLanguage);
   const requestedPhrase = extractRequestedPhrase(transcript);
   const model = process.env.DEEPSEEK_CONVERSATION_MODEL || process.env.DEEPSEEK_MODEL || 'deepseek-v4-flash';
+  const safeCustomRoleplay = sanitizeCustomRoleplay(customRoleplay || memory?.customRoleplay);
+  const roleState = safeCustomRoleplay
+    ? {
+      scenarioKey: 'custom',
+      learnerRoleKey: 'customLearner',
+      partnerRoleKey: 'customPartner',
+      learnerRole: safeCustomRoleplay.learnerRole,
+      partnerRole: safeCustomRoleplay.partnerRole,
+      roleSwitchRequested: false,
+    }
+    : resolveConversationRoleState({ scenario, memory, transcript });
+  const roleMemory = sanitizeMemory({
+    ...sanitizeMemory(memory),
+    ...(safeCustomRoleplay ? { customRoleplay: safeCustomRoleplay } : {}),
+    roleState: {
+      scenarioKey: roleState.scenarioKey,
+      learnerRoleKey: roleState.learnerRoleKey,
+      partnerRoleKey: roleState.partnerRoleKey,
+      learnerRole: roleState.learnerRole,
+      partnerRole: roleState.partnerRole,
+    },
+  });
 
   const systemPrompt = [
     `You are the speaking conversation partner for ${productContext}.`,
     'Run a live language-learning roleplay, not a fixed database exercise.',
     'Act like a flexible conversation partner or friend, not a pronunciation drill coach.',
-    'Stay inside the named scenario and choose the obvious scene role, such as barista, taxi driver, clerk, hotel staff, or new acquaintance.',
+    'Stay inside the named scenario and follow the assigned learnerRole and conversationPartnerRole.',
+    'For custom roleplays, use customRoleplay.title, customRoleplay.situation, and customRoleplay.goal as the scenario source of truth.',
+    'You are always the conversationPartnerRole. The learner is always learnerRole.',
+    'If the learner asks to switch to a valid role in the scenario, accept the role switch, update memory.roleState, and continue as the new conversationPartnerRole.',
     'Do not say "repeat after me", do not ask the learner to repeat a phrase, and do not loop the same prompt.',
     'Each reply must advance the discussion with one natural, short response or question.',
     'Remember concrete facts from conversationMemory and conversationSummary, such as orders, sizes, destinations, names, prices, and waiting times.',
@@ -633,6 +796,7 @@ async function callAIConversation({
       role: 'user',
       content: JSON.stringify({
         scenario: scenario || 'Casual conversation practice',
+        customRoleplay: safeCustomRoleplay,
         targetLanguage: safeTargetLanguage,
         nativeLanguage: safeNativeLanguage,
         inputLanguage: inputLanguage || '',
@@ -643,13 +807,21 @@ async function callAIConversation({
         learnerUsedNativeLanguage,
         learnerUsedTargetLanguage,
         learnerRequestedNativeFirst,
+        learnerRole: roleState.learnerRole,
+        conversationPartnerRole: roleState.partnerRole,
+        roleState,
+        roleSwitchRequested: roleState.roleSwitchRequested,
         requestedPhrase,
         conversationSummary: sanitizeSummary(summary),
-        conversationMemory: sanitizeMemory(memory),
+        conversationMemory: roleMemory,
         latestLearnerTranscript: transcript,
         instruction: [
           'Continue naturally as a conversation partner.',
           'Use conversationSummary and conversationMemory as authoritative context unless the learner corrects it.',
+          `You are playing the scenario role: ${roleState.partnerRole}. The learner is playing: ${roleState.learnerRole}.`,
+          roleState.roleSwitchRequested
+            ? `The learner asked to switch roles. Confirm briefly, then continue immediately as ${roleState.partnerRole}.`
+            : '',
           'If the learner asks a memory question, answer it directly before continuing.',
           'If the learner appears to be using a language other than nativeLanguage or targetLanguage, redirect them back to the selected language pair.',
           learnerRequestedNativeFirst
@@ -729,7 +901,25 @@ async function callAIConversation({
     nextSuggestedIntent: String(parsed.nextSuggestedIntent || '').slice(0, 200),
     speechParts,
     summary: sanitizeSummary(parsed.summary || summary),
-    memory: sanitizeMemory(parsed.memory || memory),
+    memory: sanitizeMemory({
+      ...sanitizeMemory(parsed.memory || roleMemory),
+      ...(safeCustomRoleplay ? { customRoleplay: safeCustomRoleplay } : {}),
+      roleState: {
+        scenarioKey: roleState.scenarioKey,
+        learnerRoleKey: roleState.learnerRoleKey,
+        partnerRoleKey: roleState.partnerRoleKey,
+        learnerRole: roleState.learnerRole,
+        partnerRole: roleState.partnerRole,
+      },
+    }),
+    roleState: {
+      scenarioKey: roleState.scenarioKey,
+      learnerRoleKey: roleState.learnerRoleKey,
+      partnerRoleKey: roleState.partnerRoleKey,
+      learnerRole: roleState.learnerRole,
+      partnerRole: roleState.partnerRole,
+      roleSwitchRequested: roleState.roleSwitchRequested,
+    },
     usage: {
       promptTokens,
       completionTokens,
@@ -749,7 +939,9 @@ module.exports = {
   normalizeLanguageCode,
   orderSpeechPartsForPair,
   parseAIJsonContent,
+  resolveConversationRoleState,
   safeConversationHistory,
+  sanitizeCustomRoleplay,
   sanitizeMemory,
   sanitizeSummary,
 };

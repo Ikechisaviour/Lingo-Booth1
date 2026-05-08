@@ -99,7 +99,7 @@ const MainTabs: React.FC = () => {
         name="Conversation"
         component={ConversationScreen}
         options={{
-          tabBarLabel: 'Practice',
+          tabBarLabel: 'Conversation',
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="message-text" color={color} size={size} />
           ),

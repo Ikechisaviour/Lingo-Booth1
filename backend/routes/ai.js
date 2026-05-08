@@ -76,6 +76,7 @@ router.post('/conversation', async (req, res) => {
       transcript,
       history,
       difficulty,
+      customRoleplay,
     } = req.body || {};
 
     if (!transcript || typeof transcript !== 'string' || transcript.trim().length === 0) {
@@ -175,6 +176,7 @@ router.post('/conversation', async (req, res) => {
       memory,
       productContext: 'Lingo Booth',
       maxCompletionTokens: tokenUsage.remainingTokens - estimatedRequestTokens,
+      customRoleplay,
     });
 
     const updatedSummary = sanitizeSummary(result.summary || summary);
