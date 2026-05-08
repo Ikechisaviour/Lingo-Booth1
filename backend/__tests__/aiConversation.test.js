@@ -5,6 +5,8 @@ const {
   learnerRequestedNativeFirstOrder,
   orderSpeechPartsForPair,
   parseAIJsonContent,
+  resolveConversationRoleState,
+  sanitizeCustomRoleplay,
 } = require('../utils/aiConversation');
 
 describe('ai conversation language pair guard', () => {
@@ -119,5 +121,37 @@ describe('ai conversation language pair guard', () => {
       'de',
       'fil',
     )).toBe(false);
+  });
+
+  it('switches cafe roles when the learner asks to be the cafe staff', () => {
+    const roleState = resolveConversationRoleState({
+      scenario: 'Ordering at a cafe',
+      transcript: 'I want to be the cafe staff',
+      memory: {},
+    });
+
+    expect(roleState).toMatchObject({
+      scenarioKey: 'cafe',
+      learnerRoleKey: 'cafeStaff',
+      partnerRoleKey: 'customer',
+      learnerRole: 'cafe staff',
+      partnerRole: 'customer',
+      roleSwitchRequested: true,
+    });
+  });
+
+  it('accepts complete custom roleplay definitions', () => {
+    expect(sanitizeCustomRoleplay({
+      learnerRole: 'Student',
+      partnerRole: 'Professor',
+      situation: 'Office hours',
+      goal: 'Ask about an assignment deadline',
+    })).toMatchObject({
+      title: 'Student and Professor',
+      learnerRole: 'Student',
+      partnerRole: 'Professor',
+      situation: 'Office hours',
+      goal: 'Ask about an assignment deadline',
+    });
   });
 });

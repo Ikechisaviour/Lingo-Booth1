@@ -7,6 +7,8 @@ import './ConversationPage.css';
 
 const SESSION_ID = 'learner-conversation';
 const LEGACY_STORAGE_KEY = `lingoConversation:${SESSION_ID}`;
+const CUSTOM_SCENARIO_ID = 'custom';
+const CUSTOM_SETUP_STEPS = ['learnerRole', 'partnerRole', 'situation', 'goal'];
 
 const SCENARIOS = [
   {
@@ -73,6 +75,18 @@ const SCENARIOS = [
       'What room details have we confirmed?',
     ],
   },
+  {
+    id: CUSTOM_SCENARIO_ID,
+    title: 'Custom roleplay',
+    partner: 'Conversation partner',
+    goal: 'Build your own roleplay by choosing the roles, situation, and goal.',
+    starters: [],
+    followUps: [
+      'Start the roleplay.',
+      'Ask me the first question.',
+      'Start a new custom roleplay.',
+    ],
+  },
 ];
 
 const SUPPORT_LEVELS = [
@@ -80,6 +94,98 @@ const SUPPORT_LEVELS = [
   { id: 'balanced', label: 'Balanced', difficulty: 'balanced natural conversation' },
   { id: 'natural', label: 'Natural', difficulty: 'natural conversation with minimal coaching' },
 ];
+
+const CUSTOM_SETUP_COPY = {
+  en: {
+    setupLabel: 'Custom setup',
+    learnerRole: 'What role do you want to play?',
+    partnerRole: 'Who else is involved? What role should I play?',
+    situation: 'What is the situation or place for this roleplay?',
+    goal: 'What is your goal in this conversation?',
+    ready: ({ learnerRole, partnerRole }) => `Ready. You are the ${learnerRole}, and I will be the ${partnerRole}. Start whenever you are ready.`,
+    restart: 'Sure. Let us set up a new custom roleplay. What role do you want to play?',
+    newRoleplay: 'Start new custom roleplay',
+    situationLabel: 'Situation',
+  },
+  fil: {
+    setupLabel: 'Custom setup',
+    learnerRole: 'Anong role ang gusto mong gampanan?',
+    partnerRole: 'Sino pa ang kasama? Anong role ang gagampanan ko?',
+    situation: 'Ano ang sitwasyon o lugar ng roleplay na ito?',
+    goal: 'Ano ang goal mo sa pag-uusap na ito?',
+    ready: ({ learnerRole, partnerRole }) => `Handa na. Ikaw ang ${learnerRole}, at ako ang ${partnerRole}. Magsimula ka kapag handa ka na.`,
+    restart: 'Sige. Gumawa tayo ng bagong custom roleplay. Anong role ang gusto mong gampanan?',
+    newRoleplay: 'Bagong custom roleplay',
+    situationLabel: 'Sitwasyon',
+  },
+  es: {
+    setupLabel: 'Configuracion personalizada',
+    learnerRole: 'Que papel quieres interpretar?',
+    partnerRole: 'Quien mas participa? Que papel debo interpretar yo?',
+    situation: 'Cual es la situacion o el lugar de este roleplay?',
+    goal: 'Cual es tu meta en esta conversacion?',
+    ready: ({ learnerRole, partnerRole }) => `Listo. Tu eres ${learnerRole}, y yo sere ${partnerRole}. Empieza cuando quieras.`,
+    restart: 'Claro. Configuremos un nuevo roleplay personalizado. Que papel quieres interpretar?',
+    newRoleplay: 'Nuevo roleplay personalizado',
+    situationLabel: 'Situacion',
+  },
+  de: {
+    setupLabel: 'Eigene Einrichtung',
+    learnerRole: 'Welche Rolle moechtest du spielen?',
+    partnerRole: 'Wer ist noch beteiligt? Welche Rolle soll ich spielen?',
+    situation: 'Was ist die Situation oder der Ort dieses Rollenspiels?',
+    goal: 'Was ist dein Ziel in diesem Gespraech?',
+    ready: ({ learnerRole, partnerRole }) => `Bereit. Du bist ${learnerRole}, und ich bin ${partnerRole}. Fang an, wenn du bereit bist.`,
+    restart: 'Gerne. Richten wir ein neues eigenes Rollenspiel ein. Welche Rolle moechtest du spielen?',
+    newRoleplay: 'Neues eigenes Rollenspiel',
+    situationLabel: 'Situation',
+  },
+  ko: {
+    setupLabel: '맞춤 설정',
+    learnerRole: '어떤 역할을 하고 싶나요?',
+    partnerRole: '누가 함께하나요? 저는 어떤 역할을 할까요?',
+    situation: '이 역할극의 상황이나 장소는 무엇인가요?',
+    goal: '이 대화에서 목표는 무엇인가요?',
+    ready: ({ learnerRole, partnerRole }) => `준비됐어요. 당신은 ${learnerRole} 역할이고, 저는 ${partnerRole} 역할입니다. 준비되면 시작하세요.`,
+    restart: '좋아요. 새 맞춤 역할극을 설정해 봅시다. 어떤 역할을 하고 싶나요?',
+    newRoleplay: '새 맞춤 역할극',
+    situationLabel: '상황',
+  },
+  id: {
+    setupLabel: 'Pengaturan khusus',
+    learnerRole: 'Peran apa yang ingin Anda mainkan?',
+    partnerRole: 'Siapa lagi yang terlibat? Peran apa yang harus saya mainkan?',
+    situation: 'Apa situasi atau tempat untuk roleplay ini?',
+    goal: 'Apa tujuan Anda dalam percakapan ini?',
+    ready: ({ learnerRole, partnerRole }) => `Siap. Anda adalah ${learnerRole}, dan saya akan menjadi ${partnerRole}. Mulai kapan saja Anda siap.`,
+    restart: 'Baik. Mari buat roleplay khusus baru. Peran apa yang ingin Anda mainkan?',
+    newRoleplay: 'Roleplay khusus baru',
+    situationLabel: 'Situasi',
+  },
+  ms: {
+    setupLabel: 'Tetapan khusus',
+    learnerRole: 'Apakah peranan yang anda mahu mainkan?',
+    partnerRole: 'Siapa lagi yang terlibat? Apakah peranan saya?',
+    situation: 'Apakah situasi atau tempat untuk roleplay ini?',
+    goal: 'Apakah matlamat anda dalam perbualan ini?',
+    ready: ({ learnerRole, partnerRole }) => `Sedia. Anda ialah ${learnerRole}, dan saya akan menjadi ${partnerRole}. Mula apabila anda bersedia.`,
+    restart: 'Baik. Mari tetapkan roleplay khusus yang baharu. Apakah peranan yang anda mahu mainkan?',
+    newRoleplay: 'Roleplay khusus baharu',
+    situationLabel: 'Situasi',
+  },
+};
+
+const KOREAN_CUSTOM_SETUP_COPY = {
+  setupLabel: '맞춤 설정',
+  learnerRole: '어떤 역할을 하고 싶나요?',
+  partnerRole: '누가 함께하나요? 저는 어떤 역할을 할까요?',
+  situation: '이 역할극의 상황이나 장소는 무엇인가요?',
+  goal: '이 대화에서 목표는 무엇인가요?',
+  ready: ({ learnerRole, partnerRole }) => `준비됐어요. 당신은 ${learnerRole} 역할이고, 저는 ${partnerRole} 역할입니다. 준비되면 시작하세요.`,
+  restart: '좋아요. 새 맞춤 역할극을 설정해 봅시다. 어떤 역할을 하고 싶나요?',
+  newRoleplay: '새 맞춤 역할극',
+  situationLabel: '상황',
+};
 
 const CONVERSATION_UI_LABELS = {
   en: {
@@ -92,6 +198,16 @@ const CONVERSATION_UI_LABELS = {
       introductions: 'New acquaintance',
       hotel: 'Hotel front desk',
     },
+    roles: {
+      customer: 'Customer',
+      cafeStaff: 'Cafe staff',
+      traveler: 'Traveler',
+      localGuide: 'Local guide',
+      learnerSelf: 'You',
+      newAcquaintance: 'New acquaintance',
+      guest: 'Guest',
+      frontDesk: 'Hotel front desk',
+    },
   },
   fil: {
     learner: 'Ikaw',
@@ -102,6 +218,16 @@ const CONVERSATION_UI_LABELS = {
       directions: 'Lokal na gabay',
       introductions: 'Bagong kakilala',
       hotel: 'Front desk ng hotel',
+    },
+    roles: {
+      customer: 'Customer',
+      cafeStaff: 'Staff sa cafe',
+      traveler: 'Traveler',
+      localGuide: 'Lokal na gabay',
+      learnerSelf: 'Ikaw',
+      newAcquaintance: 'Bagong kakilala',
+      guest: 'Guest',
+      frontDesk: 'Front desk ng hotel',
     },
   },
   es: {
@@ -114,6 +240,16 @@ const CONVERSATION_UI_LABELS = {
       introductions: 'Nueva persona',
       hotel: 'Recepcion del hotel',
     },
+    roles: {
+      customer: 'Cliente',
+      cafeStaff: 'Personal del cafe',
+      traveler: 'Viajero',
+      localGuide: 'Guia local',
+      learnerSelf: 'Tu',
+      newAcquaintance: 'Nueva persona',
+      guest: 'Huesped',
+      frontDesk: 'Recepcion del hotel',
+    },
   },
   de: {
     learner: 'Du',
@@ -124,6 +260,16 @@ const CONVERSATION_UI_LABELS = {
       directions: 'Lokaler Guide',
       introductions: 'Neue Bekanntschaft',
       hotel: 'Hotelrezeption',
+    },
+    roles: {
+      customer: 'Kunde',
+      cafeStaff: 'Cafe-Personal',
+      traveler: 'Reisender',
+      localGuide: 'Lokaler Guide',
+      learnerSelf: 'Du',
+      newAcquaintance: 'Neue Bekanntschaft',
+      guest: 'Gast',
+      frontDesk: 'Hotelrezeption',
     },
   },
   id: {
@@ -136,6 +282,16 @@ const CONVERSATION_UI_LABELS = {
       introductions: 'Kenalan baru',
       hotel: 'Resepsionis hotel',
     },
+    roles: {
+      customer: 'Pelanggan',
+      cafeStaff: 'Staf kafe',
+      traveler: 'Pelancong',
+      localGuide: 'Pemandu lokal',
+      learnerSelf: 'Anda',
+      newAcquaintance: 'Kenalan baru',
+      guest: 'Tamu',
+      frontDesk: 'Resepsionis hotel',
+    },
   },
   ms: {
     learner: 'Anda',
@@ -147,15 +303,113 @@ const CONVERSATION_UI_LABELS = {
       introductions: 'Kenalan baru',
       hotel: 'Kaunter hotel',
     },
+    roles: {
+      customer: 'Pelanggan',
+      cafeStaff: 'Staf kafe',
+      traveler: 'Pelancong',
+      localGuide: 'Pemandu tempatan',
+      learnerSelf: 'Anda',
+      newAcquaintance: 'Kenalan baru',
+      guest: 'Tetamu',
+      frontDesk: 'Kaunter hotel',
+    },
   },
 };
 
-function labelsFor(nativeLanguage, scenarioId) {
+function roleStateForMemory(memory = {}) {
+  return memory?.roleState && typeof memory.roleState === 'object' ? memory.roleState : null;
+}
+
+function labelsFor(nativeLanguage, scenarioId, roleState = null) {
   const labels = CONVERSATION_UI_LABELS[nativeLanguage] || CONVERSATION_UI_LABELS.en;
+  const fallbackPartner = labels.partners?.[scenarioId] || CONVERSATION_UI_LABELS.en.partners[scenarioId] || 'Conversation partner';
+  const roleLabel = (roleKey, rawRole) => labels.roles?.[roleKey] || CONVERSATION_UI_LABELS.en.roles[roleKey] || rawRole || roleKey;
+  const learnerRole = roleState?.learnerRoleKey ? roleLabel(roleState.learnerRoleKey, roleState.learnerRole) : '';
+  const partnerRole = roleState?.partnerRoleKey ? roleLabel(roleState.partnerRoleKey, roleState.partnerRole) : fallbackPartner;
+
   return {
     ...labels,
-    activePartner: labels.partners?.[scenarioId] || CONVERSATION_UI_LABELS.en.partners[scenarioId] || 'Conversation partner',
+    activeLearner: learnerRole && learnerRole !== labels.learner ? `${labels.learner} · ${learnerRole}` : labels.learner,
+    activePartner: partnerRole,
   };
+}
+
+function displayLabelsFor(nativeLanguage, scenarioId, roleState = null) {
+  const labels = labelsFor(nativeLanguage, scenarioId, roleState);
+  if (!roleState?.learnerRoleKey) return labels;
+  const baseLabels = CONVERSATION_UI_LABELS[nativeLanguage] || CONVERSATION_UI_LABELS.en;
+  const roleLabel = baseLabels.roles?.[roleState.learnerRoleKey]
+    || CONVERSATION_UI_LABELS.en.roles[roleState.learnerRoleKey]
+    || roleState.learnerRole
+    || roleState.learnerRoleKey;
+
+  return {
+    ...labels,
+    activeLearner: roleLabel && roleLabel !== baseLabels.learner ? `${baseLabels.learner} - ${roleLabel}` : baseLabels.learner,
+  };
+}
+
+function customSetupCopy(nativeLanguage) {
+  if (nativeLanguage === 'ko') return KOREAN_CUSTOM_SETUP_COPY;
+  return CUSTOM_SETUP_COPY[nativeLanguage] || CUSTOM_SETUP_COPY.en;
+}
+
+function customRoleplayFromMemory(memory = {}) {
+  const customRoleplay = memory?.customRoleplay;
+  return customRoleplay && typeof customRoleplay === 'object' && !Array.isArray(customRoleplay)
+    ? customRoleplay
+    : {};
+}
+
+function completeCustomRoleplay(customRoleplay = {}) {
+  return CUSTOM_SETUP_STEPS.every(step => String(customRoleplay[step] || '').trim());
+}
+
+function nextCustomSetupStep(customRoleplay = {}) {
+  return CUSTOM_SETUP_STEPS.find(step => !String(customRoleplay[step] || '').trim()) || null;
+}
+
+function customRoleplayTitle(customRoleplay = {}) {
+  if (customRoleplay.title) return customRoleplay.title;
+  if (customRoleplay.learnerRole && customRoleplay.partnerRole) {
+    return `${customRoleplay.learnerRole} and ${customRoleplay.partnerRole}`;
+  }
+  return 'Custom roleplay';
+}
+
+function customRoleState(customRoleplay = {}) {
+  if (!completeCustomRoleplay(customRoleplay)) return null;
+  return {
+    scenarioKey: 'custom',
+    learnerRoleKey: 'customLearner',
+    partnerRoleKey: 'customPartner',
+    learnerRole: customRoleplay.learnerRole,
+    partnerRole: customRoleplay.partnerRole,
+  };
+}
+
+function setupAssistantTurn(content, nativeLanguage) {
+  return {
+    id: turnId('assistant'),
+    role: 'assistant',
+    content,
+    language: nativeLanguage,
+    setup: true,
+    speechParts: [{ language: nativeLanguage, text: content }],
+  };
+}
+
+function wantsNewCustomRoleplay(text = '') {
+  const value = String(text || '').toLowerCase();
+  return (
+    /\b(new|another|different|restart|reset|stop|change)\b.{0,40}\b(roleplay|role play|scenario|conversation)\b/.test(value)
+    || /\bstart over\b/.test(value)
+    || (/(새|새로운|다른|다시|바꾸|변경|초기화)/.test(value) && /(역할극|상황|시나리오|대화)/.test(value))
+    || /\b(nuevo|nueva|otra|otro|diferente|reiniciar|cambiar|empezar de nuevo)\b.{0,40}\b(roleplay|escenario|conversacion|conversación)\b/.test(value)
+    || /\b(bago|bagong|iba|palitan|ulit|simulan muli)\b.{0,40}\b(roleplay|senaryo|usapan)\b/.test(value)
+    || /\b(neu|neues|andere|anderes|aendern|andern|wechseln|neu starten)\b.{0,40}\b(rollenspiel|szenario|gespraech|gesprach)\b/.test(value)
+    || /\b(baru|lain|ganti|ubah|mulai ulang)\b.{0,40}\b(roleplay|skenario|percakapan|perbualan)\b/.test(value)
+  );
 }
 
 function languagePairKey(nativeLanguage, targetLanguage) {
@@ -170,6 +424,16 @@ function storageKeyFor(scenarioId, nativeLanguage, targetLanguage) {
 
 function sessionIdFor(scenarioId, nativeLanguage, targetLanguage) {
   return `${SESSION_ID}:${languagePairKey(nativeLanguage, targetLanguage)}:${scenarioId || 'cafe'}`;
+}
+
+function aiSessionIdFor(scenarioId, nativeLanguage, targetLanguage, customRoleplay = {}) {
+  const baseSessionId = sessionIdFor(scenarioId, nativeLanguage, targetLanguage);
+  if (scenarioId !== CUSTOM_SCENARIO_ID || !customRoleplay?.id) return baseSessionId;
+  const customId = String(customRoleplay.id)
+    .toLowerCase()
+    .replace(/[^a-z0-9_-]/g, '-')
+    .slice(0, 80);
+  return `${baseSessionId}:${customId}`;
 }
 
 function normalizeEntitlements(entitlements = {}) {
@@ -249,16 +513,30 @@ function ttsLocaleFor(languageCode, fallbackCode) {
     || 'en-US';
 }
 
-function formatResetAt(resetAt) {
-  if (!resetAt) return 'the next daily reset';
+function formatResetCountdown(resetAt, now = Date.now()) {
+  if (!resetAt) return '';
   const date = new Date(resetAt);
-  if (Number.isNaN(date.getTime())) return 'the next daily reset';
-  return date.toLocaleString([], {
-    month: 'short',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: '2-digit',
-  });
+  if (Number.isNaN(date.getTime())) return '';
+  const remainingMs = date.getTime() - now;
+  if (remainingMs <= 0) return 'less than 1 minute';
+
+  const totalSeconds = Math.ceil(remainingMs / 1000);
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  if (days > 0) return `${days}d ${hours}h ${minutes}m`;
+  if (hours > 0) return `${hours}h ${minutes}m`;
+  if (minutes > 0) return `${minutes}m ${seconds}s`;
+  return `${seconds}s`;
+}
+
+function quotaResetText(resetAt, now = Date.now()) {
+  const countdown = formatResetCountdown(resetAt, now);
+  return countdown
+    ? `You can continue in ${countdown}.`
+    : 'You can continue when the daily limit resets.';
 }
 
 function normalizeVoiceCommand(value = '') {
@@ -327,6 +605,9 @@ function ConversationPage() {
   const [speechEnabled, setSpeechEnabled] = useState(true);
   const [handsFreeActive, setHandsFreeActive] = useState(false);
   const [setupOpen, setSetupOpen] = useState(false);
+  const [roleState, setRoleState] = useState(null);
+  const [customRoleplay, setCustomRoleplay] = useState({});
+  const [countdownNow, setCountdownNow] = useState(Date.now());
   const threadRef = useRef(null);
   const recognitionRef = useRef(null);
   const handsFreeRef = useRef(false);
@@ -337,6 +618,8 @@ function ConversationPage() {
     () => SCENARIOS.find(item => item.id === scenarioId) || SCENARIOS[0],
     [scenarioId],
   );
+  const isCustomScenario = scenarioId === CUSTOM_SCENARIO_ID;
+  const customIsReady = isCustomScenario && completeCustomRoleplay(customRoleplay);
   const support = useMemo(
     () => SUPPORT_LEVELS.find(item => item.id === supportLevel) || SUPPORT_LEVELS[0],
     [supportLevel],
@@ -345,14 +628,15 @@ function ConversationPage() {
   const nativeLanguage = localStorage.getItem('nativeLanguage') || 'en';
   const targetLanguage = localStorage.getItem('targetLanguage') || 'ko';
   const uiLabels = useMemo(
-    () => labelsFor(nativeLanguage, scenarioId),
-    [nativeLanguage, scenarioId],
+    () => displayLabelsFor(nativeLanguage, scenarioId, roleState),
+    [nativeLanguage, scenarioId, roleState],
   );
   const tier = tierFromEntitlements(entitlements);
   const memoryScope = memoryScopeFor(entitlements);
   const canUseAI = entitlements.canUseAI !== false;
   const tokenUsage = entitlements.tokenUsage || null;
   const quotaExceeded = Boolean(tokenUsage?.quotaExceeded || entitlements.canSendAI === false);
+  const quotaMessage = quotaResetText(tokenUsage?.resetAt, countdownNow);
   const speechSupported = !!getSpeechRecognition();
 
   const languageLabel = useMemo(() => {
@@ -361,16 +645,51 @@ function ConversationPage() {
     return `${native} -> ${target}`;
   }, [nativeLanguage, targetLanguage]);
 
+  const activeScenarioTitle = isCustomScenario && customIsReady
+    ? customRoleplayTitle(customRoleplay)
+    : scenario.title;
+
+  const activeScenarioGoal = isCustomScenario
+    ? (customRoleplay.goal || scenario.goal)
+    : scenario.goal;
+
   const quickTurns = useMemo(() => {
     if (!canUseAI || quotaExceeded) return [];
+    if (isCustomScenario && !customIsReady) return [];
+    if (isCustomScenario && customIsReady) {
+      const latestAssistant = [...history].reverse().find(message => message.role === 'assistant' && !message.error);
+      if (latestAssistant?.nextSuggestedIntent) return [latestAssistant.nextSuggestedIntent, ...scenario.followUps].slice(0, 3);
+      return (history.length ? scenario.followUps : ['Start the roleplay.']).slice(0, 3);
+    }
     const latestAssistant = [...history].reverse().find(message => message.role === 'assistant' && !message.error);
     const suggested = latestAssistant?.nextSuggestedIntent;
     if (suggested) return [suggested, ...scenario.followUps].slice(0, 3);
     return (history.length ? scenario.followUps : scenario.starters).slice(0, 3);
-  }, [canUseAI, quotaExceeded, history, scenario]);
+  }, [canUseAI, quotaExceeded, history, scenario, isCustomScenario, customIsReady]);
 
   useEffect(() => {
-    const loadedHistory = loadHistory(scenarioId, nativeLanguage, targetLanguage);
+    const stored = loadMemory(scenarioId, nativeLanguage, targetLanguage);
+    const storedCustom = customRoleplayFromMemory(stored.memory);
+    let loadedHistory = loadHistory(scenarioId, nativeLanguage, targetLanguage);
+    let nextRoleState = roleStateForMemory(stored.memory);
+
+    if (scenarioId === CUSTOM_SCENARIO_ID) {
+      setCustomRoleplay(storedCustom);
+      nextRoleState = nextRoleState || customRoleState(storedCustom);
+      if (!completeCustomRoleplay(storedCustom) && loadedHistory.length === 0) {
+        const copy = customSetupCopy(nativeLanguage);
+        loadedHistory = [setupAssistantTurn(copy[nextCustomSetupStep(storedCustom)], nativeLanguage)];
+        saveMemory(scenarioId, nativeLanguage, targetLanguage, {
+          summary: stored.summary || '',
+          memory: { ...(stored.memory || {}), customRoleplay: storedCustom },
+          history: loadedHistory.map(({ role, content }) => ({ role, content })),
+        });
+      }
+    } else {
+      setCustomRoleplay({});
+    }
+
+    setRoleState(nextRoleState);
     setHistory(loadedHistory);
     lastAssistantRef.current = [...loadedHistory].reverse().find(message => message.role === 'assistant' && !message.error) || null;
     setTurn('');
@@ -410,6 +729,13 @@ function ConversationPage() {
   useEffect(() => {
     handsFreeRef.current = handsFreeActive;
   }, [handsFreeActive]);
+
+  useEffect(() => {
+    if (!quotaExceeded || !tokenUsage?.resetAt) return undefined;
+    setCountdownNow(Date.now());
+    const timer = setInterval(() => setCountdownNow(Date.now()), 1000);
+    return () => clearInterval(timer);
+  }, [quotaExceeded, tokenUsage?.resetAt]);
 
   const speakMessage = async (message, options = {}) => {
     const speechParts = Array.isArray(message?.speechParts) ? message.speechParts : [];
@@ -454,7 +780,19 @@ function ConversationPage() {
     setHandsFreeActive(false);
     setListening(false);
     lastAssistantRef.current = null;
-    setHistory([]);
+    setRoleState(null);
+    if (scenarioId === CUSTOM_SCENARIO_ID) {
+      const copy = customSetupCopy(nativeLanguage);
+      const setupTurn = setupAssistantTurn(copy.learnerRole, nativeLanguage);
+      setCustomRoleplay({});
+      setHistory([setupTurn]);
+      saveMemory(scenarioId, nativeLanguage, targetLanguage, {
+        memory: { customRoleplay: {} },
+        history: [{ role: setupTurn.role, content: setupTurn.content }],
+      });
+    } else {
+      setHistory([]);
+    }
     setTurn('');
     setStatus('Conversation reset.');
     setStatusTone('idle');
@@ -482,21 +820,98 @@ function ConversationPage() {
   };
 
   const quotaResetMessage = (usage = tokenUsage) => (
-    `Daily AI limit reached. You can continue after ${formatResetAt(usage?.resetAt)}.`
+    `Daily AI limit reached. ${quotaResetText(usage?.resetAt)}`
   );
+
+  const handleCustomSetupTurn = async (text, options = {}) => {
+    const { autoContinue = false, restart = false } = options;
+    const copy = customSetupCopy(nativeLanguage);
+    const stored = loadMemory(scenarioId, nativeLanguage, targetLanguage);
+    const currentCustom = restart ? {} : { ...customRoleplayFromMemory(stored.memory), ...customRoleplay };
+    const step = nextCustomSetupStep(currentCustom) || 'learnerRole';
+    const userTurn = {
+      id: turnId('user'),
+      role: 'user',
+      content: text,
+      language: nativeLanguage,
+    };
+
+    const nextCustom = restart ? {} : { ...currentCustom, [step]: text.trim() };
+    if (completeCustomRoleplay(nextCustom)) {
+      nextCustom.id = nextCustom.id || `custom-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+      nextCustom.title = customRoleplayTitle(nextCustom);
+      const nextRoleState = customRoleState(nextCustom);
+      const readyContent = copy.ready(nextCustom);
+      const assistantTurn = setupAssistantTurn(readyContent, nativeLanguage);
+      const updatedHistory = [
+        ...history.filter(message => !message.setup).slice(-8),
+        userTurn,
+        assistantTurn,
+      ];
+
+      setCustomRoleplay(nextCustom);
+      setRoleState(nextRoleState);
+      setHistory(updatedHistory);
+      lastAssistantRef.current = assistantTurn;
+      saveMemory(scenarioId, nativeLanguage, targetLanguage, {
+        summary: '',
+        memory: {
+          ...(stored.memory || {}),
+          customRoleplay: nextCustom,
+          roleState: nextRoleState,
+        },
+        history: updatedHistory.map(({ role, content }) => ({ role, content })),
+      });
+      setStatus('Custom roleplay is ready.');
+      setStatusTone('success');
+      setTurn('');
+      if (speechEnabled || autoContinue) await speakMessage(assistantTurn);
+      if (autoContinue && handsFreeRef.current) scheduleHandsFreeListening();
+      return;
+    }
+
+    const nextStep = nextCustomSetupStep(nextCustom);
+    const assistantTurn = setupAssistantTurn(restart ? copy.restart : copy[nextStep], nativeLanguage);
+    const updatedHistory = restart
+      ? [assistantTurn]
+      : [...history.slice(-10), userTurn, assistantTurn];
+
+    setCustomRoleplay(nextCustom);
+    setRoleState(null);
+    setHistory(updatedHistory);
+    lastAssistantRef.current = assistantTurn;
+    saveMemory(scenarioId, nativeLanguage, targetLanguage, {
+      summary: '',
+      memory: { customRoleplay: nextCustom },
+      history: updatedHistory.map(({ role, content }) => ({ role, content })),
+    });
+    setStatus(copy.setupLabel);
+    setStatusTone('idle');
+    setTurn('');
+    if (speechEnabled || autoContinue) await speakMessage(assistantTurn);
+    if (autoContinue && handsFreeRef.current) scheduleHandsFreeListening();
+  };
 
   const sendTurn = async (textOverride, options = {}) => {
     const { autoContinue = false } = options;
     const text = String(textOverride ?? turn).trim();
     if (!text || loading) return;
     if (!canUseAI) {
-      setStatus('AI Practice is not available on this plan.');
+      setStatus('Conversation Practice is not available on this plan.');
       setStatusTone('error');
       return;
     }
     if (quotaExceeded) {
       setStatus(quotaResetMessage());
       setStatusTone('error');
+      return;
+    }
+
+    if (isCustomScenario && (wantsNewCustomRoleplay(text) || !completeCustomRoleplay(customRoleplay))) {
+      await handleCustomSetupTurn(text, {
+        autoContinue,
+        restart: wantsNewCustomRoleplay(text),
+      });
       return;
     }
 
@@ -517,8 +932,8 @@ function ConversationPage() {
 
     try {
       const response = await aiService.sendConversationTurn({
-        sessionId: sessionIdFor(scenarioId, nativeLanguage, targetLanguage),
-        scenario: scenario.title,
+        sessionId: aiSessionIdFor(scenarioId, nativeLanguage, targetLanguage, customRoleplay),
+        scenario: activeScenarioTitle,
         targetLanguage,
         nativeLanguage,
         inputLanguage: targetLanguage,
@@ -527,10 +942,17 @@ function ConversationPage() {
         history: requestHistory,
         summary: stored.summary || '',
         memory: stored.memory || {},
+        customRoleplay: isCustomScenario ? customRoleplay : undefined,
       });
 
       const data = response.data || {};
       updateEntitlements(data.entitlements || entitlements);
+      const responseCustom = customRoleplayFromMemory(data.memory);
+      if (isCustomScenario && completeCustomRoleplay(responseCustom)) {
+        setCustomRoleplay(responseCustom);
+      }
+      const nextRoleState = data.roleState || roleStateForMemory(data.memory);
+      if (nextRoleState) setRoleState(nextRoleState);
 
       if (data.aiEnabled === false) {
         handsFreeRef.current = false;
@@ -587,7 +1009,7 @@ function ConversationPage() {
         ? quotaResetMessage(error.response?.data?.tokenUsage)
         : '';
       const message = planDenied
-        ? 'AI Practice is not available on this plan.'
+        ? 'Conversation Practice is not available on this plan.'
         : quotaDenied
           ? resetMessage
         : 'The practice partner had trouble replying. Please try again.';
@@ -785,9 +1207,15 @@ function ConversationPage() {
       <section className="conversation-shell" aria-label="AI conversation practice">
         <header className="conversation-header">
           <div>
-            <p className="conversation-kicker">AI Practice</p>
-            <h1>{scenario.title}</h1>
-            <p>{languageLabel}</p>
+            <p className="conversation-kicker">Conversation Practice</p>
+            <label className="conversation-header-scenario">
+              <span>Scenario</span>
+              <select value={scenarioId} onChange={(event) => setScenarioId(event.target.value)}>
+                {SCENARIOS.map((item) => (
+                  <option key={item.id} value={item.id}>{item.title}</option>
+                ))}
+              </select>
+            </label>
           </div>
           <div className="conversation-badges" aria-label="Plan and memory status">
             <span className={`conversation-plan ${tier} ${memoryScope}`}>{tier.toUpperCase()}</span>
@@ -795,6 +1223,7 @@ function ConversationPage() {
               <FiShield aria-hidden="true" />
               {memoryScope === 'cloud' ? 'Synced memory' : memoryScope === 'device' ? 'Device memory' : 'No AI memory'}
             </span>
+            <span className="conversation-language-badge">{languageLabel}</span>
           </div>
         </header>
 
@@ -812,15 +1241,6 @@ function ConversationPage() {
 
             <div className="conversation-side-content">
               <label className="conversation-field">
-                Scenario
-                <select value={scenarioId} onChange={(event) => setScenarioId(event.target.value)}>
-                  {SCENARIOS.map((item) => (
-                    <option key={item.id} value={item.id}>{item.title}</option>
-                  ))}
-                </select>
-              </label>
-
-              <label className="conversation-field">
                 Support
                 <select value={supportLevel} onChange={(event) => setSupportLevel(event.target.value)}>
                   {SUPPORT_LEVELS.map((item) => (
@@ -836,8 +1256,14 @@ function ConversationPage() {
                 </div>
                 <div>
                   <span>{uiLabels.goal}</span>
-                  <strong>{scenario.goal}</strong>
+                  <strong>{activeScenarioGoal}</strong>
                 </div>
+                {isCustomScenario && customRoleplay.situation && (
+                  <div>
+                    <span>{customSetupCopy(nativeLanguage).situationLabel}</span>
+                    <strong>{customRoleplay.situation}</strong>
+                  </div>
+                )}
               </div>
 
               {quickTurns.length > 0 && (
@@ -893,7 +1319,7 @@ function ConversationPage() {
               {!canUseAI && (
                 <div className="conversation-locked">
                   <FiWifiOff aria-hidden="true" />
-                <strong>AI Practice is not available on this plan.</strong>
+                <strong>Conversation Practice is not available on this plan.</strong>
                   <span>Daily AI practice is available on Free, Plus, and Pro.</span>
                 </div>
               )}
@@ -902,13 +1328,13 @@ function ConversationPage() {
                 <div className="conversation-locked">
                   <FiWifiOff aria-hidden="true" />
                   <strong>Daily AI limit reached.</strong>
-                  <span>You can continue after {formatResetAt(tokenUsage?.resetAt)}.</span>
+                  <span>{quotaMessage}</span>
                 </div>
               )}
 
               {canUseAI && !quotaExceeded && history.length === 0 && !loading && (
                 <div className="conversation-empty-main">
-                  <strong>Begin {scenario.title.toLowerCase()}</strong>
+                  <strong>Begin {activeScenarioTitle.toLowerCase()}</strong>
                   <span>{uiLabels.activePartner} is ready.</span>
                 </div>
               )}
@@ -916,7 +1342,7 @@ function ConversationPage() {
               {history.map((message) => (
                 <div key={message.id} className={`conversation-message ${message.role} ${message.error ? 'error' : ''}`}>
                   <div className="message-label">
-                    <span>{message.role === 'user' ? uiLabels.learner : uiLabels.activePartner}</span>
+                    <span>{message.role === 'user' ? uiLabels.activeLearner : uiLabels.activePartner}</span>
                     <span className="message-tools">
                       {message.role === 'assistant' && !message.error && (
                         <button type="button" onClick={() => speakMessage(message)} title="Play reply">
@@ -953,7 +1379,7 @@ function ConversationPage() {
                     sendTurn();
                   }
                 }}
-                placeholder={canUseAI ? 'Type your turn...' : 'AI Practice is not available on this plan.'}
+                placeholder={canUseAI ? 'Type your turn...' : 'Conversation Practice is not available on this plan.'}
                 rows={3}
                 disabled={!canUseAI || quotaExceeded}
               />

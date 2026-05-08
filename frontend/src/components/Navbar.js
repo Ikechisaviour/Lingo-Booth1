@@ -139,8 +139,8 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
 
           <li className="nav-item">
             <Link to="/conversation" className={`nav-link ${isActive('/conversation') ? 'active' : ''}`}>
-              <span className="nav-icon">AI</span>
-              <span className="nav-text">Practice</span>
+              <span className="nav-icon">&#128172;</span>
+              <span className="nav-text">Conversation</span>
             </Link>
           </li>
 
