@@ -1,8 +1,15 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { FiMic, FiRefreshCw, FiSend, FiShield, FiVolume2, FiVolumeX, FiWifiOff } from 'react-icons/fi';
 import { aiService } from '../services/api';
 import speechService from '../services/speechService';
 import LANGUAGES from '../config/languages';
+import {
+  displayPartsForMessage,
+  languageLabel as segmentLanguageLabel,
+  languageRole,
+  spokenPartsForMessage,
+} from '../utils/languageSegments';
 import './ConversationPage.css';
 
 const SESSION_ID = 'learner-conversation';
@@ -623,6 +630,8 @@ const SLOWER_COMMANDS = new Set([
 ]);
 
 function ConversationPage() {
+  const [searchParams] = useSearchParams();
+  const lessonId = searchParams.get('lessonId') || '';
   const [scenarioId, setScenarioId] = useState(SCENARIOS[0].id);
   const [supportLevel, setSupportLevel] = useState(SUPPORT_LEVELS[0].id);
   const [turn, setTurn] = useState('');
@@ -768,7 +777,7 @@ function ConversationPage() {
   }, [quotaExceeded, tokenUsage?.resetAt]);
 
   const speakMessage = async (message, options = {}) => {
-    const speechParts = Array.isArray(message?.speechParts) ? message.speechParts : [];
+    const speechParts = spokenPartsForMessage(message, targetLanguage, nativeLanguage);
     try {
       if (speechParts.length) {
         for (const part of speechParts) {
@@ -973,6 +982,7 @@ function ConversationPage() {
         summary: stored.summary || '',
         memory: stored.memory || {},
         customRoleplay: isCustomScenario ? customRoleplay : undefined,
+        lessonId: lessonId || undefined,
       });
 
       const data = response.data || {};
@@ -1004,6 +1014,7 @@ function ConversationPage() {
         coachingTip: data.coachingTip || '',
         nextSuggestedIntent: data.nextSuggestedIntent || '',
         speechParts: Array.isArray(data.speechParts) ? data.speechParts : [],
+        displayParts: Array.isArray(data.displayParts) ? data.displayParts : [],
       };
       lastAssistantRef.current = assistantTurn;
 
@@ -1232,9 +1243,28 @@ function ConversationPage() {
     }
   };
 
+  const renderMessageBody = (message) => {
+    const parts = displayPartsForMessage(message, targetLanguage, nativeLanguage);
+    if (parts.length <= 1) return <div className="message-body">{message.content}</div>;
+
+    return (
+      <div className="message-body language-segments">
+        {parts.map((part, index) => {
+          const role = languageRole(part, targetLanguage, nativeLanguage);
+          return (
+            <span key={`${part.language || 'part'}-${index}`} className={`language-segment ${role}`}>
+              <span className="language-segment-label">{segmentLanguageLabel(part)}</span>
+              <span>{part.text}</span>
+            </span>
+          );
+        })}
+      </div>
+    );
+  };
+
   return (
     <div className="conversation-page">
-      <section className="conversation-shell" aria-label="AI conversation practice">
+      <section className="conversation-shell" aria-label="Conversation practice">
         <header className="conversation-header">
           <div>
             <p className="conversation-kicker">Conversation Practice</p>
@@ -1263,7 +1293,7 @@ function ConversationPage() {
             <span className={`conversation-plan ${tier} ${memoryScope}`}>{tier.toUpperCase()}</span>
             <span className={`conversation-memory ${memoryScope}`}>
               <FiShield aria-hidden="true" />
-              {memoryScope === 'cloud' ? 'Synced memory' : memoryScope === 'device' ? 'Device memory' : 'No AI memory'}
+              {memoryScope === 'cloud' ? 'Synced memory' : memoryScope === 'device' ? 'Device memory' : 'No saved memory'}
             </span>
             <span className="conversation-language-badge">{languageLabel}</span>
           </div>
@@ -1347,7 +1377,7 @@ function ConversationPage() {
                 <div className="conversation-locked">
                   <FiWifiOff aria-hidden="true" />
                 <strong>Conversation Practice is not available on this plan.</strong>
-                  <span>Daily AI practice is available on Free, Plus, and Pro.</span>
+                  <span>Daily conversation practice is available on Free, Plus, and Pro.</span>
                 </div>
               )}
 
@@ -1379,7 +1409,7 @@ function ConversationPage() {
                       {message.language && <small>{message.language}</small>}
                     </span>
                   </div>
-                  <div className="message-body">{message.content}</div>
+                  {renderMessageBody(message)}
                   {message.coachingTip && <div className="message-tip">{message.coachingTip}</div>}
                 </div>
               ))}

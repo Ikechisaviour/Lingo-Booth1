@@ -27,22 +27,16 @@ const trData = require('./lessonData/tr');
 const bnData = require('./lessonData/bn');
 const taData = require('./lessonData/ta');
 
-// Helper function to create content items (outputs both legacy + generic fields)
-const createContentItem = (korean, romanization, english, type = 'word', example = '', exampleEnglish = '', breakdown = null) => ({
+// Helper function to create content items
+const createContentItem = (targetText, romanization, nativeText, type = 'word', exampleTarget = '', exampleNative = '', breakdown = null) => ({
   type,
-  // Generic language-agnostic fields
-  targetText: korean,
+  targetText,
   romanization,
-  nativeText: english,
-  pronunciation: romanization,
-  exampleTarget: example || korean,
-  exampleNative: exampleEnglish || english,
-  // Legacy fields (kept for backward compatibility)
-  korean,
-  english,
-  example: example || korean,
-  exampleEnglish: exampleEnglish || english,
-  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.korean, native: b.english, korean: b.korean, english: b.english })) } : {}),
+  nativeText,
+  pronunciation: romanization, // Assuming romanization is the primary pronunciation guide
+  exampleTarget: exampleTarget || targetText,
+  exampleNative: exampleNative || nativeText,
+  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.target, native: b.native })) } : {}),
 });
 
 const lessons = [
@@ -58,12 +52,12 @@ const lessons = [
       // Basic greetings
       createContentItem('안녕하세요', 'annyeonghaseyo', 'Hello', 'word', '안녕하세요, 만나서 반갑습니다', 'Hello, nice to meet you'),
       createContentItem('안녕', 'annyeong', 'Hi (informal)', 'word', '안녕, 잘 지냈어?', 'Hi, how have you been?'),
-      createContentItem('안녕히 가세요', 'annyeonghi gaseyo', 'Goodbye (to person leaving)', 'sentence', '안녕히 가세요, 조심히 가세요', 'Goodbye, go safely', [{ korean: '안녕히', english: 'peacefully' }, { korean: '가세요', english: 'please go' }]),
-      createContentItem('안녕히 계세요', 'annyeonghi gyeseyo', 'Goodbye (when you leave)', 'sentence', '안녕히 계세요, 다음에 봐요', 'Goodbye, see you next time', [{ korean: '안녕히', english: 'peacefully' }, { korean: '계세요', english: 'please stay' }]),
-      createContentItem('잘 가', 'jal ga', 'Bye (informal)', 'word', '잘 가, 내일 봐', 'Bye, see you tomorrow', [{ korean: '잘', english: 'well' }, { korean: '가', english: 'go' }]),
-      createContentItem('또 봐요', 'tto bwayo', 'See you again', 'sentence', '또 봐요, 좋은 하루 되세요', 'See you again, have a nice day', [{ korean: '또', english: 'again' }, { korean: '봐요', english: 'see' }]),
-      createContentItem('나중에 봐요', 'najunge bwayo', 'See you later', 'sentence', '나중에 봐요', 'See you later', [{ korean: '나중에', english: 'later' }, { korean: '봐요', english: 'see' }]),
-      createContentItem('내일 봐요', 'naeil bwayo', 'See you tomorrow', 'sentence', '내일 봐요', 'See you tomorrow', [{ korean: '내일', english: 'tomorrow' }, { korean: '봐요', english: 'see' }]),
+      createContentItem('안녕히 가세요', 'annyeonghi gaseyo', 'Goodbye (to person leaving)', 'sentence', '안녕히 가세요, 조심히 가세요', 'Goodbye, go safely', [{ target: '안녕히', native: 'peacefully' }, { target: '가세요', native: 'please go' }]),
+      createContentItem('안녕히 계세요', 'annyeonghi gyeseyo', 'Goodbye (when you leave)', 'sentence', '안녕히 계세요, 다음에 봐요', 'Goodbye, see you next time', [{ target: '안녕히', native: 'peacefully' }, { target: '계세요', native: 'please stay' }]),
+      createContentItem('잘 가', 'jal ga', 'Bye (informal)', 'word', '잘 가, 내일 봐', 'Bye, see you tomorrow', [{ target: '잘', native: 'well' }, { target: '가', native: 'go' }]),
+      createContentItem('또 봐요', 'tto bwayo', 'See you again', 'sentence', '또 봐요, 좋은 하루 되세요', 'See you again, have a nice day', [{ target: '또', native: 'again' }, { target: '봐요', native: 'see' }]),
+      createContentItem('나중에 봐요', 'najunge bwayo', 'See you later', 'sentence', '나중에 봐요', 'See you later', [{ target: '나중에', native: 'later' }, { target: '봐요', native: 'see' }]),
+      createContentItem('내일 봐요', 'naeil bwayo', 'See you tomorrow', 'sentence', '내일 봐요', 'See you tomorrow', [{ target: '내일', native: 'tomorrow' }, { target: '봐요', native: 'see' }]),
 
       // Thanking
       createContentItem('감사합니다', 'gamsahamnida', 'Thank you', 'word', '도와주셔서 감사합니다', 'Thank you for helping me'),
@@ -82,23 +76,23 @@ const lessons = [
       createContentItem('실례합니다', 'sillyehamnida', 'Excuse me', 'word', '실례합니다, 지나가겠습니다', 'Excuse me, I\'m passing through'),
 
       // Introductions
-      createContentItem('만나서 반갑습니다', 'mannaseo bangapseumnida', 'Nice to meet you', 'sentence', '처음 뵙겠습니다. 만나서 반갑습니다', 'How do you do. Nice to meet you', [{ korean: '만나서', english: 'having met' }, { korean: '반갑습니다', english: 'glad/happy' }]),
+      createContentItem('만나서 반갑습니다', 'mannaseo bangapseumnida', 'Nice to meet you', 'sentence', '처음 뵙겠습니다. 만나서 반갑습니다', 'How do you do. Nice to meet you', [{ target: '만나서', native: 'having met' }, { target: '반갑습니다', native: 'glad/happy' }]),
       createContentItem('반가워요', 'bangawoyo', 'Nice to meet you (casual)', 'sentence', '반가워요', 'Nice to meet you'),
-      createContentItem('처음 뵙겠습니다', 'cheoeum boepgetseumnida', 'How do you do (first meeting)', 'sentence', '처음 뵙겠습니다', 'How do you do', [{ korean: '처음', english: 'first time' }, { korean: '뵙겠습니다', english: 'I humbly meet you' }]),
-      createContentItem('제 이름은', 'je ireumeun', 'My name is', 'sentence', '제 이름은 김민수입니다', 'My name is Kim Minsu', [{ korean: '제', english: 'my (humble)' }, { korean: '이름은', english: 'name (topic)' }]),
-      createContentItem('이름이 뭐예요?', 'ireumi mwoyeyo?', 'What is your name?', 'sentence', '이름이 뭐예요?', 'What is your name?', [{ korean: '이름이', english: 'name (subject)' }, { korean: '뭐예요', english: 'what is' }]),
-      createContentItem('성함이 어떻게 되세요?', 'seonghami eotteoke doeseyo?', 'What is your name? (formal)', 'sentence', '성함이 어떻게 되세요?', 'What is your name?', [{ korean: '성함이', english: 'name (honorific, subject)' }, { korean: '어떻게', english: 'how' }, { korean: '되세요', english: 'is it (honorific)' }]),
+      createContentItem('처음 뵙겠습니다', 'cheoeum boepgetseumnida', 'How do you do (first meeting)', 'sentence', '처음 뵙겠습니다', 'How do you do', [{ target: '처음', native: 'first time' }, { target: '뵙겠습니다', native: 'I humbly meet you' }]),
+      createContentItem('제 이름은', 'je ireumeun', 'My name is', 'sentence', '제 이름은 김민수입니다', 'My name is Kim Minsu', [{ target: '제', native: 'my (humble)' }, { target: '이름은', native: 'name (topic)' }]),
+      createContentItem('이름이 뭐예요?', 'ireumi mwoyeyo?', 'What is your name?', 'sentence', '이름이 뭐예요?', 'What is your name?', [{ target: '이름이', native: 'name (subject)' }, { target: '뭐예요', native: 'what is' }]),
+      createContentItem('성함이 어떻게 되세요?', 'seonghami eotteoke doeseyo?', 'What is your name? (formal)', 'sentence', '성함이 어떻게 되세요?', 'What is your name?', [{ target: '성함이', native: 'name (honorific, subject)' }, { target: '어떻게', native: 'how' }, { target: '되세요', native: 'is it (honorific)' }]),
       createContentItem('저는', 'jeoneun', 'I am / As for me', 'word', '저는 학생입니다', 'I am a student'),
       createContentItem('나는', 'naneun', 'I (informal)', 'word', '나는 한국 사람이야', 'I am Korean'),
 
       // How are you
-      createContentItem('어떻게 지내세요?', 'eotteoke jinaeseyo?', 'How are you?', 'sentence', '요즘 어떻게 지내세요?', 'How have you been lately?', [{ korean: '어떻게', english: 'how' }, { korean: '지내세요', english: 'are you doing (honorific)' }]),
-      createContentItem('잘 지내요?', 'jal jinaeyo?', 'How are you? (casual)', 'sentence', '잘 지내요?', 'How are you?', [{ korean: '잘', english: 'well' }, { korean: '지내요', english: 'are you doing' }]),
+      createContentItem('어떻게 지내세요?', 'eotteoke jinaeseyo?', 'How are you?', 'sentence', '요즘 어떻게 지내세요?', 'How have you been lately?', [{ target: '어떻게', native: 'how' }, { target: '지내세요', native: 'are you doing (honorific)' }]),
+      createContentItem('잘 지내요?', 'jal jinaeyo?', 'How are you? (casual)', 'sentence', '잘 지내요?', 'How are you?', [{ target: '잘', native: 'well' }, { target: '지내요', native: 'are you doing' }]),
       createContentItem('어떠세요?', 'eotteoseyo?', 'How is it? / How are you?', 'sentence', '요즘 어떠세요?', 'How is it lately?'),
-      createContentItem('잘 지내요', 'jal jinaeyo', 'I\'m doing well', 'sentence', '네, 잘 지내요', 'Yes, I\'m doing well', [{ korean: '잘', english: 'well' }, { korean: '지내요', english: 'doing' }]),
-      createContentItem('잘 지냈어요', 'jal jinaesseoyo', 'I\'ve been well', 'sentence', '잘 지냈어요, 고마워요', 'I\'ve been well, thanks', [{ korean: '잘', english: 'well' }, { korean: '지냈어요', english: 'have been doing' }]),
+      createContentItem('잘 지내요', 'jal jinaeyo', 'I\'m doing well', 'sentence', '네, 잘 지내요', 'Yes, I\'m doing well', [{ target: '잘', native: 'well' }, { target: '지내요', native: 'doing' }]),
+      createContentItem('잘 지냈어요', 'jal jinaesseoyo', 'I\'ve been well', 'sentence', '잘 지냈어요, 고마워요', 'I\'ve been well, thanks', [{ target: '잘', native: 'well' }, { target: '지냈어요', native: 'have been doing' }]),
       createContentItem('괜찮아요', 'gwaenchanayo', 'I\'m okay', 'sentence', '괜찮아요', 'I\'m okay'),
-      createContentItem('그냥 그래요', 'geunyang geuraeyo', 'So-so / Just okay', 'sentence', '그냥 그래요', 'Just okay', [{ korean: '그냥', english: 'just' }, { korean: '그래요', english: 'like that / so-so' }]),
+      createContentItem('그냥 그래요', 'geunyang geuraeyo', 'So-so / Just okay', 'sentence', '그냥 그래요', 'Just okay', [{ target: '그냥', native: 'just' }, { target: '그래요', native: 'like that / so-so' }]),
       createContentItem('좋아요', 'johayo', 'Good / I\'m good', 'sentence', '아주 좋아요', 'Very good'),
 
       // Basic questions
@@ -110,24 +104,24 @@ const lessons = [
 
       // Please
       createContentItem('주세요', 'juseyo', 'Please give me', 'word', '물 좀 주세요', 'Please give me some water'),
-      createContentItem('해 주세요', 'hae juseyo', 'Please do it', 'sentence', '천천히 해 주세요', 'Please do it slowly', [{ korean: '해', english: 'do' }, { korean: '주세요', english: 'please give (do for me)' }]),
+      createContentItem('해 주세요', 'hae juseyo', 'Please do it', 'sentence', '천천히 해 주세요', 'Please do it slowly', [{ target: '해', native: 'do' }, { target: '주세요', native: 'please give (do for me)' }]),
       createContentItem('도와주세요', 'dowajuseyo', 'Please help me', 'sentence', '도와주세요', 'Please help me'),
-      createContentItem('가르쳐 주세요', 'gareuchyeo juseyo', 'Please teach me', 'sentence', '한국어를 가르쳐 주세요', 'Please teach me Korean', [{ korean: '가르쳐', english: 'teach' }, { korean: '주세요', english: 'please give (do for me)' }]),
+      createContentItem('가르쳐 주세요', 'gareuchyeo juseyo', 'Please teach me', 'sentence', '한국어를 가르쳐 주세요', 'Please teach me Korean', [{ target: '가르쳐', native: 'teach' }, { target: '주세요', native: 'please give (do for me)' }]),
 
       // Basic courtesy
       createContentItem('수고하세요', 'sugohaseyo', 'Thank you for your work / Good luck', 'sentence', '오늘도 수고하세요', 'Thank you for your work today too'),
       createContentItem('조심하세요', 'josimhaseyo', 'Be careful / Take care', 'sentence', '조심하세요', 'Be careful'),
-      createContentItem('안녕히 주무세요', 'annyeonghi jumuseyo', 'Good night', 'sentence', '안녕히 주무세요', 'Good night', [{ korean: '안녕히', english: 'peacefully' }, { korean: '주무세요', english: 'please sleep (honorific)' }]),
-      createContentItem('잘 자요', 'jal jayo', 'Sleep well (casual)', 'sentence', '잘 자요', 'Sleep well', [{ korean: '잘', english: 'well' }, { korean: '자요', english: 'sleep' }]),
-      createContentItem('좋은 아침이에요', 'joeun achimieyo', 'Good morning', 'sentence', '좋은 아침이에요', 'Good morning', [{ korean: '좋은', english: 'good' }, { korean: '아침이에요', english: 'it is morning' }]),
-      createContentItem('좋은 하루 되세요', 'joeun haru doeseyo', 'Have a good day', 'sentence', '좋은 하루 되세요', 'Have a good day', [{ korean: '좋은', english: 'good' }, { korean: '하루', english: 'day' }, { korean: '되세요', english: 'please have / become' }]),
-      createContentItem('즐거운 주말 보내세요', 'jeulgeoun jumal bonaeseyo', 'Have a great weekend', 'sentence', '즐거운 주말 보내세요', 'Have a great weekend', [{ korean: '즐거운', english: 'enjoyable' }, { korean: '주말', english: 'weekend' }, { korean: '보내세요', english: 'please spend' }]),
+      createContentItem('안녕히 주무세요', 'annyeonghi jumuseyo', 'Good night', 'sentence', '안녕히 주무세요', 'Good night', [{ target: '안녕히', native: 'peacefully' }, { target: '주무세요', native: 'please sleep (honorific)' }]),
+      createContentItem('잘 자요', 'jal jayo', 'Sleep well (casual)', 'sentence', '잘 자요', 'Sleep well', [{ target: '잘', native: 'well' }, { target: '자요', native: 'sleep' }]),
+      createContentItem('좋은 아침이에요', 'joeun achimieyo', 'Good morning', 'sentence', '좋은 아침이에요', 'Good morning', [{ target: '좋은', native: 'good' }, { target: '아침이에요', native: 'it is morning' }]),
+      createContentItem('좋은 하루 되세요', 'joeun haru doeseyo', 'Have a good day', 'sentence', '좋은 하루 되세요', 'Have a good day', [{ target: '좋은', native: 'good' }, { target: '하루', native: 'day' }, { target: '되세요', native: 'please have / become' }]),
+      createContentItem('즐거운 주말 보내세요', 'jeulgeoun jumal bonaeseyo', 'Have a great weekend', 'sentence', '즐거운 주말 보내세요', 'Have a great weekend', [{ target: '즐거운', native: 'enjoyable' }, { target: '주말', native: 'weekend' }, { target: '보내세요', native: 'please spend' }]),
 
       // Nationalities & Origins
-      createContentItem('한국 사람', 'hanguk saram', 'Korean person', 'word', '저는 한국 사람입니다', 'I am Korean', [{ korean: '한국', english: 'Korea' }, { korean: '사람', english: 'person' }]),
-      createContentItem('미국 사람', 'miguk saram', 'American person', 'word', '저는 미국 사람입니다', 'I am American', [{ korean: '미국', english: 'America' }, { korean: '사람', english: 'person' }]),
-      createContentItem('어디에서 왔어요?', 'eodieseo wasseoyo?', 'Where are you from?', 'sentence', '어디에서 왔어요?', 'Where are you from?', [{ korean: '어디에서', english: 'from where' }, { korean: '왔어요', english: 'did you come' }]),
-      createContentItem('어느 나라 사람이에요?', 'eoneu nara saramieyo?', 'What nationality are you?', 'sentence', '어느 나라 사람이에요?', 'What nationality are you?', [{ korean: '어느', english: 'which' }, { korean: '나라', english: 'country' }, { korean: '사람이에요', english: 'person are you' }]),
+      createContentItem('한국 사람', 'hanguk saram', 'Korean person', 'word', '저는 한국 사람입니다', 'I am Korean', [{ target: '한국', native: 'Korea' }, { target: '사람', native: 'person' }]),
+      createContentItem('미국 사람', 'miguk saram', 'American person', 'word', '저는 미국 사람입니다', 'I am American', [{ target: '미국', native: 'America' }, { target: '사람', native: 'person' }]),
+      createContentItem('어디에서 왔어요?', 'eodieseo wasseoyo?', 'Where are you from?', 'sentence', '어디에서 왔어요?', 'Where are you from?', [{ target: '어디에서', native: 'from where' }, { target: '왔어요', native: 'did you come' }]),
+      createContentItem('어느 나라 사람이에요?', 'eoneu nara saramieyo?', 'What nationality are you?', 'sentence', '어느 나라 사람이에요?', 'What nationality are you?', [{ target: '어느', native: 'which' }, { target: '나라', native: 'country' }, { target: '사람이에요', native: 'person are you' }]),
 
       // Occupations
       createContentItem('학생', 'haksaeng', 'Student', 'word', '저는 학생입니다', 'I am a student'),

@@ -1,12 +1,15 @@
 const {
   buildLanguagePairRedirect,
+  buildLessonBrief,
   detectDominantLanguage,
   detectOutOfPairLanguage,
   learnerRequestedNativeFirstOrder,
   orderSpeechPartsForPair,
   parseAIJsonContent,
   resolveConversationRoleState,
+  sanitizeClassAction,
   sanitizeCustomRoleplay,
+  teachingDirectivesFor,
 } = require('../utils/aiConversation');
 
 describe('ai conversation language pair guard', () => {
@@ -153,5 +156,145 @@ describe('ai conversation language pair guard', () => {
       situation: 'Office hours',
       goal: 'Ask about an assignment deadline',
     });
+  });
+});
+
+describe('class lesson brief and teaching directives', () => {
+  // A small synthetic lesson covers two activities and three item types so the
+  // tests can assert filtering, untagged-item passthrough, and section routing
+  // without depending on the textbook seed. Adding/removing fields here only
+  // affects the tests, not the production data.
+  const sampleLesson = {
+    title: 'Test Unit',
+    category: 'career',
+    difficulty: 'intermediate',
+    activities: [
+      {
+        id: 'vocab-act',
+        section: 'Vocabulary',
+        title: 'Words',
+        goals: ['Learn the words.'],
+        task: 'Make a sentence.',
+      },
+      {
+        id: 'pron-act',
+        section: 'Pronunciation',
+        title: 'Tense sounds',
+        goals: ['Hear the tense reading.'],
+        task: 'Say it back.',
+      },
+    ],
+    content: [
+      { type: 'word', targetText: '여권', romanization: 'yeokkwon', nativeText: 'passport', activityIds: ['pron-act'] },
+      { type: 'word', targetText: '능력', romanization: 'neungnyeok', nativeText: 'ability', activityIds: ['vocab-act'] },
+      { type: 'sentence', targetText: '저는 학생입니다.', nativeText: 'I am a student.', activityIds: ['vocab-act'] },
+      { type: 'word', targetText: '직업', romanization: 'jigeop', nativeText: 'job' }, // untagged
+    ],
+  };
+
+  it('returns all items when no activityId is given', () => {
+    const brief = buildLessonBrief(sampleLesson);
+    expect(brief.items).toHaveLength(4);
+    expect(brief.activeActivity).toBeNull();
+    expect(brief.availableActivities.map(a => a.id)).toEqual(['vocab-act', 'pron-act']);
+  });
+
+  it('filters items to a specific activity but keeps untagged items', () => {
+    const brief = buildLessonBrief(sampleLesson, 'vocab-act');
+    const targets = brief.items.map(i => i.target);
+    expect(targets).toContain('능력');
+    expect(targets).toContain('저는 학생입니다.');
+    expect(targets).toContain('직업'); // untagged is permissive, appears everywhere
+    expect(targets).not.toContain('여권'); // tagged for a different activity
+    expect(brief.activeActivity).toMatchObject({ id: 'vocab-act', section: 'Vocabulary' });
+  });
+
+  it('preserves the global lesson.content[] index in items[].globalIndex', () => {
+    const brief = buildLessonBrief(sampleLesson, 'pron-act');
+    expect(brief.items).toHaveLength(2); // 여권 + untagged 직업
+    const yeogwon = brief.items.find(i => i.target === '여권');
+    expect(yeogwon).toMatchObject({ globalIndex: 0, type: 'word' });
+  });
+
+  it('returns null for a lesson without a content array', () => {
+    expect(buildLessonBrief(null)).toBeNull();
+    expect(buildLessonBrief({ title: 'Empty' })).toBeNull();
+  });
+
+  it('produces empty directives when there is no lesson brief', () => {
+    expect(teachingDirectivesFor(null)).toEqual([]);
+    expect(teachingDirectivesFor(undefined)).toEqual([]);
+  });
+
+  it('routes Pronunciation activities to the tense-sound directive', () => {
+    const brief = buildLessonBrief(sampleLesson, 'pron-act');
+    const directives = teachingDirectivesFor(brief).join(' ');
+    expect(directives).toMatch(/tense/i);
+    expect(directives).toMatch(/spelling.*pronounced/i);
+  });
+
+  it('routes Vocabulary activities to the vocabulary directive', () => {
+    const brief = buildLessonBrief(sampleLesson, 'vocab-act');
+    const directives = teachingDirectivesFor(brief).join(' ');
+    expect(directives).toMatch(/Vocabulary activity/);
+    expect(directives).toMatch(/make their own sentence/);
+  });
+
+  it('falls back to default directives for an unknown section', () => {
+    const customBrief = buildLessonBrief({
+      ...sampleLesson,
+      activities: [{ id: 'mystery', section: 'Imaginary Drill', title: 'X' }],
+      content: [{ type: 'word', targetText: 'a', nativeText: 'b', activityIds: ['mystery'] }],
+    }, 'mystery');
+    const directives = teachingDirectivesFor(customBrief).join(' ');
+    expect(directives).toMatch(/No specific activity is selected|Walk through lessonBrief.items/);
+  });
+
+  it('sanitizes a structured classAction payload and trims oversize strings', () => {
+    const cleaned = sanitizeClassAction({
+      action: 'teach_selected_item',
+      activityId: 'pron-act',
+      activitySection: 'Pronunciation',
+      activityTitle: 'Glottalization: 여권',
+      activityGoals: ['Notice tense-sound pronunciation.', '', null],
+      activityTask: 'Listen and compare with the spelling.',
+      itemIndex: 18,
+      itemType: 'word',
+      target: '여권',
+      romanization: 'yeokkwon',
+      native: 'passport',
+      exampleTarget: '여권을 잃어버렸어요.',
+      exampleNative: 'I lost my passport.',
+      lessonTitle: '1과: 적성과 진로',
+    });
+
+    expect(cleaned).toMatchObject({
+      action: 'teach_selected_item',
+      activityId: 'pron-act',
+      activitySection: 'Pronunciation',
+      itemIndex: 18,
+      itemType: 'word',
+      target: '여권',
+    });
+    expect(cleaned.activityGoals).toEqual(['Notice tense-sound pronunciation.']);
+  });
+
+  it('rejects classAction payloads without an action verb', () => {
+    expect(sanitizeClassAction({})).toBeNull();
+    expect(sanitizeClassAction({ activityId: 'x' })).toBeNull();
+    expect(sanitizeClassAction(null)).toBeNull();
+    expect(sanitizeClassAction([])).toBeNull();
+  });
+
+  it('always asserts the new lessonProgress schema, not the legacy fields', () => {
+    const brief = buildLessonBrief(sampleLesson, 'vocab-act');
+    const directives = teachingDirectivesFor(brief).join(' ');
+    expect(directives).toContain('memory.lessonProgress');
+    expect(directives).toContain('activityId');
+    expect(directives).toContain('itemIndex');
+    expect(directives).toContain('itemType');
+    // Old fields must not appear in the contract anymore.
+    expect(directives).not.toMatch(/\bsection: "vocabulary"/);
+    expect(directives).not.toMatch(/\bactivityIndex\b/);
   });
 });

@@ -7,11 +7,13 @@ interface SettingsState {
   nativeLanguage: string;
   targetLanguage: string;
   preferredVoice: string | null;
+  preferredVoices: Record<string, string | null>;
 
   setLanguages: (native: string, target: string) => void;
   setNativeLanguage: (lang: string) => void;
   setTargetLanguage: (lang: string) => void;
-  setVoice: (voice: string | null) => void;
+  setVoice: (voice: string | null, language?: string) => void;
+  setVoiceMap: (voices: Record<string, string | null>) => void;
 }
 
 export const useSettingsStore = create<SettingsState>()(
@@ -20,6 +22,7 @@ export const useSettingsStore = create<SettingsState>()(
       nativeLanguage: '',
       targetLanguage: '',
       preferredVoice: null,
+      preferredVoices: {},
 
       setLanguages: (native, target) => {
         i18n.changeLanguage(native);
@@ -34,8 +37,20 @@ export const useSettingsStore = create<SettingsState>()(
       setTargetLanguage: (lang) =>
         set({ targetLanguage: lang }),
 
-      setVoice: (voice) =>
-        set({ preferredVoice: voice }),
+      setVoice: (voice, language) =>
+        set((state) => {
+          const code = language || state.targetLanguage || '';
+          const nextVoices = code
+            ? { ...state.preferredVoices, [code]: voice }
+            : state.preferredVoices;
+          return {
+            preferredVoice: !code || code === state.targetLanguage ? voice : state.preferredVoice,
+            preferredVoices: nextVoices,
+          };
+        }),
+
+      setVoiceMap: (voices) =>
+        set({ preferredVoices: voices || {} }),
     }),
     {
       name: 'settings-storage',

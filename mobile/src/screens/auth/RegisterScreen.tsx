@@ -39,7 +39,7 @@ const RegisterScreen: React.FC = () => {
   const { t, i18n } = useTranslation();
   const navigation = useNavigation<RegisterNavProp>();
   const { login, guestXP, clearGuestXP } = useAuthStore();
-  const { nativeLanguage, targetLanguage, setLanguages, setVoice } = useSettingsStore();
+  const { nativeLanguage, targetLanguage, setLanguages, setVoice, setVoiceMap } = useSettingsStore();
   const insets = useSafeAreaInsets();
   const { height: winHeight, width: winWidth } = useWindowDimensions();
   const isCompact = winHeight < 450 || winWidth < 380;
@@ -93,6 +93,7 @@ const RegisterScreen: React.FC = () => {
 
       login({ token, user });
       clearGuestXP();
+      if (user.preferredVoices) setVoiceMap(user.preferredVoices);
       if (user.preferredVoice) setVoice(user.preferredVoice);
 
       if (user.languageSetupComplete) {

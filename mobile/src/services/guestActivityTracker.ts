@@ -99,10 +99,14 @@ const guestActivityTracker = {
     state.lastActivity = 'flashcards';
   },
 
-  trackLesson() {
+  trackQuiz() {
     if (!state.initialized) return;
     state.lessonsViewed++;
-    state.lastActivity = 'lessons';
+    state.lastActivity = 'quiz';
+  },
+
+  trackLesson() {
+    this.trackQuiz();
   },
 
   setActivity(type: string) {

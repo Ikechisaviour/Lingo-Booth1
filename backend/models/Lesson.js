@@ -7,7 +7,7 @@ const lessonSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    enum: ['daily-life', 'business', 'travel', 'greetings', 'food', 'shopping', 'healthcare'],
+    enum: ['daily-life', 'business', 'travel', 'greetings', 'food', 'shopping', 'healthcare', 'career'],
     required: true,
   },
   difficulty: {
@@ -15,6 +15,51 @@ const lessonSchema = new mongoose.Schema({
     enum: ['beginner', 'intermediate', 'advanced', 'sentences'],
     default: 'beginner',
   },
+  // Routing flag for the learner UI:
+  //   'textbook' — appears on the /class page (AI-tutor walkthrough).
+  //   'practice' — appears on /lessons (quiz) and /flashcards (drill).
+  // Default 'practice' keeps every lesson seeded before this field landed
+  // visible in the exercise area, exactly where it was before.
+  track: {
+    type: String,
+    enum: ['textbook', 'practice'],
+    default: 'practice',
+  },
+  // What kind of textbook lesson this is. Drives ClassLessonPage rendering
+  // and AI-tutor directives. See docs/curriculum/MERGED_SYLLABUS.md for the
+  // full taxonomy.
+  //   foundation — Hangul/script foundations (no full activity grid)
+  //   thematic   — full 10-column scope (the Level 2 main-book shape)
+  //   workplace  — adult/migrant-worker functional units
+  //   grammar    — single grammar pattern or pattern cluster (Level 3)
+  //   review     — cumulative review pulling from earlier units (복습)
+  lessonType: {
+    type: String,
+    enum: ['foundation', 'thematic', 'workplace', 'grammar', 'review'],
+    default: 'thematic',
+  },
+  // Functional language goals from the workbook's "Expression Practice"
+  // (표현 연습) column. A unit may declare 1+ goals; the AI tutor surfaces
+  // each as a sub-mode of Speaking. Empty = no expression-practice drills.
+  //   id    — stable slug, e.g. 'seeking-advice'
+  //   label — short user-facing label
+  //   goal  — longer description of what the learner should produce
+  expressionPractice: [{
+    id: { type: String, required: true },
+    label: String,
+    goal: String,
+  }],
+  // For review lessons (lessonType === 'review'): the source units this
+  // review consolidates. Empty for non-review lessons.
+  reviewOf: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Lesson',
+  }],
+  // Keys of `VocabPool` documents the AI tutor may pull additional
+  // vocabulary from on demand. The brief surfaces the keys, not the pool
+  // contents (the pool is fetched only when the tutor decides it needs more
+  // words than the lesson itself contains).
+  relatedPools: [String],
   targetLang: {
     type: String,
     required: true,
@@ -23,12 +68,23 @@ const lessonSchema = new mongoose.Schema({
     type: String,
     default: 'en',
   },
+  // Optional: textbook-style activity tracks (Speaking, Reading and Speaking, Vocabulary, Grammar, etc.)
+  // When present, ClassLessonPage shows these as the agenda and filters content by activityIds.
+  activities: [{
+    id: { type: String, required: true },
+    section: String,
+    title: String,
+    goals: [String],
+    task: String,
+  }],
   content: [{
     type: {
       type: String,
       enum: ['word', 'sentence', 'conversation'],
       required: true,
     },
+    // Activity tags — which lesson activities this item supports. Empty/missing = available in all.
+    activityIds: [String],
     // Generic language-agnostic fields
     targetText: String,
     romanization: String,

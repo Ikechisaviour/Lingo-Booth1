@@ -123,7 +123,9 @@ async function synthesize(text, lang, voice, rate, res) {
   // Determine voice: explicit voice > default for lang > English fallback
   const primaryVoice = voice || DEFAULT_VOICES[lang] || DEFAULT_VOICES['en-US'];
   // Extract locale from voice name (e.g. 'ko-KR-SunHiNeural' → 'ko-KR')
-  const voiceLocale = lang || primaryVoice.split('-').slice(0, 2).join('-');
+  const voiceLocale = voice
+    ? primaryVoice.split('-').slice(0, 2).join('-')
+    : lang || primaryVoice.split('-').slice(0, 2).join('-');
   const escapedText = escapeXml(text.trim());
 
   // Build list of voices to try: requested/familiar voice first, female default next.

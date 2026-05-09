@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { lessonService, progressService, userService, guestXPHelper } from '../services/api';
+import { quizService, progressService, userService, guestXPHelper } from '../services/api';
 import guestActivityTracker from '../services/guestActivityTracker';
 import speechService from '../services/speechService';
 import { getTargetLangCode, getNativeLangCode, getTargetLangName, getNativeLangName } from '../config/languages';
-import './LessonDetail.css';
+import './QuizDetailPage.css';
 
-function LessonDetail() {
+function QuizDetailPage() {
   const { t } = useTranslation();
-  const { id } = useParams();
+  const { quizId } = useParams();
+  const id = quizId;
   const navigate = useNavigate();
   const [lesson, setLesson] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -58,9 +59,9 @@ function LessonDetail() {
     if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
     saveTimerRef.current = setTimeout(() => {
       userService.saveActivityState(userId, {
-        activityType: 'lesson',
-        lessonId: id,
-        lessonIndex: index,
+        activityType: 'quiz',
+        quizId: id,
+        quizIndex: index,
       }).catch(err => console.error('Failed to save activity state:', err));
     }, 500);
   }, [userId, id]);
@@ -100,14 +101,14 @@ function LessonDetail() {
 
     // Read playlist from sessionStorage
     try {
-      const stored = sessionStorage.getItem('lessonPlaylist');
+      const stored = sessionStorage.getItem('quizPlaylist');
       if (stored) {
         const parsed = JSON.parse(stored);
-        if (parsed.lessonIds && parsed.lessonIds[parsed.currentIndex] === id) {
-          setPlaylist(parsed);
+        const quizIds = parsed.quizIds;
+        if (quizIds && quizIds[parsed.currentIndex] === id) {
+          setPlaylist({ ...parsed, quizIds });
         } else {
           // URL mismatch — user navigated away, clear playlist
-          sessionStorage.removeItem('lessonPlaylist');
           setPlaylist(null);
         }
       } else {
@@ -124,20 +125,22 @@ function LessonDetail() {
     if (!userId || !lesson) return;
     userService.getActivityState(userId).then(res => {
       const state = res.data;
-      if (state.activityType === 'lesson' && state.lesson && state.lessonIndex > 0) {
-        if (state.lesson._id === id) {
+      const savedQuiz = state.quiz || state.lesson;
+      const savedQuizIndex = state.quizIndex ?? state.lessonIndex ?? 0;
+      if ((state.activityType === 'quiz' || state.activityType === 'lesson') && savedQuiz && savedQuizIndex > 0) {
+        if (savedQuiz._id === id) {
           // Same lesson - restore position via stepPosition so counter stays in sync
-          const restoredStep = Math.min(state.lessonIndex, lesson.content.length - 1);
+          const restoredStep = Math.min(savedQuizIndex, lesson.content.length - 1);
           setStepPosition(restoredStep);
           setVisitedItems(new Set(Array.from({ length: restoredStep + 1 }, (_, i) => i)));
           setReadyToSave(true);
         } else {
           // Different lesson in progress - show continue prompt (don't enable saving yet)
           setContinuePrompt({
-            lessonId: state.lesson._id,
-            lessonTitle: state.lesson.title || 'Untitled Lesson',
-            lessonIndex: state.lessonIndex,
-            activityType: 'lesson',
+            quizId: savedQuiz._id,
+            quizTitle: savedQuiz.title || 'Untitled Quiz',
+            quizIndex: savedQuizIndex,
+            activityType: 'quiz',
           });
         }
       } else if (state.activityType === 'flashcard' && state.flashcardIndex > 0) {
@@ -224,9 +227,9 @@ function LessonDetail() {
   const fetchLesson = async () => {
     try {
       setLoading(true);
-      const response = await lessonService.getLesson(id);
+      const response = await quizService.getQuiz(id);
       setLesson(response.data);
-      guestActivityTracker.trackLesson();
+      guestActivityTracker.trackQuiz();
       setError('');
     } catch (err) {
       setError(t('lessonDetail.failedToLoad'));
@@ -239,7 +242,7 @@ function LessonDetail() {
   const retryTranslation = async () => {
     setRetryingTranslation(true);
     try {
-      const response = await lessonService.getLesson(id);
+      const response = await quizService.getQuiz(id);
       setLesson(response.data);
     } catch (err) {
       console.error('Retry translation failed:', err);
@@ -306,22 +309,22 @@ function LessonDetail() {
     if (!category) return;
     try {
       // Filter by selected category + current difficulty
-      const res = await lessonService.getLessons(category, lesson.difficulty || '');
-      let lessons = res.data;
-      if (lessons.length > 0) {
-        const target = lessons.find(l => l._id !== id) || lessons[0];
-        navigate(`/lessons/${target._id}`);
+      const res = await quizService.getQuizzes(category, lesson.difficulty || '');
+      let quizzes = res.data;
+      if (quizzes.length > 0) {
+        const target = quizzes.find(q => q._id !== id) || quizzes[0];
+        navigate(`/quiz/${target._id}`);
         return;
       }
       // Fallback: category only if no match with both filters
-      const fallback = await lessonService.getLessons(category, '');
-      lessons = fallback.data;
-      if (lessons.length > 0) {
-        const target = lessons.find(l => l._id !== id) || lessons[0];
-        navigate(`/lessons/${target._id}`);
+      const fallback = await quizService.getQuizzes(category, '');
+      quizzes = fallback.data;
+      if (quizzes.length > 0) {
+        const target = quizzes.find(q => q._id !== id) || quizzes[0];
+        navigate(`/quiz/${target._id}`);
       }
     } catch (err) {
-      console.error('Failed to fetch lessons by category:', err);
+      console.error('Failed to fetch quizzes by category:', err);
     }
   };
 
@@ -329,22 +332,22 @@ function LessonDetail() {
     if (!difficulty) return;
     try {
       // Filter by current category + selected difficulty
-      const res = await lessonService.getLessons(lesson.category || '', difficulty);
-      let lessons = res.data;
-      if (lessons.length > 0) {
-        const target = lessons.find(l => l._id !== id) || lessons[0];
-        navigate(`/lessons/${target._id}`);
+      const res = await quizService.getQuizzes(lesson.category || '', difficulty);
+      let quizzes = res.data;
+      if (quizzes.length > 0) {
+        const target = quizzes.find(q => q._id !== id) || quizzes[0];
+        navigate(`/quiz/${target._id}`);
         return;
       }
       // Fallback: difficulty only if no match with both filters
-      const fallback = await lessonService.getLessons('', difficulty);
-      lessons = fallback.data;
-      if (lessons.length > 0) {
-        const target = lessons.find(l => l._id !== id) || lessons[0];
-        navigate(`/lessons/${target._id}`);
+      const fallback = await quizService.getQuizzes('', difficulty);
+      quizzes = fallback.data;
+      if (quizzes.length > 0) {
+        const target = quizzes.find(q => q._id !== id) || quizzes[0];
+        navigate(`/quiz/${target._id}`);
       }
     } catch (err) {
-      console.error('Failed to fetch lessons by difficulty:', err);
+      console.error('Failed to fetch quizzes by difficulty:', err);
     }
   };
 
@@ -449,8 +452,8 @@ function LessonDetail() {
       if (userId) {
         await userService.saveActivityState(userId, {
           activityType: null,
-          lessonId: null,
-          lessonIndex: 0,
+          quizId: null,
+          quizIndex: 0,
         }).catch(() => {});
       }
 
@@ -458,14 +461,14 @@ function LessonDetail() {
       if (playlist && playlist.currentIndex < playlist.totalCount - 1) {
         const nextIndex = playlist.currentIndex + 1;
         const updated = { ...playlist, currentIndex: nextIndex };
-        sessionStorage.setItem('lessonPlaylist', JSON.stringify(updated));
-        navigate(`/lessons/${playlist.lessonIds[nextIndex]}`);
+        sessionStorage.setItem('quizPlaylist', JSON.stringify(updated));
+        navigate(`/quiz/${playlist.quizIds[nextIndex]}`);
         return;
       }
 
-      // Last lesson in playlist or no playlist — go back to lessons list
-      sessionStorage.removeItem('lessonPlaylist');
-      navigate('/lessons');
+      // Last lesson in playlist or no playlist - go back to the quiz list.
+      sessionStorage.removeItem('quizPlaylist');
+      navigate('/quiz');
     } catch (err) {
       console.error('Error recording progress:', err);
     }
@@ -475,7 +478,7 @@ function LessonDetail() {
     if (continuePrompt.activityType === 'flashcard') {
       navigate('/flashcards');
     } else {
-      navigate(`/lessons/${continuePrompt.lessonId}`);
+      navigate(`/quiz/${continuePrompt.quizId}`);
     }
     setContinuePrompt(null);
   };
@@ -484,9 +487,9 @@ function LessonDetail() {
     // Clear old activity state and start this lesson fresh
     if (userId) {
       await userService.saveActivityState(userId, {
-        activityType: 'lesson',
-        lessonId: id,
-        lessonIndex: 0,
+        activityType: 'quiz',
+        quizId: id,
+        quizIndex: 0,
       }).catch(() => {});
     }
     setContinuePrompt(null);
@@ -511,8 +514,8 @@ function LessonDetail() {
     return (
       <div className="container">
         <div className="error">{error || t('lessonDetail.contentNotAvailable')}</div>
-        <button className="btn btn-primary" onClick={() => navigate('/lessons')}>
-          {t('lessons.backToLessons')}
+        <button className="btn btn-primary" onClick={() => navigate('/quiz')}>
+          Back to Quiz
         </button>
       </div>
     );
@@ -527,7 +530,7 @@ function LessonDetail() {
             {continuePrompt.activityType === 'flashcard' ? (
               <p>{t('lessonDetail.flashcardInProgress')}</p>
             ) : (
-              <p dangerouslySetInnerHTML={{ __html: t('lessonDetail.lessonInProgress', { title: continuePrompt.lessonTitle, index: continuePrompt.lessonIndex + 1 }) }} />
+              <p dangerouslySetInnerHTML={{ __html: t('lessonDetail.lessonInProgress', { title: continuePrompt.quizTitle, index: continuePrompt.quizIndex + 1 }) }} />
             )}
             <div className="continue-modal-actions">
               <button className="btn btn-primary" onClick={handleContinueExisting}>
@@ -914,14 +917,14 @@ function LessonDetail() {
         </div>
 
         <button className="btn" onClick={() => {
-          sessionStorage.removeItem('lessonPlaylist');
-          navigate('/lessons');
+          sessionStorage.removeItem('quizPlaylist');
+          navigate('/quiz');
         }}>
-          {playlist ? `✕ ${t('lessonDetail.exitPlaylist')}` : `← ${t('lessons.backToLessons')}`}
+          {playlist ? `✕ ${t('lessonDetail.exitPlaylist')}` : '← Back to Quiz'}
         </button>
       </div>
     </div>
   );
 }
 
-export default LessonDetail;
+export default QuizDetailPage;

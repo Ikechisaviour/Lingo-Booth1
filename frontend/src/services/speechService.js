@@ -142,6 +142,11 @@ class SpeechService {
       this.preferredVoice = null;
     } else {
       this.preferredVoice = storedVoice;
+      const targetCode = localStorage.getItem('targetLanguage') || 'ko';
+      if (storedVoice && !localStorage.getItem(`preferredVoice:${targetCode}`)) {
+        localStorage.setItem(`preferredVoice:${targetCode}`, storedVoice);
+        this._setVoiceInMap(targetCode, storedVoice);
+      }
     }
 
     // Chrome desktop blocks audio until user interacts with the page.
@@ -155,6 +160,36 @@ class SpeechService {
    */
   _isValidEdgeVoice(voiceName) {
     return typeof voiceName === 'string' && /Neural$/i.test(voiceName);
+  }
+
+  _languageCodeForLocale(langCode) {
+    const value = String(langCode || '').trim();
+    if (!value) return '';
+    const exact = Object.entries(LANGUAGES).find(([, language]) => language.ttsLocale === value);
+    if (exact) return exact[0];
+    const prefix = value.split('-')[0].toLowerCase();
+    return LANGUAGES[prefix] ? prefix : '';
+  }
+
+  _voiceStorageKey(languageCode) {
+    return `preferredVoice:${String(languageCode || '').trim().toLowerCase()}`;
+  }
+
+  getVoiceMap() {
+    try {
+      return JSON.parse(localStorage.getItem('preferredVoices') || '{}') || {};
+    } catch (_) {
+      return {};
+    }
+  }
+
+  _setVoiceInMap(languageCode, voiceName) {
+    const code = String(languageCode || '').trim().toLowerCase();
+    if (!code) return;
+    const voices = this.getVoiceMap();
+    if (!voiceName) delete voices[code];
+    else voices[code] = voiceName;
+    localStorage.setItem('preferredVoices', JSON.stringify(voices));
   }
 
   /**
@@ -205,21 +240,23 @@ class SpeechService {
    * "Hi (informal)" -> [{text:"Hi"}, {text:"informal", isContext:true}]
    */
   _parseSegments(text) {
+    const value = String(text || '').trim();
+    if (!value) return [];
+
     const segments = [];
     const regex = /\(([^)]+)\)/g;
     let lastIndex = 0;
     let match;
 
-    while ((match = regex.exec(text)) !== null) {
-      const before = text.substring(lastIndex, match.index).trim();
+    while ((match = regex.exec(value)) !== null) {
+      const before = value.substring(lastIndex, match.index).trim();
       if (before) segments.push({ text: before, isContext: false });
-      segments.push({ text: match[1].trim(), isContext: true });
+      if (match[1].trim()) segments.push({ text: match[1].trim(), isContext: true });
       lastIndex = regex.lastIndex;
     }
 
-    const rest = text.substring(lastIndex).trim();
+    const rest = value.substring(lastIndex).trim();
     if (rest) segments.push({ text: rest, isContext: false });
-    if (segments.length === 0) segments.push({ text: text, isContext: false });
 
     return segments;
   }
@@ -231,12 +268,15 @@ class SpeechService {
    * stack on iOS Safari.
    */
   _buildAudioUrl(text, lang, voice) {
-    const cacheKey = `${voice || lang}:${text}`;
+    const cleanText = String(text || '').trim();
+    if (!cleanText) return '';
+
+    const cacheKey = `${voice || lang}:${cleanText}`;
     if (this._audioCache.has(cacheKey)) {
       return this._audioCache.get(cacheKey);
     }
 
-    const url = ttsService.buildSpeakUrl(text, lang, voice);
+    const url = ttsService.buildSpeakUrl(cleanText, lang, voice);
 
     // Manage cache size (evict oldest entry)
     if (this._audioCache.size >= this._maxCacheSize) {
@@ -431,7 +471,11 @@ class SpeechService {
       // Check if cancelled
       if (this._abortController?.signal.aborted) return;
 
-      const seg = segments[i];
+      const seg = {
+        ...segments[i],
+        text: String(segments[i]?.text || '').trim(),
+      };
+      if (!seg.text) continue;
 
       // Pause before context segments
       if (seg.isContext && i > 0) {
@@ -471,18 +515,19 @@ class SpeechService {
   speak(text, options = {}) {
     this._stopCurrent(); // preserve bridge
 
-    if (!text) {
+    const cleanText = String(text || '').trim();
+    if (!cleanText) {
       console.warn('No text provided to speak');
       return;
     }
 
     this._abortController = new AbortController();
 
-    const segments = this._parseSegments(text);
-    const langCode = options.lang || this.detectLanguage(text);
+    const segments = this._parseSegments(cleanText);
+    const langCode = options.lang || this.detectLanguage(cleanText);
 
     // Use preferred voice if the detected language matches the user's target language
-    const voice = this.getPreferredVoiceForLang(langCode);
+    const voice = options.voice || this.getPreferredVoiceForLang(langCode);
 
     this._speakSegments(segments, langCode, voice).catch(err => {
       if (!this._abortController?.signal.aborted) {
@@ -498,13 +543,14 @@ class SpeechService {
   speakAsync(text, options = {}) {
     this._stopCurrent(); // preserve bridge
 
-    if (!text) return Promise.resolve();
+    const cleanText = String(text || '').trim();
+    if (!cleanText) return Promise.resolve();
 
     this._abortController = new AbortController();
 
-    const segments = this._parseSegments(text);
-    const langCode = options.lang || this.detectLanguage(text);
-    const voice = this.getPreferredVoiceForLang(langCode);
+    const segments = this._parseSegments(cleanText);
+    const langCode = options.lang || this.detectLanguage(cleanText);
+    const voice = options.voice || this.getPreferredVoiceForLang(langCode);
 
     return this._speakSegments(segments, langCode, voice).catch(err => {
       if (!this._abortController?.signal.aborted) {
@@ -532,7 +578,7 @@ class SpeechService {
 
     const segments = this._parseSegments(text);
     const langCode = options.lang || this.detectLanguage(text);
-    const voice = this.getPreferredVoiceForLang(langCode);
+    const voice = options.voice || this.getPreferredVoiceForLang(langCode);
 
     const playAll = async () => {
       for (let t = 0; t < times; t++) {
@@ -561,32 +607,55 @@ class SpeechService {
    * their target language, otherwise null (uses default).
    */
   getPreferredVoiceForLang(langCode) {
+    const languageCode = this._languageCodeForLocale(langCode);
+    if (!languageCode) return null;
+
+    const stored = localStorage.getItem(this._voiceStorageKey(languageCode))
+      || this.getVoiceMap()[languageCode];
+    if (stored && this._isValidEdgeVoice(stored)) return stored;
+
     const targetCode = localStorage.getItem('targetLanguage') || 'ko';
-    const ttsLocale = LANGUAGES[targetCode]?.ttsLocale;
-    if (langCode === ttsLocale && this.preferredVoice) {
-      return this.preferredVoice;
-    }
+    if (languageCode === targetCode && this.preferredVoice) return this.preferredVoice;
+
     return null;
   }
 
   /**
    * Set the preferred voice by name (Edge TTS voice name)
    */
-  setVoice(voiceName) {
+  setVoice(voiceName, languageCode = localStorage.getItem('targetLanguage') || 'ko') {
+    const code = String(languageCode || '').trim().toLowerCase();
     if (!voiceName || !this._isValidEdgeVoice(voiceName)) {
-      localStorage.removeItem('preferredVoice');
-      this.preferredVoice = null;
+      if (code) {
+        localStorage.removeItem(this._voiceStorageKey(code));
+        this._setVoiceInMap(code, null);
+      }
+      if (!code || code === (localStorage.getItem('targetLanguage') || 'ko')) {
+        localStorage.removeItem('preferredVoice');
+        this.preferredVoice = null;
+      }
       return;
     }
-    this.preferredVoice = voiceName;
-    localStorage.setItem('preferredVoice', voiceName);
+
+    if (code) {
+      localStorage.setItem(this._voiceStorageKey(code), voiceName);
+      this._setVoiceInMap(code, voiceName);
+    }
+    if (!code || code === (localStorage.getItem('targetLanguage') || 'ko')) {
+      this.preferredVoice = voiceName;
+      localStorage.setItem('preferredVoice', voiceName);
+    }
   }
 
   /**
    * Get the currently selected voice name
    */
-  getSelectedVoiceName() {
-    return this.preferredVoice;
+  getSelectedVoiceName(languageCode = localStorage.getItem('targetLanguage') || 'ko') {
+    const code = String(languageCode || '').trim().toLowerCase();
+    if (!code) return this.preferredVoice;
+    return localStorage.getItem(this._voiceStorageKey(code))
+      || this.getVoiceMap()[code]
+      || (code === (localStorage.getItem('targetLanguage') || 'ko') ? this.preferredVoice : null);
   }
 
   // ─── Pre-fetch (background audio cache) ────────────────────────

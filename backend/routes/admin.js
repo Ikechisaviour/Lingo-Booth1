@@ -6,8 +6,10 @@ const Lesson = require('../models/Lesson');
 const Flashcard = require('../models/Flashcard');
 const Progress = require('../models/Progress');
 const GuestSession = require('../models/GuestSession');
+const ErrorReport = require('../models/ErrorReport');
 const { verifyToken, isAdmin } = require('../middleware/auth');
 const { getAiEntitlements } = require('../utils/subscription');
+const { recordServerError } = require('../utils/errorReporting');
 
 const DEEPSEEK_API_URL = 'https://api.deepseek.com/chat/completions';
 
@@ -270,6 +272,16 @@ async function handleSpeakingDemoConversation(req, res) {
     return res.json(result);
   } catch (error) {
     console.error('Admin speaking demo conversation error:', error.message || error);
+    await recordServerError(req, {
+      error,
+      message: error.message || 'Admin speaking demo conversation failed',
+      route: req.originalUrl || '/api/admin/speaking-demo/conversation',
+      metadata: {
+        scenario: req.body?.scenario,
+        targetLanguage: req.body?.targetLanguage,
+        nativeLanguage: req.body?.nativeLanguage,
+      },
+    });
     return res.status(500).json({ message: 'Conversation partner is temporarily unavailable. Please try again.' });
   }
 }
@@ -290,12 +302,14 @@ router.use(isAdmin);
 router.get('/stats', async (req, res) => {
   try {
     // Basic counts
-    const [totalUsers, totalLessons, totalFlashcards, totalProgress, totalGuestSessions] = await Promise.all([
+    const [totalUsers, totalLessons, totalFlashcards, totalProgress, totalGuestSessions, totalErrorReports, openErrorReports] = await Promise.all([
       User.countDocuments(),
       Lesson.countDocuments(),
       Flashcard.countDocuments({ isDefault: { $ne: true } }),
       Progress.countDocuments(),
       GuestSession.countDocuments(),
+      ErrorReport.countDocuments(),
+      ErrorReport.countDocuments({ acknowledged: false }),
     ]);
 
     // User status counts
@@ -399,6 +413,8 @@ router.get('/stats', async (req, res) => {
         challengeModeUsers,
         relaxedModeUsers,
         totalGuestSessions,
+        totalErrorReports,
+        openErrorReports,
       },
       activity: {
         activeUsersToday,
@@ -416,7 +432,73 @@ router.get('/stats', async (req, res) => {
   }
 });
 
-// Admin-only AI speaking demo conversation turn.
+// Get client-side failure reports for admins.
+router.get('/error-reports', async (req, res) => {
+  try {
+    const page = Math.max(parseInt(req.query.page, 10) || 1, 1);
+    const limit = Math.min(Math.max(parseInt(req.query.limit, 10) || 50, 1), 100);
+    const status = String(req.query.status || 'open').toLowerCase();
+    const severity = String(req.query.severity || '').toLowerCase();
+    const source = String(req.query.source || '').toLowerCase();
+
+    const filter = {};
+    if (status === 'open') filter.acknowledged = false;
+    if (status === 'acknowledged') filter.acknowledged = true;
+    if (['info', 'warning', 'error', 'critical'].includes(severity)) filter.severity = severity;
+    if (['web', 'mobile', 'admin-web', 'backend', 'unknown'].includes(source)) filter.source = source;
+
+    const skip = (page - 1) * limit;
+    const [reports, total, openCount, criticalOpenCount] = await Promise.all([
+      ErrorReport.find(filter)
+        .populate('userId', 'username email role subscriptionTier')
+        .sort({ createdAt: -1 })
+        .skip(skip)
+        .limit(limit)
+        .lean(),
+      ErrorReport.countDocuments(filter),
+      ErrorReport.countDocuments({ acknowledged: false }),
+      ErrorReport.countDocuments({ acknowledged: false, severity: 'critical' }),
+    ]);
+
+    res.json({
+      reports,
+      total,
+      page,
+      totalPages: Math.max(Math.ceil(total / limit), 1),
+      openCount,
+      criticalOpenCount,
+    });
+  } catch (error) {
+    console.error('Admin error reports fetch error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Acknowledge a failure after an admin has reviewed it.
+router.put('/error-reports/:reportId/acknowledge', async (req, res) => {
+  try {
+    const report = await ErrorReport.findByIdAndUpdate(
+      req.params.reportId,
+      {
+        acknowledged: true,
+        acknowledgedAt: new Date(),
+        acknowledgedBy: req.userId,
+      },
+      { new: true }
+    );
+
+    if (!report) {
+      return res.status(404).json({ message: 'Error report not found' });
+    }
+
+    res.json({ message: 'Failure acknowledged', report });
+  } catch (error) {
+    console.error('Admin error report acknowledge error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Admin-only speaking demo conversation turn.
 // This is intentionally kept under /api/admin so it cannot be reached by learners.
 router.post('/speaking-demo/conversation', async (req, res) => {
   return handleSpeakingDemoConversation(req, res);

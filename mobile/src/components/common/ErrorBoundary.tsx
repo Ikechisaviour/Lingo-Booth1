@@ -2,6 +2,7 @@ import React, { Component, ErrorInfo, ReactNode } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text, Button } from 'react-native-paper';
 import { colors } from '../../config/theme';
+import { reportClientError } from '../../services/errorReporter';
 
 interface Props {
   children: ReactNode;
@@ -25,6 +26,13 @@ class ErrorBoundary extends Component<Props, State> {
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error('ErrorBoundary caught:', error, errorInfo);
+    reportClientError({
+      kind: 'error-boundary',
+      severity: 'critical',
+      message: error.message || 'Mobile screen crashed',
+      stack: error.stack || '',
+      componentStack: errorInfo.componentStack || '',
+    });
   }
 
   handleReset = () => {

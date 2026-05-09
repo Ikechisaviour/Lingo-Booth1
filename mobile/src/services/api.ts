@@ -3,6 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { API_URL } from '../config/api';
 import { useAuthStore } from '../stores/authStore';
 import { useSettingsStore } from '../stores/settingsStore';
+import { reportApiError } from './errorReporter';
 
 const api = axios.create({
   baseURL: API_URL,
@@ -76,6 +77,7 @@ api.interceptors.response.use(
           return api(config);
         } catch {
           // Refresh failed — force logout
+          reportApiError(error, { phase: 'auth-refresh-failed' });
           useAuthStore.getState().logout();
           error._forcedLogout = true;
           return Promise.reject(error);
@@ -115,6 +117,7 @@ api.interceptors.response.use(
       useAuthStore.getState().logout();
       error._forcedLogout = true;
     }
+    reportApiError(error);
     return Promise.reject(error);
   },
 );
@@ -142,19 +145,28 @@ export const authService = {
     api.post('/auth/resend-verification'),
 };
 
-export const lessonService = {
-  getLessons: (category?: string, difficulty?: string) => {
+export const quizService = {
+  getQuizzes: (category?: string, difficulty?: string) => {
     const { targetLanguage, nativeLanguage } = useSettingsStore.getState();
     const targetLang = targetLanguage;
     const nativeLang = nativeLanguage;
-    return api.get('/lessons', { params: { category, difficulty, targetLang, nativeLang } });
+    return api.get('/quiz', { params: { category, difficulty, targetLang, nativeLang } });
   },
-  getLesson: (id: string) => {
+  getQuiz: (quizId: string) => {
     const nativeLang = useSettingsStore.getState().nativeLanguage;
-    return api.get(`/lessons/${id}`, { params: { nativeLang }, timeout: 30000 });
+    return api.get(`/quiz/${quizId}`, { params: { nativeLang }, timeout: 30000 });
   },
-  createLesson: (lessonData: object) =>
-    api.post('/lessons', lessonData),
+};
+
+export const classLessonService = {
+  getClassLessons: () => {
+    const { targetLanguage, nativeLanguage } = useSettingsStore.getState();
+    return api.get('/class-lessons', { params: { targetLang: targetLanguage, nativeLang: nativeLanguage } });
+  },
+  getClassLesson: (classLessonId: string) => {
+    const nativeLang = useSettingsStore.getState().nativeLanguage;
+    return api.get(`/class-lessons/${classLessonId}`, { params: { nativeLang }, timeout: 30000 });
+  },
 };
 
 export const flashcardService = {
@@ -238,7 +250,7 @@ export const ttsService = {
   getVoices: (lang?: string) =>
     api.get('/tts/voices', { params: lang ? { lang } : {} }),
   buildSpeakUrl: (text: string, lang: string, voice?: string, rate?: string): string => {
-    const params = new URLSearchParams({ text, lang });
+    const params = new URLSearchParams({ text: String(text || '').trim(), lang });
     if (voice) params.set('voice', voice);
     if (rate) params.set('rate', rate);
     return `${API_URL}/tts?${params.toString()}`;
@@ -267,16 +279,16 @@ export const adminService = {
   getGuests: (page = 1) =>
     api.get(`/admin/guests?page=${page}`),
   sendSpeakingDemoTurn: (data: object) =>
-    api.post('/admin/speaking-demo/conversation', data),
+    api.post('/admin/speaking-demo/conversation', data, { timeout: 60000 }),
   sendLocalSpeakingDemoTurn: (data: object) =>
-    api.post('/admin/local-demo/speaking-demo/conversation', data),
+    api.post('/admin/local-demo/speaking-demo/conversation', data, { timeout: 60000 }),
 };
 
 export const aiService = {
   getEntitlements: () =>
     api.get('/ai/entitlements'),
   sendConversationTurn: (data: object) =>
-    api.post('/ai/conversation', data),
+    api.post('/ai/conversation', data, { timeout: 60000 }),
 };
 
 export default api;

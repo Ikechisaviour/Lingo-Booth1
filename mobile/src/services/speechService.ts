@@ -1,10 +1,30 @@
 import { Audio } from 'expo-av';
 import { ttsService } from './api';
+import LANGUAGES from '../config/languages';
+import { useSettingsStore } from '../stores/settingsStore';
 
 let sound: Audio.Sound | null = null;
 let speaking = false;
 let cancelFlag = false;
 let audioReady = false;
+
+function languageCodeForLocale(locale?: string): string {
+  const value = String(locale || '').trim();
+  if (!value) return '';
+  const exact = Object.entries(LANGUAGES).find(([, language]) => language.ttsLocale === value);
+  if (exact) return exact[0];
+  return value.split('-')[0].toLowerCase();
+}
+
+function preferredVoiceForLocale(locale?: string): string | undefined {
+  const languageCode = languageCodeForLocale(locale);
+  const state = useSettingsStore.getState();
+  return (
+    (languageCode && state.preferredVoices?.[languageCode])
+    || (languageCode === state.targetLanguage ? state.preferredVoice : null)
+    || undefined
+  );
+}
 
 /**
  * Configure audio mode once. Safe to call multiple times.
@@ -36,7 +56,8 @@ async function speakAsync(
   text: string,
   options?: { lang?: string; voice?: string; rate?: string },
 ): Promise<void> {
-  if (!text?.trim()) return;
+  const cleanText = String(text || '').trim();
+  if (!cleanText) return;
   await cancel();
   cancelFlag = false;
   speaking = true;
@@ -45,9 +66,9 @@ async function speakAsync(
     await setup();
 
     const url = ttsService.buildSpeakUrl(
-      text,
+      cleanText,
       options?.lang || 'ko-KR',
-      options?.voice,
+      options?.voice || preferredVoiceForLocale(options?.lang || 'ko-KR'),
       options?.rate,
     );
 

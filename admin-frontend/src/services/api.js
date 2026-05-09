@@ -83,17 +83,21 @@ export const adminService = {
     api.delete(`/admin/users/${userId}`),
   resetRateLimit: (userId) =>
     api.put(`/admin/users/${userId}/reset-rate-limit`),
+  getErrorReports: ({ page = 1, status = 'open', severity = '', source = '' } = {}) =>
+    api.get('/admin/error-reports', { params: { page, status, severity, source } }),
+  acknowledgeErrorReport: (reportId) =>
+    api.put(`/admin/error-reports/${reportId}/acknowledge`),
   sendSpeakingDemoTurn: (data) =>
-    api.post('/admin/speaking-demo/conversation', data),
+    api.post('/admin/speaking-demo/conversation', data, { timeout: 60000 }),
   sendLocalSpeakingDemoTurn: (data) =>
-    api.post('/admin/local-demo/speaking-demo/conversation', data),
+    api.post('/admin/local-demo/speaking-demo/conversation', data, { timeout: 60000 }),
 };
 
 export const aiService = {
   getEntitlements: () =>
     api.get('/ai/entitlements'),
   sendConversationTurn: (data) =>
-    api.post('/ai/conversation', data),
+    api.post('/ai/conversation', data, { timeout: 60000 }),
 };
 
 export default api;

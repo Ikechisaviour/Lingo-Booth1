@@ -18,6 +18,11 @@ import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import { userService, progressService, ttsService } from '../../services/api';
 import speechService from '../../services/speechService';
+import {
+  getPracticeNotificationStatus,
+  sendTestPracticePrompt,
+  setPracticeRemindersEnabled,
+} from '../../services/practicePromptService';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import LANGUAGES from '../../config/languages';
@@ -30,7 +35,17 @@ const ProfileScreen: React.FC = () => {
   const navigation = useNavigation<any>();
   const insets = useSafeAreaInsets();
   const { userId, username, userRole, logout, setChallengeMode, challengeMode } = useAuthStore();
-  const { nativeLanguage, targetLanguage, setLanguages, setNativeLanguage, setTargetLanguage, setVoice, preferredVoice } = useSettingsStore();
+  const {
+    nativeLanguage,
+    targetLanguage,
+    setLanguages,
+    setNativeLanguage,
+    setTargetLanguage,
+    setVoice,
+    setVoiceMap,
+    preferredVoice,
+    preferredVoices,
+  } = useSettingsStore();
   const colors = useAppColors();
   const { height: winHeight, width: winWidth } = useWindowDimensions();
   const isCompact = winHeight < 450 || winWidth < 380;
@@ -61,7 +76,13 @@ const ProfileScreen: React.FC = () => {
   const [voices, setVoices] = useState<any[]>([]);
   const [loadingVoices, setLoadingVoices] = useState(false);
   const [previewingVoice, setPreviewingVoice] = useState<string | null>(null);
+  const [voiceLanguage, setVoiceLanguage] = useState<'target' | 'native'>('target');
+  const [practiceRemindersEnabled, setPracticeRemindersEnabledState] = useState(false);
+  const [practiceNotificationsGranted, setPracticeNotificationsGranted] = useState(false);
+  const [practiceNotificationBusy, setPracticeNotificationBusy] = useState(false);
   const styles = useMemo(() => createStyles(colors, isCompact), [colors, isCompact]);
+  const voiceLanguageCode = voiceLanguage === 'native' ? nativeLanguage : targetLanguage;
+  const selectedVoice = preferredVoices?.[voiceLanguageCode] || (voiceLanguage === 'target' ? preferredVoice : null);
 
   const fetchData = useCallback(async () => {
     if (!userId) return;
@@ -74,6 +95,9 @@ const ProfileScreen: React.FC = () => {
       setUser(userRes.data);
       setProgress(progRes.data);
       setEditUsername(userRes.data.username);
+      if (userRes.data.preferredVoices && typeof userRes.data.preferredVoices === 'object') {
+        setVoiceMap(userRes.data.preferredVoices);
+      }
       setError('');
     } catch (err: any) {
       if (err?._forcedLogout) return;
@@ -94,7 +118,7 @@ const ProfileScreen: React.FC = () => {
   };
 
   const fetchVoices = useCallback(async () => {
-    const locale = LANGUAGES[targetLanguage]?.ttsLocale;
+    const locale = LANGUAGES[voiceLanguageCode]?.ttsLocale;
     if (!locale) return;
     try {
       setLoadingVoices(true);
@@ -105,24 +129,78 @@ const ProfileScreen: React.FC = () => {
     } finally {
       setLoadingVoices(false);
     }
-  }, [targetLanguage]);
+  }, [voiceLanguageCode]);
 
   useEffect(() => {
     if (activeTab === 'settings' && voices.length === 0) {
       fetchVoices();
     }
+  }, [activeTab, fetchVoices, voiceLanguageCode, voices.length]);
+
+  useEffect(() => {
+    if (activeTab !== 'settings') return;
+    getPracticeNotificationStatus()
+      .then((status) => {
+        setPracticeRemindersEnabledState(status.enabled);
+        setPracticeNotificationsGranted(status.granted);
+      })
+      .catch(() => {});
   }, [activeTab]);
 
   const handlePreviewVoice = async (voiceName: string) => {
-    const locale = LANGUAGES[targetLanguage]?.ttsLocale || 'ko-KR';
-    const sampleText = targetLanguage === 'ko' ? '안녕하세요' : 'Hello, how are you?';
+    const locale = LANGUAGES[voiceLanguageCode]?.ttsLocale || 'ko-KR';
+    const sampleText = LANGUAGES[voiceLanguageCode]?.hello || 'Hello';
     setPreviewingVoice(voiceName);
     await speechService.speakAsync(sampleText, { lang: locale, voice: voiceName });
     setPreviewingVoice(null);
   };
 
-  const handleSelectVoice = (voiceName: string | null) => {
-    setVoice(voiceName);
+  const handleSelectVoice = async (voiceName: string | null) => {
+    const code = voiceLanguageCode || targetLanguage || 'ko';
+    setVoice(voiceName, code);
+    if (userId) {
+      const nextVoices = { ...(preferredVoices || {}), [code]: voiceName };
+      try {
+        await userService.updateProfile(userId, {
+          preferredVoices: nextVoices,
+          ...(code === targetLanguage ? { preferredVoice: voiceName } : {}),
+        });
+      } catch {}
+    }
+  };
+
+  const handleTogglePracticeReminders = async () => {
+    const nextEnabled = !practiceRemindersEnabled;
+    setPracticeNotificationBusy(true);
+    try {
+      const result = await setPracticeRemindersEnabled(nextEnabled);
+      setPracticeRemindersEnabledState(result.enabled);
+      setPracticeNotificationsGranted(result.granted);
+      if (nextEnabled && !result.granted) {
+        Alert.alert(
+          'Notifications are off',
+          'Allow notifications for Lingo Booth in your phone settings to receive practice prompts.',
+        );
+      }
+    } finally {
+      setPracticeNotificationBusy(false);
+    }
+  };
+
+  const handleSendTestPracticePrompt = async () => {
+    setPracticeNotificationBusy(true);
+    try {
+      const sent = await sendTestPracticePrompt();
+      setPracticeNotificationsGranted(sent);
+      Alert.alert(
+        sent ? 'Practice prompt sent' : 'Notifications are off',
+        sent
+          ? 'Check your notification shade for the quick practice prompt.'
+          : 'Allow notifications for Lingo Booth in your phone settings, then try again.',
+      );
+    } finally {
+      setPracticeNotificationBusy(false);
+    }
   };
 
   const handleSaveUsername = async () => {
@@ -442,7 +520,7 @@ const ProfileScreen: React.FC = () => {
                         style={[styles.dropdownItem, targetLanguage === code && styles.dropdownItemSelected]}
                         onPress={async () => {
                           setTargetLanguage(code);
-                          setVoice(null);
+                          setVoice(null, code);
                           setShowTargetPicker(false);
                           if (userId) {
                             try { await userService.updateProfile(userId, { targetLanguage: code }); } catch {}
@@ -472,8 +550,20 @@ const ProfileScreen: React.FC = () => {
                 </Button>
               </View>
               <Text style={styles.hintText}>
-                {t('profilePage.voiceHint', 'Choose the voice used for audio playback.')}
+                {t('profilePage.voiceHint', 'Choose separate voices for your target language and native language.')}
               </Text>
+              <SegmentedButtons
+                value={voiceLanguage}
+                onValueChange={(value) => {
+                  setVoiceLanguage(value as 'target' | 'native');
+                  setVoices([]);
+                }}
+                buttons={[
+                  { value: 'target', label: `${LANGUAGES[targetLanguage]?.name || 'Target'}` },
+                  { value: 'native', label: `${LANGUAGES[nativeLanguage]?.name || 'Native'}` },
+                ]}
+                style={{ marginBottom: 12 }}
+              />
 
               {loadingVoices ? (
                 <ActivityIndicator size="small" color={colors.primary} style={{ marginVertical: 12 }} />
@@ -483,7 +573,7 @@ const ProfileScreen: React.FC = () => {
                 <>
                   {/* Default option */}
                   <TouchableOpacity
-                    style={[styles.voiceRow, !preferredVoice && styles.voiceRowSelected]}
+                    style={[styles.voiceRow, !selectedVoice && styles.voiceRowSelected]}
                     onPress={() => handleSelectVoice(null)}
                     activeOpacity={0.7}
                   >
@@ -491,12 +581,12 @@ const ProfileScreen: React.FC = () => {
                       <Text style={styles.voiceName}>{t('profilePage.defaultVoice', 'Default Voice')}</Text>
                       <Text style={styles.voiceMeta}>{t('profilePage.systemDefault', 'System default')}</Text>
                     </View>
-                    {!preferredVoice && <Text style={styles.voiceCheck}>✓</Text>}
+                    {!selectedVoice && <Text style={styles.voiceCheck}>✓</Text>}
                   </TouchableOpacity>
 
                   {voices.map((voice: any) => {
                     const name = voice.ShortName || voice.Name || voice.name || String(voice);
-                    const isSelected = preferredVoice === name;
+                    const isSelected = selectedVoice === name;
                     const isPreviewing = previewingVoice === name;
                     return (
                       <TouchableOpacity
@@ -528,6 +618,41 @@ const ProfileScreen: React.FC = () => {
                   })}
                 </>
               )}
+            </Card.Content>
+          </Card>
+
+          {/* Practice Notifications */}
+          <Card style={styles.card}>
+            <Card.Content>
+              <View style={styles.settingSwitchRow}>
+                <View style={styles.settingTextBlock}>
+                  <Text variant="titleMedium" style={styles.cardTitle}>
+                    Practice Prompts
+                  </Text>
+                  <Text style={styles.hintText}>
+                    Show a quick word question with action buttons, so you can answer from the notification shade.
+                  </Text>
+                </View>
+                <Switch
+                  value={practiceRemindersEnabled}
+                  onValueChange={handleTogglePracticeReminders}
+                  disabled={practiceNotificationBusy}
+                />
+              </View>
+              <Text style={styles.notificationStatus}>
+                {practiceNotificationsGranted
+                  ? 'Notifications are allowed on this device.'
+                  : 'Notifications are not allowed yet.'}
+              </Text>
+              <Button
+                mode="outlined"
+                onPress={handleSendTestPracticePrompt}
+                loading={practiceNotificationBusy}
+                disabled={practiceNotificationBusy}
+                style={{ marginTop: 12 }}
+              >
+                Send test prompt
+              </Button>
             </Card.Content>
           </Card>
 
@@ -647,6 +772,21 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
   infoLabel: { fontSize: 14, color: colors.textSecondary },
   infoValue: { fontSize: 14, fontWeight: '600', color: colors.textPrimary },
   hintText: { fontSize: 12, color: colors.textMuted, marginTop: 8, fontStyle: 'italic' },
+  settingSwitchRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 12,
+  },
+  settingTextBlock: {
+    flex: 1,
+    minWidth: 0,
+  },
+  notificationStatus: {
+    color: colors.textSecondary,
+    fontSize: 12,
+    marginTop: 10,
+  },
 
   modeRow: { marginTop: 8 },
   modeOption: { alignItems: 'center', paddingVertical: 12 },
