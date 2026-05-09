@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation, Trans } from 'react-i18next';
-import { userService, lessonService } from '../services/api';
+import { userService, quizService } from '../services/api';
 import { getTargetLangName, getTargetLangCode } from '../config/languages';
 import './HomePage.css';
 
@@ -46,12 +46,13 @@ function HomePage() {
     if (userId) {
       userService.getActivityState(userId).then(res => {
         const state = res.data;
-        if (state.activityType === 'lesson' && state.lesson) {
+        const savedQuiz = state.quiz || state.lesson;
+        if ((state.activityType === 'quiz' || state.activityType === 'lesson') && savedQuiz) {
           setLastActivity({
-            type: 'lesson',
-            title: state.lesson.title || 'Untitled Lesson',
-            lessonId: state.lesson._id,
-            index: state.lessonIndex || 0,
+            type: 'quiz',
+            title: savedQuiz.title || 'Untitled Quiz',
+            quizId: savedQuiz._id,
+            index: state.quizIndex ?? state.lessonIndex ?? 0,
           });
         } else if (state.activityType === 'flashcard' && state.flashcardIndex > 0) {
           setLastActivity({
@@ -111,8 +112,8 @@ function HomePage() {
 
   const handleContinue = () => {
     if (!lastActivity) return;
-    if (lastActivity.type === 'lesson') {
-      navigate(`/lessons/${lastActivity.lessonId}`);
+    if (lastActivity.type === 'quiz') {
+      navigate(`/quiz/${lastActivity.quizId}`);
     } else {
       navigate('/flashcards');
     }
@@ -120,26 +121,26 @@ function HomePage() {
 
   const handleStartLearning = async () => {
     try {
-      const res = await lessonService.getLessons();
-      const lessons = res.data;
-      if (!lessons.length) { navigate('/lessons'); return; }
+      const res = await quizService.getQuizzes();
+      const quizzes = res.data;
+      if (!quizzes.length) { navigate('/quiz'); return; }
       const diffOrder = ['beginner', 'intermediate', 'advanced', 'sentences'];
       const catOrder = ['daily-life', 'business', 'travel', 'greetings', 'food', 'shopping', 'healthcare'];
-      const sorted = [...lessons].sort((a, b) => {
+      const sorted = [...quizzes].sort((a, b) => {
         const dd = diffOrder.indexOf(a.difficulty) - diffOrder.indexOf(b.difficulty);
         if (dd !== 0) return dd;
         return catOrder.indexOf(a.category) - catOrder.indexOf(b.category);
       });
-      const ids = sorted.map(l => l._id);
-      sessionStorage.setItem('lessonPlaylist', JSON.stringify({
+      const ids = sorted.map(q => q._id);
+      sessionStorage.setItem('quizPlaylist', JSON.stringify({
         type: 'start-all',
-        lessonIds: ids,
+        quizIds: ids,
         currentIndex: 0,
         totalCount: ids.length,
       }));
-      navigate(`/lessons/${ids[0]}`);
+      navigate(`/quiz/${ids[0]}`);
     } catch {
-      navigate('/lessons');
+      navigate('/quiz');
     }
   };
 
@@ -158,7 +159,7 @@ function HomePage() {
                   </h1>
                   <p className="hero-subtitle">
                     {lastActivity
-                      ? lastActivity.type === 'lesson'
+                      ? lastActivity.type === 'quiz'
                         ? t('home.studyingLesson', { title: lastActivity.title })
                         : t('home.studyingFlashcards')
                       : t('home.readyForSession')}
@@ -166,7 +167,7 @@ function HomePage() {
                   {lastActivity && (
                     <div className="hero-actions">
                       <button className="btn btn-primary btn-lg" onClick={handleContinue}>
-                        {lastActivity.type === 'lesson' ? t('home.continueLesson') : t('home.continueFlashcards')} →
+                        {lastActivity.type === 'quiz' ? t('home.continueLesson') : t('home.continueFlashcards')} →
                       </button>
                     </div>
                   )}
@@ -193,19 +194,19 @@ function HomePage() {
 
           {/* Quick Actions */}
           <section className="quick-actions">
-            <div className="quick-action" onClick={() => navigate('/lessons')}>
-              <span className="quick-action-icon">📚</span>
+            <div className="quick-action" onClick={() => navigate('/class')}>
+              <span className="quick-action-icon">&#127979;</span>
               <div className="quick-action-text">
-                <strong>{t('home.lessonsAction')}</strong>
-                <span>{t('home.lessonsDesc')}</span>
+                <strong>{t('navbar.class', 'Class')}</strong>
+                <span>Coming soon</span>
               </div>
               <span className="quick-action-arrow">→</span>
             </div>
-            <div className="quick-action" onClick={() => navigate('/flashcards')}>
-              <span className="quick-action-icon">🎴</span>
+            <div className="quick-action" onClick={() => navigate('/exercise')}>
+              <span className="quick-action-icon">&#9997;</span>
               <div className="quick-action-text">
-                <strong>{t('home.flashcardsAction')}</strong>
-                <span>{t('home.flashcardsDesc')}</span>
+                <strong>{t('navbar.exercise', 'Exercise')}</strong>
+                <span>Quiz and flashcards</span>
               </div>
               <span className="quick-action-arrow">→</span>
             </div>

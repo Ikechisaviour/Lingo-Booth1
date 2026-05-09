@@ -4,14 +4,31 @@ const Lesson = require('../models/Lesson');
 const { verifyToken, optionalAuth, isAdmin } = require('../middleware/auth');
 const { getOrCreateTranslation, applyTranslation, batchTranslateRaw } = require('../utils/translationService');
 
-const VALID_CATEGORIES = ['daily-life', 'business', 'travel', 'greetings', 'food', 'shopping', 'healthcare'];
+const VALID_CATEGORIES = ['daily-life', 'business', 'travel', 'greetings', 'food', 'shopping', 'healthcare', 'career'];
 const VALID_DIFFICULTIES = ['beginner', 'intermediate', 'advanced', 'sentences'];
+const VALID_TRACKS = ['textbook', 'practice'];
+const CLASS_LESSON_TRACK = 'textbook';
 
-// Get all lessons (public — guests and authenticated users)
-// Pass ?nativeLang=hi to get translated titles
+function routeContentKind(req) {
+  if (req.baseUrl.endsWith('/class-lessons')) return 'classLesson';
+  if (req.baseUrl.endsWith('/quiz')) return 'quiz';
+  return 'legacyQuiz';
+}
+
+function notFoundLabel(req) {
+  const kind = routeContentKind(req);
+  if (kind === 'classLesson') return 'Class lesson';
+  if (kind === 'quiz') return 'Quiz';
+  return 'Quiz';
+}
+
+// Get class lessons or quizzes (public - guests and authenticated users).
+// Pass ?nativeLang=hi to get translated titles.
+// /api/class-lessons returns textbook class lessons; /api/quiz returns quiz content.
 router.get('/', optionalAuth, async (req, res) => {
   try {
-    const { category, difficulty, targetLang, nativeLang } = req.query;
+    const { category, difficulty, targetLang, nativeLang, track } = req.query;
+    const contentKind = routeContentKind(req);
     let filter = {};
 
     if (category && VALID_CATEGORIES.includes(category)) {
@@ -19,6 +36,18 @@ router.get('/', optionalAuth, async (req, res) => {
     }
     if (difficulty && VALID_DIFFICULTIES.includes(difficulty)) {
       filter.difficulty = difficulty;
+    }
+    if (contentKind === 'classLesson') {
+      filter.track = CLASS_LESSON_TRACK;
+    } else if (contentKind === 'quiz') {
+      filter.track = { $ne: CLASS_LESSON_TRACK };
+    } else if (track && VALID_TRACKS.includes(track)) {
+      filter.track = track;
+    } else {
+      // Legacy route behavior: exclude textbook class lessons so
+      // /lessons and /flashcards stay free of class-only content.
+      // Use $ne to also match legacy docs that have no `track` field stored.
+      filter.track = { $ne: CLASS_LESSON_TRACK };
     }
     if (!targetLang) {
       return res.status(400).json({ message: 'targetLang query parameter is required' });
@@ -80,7 +109,15 @@ router.get('/:id', optionalAuth, async (req, res) => {
   try {
     const lesson = await Lesson.findById(req.params.id);
     if (!lesson) {
-      return res.status(404).json({ message: 'Lesson not found' });
+      return res.status(404).json({ message: `${notFoundLabel(req)} not found` });
+    }
+
+    const contentKind = routeContentKind(req);
+    if (contentKind === 'classLesson' && lesson.track !== CLASS_LESSON_TRACK) {
+      return res.status(404).json({ message: 'Class lesson not found' });
+    }
+    if (contentKind === 'quiz' && lesson.track === CLASS_LESSON_TRACK) {
+      return res.status(404).json({ message: 'Quiz not found' });
     }
 
     const { nativeLang } = req.query;

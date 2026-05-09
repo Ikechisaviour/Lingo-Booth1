@@ -56,6 +56,12 @@ function LoginPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
     if (user.preferredVoice) {
       localStorage.setItem('preferredVoice', user.preferredVoice);
     }
+    if (user.preferredVoices && typeof user.preferredVoices === 'object') {
+      localStorage.setItem('preferredVoices', JSON.stringify(user.preferredVoices));
+      Object.entries(user.preferredVoices).forEach(([language, voice]) => {
+        if (voice) localStorage.setItem(`preferredVoice:${language}`, voice);
+      });
+    }
     localStorage.setItem('nativeLanguage', user.nativeLanguage || '');
     localStorage.setItem('targetLanguage', user.targetLanguage || '');
     localStorage.removeItem('guestMode');
@@ -71,8 +77,9 @@ function LoginPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
     try {
       const actRes = await userService.getActivityState(user.id);
       const state = actRes.data;
-      if (state.activityType === 'lesson' && state.lesson?._id) {
-        navigate(`/lessons/${state.lesson._id}`);
+      const savedQuiz = state.quiz || state.lesson;
+      if ((state.activityType === 'quiz' || state.activityType === 'lesson') && savedQuiz?._id) {
+        navigate(`/quiz/${savedQuiz._id}`);
       } else if (state.activityType === 'flashcard' && state.flashcardIndex > 0) {
         navigate('/flashcards');
       } else {

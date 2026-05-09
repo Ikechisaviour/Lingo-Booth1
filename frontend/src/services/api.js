@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { reportApiError } from './errorReporter';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
 
@@ -129,10 +130,12 @@ api.interceptors.response.use(
           return api(config);
         } catch {
           // Refresh failed — force logout
+          reportApiError(error, { phase: 'auth-refresh-failed' });
           endExpiredSession();
           return Promise.reject(error);
         }
       }
+      reportApiError(error, { phase: 'auth-expired' });
       endExpiredSession();
     }
 
@@ -167,6 +170,7 @@ api.interceptors.response.use(
       clearSession();
       window.dispatchEvent(new CustomEvent('accountSuspended'));
     }
+    reportApiError(error);
     return Promise.reject(error);
   }
 );
@@ -201,18 +205,28 @@ export const authService = {
     api.post('/auth/activity', { userId, timeSpent }),
 };
 
-export const lessonService = {
-  getLessons: (category, difficulty) => {
+export const quizService = {
+  getQuizzes: (category, difficulty) => {
     const targetLang = localStorage.getItem('targetLanguage') || '';
     const nativeLang = localStorage.getItem('nativeLanguage') || '';
-    return api.get('/lessons', { params: { category, difficulty, targetLang, nativeLang } });
+    return api.get('/quiz', { params: { category, difficulty, targetLang, nativeLang } });
   },
-  getLesson: (id) => {
+  getQuiz: (quizId) => {
     const nativeLang = localStorage.getItem('nativeLanguage') || '';
-    return api.get(`/lessons/${id}`, { params: { nativeLang }, timeout: 30000 });
+    return api.get(`/quiz/${quizId}`, { params: { nativeLang }, timeout: 30000 });
   },
-  createLesson: (lessonData) =>
-    api.post('/lessons', lessonData),
+};
+
+export const classLessonService = {
+  getClassLessons: () => {
+    const targetLang = localStorage.getItem('targetLanguage') || '';
+    const nativeLang = localStorage.getItem('nativeLanguage') || '';
+    return api.get('/class-lessons', { params: { targetLang, nativeLang } });
+  },
+  getClassLesson: (classLessonId) => {
+    const nativeLang = localStorage.getItem('nativeLanguage') || '';
+    return api.get(`/class-lessons/${classLessonId}`, { params: { nativeLang }, timeout: 30000 });
+  },
 };
 
 export const flashcardService = {
@@ -305,7 +319,7 @@ export const ttsService = {
   // Builds a direct GET URL so the frontend can set audio.src without a fetch,
   // keeping audio.play() synchronous within the user gesture on iOS Safari.
   buildSpeakUrl: (text, lang, voice, rate) => {
-    const params = new URLSearchParams({ text, lang });
+    const params = new URLSearchParams({ text: String(text || '').trim(), lang });
     if (voice) params.set('voice', voice);
     if (rate) params.set('rate', rate);
     return `${API_URL}/tts?${params.toString()}`;
@@ -333,17 +347,21 @@ export const adminService = {
     api.delete(`/admin/flashcards/${flashcardId}`),
   getGuests: (page = 1) =>
     api.get(`/admin/guests?page=${page}`),
+  getErrorReports: ({ page = 1, status = 'open', severity = '', source = '' } = {}) =>
+    api.get('/admin/error-reports', { params: { page, status, severity, source } }),
+  acknowledgeErrorReport: (reportId) =>
+    api.put(`/admin/error-reports/${reportId}/acknowledge`),
   sendSpeakingDemoTurn: (data) =>
-    api.post('/admin/speaking-demo/conversation', data),
+    api.post('/admin/speaking-demo/conversation', data, { timeout: 60000 }),
   sendLocalSpeakingDemoTurn: (data) =>
-    api.post('/admin/local-demo/speaking-demo/conversation', data),
+    api.post('/admin/local-demo/speaking-demo/conversation', data, { timeout: 60000 }),
 };
 
 export const aiService = {
   getEntitlements: () =>
     api.get('/ai/entitlements'),
   sendConversationTurn: (data) =>
-    api.post('/ai/conversation', data),
+    api.post('/ai/conversation', data, { timeout: 60000 }),
 };
 
 export default api;

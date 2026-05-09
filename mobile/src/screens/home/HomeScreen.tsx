@@ -60,11 +60,12 @@ const HomeScreen: React.FC = () => {
     try {
       const actRes = await userService.getActivityState(userId);
       const state = actRes.data;
-      if (state.activityType === 'lesson' && state.lesson) {
+      const savedQuiz = state.quiz || state.lesson;
+      if ((state.activityType === 'quiz' || state.activityType === 'lesson') && savedQuiz) {
         setLastActivity({
-          type: 'lesson',
-          title: state.lesson.title || 'Untitled Lesson',
-          lessonId: state.lesson._id,
+          type: 'quiz',
+          title: savedQuiz.title || 'Untitled Quiz',
+          quizId: savedQuiz._id,
         });
       } else if (state.activityType === 'flashcard' && state.flashcardIndex > 0) {
         setLastActivity({ type: 'flashcard', index: state.flashcardIndex });
@@ -126,14 +127,17 @@ const HomeScreen: React.FC = () => {
   const handleContinue = () => {
     if (!lastActivity) return;
     if (lastActivity.type === 'flashcard') {
-      navigation.navigate('Flashcards');
-    } else if (lastActivity.lessonId) {
-      navigation.navigate('Lessons', {
-        screen: 'LessonDetail',
-        params: { lessonId: lastActivity.lessonId },
+      navigation.navigate('Exercise', { screen: 'Flashcards' });
+    } else if (lastActivity.quizId) {
+      navigation.navigate('Exercise', {
+        screen: 'Quiz',
+        params: {
+          screen: 'QuizDetail',
+          params: { quizId: lastActivity.quizId },
+        },
       });
     } else {
-      navigation.navigate('Lessons');
+      navigation.navigate('Exercise', { screen: 'Quiz' });
     }
   };
 
@@ -154,7 +158,7 @@ const HomeScreen: React.FC = () => {
             </Text>
             <Text style={styles.heroSubtitle}>
               {lastActivity
-                ? lastActivity.type === 'lesson'
+                ? lastActivity.type === 'quiz'
                   ? t('home.studyingLesson', { title: lastActivity.title })
                   : t('home.studyingFlashcards')
                 : t('home.readyForSession')}
@@ -168,7 +172,7 @@ const HomeScreen: React.FC = () => {
                 style={styles.heroButton}
                 labelStyle={styles.heroButtonLabel}
               >
-                {lastActivity.type === 'lesson' ? t('home.continueLesson') : t('home.continueFlashcards')} →
+                {lastActivity.type === 'quiz' ? t('home.continueLesson') : t('home.continueFlashcards')} →
               </Button>
             )}
           </>
@@ -185,7 +189,7 @@ const HomeScreen: React.FC = () => {
             )}
             <Button
               mode="contained"
-              onPress={() => navigation.navigate('Lessons')}
+              onPress={() => navigation.navigate('Exercise', { screen: 'Quiz' })}
               buttonColor="rgba(255,255,255,0.95)"
               textColor={activeColor}
               style={styles.heroButton}
@@ -204,26 +208,26 @@ const HomeScreen: React.FC = () => {
         <View style={styles.quickActions}>
           <TouchableOpacity
             style={[styles.quickAction, { borderLeftColor: colors.accentBlue }]}
-            onPress={() => navigation.navigate('Lessons')}
+            onPress={() => navigation.navigate('Class')}
             activeOpacity={0.7}
           >
-            <Text style={styles.quickIcon}>📚</Text>
+            <Text style={styles.quickIcon}>🏫</Text>
             <View style={styles.quickTextCol}>
-              <Text style={styles.quickTitle}>{t('home.lessonsAction')}</Text>
-              <Text style={styles.quickDesc}>{t('home.lessonsDesc')}</Text>
+              <Text style={styles.quickTitle}>{t('navbar.class', 'Class')}</Text>
+              <Text style={styles.quickDesc}>Coming soon</Text>
             </View>
             <Text style={styles.quickArrow}>›</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
             style={[styles.quickAction, { borderLeftColor: colors.primary }]}
-            onPress={() => navigation.navigate('Flashcards')}
+            onPress={() => navigation.navigate('Exercise')}
             activeOpacity={0.7}
           >
-            <Text style={styles.quickIcon}>🎴</Text>
+            <Text style={styles.quickIcon}>✍</Text>
             <View style={styles.quickTextCol}>
-              <Text style={styles.quickTitle}>{t('home.flashcardsAction')}</Text>
-              <Text style={styles.quickDesc}>{t('home.flashcardsDesc')}</Text>
+              <Text style={styles.quickTitle}>{t('navbar.exercise', 'Exercise')}</Text>
+              <Text style={styles.quickDesc}>Quiz and flashcards</Text>
             </View>
             <Text style={styles.quickArrow}>›</Text>
           </TouchableOpacity>

@@ -35,7 +35,7 @@ router.get('/:userId', isOwner('userId'), checkInactivityPenalty(), async (req, 
 // Update user profile (only own profile or admin)
 router.put('/:userId', isOwner('userId'), async (req, res) => {
   try {
-    const { username, preferredVoice, nativeLanguage, targetLanguage } = req.body;
+    const { username, preferredVoice, preferredVoices, nativeLanguage, targetLanguage } = req.body;
 
     // Check if username is already taken by another user
     if (username) {
@@ -51,6 +51,16 @@ router.put('/:userId', isOwner('userId'), async (req, res) => {
     const updateData = {};
     if (username) updateData.username = username;
     if (preferredVoice !== undefined) updateData.preferredVoice = preferredVoice;
+    if (preferredVoices !== undefined && preferredVoices && typeof preferredVoices === 'object' && !Array.isArray(preferredVoices)) {
+      updateData.preferredVoices = Object.fromEntries(
+        Object.entries(preferredVoices)
+          .filter(([language]) => /^[a-z]{2,3}$/i.test(language))
+          .map(([language, voice]) => [
+            language.toLowerCase(),
+            typeof voice === 'string' && voice.trim() ? voice.trim() : null,
+          ])
+      );
+    }
     if (nativeLanguage !== undefined) updateData.nativeLanguage = nativeLanguage;
     if (targetLanguage !== undefined) updateData.targetLanguage = targetLanguage;
     if (nativeLanguage !== undefined || targetLanguage !== undefined) {
@@ -120,11 +130,13 @@ router.put('/:userId/password', isOwner('userId'), async (req, res) => {
 // Save activity state (only own state)
 router.put('/:userId/activity-state', isOwner('userId'), async (req, res) => {
   try {
-    const { activityType, lessonId, lessonIndex, flashcardIndex } = req.body;
+    const { activityType, lessonId, lessonIndex, quizId, quizIndex, flashcardIndex } = req.body;
+    const normalizedActivityType = activityType === 'lesson' ? 'quiz' : activityType;
+    const quizActivity = normalizedActivityType === 'quiz';
     const update = {
-      lastActivityType: activityType,
-      lastLessonId: activityType === 'lesson' ? lessonId : null,
-      lastLessonIndex: lessonIndex || 0,
+      lastActivityType: normalizedActivityType,
+      lastLessonId: quizActivity ? (quizId || lessonId) : null,
+      lastLessonIndex: quizActivity ? (quizIndex ?? lessonIndex ?? 0) : 0,
       lastFlashcardIndex: flashcardIndex || 0,
     };
     const user = await User.findByIdAndUpdate(req.params.userId, update, { new: true }).select('-password');
@@ -147,8 +159,12 @@ router.get('/:userId/activity-state', isOwner('userId'), checkInactivityPenalty(
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
+    const normalizedActivityType = user.lastActivityType === 'lesson' ? 'quiz' : user.lastActivityType;
     res.json({
-      activityType: user.lastActivityType,
+      activityType: normalizedActivityType,
+      quiz: user.lastLessonId,
+      quizIndex: user.lastLessonIndex,
+      // Legacy aliases keep older clients working while new clients use quiz names.
       lesson: user.lastLessonId,
       lessonIndex: user.lastLessonIndex,
       flashcardIndex: user.lastFlashcardIndex,

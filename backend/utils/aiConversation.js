@@ -1,4 +1,9 @@
 const DEEPSEEK_API_URL = 'https://api.deepseek.com/chat/completions';
+const FORMATTING_FALLBACK_REPLY = 'I had trouble formatting that reply. Please try again naturally.';
+const PROVIDER_TIMEOUT_MS = Math.max(
+  5000,
+  Number(process.env.AI_PROVIDER_TIMEOUT_MS || 12000)
+);
 
 const SCRIPT_LANGUAGE_PATTERNS = [
   { language: 'ko', pattern: /[\u3131-\u314e\u314f-\u3163\uac00-\ud7a3]/g },
@@ -592,7 +597,7 @@ function normalizeParsedAIContent(parsed, fallbackContent = '') {
     if (extractedReply) return { reply: extractedReply };
 
     return looksLikeJsonPayload(fallbackContent)
-      ? { reply: 'I had trouble formatting that reply. Please try again naturally.' }
+      ? { reply: FORMATTING_FALLBACK_REPLY }
       : { reply: String(fallbackContent || '') };
   }
 
@@ -628,10 +633,358 @@ function parseAIJsonContent(content) {
 
 function sanitizeAIReply(reply) {
   const text = String(reply || '').trim();
-  if (!text || looksLikeJsonPayload(text)) {
-    return 'I had trouble formatting that reply. Please try again naturally.';
+  if (!text) {
+    return FORMATTING_FALLBACK_REPLY;
   }
+
+  if (looksLikeJsonPayload(text)) {
+    const parsed = normalizeParsedAIContent(tryParseJson(text), text);
+    const candidate = typeof parsed?.reply === 'string' ? parsed.reply.trim() : '';
+    if (candidate && candidate !== text && !looksLikeJsonPayload(candidate)) {
+      return candidate.slice(0, 800);
+    }
+
+    const extractedReply = extractJsonStringField(text, 'reply');
+    if (extractedReply && !looksLikeJsonPayload(extractedReply)) {
+      return extractedReply.slice(0, 800);
+    }
+
+    return FORMATTING_FALLBACK_REPLY;
+  }
+
   return text.slice(0, 800);
+}
+
+function allowedScriptLanguagesForPair(targetLanguage = 'ko', nativeLanguage = 'en') {
+  const target = normalizeLanguageCode(targetLanguage) || 'ko';
+  const native = normalizeLanguageCode(nativeLanguage) || 'en';
+  const allowed = new Set([target, native]);
+
+  // Japanese commonly uses kanji, which lives in the same Unicode block that
+  // our coarse detector labels as Chinese.
+  if (allowed.has('ja')) allowed.add('zh');
+
+  return allowed;
+}
+
+function stripDisallowedScripts(text, targetLanguage = 'ko', nativeLanguage = 'en') {
+  let value = String(text || '');
+  if (!value) return value;
+
+  const allowed = allowedScriptLanguagesForPair(targetLanguage, nativeLanguage);
+  for (const entry of SCRIPT_LANGUAGE_PATTERNS) {
+    if (!allowed.has(entry.language)) {
+      value = value.replace(entry.pattern, ' ');
+    }
+  }
+
+  return value
+    .replace(/\s+([.,!?;:])/g, '$1')
+    .replace(/\s{2,}/g, ' ')
+    .replace(/(?:\s+[\/|]\s+)+/g, ' / ')
+    .trim();
+}
+
+function pairGuardFallbackReply(targetLanguage = 'ko', nativeLanguage = 'en') {
+  const native = normalizeLanguageCode(nativeLanguage) || 'en';
+  const targetName = getLanguageName(targetLanguage, native);
+  const nativeName = getLanguageName(native, native);
+  const copy = LANGUAGE_PAIR_REDIRECT_COPY[native] || LANGUAGE_PAIR_REDIRECT_COPY.en;
+  return copy.reply({
+    nativeName,
+    targetName,
+    outsideName: 'another language',
+  });
+}
+
+function enforceTextLanguagePair(text, targetLanguage = 'ko', nativeLanguage = 'en', fallback) {
+  const cleaned = stripDisallowedScripts(text, targetLanguage, nativeLanguage);
+  if (cleaned) return cleaned;
+  if (fallback !== undefined) return fallback;
+  return pairGuardFallbackReply(targetLanguage, nativeLanguage);
+}
+
+function enforceValueLanguagePair(value, targetLanguage = 'ko', nativeLanguage = 'en', depth = 0) {
+  if (depth > 5) return value;
+  if (typeof value === 'string') return stripDisallowedScripts(value, targetLanguage, nativeLanguage);
+  if (Array.isArray(value)) {
+    return value.map(item => enforceValueLanguagePair(item, targetLanguage, nativeLanguage, depth + 1));
+  }
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(Object.entries(value).map(([key, item]) => [
+      key,
+      enforceValueLanguagePair(item, targetLanguage, nativeLanguage, depth + 1),
+    ]));
+  }
+  return value;
+}
+
+function parseClassLessonAction(transcript = '') {
+  const lines = String(transcript || '').split(/\r?\n/);
+  if (lines[0]?.trim() !== 'CLASS_LESSON_ACTION') return null;
+
+  return lines.slice(1).reduce((values, line) => {
+    const index = line.indexOf('=');
+    if (index <= 0) return values;
+    const key = line.slice(0, index).trim();
+    const value = line.slice(index + 1).trim();
+    return key ? { ...values, [key]: value } : values;
+  }, {});
+}
+
+function speakerLabelFromMarker(marker = '') {
+  const normalized = String(marker || '').trim().toUpperCase();
+  if (normalized === 'A') return 'Person A';
+  if (normalized === 'B') return 'Person B';
+  return '';
+}
+
+function normalizeSpeakerLabel(speaker = '') {
+  const value = String(speaker || '').trim();
+  if (!value) return '';
+  const markerMatch = value.match(/^(?:person|speaker)?\s*([AB])\.?$/i);
+  if (markerMatch?.[1]) return speakerLabelFromMarker(markerMatch[1]);
+  return value.slice(0, 40);
+}
+
+function extractSpeakerPrefix(text = '') {
+  const value = String(text || '').trim();
+  const match = value.match(/^(?:(?:person|speaker)\s*)?([AB])\s*[:.)-]\s*(.+)$/i);
+  if (!match?.[1] || !match?.[2]) {
+    return { speaker: '', text: value };
+  }
+  return {
+    speaker: speakerLabelFromMarker(match[1]),
+    text: match[2].trim(),
+  };
+}
+
+function stripExamplePrefix(text = '') {
+  return String(text || '')
+    .trim()
+    .replace(/^(?:example|sample)\s*[:.)-]\s*/i, '')
+    .trim();
+}
+
+function hasExamplePrefix(text = '') {
+  return /^(?:example|sample)\s*[:.)-]\s*/i.test(String(text || '').trim());
+}
+
+function makeDisplayPart({ type, language, text, speak = true, speaker = '', section = '' }) {
+  const examplePrefixed = hasExamplePrefix(text);
+  const extracted = extractSpeakerPrefix(stripExamplePrefix(text));
+  const normalizedSpeaker = extracted.speaker || normalizeSpeakerLabel(speaker);
+  const part = {
+    type,
+    language,
+    text: extracted.text,
+    speak,
+  };
+  if (normalizedSpeaker) part.speaker = normalizedSpeaker;
+  if (section || examplePrefixed) part.section = section || 'example';
+  return part;
+}
+
+function buildClassLessonDisplayParts(transcript = '', targetLanguage = 'ko', nativeLanguage = 'en') {
+  const action = parseClassLessonAction(transcript);
+  if (!action) return [];
+
+  const targetLanguageCode = normalizeLanguageCode(targetLanguage) || 'ko';
+  const nativeLanguageCode = normalizeLanguageCode(nativeLanguage) || 'en';
+  const pairHasEnglish = targetLanguageCode === 'en' || nativeLanguageCode === 'en';
+  const target = String(action.target || '').trim();
+  const romanization = String(action.romanization || '').trim();
+  const native = String(action.native || '').trim();
+  const exampleTarget = String(action.exampleTarget || '').trim();
+  const exampleNative = String(action.exampleNative || '').trim();
+  const task = String(action.activityTask || '').trim();
+  const title = String(action.activityTitle || action.activitySection || 'this item').trim();
+  const parts = [];
+
+  if (pairHasEnglish) {
+    parts.push(makeDisplayPart({
+      type: 'meta',
+      language: nativeLanguageCode,
+      text: `Let's practice ${title}.`,
+      speak: false,
+    }));
+  }
+  let targetPart = null;
+  if (target) {
+    targetPart = makeDisplayPart({
+      type: 'target',
+      language: targetLanguageCode,
+      text: target,
+      speak: true,
+    });
+    parts.push(targetPart);
+  }
+  if (romanization) {
+    parts.push(makeDisplayPart({
+      type: 'romanization',
+      language: targetLanguageCode,
+      text: romanization,
+      speak: false,
+      speaker: targetPart?.speaker,
+    }));
+  }
+  if (native) {
+    parts.push(makeDisplayPart({
+      type: 'native',
+      language: nativeLanguageCode,
+      text: native,
+      speak: true,
+      speaker: targetPart?.speaker,
+    }));
+  }
+  if (exampleTarget || exampleNative) {
+    if (pairHasEnglish) {
+      parts.push(makeDisplayPart({
+        type: 'meta',
+      language: nativeLanguageCode,
+      text: 'Example',
+      speak: false,
+      section: 'example',
+      }));
+    }
+    let exampleTargetPart = null;
+    if (exampleTarget) {
+      exampleTargetPart = makeDisplayPart({
+        type: 'target',
+        language: targetLanguageCode,
+        text: exampleTarget,
+        speak: true,
+        section: 'example',
+      });
+      parts.push(exampleTargetPart);
+    }
+    if (exampleNative) {
+      parts.push(makeDisplayPart({
+        type: 'native',
+        language: nativeLanguageCode,
+        text: exampleNative,
+        speak: true,
+        speaker: exampleTargetPart?.speaker,
+        section: 'example',
+      }));
+    }
+  }
+  if (task && pairHasEnglish) {
+    parts.push(makeDisplayPart({
+      type: 'native',
+      language: nativeLanguageCode,
+      text: task,
+      speak: true,
+    }));
+  }
+
+  return parts;
+}
+
+function displayPartsToReply(parts = []) {
+  return parts
+    .filter(part => part?.text)
+    .map(part => {
+      if (part.type === 'romanization') return `(${part.text})`;
+      return part.speaker ? `${part.speaker}: ${part.text}` : part.text;
+    })
+    .join('\n')
+    .slice(0, 800);
+}
+
+function speechPartsFromDisplayParts(parts = []) {
+  return parts
+    .filter(part => part?.speak !== false && part?.text && part?.language)
+    .map(part => ({
+      language: normalizeLanguageCode(part.language),
+      text: String(part.text).slice(0, 500),
+      ...(part.speaker ? { speaker: part.speaker } : {}),
+    }))
+    .slice(0, 8);
+}
+
+function buildClassLessonActionFallback(transcript = '', targetLanguage = 'ko', nativeLanguage = 'en', lessonBrief = null, classAction = null) {
+  // Prefer the structured classAction object when provided; fall back to parsing
+  // the legacy CLASS_LESSON_ACTION text from the transcript for older callers.
+  const action = classAction || parseClassLessonAction(transcript);
+  if (!action) return '';
+
+  const displayParts = buildClassLessonDisplayParts(transcript, targetLanguage, nativeLanguage);
+  if (displayParts.length) return displayPartsToReply(displayParts);
+
+  const targetLanguageCode = normalizeLanguageCode(targetLanguage) || 'ko';
+  const nativeLanguageCode = normalizeLanguageCode(nativeLanguage) || 'en';
+  const pairHasEnglish = targetLanguageCode === 'en' || nativeLanguageCode === 'en';
+  const target = String(action.target || '').trim();
+  const romanization = String(action.romanization || '').trim();
+  const native = String(action.native || '').trim();
+  const exampleTarget = String(action.exampleTarget || '').trim();
+  const exampleNative = String(action.exampleNative || '').trim();
+
+  // Prefer the brief's activeActivity (canonical) over the transcript-parsed metadata,
+  // since the brief comes from the source-of-truth Lesson document.
+  const activeActivity = lessonBrief?.activeActivity || null;
+  const title = String(activeActivity?.title || action.activityTitle || action.activitySection || 'this item').trim();
+  const taskFromAction = String(action.activityTask || '').trim();
+  const taskFromActivity = String(activeActivity?.task || '').trim();
+  const task = taskFromActivity || taskFromAction;
+
+  const lines = pairHasEnglish ? [`Let's practice ${title}.`] : [];
+  const targetLine = [target, romanization ? `(${romanization})` : ''].filter(Boolean).join(' ');
+
+  if (targetLine && native) {
+    lines.push(`${targetLine} - ${native}`);
+  } else if (targetLine || native) {
+    lines.push(targetLine || native);
+  }
+
+  if (exampleTarget && exampleNative) {
+    lines.push(pairHasEnglish ? `Example: ${exampleTarget} - ${exampleNative}` : `${exampleTarget} - ${exampleNative}`);
+  } else if (exampleTarget || exampleNative) {
+    lines.push(pairHasEnglish ? `Example: ${exampleTarget || exampleNative}` : (exampleTarget || exampleNative));
+  }
+
+  if (pairHasEnglish) {
+    lines.push(task || 'Try one short answer using this lesson item.');
+  }
+
+  return lines.join('\n').slice(0, 800);
+}
+
+function buildClassLessonFallbackResult({
+  transcript = '',
+  targetLanguage = 'ko',
+  nativeLanguage = 'en',
+  summary = '',
+  memory = {},
+  lessonBrief = null,
+  classAction = null,
+} = {}) {
+  const safeClassAction = sanitizeClassAction(classAction);
+  const displayParts = buildClassLessonDisplayParts(transcript, targetLanguage, nativeLanguage);
+  const reply = displayParts.length
+    ? displayPartsToReply(displayParts)
+    : buildClassLessonActionFallback(transcript, targetLanguage, nativeLanguage, lessonBrief, safeClassAction);
+
+  if (!reply) return null;
+
+  return {
+    aiEnabled: true,
+    providerFallback: true,
+    reply,
+    coachingTip: '',
+    expectedLanguage: normalizeLanguageCode(targetLanguage) || 'ko',
+    nextSuggestedIntent: '',
+    displayParts,
+    speechParts: speechPartsFromDisplayParts(displayParts),
+    summary: sanitizeSummary(summary),
+    memory: sanitizeMemory(memory),
+    usage: {
+      promptTokens: 0,
+      completionTokens: 0,
+      totalTokens: 0,
+    },
+  };
 }
 
 function orderSpeechPartsForPair(parts = [], targetLanguage = 'ko', nativeLanguage = 'en') {
@@ -649,6 +1002,184 @@ function orderSpeechPartsForPair(parts = [], targetLanguage = 'ko', nativeLangua
 
     return rank(aLanguage) - rank(bLanguage);
   });
+}
+
+function scriptEntryForLanguage(language) {
+  const code = normalizeLanguageCode(language);
+  return SCRIPT_LANGUAGE_PATTERNS.find(entry => entry.language === code) || null;
+}
+
+function countLanguageScriptChars(text, language) {
+  const entry = scriptEntryForLanguage(language);
+  if (!entry) return 0;
+  return (String(text || '').match(entry.pattern) || []).length;
+}
+
+function inferSpeechPartLanguage(text, targetLanguage = 'ko', nativeLanguage = 'en') {
+  const value = String(text || '');
+  const target = normalizeLanguageCode(targetLanguage) || 'ko';
+  const native = normalizeLanguageCode(nativeLanguage) || 'en';
+  const scriptLanguage = detectScriptLanguage(value);
+  const latinCount = (value.match(/[A-Za-z]/g) || []).length;
+
+  if (scriptLanguage && latinCount > 0) {
+    const scriptCount = countLanguageScriptChars(value, scriptLanguage);
+    const latinLanguage = detectLatinLanguage(value);
+    if (latinLanguage && latinCount >= 12 && latinCount >= scriptCount * 2) {
+      return latinLanguage;
+    }
+    return scriptLanguage;
+  }
+
+  return detectDominantLanguage(value, target, native);
+}
+
+function normalizePairSpeechLanguage(language, text, targetLanguage = 'ko', nativeLanguage = 'en') {
+  const target = normalizeLanguageCode(targetLanguage) || 'ko';
+  const native = normalizeLanguageCode(nativeLanguage) || 'en';
+  const raw = normalizeLanguageCode(language);
+
+  if (raw === target || raw === native) return raw;
+
+  const inferred = inferSpeechPartLanguage(text, target, native);
+  if (inferred === target || inferred === native) return inferred;
+  if (inferred === 'zh' && target === 'ja') return target;
+  if (inferred === 'zh' && native === 'ja') return native;
+
+  const scriptLanguage = detectScriptLanguage(text);
+  if (scriptLanguage === target || scriptLanguage === native) return scriptLanguage;
+  if (scriptLanguage === 'zh' && target === 'ja') return target;
+  if (scriptLanguage === 'zh' && native === 'ja') return native;
+
+  if (/[A-Za-z]/.test(String(text || ''))) {
+    if (LATIN_LANGUAGE_CODES.has(target)) return target;
+    if (LATIN_LANGUAGE_CODES.has(native)) return native;
+  }
+
+  return target;
+}
+
+function normalizeExpectedLanguageForPair(language, fallbackLanguage, targetLanguage = 'ko', nativeLanguage = 'en') {
+  const target = normalizeLanguageCode(targetLanguage) || 'ko';
+  const native = normalizeLanguageCode(nativeLanguage) || 'en';
+  const parsed = normalizeLanguageCode(language);
+  const fallback = normalizeLanguageCode(fallbackLanguage);
+
+  if (parsed === target || parsed === native) return parsed;
+  if (fallback === target || fallback === native) return fallback;
+  return target;
+}
+
+function splitSpeechCandidateSegments(text) {
+  const value = String(text || '').replace(/\r\n/g, '\n').trim();
+  if (!value) return [];
+
+  const coarseParts = value
+    .split(/\n+|\s+[\/|]\s+/u)
+    .map(part => part.trim())
+    .filter(Boolean);
+
+  const segments = [];
+  for (const part of coarseParts) {
+    const sentenceMatches = part.match(/[^.!?。！？]+[.!?。！？]?/gu) || [part];
+    for (const sentence of sentenceMatches) {
+      const clean = sentence.trim();
+      if (clean) segments.push(clean);
+    }
+  }
+
+  return segments.length ? segments : [value];
+}
+
+function splitMixedScriptSegmentForSpeech(segment, targetLanguage = 'ko', nativeLanguage = 'en') {
+  const text = String(segment || '').trim();
+  if (!text) return [];
+
+  const target = normalizeLanguageCode(targetLanguage) || 'ko';
+  const native = normalizeLanguageCode(nativeLanguage) || 'en';
+  const targetHasScript = !!scriptEntryForLanguage(target);
+  const nativeHasScript = !!scriptEntryForLanguage(native);
+  const latinLanguage = !targetHasScript && LATIN_LANGUAGE_CODES.has(target)
+    ? target
+    : !nativeHasScript && LATIN_LANGUAGE_CODES.has(native)
+      ? native
+      : '';
+  const scriptLanguage = targetHasScript ? target : nativeHasScript ? native : '';
+
+  if (!latinLanguage || !scriptLanguage || !countLanguageScriptChars(text, scriptLanguage) || !/[A-Za-z]/.test(text)) {
+    return [text];
+  }
+
+  const pieces = [];
+  const latinRun = /[A-Za-z][A-Za-z'’-]*(?:\s+[A-Za-z][A-Za-z'’-]*)*/g;
+  let cursor = 0;
+  let match;
+  while ((match = latinRun.exec(text)) !== null) {
+    const before = text.slice(cursor, match.index).trim();
+    const latin = match[0].trim();
+    if (before) pieces.push(before);
+    if (latin) pieces.push(latin);
+    cursor = match.index + match[0].length;
+  }
+  const after = text.slice(cursor).trim();
+  if (after) pieces.push(after);
+
+  return pieces.length > 1 ? pieces : [text];
+}
+
+function normalizeSpeechParts(parts = [], targetLanguage = 'ko', nativeLanguage = 'en') {
+  return parts
+    .filter(part => part && typeof part.text === 'string' && part.text.trim())
+    .slice(0, 8)
+    .map((part) => {
+      const text = stripDisallowedScripts(part.text, targetLanguage, nativeLanguage).slice(0, 500);
+      return {
+        language: normalizePairSpeechLanguage(part.language, text, targetLanguage, nativeLanguage),
+        text,
+      };
+    })
+    .filter(part => part.text);
+}
+
+function buildFallbackSpeechParts(reply, targetLanguage = 'ko', nativeLanguage = 'en') {
+  const segments = splitSpeechCandidateSegments(reply)
+    .flatMap(segment => splitMixedScriptSegmentForSpeech(segment, targetLanguage, nativeLanguage));
+  const parts = [];
+
+  for (const segment of segments) {
+    const language = normalizePairSpeechLanguage('', segment, targetLanguage, nativeLanguage);
+    const previous = parts[parts.length - 1];
+    if (previous && previous.language === language && previous.text.length + segment.length < 500) {
+      previous.text = `${previous.text} ${segment}`.trim();
+    } else {
+      parts.push({ language, text: segment.slice(0, 500) });
+    }
+  }
+
+  return parts.slice(0, 8);
+}
+
+function repairSpeechPartsForPair(parts = [], reply = '', targetLanguage = 'ko', nativeLanguage = 'en', nativeFirst = false) {
+  const normalized = normalizeSpeechParts(parts, targetLanguage, nativeLanguage);
+  const fallback = buildFallbackSpeechParts(reply, targetLanguage, nativeLanguage);
+  const target = normalizeLanguageCode(targetLanguage) || 'ko';
+  const native = normalizeLanguageCode(nativeLanguage) || 'en';
+  const normalizedText = normalized.map(part => part.text).join(' ');
+  const missingScriptedTarget = !!scriptEntryForLanguage(target)
+    && countLanguageScriptChars(reply, target) > 0
+    && countLanguageScriptChars(normalizedText, target) === 0;
+  const missingScriptedNative = !!scriptEntryForLanguage(native)
+    && countLanguageScriptChars(reply, native) > 0
+    && countLanguageScriptChars(normalizedText, native) === 0;
+  const useFallback = fallback.length > normalized.length
+    || (normalized.length <= 1 && fallback.length > 1)
+    || missingScriptedTarget
+    || missingScriptedNative;
+  const repaired = useFallback ? fallback : normalized;
+
+  return nativeFirst
+    ? repaired
+    : orderSpeechPartsForPair(repaired, targetLanguage, nativeLanguage);
 }
 
 function languageOrderAliases(language, uiLanguage = '') {
@@ -698,6 +1229,196 @@ function learnerRequestedNativeFirstOrder(text, targetLanguage = 'ko', nativeLan
   });
 }
 
+// Sanitize a classAction object received from the frontend. Returns null when
+// the payload is malformed or missing required fields. The shape mirrors what
+// ClassLessonPage / mobile MainTabs build per turn — a structured replacement
+// for the legacy CLASS_LESSON_ACTION text prefix that used to ride inside the
+// transcript field.
+function sanitizeClassAction(classAction) {
+  if (!classAction || typeof classAction !== 'object' || Array.isArray(classAction)) return null;
+  const action = String(classAction.action || '').trim().slice(0, 80);
+  if (!action) return null;
+  const goalsRaw = Array.isArray(classAction.activityGoals) ? classAction.activityGoals : [];
+  return {
+    action,
+    activityId: String(classAction.activityId || '').trim().slice(0, 80),
+    activitySection: String(classAction.activitySection || '').trim().slice(0, 60),
+    activityTitle: String(classAction.activityTitle || '').trim().slice(0, 200),
+    activityGoals: goalsRaw.map(g => String(g || '').slice(0, 240)).filter(Boolean).slice(0, 8),
+    activityTask: String(classAction.activityTask || '').trim().slice(0, 320),
+    itemIndex: Number.isInteger(classAction.itemIndex) ? classAction.itemIndex : 0,
+    itemType: String(classAction.itemType || '').trim().slice(0, 30),
+    target: String(classAction.target || '').trim().slice(0, 240),
+    romanization: String(classAction.romanization || '').trim().slice(0, 240),
+    native: String(classAction.native || '').trim().slice(0, 320),
+    exampleTarget: String(classAction.exampleTarget || '').trim().slice(0, 320),
+    exampleNative: String(classAction.exampleNative || '').trim().slice(0, 320),
+    lessonTitle: String(classAction.lessonTitle || '').trim().slice(0, 200),
+  };
+}
+
+// Maximum items the brief sends to the model. Lessons with more items get truncated
+// so the prompt stays bounded. Filtered briefs (single activity) almost always fit.
+const LESSON_BRIEF_MAX_ITEMS = 50;
+
+function summarizeBriefItem(item, globalIndex) {
+  const target = item.targetText || item.korean || '';
+  const native = item.nativeText || item.english || '';
+  if (!target || !native) return null;
+  const breakdown = Array.isArray(item.breakdown)
+    ? item.breakdown
+      .map(b => ({
+        target: String(b?.target || b?.korean || '').slice(0, 120),
+        native: String(b?.native || b?.english || '').slice(0, 200),
+      }))
+      .filter(b => b.target && b.native)
+      .slice(0, 6)
+    : [];
+  return {
+    globalIndex,
+    type: item.type || 'practice',
+    target: String(target).slice(0, 200),
+    romanization: String(item.romanization || item.pronunciation || '').slice(0, 200),
+    native: String(native).slice(0, 240),
+    example: String(item.exampleTarget || item.example || '').slice(0, 280),
+    exampleNative: String(item.exampleNative || item.exampleEnglish || '').slice(0, 280),
+    breakdown,
+  };
+}
+
+function summarizeAvailableActivity(activity) {
+  if (!activity || !activity.id) return null;
+  return {
+    id: String(activity.id).slice(0, 80),
+    section: String(activity.section || '').slice(0, 60),
+    title: String(activity.title || '').slice(0, 140),
+  };
+}
+
+function summarizeActiveActivity(activity) {
+  if (!activity || !activity.id) return null;
+  return {
+    id: String(activity.id).slice(0, 80),
+    section: String(activity.section || '').slice(0, 60),
+    title: String(activity.title || '').slice(0, 140),
+    goals: Array.isArray(activity.goals)
+      ? activity.goals.map(g => String(g || '').slice(0, 240)).filter(Boolean).slice(0, 6)
+      : [],
+    task: String(activity.task || '').slice(0, 320),
+  };
+}
+
+// Build the curriculum payload sent to the AI tutor.
+//   lesson      — the Lesson document (with optional `activities[]` and per-item `activityIds[]`)
+//   activityId  — when present, filter `items` to those tagged with this activity. The
+//                 untagged items (no `activityIds` array, or empty) stay visible so legacy
+//                 lessons that predate activity tagging still teach normally.
+function buildLessonBrief(lesson, activityId = '') {
+  if (!lesson || !Array.isArray(lesson.content)) return null;
+  const safeActivityId = String(activityId || '').trim().slice(0, 80);
+
+  const lessonActivities = Array.isArray(lesson.activities) ? lesson.activities : [];
+  const activeActivityRaw = safeActivityId
+    ? lessonActivities.find(activity => activity?.id === safeActivityId)
+    : null;
+  const activeActivity = summarizeActiveActivity(activeActivityRaw);
+  const availableActivities = lessonActivities
+    .map(summarizeAvailableActivity)
+    .filter(Boolean);
+
+  const items = [];
+  let dropped = 0;
+  lesson.content.forEach((item, globalIndex) => {
+    const itemActivityIds = Array.isArray(item?.activityIds) ? item.activityIds : [];
+    const matchesActivity = !safeActivityId
+      || itemActivityIds.length === 0
+      || itemActivityIds.includes(safeActivityId);
+    if (!matchesActivity) return;
+    const summary = summarizeBriefItem(item, globalIndex);
+    if (!summary) return;
+    if (items.length < LESSON_BRIEF_MAX_ITEMS) items.push(summary);
+    else dropped += 1;
+  });
+
+  return {
+    title: String(lesson.title || '').slice(0, 200),
+    category: String(lesson.category || '').slice(0, 60),
+    difficulty: String(lesson.difficulty || '').slice(0, 30),
+    activeActivity,
+    availableActivities,
+    items,
+    truncated: dropped > 0,
+    truncatedCount: dropped,
+  };
+}
+
+// Per-activity teaching styles. Keyed by the activity's `section` label as it appears
+// in the textbook scope (Speaking, Reading and Speaking, Pronunciation, etc.). When a
+// lesson activity uses a section name not in this map, DEFAULT_ACTIVITY_DIRECTIVES runs.
+const ACTIVITY_DIRECTIVES_BY_SECTION = Object.freeze({
+  speaking: [
+    'Speaking activity: have the learner produce one or two target-language sentences. Demonstrate one short model line, then ask the learner to give their own version. Give a one-line correction or compliment in the native language only when it helps.',
+  ],
+  'reading and speaking': [
+    'Reading and Speaking activity: read the target-language text aloud first, then ask the learner to read along or paraphrase. Follow with one comprehension question they can answer in target language.',
+  ],
+  'listening and speaking': [
+    'Listening and Speaking activity: speak the dialogue using displayParts with `speaker` set to "Person A" or "Person B" so each line is voiced separately. Ask the learner what they heard, then have them respond as one of the speakers.',
+  ],
+  'reading and writing': [
+    'Reading and Writing activity: present the model passage briefly, then prompt the learner to write a short parallel response. Give writing-focused feedback (word choice, grammar pattern), not pronunciation feedback.',
+  ],
+  task: [
+    'Task activity: set the scenario from activeActivity.task, take the partner role, and run the task to a clear conclusion. At the end, briefly tell the learner whether they met the task goal in one short native-language sentence.',
+  ],
+  vocabulary: [
+    'Vocabulary activity: introduce the word with romanization and a one-line meaning, share the example sentence, then ask the learner to make their own sentence using the word. Move on after one attempt.',
+  ],
+  'grammar and expression': [
+    'Grammar activity: name the pattern in one short native-language line, show the example sentence with breakdown via displayParts, then ask the learner to produce a similar sentence using the same pattern.',
+  ],
+  grammar: [
+    'Grammar activity: name the pattern in one short native-language line, show the example sentence with breakdown via displayParts, then ask the learner to produce a similar sentence using the same pattern.',
+  ],
+  pronunciation: [
+    'Pronunciation activity: contrast the spelling with the actual pronounced form (e.g. "여권 is spelled with ㄱ but pronounced [여꿘] with tense ㄲ"). Speak the target sound clearly, then ask the learner to say it back. Compare lightly to other words that follow the same pattern.',
+  ],
+  'culture note': [
+    'Culture Note activity: share the cultural fact in one or two sentences, then ask the learner to compare it with their own context. Encourage discussion; do not quiz or correct.',
+  ],
+  culture: [
+    'Culture Note activity: share the cultural fact in one or two sentences, then ask the learner to compare it with their own context. Encourage discussion; do not quiz or correct.',
+  ],
+});
+
+const DEFAULT_ACTIVITY_DIRECTIVES = [
+  'No specific activity is selected. Walk through lessonBrief.items in order: introduce the item, share the example, ask the learner to use it. Move on after one attempt.',
+];
+
+function teachingDirectivesFor(lessonBrief) {
+  if (!lessonBrief) return [];
+  const sectionKey = String(lessonBrief?.activeActivity?.section || '').trim().toLowerCase();
+  const sectionDirectives = sectionKey
+    ? (ACTIVITY_DIRECTIVES_BY_SECTION[sectionKey] || DEFAULT_ACTIVITY_DIRECTIVES)
+    : DEFAULT_ACTIVITY_DIRECTIVES;
+
+  return [
+    'You are running a structured class lesson, not freeform chat. The lessonBrief is the curriculum.',
+    'When the input JSON contains a `classAction` object, treat it as a private teacher-control command from the app — not as learner language. classAction.action tells you the intent (teach_selected_item / practice_selected_item / explain_selected_item / similar). Never quote classAction back to the learner.',
+    'If latestLearnerTranscript begins with CLASS_LESSON_ACTION, the same rule applies: treat it as a teacher-control command for backward compatibility, never as learner speech.',
+    'For class-action turns (either signal), use activeActivity.section, activeActivity.title, activeActivity.goals, and activeActivity.task as the immediate classroom objective. Teach within that activity, not the next item from a different section.',
+    'lessonBrief.items is already filtered to the active activity (when one is set). Stay inside that filtered set; do not jump to items not present.',
+    'Each class response should include a brief explanation or prompt, then ask the learner to do activeActivity.task or answer one short participation question.',
+    'For class lesson replies, speechParts is mandatory: split every spoken target-language sentence and native-language explanation into separate speechParts entries with the correct short language code.',
+    ...sectionDirectives,
+    'Track lesson progress in memory.lessonProgress = { activityId, activitySection, activityTitle, itemIndex, itemType }. activityId comes from lessonBrief.activeActivity.id. itemIndex is the globalIndex of the lessonBrief.items entry the learner is currently practicing. itemType is "word" | "sentence" | "conversation". Update these fields each turn so the next request resumes correctly.',
+    'When the learner finishes the active activity, congratulate them and offer to move to one of availableActivities. Do not unilaterally switch — wait for the learner or for the next CLASS_LESSON_ACTION.',
+    'If lessonBrief.truncated is true, the activity has more items than the brief sent. Tell the learner there is more to practice if they want to continue past what fits in this turn.',
+    'On the very first turn of an activity, briefly introduce the activity by activeActivity.title and goals before teaching the first item.',
+    'If the learner asks an off-topic question, answer briefly and steer back to the current activity item.',
+  ];
+}
+
 async function callAIConversation({
   scenario,
   targetLanguage,
@@ -711,6 +1432,8 @@ async function callAIConversation({
   productContext = 'Lingo Booth language-learning app',
   maxCompletionTokens,
   customRoleplay,
+  lessonBrief,
+  classAction,
 }) {
   const apiKey = process.env.DEEPSEEK_API_KEY;
   const safeTargetLanguage = normalizeLanguageCode(targetLanguage) || 'ko';
@@ -729,12 +1452,23 @@ async function callAIConversation({
   }
 
   const selectedInputLanguage = normalizeLanguageCode(inputLanguage);
-  const detectedScriptLanguage = detectScriptLanguage(transcript);
-  const learnerLanguage = detectDominantLanguage(transcript, safeTargetLanguage, safeNativeLanguage, inputLanguage);
+  const safeClassAction = sanitizeClassAction(classAction);
+  // A class-lesson turn is signaled either by the new structured `classAction`
+  // object or by the legacy "CLASS_LESSON_ACTION" text prefix in the transcript.
+  // Both bypass language-pair detection / phrase extraction since the transcript
+  // is then a teacher-control signal, not a learner utterance.
+  const isClassLessonAction = !!safeClassAction
+    || String(transcript || '').trim().startsWith('CLASS_LESSON_ACTION');
+  const detectedScriptLanguage = isClassLessonAction ? '' : detectScriptLanguage(transcript);
+  const learnerLanguage = isClassLessonAction
+    ? safeNativeLanguage
+    : detectDominantLanguage(transcript, safeTargetLanguage, safeNativeLanguage, inputLanguage);
   const learnerUsedNativeLanguage = learnerLanguage === safeNativeLanguage;
   const learnerUsedTargetLanguage = learnerLanguage === safeTargetLanguage;
-  const learnerRequestedNativeFirst = learnerRequestedNativeFirstOrder(transcript, safeTargetLanguage, safeNativeLanguage);
-  const requestedPhrase = extractRequestedPhrase(transcript);
+  const learnerRequestedNativeFirst = isClassLessonAction
+    ? false
+    : learnerRequestedNativeFirstOrder(transcript, safeTargetLanguage, safeNativeLanguage);
+  const requestedPhrase = isClassLessonAction ? '' : extractRequestedPhrase(transcript);
   const model = process.env.DEEPSEEK_CONVERSATION_MODEL || process.env.DEEPSEEK_MODEL || 'deepseek-v4-flash';
   const safeCustomRoleplay = sanitizeCustomRoleplay(customRoleplay || memory?.customRoleplay);
   const roleState = safeCustomRoleplay
@@ -759,8 +1493,11 @@ async function callAIConversation({
     },
   });
 
+  const teachingDirectives = teachingDirectivesFor(lessonBrief);
+
   const systemPrompt = [
     `You are the speaking conversation partner for ${productContext}.`,
+    ...teachingDirectives,
     'Run a live language-learning roleplay, not a fixed database exercise.',
     'Act like a flexible conversation partner or friend, not a pronunciation drill coach.',
     'Stay inside the named scenario and follow the assigned learnerRole and conversationPartnerRole.',
@@ -772,6 +1509,7 @@ async function callAIConversation({
     'Remember concrete facts from conversationMemory and conversationSummary, such as orders, sizes, destinations, names, prices, and waiting times.',
     'If the learner asks what they ordered or what was already decided, answer from conversationMemory and conversationSummary.',
     'The selected language pair is nativeLanguage and targetLanguage only. If the learner uses a different language, politely ask them to continue in the selected pair and do not answer the off-pair content.',
+    'Never include words, translations, glosses, examples, characters, or scripts from any language outside nativeLanguage and targetLanguage. If a third language would help, translate that idea into the selected pair instead.',
     'When a reply uses both languages in the selected pair, use target language first, then native-language support, unless the learner explicitly asks for a different arrangement.',
     'If the learner uses their native language, first respond with a natural target-language line, then add a brief native-language explanation or confirmation.',
     'For native-language turns, return speechParts with one target-language part first and one native-language part second, unless the learner explicitly asks for another order.',
@@ -782,8 +1520,10 @@ async function callAIConversation({
     'If the learner switches topic, follow the new topic naturally while preserving important memory.',
     'Keep replies short enough to be spoken aloud safely in hands-free mode.',
     'Do not mention APIs, backend logs, model names, environment variables, or provider configuration to the learner.',
-    'Return strict JSON with keys: reply, coachingTip, expectedLanguage, nextSuggestedIntent, speechParts, summary, memory.',
+    'Return strict JSON with keys: reply, coachingTip, expectedLanguage, nextSuggestedIntent, speechParts, displayParts, summary, memory.',
     'The reply value must be plain user-visible conversation text only. Never put JSON, object keys, braces, markdown fences, or escaped JSON inside reply.',
+    'For class lesson replies, displayParts may contain objects with type target, native, romanization, or meta; language; text; speak boolean; and optional speaker. Romanization and meta are visual support and should use speak false.',
+    'For dialogue examples, do not leave raw "A:" or "B:" labels in the text. Put "Person A" or "Person B" in displayParts[].speaker and keep displayParts[].text as only the spoken line.',
     'summary must be a compact running summary of durable facts and unresolved tasks, maximum 120 words.',
     'memory must be a compact JSON object of durable facts, such as order, destination, learnerPreferences, pendingQuestion, or scenarioState.',
     'Use short language codes such as ko, en, es, fr, de, ja, zh, hi, ar, he, pt, it, nl, ru, id, ms, fil, tr, bn, or ta for expectedLanguage and speechParts[].language.',
@@ -797,10 +1537,13 @@ async function callAIConversation({
       content: JSON.stringify({
         scenario: scenario || 'Casual conversation practice',
         customRoleplay: safeCustomRoleplay,
+        ...(lessonBrief ? { lessonBrief } : {}),
+        ...(safeClassAction ? { classAction: safeClassAction } : {}),
         targetLanguage: safeTargetLanguage,
         nativeLanguage: safeNativeLanguage,
         inputLanguage: inputLanguage || '',
         selectedInputLanguage,
+        isClassLessonAction,
         detectedScriptLanguage,
         difficulty: difficulty || 'friendly beginner',
         learnerLanguage,
@@ -818,6 +1561,9 @@ async function callAIConversation({
         instruction: [
           'Continue naturally as a conversation partner.',
           'Use conversationSummary and conversationMemory as authoritative context unless the learner corrects it.',
+          isClassLessonAction
+            ? 'This latestLearnerTranscript is a private class control action. Teach from its activity fields and ask the learner a participation question; do not treat the command itself as learner speech.'
+            : '',
           `You are playing the scenario role: ${roleState.partnerRole}. The learner is playing: ${roleState.learnerRole}.`,
           roleState.roleSwitchRequested
             ? `The learner asked to switch roles. Confirm briefly, then continue immediately as ${roleState.partnerRole}.`
@@ -854,40 +1600,87 @@ async function callAIConversation({
     requestBody.max_tokens = 700;
   }
 
-  const response = await fetch(DEEPSEEK_API_URL, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(requestBody),
-  });
+  const controller = new AbortController();
+  const providerTimer = setTimeout(() => controller.abort(), PROVIDER_TIMEOUT_MS);
+  let response;
+  try {
+    response = await fetch(DEEPSEEK_API_URL, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(requestBody),
+      signal: controller.signal,
+    });
+  } catch (error) {
+    if (error?.name === 'AbortError') {
+      throw new Error(`Conversation provider timed out after ${PROVIDER_TIMEOUT_MS}ms`);
+    }
+    throw error;
+  } finally {
+    clearTimeout(providerTimer);
+  }
 
   if (!response.ok) {
     const detail = await response.text();
-    throw new Error(`AI provider request failed (${response.status}): ${detail.slice(0, 300)}`);
+    throw new Error(`Conversation provider request failed (${response.status}): ${detail.slice(0, 300)}`);
   }
 
   const data = await response.json();
   const promptEstimate = messages.reduce((sum, message) => sum + estimateTextTokens(message.content), 0);
   const content = data.choices?.[0]?.message?.content || '{}';
   const parsed = parseAIJsonContent(content);
+  const deterministicDisplayParts = isClassLessonAction
+    ? buildClassLessonDisplayParts(transcript, safeTargetLanguage, safeNativeLanguage)
+    : [];
+  const parsedDisplayParts = Array.isArray(parsed.displayParts)
+    ? parsed.displayParts
+      .filter(part => part && typeof part.text === 'string' && part.text.trim())
+      .slice(0, 10)
+      .map((part) => {
+        const type = ['target', 'native', 'romanization', 'meta'].includes(part.type) ? part.type : 'meta';
+        const fallbackPartLanguage = type === 'native' || type === 'meta'
+          ? safeNativeLanguage
+          : safeTargetLanguage;
 
-  const reply = sanitizeAIReply(parsed.reply);
+        return makeDisplayPart({
+          type,
+          language: normalizeExpectedLanguageForPair(part.language, fallbackPartLanguage, safeTargetLanguage, safeNativeLanguage),
+          text: enforceTextLanguagePair(part.text, safeTargetLanguage, safeNativeLanguage, '').slice(0, 500),
+          speaker: part.speaker,
+          section: part.section === 'example' ? 'example' : '',
+          speak: part.speak !== false && type !== 'romanization' && type !== 'meta',
+        });
+      })
+      .filter(part => part.text)
+    : [];
+  const displayParts = deterministicDisplayParts.length ? deterministicDisplayParts : parsedDisplayParts;
+
+  const sanitizedReply = sanitizeAIReply(parsed.reply);
+  const visibleReply = displayParts.length && isClassLessonAction
+    ? displayPartsToReply(displayParts)
+    : (
+      sanitizedReply === FORMATTING_FALLBACK_REPLY && isClassLessonAction
+        ? buildClassLessonActionFallback(transcript, safeTargetLanguage, safeNativeLanguage) || sanitizedReply
+        : sanitizedReply
+    );
+  const reply = enforceTextLanguagePair(
+    visibleReply,
+    safeTargetLanguage,
+    safeNativeLanguage,
+  ).slice(0, 800);
   const fallbackLanguage = detectDominantLanguage(reply, safeTargetLanguage, safeNativeLanguage);
   const parsedLanguage = normalizeLanguageCode(String(parsed.expectedLanguage || '').slice(0, 20));
-  const parsedSpeechParts = Array.isArray(parsed.speechParts)
-    ? parsed.speechParts
-      .filter(part => part && typeof part.text === 'string')
-      .slice(0, 3)
-      .map(part => ({
-        language: normalizeLanguageCode(part.language) || detectDominantLanguage(part.text, safeTargetLanguage, safeNativeLanguage),
-        text: part.text.slice(0, 500),
-      }))
-    : [];
-  const speechParts = learnerRequestedNativeFirst
-    ? parsedSpeechParts
-    : orderSpeechPartsForPair(parsedSpeechParts, safeTargetLanguage, safeNativeLanguage);
+  const speechParts = displayParts.length && isClassLessonAction
+    ? speechPartsFromDisplayParts(displayParts)
+    : repairSpeechPartsForPair(
+      Array.isArray(parsed.speechParts) ? parsed.speechParts : [],
+      reply,
+      safeTargetLanguage,
+      safeNativeLanguage,
+      learnerRequestedNativeFirst,
+    );
   const providerUsage = data.usage || {};
   const promptTokens = Number(providerUsage.prompt_tokens) || promptEstimate;
   const completionTokens = Number(providerUsage.completion_tokens) || estimateTextTokens(reply);
@@ -896,13 +1689,38 @@ async function callAIConversation({
   return {
     aiEnabled: true,
     reply,
-    coachingTip: String(parsed.coachingTip || '').slice(0, 400),
-    expectedLanguage: parsedLanguage || fallbackLanguage,
-    nextSuggestedIntent: String(parsed.nextSuggestedIntent || '').slice(0, 200),
+    coachingTip: enforceTextLanguagePair(
+      String(parsed.coachingTip || '').slice(0, 400),
+      safeTargetLanguage,
+      safeNativeLanguage,
+      '',
+    ).slice(0, 400),
+    expectedLanguage: normalizeExpectedLanguageForPair(
+      parsedLanguage,
+      fallbackLanguage,
+      safeTargetLanguage,
+      safeNativeLanguage,
+    ),
+    nextSuggestedIntent: enforceTextLanguagePair(
+      String(parsed.nextSuggestedIntent || '').slice(0, 200),
+      safeTargetLanguage,
+      safeNativeLanguage,
+      '',
+    ).slice(0, 200),
+    displayParts,
     speechParts,
-    summary: sanitizeSummary(parsed.summary || summary),
+    summary: sanitizeSummary(enforceTextLanguagePair(
+      parsed.summary || summary,
+      safeTargetLanguage,
+      safeNativeLanguage,
+      '',
+    )),
     memory: sanitizeMemory({
-      ...sanitizeMemory(parsed.memory || roleMemory),
+      ...sanitizeMemory(enforceValueLanguagePair(
+        parsed.memory || roleMemory,
+        safeTargetLanguage,
+        safeNativeLanguage,
+      )),
       ...(safeCustomRoleplay ? { customRoleplay: safeCustomRoleplay } : {}),
       roleState: {
         scenarioKey: roleState.scenarioKey,
@@ -930,6 +1748,8 @@ async function callAIConversation({
 }
 
 module.exports = {
+  buildClassLessonFallbackResult,
+  buildLessonBrief,
   callAIConversation,
   buildLanguagePairRedirect,
   detectDominantLanguage,
@@ -941,7 +1761,9 @@ module.exports = {
   parseAIJsonContent,
   resolveConversationRoleState,
   safeConversationHistory,
+  sanitizeClassAction,
   sanitizeCustomRoleplay,
   sanitizeMemory,
   sanitizeSummary,
+  teachingDirectivesFor,
 };

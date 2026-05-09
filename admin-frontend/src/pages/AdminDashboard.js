@@ -5,7 +5,11 @@ import './AdminDashboard.css';
 function AdminDashboard() {
   const [stats, setStats] = useState(null);
   const [users, setUsers] = useState([]);
+  const [errorReports, setErrorReports] = useState({
+    reports: [], total: 0, page: 1, totalPages: 1, openCount: 0, criticalOpenCount: 0,
+  });
   const [loading, setLoading] = useState(true);
+  const [errorReportsLoading, setErrorReportsLoading] = useState(false);
   const [error, setError] = useState('');
   const [activeTab, setActiveTab] = useState('dashboard');
   const [searchTerm, setSearchTerm] = useState('');
@@ -17,6 +21,24 @@ function AdminDashboard() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    if (activeTab === 'failures') {
+      fetchErrorReports(1);
+    }
+  }, [activeTab]);
+
+  const fetchErrorReports = async (page = 1) => {
+    try {
+      setErrorReportsLoading(true);
+      const res = await adminService.getErrorReports({ page, status: 'open' });
+      setErrorReports(res.data);
+    } catch (err) {
+      console.error('Failure reports fetch error:', err);
+    } finally {
+      setErrorReportsLoading(false);
+    }
+  };
+
   const fetchData = async () => {
     try {
       setLoading(true);
@@ -26,6 +48,11 @@ function AdminDashboard() {
       ]);
       setStats(statsResponse.data);
       setUsers(usersResponse.data);
+      setErrorReports(prev => ({
+        ...prev,
+        openCount: statsResponse.data?.overview?.openErrorReports || 0,
+        total: statsResponse.data?.overview?.totalErrorReports || prev.total,
+      }));
       setError('');
     } catch (err) {
       if (err.response?.status === 401) {
@@ -42,6 +69,29 @@ function AdminDashboard() {
   const showSuccess = (message) => {
     setSuccessMessage(message);
     setTimeout(() => setSuccessMessage(''), 3000);
+  };
+
+  const errorReportUserLabel = (report) => (
+    report.userId?.username ||
+    report.userSnapshot?.username ||
+    report.reportedUserId ||
+    report.deviceId ||
+    'Unknown user'
+  );
+
+  const acknowledgeErrorReport = async (reportId) => {
+    try {
+      await adminService.acknowledgeErrorReport(reportId);
+      setErrorReports(prev => ({
+        ...prev,
+        reports: prev.reports.filter(report => report._id !== reportId),
+        openCount: Math.max((prev.openCount || 1) - 1, 0),
+      }));
+      showSuccess('Failure acknowledged');
+      fetchData();
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to acknowledge failure');
+    }
   };
 
   const handleSuspendUser = async () => {
@@ -197,6 +247,13 @@ function AdminDashboard() {
           >
             <span className="tab-icon">📈</span>
             Activity
+          </button>
+          <button
+            className={`tab-btn ${activeTab === 'failures' ? 'active' : ''}`}
+            onClick={() => setActiveTab('failures')}
+          >
+            <span className="tab-icon">!</span>
+            Failures ({errorReports.openCount || stats?.overview?.openErrorReports || 0})
           </button>
         </div>
 
@@ -590,6 +647,85 @@ function AdminDashboard() {
                   </tbody>
                 </table>
               </div>
+            </div>
+          )}
+
+          {activeTab === 'failures' && (
+            <div className="failures-section">
+              <div className="section-title">
+                <h2>User-side failures</h2>
+              </div>
+              <div className="failure-toolbar">
+                <div>
+                  <strong>{errorReports.openCount || 0}</strong> open failures
+                  {errorReports.criticalOpenCount > 0 && (
+                    <span className="failure-critical-note"> {errorReports.criticalOpenCount} critical</span>
+                  )}
+                </div>
+                <button className="btn btn-outline" onClick={() => fetchErrorReports(errorReports.page || 1)} disabled={errorReportsLoading}>
+                  Refresh
+                </button>
+              </div>
+              <div className="card failures-card">
+                {errorReportsLoading ? (
+                  <div className="no-data" style={{ padding: 40 }}>Loading failures...</div>
+                ) : errorReports.reports.length > 0 ? (
+                  <div className="failure-list">
+                    {errorReports.reports.map((report) => (
+                      <div key={report._id} className={`failure-item severity-${report.severity}`}>
+                        <div className="failure-item-header">
+                          <div>
+                            <div className="failure-title">
+                              <span className="failure-severity">{report.severity}</span>
+                              <span>{report.message}</span>
+                            </div>
+                            <div className="failure-meta">
+                              {formatDate(report.createdAt)} | {report.source} | {report.kind} | {errorReportUserLabel(report)}
+                            </div>
+                          </div>
+                          <button className="btn btn-outline failure-ack" onClick={() => acknowledgeErrorReport(report._id)}>
+                            Acknowledge
+                          </button>
+                        </div>
+                        <div className="failure-detail-grid">
+                          <div><span>Page</span><strong>{report.route || report.screen || 'Unknown'}</strong></div>
+                          <div><span>Device</span><strong>{report.deviceId || 'Unknown'}</strong></div>
+                          <div><span>Language Pair</span><strong>{report.session?.nativeLanguage || '?'} -> {report.session?.targetLanguage || '?'}</strong></div>
+                          <div><span>Status</span><strong>{report.api?.statusCode || 'Client'} {report.api?.statusText || ''}</strong></div>
+                        </div>
+                        {report.api?.url && (
+                          <div className="failure-code-line">{report.api.method || 'GET'} {report.api.url}</div>
+                        )}
+                        {report.api?.responseMessage && report.api.responseMessage !== report.message && (
+                          <div className="failure-response">{report.api.responseMessage}</div>
+                        )}
+                        {report.stack && (
+                          <details className="failure-stack">
+                            <summary>Stack trace</summary>
+                            <pre>{report.stack}</pre>
+                          </details>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="no-results">
+                    <span className="no-results-icon">OK</span>
+                    <p>No open user-side failures.</p>
+                  </div>
+                )}
+              </div>
+              {errorReports.totalPages > 1 && (
+                <div className="pagination-row">
+                  <button className="btn btn-outline" disabled={errorReports.page <= 1 || errorReportsLoading} onClick={() => fetchErrorReports(errorReports.page - 1)}>
+                    Previous
+                  </button>
+                  <span className="page-info">Page {errorReports.page} of {errorReports.totalPages}</span>
+                  <button className="btn btn-outline" disabled={errorReports.page >= errorReports.totalPages || errorReportsLoading} onClick={() => fetchErrorReports(errorReports.page + 1)}>
+                    Next
+                  </button>
+                </div>
+              )}
             </div>
           )}
         </div>

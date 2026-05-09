@@ -98,16 +98,17 @@ function resolveAiIdentity(req) {
 }
 
 function formatUsage(doc, tier, now = new Date()) {
-  const dailyLimit = getDailyAiTokenLimit(tier);
+  const limitsDisabled = process.env.AI_TOKEN_LIMITS_DISABLED !== 'false';
+  const dailyLimit = limitsDisabled ? Number.MAX_SAFE_INTEGER : getDailyAiTokenLimit(tier);
   const usedTokens = clampTokenCount(doc?.usedTokens);
-  const remainingTokens = Math.max(0, dailyLimit - usedTokens);
+  const remainingTokens = limitsDisabled ? Number.MAX_SAFE_INTEGER : Math.max(0, dailyLimit - usedTokens);
   const resetAt = getResetAt(now);
 
   return {
     usedTokens,
     dailyLimit,
     remainingTokens,
-    quotaExceeded: remainingTokens <= 0,
+    quotaExceeded: limitsDisabled ? false : remainingTokens <= 0,
     resetAt: resetAt.toISOString(),
     resetInMs: Math.max(0, resetAt.getTime() - now.getTime()),
     dateKey: getDateKey(now),

@@ -37,7 +37,7 @@ const LoginScreen: React.FC = () => {
   const { t, i18n } = useTranslation();
   const navigation = useNavigation<LoginNavProp>();
   const { login, guestXP, clearGuestXP } = useAuthStore();
-  const { setLanguages, setVoice, nativeLanguage, targetLanguage } = useSettingsStore();
+  const { setLanguages, setVoice, setVoiceMap, nativeLanguage, targetLanguage } = useSettingsStore();
   const insets = useSafeAreaInsets();
   const { height: winHeight, width: winWidth } = useWindowDimensions();
   const isCompact = winHeight < 450 || winWidth < 380;
@@ -90,6 +90,7 @@ const LoginScreen: React.FC = () => {
 
       login({ token, user });
       clearGuestXP();
+      if (user.preferredVoices) setVoiceMap(user.preferredVoices);
       if (user.preferredVoice) setVoice(user.preferredVoice);
 
       // login() already sets needsLanguageSetup from user.languageSetupComplete
@@ -123,6 +124,7 @@ const LoginScreen: React.FC = () => {
       login({ token, user });
       clearGuestXP();
       setLanguages(user.nativeLanguage || '', user.targetLanguage || '');
+      if (user.preferredVoices) setVoiceMap(user.preferredVoices);
       if (user.preferredVoice) setVoice(user.preferredVoice);
       i18n.changeLanguage(user.nativeLanguage || '');
     } catch (err: any) {

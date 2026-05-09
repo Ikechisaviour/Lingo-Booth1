@@ -3,7 +3,12 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { userService, progressService } from '../services/api';
 import speechService from '../services/speechService';
-import LANGUAGES, { getTargetLangName, getTargetLangCode, getTargetHello } from '../config/languages';
+import LANGUAGES, {
+  getNativeLangCode,
+  getNativeLangName,
+  getTargetLangCode,
+  getTargetLangName,
+} from '../config/languages';
 import './ProfilePage.css';
 
 function ProfilePage({ onLogout }) {
@@ -25,8 +30,10 @@ function ProfilePage({ onLogout }) {
     confirmPassword: '',
   });
   const [saveMessage, setSaveMessage] = useState('');
-  const [availableVoices, setAvailableVoices] = useState([]);
-  const [selectedVoice, setSelectedVoice] = useState(localStorage.getItem('preferredVoice') || '');
+  const [targetVoices, setTargetVoices] = useState([]);
+  const [nativeVoices, setNativeVoices] = useState([]);
+  const [selectedTargetVoice, setSelectedTargetVoice] = useState(speechService.getSelectedVoiceName(getTargetLangCode()) || '');
+  const [selectedNativeVoice, setSelectedNativeVoice] = useState(speechService.getSelectedVoiceName(getNativeLangCode()) || '');
   const [xpDecayEnabled, setXpDecayEnabled] = useState(false);
   const [showModeConfirm, setShowModeConfirm] = useState(null); // 'enable' or 'disable'
   const [modeLoading, setModeLoading] = useState(false);
@@ -39,13 +46,15 @@ function ProfilePage({ onLogout }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Load available voices for target language from Edge TTS
+  // Load available voices for both languages from Edge TTS
   useEffect(() => {
     const loadVoices = async () => {
-      const targetVoices = await speechService.getVoicesForLang(getTargetLangCode());
-      if (targetVoices.length > 0) {
-        setAvailableVoices(targetVoices);
-      }
+      const [targetList, nativeList] = await Promise.all([
+        speechService.getVoicesForLang(getTargetLangCode()),
+        speechService.getVoicesForLang(getNativeLangCode()),
+      ]);
+      setTargetVoices(targetList);
+      setNativeVoices(nativeList);
     };
     loadVoices();
   }, []);
@@ -65,6 +74,14 @@ function ProfilePage({ onLogout }) {
         : userResponse.data.subscriptionTier;
       if (effectiveTier) {
         localStorage.setItem('subscriptionTier', effectiveTier);
+      }
+      if (userResponse.data.preferredVoices && typeof userResponse.data.preferredVoices === 'object') {
+        localStorage.setItem('preferredVoices', JSON.stringify(userResponse.data.preferredVoices));
+        Object.entries(userResponse.data.preferredVoices).forEach(([language, voice]) => {
+          if (voice) localStorage.setItem(`preferredVoice:${language}`, voice);
+        });
+        setSelectedTargetVoice(userResponse.data.preferredVoices[getTargetLangCode()] || userResponse.data.preferredVoice || '');
+        setSelectedNativeVoice(userResponse.data.preferredVoices[getNativeLangCode()] || '');
       }
       if (userResponse.data.aiEntitlements) {
         const effectiveEntitlements = userResponse.data.role === 'admin'
@@ -136,20 +153,90 @@ function ProfilePage({ onLogout }) {
     }
   };
 
-  const handleVoiceChange = async (voiceName) => {
-    setSelectedVoice(voiceName);
-    speechService.setVoice(voiceName);
-    // Preview the voice
-    speechService.speak(getTargetHello());
-    // Save to backend
+  const handleVoiceChange = async (languageCode, voiceName) => {
+    const code = languageCode || getTargetLangCode();
+    if (code === getTargetLangCode()) setSelectedTargetVoice(voiceName);
+    if (code === getNativeLangCode()) setSelectedNativeVoice(voiceName);
+    speechService.setVoice(voiceName, code);
+    speechService.speak(LANGUAGES[code]?.hello || 'Hello', {
+      lang: LANGUAGES[code]?.ttsLocale,
+      voice: voiceName || undefined,
+    });
+
     try {
-      await userService.updateProfile(userId, { preferredVoice: voiceName || null });
+      const preferredVoices = {
+        ...speechService.getVoiceMap(),
+        [code]: voiceName || null,
+      };
+      const payload = {
+        preferredVoices,
+        ...(code === getTargetLangCode() ? { preferredVoice: voiceName || null } : {}),
+      };
+      await userService.updateProfile(userId, payload);
       setSaveMessage(t('profilePage.voiceUpdated'));
       setTimeout(() => setSaveMessage(''), 3000);
     } catch (err) {
       console.error('Failed to save voice preference:', err);
     }
   };
+
+  const renderVoiceSelector = ({
+    title,
+    languageCode,
+    languageName,
+    voices,
+    selectedVoice,
+  }) => (
+    <div className="voice-language-group">
+      <div className="voice-language-header">
+        <h3>{title}</h3>
+        <span>{LANGUAGES[languageCode]?.flag} {languageName}</span>
+      </div>
+      {voices.length === 0 ? (
+        <p className="voice-no-voices">
+          {t('profilePage.noVoices', { language: languageName })}
+        </p>
+      ) : (
+        <div className="voice-selector">
+          <div
+            className={`voice-option ${!selectedVoice ? 'voice-option-selected' : ''}`}
+            onClick={() => handleVoiceChange(languageCode, '')}
+          >
+            <div className="voice-option-info">
+              <span className="voice-option-name">{t('profilePage.defaultVoice', 'Default Voice')}</span>
+              <span className="voice-option-lang">{t('profilePage.systemDefault', 'System default')}</span>
+            </div>
+            {!selectedVoice && <span className="voice-check">&#10003;</span>}
+          </div>
+          {voices.map((voice) => (
+            <div
+              key={voice.name}
+              className={`voice-option ${selectedVoice === voice.name ? 'voice-option-selected' : ''}`}
+              onClick={() => handleVoiceChange(languageCode, voice.name)}
+            >
+              <div className="voice-option-info">
+                <span className="voice-option-name">{voice.displayName || voice.name}</span>
+                <span className="voice-option-lang">{voice.lang}{voice.gender ? ` · ${voice.gender}` : ''}</span>
+              </div>
+              <button
+                className="voice-preview-btn"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  speechService.speak(LANGUAGES[languageCode]?.hello || 'Hello', {
+                    lang: LANGUAGES[languageCode]?.ttsLocale,
+                    voice: voice.name,
+                  });
+                }}
+              >
+                {t('profilePage.preview')}
+              </button>
+              {selectedVoice === voice.name && <span className="voice-check">&#10003;</span>}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 
   const handleModeToggle = async (enable) => {
     try {
@@ -450,46 +537,22 @@ function ProfilePage({ onLogout }) {
               <div className="card">
                 <h2>{t('profilePage.voiceSettings')}</h2>
                 <p className="voice-description">
-                  {t('profilePage.voiceDescription', { language: t(`languages.${getTargetLangCode()}`, getTargetLangName()) })}
+                  Choose separate voices for your target language and your native language so mixed replies are pronounced naturally.
                 </p>
-                {availableVoices.length === 0 ? (
-                  <p className="voice-no-voices">
-                    {t('profilePage.noVoices', { language: t(`languages.${getTargetLangCode()}`, getTargetLangName()) })}
-                  </p>
-                ) : (
-                  <div className="voice-selector">
-                    {availableVoices.map((voice) => (
-                      <div
-                        key={voice.name}
-                        className={`voice-option ${selectedVoice === voice.name ? 'voice-option-selected' : ''}`}
-                        onClick={() => handleVoiceChange(voice.name)}
-                      >
-                        <div className="voice-option-info">
-                          <span className="voice-option-name">{voice.displayName || voice.name}</span>
-                          <span className="voice-option-lang">{voice.lang}{voice.gender ? ` · ${voice.gender}` : ''}</span>
-                        </div>
-                        <button
-                          className="voice-preview-btn"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            const prevVoice = speechService.getSelectedVoiceName();
-                            speechService.setVoice(voice.name);
-                            speechService.speak(getTargetHello());
-                            // Restore previous voice if not selecting
-                            if (selectedVoice !== voice.name) {
-                              setTimeout(() => speechService.setVoice(prevVoice), 100);
-                            }
-                          }}
-                        >
-                          {t('profilePage.preview')}
-                        </button>
-                        {selectedVoice === voice.name && (
-                          <span className="voice-check">&#10003;</span>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                )}
+                {renderVoiceSelector({
+                  title: 'Target voice',
+                  languageCode: getTargetLangCode(),
+                  languageName: t(`languages.${getTargetLangCode()}`, getTargetLangName()),
+                  voices: targetVoices,
+                  selectedVoice: selectedTargetVoice,
+                })}
+                {renderVoiceSelector({
+                  title: 'Native voice',
+                  languageCode: getNativeLangCode(),
+                  languageName: t(`languages.${getNativeLangCode()}`, getNativeLangName()),
+                  voices: nativeVoices,
+                  selectedVoice: selectedNativeVoice,
+                })}
               </div>
 
               {/* XP Mode */}

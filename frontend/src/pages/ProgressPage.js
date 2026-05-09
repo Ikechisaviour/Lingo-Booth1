@@ -169,7 +169,7 @@ function ProgressPage() {
                       </div>
                       {area.lessonId && needsPractice(selectedMastery) && (
                         <Link
-                          to={`/lessons/${area.lessonId._id}`}
+                          to={`/quiz/${area.lessonId._id}`}
                           className="btn-practice"
                           onClick={(e) => e.stopPropagation()}
                         >
@@ -178,7 +178,7 @@ function ProgressPage() {
                       )}
                       {area.lessonId && !needsPractice(selectedMastery) && (
                         <Link
-                          to={`/lessons/${area.lessonId._id}`}
+                          to={`/quiz/${area.lessonId._id}`}
                           className="btn-review"
                           onClick={(e) => e.stopPropagation()}
                         >

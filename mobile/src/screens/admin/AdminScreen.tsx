@@ -50,6 +50,7 @@ const AdminScreen: React.FC = () => {
   const { t } = useTranslation();
   const colors = useAppColors();
   const preferredVoice = useSettingsStore((state) => state.preferredVoice);
+  const preferredVoices = useSettingsStore((state) => state.preferredVoices);
 
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
   const [stats, setStats] = useState<any>(null);
@@ -220,7 +221,9 @@ const AdminScreen: React.FC = () => {
   };
 
   const voiceForDemoLanguage = (languageId?: string) => (
-    languageId === demoTargetLanguage ? preferredVoice || undefined : undefined
+    (languageId && preferredVoices?.[languageId])
+    || (languageId === demoTargetLanguage ? preferredVoice || undefined : undefined)
+    || undefined
   );
 
   const speakDemoReply = async (data: any, reply: string) => {

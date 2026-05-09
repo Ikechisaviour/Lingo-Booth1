@@ -104,13 +104,15 @@ function FlashcardsPage() {
       if (state.activityType === 'flashcard' && state.flashcardIndex > 0) {
         setCurrentIndex(Math.min(state.flashcardIndex, flashcards.length - 1));
         setReadyToSave(true);
-      } else if (state.activityType === 'lesson' && state.lesson && state.lessonIndex > 0) {
-        // Lesson in progress - show continue prompt (don't enable saving yet)
+      } else if ((state.activityType === 'quiz' || state.activityType === 'lesson') && (state.quiz || state.lesson) && (state.quizIndex ?? state.lessonIndex ?? 0) > 0) {
+        const savedQuiz = state.quiz || state.lesson;
+        const savedQuizIndex = state.quizIndex ?? state.lessonIndex ?? 0;
+        // Quiz in progress - show continue prompt (don't enable saving yet)
         setContinuePrompt({
-          lessonId: state.lesson._id,
-          lessonTitle: state.lesson.title || 'Untitled Lesson',
-          lessonIndex: state.lessonIndex,
-          activityType: 'lesson',
+          quizId: savedQuiz._id,
+          quizTitle: savedQuiz.title || 'Untitled Quiz',
+          quizIndex: savedQuizIndex,
+          activityType: 'quiz',
         });
       } else {
         setReadyToSave(true);
@@ -820,7 +822,7 @@ function FlashcardsPage() {
   };
 
   const handleContinueExisting = () => {
-    navigate(`/lessons/${continuePrompt.lessonId}`);
+    navigate(`/quiz/${continuePrompt.quizId}`);
     setContinuePrompt(null);
   };
 
@@ -869,7 +871,7 @@ function FlashcardsPage() {
         <div className="continue-modal-overlay">
           <div className="continue-modal">
             <h3>{t('flashcards.activityInProgress')}</h3>
-            <p dangerouslySetInnerHTML={{ __html: t('flashcards.lessonInProgress', { title: continuePrompt.lessonTitle, index: continuePrompt.lessonIndex + 1 }) }} />
+            <p dangerouslySetInnerHTML={{ __html: t('flashcards.lessonInProgress', { title: continuePrompt.quizTitle, index: continuePrompt.quizIndex + 1 }) }} />
             <div className="continue-modal-actions">
               <button className="btn btn-primary" onClick={handleContinueExisting}>
                 {t('flashcards.continueLesson')}

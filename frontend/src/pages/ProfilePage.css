@@ -354,6 +354,35 @@
   gap: 8px;
 }
 
+.voice-language-group {
+  margin-top: 18px;
+}
+
+.voice-language-group + .voice-language-group {
+  padding-top: 18px;
+  border-top: 1px solid var(--border-light);
+}
+
+.voice-language-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.voice-language-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.voice-language-header span {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
 .voice-option {
   display: flex;
   align-items: center;

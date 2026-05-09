@@ -60,7 +60,7 @@ const userSchema = new mongoose.Schema({
   },
   lastActivityType: {
     type: String,
-    enum: ['lesson', 'flashcard', null],
+    enum: ['quiz', 'lesson', 'flashcard', null],
     default: null,
   },
   lastLessonId: {
@@ -79,6 +79,10 @@ const userSchema = new mongoose.Schema({
   preferredVoice: {
     type: String,
     default: null,
+  },
+  preferredVoices: {
+    type: mongoose.Schema.Types.Mixed,
+    default: {},
   },
   nativeLanguage: {
     type: String,

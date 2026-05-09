@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const ConversationMemory = require('../models/ConversationMemory');
+const Lesson = require('../models/Lesson');
 const { optionalAuth } = require('../middleware/auth');
 const { getAiEntitlements } = require('../utils/subscription');
 const {
@@ -10,8 +11,11 @@ const {
   recordTokenUsage,
   resolveAiIdentity,
 } = require('../utils/tokenUsage');
+const { recordServerError } = require('../utils/errorReporting');
 const {
+  buildClassLessonFallbackResult,
   buildLanguagePairRedirect,
+  buildLessonBrief,
   callAIConversation,
   detectOutOfPairLanguage,
   safeConversationHistory,
@@ -55,8 +59,8 @@ router.get('/entitlements', async (req, res) => {
     const { entitlements } = await getEntitlementsWithUsage(req);
     res.json(entitlements);
   } catch (error) {
-    console.error('AI entitlements error:', error.message || error);
-    res.status(500).json({ message: 'Could not load AI access settings.' });
+    console.error('Conversation entitlements error:', error.message || error);
+    res.status(500).json({ message: 'Could not load conversation access settings.' });
   }
 });
 
@@ -77,7 +81,18 @@ router.post('/conversation', async (req, res) => {
       history,
       difficulty,
       customRoleplay,
+      classLessonId,
+      lessonId,
+      activityId,
+      classAction,
     } = req.body || {};
+
+    let lessonBrief = null;
+    const sourceLessonId = classLessonId || lessonId;
+    if (sourceLessonId && /^[a-fA-F0-9]{24}$/.test(String(sourceLessonId))) {
+      const lessonDoc = await Lesson.findById(sourceLessonId).lean();
+      if (lessonDoc) lessonBrief = buildLessonBrief(lessonDoc, activityId || '');
+    }
 
     if (!transcript || typeof transcript !== 'string' || transcript.trim().length === 0) {
       return res.status(400).json({ message: 'Transcript is required' });
@@ -124,11 +139,15 @@ router.post('/conversation', async (req, res) => {
       }
     }
 
-    const outOfPair = detectOutOfPairLanguage({
-      transcript: transcript.trim(),
-      targetLanguage,
-      nativeLanguage,
-    });
+    const isClassLessonAction = !!classAction
+      || transcript.trim().startsWith('CLASS_LESSON_ACTION');
+    const outOfPair = isClassLessonAction
+      ? null
+      : detectOutOfPairLanguage({
+        transcript: transcript.trim(),
+        targetLanguage,
+        nativeLanguage,
+      });
 
     if (outOfPair) {
       const redirect = buildLanguagePairRedirect(outOfPair);
@@ -164,20 +183,41 @@ router.post('/conversation', async (req, res) => {
       });
     }
 
-    const result = await callAIConversation({
-      scenario,
-      targetLanguage,
-      nativeLanguage,
-      inputLanguage,
-      transcript: transcript.trim(),
-      history: effectiveHistory,
-      difficulty,
-      summary,
-      memory,
-      productContext: 'Lingo Booth',
-      maxCompletionTokens: tokenUsage.remainingTokens - estimatedRequestTokens,
-      customRoleplay,
-    });
+    let result;
+    try {
+      result = await callAIConversation({
+        scenario,
+        targetLanguage,
+        nativeLanguage,
+        inputLanguage,
+        transcript: transcript.trim(),
+        history: effectiveHistory,
+        difficulty,
+        summary,
+        memory,
+        productContext: 'Lingo Booth',
+        maxCompletionTokens: tokenUsage.remainingTokens - estimatedRequestTokens,
+        customRoleplay,
+        lessonBrief,
+        classAction,
+      });
+    } catch (providerError) {
+      if (!isClassLessonAction) throw providerError;
+
+      const fallbackResult = buildClassLessonFallbackResult({
+        transcript: transcript.trim(),
+        targetLanguage,
+        nativeLanguage,
+        summary,
+        memory,
+        lessonBrief,
+        classAction,
+      });
+
+      if (!fallbackResult) throw providerError;
+      console.warn('Class lesson provider fallback used:', providerError.message || providerError);
+      result = fallbackResult;
+    }
 
     const updatedSummary = sanitizeSummary(result.summary || summary);
     const updatedMemory = sanitizeMemory(result.memory || memory);
@@ -218,7 +258,18 @@ router.post('/conversation', async (req, res) => {
       entitlements: updatedEntitlements,
     });
   } catch (error) {
-    console.error('AI conversation error:', error.message || error);
+    console.error('Conversation partner error:', error.message || error);
+    await recordServerError(req, {
+      error,
+      message: error.message || 'Conversation partner route failed',
+      route: '/api/ai/conversation',
+      metadata: {
+        scenario: req.body?.scenario,
+        sessionId: req.body?.sessionId,
+        conversationMode: req.body?.conversationMode,
+        action: req.body?.action,
+      },
+    });
     res.status(500).json({
       message: 'Conversation partner is temporarily unavailable. Please try again.',
     });

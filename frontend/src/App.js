@@ -1,20 +1,24 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { guestXPHelper, authService, userService } from './services/api';
+import { installGlobalErrorReporting } from './services/errorReporter';
 import guestActivityTracker from './services/guestActivityTracker';
 import Navbar from './components/Navbar';
 import EmailVerificationBanner from './components/EmailVerificationBanner';
 import HomePage from './pages/HomePage';
-import LessonsPage from './pages/LessonsPage';
+import ClassLessonsPage from './pages/ClassLessonsPage';
+import ClassLessonPage from './pages/ClassLessonPage';
+import ExercisePage from './pages/ExercisePage';
+import QuizPage from './pages/QuizPage';
 import FlashcardsPage from './pages/FlashcardsPage';
 import ConversationPage from './pages/ConversationPage';
 import ProgressPage from './pages/ProgressPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import LanguageSelectPage from './pages/LanguageSelectPage';
-import LessonDetail from './pages/LessonDetail';
+import QuizDetailPage from './pages/QuizDetailPage';
 import ProfilePage from './pages/ProfilePage';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminSpeakingDemo from './pages/AdminSpeakingDemo';
@@ -49,6 +53,11 @@ function AuthSessionListener({ onSessionEnded }) {
   }, [navigate, onSessionEnded]);
 
   return null;
+}
+
+function LegacyQuizRedirect() {
+  const { id } = useParams();
+  return <Navigate to={id ? `/quiz/${id}` : '/quiz'} replace />;
 }
 
 function GuestSignupPrompt({ onClose, onGuestExit }) {
@@ -115,6 +124,10 @@ function App() {
     localStorage.getItem('emailVerified') !== 'false'
   );
   const [showGuestPrompt, setShowGuestPrompt] = useState(false);
+
+  useEffect(() => {
+    installGlobalErrorReporting();
+  }, []);
 
   // RTL support for Arabic and Hebrew
   useEffect(() => {
@@ -371,15 +384,45 @@ function App() {
             }
           />
           <Route
+            path="/class"
+            element={
+              canAccessApp ? <ClassLessonsPage isGuest={isGuest} /> : <Navigate to="/login" />
+            }
+          />
+          <Route
+            path="/class/:classLessonId"
+            element={
+              canAccessApp ? <ClassLessonPage /> : <Navigate to="/login" />
+            }
+          />
+          <Route
+            path="/exercise"
+            element={
+              canAccessApp ? <ExercisePage /> : <Navigate to="/login" />
+            }
+          />
+          <Route
+            path="/quiz"
+            element={
+              canAccessApp ? <QuizPage isGuest={isGuest} /> : <Navigate to="/login" />
+            }
+          />
+          <Route
+            path="/quiz/:quizId"
+            element={
+              canAccessApp ? <QuizDetailPage isGuest={isGuest} /> : <Navigate to="/login" />
+            }
+          />
+          <Route
             path="/lessons"
             element={
-              canAccessApp ? <LessonsPage isGuest={isGuest} /> : <Navigate to="/login" />
+              <LegacyQuizRedirect />
             }
           />
           <Route
             path="/lessons/:id"
             element={
-              canAccessApp ? <LessonDetail isGuest={isGuest} /> : <Navigate to="/login" />
+              <LegacyQuizRedirect />
             }
           />
           <Route

@@ -226,6 +226,11 @@ function AdminSpeakingDemo({ demoBypass = false }) {
   );
 
   const preferredVoiceFor = (lang) => {
+    const languageId = LANGUAGE_OPTIONS.find(language => language.speech === lang)?.id;
+    if (languageId) {
+      const byLanguage = localStorage.getItem(`preferredVoice:${languageId}`);
+      if (byLanguage) return byLanguage;
+    }
     const preferredVoice = localStorage.getItem('preferredVoice');
     return lang === speechLangFor(targetLanguage) ? preferredVoice || undefined : undefined;
   };
@@ -501,7 +506,7 @@ function AdminSpeakingDemo({ demoBypass = false }) {
             <small>
               {id === 'repeat' && 'Few words and short phrases'}
               {id === 'read' && 'Full sentence reading checks'}
-              {id === 'conversation' && 'Live AI roleplay turns'}
+              {id === 'conversation' && 'Live roleplay turns'}
               {id === 'handsfree' && 'Audio-led practice for road use'}
             </small>
           </button>
@@ -518,7 +523,7 @@ function AdminSpeakingDemo({ demoBypass = false }) {
             </div>
           </div>
           <div className="target-phrase">
-            {isAiConversation ? `AI scenario: ${currentPrompt}` : currentPrompt}
+            {isAiConversation ? `Scenario: ${currentPrompt}` : currentPrompt}
           </div>
           {isAiConversation && (
             <div className="conversation-controls">
@@ -562,7 +567,7 @@ function AdminSpeakingDemo({ demoBypass = false }) {
               setCustomPrompt(event.target.value);
               setTranscript('');
             }}
-            placeholder={isAiConversation ? 'Optional custom AI roleplay scenario...' : 'Optional custom target phrase for this demo...'}
+            placeholder={isAiConversation ? 'Optional custom roleplay scenario...' : 'Optional custom target phrase for this demo...'}
             rows={3}
           />
           <div className="demo-actions">
@@ -612,7 +617,7 @@ function AdminSpeakingDemo({ demoBypass = false }) {
                 {conversationHistory.length === 0 && !aiLoading && (
                   <div className="conversation-empty">
                     <strong>Start the roleplay</strong>
-                    <span>The full exchange will appear here as learner and AI turns.</span>
+                    <span>The full exchange will appear here as learner and partner turns.</span>
                   </div>
                 )}
                 {conversationHistory.map((turn, index) => (

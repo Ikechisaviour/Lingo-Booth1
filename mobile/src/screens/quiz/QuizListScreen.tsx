@@ -11,7 +11,7 @@ import {
 import { Text, Chip, Button, FAB } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
-import { lessonService, progressService } from '../../services/api';
+import { quizService, progressService } from '../../services/api';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { getLangName } from '../../config/languages';
@@ -38,7 +38,7 @@ const difficulties = [
 const getCategoryIcon = (val: string) => categories.find((c) => c.value === val)?.icon || '📚';
 const getDifficultyColor = (val: string) => difficulties.find((d) => d.value === val)?.color || '#58cc02';
 
-const LessonsListScreen: React.FC = () => {
+const QuizListScreen: React.FC = () => {
   const { t } = useTranslation();
   const navigation = useNavigation<any>();
   const insets = useSafeAreaInsets();
@@ -49,7 +49,7 @@ const LessonsListScreen: React.FC = () => {
   const isCompact = winHeight < 450 || winWidth < 380;
   const styles = useMemo(() => createStyles(colors, isCompact), [colors, isCompact]);
 
-  const [lessons, setLessons] = useState<any[]>([]);
+  const [quizzes, setQuizzes] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState('');
@@ -61,11 +61,11 @@ const LessonsListScreen: React.FC = () => {
   const [selectMode, setSelectMode] = useState(false);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
 
-  const fetchLessons = useCallback(async () => {
+  const fetchQuizzes = useCallback(async () => {
     try {
       setLoading(true);
-      const res = await lessonService.getLessons(catFilter || undefined, diffFilter || undefined);
-      setLessons(res.data);
+      const res = await quizService.getQuizzes(catFilter || undefined, diffFilter || undefined);
+      setQuizzes(res.data);
       setError('');
     } catch (err: any) {
       if (err?._forcedLogout) return;
@@ -76,8 +76,8 @@ const LessonsListScreen: React.FC = () => {
   }, [catFilter, diffFilter, targetLanguage, t]);
 
   useEffect(() => {
-    fetchLessons();
-  }, [fetchLessons]);
+    fetchQuizzes();
+  }, [fetchQuizzes]);
 
   useEffect(() => {
     if (!userId) return;
@@ -101,14 +101,14 @@ const LessonsListScreen: React.FC = () => {
 
   const onRefresh = async () => {
     setRefreshing(true);
-    await fetchLessons();
+    await fetchQuizzes();
     setRefreshing(false);
   };
 
   const startPlaylist = (playlist: string[]) => {
     if (playlist.length === 0) return;
-    navigation.navigate('LessonDetail', {
-      lessonId: playlist[0],
+    navigation.navigate('QuizDetail', {
+      quizId: playlist[0],
       playlist,
       playlistIndex: 0,
     });
@@ -117,12 +117,12 @@ const LessonsListScreen: React.FC = () => {
   };
 
   const handleStartAll = () => {
-    startPlaylist(lessons.map((l) => l._id));
+    startPlaylist(quizzes.map((q) => q._id));
   };
 
   const handleStartSelected = () => {
-    // Preserve order from lessons list
-    const ordered = lessons.filter((l) => selectedIds.has(l._id)).map((l) => l._id);
+    // Preserve order from quiz list
+    const ordered = quizzes.filter((q) => selectedIds.has(q._id)).map((q) => q._id);
     startPlaylist(ordered);
   };
 
@@ -146,7 +146,7 @@ const LessonsListScreen: React.FC = () => {
           if (selectMode) {
             toggleSelect(item._id);
           } else {
-            navigation.navigate('LessonDetail', { lessonId: item._id });
+            navigation.navigate('QuizDetail', { quizId: item._id });
           }
         }}
         activeOpacity={0.7}
@@ -189,13 +189,13 @@ const LessonsListScreen: React.FC = () => {
         <View style={styles.headerTop}>
           <View>
             <Text variant="headlineSmall" style={styles.headerTitle}>
-              {t(`languages.${targetLanguage}`, getLangName(targetLanguage))} {t('lessons.lessons', 'Lessons')}
+              {t(`languages.${targetLanguage}`, getLangName(targetLanguage))} Quiz
             </Text>
             <Text style={styles.headerStat}>
-              📚 {t('lessons.lessonsAvailable', { count: lessons.length })}
+              ✍ {quizzes.length} quizzes available
             </Text>
           </View>
-          {lessons.length > 0 && (
+          {quizzes.length > 0 && (
             <Button
               mode={selectMode ? 'outlined' : 'text'}
               compact
@@ -216,7 +216,7 @@ const LessonsListScreen: React.FC = () => {
             <Text style={styles.selectionCount}>
               {selectedIds.size > 0
                 ? t('lessons.selectedCount', { count: selectedIds.size })
-                : t('lessons.tapToSelect', 'Tap lessons to select')}
+                : t('lessons.tapToSelect', 'Tap quizzes to select')}
             </Text>
             {selectedIds.size > 0 && (
               <Button mode="contained" compact onPress={handleStartSelected} style={styles.startBtn}>
@@ -277,11 +277,11 @@ const LessonsListScreen: React.FC = () => {
       ) : error ? (
         <View style={styles.centered}>
           <Text style={styles.errorText}>{error}</Text>
-          <Button mode="contained" onPress={fetchLessons} style={{ marginTop: 16 }}>
+          <Button mode="contained" onPress={fetchQuizzes} style={{ marginTop: 16 }}>
             {t('common.retry', 'Retry')}
           </Button>
         </View>
-      ) : lessons.length === 0 ? (
+      ) : quizzes.length === 0 ? (
         <View style={styles.centered}>
           <Text style={{ fontSize: 48 }}>📚</Text>
           <Text variant="titleMedium" style={{ fontWeight: '700', marginTop: 12 }}>
@@ -293,7 +293,7 @@ const LessonsListScreen: React.FC = () => {
         </View>
       ) : (
         <FlatList
-          data={lessons}
+          data={quizzes}
           keyExtractor={(item) => item._id}
           renderItem={renderLesson}
           key={isCompact ? 'compact-1col' : 'normal-2col'}
@@ -305,7 +305,7 @@ const LessonsListScreen: React.FC = () => {
       )}
 
       {/* Start All FAB — only visible when not in select mode */}
-      {!selectMode && lessons.length > 0 && (
+      {!selectMode && quizzes.length > 0 && (
         <FAB
           icon="play"
           label={t('lessons.startAll', 'Start All')}
@@ -406,4 +406,4 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
   },
 });
 
-export default LessonsListScreen;
+export default QuizListScreen;

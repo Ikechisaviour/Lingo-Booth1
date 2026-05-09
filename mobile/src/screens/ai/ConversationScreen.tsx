@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ExpoSpeechRecognitionModule, useSpeechRecognitionEvent } from 'expo-speech-recognition';
+import { useRoute } from '@react-navigation/native';
 import { Button, Card, Menu, SegmentedButtons, Text, TextInput } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { aiService } from '../../services/api';
@@ -16,6 +17,12 @@ import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { useAppColors, type AppColors } from '../../config/theme';
 import LANGUAGES from '../../config/languages';
+import {
+  displayPartsForMessage,
+  languageLabel as segmentLanguageLabel,
+  languageRole,
+  spokenPartsForMessage,
+} from '../../utils/languageSegments';
 
 const SESSION_ID = 'learner-conversation';
 const CUSTOM_SCENARIO_ID = 'custom';
@@ -410,6 +417,7 @@ type Turn = {
   coachingTip?: string;
   nextSuggestedIntent?: string;
   speechParts?: Array<{ language?: string; text: string }>;
+  displayParts?: Array<{ type?: string; language?: string; text: string; speak?: boolean }>;
   error?: boolean;
   setup?: boolean;
 };
@@ -633,6 +641,8 @@ const slowerCommands = new Set([
 ]);
 
 const ConversationScreen: React.FC = () => {
+  const route = useRoute<any>();
+  const lessonId = typeof route.params?.lessonId === 'string' ? route.params.lessonId : '';
   const colors = useAppColors();
   const insets = useSafeAreaInsets();
   const styles = useMemo(() => createStyles(colors), [colors]);
@@ -659,6 +669,12 @@ const ConversationScreen: React.FC = () => {
   const [customRoleplay, setCustomRoleplay] = useState<CustomRoleplay>({});
   const [scenarioMenuOpen, setScenarioMenuOpen] = useState(false);
   const [countdownNow, setCountdownNow] = useState(Date.now());
+
+  useEffect(() => {
+    if (!lessonId) return;
+    setHistory([]);
+    setStatus('Class lesson ready.');
+  }, [lessonId]);
 
   const scenario = useMemo(
     () => scenarios.find((item) => item.id === scenarioId) || scenarios[0],
@@ -836,7 +852,7 @@ const ConversationScreen: React.FC = () => {
 
   const speakMessage = async (message: Turn, options: { rate?: string } = {}) => {
     try {
-      const parts = Array.isArray(message.speechParts) ? message.speechParts : [];
+      const parts = spokenPartsForMessage(message, targetLanguage || 'ko', nativeLanguage || 'en');
       if (parts.length) {
         for (const part of parts) {
           if (part.text) {
@@ -1123,6 +1139,7 @@ const ConversationScreen: React.FC = () => {
         summary: stored.summary || '',
         memory: stored.memory || {},
         customRoleplay: isCustomScenario ? customRoleplay : undefined,
+        lessonId: lessonId || undefined,
       });
       const data = response.data || {};
       setEntitlements(normalizeEntitlements(data.entitlements || entitlements, userRole));
@@ -1154,6 +1171,7 @@ const ConversationScreen: React.FC = () => {
         coachingTip: data.coachingTip || '',
         nextSuggestedIntent: data.nextSuggestedIntent || '',
         speechParts: Array.isArray(data.speechParts) ? data.speechParts : [],
+        displayParts: Array.isArray(data.displayParts) ? data.displayParts : [],
       };
       lastAssistantRef.current = assistantTurn;
       setHistory((prev) => {
@@ -1263,6 +1281,27 @@ const ConversationScreen: React.FC = () => {
     }
   });
 
+  const renderMessageBody = (message: Turn) => {
+    const parts = displayPartsForMessage(message, targetLanguage || 'ko', nativeLanguage || 'en');
+    if (parts.length <= 1) {
+      return <Text style={styles.messageBody}>{message.content}</Text>;
+    }
+
+    return (
+      <View style={styles.languageSegments}>
+        {parts.map((part, index) => {
+          const role = languageRole(part, targetLanguage || 'ko', nativeLanguage || 'en');
+          return (
+            <View key={`${part.language || 'part'}-${index}`} style={[styles.languageSegment, styles[`${role}LanguageSegment` as const]]}>
+              <Text style={styles.languageSegmentLabel}>{segmentLanguageLabel(part)}</Text>
+              <Text style={styles.messageBody}>{part.text}</Text>
+            </View>
+          );
+        })}
+      </View>
+    );
+  };
+
   return (
     <KeyboardAvoidingView
       style={styles.screen}
@@ -1311,7 +1350,12 @@ const ConversationScreen: React.FC = () => {
       </View>
 
       <View style={styles.controls}>
-        <Text style={styles.label}>Support</Text>
+        <View style={styles.supportHeader}>
+          <Text style={styles.label}>Support</Text>
+          <Text style={styles.memoryText}>
+            {memoryScope === 'cloud' ? 'Synced memory' : memoryScope === 'device' ? 'Device memory' : 'No saved memory'}
+          </Text>
+        </View>
         <SegmentedButtons
           value={supportLevel}
           onValueChange={setSupportLevel}
@@ -1319,8 +1363,13 @@ const ConversationScreen: React.FC = () => {
           style={styles.segmented}
         />
         <View style={styles.brief}>
-          <Text style={styles.briefLabel}>{uiLabels.partner}</Text>
-          <Text style={styles.briefText}>{uiLabels.activePartner}</Text>
+          <View style={styles.briefRow}>
+            <View style={styles.briefColumn}>
+              <Text style={styles.briefLabel}>{uiLabels.partner}</Text>
+              <Text style={styles.briefText}>{uiLabels.activePartner}</Text>
+            </View>
+            <View style={styles.briefAccent} />
+          </View>
           <Text style={styles.briefLabel}>{uiLabels.goal}</Text>
           <Text style={styles.briefText}>{activeScenarioGoal}</Text>
           {isCustomScenario && !!customRoleplay.situation && (
@@ -1329,32 +1378,30 @@ const ConversationScreen: React.FC = () => {
               <Text style={styles.briefText}>{customRoleplay.situation}</Text>
             </>
           )}
-          <Text style={styles.memoryText}>
-            {memoryScope === 'cloud' ? 'Synced memory' : memoryScope === 'device' ? 'Device memory' : 'No AI memory'}
-          </Text>
         </View>
-        <Button
-          mode={speechEnabled ? 'contained-tonal' : 'outlined'}
-          icon={speechEnabled ? 'volume-high' : 'volume-off'}
-          onPress={() => setSpeechEnabled((enabled) => !enabled)}
-          style={styles.speechToggle}
-        >
-          {speechEnabled ? 'Spoken replies on' : 'Spoken replies off'}
-        </Button>
-        <Button
-          mode={handsFreeActive ? 'contained-tonal' : 'outlined'}
-          icon={handsFreeActive ? 'microphone-off' : 'microphone'}
-          onPress={handsFreeActive ? stopHandsFree : () => startHandsFree().catch(() => setStatus('Could not start hands-free mode.'))}
-          disabled={!canUseAI || quotaExceeded || loading}
-          style={styles.speechToggle}
-        >
-          {handsFreeActive ? 'Stop hands-free' : 'Start hands-free'}
-        </Button>
-        <Text style={styles.handsFreeNote}>
-          {handsFreeActive
-            ? 'Listening resumes after each reply. Use the stop button anytime.'
-            : 'Hands-free lets you continue the roleplay while your hands are busy.'}
-        </Text>
+        <View style={styles.modeActions}>
+          <Button
+            mode={speechEnabled ? 'contained-tonal' : 'outlined'}
+            compact
+            icon={speechEnabled ? 'volume-high' : 'volume-off'}
+            onPress={() => setSpeechEnabled((enabled) => !enabled)}
+            style={styles.modeButton}
+            labelStyle={styles.modeButtonLabel}
+          >
+            {speechEnabled ? 'Spoken on' : 'Spoken off'}
+          </Button>
+          <Button
+            mode={handsFreeActive ? 'contained-tonal' : 'outlined'}
+            compact
+            icon={handsFreeActive ? 'microphone-off' : 'microphone'}
+            onPress={handsFreeActive ? stopHandsFree : () => startHandsFree().catch(() => setStatus('Could not start hands-free mode.'))}
+            disabled={!canUseAI || quotaExceeded || loading}
+            style={styles.modeButton}
+            labelStyle={styles.modeButtonLabel}
+          >
+            {handsFreeActive ? 'Stop hands-free' : 'Hands-free'}
+          </Button>
+        </View>
         {quickTurns.length > 0 && (
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.starters}>
             {quickTurns.map((starter) => (
@@ -1374,66 +1421,76 @@ const ConversationScreen: React.FC = () => {
         )}
       </View>
 
-      <ScrollView ref={scrollRef} style={styles.thread} contentContainerStyle={styles.threadContent}>
-        {!canUseAI && (
-          <View style={styles.empty}>
-            <Text style={styles.emptyTitle}>Conversation Practice is not available on this plan.</Text>
-            <Text style={styles.emptyText}>Daily AI practice is available on Free, Plus, and Pro.</Text>
+      <View style={styles.threadShell}>
+        <View style={styles.threadHeader}>
+          <View>
+            <Text style={styles.threadKicker}>Practice thread</Text>
+            <Text style={styles.threadTitle}>{uiLabels.activePartner}</Text>
           </View>
-        )}
-        {canUseAI && quotaExceeded && (
-          <View style={styles.empty}>
-            <Text style={styles.emptyTitle}>{quotaCopy.title}</Text>
-            <Text style={styles.emptyText}>{quotaCopy.body}</Text>
-          </View>
-        )}
-        {canUseAI && !quotaExceeded && history.length === 0 && !loading && (
-          <View style={styles.empty}>
-            <Text style={styles.emptyTitle}>Begin {activeScenarioTitle.toLowerCase()}</Text>
-            <Text style={styles.emptyText}>{uiLabels.activePartner} is ready.</Text>
-          </View>
-        )}
-        {history.map((message) => (
-          <Card
-            key={message.id}
-            style={[
-              styles.message,
-              message.role === 'user' && styles.userMessage,
-              message.error && styles.errorMessage,
-            ]}
-          >
-            <Card.Content>
-              <View style={styles.messageHeader}>
-                <Text style={styles.messageLabel}>{message.role === 'user' ? uiLabels.activeLearner : uiLabels.activePartner}</Text>
-                <View style={styles.messageTools}>
-                  {message.role === 'assistant' && !message.error && (
-                    <Button
-                      mode="text"
-                      compact
-                      icon="volume-high"
-                      onPress={() => speakMessage(message)}
-                      labelStyle={styles.replayLabel}
-                    >
-                      Play
-                    </Button>
-                  )}
-                  {!!message.language && <Text style={styles.languageTag}>{message.language}</Text>}
+          <View style={[styles.liveDot, (listening || handsFreeActive || loading) && styles.liveDotActive]} />
+        </View>
+        <ScrollView ref={scrollRef} style={styles.thread} contentContainerStyle={styles.threadContent}>
+          {!canUseAI && (
+            <View style={styles.empty}>
+              <Text style={styles.emptyTitle}>Conversation Practice is not available on this plan.</Text>
+              <Text style={styles.emptyText}>Daily conversation practice is available on Free, Plus, and Pro.</Text>
+            </View>
+          )}
+          {canUseAI && quotaExceeded && (
+            <View style={styles.empty}>
+              <Text style={styles.emptyTitle}>{quotaCopy.title}</Text>
+              <Text style={styles.emptyText}>{quotaCopy.body}</Text>
+            </View>
+          )}
+          {canUseAI && !quotaExceeded && history.length === 0 && !loading && (
+            <View style={styles.empty}>
+              <Text style={styles.emptyTitle}>Begin {activeScenarioTitle.toLowerCase()}</Text>
+              <Text style={styles.emptyText}>{uiLabels.activePartner} is ready.</Text>
+            </View>
+          )}
+          {history.map((message) => (
+            <Card
+              key={message.id}
+              style={[
+                styles.message,
+                message.role === 'assistant' && styles.assistantMessage,
+                message.role === 'user' && styles.userMessage,
+                message.error && styles.errorMessage,
+              ]}
+            >
+              <Card.Content style={styles.messageContent}>
+                <View style={styles.messageHeader}>
+                  <Text style={styles.messageLabel}>{message.role === 'user' ? uiLabels.activeLearner : uiLabels.activePartner}</Text>
+                  <View style={styles.messageTools}>
+                    {message.role === 'assistant' && !message.error && (
+                      <Button
+                        mode="text"
+                        compact
+                        icon="volume-high"
+                        onPress={() => speakMessage(message)}
+                        labelStyle={styles.replayLabel}
+                      >
+                        Play
+                      </Button>
+                    )}
+                    {!!message.language && <Text style={styles.languageTag}>{message.language}</Text>}
+                  </View>
                 </View>
-              </View>
-              <Text style={styles.messageBody}>{message.content}</Text>
-              {!!message.coachingTip && <Text style={styles.messageTip}>{message.coachingTip}</Text>}
-            </Card.Content>
-          </Card>
-        ))}
-        {loading && (
-          <Card style={styles.message}>
-            <Card.Content>
-              <Text style={styles.messageLabel}>{uiLabels.activePartner}</Text>
-              <Text style={styles.messageBody}>Thinking...</Text>
-            </Card.Content>
-          </Card>
-        )}
-      </ScrollView>
+                {renderMessageBody(message)}
+                {!!message.coachingTip && <Text style={styles.messageTip}>{message.coachingTip}</Text>}
+              </Card.Content>
+            </Card>
+          ))}
+          {loading && (
+            <Card style={[styles.message, styles.assistantMessage]}>
+              <Card.Content style={styles.messageContent}>
+                <Text style={styles.messageLabel}>{uiLabels.activePartner}</Text>
+                <Text style={styles.messageBody}>Thinking...</Text>
+              </Card.Content>
+            </Card>
+          )}
+        </ScrollView>
+      </View>
 
       <View style={[styles.composer, { paddingBottom: insets.bottom + 10 }]}>
         <TextInput
@@ -1469,25 +1526,29 @@ const ConversationScreen: React.FC = () => {
 };
 
 const createStyles = (colors: AppColors) => StyleSheet.create({
-  screen: { flex: 1, backgroundColor: colors.background },
+  screen: { flex: 1, backgroundColor: '#f6f3ee' },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
-    gap: 12,
-    paddingHorizontal: 16,
-    paddingBottom: 12,
+    gap: 14,
+    paddingHorizontal: 18,
+    paddingBottom: 14,
     backgroundColor: colors.surface,
     borderBottomWidth: 1,
     borderBottomColor: colors.border,
   },
   headerText: { flex: 1 },
   kicker: { color: colors.primary, fontSize: 11, fontWeight: '800', textTransform: 'uppercase' },
-  title: { color: colors.textPrimary, fontWeight: '800', marginTop: 2 },
-  subtitle: { color: colors.textSecondary, marginTop: 2 },
-  headerActions: { alignItems: 'flex-end', gap: 8 },
-  scenarioMenuButton: { borderRadius: 999 },
-  scenarioMenuLabel: { fontSize: 12, fontWeight: '800' },
+  title: { color: colors.textPrimary, fontSize: 26, lineHeight: 31, fontWeight: '800', marginTop: 2 },
+  subtitle: { color: colors.textSecondary, marginTop: 3, fontSize: 14 },
+  headerActions: { alignItems: 'flex-end', gap: 8, minWidth: 88 },
+  scenarioMenuButton: {
+    borderRadius: 999,
+    backgroundColor: colors.surface,
+    borderColor: colors.border,
+  },
+  scenarioMenuLabel: { fontSize: 12, fontWeight: '800', marginHorizontal: 2 },
   planBadge: {
     paddingHorizontal: 11,
     paddingVertical: 7,
@@ -1501,42 +1562,210 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
   planText: { color: colors.textSecondary, fontWeight: '800', fontSize: 11 },
   planTextCloud: { color: colors.accentGreen },
   planTextBlocked: { color: colors.accentRed },
-  controls: { padding: 16, paddingBottom: 10, backgroundColor: colors.surface },
-  label: { color: colors.textSecondary, fontSize: 12, fontWeight: '800', marginBottom: 6, marginTop: 8 },
-  segmented: { marginBottom: 4 },
+  controls: {
+    paddingHorizontal: 14,
+    paddingTop: 12,
+    paddingBottom: 10,
+    backgroundColor: colors.surface,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.border,
+  },
+  supportHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 12,
+    marginBottom: 7,
+  },
+  label: { color: colors.textSecondary, fontSize: 12, fontWeight: '800' },
+  segmented: { marginBottom: 2 },
   brief: {
-    marginTop: 12,
+    marginTop: 10,
     padding: 12,
     borderRadius: 8,
-    backgroundColor: colors.background,
+    backgroundColor: '#fffaf5',
     borderWidth: 1,
-    borderColor: colors.border,
+    borderColor: '#eadfce',
+  },
+  briefRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+    gap: 10,
+  },
+  briefColumn: { flex: 1 },
+  briefAccent: {
+    width: 34,
+    height: 5,
+    borderRadius: 999,
+    backgroundColor: colors.primary,
+    opacity: 0.55,
   },
   briefLabel: { color: colors.textMuted, fontSize: 10, fontWeight: '800', textTransform: 'uppercase', marginTop: 4 },
   briefText: { color: colors.textPrimary, fontWeight: '700', marginTop: 2, lineHeight: 19 },
-  memoryText: { color: colors.textSecondary, marginTop: 10, fontSize: 12, fontWeight: '700' },
+  memoryText: {
+    color: colors.textSecondary,
+    fontSize: 11,
+    fontWeight: '800',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 999,
+    backgroundColor: colors.background,
+    overflow: 'hidden',
+  },
+  modeActions: { flexDirection: 'row', gap: 8, marginTop: 10 },
+  modeButton: { flex: 1, borderRadius: 8 },
+  modeButtonLabel: { fontSize: 12, fontWeight: '800', marginHorizontal: 0 },
   speechToggle: { marginTop: 10, borderRadius: 8 },
   handsFreeNote: { color: colors.textSecondary, fontSize: 12, lineHeight: 18, marginTop: 7 },
   starters: { gap: 8, paddingTop: 10, paddingRight: 16 },
-  starterButton: { borderRadius: 8, maxWidth: 250 },
-  starterLabel: { fontSize: 12 },
-  thread: { flex: 1 },
-  threadContent: { padding: 16, paddingBottom: 24 },
-  empty: { minHeight: 250, justifyContent: 'center', alignItems: 'center', gap: 6, paddingHorizontal: 20 },
+  starterButton: {
+    borderRadius: 999,
+    borderColor: 'rgba(255, 107, 53, 0.22)',
+    backgroundColor: '#fffdf9',
+  },
+  starterLabel: { fontSize: 12, fontWeight: '800', marginHorizontal: 4 },
+  threadShell: {
+    flex: 1,
+    marginHorizontal: 12,
+    marginTop: 10,
+    marginBottom: 8,
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: '#dce8f3',
+    backgroundColor: colors.surface,
+    overflow: 'hidden',
+    elevation: 2,
+    shadowColor: '#172033',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+  },
+  threadHeader: {
+    minHeight: 48,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#e6edf5',
+    backgroundColor: '#fbfdff',
+  },
+  threadKicker: { color: colors.accentBlue, fontSize: 10, fontWeight: '900', textTransform: 'uppercase' },
+  threadTitle: { color: colors.textPrimary, fontSize: 15, fontWeight: '800', marginTop: 1 },
+  liveDot: {
+    width: 10,
+    height: 10,
+    borderRadius: 999,
+    backgroundColor: colors.textMuted,
+    opacity: 0.45,
+  },
+  liveDotActive: { backgroundColor: colors.accentGreen, opacity: 1 },
+  thread: { flex: 1, backgroundColor: '#f8fbff' },
+  threadContent: { padding: 12, paddingBottom: 18 },
+  empty: { minHeight: 220, justifyContent: 'center', alignItems: 'center', gap: 6, paddingHorizontal: 20 },
   emptyTitle: { color: colors.textPrimary, fontWeight: '800', fontSize: 16, textAlign: 'center' },
   emptyText: { color: colors.textSecondary, textAlign: 'center', lineHeight: 20 },
-  message: { maxWidth: '90%', marginBottom: 10, backgroundColor: colors.surface, borderRadius: 8 },
-  userMessage: { alignSelf: 'flex-end', backgroundColor: 'rgba(28, 176, 246, 0.1)' },
-  errorMessage: { borderWidth: 1, borderColor: colors.error },
+  message: {
+    maxWidth: '92%',
+    marginBottom: 12,
+    borderRadius: 16,
+    backgroundColor: colors.surface,
+    elevation: 1,
+    shadowColor: '#172033',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.06,
+    shadowRadius: 4,
+  },
+  assistantMessage: {
+    alignSelf: 'flex-start',
+    borderTopLeftRadius: 5,
+    backgroundColor: '#fff8ef',
+  },
+  userMessage: {
+    alignSelf: 'flex-end',
+    borderTopRightRadius: 5,
+    backgroundColor: '#e9f7ff',
+    borderWidth: 1,
+    borderColor: 'rgba(28, 176, 246, 0.22)',
+  },
+  errorMessage: { borderWidth: 1, borderColor: colors.error, backgroundColor: '#fff1f1' },
+  messageContent: { paddingHorizontal: 12, paddingVertical: 11 },
   messageHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 8 },
-  messageLabel: { color: colors.textSecondary, fontSize: 11, fontWeight: '800', textTransform: 'uppercase', marginBottom: 5 },
+  messageLabel: { color: colors.textSecondary, fontSize: 10, fontWeight: '900', textTransform: 'uppercase', marginBottom: 6 },
   messageTools: { flexDirection: 'row', alignItems: 'center', gap: 4 },
   replayLabel: { fontSize: 11, marginHorizontal: 0 },
-  languageTag: { color: colors.primary, fontSize: 11, fontWeight: '800', textTransform: 'uppercase' },
-  messageBody: { color: colors.textPrimary, lineHeight: 20 },
-  messageTip: { color: colors.textSecondary, marginTop: 8, paddingTop: 8, borderTopWidth: 1, borderTopColor: colors.border, lineHeight: 18 },
-  composer: { paddingHorizontal: 16, paddingTop: 10, backgroundColor: colors.surface, borderTopWidth: 1, borderTopColor: colors.border },
-  input: { backgroundColor: colors.surface, maxHeight: 112 },
+  languageTag: {
+    color: colors.primary,
+    fontSize: 10,
+    fontWeight: '900',
+    textTransform: 'uppercase',
+    paddingHorizontal: 7,
+    paddingVertical: 3,
+    borderRadius: 999,
+    backgroundColor: '#fff0e8',
+    overflow: 'hidden',
+  },
+  messageBody: { color: colors.textPrimary, fontSize: 15, lineHeight: 22 },
+  languageSegments: { gap: 8 },
+  languageSegment: {
+    borderWidth: 1,
+    borderLeftWidth: 4,
+    borderColor: colors.border,
+    borderRadius: 8,
+    padding: 9,
+    backgroundColor: colors.surface,
+  },
+  targetLanguageSegment: {
+    borderLeftColor: '#1cb0f6',
+    backgroundColor: 'rgba(28, 176, 246, 0.08)',
+  },
+  nativeLanguageSegment: {
+    borderLeftColor: '#58cc02',
+    backgroundColor: 'rgba(88, 204, 2, 0.08)',
+  },
+  romanizationLanguageSegment: {
+    borderLeftColor: '#9ca3af',
+    backgroundColor: 'rgba(156, 163, 175, 0.12)',
+  },
+  metaLanguageSegment: {
+    borderLeftColor: '#f59e0b',
+    backgroundColor: 'rgba(245, 158, 11, 0.1)',
+  },
+  otherLanguageSegment: {
+    borderLeftColor: colors.textMuted,
+  },
+  languageSegmentLabel: {
+    color: colors.textSecondary,
+    fontSize: 10,
+    fontWeight: '900',
+    textTransform: 'uppercase',
+    marginBottom: 3,
+  },
+  messageTip: {
+    color: colors.textSecondary,
+    marginTop: 9,
+    padding: 10,
+    borderRadius: 8,
+    backgroundColor: 'rgba(255, 255, 255, 0.64)',
+    borderWidth: 1,
+    borderColor: 'rgba(107, 114, 128, 0.12)',
+    lineHeight: 18,
+  },
+  composer: {
+    paddingHorizontal: 12,
+    paddingTop: 10,
+    backgroundColor: colors.surface,
+    borderTopWidth: 1,
+    borderTopColor: colors.border,
+    elevation: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: -2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 10,
+  },
+  input: { backgroundColor: colors.surface, maxHeight: 104, minHeight: 54 },
   actions: { flexDirection: 'row', gap: 8, marginTop: 8 },
   actionButton: { flex: 1, borderRadius: 8 },
   status: { color: colors.textSecondary, fontSize: 12, marginTop: 8 },

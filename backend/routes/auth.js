@@ -27,6 +27,7 @@ function buildUserResponse(user) {
     aiEntitlements,
     status: user.status,
     preferredVoice: user.preferredVoice,
+    preferredVoices: user.preferredVoices || {},
     xpDecayEnabled: !!user.xpDecayEnabled,
     nativeLanguage: user.nativeLanguage,
     targetLanguage: user.targetLanguage,

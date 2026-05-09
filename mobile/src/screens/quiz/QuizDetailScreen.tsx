@@ -11,7 +11,7 @@ import {
 import { Text, Button, IconButton, ProgressBar, Chip } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import { useRoute, useNavigation, RouteProp } from '@react-navigation/native';
-import { lessonService, progressService, userService } from '../../services/api';
+import { quizService, progressService, userService } from '../../services/api';
 import speechService from '../../services/speechService';
 import guestActivityTracker from '../../services/guestActivityTracker';
 import { useAuthStore } from '../../stores/authStore';
@@ -20,8 +20,9 @@ import { getLangName } from '../../config/languages';
 import { useAppColors, type AppColors } from '../../config/theme';
 
 type RouteParams = {
-  LessonDetail: {
-    lessonId: string;
+  QuizDetail: {
+    quizId: string;
+    lessonId?: string;
     playlist?: string[];
     playlistIndex?: number;
   };
@@ -29,9 +30,9 @@ type RouteParams = {
 
 const xpPointsMap: Record<string, number> = { beginner: 2, intermediate: 3, advanced: 4, sentences: 5 };
 
-const LessonDetailScreen: React.FC = () => {
+const QuizDetailScreen: React.FC = () => {
   const { t } = useTranslation();
-  const route = useRoute<RouteProp<RouteParams, 'LessonDetail'>>();
+  const route = useRoute<RouteProp<RouteParams, 'QuizDetail'>>();
   const navigation = useNavigation<any>();
   const { userId, isGuest, addGuestXP } = useAuthStore();
   const { targetLanguage, nativeLanguage } = useSettingsStore();
@@ -39,7 +40,7 @@ const LessonDetailScreen: React.FC = () => {
   const { height: winHeight, width: winWidth } = useWindowDimensions();
   const isCompact = winHeight < 450 || winWidth < 380;
   const styles = useMemo(() => createStyles(colors, isCompact), [colors, isCompact]);
-  const lessonId = route.params.lessonId;
+  const quizId = route.params.quizId || route.params.lessonId || '';
   const playlist = route.params.playlist;
   const playlistIndex = route.params.playlistIndex ?? -1;
   const isInPlaylist = Array.isArray(playlist) && playlist.length > 1;
@@ -72,16 +73,16 @@ const LessonDetailScreen: React.FC = () => {
     try {
       setLoading(true);
       setLessonCompleted(false);
-      const res = await lessonService.getLesson(lessonId);
+      const res = await quizService.getQuiz(quizId);
       setLesson(res.data);
-      guestActivityTracker.trackLesson();
+      guestActivityTracker.trackQuiz();
       setError('');
     } catch {
       setError(t('lessonDetail.failedToLoad'));
     } finally {
       setLoading(false);
     }
-  }, [lessonId, t]);
+  }, [quizId, t]);
 
   useEffect(() => {
     setCurrentIndex(0);
@@ -145,7 +146,7 @@ const LessonDetailScreen: React.FC = () => {
   const retryTranslation = async () => {
     setRetryingTranslation(true);
     try {
-      const res = await lessonService.getLesson(lessonId);
+      const res = await quizService.getQuiz(quizId);
       setLesson(res.data);
     } catch {
       // silent
@@ -225,7 +226,7 @@ const LessonDetailScreen: React.FC = () => {
       setQuizCorrect((prev) => prev + 1);
       if (userId && lesson?.difficulty) {
         const points = xpPointsMap[lesson.difficulty] || 2;
-        userService.awardXP(userId, { lessonId, contentIndex: currentIndex, basePoints: points }).catch(() => {});
+        userService.awardXP(userId, { lessonId: quizId, contentIndex: currentIndex, basePoints: points }).catch(() => {});
       } else if (isGuest) {
         addGuestXP(1);
       }
@@ -250,7 +251,7 @@ const LessonDetailScreen: React.FC = () => {
       try {
         await progressService.recordProgress({
           userId,
-          lessonId,
+          lessonId: quizId,
           skillType,
           category: lesson.category,
           score,
@@ -269,8 +270,8 @@ const LessonDetailScreen: React.FC = () => {
     if (!playlist || !hasNextLesson) return;
     await saveProgress();
     const nextIndex = playlistIndex + 1;
-    navigation.replace('LessonDetail', {
-      lessonId: playlist[nextIndex],
+    navigation.replace('QuizDetail', {
+      quizId: playlist[nextIndex],
       playlist,
       playlistIndex: nextIndex,
     });
@@ -723,4 +724,4 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
   toggleRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 16 },
 });
 
-export default LessonDetailScreen;
+export default QuizDetailScreen;

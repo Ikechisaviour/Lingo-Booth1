@@ -5,8 +5,13 @@ import { NavigationContainer, LinkingOptions } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as Linking from 'expo-linking';
 import { useAuthStore, useHasHydrated } from '../stores/authStore';
-import { useLanguagesReady } from '../stores/settingsStore';
+import { useLanguagesReady, useSettingsStore } from '../stores/settingsStore';
 import { userService } from '../services/api';
+import {
+  initializePracticeNotifications,
+  refreshPracticeReminderSchedule,
+  registerPracticeNotificationResponseHandler,
+} from '../services/practicePromptService';
 import { colors } from '../config/theme';
 import AuthStack from './AuthStack';
 import MainTabs from './MainTabs';
@@ -21,6 +26,10 @@ const linking: LinkingOptions<any> = {
     screens: {
       VerifyEmail: 'verify-email/:token',
       Login: 'login',
+      Conversation: 'conversation',
+      Class: 'class',
+      Exercise: 'exercise',
+      Profile: 'profile',
     },
   },
 };
@@ -68,6 +77,7 @@ const splashStyles = StyleSheet.create({
 const RootNavigator: React.FC = () => {
   const hasHydrated = useHasHydrated();
   const { token, userId, isGuest, needsLanguageSetup } = useAuthStore();
+  const { nativeLanguage, targetLanguage } = useSettingsStore();
   const languagesReady = useLanguagesReady();
   const canAccess = !!token || isGuest;
 
@@ -103,6 +113,17 @@ const RootNavigator: React.FC = () => {
     });
     return () => sub.remove();
   }, [verifyAccount]);
+
+  useEffect(() => {
+    const cleanup = registerPracticeNotificationResponseHandler();
+    initializePracticeNotifications().catch(() => {});
+    return cleanup;
+  }, []);
+
+  useEffect(() => {
+    if (!canAccess || !languagesReady) return;
+    refreshPracticeReminderSchedule().catch(() => {});
+  }, [canAccess, languagesReady, nativeLanguage, targetLanguage]);
 
   if (!hasHydrated) return <SplashScreen />;
 

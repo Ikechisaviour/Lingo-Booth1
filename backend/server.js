@@ -100,11 +100,15 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/korean-le
   .catch(err => console.log('MongoDB connection error:', err));
 
 // Routes
+const learningContentRouter = require('./routes/lessons');
 app.use('/api/auth', require('./routes/auth'));
-app.use('/api/lessons', require('./routes/lessons'));
+app.use('/api/lessons', learningContentRouter); // legacy quiz-compatible route
+app.use('/api/quiz', learningContentRouter);
+app.use('/api/class-lessons', learningContentRouter);
 app.use('/api/flashcards', require('./routes/flashcards'));
 app.use('/api/progress', require('./routes/progress'));
 app.use('/api/users', require('./routes/users'));
+app.use('/api/error-reports', require('./routes/errorReports'));
 app.use('/api/admin', require('./routes/admin'));
 app.use('/api/tts', require('./routes/tts'));
 app.use('/api/ai', require('./routes/ai'));

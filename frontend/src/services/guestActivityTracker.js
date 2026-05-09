@@ -11,8 +11,8 @@
  *   guestActivityTracker.destroy()    — call on logout / sign-up
  *   guestActivityTracker.trackCard(isCorrect)
  *   guestActivityTracker.trackAudio()
- *   guestActivityTracker.trackLesson()
- *   guestActivityTracker.setActivity('flashcards' | 'lessons' | 'home')
+ *   guestActivityTracker.trackQuiz()
+ *   guestActivityTracker.setActivity('flashcards' | 'quiz' | 'home')
  */
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
@@ -128,11 +128,17 @@ const guestActivityTracker = {
     state.lastActivity = 'flashcards';
   },
 
-  /** Called when the guest opens a lesson detail page */
-  trackLesson() {
+  /** Called when the guest opens a quiz detail page */
+  trackQuiz() {
     if (!state.initialized) return;
     state.lessonsViewed++;
-    state.lastActivity = 'lessons';
+    state.lastActivity = 'quiz';
+  },
+
+  /** Legacy alias for older quiz code paths. */
+  trackLesson() {
+    if (!state.initialized) return;
+    this.trackQuiz();
   },
 
   /** Update the last-activity label without incrementing a counter */
