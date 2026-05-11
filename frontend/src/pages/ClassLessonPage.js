@@ -17,7 +17,9 @@ import {
   speechChunksForPart,
   spokenPartsForMessage,
 } from '../utils/languageSegments';
-import { roleVoiceForLocale } from '../utils/roleVoices';
+import PronunciationGuide from '../components/PronunciationGuide';
+import VoicePickerModal from '../components/VoicePickerModal';
+import { contrastingVoiceForLocale, roleVoiceForLocale, tutorVoiceForLocale } from '../utils/roleVoices';
 import './ClassLessonPage.css';
 
 const FORMATTING_FALLBACK_REPLY = 'I had trouble formatting that reply. Please try again naturally.';
@@ -330,7 +332,9 @@ function buildClassAction(action, lesson, item, index, activity, expressionPract
     itemIndex: index,
     itemType: item?.type || '',
     target: itemTarget(item),
-    romanization: item?.romanization || item?.pronunciation || '',
+    romanization: item?.officialPronunciation || item?.romanization || item?.pronunciation || '',
+    officialPronunciation: item?.officialPronunciation || item?.romanization || item?.pronunciation || '',
+    learnerPronunciation: item?.learnerPronunciation || '',
     native: itemNative(item),
     exampleTarget: itemExampleTarget(item),
     exampleNative: itemExampleNative(item),
@@ -404,11 +408,20 @@ function exampleCueFor(_language, group) {
   return topic ? `Example: ${topic}.` : 'Example.';
 }
 
-function shouldSpeakTutorPart(part = {}) {
+function shouldSpeakTutorPart(part = {}, options = {}) {
   const text = String(part?.text || '').trim();
   const structuralMeta = part.type === 'meta'
     && /^(example|sample|note|tip)$/i.test(text);
-  return !!text && part.speak !== false && part.type !== 'romanization' && !structuralMeta;
+  if (!text || part.speak === false || part.type === 'romanization' || structuralMeta) {
+    return false;
+  }
+  // The native-language gloss is suppressed by default during auto-play so
+  // each item doesn't drag through a full English read. Per-line replay
+  // (speakTutorPart) always plays both languages, regardless.
+  if (options.speakNativeGloss === false && part.type === 'native') {
+    return false;
+  }
+  return true;
 }
 
 function ClassLessonPage() {
@@ -428,8 +441,26 @@ function ClassLessonPage() {
   const [tutorLoading, setTutorLoading] = useState(false);
   const [listening, setListening] = useState(false);
   const [speechEnabled, setSpeechEnabled] = useState(true);
+  const [speakNativeGloss, setSpeakNativeGloss] = useState(() => (
+    localStorage.getItem('classSpeakNativeGloss') === 'true'
+  ));
   const [speechInputMode, setSpeechInputMode] = useState('target');
   const [status, setStatus] = useState('Ready');
+  const [audioUnlocked, setAudioUnlocked] = useState(() => speechService.isAudioUnlocked());
+  const [showVoicePicker, setShowVoicePicker] = useState(false);
+  // Per-session set of example groups that have already played their intro cue.
+  // Reset when the page mounts so the first example each visit still gets cued.
+  const exampleCueShownRef = useRef(new Set());
+  const shouldPlayExampleCue = (group) => {
+    const key = (group?.parts || [])
+      .map(part => String(part?.text || '').trim())
+      .filter(Boolean)
+      .join('|');
+    if (!key) return true;
+    if (exampleCueShownRef.current.has(key)) return false;
+    exampleCueShownRef.current.add(key);
+    return true;
+  };
   const [summary, setSummary] = useState('');
   const [memory, setMemory] = useState({});
   const [progressLoaded, setProgressLoaded] = useState(false);
@@ -443,6 +474,21 @@ function ClassLessonPage() {
   const nativeName = getNativeLangName();
   const speechSupported = !!getSpeechRecognition();
   const canUsePracticeContextFeature = getStoredPracticeContextAccess();
+
+  useEffect(() => {
+    if (audioUnlocked) return undefined;
+    return speechService.onAudioUnlocked(() => setAudioUnlocked(true));
+  }, [audioUnlocked]);
+
+  // First-run voice picker: prompt once per target language so learners aren't
+  // stuck with the default voice if they dislike it. Honors a "seen" flag for
+  // users who choose to skip.
+  useEffect(() => {
+    if (!targetLanguage) return;
+    const alreadyPicked = !!speechService.getSelectedVoiceName(targetLanguage);
+    const skipped = localStorage.getItem('classVoicePickerSeen') === '1';
+    if (!alreadyPicked && !skipped) setShowVoicePicker(true);
+  }, [targetLanguage]);
 
   useEffect(() => {
     let cancelled = false;
@@ -573,7 +619,7 @@ function ClassLessonPage() {
     if (!prompt) return;
     sessionStorage.removeItem('lingoContextClassPrompt');
     setPendingContextPrompt(prompt);
-    setStatus('Saved context prompt ready.');
+    setStatus('Personalized class prompt ready.');
   }, [canUsePracticeContextFeature]);
 
   useEffect(() => (
@@ -619,6 +665,22 @@ function ClassLessonPage() {
     }, {});
   }, [items]);
 
+  // Resolve the voice for a single spoken chunk.
+  //   • Dialogue speakers (Person A / Person B) take their dedicated dialogue voices.
+  //   • Otherwise the target-language locale uses the tutor voice (which is
+  //     deliberately distinct from Person A), and the native-language gloss
+  //     uses a contrasting-gender voice so the language switch is audible.
+  const tutorTargetLocale = ttsLocaleFor(targetLanguage, targetLanguage);
+  const tutorTargetVoice = tutorVoiceForLocale(tutorTargetLocale);
+  const resolveVoice = (lang, speaker) => {
+    const speakerVoice = roleVoiceForLocale(lang, speaker);
+    if (speakerVoice) return speakerVoice;
+    const tutorVoice = tutorVoiceForLocale(lang);
+    if (tutorVoice && lang === tutorTargetLocale) return tutorVoice;
+    if (tutorTargetVoice) return contrastingVoiceForLocale(lang, tutorTargetVoice);
+    return tutorVoice || '';
+  };
+
   const speakTutorTurn = async (message, options = {}) => {
     const displayParts = displayPartsForMessage(message, targetLanguage, nativeLanguage);
     const hasStructuredParts = Array.isArray(message?.displayParts) && message.displayParts.length > 0;
@@ -627,11 +689,11 @@ function ClassLessonPage() {
     const shouldUseVisibleOrder = hasStructuredParts || hasExampleGroup || displayParts.length > 1;
     const speechParts = shouldUseVisibleOrder
       ? groups.flatMap((group) => [
-        ...(group.kind === 'example'
+        ...(group.kind === 'example' && shouldPlayExampleCue(group)
           ? [{ language: nativeLanguage, text: exampleCueFor(nativeLanguage, group), speaker: '' }]
           : []),
         ...group.parts
-          .filter(shouldSpeakTutorPart)
+          .filter(part => shouldSpeakTutorPart(part, { speakNativeGloss }))
           .flatMap(part => speechChunksForPart(
             { ...part, language: part.language || message?.language },
             targetLanguage,
@@ -647,8 +709,8 @@ function ClassLessonPage() {
             const lang = ttsLocaleFor(part.language || message?.language, targetLanguage);
             await speechService.speakAsync(part.text, {
               lang,
-              voice: roleVoiceForLocale(lang, part.speaker),
-              rate: options.rate || '0.9',
+              voice: resolveVoice(lang, part.speaker),
+              rate: options.rate || '-10%',
             });
           }
         }
@@ -658,9 +720,11 @@ function ClassLessonPage() {
       const text = String(message?.content || '').trim();
       if (!text) return;
 
+      const lang = ttsLocaleFor(message?.language || targetLanguage, targetLanguage);
       await speechService.speakAsync(text, {
-        lang: ttsLocaleFor(message?.language || targetLanguage, targetLanguage),
-        rate: options.rate || '0.9',
+        lang,
+        voice: resolveVoice(lang, ''),
+        rate: options.rate || '-10%',
       });
     } catch (_) {
       setStatus('Audio playback was interrupted.');
@@ -668,7 +732,7 @@ function ClassLessonPage() {
   };
 
   const speakTutorPart = async (part, options = {}) => {
-    if (!shouldSpeakTutorPart(part)) return;
+    if (!shouldSpeakTutorPart(part, { speakNativeGloss: true })) return;
 
     try {
       await speechService.cancel();
@@ -678,8 +742,8 @@ function ClassLessonPage() {
         const lang = ttsLocaleFor(chunk.language || part?.language || targetLanguage, targetLanguage);
         await speechService.speakAsync(chunk.text, {
           lang,
-          voice: roleVoiceForLocale(lang, chunk.speaker || part?.speaker),
-          rate: options.rate || '0.9',
+          voice: resolveVoice(lang, chunk.speaker || part?.speaker),
+          rate: options.rate || '-10%',
         });
       }
       setStatus('Playing selected line.');
@@ -880,10 +944,31 @@ function ClassLessonPage() {
     sendTutorTurn(text, text);
   };
 
+  // Map a SpeechRecognition error code to actionable, learner-friendly text.
+  // The Web Speech API's terse error names ("not-allowed", "service-not-allowed")
+  // mean nothing to most users — give them a next step.
+  const speechErrorMessage = (event) => {
+    switch (event?.error) {
+      case 'not-allowed':
+      case 'service-not-allowed':
+        return 'Microphone permission is blocked. Open your browser site settings, allow the microphone, then reload this page.';
+      case 'no-speech':
+        return 'No speech was heard. Try again — speak after the "Listening…" indicator appears.';
+      case 'audio-capture':
+        return 'No microphone detected. Plug in or enable a microphone, then try again.';
+      case 'network':
+        return 'Network error during speech recognition. Check your connection and try again.';
+      case 'aborted':
+        return 'Speech input was cancelled.';
+      default:
+        return 'Could not capture speech. Please try again.';
+    }
+  };
+
   const startListening = () => {
     const Recognition = getSpeechRecognition();
     if (!Recognition) {
-      setStatus('Speech input is not available in this browser.');
+      setStatus('Voice input is unavailable in this browser. You can type in the box below instead — Chrome or Edge on a laptop supports speaking.');
       return;
     }
     if (tutorLoading) return;
@@ -895,43 +980,65 @@ function ClassLessonPage() {
     recognition.lang = speechInputMode === 'native'
       ? ttsLocaleFor(nativeLanguage, nativeLanguage)
       : ttsLocaleFor(targetLanguage, targetLanguage);
-    recognition.interimResults = false;
+    // Live captions + tolerant of mid-sentence pauses so beginners aren't
+    // cut off when they hesitate over a Korean word. The user explicitly
+    // stops via the mic button when they're done.
+    recognition.interimResults = true;
     recognition.maxAlternatives = 1;
-    recognition.continuous = false;
+    recognition.continuous = true;
     recognitionRef.current = recognition;
 
+    let finalTranscript = '';
     recognition.onstart = () => {
       setListening(true);
-      setStatus('Listening...');
+      setStatus('Listening… tap the mic again when you finish.');
     };
 
     recognition.onerror = (event) => {
       setListening(false);
-      const permissionError = event.error === 'not-allowed' || event.error === 'service-not-allowed';
-      setStatus(permissionError ? 'Microphone permission is blocked.' : 'Could not capture speech. Please try again.');
+      setStatus(speechErrorMessage(event));
     };
 
     recognition.onend = () => {
       setListening(false);
       recognitionRef.current = null;
+      const captured = (finalTranscript || turn || '').trim();
+      if (captured) {
+        // Hand the transcript to the user for review/edit before it's sent —
+        // a misrecognized phrase shouldn't go straight to the tutor.
+        setTurn(captured);
+        setStatus('Speech captured. Edit if needed, then press send.');
+      } else {
+        setStatus('No speech captured. Try again.');
+      }
     };
 
     recognition.onresult = (event) => {
-      const transcript = event.results?.[0]?.[0]?.transcript || event.results?.[0]?.transcript || '';
-      if (!transcript.trim()) return;
-      setTurn('');
-      setStatus('Speech captured.');
-      sendTutorTurn(transcript, transcript, { inputLanguage: speechInputMode === 'native' ? nativeLanguage : targetLanguage });
+      let interim = '';
+      let finalChunk = '';
+      for (let i = event.resultIndex; i < event.results.length; i += 1) {
+        const result = event.results[i];
+        const text = result?.[0]?.transcript || '';
+        if (result.isFinal) finalChunk += text;
+        else interim += text;
+      }
+      if (finalChunk) finalTranscript = (finalTranscript + ' ' + finalChunk).trim();
+      const preview = `${finalTranscript} ${interim}`.trim();
+      if (preview) setTurn(preview);
     };
 
-    recognition.start();
+    try {
+      recognition.start();
+    } catch (err) {
+      setListening(false);
+      setStatus(speechErrorMessage({ error: 'aborted' }));
+    }
   };
 
   const stopListening = () => {
+    // stop() lets the engine emit any pending final result; abort() drops them.
     recognitionRef.current?.stop?.();
-    recognitionRef.current = null;
     setListening(false);
-    setStatus('Speech input stopped.');
   };
 
   const renderTutorMessageBody = (message) => {
@@ -993,6 +1100,27 @@ function ClassLessonPage() {
 
   return (
     <div className="class-lesson-page">
+      <VoicePickerModal
+        open={showVoicePicker}
+        targetLangCode={targetLanguage}
+        targetLangName={targetName}
+        ttsLocale={ttsLocaleFor(targetLanguage, targetLanguage)}
+        onClose={() => setShowVoicePicker(false)}
+        onPicked={() => {
+          localStorage.setItem('classVoicePickerSeen', '1');
+          setShowVoicePicker(false);
+          setStatus('Voice updated. Click any line to hear it.');
+        }}
+      />
+      {!audioUnlocked && speechEnabled && (
+        <button
+          type="button"
+          className="class-audio-unlock"
+          onClick={() => setAudioUnlocked(speechService.isAudioUnlocked() || true)}
+        >
+          Tap anywhere to enable spoken tutor replies on this device.
+        </button>
+      )}
       <header className="class-lesson-header">
         <button type="button" className="class-back" onClick={() => navigate('/class')}>Back to Class</button>
         <div>
@@ -1050,7 +1178,7 @@ function ClassLessonPage() {
 
             {contextClassPrompts.length > 0 && (
               <div className="class-context-prompts">
-                <span>Based on saved context</span>
+                <span>Personalized for you</span>
                 <div>
                   {contextClassPrompts.map((prompt) => (
                     <button
@@ -1152,7 +1280,11 @@ function ClassLessonPage() {
                 </span>
               </div>
               <h3>{itemTarget(selectedItem)}</h3>
-              {selectedItem.romanization && <p className="class-romanization">{selectedItem.romanization}</p>}
+              <PronunciationGuide
+                item={selectedItem}
+                targetText={itemTarget(selectedItem)}
+                className="pronunciation-guide--inline"
+              />
               <p className="class-meaning">
                 {itemNative(selectedItem) || (selectedItem._translationPending ? 'Translation is being prepared for your language.' : '')}
               </p>
@@ -1248,6 +1380,20 @@ function ClassLessonPage() {
                   }}
                 >
                   {speechEnabled ? 'Spoken replies on' : 'Spoken replies off'}
+                </button>
+                <button
+                  type="button"
+                  className={speakNativeGloss ? 'active' : ''}
+                  onClick={() => {
+                    setSpeakNativeGloss((value) => {
+                      const next = !value;
+                      localStorage.setItem('classSpeakNativeGloss', String(next));
+                      return next;
+                    });
+                  }}
+                  title={`Read ${nativeName} aloud after each ${targetName} line. Click any line individually to hear it regardless.`}
+                >
+                  {speakNativeGloss ? `Speak ${nativeName}` : `${nativeName} silent`}
                 </button>
                 <button
                   type="button"

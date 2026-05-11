@@ -51,6 +51,28 @@
   background: var(--bg-secondary);
 }
 
+.auth-home-link {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: transparent;
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  padding: 7px 10px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: none;
+}
+
+.auth-home-link:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+  background: var(--primary-light);
+  transform: translateY(-1px);
+}
+
 .auth-logo {
   display: block;
   height: 60px;

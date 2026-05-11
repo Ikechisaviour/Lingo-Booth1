@@ -24,6 +24,7 @@ const {
   sanitizeSummary,
 } = require('../utils/aiConversation');
 const { compactPracticeContextBrief } = require('../utils/practiceContextAnalysis');
+const { enrichLessonWithPronunciation } = require('../utils/pronunciationService');
 
 const DEFAULT_SESSION_ID = 'default-conversation';
 
@@ -114,7 +115,15 @@ router.post('/conversation', async (req, res) => {
     const sourceLessonId = classLessonId || lessonId;
     if (sourceLessonId && /^[a-fA-F0-9]{24}$/.test(String(sourceLessonId))) {
       const lessonDoc = await Lesson.findById(sourceLessonId).lean();
-      if (lessonDoc) lessonBrief = buildLessonBrief(lessonDoc, activityId || '');
+      if (lessonDoc) {
+        await enrichLessonWithPronunciation(
+          lessonDoc,
+          lessonDoc.targetLang || targetLanguage || 'ko',
+          nativeLanguage || lessonDoc.nativeLang || 'en',
+          { allowExternal: false },
+        );
+        lessonBrief = buildLessonBrief(lessonDoc, activityId || '');
+      }
     }
 
     if (!transcript || typeof transcript !== 'string' || transcript.trim().length === 0) {

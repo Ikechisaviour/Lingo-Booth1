@@ -198,7 +198,7 @@ function HomePage() {
               <span className="quick-action-icon">&#127979;</span>
               <div className="quick-action-text">
                 <strong>{t('navbar.class', 'Class')}</strong>
-                <span>Coming soon</span>
+                <span>Guided tutor lessons</span>
               </div>
               <span className="quick-action-arrow">→</span>
             </div>

@@ -793,7 +793,9 @@ function buildClassLessonDisplayParts(transcript = '', targetLanguage = 'ko', na
   const nativeLanguageCode = normalizeLanguageCode(nativeLanguage) || 'en';
   const pairHasEnglish = targetLanguageCode === 'en' || nativeLanguageCode === 'en';
   const target = String(action.target || '').trim();
-  const romanization = String(action.romanization || '').trim();
+  const romanization = String(action.romanization || action.officialPronunciation || '').trim();
+  const learnerPronunciation = String(action.learnerPronunciation || '').trim();
+  const officialPronunciation = String(action.officialPronunciation || romanization).trim();
   const native = String(action.native || '').trim();
   const exampleTarget = String(action.exampleTarget || '').trim();
   const exampleNative = String(action.exampleNative || '').trim();
@@ -831,7 +833,7 @@ function buildClassLessonDisplayParts(transcript = '', targetLanguage = 'ko', na
     parts.push(part);
     return part;
   };
-  const pushRomanization = (text, speaker = '') => {
+  const pushRomanization = (text, speaker = '', section = '') => {
     if (!text) return;
     parts.push(makeDisplayPart({
       type: 'romanization',
@@ -839,7 +841,16 @@ function buildClassLessonDisplayParts(transcript = '', targetLanguage = 'ko', na
       text,
       speak: false,
       ...(speaker ? { speaker } : {}),
+      ...(section ? { section } : {}),
     }));
+  };
+  const pushPronunciationGuides = (speaker = '', section = '') => {
+    const primary = learnerPronunciation || romanization;
+    const secondary = officialPronunciation;
+    pushRomanization(primary, speaker, section);
+    if (secondary && normalizeLatinText(secondary) !== normalizeLatinText(primary)) {
+      pushRomanization(secondary, speaker, section);
+    }
   };
   const pushNative = (text, { speaker = '', section = '', speak = true } = {}) => {
     if (!text) return;
@@ -858,7 +869,7 @@ function buildClassLessonDisplayParts(transcript = '', targetLanguage = 'ko', na
     pushMeta(`Practice ${title} — your turn.`);
     const targetPart = pushTarget(target);
     if (itemType === 'word') {
-      pushRomanization(romanization, targetPart?.speaker);
+      pushPronunciationGuides(targetPart?.speaker);
     }
     if (pairHasEnglish) {
       const prompt = target
@@ -874,7 +885,7 @@ function buildClassLessonDisplayParts(transcript = '', targetLanguage = 'ko', na
   if (mode === 'explain') {
     pushMeta(target ? `Breaking down ${target}.` : `Explaining ${title}.`);
     const targetPart = pushTarget(target);
-    pushRomanization(romanization, targetPart?.speaker);
+    pushPronunciationGuides(targetPart?.speaker);
     pushNative(native, { speaker: targetPart?.speaker });
     if (exampleTarget || exampleNative) {
       pushMeta('Example', 'example');
@@ -889,7 +900,7 @@ function buildClassLessonDisplayParts(transcript = '', targetLanguage = 'ko', na
   pushMeta(`Let's learn ${title}.`);
   const targetPart = pushTarget(target);
   if (itemType !== 'sentence' && itemType !== 'conversation') {
-    pushRomanization(romanization, targetPart?.speaker);
+    pushPronunciationGuides(targetPart?.speaker);
   }
   pushNative(native, { speaker: targetPart?.speaker });
   if (exampleTarget || exampleNative) {
@@ -1297,6 +1308,8 @@ function sanitizeClassAction(classAction) {
     itemType: String(classAction.itemType || '').trim().slice(0, 30),
     target: String(classAction.target || '').trim().slice(0, 240),
     romanization: String(classAction.romanization || '').trim().slice(0, 240),
+    officialPronunciation: String(classAction.officialPronunciation || '').trim().slice(0, 240),
+    learnerPronunciation: String(classAction.learnerPronunciation || '').trim().slice(0, 240),
     native: String(classAction.native || '').trim().slice(0, 320),
     exampleTarget: String(classAction.exampleTarget || '').trim().slice(0, 320),
     exampleNative: String(classAction.exampleNative || '').trim().slice(0, 320),
@@ -1333,6 +1346,8 @@ function summarizeBriefItem(item, globalIndex) {
     type: item.type || 'practice',
     target: String(target).slice(0, 200),
     romanization: String(item.romanization || item.pronunciation || '').slice(0, 200),
+    officialPronunciation: String(item.officialPronunciation || item.romanization || item.pronunciation || '').slice(0, 200),
+    learnerPronunciation: String(item.learnerPronunciation || '').slice(0, 200),
     native: String(native).slice(0, 240),
     example: String(item.exampleTarget || item.example || '').slice(0, 280),
     exampleNative: String(item.exampleNative || item.exampleEnglish || '').slice(0, 280),
@@ -1525,8 +1540,8 @@ function teachingDirectivesFor(lessonBrief) {
     'For class-action turns (either signal), use activeActivity.section, activeActivity.title, activeActivity.goals, and activeActivity.task as the immediate classroom objective. Teach within that activity, not the next item from a different section.',
     'lessonBrief.items is already filtered to the active activity (when one is set). Stay inside that filtered set; do not jump to items not present.',
     'Branch your reply by classAction.action — the three actions MUST produce visibly different turns. Never reuse the same canned dump for all three.',
-    '  • teach_selected_item: First teach. Introduce the item with classAction.target + a one-sentence native-language gloss. Show romanization only if classAction.itemType is "word" or the script is unfamiliar to the learner. Include the example if classAction.exampleTarget is present, but tag the meta line as "Example" — never "Example conversation" unless the example actually contains two speakers. End with ONE specific comprehension question tied to the item (e.g. for 한글 ask "Who created 한글, and in what year?" — not "ready to try it?").',
-    '  • practice_selected_item: Do not reveal classAction.native or classAction.exampleNative up front. Prompt the learner to produce — read it aloud, recall the meaning, write the romanization, or answer a question that requires the item. Show classAction.target only (and romanization only for itemType "word"). End with the prompt as a real question the learner must answer.',
+    '  • teach_selected_item: First teach. Introduce the item with classAction.target + a one-sentence native-language gloss. Show learnerPronunciation first when present, then officialPronunciation/romanization as visual support only if classAction.itemType is "word" or the script is unfamiliar to the learner. Include the example if classAction.exampleTarget is present, but tag the meta line as "Example" — never "Example conversation" unless the example actually contains two speakers. End with ONE specific comprehension question tied to the item (e.g. for 한글 ask "Who created 한글, and in what year?" — not "ready to try it?").',
+    '  • practice_selected_item: Do not reveal classAction.native or classAction.exampleNative up front. Prompt the learner to produce — read it aloud, recall the meaning, write the pronunciation guide, or answer a question that requires the item. Show classAction.target only (and learnerPronunciation/romanization only for itemType "word"). End with the prompt as a real question the learner must answer.',
     '  • explain_selected_item: Decompose the item — components, etymology, why it exists, when it is used, common confusions. Be concrete and use facts in classAction or memory.lessonProgress; do not just restate the gloss. Romanization is allowed. Close with one short follow-up question that invites a deeper question, not a recall drill.',
     'If the same item is requested twice in a row with the same action, do not repeat the previous turn verbatim. Acknowledge they returned to it and pivot — pick a different angle, a different question, or move to the next item.',
     'For class lesson replies, speechParts is mandatory: split every spoken target-language sentence and native-language explanation into separate speechParts entries with the correct short language code.',

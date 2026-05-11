@@ -30,11 +30,15 @@ import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useAppColors, type AppColors } from '../../config/theme';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+function isProOrUltraTier(tier?: string | null) {
+  return ['pro', 'ultra'].includes(String(tier || '').toLowerCase());
+}
+
 const ProfileScreen: React.FC = () => {
   const { t, i18n } = useTranslation();
   const navigation = useNavigation<any>();
   const insets = useSafeAreaInsets();
-  const { userId, username, userRole, logout, setChallengeMode, challengeMode } = useAuthStore();
+  const { userId, username, userRole, subscriptionTier, aiEntitlements, logout, setChallengeMode, challengeMode } = useAuthStore();
   const {
     nativeLanguage,
     targetLanguage,
@@ -83,6 +87,17 @@ const ProfileScreen: React.FC = () => {
   const styles = useMemo(() => createStyles(colors, isCompact), [colors, isCompact]);
   const voiceLanguageCode = voiceLanguage === 'native' ? nativeLanguage : targetLanguage;
   const selectedVoice = preferredVoices?.[voiceLanguageCode] || (voiceLanguage === 'target' ? preferredVoice : null);
+  const personalizationTier = userRole === 'admin'
+    ? 'pro'
+    : (aiEntitlements?.subscriptionTier || user?.aiEntitlements?.subscriptionTier || user?.subscriptionTier || subscriptionTier || 'free');
+  const canUseLearningPersonalization = Boolean(
+    userRole === 'admin'
+    || user?.role === 'admin'
+    || aiEntitlements?.canUsePracticeContext
+    || user?.aiEntitlements?.canUsePracticeContext
+    || isProOrUltraTier(personalizationTier)
+    || isProOrUltraTier(subscriptionTier),
+  );
 
   const fetchData = useCallback(async () => {
     if (!userId) return;
@@ -409,6 +424,36 @@ const ProfileScreen: React.FC = () => {
               )}
             </Card.Content>
           </Card>
+
+          <TouchableOpacity
+            style={[
+              styles.personalizationCard,
+              !canUseLearningPersonalization && styles.personalizationCardLocked,
+            ]}
+            activeOpacity={0.78}
+            onPress={() => navigation.navigate('LearningPersonalization')}
+          >
+            <View style={styles.personalizationTopRow}>
+              <View style={styles.personalizationTextBlock}>
+                <Text style={styles.personalizationKicker}>
+                  {canUseLearningPersonalization ? 'Available on your plan' : 'Pro or Ultra'}
+                </Text>
+                <Text variant="titleMedium" style={styles.cardTitle}>
+                  Learning Personalization
+                </Text>
+              </View>
+              <Text style={styles.personalizationTier}>{String(personalizationTier || 'free').toUpperCase()}</Text>
+            </View>
+            <Text style={styles.hintText}>
+              Save approved words, phrases, and situations from real life so practice can become more relevant to you.
+            </Text>
+            <View style={styles.personalizationActionRow}>
+              <Text style={styles.personalizationActionText}>
+                {canUseLearningPersonalization ? 'Manage personalization' : 'View upgrade details'}
+              </Text>
+              <Text style={styles.personalizationArrow}>›</Text>
+            </View>
+          </TouchableOpacity>
 
           {userRole === 'admin' && (
             <Button
@@ -765,6 +810,64 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
   card: { backgroundColor: colors.surface, borderRadius: isCompact ? 10 : 14, marginBottom: isCompact ? 8 : 12, elevation: 1 },
   cardTitleRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 },
   cardTitle: { fontWeight: '700' },
+  personalizationCard: {
+    borderRadius: isCompact ? 10 : 14,
+    borderWidth: 1,
+    borderLeftWidth: 4,
+    borderColor: colors.border,
+    borderLeftColor: colors.primary,
+    backgroundColor: colors.surface,
+    padding: isCompact ? 12 : 16,
+    marginBottom: isCompact ? 8 : 12,
+    elevation: 1,
+  },
+  personalizationCardLocked: {
+    borderLeftColor: '#ff8c5a',
+  },
+  personalizationTopRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+    gap: 12,
+  },
+  personalizationTextBlock: {
+    flex: 1,
+    minWidth: 0,
+  },
+  personalizationKicker: {
+    color: colors.primary,
+    fontSize: 11,
+    fontWeight: '900',
+    textTransform: 'uppercase',
+    marginBottom: 3,
+  },
+  personalizationTier: {
+    color: colors.primary,
+    backgroundColor: 'rgba(88, 204, 2, 0.12)',
+    borderRadius: 999,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    fontSize: 11,
+    fontWeight: '900',
+    overflow: 'hidden',
+  },
+  personalizationActionRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: 12,
+  },
+  personalizationActionText: {
+    color: colors.primary,
+    fontSize: 13,
+    fontWeight: '800',
+  },
+  personalizationArrow: {
+    color: colors.primary,
+    fontSize: 24,
+    lineHeight: 24,
+    fontWeight: '800',
+  },
   successMsg: { color: colors.accentGreen, fontSize: 13, marginBottom: 8 },
 
   input: { marginBottom: 12, backgroundColor: colors.surface },

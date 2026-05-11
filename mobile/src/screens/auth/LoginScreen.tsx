@@ -16,6 +16,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 import Constants from 'expo-constants';
 import { GoogleSignin, isSuccessResponse, statusCodes } from '@react-native-google-signin/google-signin';
+import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 import { AuthStackParamList } from '../../navigation/AuthStack';
 import { authService } from '../../services/api';
 import { useAuthStore } from '../../stores/authStore';
@@ -151,6 +152,16 @@ const LoginScreen: React.FC = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
       <View style={styles.outer}>
+        <Svg pointerEvents="none" style={StyleSheet.absoluteFillObject}>
+          <Defs>
+            <LinearGradient id="loginGradient" x1="0" y1="0" x2="1" y2="1">
+              <Stop offset="0" stopColor={colors.accentGreen} />
+              <Stop offset="0.46" stopColor="#a7b623" />
+              <Stop offset="1" stopColor={colors.primary} />
+            </LinearGradient>
+          </Defs>
+          <Rect x="0" y="0" width="100%" height="100%" fill="url(#loginGradient)" />
+        </Svg>
         {/* Branded top section */}
         <View style={[styles.brandTop, { paddingTop: insets.top + (isCompact ? 8 : 24), paddingBottom: isCompact ? 12 : 28 }]}>
           <Image
@@ -305,7 +316,7 @@ const LoginScreen: React.FC = () => {
 
 const styles = StyleSheet.create({
   flex: { flex: 1 },
-  outer: { flex: 1, backgroundColor: colors.primary },
+  outer: { flex: 1, backgroundColor: colors.accentGreen },
 
   brandTop: {
     alignItems: 'center',

@@ -102,7 +102,7 @@ function contextItems(context: any): WritingItem[] {
     target: item.text,
     native: item.note || item.context,
     source: 'context',
-    sourceLabel: context.summary || 'Saved context',
+    sourceLabel: context.summary || 'Personalized',
     type: 'context',
   })).filter(Boolean) as WritingItem[];
 }
@@ -407,7 +407,7 @@ const WritingPracticeScreen: React.FC = () => {
   const sourceButtons = [
     { value: 'all', label: 'All' },
     { value: 'class', label: 'Class' },
-    { value: 'context', label: 'Context' },
+    { value: 'context', label: 'Personalized' },
     { value: 'conversation', label: 'Talk' },
     { value: 'personal', label: 'Mine' },
   ];

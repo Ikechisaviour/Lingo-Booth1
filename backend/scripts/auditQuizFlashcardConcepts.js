@@ -13,6 +13,7 @@ const {
   normalizeFlashcardsForLanguagePair,
   normalizeLessonForLanguagePair,
   languageField,
+  normalizeConceptKey,
 } = require('../utils/languageConcepts');
 
 const ROOT = path.join(__dirname, '..');
@@ -31,19 +32,26 @@ function auditFlashcards() {
   const issues = [];
   const dir = path.join(ROOT, 'flashcardData');
   const files = fs.existsSync(dir) ? fs.readdirSync(dir).filter(file => file.endsWith('.js')) : [];
+  const sources = [
+    { lang: 'ko', rawCards: require(path.join(ROOT, 'flashcardData.js')) },
+    ...files.map(file => ({
+      lang: path.basename(file, '.js'),
+      rawCards: require(path.join(dir, file)),
+    })),
+  ];
 
-  for (const file of files) {
-    const lang = path.basename(file, '.js');
+  for (const { lang, rawCards } of sources) {
     const targetField = languageField(lang);
-    const cards = require(path.join(dir, file)).map((card, index) => ({
+    const cards = rawCards.map((card, index) => ({
       ...card,
       _id: `${lang}:${index}`,
       isDefault: true,
       [targetField]: card[targetField] || card.korean || '',
     }));
     const normalized = normalizeFlashcardsForLanguagePair(cards, lang, 'en');
+    const seenTargets = new Map();
     normalized.forEach((card, index) => {
-      if (hasLeak(card[targetField]) || hasLeak(card.english)) {
+      if (lang !== 'ko' && (hasLeak(card[targetField]) || hasLeak(card.english))) {
         issues.push({
           area: 'flashcards',
           lang,
@@ -51,6 +59,22 @@ function auditFlashcards() {
           target: card[targetField],
           gloss: card.english,
         });
+      }
+
+      const targetKey = normalizeConceptKey(card[targetField]);
+      if (!targetKey) return;
+      if (seenTargets.has(targetKey)) {
+        issues.push({
+          area: 'flashcards',
+          type: 'duplicate-target',
+          lang,
+          firstIndex: seenTargets.get(targetKey),
+          index,
+          target: card[targetField],
+          gloss: card.english,
+        });
+      } else {
+        seenTargets.set(targetKey, index);
       }
     });
   }
@@ -72,6 +96,7 @@ function auditLessons() {
         lesson.targetLang || lang,
         'en',
       );
+      const seenTargets = new Map();
       (normalized.content || []).forEach((item, itemIndex) => {
         if (hasLeak(item.targetText) || hasLeak(item.nativeText)) {
           issues.push({
@@ -82,6 +107,23 @@ function auditLessons() {
             target: item.targetText,
             gloss: item.nativeText,
           });
+        }
+
+        const targetKey = `${item.type || ''}|${normalizeConceptKey(item.targetText)}`;
+        if (!normalizeConceptKey(item.targetText)) return;
+        if (seenTargets.has(targetKey)) {
+          issues.push({
+            area: 'quiz',
+            type: 'duplicate-target',
+            lang,
+            lessonIndex,
+            firstItemIndex: seenTargets.get(targetKey),
+            itemIndex,
+            target: item.targetText,
+            gloss: item.nativeText,
+          });
+        } else {
+          seenTargets.set(targetKey, itemIndex);
         }
       });
     });

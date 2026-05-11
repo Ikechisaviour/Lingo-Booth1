@@ -1,0 +1,116 @@
+.voice-picker-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.voice-picker-modal {
+  background: var(--surface-color, #fff);
+  border-radius: 14px;
+  padding: 24px;
+  max-width: 480px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.25);
+}
+
+.voice-picker-modal h2 {
+  margin: 0 0 8px;
+  font-size: 19px;
+}
+
+.voice-picker-modal p {
+  margin: 0 0 14px;
+  color: var(--text-secondary, #475569);
+  font-size: 14px;
+}
+
+.voice-picker-status,
+.voice-picker-error {
+  font-size: 13px;
+  color: var(--text-secondary, #475569);
+}
+
+.voice-picker-error {
+  color: var(--danger-color, #b91c1c);
+}
+
+.voice-picker-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.voice-picker-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color, #e2e8f0);
+  background: var(--surface-alt-color, #f8fafc);
+}
+
+.voice-picker-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.voice-picker-info strong {
+  font-size: 14px;
+}
+
+.voice-picker-info span {
+  font-size: 12px;
+  color: var(--text-secondary, #475569);
+}
+
+.voice-picker-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.voice-picker-preview,
+.voice-picker-choose,
+.voice-picker-footer button {
+  border-radius: 8px;
+  border: 1px solid var(--border-color, #cbd5e1);
+  background: var(--surface-color, #fff);
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.voice-picker-choose {
+  border-color: var(--accent-color, #2563eb);
+  color: var(--accent-color, #1d4ed8);
+  font-weight: 600;
+}
+
+.voice-picker-preview:disabled {
+  opacity: 0.55;
+  cursor: progress;
+}
+
+.voice-picker-footer {
+  margin-top: 16px;
+  text-align: right;
+}
+
+.voice-picker-footer button {
+  color: var(--text-secondary, #475569);
+  background: transparent;
+  border: none;
+  text-decoration: underline;
+}

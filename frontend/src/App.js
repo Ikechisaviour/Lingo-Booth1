@@ -7,6 +7,7 @@ import { installGlobalErrorReporting } from './services/errorReporter';
 import guestActivityTracker from './services/guestActivityTracker';
 import Navbar from './components/Navbar';
 import EmailVerificationBanner from './components/EmailVerificationBanner';
+import LandingPage from './pages/LandingPage';
 import HomePage from './pages/HomePage';
 import ClassLessonsPage from './pages/ClassLessonsPage';
 import ClassLessonPage from './pages/ClassLessonPage';
@@ -382,7 +383,7 @@ function App() {
             path="/"
             element={
               isAuthenticated && (needsLanguageSetup || !languagesReady) ? <Navigate to="/select-language?mode=google-setup" /> :
-              canAccessApp ? <HomePage isGuest={isGuest} /> : <Navigate to="/login" />
+              canAccessApp ? <HomePage isGuest={isGuest} /> : <LandingPage />
             }
           />
           <Route
@@ -447,6 +448,12 @@ function App() {
           />
           <Route
             path="/context"
+            element={
+              canAccessApp ? <ContextPracticePage /> : <Navigate to="/login" />
+            }
+          />
+          <Route
+            path="/learning-personalization"
             element={
               canAccessApp ? <ContextPracticePage /> : <Navigate to="/login" />
             }

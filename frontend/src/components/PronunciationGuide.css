@@ -1,0 +1,39 @@
+.pronunciation-guide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  line-height: 1.25;
+}
+
+.pronunciation-guide__learner {
+  color: #16a34a;
+  font-size: 0.98rem;
+  font-weight: 700;
+}
+
+.pronunciation-guide__official {
+  color: #64748b;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.pronunciation-guide__note {
+  color: #64748b;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.pronunciation-guide--inline {
+  align-items: flex-start;
+  margin-top: 4px;
+}
+
+.pronunciation-guide--inline .pronunciation-guide__learner {
+  font-size: 0.88rem;
+}
+
+.pronunciation-guide--inline .pronunciation-guide__official {
+  font-size: 0.76rem;
+}

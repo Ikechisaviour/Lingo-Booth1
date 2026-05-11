@@ -17,6 +17,7 @@ import guestActivityTracker from '../../services/guestActivityTracker';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { getLangName } from '../../config/languages';
+import PronunciationGuide from '../../components/PronunciationGuide';
 import { useAppColors, type AppColors } from '../../config/theme';
 
 type RouteParams = {
@@ -415,8 +416,8 @@ const QuizDetailScreen: React.FC = () => {
             {studyMode !== 'listening' && (
               <View style={styles.contentCard}>
                 <Text style={styles.contentKorean}>{content.targetText}</Text>
-                {showRomanization && content.romanization && (
-                  <Text style={styles.romanization}>{content.romanization}</Text>
+                {showRomanization && (
+                  <PronunciationGuide item={content} targetText={content.targetText} />
                 )}
               </View>
             )}

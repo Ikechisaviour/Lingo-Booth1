@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Lesson = require('./models/Lesson');
 const Translation = require('./models/Translation');
+const { normalizeLessonForLanguagePair } = require('./utils/languageConcepts');
 require('dotenv').config();
 
 // Import real vocabulary lessons
@@ -1453,24 +1454,40 @@ async function seedDatabase() {
     });
     console.log('Connected to MongoDB');
 
-    // Clear existing lessons and stale translation cache
-    await Lesson.deleteMany({});
-    await Translation.deleteMany({});
-    console.log('Cleared existing lessons and translation cache');
+    // Clear only quiz/practice lessons. Textbook class lessons use the same
+    // Lesson model with track: "textbook", so preserve them during quiz seeding.
+    const quizLessonFilter = { track: { $ne: 'textbook' } };
+    const quizLessonsToReplace = await Lesson.find(quizLessonFilter).select('_id').lean();
+    const quizLessonIds = quizLessonsToReplace.map(lesson => lesson._id);
+    const deletedLessons = await Lesson.deleteMany(quizLessonFilter);
+    const deletedTranslations = quizLessonIds.length
+      ? await Translation.deleteMany({ lessonId: { $in: quizLessonIds } })
+      : { deletedCount: 0 };
+    console.log(`Cleared ${deletedLessons.deletedCount} quiz lessons and ${deletedTranslations.deletedCount} related translation cache records`);
 
-    // Insert new lessons
-    const insertedLessons = await Lesson.insertMany(lessons);
+    // Insert normalized quiz lessons. Target-language duplicates are merged into
+    // one concept with multiple meanings where needed.
+    const lessonsToInsert = lessons.map((lesson) => {
+      const normalized = normalizeLessonForLanguagePair(
+        JSON.parse(JSON.stringify(lesson)),
+        lesson.targetLang || 'ko',
+        lesson.nativeLang || 'en',
+      );
+      if (!normalized.track) normalized.track = 'practice';
+      return normalized;
+    });
+    const insertedLessons = await Lesson.insertMany(lessonsToInsert);
     console.log(`\n✅ Successfully inserted ${insertedLessons.length} lessons`);
 
     console.log('\n=== Lesson Summary ===');
-    lessons.forEach((lesson, idx) => {
+    lessonsToInsert.forEach((lesson, idx) => {
       console.log(`${idx + 1}. ${lesson.title} (${lesson.category} - ${lesson.difficulty}): ${lesson.content.length} exercises`);
     });
 
-    const categories = [...new Set(lessons.map(l => l.category))];
+    const categories = [...new Set(lessonsToInsert.map(l => l.category))];
     console.log('\n=== Category Breakdown ===');
     categories.forEach(cat => {
-      const catLessons = lessons.filter(l => l.category === cat);
+      const catLessons = lessonsToInsert.filter(l => l.category === cat);
       const totalExercises = catLessons.reduce((sum, l) => sum + l.content.length, 0);
       console.log(`${cat}: ${catLessons.length} lessons, ${totalExercises} total exercises`);
     });
@@ -1478,15 +1495,15 @@ async function seedDatabase() {
     console.log('\n=== Difficulty Breakdown ===');
     const difficulties = ['beginner', 'intermediate', 'advanced', 'sentences'];
     difficulties.forEach(diff => {
-      const diffLessons = lessons.filter(l => l.difficulty === diff);
+      const diffLessons = lessonsToInsert.filter(l => l.difficulty === diff);
       const totalExercises = diffLessons.reduce((sum, l) => sum + l.content.length, 0);
       console.log(`${diff}: ${diffLessons.length} lessons, ${totalExercises} total exercises`);
     });
 
     console.log('\n=== Language Breakdown ===');
-    const languages = [...new Set(lessons.map(l => l.targetLang))];
+    const languages = [...new Set(lessonsToInsert.map(l => l.targetLang))];
     languages.forEach(lang => {
-      const langLessons = lessons.filter(l => l.targetLang === lang);
+      const langLessons = lessonsToInsert.filter(l => l.targetLang === lang);
       const totalExercises = langLessons.reduce((sum, l) => sum + l.content.length, 0);
       console.log(`${lang}: ${langLessons.length} lessons, ${totalExercises} total exercises`);
     });

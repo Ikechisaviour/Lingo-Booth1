@@ -26,6 +26,7 @@ const PipHandler: any = null;
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import LANGUAGES, { getLangName, getLangField, langHasRomanization } from '../../config/languages';
+import PronunciationGuide from '../../components/PronunciationGuide';
 import { useAppColors, type AppColors } from '../../config/theme';
 
 
@@ -700,6 +701,7 @@ const FlashcardsScreen: React.FC = () => {
   const card = displayedCards[currentIndex];
   const frontText = showsTargetFirst ? card[targetField] : card[nativeField];
   const backText = showsTargetFirst ? card[nativeField] : card[targetField];
+  const targetText = card[targetField] || '';
   const frontLabel = showsTargetFirst
     ? t(`languages.${targetLanguage}`, getLangName(targetLanguage))
     : t(`languages.${nativeLanguage}`, getLangName(nativeLanguage));
@@ -797,8 +799,8 @@ const FlashcardsScreen: React.FC = () => {
             {studyStyle === 'audio' && (
               <IconButton icon="volume-high" size={48} iconColor={colors.primary} onPress={() => handleSpeak(frontText, frontLocale)} />
             )}
-            {card.romanization && studyStyle !== 'audio' && showsTargetFirst && langHasRomanization(targetLanguage) && (
-              <Text style={styles.romanization}>{card.romanization}</Text>
+            {studyStyle !== 'audio' && showsTargetFirst && (
+              <PronunciationGuide item={card} targetText={targetText} />
             )}
             {!isCompact && <Text style={styles.tapHint}>{t('flashcards.tapToFlip', 'Tap to flip')}</Text>}
           </Animated.View>
@@ -833,8 +835,8 @@ const FlashcardsScreen: React.FC = () => {
             ) : (
               <Text style={styles.cardText}>{backText}</Text>
             )}
-            {card.romanization && !showsTargetFirst && langHasRomanization(targetLanguage) && (
-              <Text style={styles.romanization}>{card.romanization}</Text>
+            {!showsTargetFirst && (
+              <PronunciationGuide item={card} targetText={targetText} />
             )}
           </Animated.View>
         </TouchableOpacity>

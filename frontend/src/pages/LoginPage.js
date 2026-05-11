@@ -189,6 +189,13 @@ function LoginPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
   return (
     <div className="auth-container">
       <div className="auth-card">
+        <button
+          type="button"
+          className="auth-home-link"
+          onClick={() => navigate('/')}
+        >
+          Back to home
+        </button>
         <img src="/images/logo.png" alt="Lingo Booth" className="auth-logo" />
         <h1>{t('login.welcomeBack')}</h1>
         <p className="auth-subtitle">{t('login.subtitle')}</p>

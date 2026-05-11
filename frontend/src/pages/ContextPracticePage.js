@@ -137,7 +137,7 @@ function ContextPracticePage() {
 
   const startListening = () => {
     if (!canUseContextPractice) {
-      setStatus('Real-life context practice is available on Pro and Ultra.');
+      setStatus('Learning Personalization is available on Pro and Ultra.');
       return;
     }
 
@@ -195,7 +195,7 @@ function ContextPracticePage() {
 
   const analyze = async () => {
     if (!canUseContextPractice) {
-      setStatus('Real-life context practice is available on Pro and Ultra.');
+      setStatus('Learning Personalization is available on Pro and Ultra.');
       return;
     }
 
@@ -234,14 +234,14 @@ function ContextPracticePage() {
 
   const saveSelected = async () => {
     if (!canUseContextPractice) {
-      setStatus('Real-life context practice is available on Pro and Ultra.');
+      setStatus('Learning Personalization is available on Pro and Ultra.');
       return;
     }
 
     if (!analysis) return;
     const grouped = groupSelected(items, selectedKeys);
     setLoading(true);
-    setStatus('Saving approved learning context...');
+    setStatus('Saving approved personalization items...');
     try {
       const payload = {
         source: 'web',
@@ -261,9 +261,9 @@ function ContextPracticePage() {
       setAnalysis(null);
       setTranscript('');
       setSelectedKeys(new Set());
-      setStatus('Saved. Future practice can use this context.');
+      setStatus('Saved. Future practice can use these items.');
     } catch {
-      setStatus('Could not save this context. Please try again.');
+      setStatus('Could not save these items. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -279,7 +279,7 @@ function ContextPracticePage() {
         .then((recommendationRes) => setRecommendations(recommendationRes.data || null))
         .catch(() => {});
     } catch {
-      setStatus('Could not delete that saved context.');
+      setStatus('Could not delete that saved item.');
     }
   };
 
@@ -288,30 +288,30 @@ function ContextPracticePage() {
       <div className="context-page">
         <section className="context-hero">
           <div>
-            <p className="context-kicker">Context practice</p>
-            <h1>Teach from real life</h1>
+            <p className="context-kicker">Learning Personalization</p>
+            <h1>Lessons shaped around you</h1>
             <p>
-              Real-life context practice is available on Pro and Ultra. Conversation and class practice still work,
-              but this plan will not save or use background learning context.
+              Pro and Ultra can save approved words, phrases, and situations from real life so future practice
+              feels more relevant. Free and Plus can continue using the regular lessons and conversation practice.
             </p>
           </div>
           <div className="context-status">
             <span>{String(contextAccess.tier || 'free').toUpperCase()}</span>
-            <strong>Pro or Ultra required</strong>
+            <strong>Upgrade to personalize practice</strong>
           </div>
         </section>
         <section className="context-panel">
           <div className="context-panel-head">
             <div>
               <p className="context-kicker">Available now</p>
-              <h2>Continue practicing</h2>
+              <h2>Keep learning</h2>
             </div>
             <button type="button" onClick={() => navigate('/conversation')}>
               Open Conversation
             </button>
           </div>
           <div className="context-empty">
-            Upgrade later to let approved real-life words, phrases, and situations shape future lessons.
+            Upgrade when you want lessons, review prompts, and roleplays to adapt to the everyday language you approve.
           </div>
         </section>
       </div>
@@ -322,11 +322,11 @@ function ContextPracticePage() {
     <div className="context-page">
       <section className="context-hero">
         <div>
-          <p className="context-kicker">Context practice</p>
-          <h1>Teach from real life</h1>
+          <p className="context-kicker">Learning Personalization</p>
+          <h1>Lessons shaped around you</h1>
           <p>
             Capture a visible practice session, review the useful words and situations, then save only what you approve.
-            Saved context helps {targetName} class and conversation practice feel more relevant.
+            Saved items help {targetName} class and conversation practice feel more relevant.
           </p>
         </div>
         <div className={`context-status ${listening ? 'active' : ''}`}>
@@ -408,7 +408,7 @@ function ContextPracticePage() {
           </div>
         </div>
         {!recommendations?.hasContext ? (
-          <div className="context-empty">Save context to unlock roleplays, review drills, and tutor prompts.</div>
+          <div className="context-empty">Save personalization items to unlock roleplays, review drills, and class prompts.</div>
         ) : (
           <div className="context-actions-grid">
             <div>
@@ -448,16 +448,16 @@ function ContextPracticePage() {
         <div className="context-panel-head">
           <div>
             <p className="context-kicker">Saved</p>
-            <h2>Learning context</h2>
+            <h2>Saved personalization</h2>
           </div>
         </div>
         {savedContexts.length === 0 ? (
-          <div className="context-empty">No saved context yet.</div>
+          <div className="context-empty">No saved personalization items yet.</div>
         ) : (
           <div className="context-saved-grid">
             {savedContexts.map((context) => (
               <article key={context._id} className="context-saved-card">
-                <p>{context.summary || 'Saved practice context'}</p>
+                <p>{context.summary || 'Saved personalization item'}</p>
                 <div className="context-chip-row">
                   {(context.environmentTags || []).map((tag) => <span key={tag}>{tag}</span>)}
                 </div>

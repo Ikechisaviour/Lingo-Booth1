@@ -3,6 +3,7 @@ const {
   normalizeLessonForLanguagePair,
   languageField,
   prepareDefaultFlashcardForSeed,
+  prepareDefaultFlashcardsForSeed,
 } = require('../utils/languageConcepts');
 const fs = require('fs');
 const path = require('path');
@@ -121,6 +122,100 @@ describe('language concept normalization', () => {
     expect(doc.de).toBeUndefined();
     expect(doc.english).toBe('Hi');
     expect(doc.conceptGloss).toBe('Hi');
+  });
+
+  test('merges one target-language flashcard with multiple meanings', () => {
+    const normalized = normalizeFlashcardsForLanguagePair([
+      {
+        _id: '1',
+        isDefault: true,
+        targetLang: 'it',
+        it: 'Ciao',
+        korean: 'Ciao',
+        english: 'Hello',
+        category: ['greetings'],
+      },
+      {
+        _id: '2',
+        isDefault: true,
+        targetLang: 'it',
+        it: 'Ciao (informale)',
+        korean: 'Ciao (informale)',
+        english: 'Hi (informal)',
+        category: ['greetings'],
+      },
+      {
+        _id: '3',
+        isDefault: true,
+        targetLang: 'it',
+        it: 'Ciao (informale)',
+        korean: 'Ciao (informale)',
+        english: 'Bye (informal)',
+        category: ['farewells'],
+      },
+    ], 'it', 'en');
+
+    expect(normalized).toHaveLength(1);
+    expect(normalized[0].it).toBe('Ciao');
+    expect(normalized[0].english).toBe('Hello / Hi / Bye');
+    expect(normalized[0].category).toEqual(['greetings', 'farewells']);
+    expect(normalized[0].usage.multiMeaning).toBe(true);
+    expect(normalized[0].usage.meanings.map(meaning => meaning.text)).toEqual(['Hello', 'Hi', 'Bye']);
+  });
+
+  test('does not merge different target-language words that share a native translation', () => {
+    const normalized = normalizeFlashcardsForLanguagePair([
+      {
+        _id: '1',
+        isDefault: true,
+        targetLang: 'en',
+        english: 'Tea',
+        korean: '차',
+        category: ['food'],
+      },
+      {
+        _id: '2',
+        isDefault: true,
+        targetLang: 'en',
+        english: 'Car',
+        korean: '차',
+        category: ['travel'],
+      },
+    ], 'en', 'ko');
+
+    expect(normalized).toHaveLength(2);
+    expect(normalized.map(card => card.english)).toEqual(['Tea', 'Car']);
+    expect(normalized.map(card => card.korean)).toEqual(['차', '차']);
+  });
+
+  test('merges target homonyms in quiz lesson content', () => {
+    const lesson = {
+      targetLang: 'ko',
+      nativeLang: 'en',
+      content: [
+        { type: 'word', targetText: '차', nativeText: 'Tea' },
+        { type: 'word', targetText: '차', nativeText: 'Car' },
+      ],
+    };
+
+    normalizeLessonForLanguagePair(lesson, 'ko', 'en');
+
+    expect(lesson.content).toHaveLength(1);
+    expect(lesson.content[0].targetText).toBe('차');
+    expect(lesson.content[0].nativeText).toBe('Tea / Car');
+    expect(lesson.content[0].usage.multiMeaning).toBe(true);
+  });
+
+  test('batch seed helper normalizes and reindexes merged default flashcards', () => {
+    const docs = prepareDefaultFlashcardsForSeed([
+      { korean: 'Ciao', english: 'Hello', it: 'Ciao', category: ['greetings'] },
+      { korean: 'Ciao (informale)', english: 'Bye (informal)', it: 'Ciao (informale)', category: ['farewells'] },
+    ], 'it');
+
+    expect(docs).toHaveLength(1);
+    expect(docs[0].defaultIndex).toBe(0);
+    expect(docs[0].it).toBe('Ciao');
+    expect(docs[0].english).toBe('Hello / Bye');
   });
 
   test('keeps Korean first-person register distinctions when Korean is the target', () => {

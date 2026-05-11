@@ -15,7 +15,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const Flashcard = require('../models/Flashcard');
 const koreanCards = require('../flashcardData');
-const { prepareDefaultFlashcardForSeed } = require('../utils/languageConcepts');
+const { prepareDefaultFlashcardsForSeed } = require('../utils/languageConcepts');
 require('dotenv').config();
 
 async function seedDefaultCards() {
@@ -26,7 +26,8 @@ async function seedDefaultCards() {
     const deleted = await Flashcard.deleteMany({ isDefault: true });
     console.log(`Cleared ${deleted.deletedCount} existing default cards`);
 
-    const koDocs = koreanCards.map((card, i) => prepareDefaultFlashcardForSeed(card, 'ko', i));
+    const koDocs = prepareDefaultFlashcardsForSeed(koreanCards, 'ko', 0);
+    console.log(`Loaded ${koreanCards.length} ko cards -> ${koDocs.length} normalized cards`);
 
     const langDir = path.join(__dirname, '..', 'flashcardData');
     const langDocs = [];
@@ -36,12 +37,9 @@ async function seedDefaultCards() {
       for (const file of files) {
         const lang = path.basename(file, '.js');
         const cards = require(path.join(langDir, file));
-        for (let i = 0; i < cards.length; i++) {
-          const card = cards[i];
-          const targetLang = card.targetLang || lang;
-          langDocs.push(prepareDefaultFlashcardForSeed(card, targetLang, i));
-        }
-        console.log(`Loaded ${cards.length} ${lang} cards`);
+        const docs = prepareDefaultFlashcardsForSeed(cards, lang, 0);
+        langDocs.push(...docs);
+        console.log(`Loaded ${cards.length} ${lang} cards -> ${docs.length} normalized cards`);
       }
     }
 
