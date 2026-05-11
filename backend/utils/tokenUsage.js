@@ -193,7 +193,7 @@ function buildQuotaExceededMessage(usage, tier = 'free') {
   const resetText = `You can continue after ${resetAt.toLocaleString('en-US', { timeZone: 'UTC', hour12: false })} UTC.`;
   const normalizedTier = String(tier || 'free').toLowerCase();
 
-  if (normalizedTier === 'pro') {
+  if (normalizedTier === 'pro' || normalizedTier === 'ultra') {
     return `You've practiced a lot today. Take a short break to protect your focus and avoid burnout. ${resetText}`;
   }
 

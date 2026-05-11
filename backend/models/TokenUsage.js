@@ -25,7 +25,7 @@ const tokenUsageSchema = new mongoose.Schema({
   },
   tier: {
     type: String,
-    enum: ['free', 'plus', 'pro'],
+    enum: ['free', 'plus', 'pro', 'ultra'],
     required: true,
   },
   dailyLimit: {

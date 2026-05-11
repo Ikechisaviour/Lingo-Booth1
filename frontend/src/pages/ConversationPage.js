@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { FiMic, FiRefreshCw, FiSend, FiShield, FiVolume2, FiVolumeX, FiWifiOff } from 'react-icons/fi';
-import { aiService } from '../services/api';
+import { aiService, practiceContextService } from '../services/api';
 import speechService from '../services/speechService';
 import LANGUAGES from '../config/languages';
 import {
@@ -450,6 +450,7 @@ function normalizeEntitlements(entitlements = {}) {
       subscriptionTier: 'pro',
       canUseAI: true,
       canSyncAIMemory: true,
+      canUsePracticeContext: true,
       aiMemoryScope: 'cloud',
     };
   }
@@ -471,10 +472,23 @@ function tierFromEntitlements(entitlements = {}) {
   return localStorage.getItem('token') ? (storedTier || 'plus') : 'free';
 }
 
+function isProOrUltraTier(tier) {
+  return ['pro', 'ultra'].includes(String(tier || '').toLowerCase());
+}
+
+function canUsePracticeContext(entitlements = {}) {
+  return Boolean(
+    entitlements.canUsePracticeContext
+    || isProOrUltraTier(tierFromEntitlements(entitlements))
+    || isProOrUltraTier(localStorage.getItem('subscriptionTier')),
+  );
+}
+
 function memoryScopeFor(entitlements = {}) {
   const tier = tierFromEntitlements(entitlements);
+  const storedTier = localStorage.getItem('subscriptionTier');
+  if (entitlements.canSyncAIMemory || isProOrUltraTier(tier) || isProOrUltraTier(storedTier)) return 'cloud';
   if (entitlements.aiMemoryScope) return entitlements.aiMemoryScope;
-  if (entitlements.canSyncAIMemory || tier === 'pro') return 'cloud';
   if (entitlements.canUseAI === false || tier === 'free') return 'none';
   return 'device';
 }
@@ -546,7 +560,7 @@ function quotaLimitCopy(tier = 'free', resetAt, now = Date.now()) {
     ? `You can continue in ${countdown}.`
     : 'You can continue when your daily conversation allowance resets.';
 
-  if (normalizedTier === 'pro') {
+  if (isProOrUltraTier(normalizedTier)) {
     return {
       title: "You've practiced a lot today.",
       body: countdown
@@ -646,6 +660,7 @@ function ConversationPage() {
   const [setupOpen, setSetupOpen] = useState(false);
   const [roleState, setRoleState] = useState(null);
   const [customRoleplay, setCustomRoleplay] = useState({});
+  const [contextRecommendations, setContextRecommendations] = useState(null);
   const [countdownNow, setCountdownNow] = useState(Date.now());
   const threadRef = useRef(null);
   const recognitionRef = useRef(null);
@@ -673,6 +688,7 @@ function ConversationPage() {
   const tier = tierFromEntitlements(entitlements);
   const memoryScope = memoryScopeFor(entitlements);
   const canUseAI = entitlements.canUseAI !== false;
+  const canUsePracticeContextFeature = canUsePracticeContext(entitlements);
   const tokenUsage = entitlements.tokenUsage || null;
   const quotaExceeded = Boolean(tokenUsage?.quotaExceeded || entitlements.canSendAI === false);
   const quotaCopy = quotaLimitCopy(tier, tokenUsage?.resetAt, countdownNow);
@@ -706,6 +722,21 @@ function ConversationPage() {
     return (history.length ? scenario.followUps : scenario.starters).slice(0, 3);
   }, [canUseAI, quotaExceeded, history, scenario, isCustomScenario, customIsReady]);
 
+  const contextPracticeActions = useMemo(() => {
+    if (!canUsePracticeContextFeature || !contextRecommendations?.hasContext) return [];
+    const roleplays = (contextRecommendations.roleplays || []).slice(0, 2).map((item) => ({
+      key: `roleplay-${item.prompt}`,
+      label: item.title || 'Practice roleplay',
+      prompt: item.prompt,
+    }));
+    const drills = (contextRecommendations.reviewDrills || []).slice(0, 2).map((item) => ({
+      key: `drill-${item.prompt}`,
+      label: item.text || 'Review drill',
+      prompt: item.prompt,
+    }));
+    return [...roleplays, ...drills].filter(item => item.prompt);
+  }, [canUsePracticeContextFeature, contextRecommendations]);
+
   useEffect(() => {
     const stored = loadMemory(scenarioId, nativeLanguage, targetLanguage);
     const storedCustom = customRoleplayFromMemory(stored.memory);
@@ -735,6 +766,35 @@ function ConversationPage() {
     setStatus('Ready');
     setStatusTone('idle');
   }, [scenarioId, nativeLanguage, targetLanguage]);
+
+  useEffect(() => {
+    const starter = sessionStorage.getItem('lingoContextConversationStarter');
+    if (!starter) return;
+    sessionStorage.removeItem('lingoContextConversationStarter');
+    setTurn(starter);
+    setStatus('Saved context starter ready. Press Send to begin.');
+    setStatusTone('idle');
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+    if (!canUsePracticeContextFeature) {
+      setContextRecommendations(null);
+      return () => {
+        cancelled = true;
+      };
+    }
+    practiceContextService.recommendations(targetLanguage)
+      .then((res) => {
+        if (!cancelled) setContextRecommendations(res.data || null);
+      })
+      .catch(() => {
+        if (!cancelled) setContextRecommendations(null);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [canUsePracticeContextFeature, targetLanguage]);
 
   useEffect(() => {
     aiService.getEntitlements()
@@ -1348,6 +1408,22 @@ function ConversationPage() {
                       disabled={loading}
                     >
                       {starter}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {contextPracticeActions.length > 0 && (
+                <div className="conversation-context-actions">
+                  <span>Based on saved context</span>
+                  {contextPracticeActions.map((item) => (
+                    <button
+                      key={item.key}
+                      type="button"
+                      onClick={() => sendTurn(item.prompt)}
+                      disabled={loading || !canUseAI || quotaExceeded}
+                    >
+                      {item.label}
                     </button>
                   ))}
                 </div>

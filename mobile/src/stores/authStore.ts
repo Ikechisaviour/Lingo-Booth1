@@ -2,26 +2,32 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+type SubscriptionTier = 'free' | 'plus' | 'pro' | 'ultra';
+type AIMemoryScope = 'none' | 'device' | 'cloud';
+
+type AiEntitlements = {
+  subscriptionTier?: SubscriptionTier;
+  canUseAI?: boolean;
+  canSendAI?: boolean;
+  canSyncAIMemory?: boolean;
+  canUsePracticeContext?: boolean;
+  aiMemoryScope?: AIMemoryScope;
+  tokenUsage?: {
+    quotaExceeded: boolean;
+    resetAt: string;
+    resetInMs?: number;
+    dateKey?: string;
+  };
+};
+
 interface AuthState {
   token: string | null;
   refreshToken: string | null;
   userId: string | null;
   username: string | null;
   userRole: string | null;
-  subscriptionTier: 'free' | 'plus' | 'pro';
-  aiEntitlements: {
-    subscriptionTier?: 'free' | 'plus' | 'pro';
-    canUseAI?: boolean;
-    canSendAI?: boolean;
-    canSyncAIMemory?: boolean;
-    aiMemoryScope?: 'none' | 'device' | 'cloud';
-    tokenUsage?: {
-      quotaExceeded: boolean;
-      resetAt: string;
-      resetInMs?: number;
-      dateKey?: string;
-    };
-  } | null;
+  subscriptionTier: SubscriptionTier;
+  aiEntitlements: AiEntitlements | null;
   isGuest: boolean;
   challengeMode: boolean;
   guestXP: number;
@@ -34,20 +40,8 @@ interface AuthState {
       id: string;
       username: string;
       role: string;
-      subscriptionTier?: 'free' | 'plus' | 'pro';
-      aiEntitlements?: {
-        subscriptionTier?: 'free' | 'plus' | 'pro';
-        canUseAI?: boolean;
-        canSendAI?: boolean;
-        canSyncAIMemory?: boolean;
-        aiMemoryScope?: 'none' | 'device' | 'cloud';
-        tokenUsage?: {
-          quotaExceeded: boolean;
-          resetAt: string;
-          resetInMs?: number;
-          dateKey?: string;
-        };
-      };
+      subscriptionTier?: SubscriptionTier;
+      aiEntitlements?: AiEntitlements;
       xpDecayEnabled?: boolean;
       languageSetupComplete?: boolean;
     };
@@ -63,8 +57,6 @@ interface AuthState {
   setNeedsLanguageSetup: (val: boolean) => void;
 }
 
-type SubscriptionTier = 'free' | 'plus' | 'pro';
-
 const effectiveSubscriptionTier = (user: { role?: string; subscriptionTier?: SubscriptionTier }): SubscriptionTier => {
   if (user.role === 'admin') return 'pro';
   return user.subscriptionTier || 'plus';
@@ -72,6 +64,7 @@ const effectiveSubscriptionTier = (user: { role?: string; subscriptionTier?: Sub
 
 const effectiveAiEntitlements = (user: {
   role?: string;
+  subscriptionTier?: SubscriptionTier;
   aiEntitlements?: AuthState['aiEntitlements'];
 }) => {
   if (user.role === 'admin') {
@@ -80,14 +73,20 @@ const effectiveAiEntitlements = (user: {
       subscriptionTier: 'pro' as const,
       canUseAI: true,
       canSyncAIMemory: true,
+      canUsePracticeContext: true,
       aiMemoryScope: 'cloud' as const,
     };
   }
-  return user.aiEntitlements || {
-    subscriptionTier: 'plus' as const,
+  if (user.aiEntitlements) return user.aiEntitlements;
+
+  const subscriptionTier = effectiveSubscriptionTier(user);
+  const hasCloudFeatures = subscriptionTier === 'pro' || subscriptionTier === 'ultra';
+  return {
+    subscriptionTier,
     canUseAI: true,
-    canSyncAIMemory: false,
-    aiMemoryScope: 'device' as const,
+    canSyncAIMemory: hasCloudFeatures,
+    canUsePracticeContext: hasCloudFeatures,
+    aiMemoryScope: hasCloudFeatures ? 'cloud' as const : subscriptionTier === 'plus' ? 'device' as const : 'none' as const,
   };
 };
 

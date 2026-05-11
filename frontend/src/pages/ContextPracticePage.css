@@ -1,0 +1,285 @@
+.context-page {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 24px 0 40px;
+  color: #15122b;
+}
+
+.context-hero,
+.context-panel {
+  background: #fff;
+  border: 1px solid #e8e1d8;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(28, 21, 12, 0.06);
+}
+
+.context-hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.context-kicker {
+  margin: 0 0 6px;
+  color: #58cc02;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.context-hero h1,
+.context-panel h2 {
+  margin: 0;
+  font-weight: 900;
+}
+
+.context-hero p {
+  max-width: 720px;
+  margin: 10px 0 0;
+  color: #5c5870;
+  line-height: 1.5;
+}
+
+.context-status {
+  min-width: 220px;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px;
+  border-radius: 8px;
+  background: #f7f4ef;
+  border: 1px solid #ebe4d9;
+}
+
+.context-status span {
+  color: #7b758c;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.context-status strong {
+  margin-top: 6px;
+  color: #2a2144;
+}
+
+.context-status.active {
+  background: #ecffe5;
+  border-color: #9be36d;
+}
+
+.context-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.context-panel {
+  padding: 20px;
+}
+
+.context-panel-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+
+.context-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.context-panel button {
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  background: #58cc02;
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.context-panel button.secondary {
+  background: #1cb0f6;
+}
+
+.context-panel button.danger {
+  background: #fff0ee;
+  color: #dd3b2f;
+  border: 1px solid #ffb7b0;
+  align-self: flex-start;
+}
+
+.context-panel button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.context-panel textarea {
+  width: 100%;
+  min-height: 260px;
+  resize: vertical;
+  border: 1px solid #e6ded4;
+  border-radius: 8px;
+  padding: 14px;
+  font: inherit;
+  line-height: 1.5;
+}
+
+.context-warning,
+.context-privacy,
+.context-empty,
+.context-summary {
+  color: #625d74;
+  line-height: 1.5;
+}
+
+.context-privacy {
+  margin: 10px 0 0;
+  font-size: 13px;
+}
+
+.context-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.context-chip-row span {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #eef9e9;
+  color: #2f8500;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.context-suggestions {
+  display: grid;
+  gap: 8px;
+  max-height: 420px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.context-suggestion {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px;
+  border: 1px solid #ebe4dc;
+  border-radius: 8px;
+  background: #fffaf4;
+}
+
+.context-suggestion input {
+  margin-top: 4px;
+}
+
+.context-suggestion span {
+  display: grid;
+  gap: 3px;
+}
+
+.context-suggestion small,
+.context-saved-card small {
+  color: #746f83;
+}
+
+.context-saved-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.context-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.context-actions-grid h3 {
+  margin: 0 0 10px;
+  color: #2a2144;
+  font-size: 1rem;
+}
+
+.context-action-card {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 10px;
+  padding: 12px;
+  border: 1px solid #ebe4dc;
+  border-radius: 8px;
+  background: #fffaf4;
+}
+
+.context-action-card strong {
+  color: #211a3b;
+}
+
+.context-action-card p {
+  margin: 0;
+  color: #625d74;
+  line-height: 1.45;
+}
+
+.context-action-card button {
+  justify-self: flex-start;
+  padding: 8px 11px;
+  background: #1cb0f6;
+}
+
+.context-saved-card {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  border: 1px solid #ebe4dc;
+  border-radius: 8px;
+  background: #fffaf4;
+}
+
+.context-saved-card p {
+  margin: 0;
+  line-height: 1.45;
+}
+
+@media (max-width: 760px) {
+  .context-page {
+    width: calc(100% - 16px);
+    padding-top: 12px;
+  }
+
+  .context-hero,
+  .context-layout {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+
+  .context-panel-head {
+    flex-direction: column;
+  }
+
+  .context-actions,
+  .context-panel button {
+    width: 100%;
+  }
+
+  .context-actions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .context-action-card button {
+    justify-self: stretch;
+  }
+}

@@ -286,6 +286,59 @@ describe('class lesson brief and teaching directives', () => {
     expect(sanitizeClassAction([])).toBeNull();
   });
 
+  it('surfaces expressionPractice and relatedPools on the brief', () => {
+    const brief = buildLessonBrief({
+      ...sampleLesson,
+      lessonType: 'thematic',
+      expressionPractice: [
+        { id: 'seeking-advice', label: 'Seeking advice', goal: 'Ask another speaker for guidance.' },
+        { id: '', label: 'invalid' }, // missing id should be dropped
+      ],
+      relatedPools: ['topic-school', 'topic-society', '', null, 'pos-idioms'],
+    });
+
+    expect(brief.lessonType).toBe('thematic');
+    expect(brief.expressionPractice).toEqual([
+      { id: 'seeking-advice', label: 'Seeking advice', goal: 'Ask another speaker for guidance.' },
+    ]);
+    expect(brief.relatedPools).toEqual(['topic-school', 'topic-society', 'pos-idioms']);
+  });
+
+  it('directives mention expressionPractice and relatedPools only when present', () => {
+    const briefWith = buildLessonBrief({
+      ...sampleLesson,
+      expressionPractice: [{ id: 'seeking-advice', label: 'Seeking advice', goal: 'Ask for help.' }],
+      relatedPools: ['topic-health'],
+    });
+    const directivesWith = teachingDirectivesFor(briefWith).join(' ');
+    expect(directivesWith).toMatch(/lessonBrief\.expressionPractice lists functional language goals/);
+    expect(directivesWith).toMatch(/lessonBrief\.relatedPools lists vocabulary pool keys/);
+
+    const briefWithout = buildLessonBrief(sampleLesson);
+    const directivesWithout = teachingDirectivesFor(briefWithout).join(' ');
+    expect(directivesWithout).not.toMatch(/lessonBrief\.expressionPractice lists/);
+    expect(directivesWithout).not.toMatch(/lessonBrief\.relatedPools lists/);
+  });
+
+  it('routes lessonType to the matching directive cluster', () => {
+    const grammarBrief = buildLessonBrief({ ...sampleLesson, lessonType: 'grammar' });
+    const grammarDirectives = teachingDirectivesFor(grammarBrief).join(' ');
+    expect(grammarDirectives).toMatch(/grammar-pattern lesson/i);
+
+    const workplaceBrief = buildLessonBrief({ ...sampleLesson, lessonType: 'workplace' });
+    const workplaceDirectives = teachingDirectivesFor(workplaceBrief).join(' ');
+    expect(workplaceDirectives).toMatch(/formal register/i);
+
+    const reviewBrief = buildLessonBrief({ ...sampleLesson, lessonType: 'review' });
+    const reviewDirectives = teachingDirectivesFor(reviewBrief).join(' ');
+    expect(reviewDirectives).toMatch(/review lesson/i);
+
+    const thematicBrief = buildLessonBrief({ ...sampleLesson, lessonType: 'thematic' });
+    const thematicDirectives = teachingDirectivesFor(thematicBrief).join(' ');
+    expect(thematicDirectives).not.toMatch(/grammar-pattern lesson/i);
+    expect(thematicDirectives).not.toMatch(/workplace\/adult-life/i);
+  });
+
   it('always asserts the new lessonProgress schema, not the legacy fields', () => {
     const brief = buildLessonBrief(sampleLesson, 'vocab-act');
     const directives = teachingDirectivesFor(brief).join(' ');

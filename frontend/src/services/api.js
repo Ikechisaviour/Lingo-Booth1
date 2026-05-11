@@ -229,6 +229,19 @@ export const classLessonService = {
   },
 };
 
+export const practiceContextService = {
+  analyze: ({ transcript, nativeLanguage, targetLanguage, source = 'web' }) =>
+    api.post('/practice-context/analyze', { transcript, nativeLanguage, targetLanguage, source }, { timeout: 30000 }),
+  save: (context) =>
+    api.post('/practice-context', { ...context, source: context.source || 'web' }),
+  list: (targetLanguage) =>
+    api.get('/practice-context', { params: { targetLanguage } }),
+  recommendations: (targetLanguage) =>
+    api.get('/practice-context/recommendations', { params: { targetLanguage } }),
+  delete: (contextId) =>
+    api.delete(`/practice-context/${contextId}`),
+};
+
 export const flashcardService = {
   getCategories: () => {
     const targetLang = localStorage.getItem('targetLanguage') || '';

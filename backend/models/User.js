@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
   },
   subscriptionTier: {
     type: String,
-    enum: ['free', 'plus', 'pro'],
+    enum: ['free', 'plus', 'pro', 'ultra'],
     default: 'plus',
   },
   status: {

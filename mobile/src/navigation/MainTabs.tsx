@@ -20,6 +20,7 @@ import QuizListScreen from '../screens/quiz/QuizListScreen';
 import QuizDetailScreen from '../screens/quiz/QuizDetailScreen';
 import FlashcardsScreen from '../screens/flashcards/FlashcardsScreen';
 import ConversationScreen from '../screens/ai/ConversationScreen';
+import ContextPracticeScreen from '../screens/context/ContextPracticeScreen';
 import ProgressScreen from '../screens/progress/ProgressScreen';
 import ProfileScreen from '../screens/profile/ProfileScreen';
 import AdminScreen from '../screens/admin/AdminScreen';
@@ -31,13 +32,22 @@ const ExerciseStack = createNativeStackNavigator();
 const QuizStack = createNativeStackNavigator();
 const ProfileStack = createNativeStackNavigator();
 const FORMATTING_FALLBACK_REPLY = 'I had trouble formatting that reply. Please try again naturally.';
+type ClassExpressionPractice = {
+  id: string;
+  label?: string;
+  goal?: string;
+};
+
 type ClassLesson = {
   _id: string;
   title?: string;
   category?: string;
   difficulty?: string;
   track?: 'textbook' | 'practice' | string;
+  lessonType?: 'foundation' | 'thematic' | 'workplace' | 'grammar' | 'review' | string;
   activities?: ClassActivity[];
+  expressionPractice?: ClassExpressionPractice[];
+  relatedPools?: string[];
   content?: ClassLessonItem[];
 };
 
@@ -239,6 +249,7 @@ const buildClassAction = (
   item: ClassLessonItem | undefined,
   index: number,
   activity?: ClassActivity,
+  expressionPractice?: ClassExpressionPractice,
 ): ClassActionPayload => ({
   action,
   activityId: activity?.id || '',
@@ -254,6 +265,11 @@ const buildClassAction = (
   exampleTarget: itemExampleTarget(item),
   exampleNative: itemExampleNative(item),
   lessonTitle: lesson?.title || '',
+  ...(expressionPractice ? {
+    expressionPracticeId: expressionPractice.id || '',
+    expressionPracticeLabel: expressionPractice.label || '',
+    expressionPracticeGoal: expressionPractice.goal || '',
+  } : {}),
 });
 
 function groupDisplayParts(parts: any[] = []) {
@@ -346,7 +362,10 @@ const ClassHomeScreen: React.FC<any> = ({ navigation }) => {
         {loading && <Text style={styles.subtitle}>Loading lessons...</Text>}
         {!!error && <Text style={styles.errorText}>{error}</Text>}
         {!loading && !error && classLessons.length === 0 && (
-          <Text style={styles.subtitle}>No class lessons are seeded yet.</Text>
+          <View style={styles.comingSoonBox}>
+            <Text style={styles.comingSoonTitle}>Coming soon</Text>
+            <Text style={styles.comingSoonText}>Class lessons are being prepared for this language. Please check back soon.</Text>
+          </View>
         )}
 
         {classLessons.map((lesson) => {
@@ -645,6 +664,22 @@ const ClassLessonScreen: React.FC<any> = ({ route }) => {
     `Practice ${selectedActivity?.section || 'activity'}: item ${selectedIndex + 1}`,
     buildClassAction('practice_selected_item', lesson, selectedItem, selectedIndex, selectedActivity),
   );
+
+  // Drill a specific Expression Practice goal (workbook 표현 연습 column).
+  const practiceExpression = (expressionPractice: ClassExpressionPractice) => {
+    if (!expressionPractice) return;
+    sendTutorTurn(
+      `Practice expression: ${expressionPractice.label || expressionPractice.id}`,
+      buildClassAction(
+        'practice_expression',
+        lesson,
+        selectedItem,
+        selectedIndex,
+        selectedActivity,
+        expressionPractice,
+      ),
+    );
+  };
 
   const sendInput = () => {
     const text = input.trim();
@@ -972,6 +1007,23 @@ const ClassLessonScreen: React.FC<any> = ({ route }) => {
             <Text style={styles.tutorText}>{selectedActivity.task}</Text>
           </View>
         )}
+        {Array.isArray(lesson?.expressionPractice) && lesson.expressionPractice.length > 0 && (
+          <View style={styles.expressionPracticeBox}>
+            <Text style={styles.expressionPracticeLabel}>Expression practice</Text>
+            <View style={styles.expressionPracticeChips}>
+              {lesson.expressionPractice.map((expression) => (
+                <TouchableOpacity
+                  key={expression.id}
+                  style={[styles.expressionPracticeChip, tutorLoading && styles.expressionPracticeChipDisabled]}
+                  onPress={() => practiceExpression(expression)}
+                  disabled={tutorLoading}
+                >
+                  <Text style={styles.expressionPracticeChipText}>{expression.label || expression.id}</Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+          </View>
+        )}
         <Text style={styles.kicker}>{selectedItem?.type || 'Practice'} {selectedIndex + 1} / {items.length}</Text>
         <Text style={styles.lessonTarget}>{itemTarget(selectedItem)}</Text>
         {!!selectedItem?.romanization && <Text style={styles.lessonRomanization}>{selectedItem.romanization}</Text>}
@@ -1073,12 +1125,24 @@ const ProfileStackScreen: React.FC = () => (
 // Dummy screen - never actually rendered; the tab listener intercepts first.
 const EmptyScreen: React.FC = () => null;
 
+function isProOrUltraTier(tier?: string) {
+  return ['pro', 'ultra'].includes(String(tier || '').toLowerCase());
+}
+
 const MainTabs: React.FC = () => {
   const { t } = useTranslation();
   const colors = useAppColors();
-  const { isGuest, logout } = useAuthStore();
+  const { isGuest, logout, userRole, subscriptionTier, aiEntitlements } = useAuthStore();
   const { width: winWidth, height: winHeight } = useWindowDimensions();
   const isCompact = winHeight < 450 || winWidth < 380;
+  const currentTier = userRole === 'admin'
+    ? 'pro'
+    : (aiEntitlements?.subscriptionTier || subscriptionTier || 'free');
+  const canUseContextPractice = Boolean(
+    aiEntitlements?.canUsePracticeContext
+    || isProOrUltraTier(currentTier)
+    || isProOrUltraTier(subscriptionTier),
+  );
 
   return (
     <Tab.Navigator
@@ -1141,6 +1205,18 @@ const MainTabs: React.FC = () => {
           ),
         }}
       />
+      {canUseContextPractice && (
+        <Tab.Screen
+          name="Context"
+          component={ContextPracticeScreen}
+          options={{
+            tabBarLabel: 'Context',
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="headphones" color={color} size={size} />
+            ),
+          }}
+        />
+      )}
       {!isGuest && (
         <Tab.Screen
           name="Profile"
@@ -1211,6 +1287,28 @@ const createLocalStyles = (colors: AppColors) => StyleSheet.create({
   subtitle: {
     color: colors.textSecondary,
     lineHeight: 20,
+  },
+  comingSoonBox: {
+    minHeight: 160,
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    padding: 20,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.background,
+  },
+  comingSoonTitle: {
+    color: colors.textPrimary,
+    fontSize: 20,
+    fontWeight: '900',
+    textAlign: 'center',
+  },
+  comingSoonText: {
+    color: colors.textSecondary,
+    lineHeight: 20,
+    textAlign: 'center',
   },
   speechRow: {
     flexDirection: 'row',
@@ -1366,6 +1464,43 @@ const createLocalStyles = (colors: AppColors) => StyleSheet.create({
     borderRadius: 8,
     backgroundColor: '#e8f6ff',
     marginBottom: 8,
+  },
+  expressionPracticeBox: {
+    gap: 8,
+    padding: 12,
+    borderWidth: 1,
+    borderColor: 'rgba(88, 204, 2, 0.45)',
+    borderRadius: 8,
+    backgroundColor: 'rgba(88, 204, 2, 0.08)',
+    marginBottom: 8,
+  },
+  expressionPracticeLabel: {
+    color: '#2c8c00',
+    fontSize: 11,
+    fontWeight: '900',
+    letterSpacing: 0.4,
+    textTransform: 'uppercase',
+  },
+  expressionPracticeChips: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+  },
+  expressionPracticeChip: {
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    borderRadius: 999,
+    borderWidth: 1,
+    borderColor: 'rgba(88, 204, 2, 0.55)',
+    backgroundColor: colors.surface,
+  },
+  expressionPracticeChipDisabled: {
+    opacity: 0.55,
+  },
+  expressionPracticeChipText: {
+    color: colors.textPrimary,
+    fontSize: 13,
+    fontWeight: '800',
   },
   lessonTarget: {
     color: colors.textPrimary,

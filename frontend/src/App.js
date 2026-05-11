@@ -14,6 +14,7 @@ import ExercisePage from './pages/ExercisePage';
 import QuizPage from './pages/QuizPage';
 import FlashcardsPage from './pages/FlashcardsPage';
 import ConversationPage from './pages/ConversationPage';
+import ContextPracticePage from './pages/ContextPracticePage';
 import ProgressPage from './pages/ProgressPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
@@ -435,6 +436,12 @@ function App() {
             path="/conversation"
             element={
               canAccessApp ? <ConversationPage /> : <Navigate to="/login" />
+            }
+          />
+          <Route
+            path="/context"
+            element={
+              canAccessApp ? <ContextPracticePage /> : <Navigate to="/login" />
             }
           />
 

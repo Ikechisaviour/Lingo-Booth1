@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const ConversationMemory = require('../models/ConversationMemory');
+const PracticeContext = require('../models/PracticeContext');
 const Lesson = require('../models/Lesson');
 const { optionalAuth } = require('../middleware/auth');
 const { getAiEntitlements } = require('../utils/subscription');
@@ -22,6 +23,7 @@ const {
   sanitizeMemory,
   sanitizeSummary,
 } = require('../utils/aiConversation');
+const { compactPracticeContextBrief } = require('../utils/practiceContextAnalysis');
 
 const DEFAULT_SESSION_ID = 'default-conversation';
 
@@ -39,6 +41,27 @@ function buildTurns(history, transcript, reply) {
     turns.push({ role: 'assistant', content: String(reply).slice(0, 800) });
   }
   return turns.slice(-12);
+}
+
+async function getPracticeContextBrief(req, targetLanguage) {
+  const entitlements = getAiEntitlements(req.user);
+  if (!entitlements.canUsePracticeContext) return '';
+
+  const deviceId = String(req.header('X-Lingo-Device-Id') || '').trim();
+  const ownerQuery = req.userId
+    ? { userId: req.userId }
+    : (deviceId ? { deviceId, userId: null } : null);
+  if (!ownerQuery) return '';
+
+  const contexts = await PracticeContext.find({
+    ...ownerQuery,
+    targetLanguage: String(targetLanguage || req.user?.targetLanguage || 'ko').slice(0, 20),
+  })
+    .sort({ createdAt: -1 })
+    .limit(5)
+    .lean();
+
+  return compactPracticeContextBrief(contexts);
 }
 
 async function getEntitlementsWithUsage(req) {
@@ -129,6 +152,7 @@ router.post('/conversation', async (req, res) => {
     let summary = sanitizeSummary(req.body?.summary);
     let memory = sanitizeMemory(req.body?.memory);
     let effectiveHistory = safeConversationHistory(history);
+    const practiceContextBrief = await getPracticeContextBrief(req, targetLanguage);
 
     if (entitlements.canSyncAIMemory && req.userId) {
       memoryDoc = await ConversationMemory.findOne({ userId: req.userId, sessionId });
@@ -186,7 +210,7 @@ router.post('/conversation', async (req, res) => {
     let result;
     try {
       result = await callAIConversation({
-        scenario,
+        scenario: [scenario, practiceContextBrief].filter(Boolean).join('\n\n'),
         targetLanguage,
         nativeLanguage,
         inputLanguage,

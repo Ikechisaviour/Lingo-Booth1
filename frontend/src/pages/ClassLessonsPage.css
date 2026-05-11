@@ -5,15 +5,32 @@
   color: var(--text-secondary);
 }
 
-.class-error {
-  color: var(--accent-red);
+.class-empty {
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  min-height: 220px;
+  padding: 32px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  background: var(--surface);
+  text-align: center;
 }
 
-.class-empty code {
-  padding: 2px 6px;
-  border-radius: 4px;
-  background: var(--bg-secondary);
-  font-size: 0.9em;
+.class-empty h2 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.35rem;
+}
+
+.class-empty p {
+  max-width: 460px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.class-error {
+  color: var(--accent-red);
 }
 
 .class-grid {
@@ -41,10 +58,56 @@
   gap: 12px;
 }
 
-.class-card-header h2 {
+.class-card-header h2,
+.class-card-header h3 {
   margin: 0;
   font-size: 1.05rem;
   line-height: 1.35;
+}
+
+/* Track grouping (Phase 5): Level → Track → Unit browse. */
+.class-track {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-light);
+}
+
+.class-track:first-of-type {
+  margin-top: 16px;
+  padding-top: 0;
+  border-top: none;
+}
+
+.class-track-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.class-track-header h2 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+
+.class-track-count {
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.class-track-subtitle {
+  margin: 4px 0 0;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+}
+
+.class-track .class-grid {
+  margin-top: 18px;
 }
 
 .class-card-meta {

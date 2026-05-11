@@ -66,6 +66,7 @@ function LanguageSelectPage({ setIsGuest, onLogout }) {
         canUseAI: true,
         canSendAI: true,
         canSyncAIMemory: false,
+        canUsePracticeContext: false,
         aiMemoryScope: 'none',
       }));
       if (setIsGuest) setIsGuest(true);

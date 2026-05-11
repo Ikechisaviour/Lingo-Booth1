@@ -9,7 +9,12 @@ const createContentItem = (targetText, romanization, nativeText, type = 'word', 
   pronunciation: romanization,
   exampleTarget: exampleTarget || targetText,
   exampleNative: exampleNative || nativeText,
-  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.target, native: b.native })) } : {}),
+  // Add legacy keys for compatibility with Korean sentence structure
+  korean: targetText,
+  english: nativeText,
+  example: exampleTarget || targetText,
+  exampleEnglish: exampleNative || nativeText,
+  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.target, native: b.native, korean: b.target, english: b.native })) } : {}),
 });
 
 // ============================================================
