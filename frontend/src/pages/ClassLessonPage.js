@@ -22,6 +22,32 @@ import './ClassLessonPage.css';
 
 const FORMATTING_FALLBACK_REPLY = 'I had trouble formatting that reply. Please try again naturally.';
 const firstText = (...values) => values.find((value) => String(value || '').trim()) || '';
+const CLASS_SETUP_TEXT = {
+  en: 'I am ready to teach this lesson. Start with the first item, ask for an explanation, or type your own question.',
+  ko: '이 수업을 안내할 준비가 됐어요. 첫 항목부터 시작하거나, 설명을 요청하거나, 질문을 입력해 주세요.',
+  es: 'Estoy listo para guiar esta clase. Empieza con el primer punto, pide una explicación o escribe tu pregunta.',
+  fr: 'Je suis prêt à guider cette leçon. Commence par le premier élément, demande une explication ou écris ta question.',
+  de: 'Ich bin bereit, diese Lektion zu begleiten. Beginne mit dem ersten Punkt, bitte um eine Erklärung oder stelle deine Frage.',
+  zh: '我已经准备好带你学习这一课。你可以从第一项开始，要求解释，或输入你的问题。',
+  ja: 'このレッスンを案内できます。最初の項目から始めるか、説明を求めるか、質問を入力してください。',
+  hi: 'मैं यह पाठ सिखाने के लिए तैयार हूँ। पहले भाग से शुरू करें, समझाने को कहें, या अपना प्रश्न लिखें।',
+  ar: 'أنا جاهز لإرشادك في هذا الدرس. ابدأ بالعنصر الأول، أو اطلب شرحًا، أو اكتب سؤالك.',
+  he: 'אני מוכן להדריך אותך בשיעור הזה. אפשר להתחיל מהפריט הראשון, לבקש הסבר או לכתוב שאלה.',
+  pt: 'Estou pronto para orientar esta aula. Comece pelo primeiro item, peça uma explicação ou digite sua pergunta.',
+  it: 'Sono pronto a guidare questa lezione. Inizia dal primo elemento, chiedi una spiegazione o scrivi una domanda.',
+  nl: 'Ik ben klaar om deze les te begeleiden. Begin met het eerste onderdeel, vraag uitleg of typ je vraag.',
+  ru: 'Я готов провести этот урок. Начните с первого пункта, попросите объяснение или введите свой вопрос.',
+  id: 'Saya siap memandu pelajaran ini. Mulai dari bagian pertama, minta penjelasan, atau ketik pertanyaan Anda.',
+  ms: 'Saya bersedia membimbing pelajaran ini. Mulakan dengan item pertama, minta penjelasan, atau taip soalan anda.',
+  fil: 'Handa na akong gabayan ang araling ito. Magsimula sa unang item, humingi ng paliwanag, o i-type ang tanong mo.',
+  tr: 'Bu dersi anlatmaya hazırım. İlk maddeden başlayın, açıklama isteyin veya sorunuzu yazın.',
+  bn: 'আমি এই পাঠ শেখাতে প্রস্তুত। প্রথম আইটেম দিয়ে শুরু করুন, ব্যাখ্যা চান, অথবা আপনার প্রশ্ন লিখুন।',
+  ta: 'இந்த பாடத்தை வழிநடத்த நான் தயாராக இருக்கிறேன். முதல் உருப்படியிலிருந்து தொடங்குங்கள், விளக்கம் கேளுங்கள், அல்லது உங்கள் கேள்வியை எழுதுங்கள்.',
+};
+
+function classSetupText(language = 'en') {
+  return CLASS_SETUP_TEXT[String(language || '').toLowerCase()] || CLASS_SETUP_TEXT.en;
+}
 
 function getSpeechRecognition() {
   if (typeof window === 'undefined') return null;
@@ -179,7 +205,42 @@ function normalizeTutorTurns(turns = [], nativeLanguage = 'en') {
 
   return cleaned.length
     ? cleaned
-    : [makeTutorSetupTurn('I am ready to teach this lesson. Start with the first item, ask for an explanation, or type your own question.', nativeLanguage)];
+    : [makeTutorSetupTurn(classSetupText(nativeLanguage), nativeLanguage)];
+}
+
+function normalizeProgressRecord(record = {}, nativeLanguage = 'en') {
+  const completedItems = Array.isArray(record.completedItems)
+    ? record.completedItems
+    : (Array.isArray(record.completed) ? record.completed : []);
+  return {
+    selectedIndex: Number.isInteger(record.selectedIndex) ? record.selectedIndex : 0,
+    selectedActivityIndex: Number.isInteger(record.selectedActivityIndex) ? record.selectedActivityIndex : 0,
+    completed: new Set(completedItems.filter(Number.isInteger)),
+    summary: record.summary || '',
+    memory: migrateMemory(record.memory || {}),
+    tutorTurns: Array.isArray(record.tutorTurns) && record.tutorTurns.length
+      ? normalizeTutorTurns(record.tutorTurns, nativeLanguage)
+      : [makeTutorSetupTurn(classSetupText(nativeLanguage), nativeLanguage)],
+  };
+}
+
+function buildProgressRecord({
+  selectedIndex,
+  selectedActivityIndex,
+  completed,
+  summary,
+  memory,
+  tutorTurns,
+}) {
+  return {
+    selectedIndex,
+    selectedActivityIndex,
+    completed: Array.from(completed),
+    completedItems: Array.from(completed),
+    summary,
+    memory,
+    tutorTurns: tutorTurns.filter(turn => !isFormattingFallbackTurn(turn) && !turn.error).slice(-16),
+  };
 }
 
 function lessonActionFallback(item, activity, targetLanguage = 'ko', nativeLanguage = 'en') {
@@ -298,7 +359,7 @@ function groupDisplayParts(parts = []) {
 
     if (isExample || continuesExampleDialogue) {
       if (!current || current.kind !== 'example') {
-        pushGroup({ kind: 'example', title: 'Example conversation', parts: [] });
+        pushGroup({ kind: 'example', title: 'Example', parts: [] });
       }
       if (!isExampleMarker) {
         current.parts.push(part);
@@ -313,6 +374,15 @@ function groupDisplayParts(parts = []) {
   });
 
   if (current && current.parts.length) groups.push(current);
+  // Promote single-speaker examples to "Example" and keep "Example conversation"
+  // only when the example actually contains two or more speakers.
+  groups.forEach((group) => {
+    if (group.kind !== 'example') return;
+    const speakers = new Set(
+      (group.parts || []).map((part) => part.speaker).filter(Boolean),
+    );
+    group.title = speakers.size >= 2 ? 'Example conversation' : 'Example';
+  });
   return groups;
 }
 
@@ -323,10 +393,15 @@ function exampleTopicFromGroup(group = {}) {
 }
 
 function exampleCueFor(_language, group) {
+  const speakers = new Set((group.parts || []).map((part) => part.speaker).filter(Boolean));
+  const isDialogue = speakers.size >= 2;
   const topic = exampleTopicFromGroup(group);
-  return topic
-    ? `Example conversation about ${topic}. Listen to Person A and Person B.`
-    : 'Example conversation. Listen to Person A and Person B.';
+  if (isDialogue) {
+    return topic
+      ? `Example conversation about ${topic}. Listen to Person A and Person B.`
+      : 'Example conversation. Listen to Person A and Person B.';
+  }
+  return topic ? `Example: ${topic}.` : 'Example.';
 }
 
 function shouldSpeakTutorPart(part = {}) {
@@ -353,9 +428,12 @@ function ClassLessonPage() {
   const [tutorLoading, setTutorLoading] = useState(false);
   const [listening, setListening] = useState(false);
   const [speechEnabled, setSpeechEnabled] = useState(true);
+  const [speechInputMode, setSpeechInputMode] = useState('target');
   const [status, setStatus] = useState('Ready');
   const [summary, setSummary] = useState('');
   const [memory, setMemory] = useState({});
+  const [progressLoaded, setProgressLoaded] = useState(false);
+  const [progressSyncState, setProgressSyncState] = useState('local');
   const [contextRecommendations, setContextRecommendations] = useState(null);
   const [pendingContextPrompt, setPendingContextPrompt] = useState('');
 
@@ -369,30 +447,56 @@ function ClassLessonPage() {
   useEffect(() => {
     let cancelled = false;
 
+    if (!classLessonId) {
+      setError('Could not load this class lesson.');
+      setLoading(false);
+      return undefined;
+    }
+
     async function loadClassLesson() {
       try {
         setLoading(true);
+        setProgressLoaded(false);
         const response = await classLessonService.getClassLesson(classLessonId);
         if (cancelled) return;
         setLesson(response.data);
 
+        const applyProgress = (record) => {
+          const progress = normalizeProgressRecord(record, nativeLanguage);
+          setSelectedIndex(progress.selectedIndex);
+          setSelectedActivityIndex(progress.selectedActivityIndex);
+          setCompleted(progress.completed);
+          setSummary(progress.summary);
+          setMemory(progress.memory);
+          setTutorTurns(progress.tutorTurns);
+        };
+
         try {
           const stored = JSON.parse(localStorage.getItem(classStorageKey(classLessonId)) || '{}');
-          setSelectedIndex(Number.isInteger(stored.selectedIndex) ? stored.selectedIndex : 0);
-          setSelectedActivityIndex(Number.isInteger(stored.selectedActivityIndex) ? stored.selectedActivityIndex : 0);
-          setCompleted(new Set(Array.isArray(stored.completed) ? stored.completed : []));
-          setSummary(stored.summary || '');
-          setMemory(migrateMemory(stored.memory || {}));
-          setTutorTurns(Array.isArray(stored.tutorTurns) && stored.tutorTurns.length
-            ? normalizeTutorTurns(stored.tutorTurns, nativeLanguage)
-            : [makeTutorSetupTurn('I am ready to teach this lesson. Start with the first item, ask for an explanation, or type your own question.', nativeLanguage)]);
+          applyProgress(stored);
         } catch {
-          setTutorTurns([makeTutorSetupTurn('I am ready to teach this lesson. Start with the first item, ask for an explanation, or type your own question.', nativeLanguage)]);
+          setTutorTurns([makeTutorSetupTurn(classSetupText(nativeLanguage), nativeLanguage)]);
+        }
+
+        try {
+          const progressResponse = await classLessonService.getProgress(classLessonId);
+          if (cancelled) return;
+          if (progressResponse.data?.canSync && progressResponse.data?.progress) {
+            applyProgress(progressResponse.data.progress);
+            setProgressSyncState('synced');
+          } else {
+            setProgressSyncState(progressResponse.data?.canSync ? 'synced' : 'local');
+          }
+        } catch {
+          if (!cancelled) setProgressSyncState('local');
         }
       } catch (err) {
         if (!cancelled) setError('Could not load this class lesson.');
       } finally {
-        if (!cancelled) setLoading(false);
+        if (!cancelled) {
+          setProgressLoaded(true);
+          setLoading(false);
+        }
       }
     }
 
@@ -403,16 +507,28 @@ function ClassLessonPage() {
   }, [classLessonId, nativeLanguage]);
 
   useEffect(() => {
-    if (!lesson) return;
-    localStorage.setItem(classStorageKey(classLessonId), JSON.stringify({
+    if (!lesson || !progressLoaded) return undefined;
+    const payload = buildProgressRecord({
       selectedIndex,
       selectedActivityIndex,
-      completed: Array.from(completed),
+      completed,
       summary,
       memory,
-      tutorTurns: tutorTurns.filter(turn => !isFormattingFallbackTurn(turn)).slice(-16),
-    }));
-  }, [classLessonId, completed, lesson, memory, selectedActivityIndex, selectedIndex, summary, tutorTurns]);
+      tutorTurns,
+    });
+    localStorage.setItem(classStorageKey(classLessonId), JSON.stringify(payload));
+
+    const timer = setTimeout(() => {
+      classLessonService.saveProgress(classLessonId, payload)
+        .then((res) => {
+          if (res.data?.canSync) setProgressSyncState('synced');
+          else setProgressSyncState('local');
+        })
+        .catch(() => setProgressSyncState('local'));
+    }, 700);
+
+    return () => clearTimeout(timer);
+  }, [classLessonId, completed, lesson, memory, progressLoaded, selectedActivityIndex, selectedIndex, summary, tutorTurns]);
 
   useEffect(() => {
     setTutorTurns((prev) => (
@@ -605,7 +721,7 @@ function ClassLessonPage() {
         scenario: `Class lesson: ${lesson.title}`,
         targetLanguage,
         nativeLanguage,
-        inputLanguage: nativeLanguage,
+        inputLanguage: options.inputLanguage || nativeLanguage,
         difficulty: 'structured class lesson with active learner participation',
         transcript: transcriptForTurn,
         classAction: classAction || undefined,
@@ -736,7 +852,13 @@ function ClassLessonPage() {
 
   const markComplete = () => {
     setCompleted((prev) => new Set([...prev, selectedIndex]));
-    setStatus('Marked complete.');
+    const nextPos = positionInActivity + 1;
+    if (positionInActivity >= 0 && nextPos < activityItemIndices.length) {
+      setSelectedIndex(activityItemIndices[nextPos]);
+      setStatus('Marked complete. Moving to the next item.');
+    } else {
+      setStatus('Marked complete.');
+    }
   };
 
   const goToItem = (index, teach = false) => {
@@ -770,7 +892,9 @@ function ClassLessonPage() {
     speechService.cancel();
 
     const recognition = new Recognition();
-    recognition.lang = ttsLocaleFor(targetLanguage, targetLanguage);
+    recognition.lang = speechInputMode === 'native'
+      ? ttsLocaleFor(nativeLanguage, nativeLanguage)
+      : ttsLocaleFor(targetLanguage, targetLanguage);
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;
     recognition.continuous = false;
@@ -797,7 +921,7 @@ function ClassLessonPage() {
       if (!transcript.trim()) return;
       setTurn('');
       setStatus('Speech captured.');
-      sendTutorTurn(transcript, transcript);
+      sendTutorTurn(transcript, transcript, { inputLanguage: speechInputMode === 'native' ? nativeLanguage : targetLanguage });
     };
 
     recognition.start();
@@ -1029,7 +1153,9 @@ function ClassLessonPage() {
               </div>
               <h3>{itemTarget(selectedItem)}</h3>
               {selectedItem.romanization && <p className="class-romanization">{selectedItem.romanization}</p>}
-              <p className="class-meaning">{itemNative(selectedItem)}</p>
+              <p className="class-meaning">
+                {itemNative(selectedItem) || (selectedItem._translationPending ? 'Translation is being prepared for your language.' : '')}
+              </p>
 
               {(itemExampleTarget(selectedItem) || itemExampleNative(selectedItem)) && (
                 <div className="class-example">
@@ -1067,11 +1193,14 @@ function ClassLessonPage() {
                 className="class-action-primary"
                 onClick={() => {
                   const nextPos = positionInActivity + 1;
-                  if (nextPos < activityItemIndices.length) goToItem(activityItemIndices[nextPos], true);
+                  if (nextPos >= activityItemIndices.length) return;
+                  // Always navigate. Auto-teach only when the tutor is idle —
+                  // otherwise sendTutorTurn would silently drop the request and
+                  // leave the new item with no fresh explanation.
+                  goToItem(activityItemIndices[nextPos], !tutorLoading);
                 }}
                 disabled={
-                  tutorLoading
-                  || activityItemIndices.length === 0
+                  activityItemIndices.length === 0
                   || positionInActivity < 0
                   || positionInActivity >= activityItemIndices.length - 1
                 }
@@ -1122,6 +1251,22 @@ function ClassLessonPage() {
                 </button>
                 <button
                   type="button"
+                  className={speechInputMode === 'target' ? 'active' : ''}
+                  onClick={() => setSpeechInputMode('target')}
+                  title={`Listen for ${targetName}`}
+                >
+                  Target mic
+                </button>
+                <button
+                  type="button"
+                  className={speechInputMode === 'native' ? 'active' : ''}
+                  onClick={() => setSpeechInputMode('native')}
+                  title={`Listen for ${nativeName}`}
+                >
+                  Native mic
+                </button>
+                <button
+                  type="button"
                   onClick={listening ? stopListening : startListening}
                   disabled={!speechSupported || tutorLoading}
                   title={speechSupported ? 'Speak your answer' : 'Speech input is not available in this browser'}
@@ -1168,6 +1313,9 @@ function ClassLessonPage() {
           </div>
 
           <div className="class-tutor-input">
+            <div className="class-sync-note">
+              {progressSyncState === 'synced' ? 'Progress synced.' : 'Progress saved on this device.'}
+            </div>
             <textarea
               value={turn}
               onChange={(event) => setTurn(event.target.value)}

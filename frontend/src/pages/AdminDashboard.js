@@ -43,6 +43,7 @@ function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [guestsLoading, setGuestsLoading] = useState(false);
   const [errorReportsLoading, setErrorReportsLoading] = useState(false);
+  const [errorReportsClearing, setErrorReportsClearing] = useState(false);
   const [error, setError] = useState('');
   const [activeTab, setActiveTab] = useState('dashboard');
   const [searchTerm, setSearchTerm] = useState('');
@@ -152,6 +153,37 @@ function AdminDashboard() {
       fetchData();
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to acknowledge failure');
+    }
+  };
+
+  const clearOpenErrorReports = async () => {
+    const openCount = errorReports.openCount || 0;
+    if (openCount <= 0) return;
+
+    const confirmed = window.confirm(
+      `Clear all ${openCount} open user-side failure${openCount === 1 ? '' : 's'}? This acknowledges them and removes them from the open queue.`
+    );
+    if (!confirmed) return;
+
+    try {
+      setErrorReportsClearing(true);
+      const res = await adminService.clearOpenErrorReports();
+      const acknowledgedCount = res.data?.acknowledgedCount ?? openCount;
+      setErrorReports(prev => ({
+        ...prev,
+        reports: [],
+        total: 0,
+        page: 1,
+        totalPages: 1,
+        openCount: 0,
+        criticalOpenCount: 0,
+      }));
+      showSuccess(`${acknowledgedCount} failure${acknowledgedCount === 1 ? '' : 's'} cleared`);
+      fetchData();
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to clear failures');
+    } finally {
+      setErrorReportsClearing(false);
     }
   };
 
@@ -890,9 +922,14 @@ function AdminDashboard() {
                     <span className="failure-critical-note"> {errorReports.criticalOpenCount} critical</span>
                   )}
                 </div>
-                <button className="btn btn-outline" onClick={() => fetchErrorReports(errorReports.page || 1)} disabled={errorReportsLoading}>
-                  Refresh
-                </button>
+                <div className="failure-toolbar-actions">
+                  <button className="btn btn-outline" onClick={() => fetchErrorReports(errorReports.page || 1)} disabled={errorReportsLoading || errorReportsClearing}>
+                    Refresh
+                  </button>
+                  <button className="btn btn-danger" onClick={clearOpenErrorReports} disabled={errorReportsLoading || errorReportsClearing || !(errorReports.openCount > 0)}>
+                    {errorReportsClearing ? 'Clearing...' : 'Clear all'}
+                  </button>
+                </div>
               </div>
 
               <div className="card failures-card">

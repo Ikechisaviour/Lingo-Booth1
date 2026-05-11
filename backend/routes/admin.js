@@ -498,6 +498,31 @@ router.put('/error-reports/:reportId/acknowledge', async (req, res) => {
   }
 });
 
+// Clear the open failure queue without deleting the historical reports.
+router.put('/error-reports/clear-open', async (req, res) => {
+  try {
+    const acknowledgedAt = new Date();
+    const result = await ErrorReport.updateMany(
+      { acknowledged: false },
+      {
+        $set: {
+          acknowledged: true,
+          acknowledgedAt,
+          acknowledgedBy: req.userId,
+        },
+      }
+    );
+
+    res.json({
+      message: 'Open failures cleared',
+      acknowledgedCount: result.modifiedCount || 0,
+    });
+  } catch (error) {
+    console.error('Admin error reports clear error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
 // Admin-only speaking demo conversation turn.
 // This is intentionally kept under /api/admin so it cannot be reached by learners.
 router.post('/speaking-demo/conversation', async (req, res) => {
@@ -930,6 +955,7 @@ router.post('/seed-lessons', async (req, res) => {
 router.post('/seed-flashcards', async (req, res) => {
   try {
     const Flashcard = require('../models/Flashcard');
+    const { prepareDefaultFlashcardForSeed } = require('../utils/languageConcepts');
     const existingLangs = await Flashcard.distinct('targetLang', { isDefault: true });
 
     const langDataMap = {};
@@ -945,16 +971,7 @@ router.post('/seed-flashcards', async (req, res) => {
 
     let inserted = 0;
     for (const [lang, cards] of Object.entries(langDataMap)) {
-      const docs = cards.map((card, i) => ({
-        ...card,
-        isDefault: true,
-        defaultIndex: i,
-        targetLang: lang,
-        nativeLang: 'en',
-        masteryLevel: 3,
-        // Store target text in language-specific field so frontend getLangField() finds it
-        [lang]: card.korean,
-      }));
+      const docs = cards.map((card, i) => prepareDefaultFlashcardForSeed(card, card.targetLang || lang, i));
       if (docs.length > 0) {
         const result = await Flashcard.insertMany(docs);
         inserted += result.length;

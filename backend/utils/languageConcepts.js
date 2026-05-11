@@ -1,0 +1,384 @@
+const LANGUAGE_FIELDS = ['korean', 'english', 'es', 'fr', 'de', 'zh', 'ja', 'hi', 'ar', 'he', 'pt', 'it', 'nl', 'ru', 'id', 'ms', 'fil', 'tr', 'bn', 'ta', 'th'];
+
+const YOU_FORM_OVERRIDES = {
+  bn: { informal: 'তুমি', formal: 'আপনি' },
+  de: { informal: 'du', formal: 'Sie' },
+  es: { informal: 'tú', formal: 'usted' },
+  fil: { informal: 'ikaw', formal: 'kayo' },
+  fr: { informal: 'tu', formal: 'vous' },
+  hi: { informal: 'तुम', formal: 'आप' },
+  id: { informal: 'kamu', formal: 'Anda' },
+  it: { informal: 'tu', formal: 'Lei' },
+  ms: { informal: 'awak', formal: 'anda' },
+  nl: { informal: 'jij', formal: 'u' },
+  pt: { informal: 'tu', formal: 'você' },
+  ru: { informal: 'ты', formal: 'вы' },
+  ta: { informal: 'நீ', formal: 'நீங்கள்' },
+  tr: { informal: 'sen', formal: 'siz' },
+  zh: { informal: '你', formal: '您' },
+};
+
+const FIRST_PERSON_REGISTER_LANGS = new Set(['ko']);
+const KOREAN_SOURCE_CONTEXT_LANGS = new Set(['ko']);
+
+const REGISTER_NOTES = new Set([
+  'formal',
+  'informal',
+  'casual',
+  'less formal',
+  'polite',
+  'honorific',
+]);
+
+const CONTEXT_NOTE_PATTERNS = [
+  /to (?:the )?(?:person )?leaving/,
+  /when you leave/,
+  /someone leaving/,
+  /before meal/,
+  /after meal/,
+  /first meeting/,
+  /said when/,
+  /sino/,
+  /over there/,
+  /alternative/,
+];
+
+function normalizeLang(code, fallback = 'en') {
+  return String(code || fallback).trim().toLowerCase() || fallback;
+}
+
+function languageField(code) {
+  const lang = normalizeLang(code);
+  if (lang === 'ko') return 'korean';
+  if (lang === 'en') return 'english';
+  return lang;
+}
+
+function cleanText(value) {
+  return String(value || '').replace(/\s+/g, ' ').trim();
+}
+
+function stripTrailingParenthetical(text) {
+  return cleanText(String(text || '')
+    .replace(/\s*[\(\uff08][^()\uff08\uff09]*[\)\uff09]\s*$/u, '')
+    .replace(/\s*[-–—:]\s*$/u, ''));
+}
+
+function normalizeConceptKey(text) {
+  return cleanText(text)
+    .toLowerCase()
+    .replace(/[’']/g, '')
+    .replace(/\s+/g, ' ');
+}
+
+function slugifyConcept(text) {
+  return normalizeConceptKey(text)
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '')
+    .slice(0, 80) || 'item';
+}
+
+function trailingParenthetical(text) {
+  const raw = cleanText(text);
+  const match = raw.match(/^(.*?)\s*[\(\uff08]([^()\uff08\uff09]+)[\)\uff09]\s*$/u);
+  if (!match) return null;
+  return {
+    base: cleanText(match[1]),
+    note: cleanText(match[2]),
+    raw,
+  };
+}
+
+function noteKind(note) {
+  const key = normalizeConceptKey(note);
+  if (REGISTER_NOTES.has(key)) return 'register';
+  if (/formal|informal|casual|polite|honorific/.test(key)) return 'register';
+  if (CONTEXT_NOTE_PATTERNS.some(pattern => pattern.test(key))) return 'context';
+  return '';
+}
+
+function parseParentheticalConcept(raw) {
+  const parsed = trailingParenthetical(raw);
+  if (!parsed || !parsed.base) return null;
+  const kind = noteKind(parsed.note);
+  if (!kind) return null;
+
+  const note = normalizeConceptKey(parsed.note);
+  const usage = { note: parsed.note };
+  let distinction = 'usage-note';
+  if (kind === 'register') {
+    distinction = 'register';
+    usage.register = note;
+    if (/less formal|casual|informal/.test(note)) usage.formality = 'informal';
+    if (/formal|polite|honorific/.test(note) && !/less formal/.test(note)) usage.formality = 'formal';
+  } else if (kind === 'context') {
+    distinction = 'context-note';
+    usage.context = note;
+  }
+
+  return {
+    conceptId: `lexeme.${slugifyConcept(parsed.base)}`,
+    conceptGloss: parsed.base,
+    originalGloss: parsed.raw,
+    distinction,
+    usage,
+  };
+}
+
+function parseConceptGloss(gloss) {
+  const raw = cleanText(gloss);
+  const key = normalizeConceptKey(raw);
+
+  const familyMatch = key.match(/^older (brother|sister) \((male|female) speaker\)$/);
+  if (familyMatch) {
+    const relation = familyMatch[1];
+    const speakerGender = familyMatch[2];
+    return {
+      conceptId: `family.older_${relation}`,
+      conceptGloss: `Older ${relation}`,
+      originalGloss: raw,
+      distinction: 'family-speaker-gender',
+      usage: {
+        relation,
+        relativeAge: 'older',
+        speakerGender,
+      },
+    };
+  }
+
+  const firstPersonMatch = key.match(/^(i\/me|i|me) \((formal|informal)\)$/);
+  if (firstPersonMatch) {
+    const pronoun = firstPersonMatch[1] === 'i/me' ? 'I/Me' : firstPersonMatch[1].toUpperCase();
+    return {
+      conceptId: `pronoun.${firstPersonMatch[1].replace('/', '_')}`,
+      conceptGloss: pronoun,
+      originalGloss: raw,
+      distinction: 'first-person-register',
+      usage: {
+        person: 'first',
+        formality: firstPersonMatch[2],
+      },
+    };
+  }
+
+  const youMatch = key.match(/^you \((formal|informal)\)$/);
+  if (youMatch) {
+    return {
+      conceptId: 'pronoun.you',
+      conceptGloss: 'You',
+      originalGloss: raw,
+      distinction: 'second-person-formality',
+      usage: {
+        person: 'second',
+        formality: youMatch[1],
+      },
+    };
+  }
+
+  const informalHiMatch = key.match(/^hi \((informal)\)$/);
+  if (informalHiMatch) {
+    return {
+      conceptId: 'greeting.hi',
+      conceptGloss: 'Hi',
+      originalGloss: raw,
+      distinction: 'greeting-register',
+      usage: {
+        register: 'informal',
+      },
+    };
+  }
+
+  return parseParentheticalConcept(raw);
+}
+
+function displayGlossForTarget(info, targetLang) {
+  if (!info) return '';
+  const lang = normalizeLang(targetLang);
+
+  if (info.distinction === 'family-speaker-gender') {
+    return lang === 'ko' ? info.originalGloss : info.conceptGloss;
+  }
+
+  if (info.distinction === 'second-person-formality') {
+    return YOU_FORM_OVERRIDES[lang] ? info.originalGloss : info.conceptGloss;
+  }
+
+  if (info.distinction === 'greeting-register') {
+    return lang === 'ko' ? info.originalGloss : info.conceptGloss;
+  }
+
+  if (info.distinction === 'first-person-register') {
+    return FIRST_PERSON_REGISTER_LANGS.has(lang) ? info.originalGloss : info.conceptGloss;
+  }
+
+  if (info.distinction === 'register' || info.distinction === 'context-note' || info.distinction === 'usage-note') {
+    return KOREAN_SOURCE_CONTEXT_LANGS.has(lang) ? info.originalGloss : info.conceptGloss;
+  }
+
+  return info.conceptGloss;
+}
+
+function targetTextForConcept(targetText, targetLang, info) {
+  const text = cleanText(targetText);
+  if (!info) return text;
+  const lang = normalizeLang(targetLang);
+
+  if (info.distinction === 'second-person-formality') {
+    const override = YOU_FORM_OVERRIDES[lang]?.[info.usage.formality];
+    if (override) return override;
+    return stripTrailingParenthetical(text);
+  }
+
+  if (info.distinction === 'family-speaker-gender' && lang === 'ko') {
+    return text;
+  }
+
+  if (info.distinction === 'greeting-register' && lang === 'ko') {
+    return text;
+  }
+
+  if (info.distinction === 'first-person-register' && FIRST_PERSON_REGISTER_LANGS.has(lang)) {
+    return text;
+  }
+
+  if (
+    (info.distinction === 'register' || info.distinction === 'context-note' || info.distinction === 'usage-note')
+    && KOREAN_SOURCE_CONTEXT_LANGS.has(lang)
+  ) {
+    return text;
+  }
+
+  return stripTrailingParenthetical(text);
+}
+
+function applyConceptToLearningItem(item, targetLang, options = {}) {
+  if (!item) return item;
+  const targetField = options.targetField || 'targetText';
+  const nativeField = options.nativeField || 'nativeText';
+  const sourceGloss = item.conceptGloss || item[nativeField] || item.english || item.nativeText || '';
+  const info = parseConceptGloss(sourceGloss);
+
+  if (!info) {
+    if (sourceGloss && !item.conceptGloss) item.conceptGloss = cleanText(sourceGloss);
+    return item;
+  }
+
+  const displayGloss = displayGlossForTarget(info, targetLang);
+  item.conceptId = item.conceptId || info.conceptId;
+  item.conceptGloss = displayGloss;
+  item.usage = {
+    ...(item.usage && typeof item.usage === 'object' ? item.usage : {}),
+    ...info.usage,
+    distinction: info.distinction,
+  };
+  item[nativeField] = displayGloss;
+  if ('english' in item) item.english = displayGloss;
+  if (item[targetField]) item[targetField] = targetTextForConcept(item[targetField], targetLang, info);
+  return item;
+}
+
+function normalizeLessonForLanguagePair(lessonObj, targetLang, nativeLang, options = {}) {
+  if (!lessonObj || !Array.isArray(lessonObj.content)) return lessonObj;
+  const shouldDedupe = options.dedupe !== false;
+  const seen = new Set();
+  const normalizedContent = [];
+
+  for (const rawItem of lessonObj.content) {
+    const item = applyConceptToLearningItem(rawItem, targetLang, {
+      targetField: 'targetText',
+      nativeField: 'nativeText',
+    });
+
+    if (!shouldDedupe) {
+      normalizedContent.push(item);
+      continue;
+    }
+
+    const key = [
+      item.type || '',
+      normalizeConceptKey(item.targetText || item.korean || ''),
+      normalizeConceptKey(item.conceptGloss || item.nativeText || item.english || ''),
+    ].join('|');
+    if (seen.has(key)) continue;
+    seen.add(key);
+    normalizedContent.push(item);
+  }
+
+  lessonObj.content = normalizedContent;
+  return lessonObj;
+}
+
+function normalizeFlashcardsForLanguagePair(cards, targetLang, nativeLang) {
+  if (!Array.isArray(cards)) return cards;
+  const targetField = languageField(targetLang);
+  const nativeField = languageField(nativeLang);
+  const seen = new Set();
+  const normalized = [];
+
+  for (const sourceCard of cards) {
+    const card = sourceCard;
+    const currentTarget = card[targetField] || card.korean || card.english || '';
+    const beforeGloss = card.conceptGloss || card.english || '';
+    applyConceptToLearningItem(card, targetLang, {
+      targetField,
+      nativeField: 'english',
+    });
+
+    const targetText = targetTextForConcept(card[targetField] || currentTarget, targetLang, parseConceptGloss(beforeGloss));
+    card[targetField] = targetText;
+    if (targetField !== 'korean' && card.korean === currentTarget) {
+      card.korean = nativeField === 'korean' ? '' : targetText;
+    }
+
+    if (card.isDefault && nativeField !== 'english' && nativeField !== targetField && parseConceptGloss(beforeGloss)) {
+      card[nativeField] = '';
+    }
+
+    const key = [
+      normalizeLang(targetLang),
+      normalizeConceptKey(targetText),
+      normalizeConceptKey(card.conceptGloss || card.english || ''),
+      normalizeCategoryForKey(card.category),
+    ].join('|');
+    if (seen.has(key)) continue;
+    seen.add(key);
+    normalized.push(card);
+  }
+
+  return normalized;
+}
+
+function normalizeCategoryForKey(category) {
+  if (Array.isArray(category)) return category.map(cleanText).filter(Boolean).join(',');
+  return cleanText(category || 'uncategorized');
+}
+
+function prepareDefaultFlashcardForSeed(card, targetLang, index) {
+  const targetField = languageField(targetLang);
+  const doc = {
+    korean: card.korean,
+    english: card.english,
+    romanization: card.romanization || '',
+    category: Array.isArray(card.category) ? card.category : [card.category || 'uncategorized'],
+    isDefault: true,
+    defaultIndex: index,
+    targetLang,
+    nativeLang: 'en',
+    masteryLevel: 3,
+    correctCount: 0,
+    incorrectCount: 0,
+  };
+
+  doc[targetField] = targetField === 'korean' ? card.korean : (card[targetField] || card.korean);
+  normalizeFlashcardsForLanguagePair([doc], targetLang, 'en');
+  return doc;
+}
+
+module.exports = {
+  LANGUAGE_FIELDS,
+  languageField,
+  parseConceptGloss,
+  normalizeLessonForLanguagePair,
+  normalizeFlashcardsForLanguagePair,
+  prepareDefaultFlashcardForSeed,
+};

@@ -95,7 +95,7 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
   const isActiveSection = (paths) =>
     paths.some((path) => location.pathname === path || location.pathname.startsWith(`${path}/`));
 
-  const exerciseActive = isActiveSection(['/exercise', '/quiz', '/flashcards']);
+  const exerciseActive = isActiveSection(['/exercise', '/quiz', '/flashcards', '/writing']);
 
   return (
     <nav className={`navbar${challengeMode ? ' challenge-active' : ''}`}>
@@ -150,6 +150,10 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
               <Link to="/flashcards" className={`nav-submenu-link ${isActiveSection(['/flashcards']) ? 'active' : ''}`}>
                 <span>&#127183;</span>
                 {t('navbar.flashcards', 'Flashcards')}
+              </Link>
+              <Link to="/writing" className={`nav-submenu-link ${isActiveSection(['/writing']) ? 'active' : ''}`}>
+                <span>&#9998;</span>
+                Writing
               </Link>
             </div>
           </li>

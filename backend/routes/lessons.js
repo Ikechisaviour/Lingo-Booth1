@@ -1,8 +1,13 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const router = express.Router();
 const Lesson = require('../models/Lesson');
+const Course = require('../models/Course');
+const ClassLessonProgress = require('../models/ClassLessonProgress');
 const { verifyToken, optionalAuth, isAdmin } = require('../middleware/auth');
+const { getAiEntitlements } = require('../utils/subscription');
 const { getOrCreateTranslation, applyTranslation, batchTranslateRaw } = require('../utils/translationService');
+const { normalizeLessonForLanguagePair } = require('../utils/languageConcepts');
 
 const VALID_CATEGORIES = ['daily-life', 'business', 'travel', 'greetings', 'food', 'shopping', 'healthcare', 'career'];
 const VALID_DIFFICULTIES = ['beginner', 'intermediate', 'advanced', 'sentences'];
@@ -20,6 +25,127 @@ function notFoundLabel(req) {
   if (kind === 'classLesson') return 'Class lesson';
   if (kind === 'quiz') return 'Quiz';
   return 'Quiz';
+}
+
+function canSyncClassProgress(req) {
+  if (!req.userId || !req.user) return false;
+  return !!getAiEntitlements(req.user).canSyncAIMemory;
+}
+
+function normalizeLang(code, fallback = 'en') {
+  return String(code || fallback).trim().toLowerCase().slice(0, 20) || fallback;
+}
+
+function sanitizeIndex(value, fallback = 0) {
+  const number = Number(value);
+  if (!Number.isFinite(number)) return fallback;
+  return Math.max(0, Math.floor(number));
+}
+
+function sanitizeCompletedItems(items) {
+  if (!Array.isArray(items)) return [];
+  return Array.from(new Set(
+    items
+      .map(item => Number(item))
+      .filter(item => Number.isInteger(item) && item >= 0)
+      .slice(0, 500)
+  ));
+}
+
+function sanitizeTutorPart(part = {}) {
+  const text = String(part.text || '').trim().slice(0, 800);
+  if (!text) return null;
+  return {
+    type: String(part.type || '').slice(0, 40),
+    language: String(part.language || '').slice(0, 20),
+    text,
+    speak: part.speak !== false,
+    speaker: String(part.speaker || '').slice(0, 80),
+    section: String(part.section || '').slice(0, 80),
+  };
+}
+
+function sanitizeTutorTurns(turns) {
+  if (!Array.isArray(turns)) return [];
+  return turns
+    .filter(turn => turn && ['user', 'assistant'].includes(turn.role))
+    .slice(-16)
+    .map(turn => ({
+      id: String(turn.id || '').slice(0, 120),
+      role: turn.role,
+      content: String(turn.content || '').trim().slice(0, 1600),
+      language: String(turn.language || '').slice(0, 20),
+      coachingTip: String(turn.coachingTip || '').slice(0, 800),
+      speechParts: Array.isArray(turn.speechParts)
+        ? turn.speechParts.map(sanitizeTutorPart).filter(Boolean).slice(0, 20)
+        : [],
+      displayParts: Array.isArray(turn.displayParts)
+        ? turn.displayParts.map(sanitizeTutorPart).filter(Boolean).slice(0, 20)
+        : [],
+    }))
+    .filter(turn => turn.content);
+}
+
+function sanitizeProgressPayload(body = {}) {
+  return {
+    selectedIndex: sanitizeIndex(body.selectedIndex),
+    selectedActivityIndex: sanitizeIndex(body.selectedActivityIndex),
+    completedItems: sanitizeCompletedItems(body.completedItems),
+    summary: String(body.summary || '').slice(0, 1000),
+    memory: body.memory && typeof body.memory === 'object' && !Array.isArray(body.memory)
+      ? body.memory
+      : {},
+    tutorTurns: sanitizeTutorTurns(body.tutorTurns),
+    source: ['web', 'mobile'].includes(body.source) ? body.source : 'unknown',
+    lastStudiedAt: new Date(),
+  };
+}
+
+async function addCourseOrderingMetadata(lessonsJson, targetLang) {
+  if (!Array.isArray(lessonsJson) || lessonsJson.length === 0 || !targetLang) {
+    return lessonsJson;
+  }
+
+  const courses = await Course.find({ targetLang }).lean();
+  const orderMap = new Map();
+  courses.forEach((course) => {
+    const lessons = Array.isArray(course.lessons) ? course.lessons : [];
+    lessons.forEach((entry) => {
+      const lessonId = String(entry.lessonId || '');
+      if (!lessonId) return;
+      orderMap.set(lessonId, {
+        level: course.level,
+        track: course.track,
+        title: course.title,
+        description: course.description || '',
+        position: entry.position,
+        kind: entry.kind,
+      });
+    });
+  });
+
+  const trackOrder = { foundation: 1, thematic: 2, adult: 3, grammar: 4 };
+  lessonsJson.forEach((lesson) => {
+    const course = orderMap.get(String(lesson._id));
+    if (course) lesson.course = course;
+  });
+
+  lessonsJson.sort((a, b) => {
+    const ac = a.course || {};
+    const bc = b.course || {};
+    const aLevel = Number(ac.level || 99);
+    const bLevel = Number(bc.level || 99);
+    if (aLevel !== bLevel) return aLevel - bLevel;
+    const aTrack = trackOrder[ac.track] || 99;
+    const bTrack = trackOrder[bc.track] || 99;
+    if (aTrack !== bTrack) return aTrack - bTrack;
+    const aPosition = Number(ac.position || 999);
+    const bPosition = Number(bc.position || 999);
+    if (aPosition !== bPosition) return aPosition - bPosition;
+    return String(a.title || '').localeCompare(String(b.title || ''), 'ko');
+  });
+
+  return lessonsJson;
 }
 
 // Get class lessons or quizzes (public - guests and authenticated users).
@@ -96,6 +222,10 @@ router.get('/', optionalAuth, async (req, res) => {
       });
     }
 
+    if (contentKind === 'classLesson') {
+      await addCourseOrderingMetadata(lessonsJson, targetLang);
+    }
+
     res.json(lessonsJson);
   } catch (error) {
     console.error('Get lessons error:', error);
@@ -105,8 +235,93 @@ router.get('/', optionalAuth, async (req, res) => {
 
 // Get single lesson (public — guests and authenticated users)
 // Pass ?nativeLang=de to get native-side fields translated to German, etc.
+// Get synced class lesson progress for Pro/Ultra/admin users.
+router.get('/:id/progress', optionalAuth, async (req, res) => {
+  try {
+    if (routeContentKind(req) !== 'classLesson') {
+      return res.status(404).json({ message: 'Class lesson progress not found' });
+    }
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(404).json({ message: 'Class lesson not found' });
+    }
+
+    const nativeLanguage = normalizeLang(req.query.nativeLang, req.user?.nativeLanguage || 'en');
+    const targetLanguage = normalizeLang(req.query.targetLang, req.user?.targetLanguage || 'ko');
+    const canSync = canSyncClassProgress(req);
+    if (!canSync) {
+      return res.json({ canSync: false, progress: null });
+    }
+
+    const progress = await ClassLessonProgress.findOne({
+      userId: req.userId,
+      classLessonId: req.params.id,
+      nativeLanguage,
+      targetLanguage,
+    }).lean();
+
+    res.json({ canSync: true, progress });
+  } catch (error) {
+    console.error('Get class lesson progress error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Save synced class lesson progress for Pro/Ultra/admin users.
+router.put('/:id/progress', optionalAuth, async (req, res) => {
+  try {
+    if (routeContentKind(req) !== 'classLesson') {
+      return res.status(404).json({ message: 'Class lesson progress not found' });
+    }
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(404).json({ message: 'Class lesson not found' });
+    }
+
+    const nativeLanguage = normalizeLang(req.body?.nativeLanguage || req.query.nativeLang, req.user?.nativeLanguage || 'en');
+    const targetLanguage = normalizeLang(req.body?.targetLanguage || req.query.targetLang, req.user?.targetLanguage || 'ko');
+    const canSync = canSyncClassProgress(req);
+    if (!canSync) {
+      return res.json({ canSync: false, progress: null });
+    }
+
+    const lesson = await Lesson.findById(req.params.id).select('track').lean();
+    if (!lesson || lesson.track !== CLASS_LESSON_TRACK) {
+      return res.status(404).json({ message: 'Class lesson not found' });
+    }
+
+    const payload = sanitizeProgressPayload(req.body || {});
+    const progress = await ClassLessonProgress.findOneAndUpdate(
+      {
+        userId: req.userId,
+        classLessonId: req.params.id,
+        nativeLanguage,
+        targetLanguage,
+      },
+      {
+        $set: {
+          ...payload,
+          nativeLanguage,
+          targetLanguage,
+        },
+        $setOnInsert: {
+          userId: req.userId,
+          classLessonId: req.params.id,
+        },
+      },
+      { upsert: true, new: true },
+    ).lean();
+
+    res.json({ canSync: true, progress });
+  } catch (error) {
+    console.error('Save class lesson progress error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
 router.get('/:id', optionalAuth, async (req, res) => {
   try {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(404).json({ message: `${notFoundLabel(req)} not found` });
+    }
     const lesson = await Lesson.findById(req.params.id);
     if (!lesson) {
       return res.status(404).json({ message: `${notFoundLabel(req)} not found` });
@@ -123,6 +338,9 @@ router.get('/:id', optionalAuth, async (req, res) => {
     const { nativeLang } = req.query;
     const lessonObj = lesson.toJSON();
     const targetLang = lesson.targetLang || 'ko';
+    if (contentKind !== 'classLesson') {
+      normalizeLessonForLanguagePair(lessonObj, targetLang, nativeLang || 'en');
+    }
 
     // Snapshot original nativeText values (English seed data) before translation overlay
     const originalNativeTexts = nativeLang && nativeLang !== 'en' && lessonObj.content
@@ -131,7 +349,8 @@ router.get('/:id', optionalAuth, async (req, res) => {
 
     // Translate native-side fields and/or generate romanization
     try {
-      const translation = await getOrCreateTranslation(lesson, nativeLang || 'en', targetLang);
+      const translationNativeLang = contentKind === 'classLesson' ? (nativeLang || 'en') : 'en';
+      const translation = await getOrCreateTranslation(lesson, translationNativeLang, targetLang);
       applyTranslation(lessonObj, translation);
     } catch (err) {
       console.error('Translation/romanization overlay failed:', err.message);

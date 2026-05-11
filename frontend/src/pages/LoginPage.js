@@ -229,6 +229,8 @@ function LoginPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
             width="340"
             text="continue_with"
             shape="pill"
+            locale="en"
+            use_fedcm_for_button={false}
           />
         </div>
 

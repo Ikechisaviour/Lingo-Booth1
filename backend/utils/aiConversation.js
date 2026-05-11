@@ -785,8 +785,8 @@ function makeDisplayPart({ type, language, text, speak = true, speaker = '', sec
   return part;
 }
 
-function buildClassLessonDisplayParts(transcript = '', targetLanguage = 'ko', nativeLanguage = 'en') {
-  const action = parseClassLessonAction(transcript);
+function buildClassLessonDisplayParts(transcript = '', targetLanguage = 'ko', nativeLanguage = 'en', classAction = null) {
+  const action = classAction || parseClassLessonAction(transcript);
   if (!action) return [];
 
   const targetLanguageCode = normalizeLanguageCode(targetLanguage) || 'ko';
@@ -797,87 +797,107 @@ function buildClassLessonDisplayParts(transcript = '', targetLanguage = 'ko', na
   const native = String(action.native || '').trim();
   const exampleTarget = String(action.exampleTarget || '').trim();
   const exampleNative = String(action.exampleNative || '').trim();
-  const task = String(action.activityTask || '').trim();
   const title = String(action.activityTitle || action.activitySection || 'this item').trim();
-  const parts = [];
+  const itemType = String(action.itemType || '').trim().toLowerCase();
+  const verb = String(action.action || '').trim().toLowerCase();
 
-  if (pairHasEnglish) {
+  // Three actions, three shapes. Falls through to "teach" for unknown verbs so
+  // older / unrecognized callers still get a sensible turn.
+  const mode = verb.startsWith('practice') ? 'practice'
+    : verb.startsWith('explain') ? 'explain'
+    : 'teach';
+
+  const parts = [];
+  const pushMeta = (text, section = '') => {
+    if (!pairHasEnglish || !text) return;
     parts.push(makeDisplayPart({
       type: 'meta',
       language: nativeLanguageCode,
-      text: `Let's practice ${title}.`,
+      text,
       speak: false,
+      ...(section ? { section } : {}),
     }));
-  }
-  let targetPart = null;
-  if (target) {
-    targetPart = makeDisplayPart({
+  };
+  const pushTarget = (text, { speaker = '', section = '' } = {}) => {
+    if (!text) return null;
+    const part = makeDisplayPart({
       type: 'target',
       language: targetLanguageCode,
-      text: target,
+      text,
       speak: true,
+      ...(speaker ? { speaker } : {}),
+      ...(section ? { section } : {}),
     });
-    parts.push(targetPart);
-  }
-  if (romanization) {
+    parts.push(part);
+    return part;
+  };
+  const pushRomanization = (text, speaker = '') => {
+    if (!text) return;
     parts.push(makeDisplayPart({
       type: 'romanization',
       language: targetLanguageCode,
-      text: romanization,
+      text,
       speak: false,
-      speaker: targetPart?.speaker,
+      ...(speaker ? { speaker } : {}),
     }));
-  }
-  if (native) {
+  };
+  const pushNative = (text, { speaker = '', section = '', speak = true } = {}) => {
+    if (!text) return;
     parts.push(makeDisplayPart({
       type: 'native',
       language: nativeLanguageCode,
-      text: native,
-      speak: true,
-      speaker: targetPart?.speaker,
+      text,
+      speak,
+      ...(speaker ? { speaker } : {}),
+      ...(section ? { section } : {}),
     }));
-  }
-  if (exampleTarget || exampleNative) {
+  };
+
+  if (mode === 'practice') {
+    // Prompt the learner to produce — never reveal the answer up front.
+    pushMeta(`Practice ${title} — your turn.`);
+    const targetPart = pushTarget(target);
+    if (itemType === 'word') {
+      pushRomanization(romanization, targetPart?.speaker);
+    }
     if (pairHasEnglish) {
-      parts.push(makeDisplayPart({
-        type: 'meta',
-      language: nativeLanguageCode,
-      text: 'Example',
-      speak: false,
-      section: 'example',
-      }));
+      const prompt = target
+        ? (itemType === 'sentence' || itemType === 'conversation'
+          ? `Read it aloud and tell me what it means. I'll check your answer.`
+          : `What does this mean? Say it aloud or type your answer — I'll confirm.`)
+        : 'Tell me what you remember about this item.';
+      pushNative(prompt);
     }
-    let exampleTargetPart = null;
-    if (exampleTarget) {
-      exampleTargetPart = makeDisplayPart({
-        type: 'target',
-        language: targetLanguageCode,
-        text: exampleTarget,
-        speak: true,
-        section: 'example',
-      });
-      parts.push(exampleTargetPart);
-    }
-    if (exampleNative) {
-      parts.push(makeDisplayPart({
-        type: 'native',
-        language: nativeLanguageCode,
-        text: exampleNative,
-        speak: true,
-        speaker: exampleTargetPart?.speaker,
-        section: 'example',
-      }));
-    }
-  }
-  if (task && pairHasEnglish) {
-    parts.push(makeDisplayPart({
-      type: 'native',
-      language: nativeLanguageCode,
-      text: task,
-      speak: true,
-    }));
+    return parts;
   }
 
+  if (mode === 'explain') {
+    pushMeta(target ? `Breaking down ${target}.` : `Explaining ${title}.`);
+    const targetPart = pushTarget(target);
+    pushRomanization(romanization, targetPart?.speaker);
+    pushNative(native, { speaker: targetPart?.speaker });
+    if (exampleTarget || exampleNative) {
+      pushMeta('Example', 'example');
+      const exampleTargetPart = pushTarget(exampleTarget, { section: 'example' });
+      pushNative(exampleNative, { speaker: exampleTargetPart?.speaker, section: 'example' });
+    }
+    pushNative('Ask "why" or "when do I use this?" if you want me to go deeper, or say "next" to move on.');
+    return parts;
+  }
+
+  // mode === 'teach'
+  pushMeta(`Let's learn ${title}.`);
+  const targetPart = pushTarget(target);
+  if (itemType !== 'sentence' && itemType !== 'conversation') {
+    pushRomanization(romanization, targetPart?.speaker);
+  }
+  pushNative(native, { speaker: targetPart?.speaker });
+  if (exampleTarget || exampleNative) {
+    pushMeta('Example', 'example');
+    const exampleTargetPart = pushTarget(exampleTarget, { section: 'example' });
+    pushNative(exampleNative, { speaker: exampleTargetPart?.speaker, section: 'example' });
+  }
+  pushNative('Try saying it back, or tell me one thing that stands out — then we can practice it.');
   return parts;
 }
 
@@ -909,7 +929,7 @@ function buildClassLessonActionFallback(transcript = '', targetLanguage = 'ko', 
   const action = classAction || parseClassLessonAction(transcript);
   if (!action) return '';
 
-  const displayParts = buildClassLessonDisplayParts(transcript, targetLanguage, nativeLanguage);
+  const displayParts = buildClassLessonDisplayParts(transcript, targetLanguage, nativeLanguage, action);
   if (displayParts.length) return displayPartsToReply(displayParts);
 
   const targetLanguageCode = normalizeLanguageCode(targetLanguage) || 'ko';
@@ -920,23 +940,43 @@ function buildClassLessonActionFallback(transcript = '', targetLanguage = 'ko', 
   const native = String(action.native || '').trim();
   const exampleTarget = String(action.exampleTarget || '').trim();
   const exampleNative = String(action.exampleNative || '').trim();
+  const itemType = String(action.itemType || '').trim().toLowerCase();
+  const verb = String(action.action || '').trim().toLowerCase();
+  const mode = verb.startsWith('practice') ? 'practice'
+    : verb.startsWith('explain') ? 'explain'
+    : 'teach';
 
   // Prefer the brief's activeActivity (canonical) over the transcript-parsed metadata,
   // since the brief comes from the source-of-truth Lesson document.
   const activeActivity = lessonBrief?.activeActivity || null;
   const title = String(activeActivity?.title || action.activityTitle || action.activitySection || 'this item').trim();
-  const taskFromAction = String(action.activityTask || '').trim();
-  const taskFromActivity = String(activeActivity?.task || '').trim();
-  const task = taskFromActivity || taskFromAction;
 
-  const lines = pairHasEnglish ? [`Let's practice ${title}.`] : [];
-  const targetLine = [target, romanization ? `(${romanization})` : ''].filter(Boolean).join(' ');
-
-  if (targetLine && native) {
-    lines.push(`${targetLine} - ${native}`);
-  } else if (targetLine || native) {
-    lines.push(targetLine || native);
+  const lines = [];
+  if (pairHasEnglish) {
+    if (mode === 'practice') lines.push(`Practice ${title} — your turn.`);
+    else if (mode === 'explain') lines.push(target ? `Breaking down ${target}.` : `Explaining ${title}.`);
+    else lines.push(`Let's learn ${title}.`);
   }
+
+  if (mode === 'practice') {
+    // Show only the target; withhold the native answer so the learner produces.
+    const targetLine = [target, romanization && itemType === 'word' ? `(${romanization})` : '']
+      .filter(Boolean).join(' ');
+    if (targetLine) lines.push(targetLine);
+    if (pairHasEnglish) {
+      lines.push(target
+        ? (itemType === 'sentence' || itemType === 'conversation'
+          ? 'Read it aloud and tell me what it means. I will confirm.'
+          : 'What does this mean? Say it aloud or type your answer.')
+        : 'Tell me what you remember about this item.');
+    }
+    return lines.join('\n').slice(0, 800);
+  }
+
+  // teach + explain both show target + gloss + example.
+  const targetLine = [target, romanization ? `(${romanization})` : ''].filter(Boolean).join(' ');
+  if (targetLine && native) lines.push(`${targetLine} - ${native}`);
+  else if (targetLine || native) lines.push(targetLine || native);
 
   if (exampleTarget && exampleNative) {
     lines.push(pairHasEnglish ? `Example: ${exampleTarget} - ${exampleNative}` : `${exampleTarget} - ${exampleNative}`);
@@ -945,7 +985,11 @@ function buildClassLessonActionFallback(transcript = '', targetLanguage = 'ko', 
   }
 
   if (pairHasEnglish) {
-    lines.push(task || 'Try one short answer using this lesson item.');
+    if (mode === 'explain') {
+      lines.push('Ask "why" or "when do I use this?" if you want me to go deeper, or say "next" to move on.');
+    } else {
+      lines.push('Try saying it back, or tell me one thing that stands out — then we can practice it.');
+    }
   }
 
   return lines.join('\n').slice(0, 800);
@@ -961,7 +1005,7 @@ function buildClassLessonFallbackResult({
   classAction = null,
 } = {}) {
   const safeClassAction = sanitizeClassAction(classAction);
-  const displayParts = buildClassLessonDisplayParts(transcript, targetLanguage, nativeLanguage);
+  const displayParts = buildClassLessonDisplayParts(transcript, targetLanguage, nativeLanguage, safeClassAction);
   const reply = displayParts.length
     ? displayPartsToReply(displayParts)
     : buildClassLessonActionFallback(transcript, targetLanguage, nativeLanguage, lessonBrief, safeClassAction);
@@ -1480,7 +1524,11 @@ function teachingDirectivesFor(lessonBrief) {
     'If latestLearnerTranscript begins with CLASS_LESSON_ACTION, the same rule applies: treat it as a teacher-control command for backward compatibility, never as learner speech.',
     'For class-action turns (either signal), use activeActivity.section, activeActivity.title, activeActivity.goals, and activeActivity.task as the immediate classroom objective. Teach within that activity, not the next item from a different section.',
     'lessonBrief.items is already filtered to the active activity (when one is set). Stay inside that filtered set; do not jump to items not present.',
-    'Each class response should include a brief explanation or prompt, then ask the learner to do activeActivity.task or answer one short participation question.',
+    'Branch your reply by classAction.action — the three actions MUST produce visibly different turns. Never reuse the same canned dump for all three.',
+    '  • teach_selected_item: First teach. Introduce the item with classAction.target + a one-sentence native-language gloss. Show romanization only if classAction.itemType is "word" or the script is unfamiliar to the learner. Include the example if classAction.exampleTarget is present, but tag the meta line as "Example" — never "Example conversation" unless the example actually contains two speakers. End with ONE specific comprehension question tied to the item (e.g. for 한글 ask "Who created 한글, and in what year?" — not "ready to try it?").',
+    '  • practice_selected_item: Do not reveal classAction.native or classAction.exampleNative up front. Prompt the learner to produce — read it aloud, recall the meaning, write the romanization, or answer a question that requires the item. Show classAction.target only (and romanization only for itemType "word"). End with the prompt as a real question the learner must answer.',
+    '  • explain_selected_item: Decompose the item — components, etymology, why it exists, when it is used, common confusions. Be concrete and use facts in classAction or memory.lessonProgress; do not just restate the gloss. Romanization is allowed. Close with one short follow-up question that invites a deeper question, not a recall drill.',
+    'If the same item is requested twice in a row with the same action, do not repeat the previous turn verbatim. Acknowledge they returned to it and pivot — pick a different angle, a different question, or move to the next item.',
     'For class lesson replies, speechParts is mandatory: split every spoken target-language sentence and native-language explanation into separate speechParts entries with the correct short language code.',
     ...lessonTypeDirectives,
     ...sectionDirectives,
@@ -1707,7 +1755,7 @@ async function callAIConversation({
   const content = data.choices?.[0]?.message?.content || '{}';
   const parsed = parseAIJsonContent(content);
   const deterministicDisplayParts = isClassLessonAction
-    ? buildClassLessonDisplayParts(transcript, safeTargetLanguage, safeNativeLanguage)
+    ? buildClassLessonDisplayParts(transcript, safeTargetLanguage, safeNativeLanguage, safeClassAction)
     : [];
   const parsedDisplayParts = Array.isArray(parsed.displayParts)
     ? parsed.displayParts

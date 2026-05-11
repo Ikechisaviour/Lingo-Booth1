@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
@@ -19,6 +20,7 @@ import HomeScreen from '../screens/home/HomeScreen';
 import QuizListScreen from '../screens/quiz/QuizListScreen';
 import QuizDetailScreen from '../screens/quiz/QuizDetailScreen';
 import FlashcardsScreen from '../screens/flashcards/FlashcardsScreen';
+import WritingPracticeScreen from '../screens/writing/WritingPracticeScreen';
 import ConversationScreen from '../screens/ai/ConversationScreen';
 import ContextPracticeScreen from '../screens/context/ContextPracticeScreen';
 import ProgressScreen from '../screens/progress/ProgressScreen';
@@ -32,6 +34,29 @@ const ExerciseStack = createNativeStackNavigator();
 const QuizStack = createNativeStackNavigator();
 const ProfileStack = createNativeStackNavigator();
 const FORMATTING_FALLBACK_REPLY = 'I had trouble formatting that reply. Please try again naturally.';
+const CLASS_SETUP_TEXT: Record<string, string> = {
+  en: 'I am ready to teach this class lesson. Choose Teach, Practice, or ask your own question.',
+  ko: '이 수업을 안내할 준비가 됐어요. Teach나 Practice를 선택하거나 질문을 입력해 주세요.',
+  es: 'Estoy listo para guiar esta clase. Elige Teach, Practice o escribe tu pregunta.',
+  fr: 'Je suis prêt à guider cette leçon. Choisis Teach, Practice ou écris ta question.',
+  de: 'Ich bin bereit, diese Lektion zu begleiten. Wähle Teach, Practice oder stelle deine Frage.',
+  zh: '我已经准备好带你学习这一课。请选择 Teach、Practice，或输入你的问题。',
+  ja: 'このレッスンを案内できます。Teach、Practiceを選ぶか、質問を入力してください。',
+  hi: 'मैं यह पाठ सिखाने के लिए तैयार हूँ। Teach, Practice चुनें या अपना प्रश्न लिखें।',
+  ar: 'أنا جاهز لإرشادك في هذا الدرس. اختر Teach أو Practice أو اكتب سؤالك.',
+  he: 'אני מוכן להדריך אותך בשיעור הזה. בחר Teach, Practice או כתוב שאלה.',
+  pt: 'Estou pronto para orientar esta aula. Escolha Teach, Practice ou digite sua pergunta.',
+  it: 'Sono pronto a guidare questa lezione. Scegli Teach, Practice o scrivi una domanda.',
+  nl: 'Ik ben klaar om deze les te begeleiden. Kies Teach, Practice of typ je vraag.',
+  ru: 'Я готов провести этот урок. Выберите Teach, Practice или введите вопрос.',
+  id: 'Saya siap memandu pelajaran ini. Pilih Teach, Practice, atau ketik pertanyaan Anda.',
+  ms: 'Saya bersedia membimbing pelajaran ini. Pilih Teach, Practice, atau taip soalan anda.',
+  fil: 'Handa na akong gabayan ang araling ito. Piliin ang Teach, Practice, o i-type ang tanong mo.',
+  tr: 'Bu dersi anlatmaya hazırım. Teach, Practice seçin veya sorunuzu yazın.',
+  bn: 'আমি এই পাঠ শেখাতে প্রস্তুত। Teach, Practice বেছে নিন, অথবা আপনার প্রশ্ন লিখুন।',
+  ta: 'இந்த பாடத்தை வழிநடத்த நான் தயாராக இருக்கிறேன். Teach, Practice தேர்வு செய்யுங்கள், அல்லது உங்கள் கேள்வியை எழுதுங்கள்.',
+};
+const classSetupText = (language?: string) => CLASS_SETUP_TEXT[String(language || '').toLowerCase()] || CLASS_SETUP_TEXT.en;
 type ClassExpressionPractice = {
   id: string;
   label?: string;
@@ -64,6 +89,7 @@ type ClassLessonItem = {
   exampleNative?: string;
   example?: string;
   exampleEnglish?: string;
+  _translationPending?: boolean;
 };
 
 type TutorMessage = {
@@ -224,6 +250,53 @@ const tutorSetupMessage = (content: string, language = 'en') =>
     speechParts: [{ language, text: content }],
   });
 
+const classProgressKey = (classLessonId: string, nativeLanguage?: string, targetLanguage?: string) =>
+  `lingoClassLesson:${classLessonId}:${nativeLanguage || 'en'}-${targetLanguage || 'ko'}`;
+
+const normalizeCompletedItems = (items: unknown): number[] => {
+  if (!Array.isArray(items)) return [];
+  return Array.from(new Set(
+    items
+      .map((item) => Number(item))
+      .filter((item) => Number.isInteger(item) && item >= 0),
+  ));
+};
+
+const normalizeTutorMessages = (turns: unknown, nativeLanguage = 'en'): TutorMessage[] => {
+  if (!Array.isArray(turns)) {
+    return [tutorSetupMessage(classSetupText(nativeLanguage), nativeLanguage)];
+  }
+  const cleaned = turns
+    .filter((turn: any) => turn && (turn.role === 'user' || turn.role === 'assistant') && String(turn.content || '').trim())
+    .filter((turn: any) => !isFormattingFallbackMessage(turn))
+    .slice(-16)
+    .map((turn: any) => tutorMessage(turn.role, String(turn.content || ''), false, {
+      language: turn.language,
+      speechParts: Array.isArray(turn.speechParts) ? turn.speechParts : [],
+      displayParts: Array.isArray(turn.displayParts) ? turn.displayParts : [],
+    }));
+  return cleaned.length
+    ? cleaned
+    : [tutorSetupMessage(classSetupText(nativeLanguage), nativeLanguage)];
+};
+
+const buildClassProgressPayload = (
+  selectedIndex: number,
+  selectedActivityIndex: number,
+  completed: number[],
+  summary: string,
+  memory: Record<string, unknown>,
+  messages: TutorMessage[],
+) => ({
+  selectedIndex,
+  selectedActivityIndex,
+  completed,
+  completedItems: completed,
+  summary,
+  memory,
+  tutorTurns: messages.filter(message => !message.error && !isFormattingFallbackMessage(message)).slice(-16),
+});
+
 // Structured class-action payload sent on tutor-control turns. Replaces the
 // legacy CLASS_LESSON_ACTION text prefix that used to ride inside `transcript`.
 type ClassActionPayload = {
@@ -278,7 +351,7 @@ function groupDisplayParts(parts: any[] = []) {
   const ensureGroup = (kind: 'main' | 'example', title = '') => {
     const lastGroup = groups[groups.length - 1];
     if (lastGroup?.kind === kind) return lastGroup;
-    const group = { kind, title: kind === 'example' ? 'Example conversation' : title, parts: [] as any[] };
+    const group = { kind, title: kind === 'example' ? 'Example' : title, parts: [] as any[] };
     groups.push(group);
     return group;
   };
@@ -299,7 +372,17 @@ function groupDisplayParts(parts: any[] = []) {
     ensureGroup('main').parts.push(part);
   });
 
-  return groups.filter(group => group.parts.length);
+  const finalGroups = groups.filter(group => group.parts.length);
+  // Upgrade single-speaker examples to plain "Example"; reserve "Example
+  // conversation" for multi-speaker dialogues.
+  finalGroups.forEach((group) => {
+    if (group.kind !== 'example') return;
+    const speakers = new Set(
+      (group.parts || []).map((part: any) => part.speaker).filter(Boolean),
+    );
+    group.title = speakers.size >= 2 ? 'Example conversation' : 'Example';
+  });
+  return finalGroups;
 }
 
 function exampleTopicFromGroup(group: { parts?: any[] } = {}) {
@@ -309,10 +392,15 @@ function exampleTopicFromGroup(group: { parts?: any[] } = {}) {
 }
 
 function exampleCueFor(_language?: string, group?: { parts?: any[] }) {
+  const speakers = new Set((group?.parts || []).map((part: any) => part.speaker).filter(Boolean));
+  const isDialogue = speakers.size >= 2;
   const topic = exampleTopicFromGroup(group);
-  return topic
-    ? `Example conversation about ${topic}. Listen to Person A and Person B.`
-    : 'Example conversation. Listen to Person A and Person B.';
+  if (isDialogue) {
+    return topic
+      ? `Example conversation about ${topic}. Listen to Person A and Person B.`
+      : 'Example conversation. Listen to Person A and Person B.';
+  }
+  return topic ? `Example: ${topic}.` : 'Example.';
 }
 
 function shouldSpeakTutorPart(part: { text?: string; speak?: boolean; type?: string } = {}) {
@@ -337,7 +425,21 @@ const ClassHomeScreen: React.FC<any> = ({ navigation }) => {
         const response = await classLessonService.getClassLessons();
         if (cancelled) return;
         const list = (Array.isArray(response.data) ? [...response.data] : []) as ClassLesson[];
-        list.sort((a, b) => (a.title || '').localeCompare(b.title || '', 'ko'));
+        const trackOrder: Record<string, number> = { foundation: 1, thematic: 2, adult: 3, grammar: 4 };
+        list.sort((a, b) => {
+          const ac: any = (a as any).course || {};
+          const bc: any = (b as any).course || {};
+          const aLevel = Number(ac.level || 99);
+          const bLevel = Number(bc.level || 99);
+          if (aLevel !== bLevel) return aLevel - bLevel;
+          const aTrack = trackOrder[ac.track] || 99;
+          const bTrack = trackOrder[bc.track] || 99;
+          if (aTrack !== bTrack) return aTrack - bTrack;
+          const aPosition = Number(ac.position || 999);
+          const bPosition = Number(bc.position || 999);
+          if (aPosition !== bPosition) return aPosition - bPosition;
+          return (a.title || '').localeCompare(b.title || '', 'ko');
+        });
         setClassLessons(list);
       } catch {
         if (!cancelled) setError('Could not load class lessons.');
@@ -408,10 +510,11 @@ const ClassLessonScreen: React.FC<any> = ({ route }) => {
   const [error, setError] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [selectedActivityIndex, setSelectedActivityIndex] = useState(0);
+  const [completedItems, setCompletedItems] = useState<number[]>([]);
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<TutorMessage[]>([
     tutorSetupMessage(
-      'I am ready to teach this class lesson. Choose Teach, Practice, or ask your own question.',
+      classSetupText(nativeLanguage || 'en'),
       nativeLanguage || 'en',
     ),
   ]);
@@ -420,7 +523,10 @@ const ClassLessonScreen: React.FC<any> = ({ route }) => {
   const [tutorLoading, setTutorLoading] = useState(false);
   const [listening, setListening] = useState(false);
   const [speechEnabled, setSpeechEnabled] = useState(true);
+  const [speechInputMode, setSpeechInputMode] = useState<'target' | 'native'>('target');
   const [status, setStatus] = useState('Ready');
+  const [progressLoaded, setProgressLoaded] = useState(false);
+  const [progressSyncState, setProgressSyncState] = useState<'local' | 'synced'>('local');
   const tutorRequestInFlightRef = useRef(false);
 
   useEffect(() => {
@@ -428,17 +534,50 @@ const ClassLessonScreen: React.FC<any> = ({ route }) => {
     async function loadClassLesson() {
       try {
         setLoading(true);
+        setProgressLoaded(false);
         const response = await classLessonService.getClassLesson(classLessonId);
-        if (!cancelled) setLesson(response.data);
+        if (cancelled) return;
+        setLesson(response.data);
+
+        const applyProgress = (record: any) => {
+          if (!record || typeof record !== 'object') return;
+          setSelectedIndex(Number.isInteger(record.selectedIndex) ? record.selectedIndex : 0);
+          setSelectedActivityIndex(Number.isInteger(record.selectedActivityIndex) ? record.selectedActivityIndex : 0);
+          setCompletedItems(normalizeCompletedItems(record.completedItems || record.completed));
+          setSummary(String(record.summary || ''));
+          setMemory(record.memory && typeof record.memory === 'object' ? record.memory : {});
+          setMessages(normalizeTutorMessages(record.tutorTurns, nativeLanguage || 'en'));
+        };
+
+        try {
+          const raw = await AsyncStorage.getItem(classProgressKey(classLessonId, nativeLanguage, targetLanguage));
+          if (raw && !cancelled) applyProgress(JSON.parse(raw));
+        } catch {}
+
+        try {
+          const progressResponse = await classLessonService.getProgress(classLessonId);
+          if (cancelled) return;
+          if (progressResponse.data?.canSync && progressResponse.data?.progress) {
+            applyProgress(progressResponse.data.progress);
+            setProgressSyncState('synced');
+          } else {
+            setProgressSyncState(progressResponse.data?.canSync ? 'synced' : 'local');
+          }
+        } catch {
+          if (!cancelled) setProgressSyncState('local');
+        }
       } catch {
         if (!cancelled) setError('Could not load this class lesson.');
       } finally {
-        if (!cancelled) setLoading(false);
+        if (!cancelled) {
+          setProgressLoaded(true);
+          setLoading(false);
+        }
       }
     }
     loadClassLesson();
     return () => { cancelled = true; };
-  }, [classLessonId]);
+  }, [classLessonId, nativeLanguage, targetLanguage]);
 
   useEffect(() => (
     () => {
@@ -454,6 +593,28 @@ const ClassLessonScreen: React.FC<any> = ({ route }) => {
     return () => clearTimeout(timer);
   }, [messages.length, tutorLoading]);
 
+  useEffect(() => {
+    if (!lesson || !progressLoaded) return undefined;
+    const payload = buildClassProgressPayload(
+      selectedIndex,
+      selectedActivityIndex,
+      completedItems,
+      summary,
+      memory,
+      messages,
+    );
+    const key = classProgressKey(classLessonId, nativeLanguage, targetLanguage);
+    AsyncStorage.setItem(key, JSON.stringify(payload)).catch(() => {});
+
+    const timer = setTimeout(() => {
+      classLessonService.saveProgress(classLessonId, payload)
+        .then((res) => setProgressSyncState(res.data?.canSync ? 'synced' : 'local'))
+        .catch(() => setProgressSyncState('local'));
+    }, 800);
+
+    return () => clearTimeout(timer);
+  }, [classLessonId, completedItems, lesson, memory, messages, nativeLanguage, progressLoaded, selectedActivityIndex, selectedIndex, summary, targetLanguage]);
+
   const items = lesson?.content || [];
   const selectedItem = items[selectedIndex];
   const activityPlan = useMemo(() => activityPlanForLesson(lesson), [lesson]);
@@ -464,6 +625,7 @@ const ClassLessonScreen: React.FC<any> = ({ route }) => {
     () => itemIndicesForActivity(items, selectedActivity?.id),
     [items, selectedActivity?.id],
   );
+  const progressPercent = items.length ? Math.round((completedItems.length / items.length) * 100) : 0;
 
   // When the selected activity changes and the previously-picked item no longer
   // belongs to it, snap to the first item of the new activity so the focus card
@@ -549,7 +711,7 @@ const ClassLessonScreen: React.FC<any> = ({ route }) => {
   const sendTutorTurn = async (
     displayText: string,
     classActionOrText: ClassActionPayload | string = displayText,
-    options: { skipUserTurn?: boolean } = {},
+    options: { skipUserTurn?: boolean; inputLanguage?: string } = {},
   ) => {
     if (!lesson || tutorLoading || tutorRequestInFlightRef.current) return;
     tutorRequestInFlightRef.current = true;
@@ -568,7 +730,7 @@ const ClassLessonScreen: React.FC<any> = ({ route }) => {
         scenario: `Class lesson: ${lesson.title || ''}`,
         targetLanguage: targetLanguage || 'ko',
         nativeLanguage: nativeLanguage || 'en',
-        inputLanguage: nativeLanguage || 'en',
+        inputLanguage: options.inputLanguage || nativeLanguage || 'en',
         difficulty: 'structured class lesson with active learner participation',
         transcript: transcriptForTurn,
         classAction: classAction || undefined,
@@ -681,6 +843,22 @@ const ClassLessonScreen: React.FC<any> = ({ route }) => {
     );
   };
 
+  const markComplete = () => {
+    setCompletedItems((current) => (
+      current.includes(selectedIndex) ? current : [...current, selectedIndex]
+    ));
+    const position = activityItemIndices.indexOf(selectedIndex);
+    const nextGlobal = position >= 0 && position < activityItemIndices.length - 1
+      ? activityItemIndices[position + 1]
+      : selectedIndex;
+    if (nextGlobal !== selectedIndex) {
+      setSelectedIndex(nextGlobal);
+      setStatus('Saved as complete. Moving to the next item.');
+    } else {
+      setStatus('Saved as complete.');
+    }
+  };
+
   const sendInput = () => {
     const text = input.trim();
     if (!text) return;
@@ -706,7 +884,9 @@ const ClassLessonScreen: React.FC<any> = ({ route }) => {
       await speechService.cancel();
       listeningRef.current = true;
       ExpoSpeechRecognitionModule.start({
-        lang: ttsLocaleFor(targetLanguage || 'ko', targetLanguage || 'ko'),
+        lang: speechInputMode === 'native'
+          ? ttsLocaleFor(nativeLanguage || 'en', nativeLanguage || 'en')
+          : ttsLocaleFor(targetLanguage || 'ko', targetLanguage || 'ko'),
         interimResults: false,
         maxAlternatives: 1,
         continuous: false,
@@ -736,7 +916,7 @@ const ClassLessonScreen: React.FC<any> = ({ route }) => {
     if (!transcript.trim()) return;
     setInput('');
     listeningRef.current = false;
-    sendTutorTurn(transcript).catch(() => {});
+      sendTutorTurn(transcript, transcript, { inputLanguage: speechInputMode === 'native' ? nativeLanguage || 'en' : targetLanguage || 'ko' }).catch(() => {});
   });
 
   useSpeechRecognitionEvent('error', (event) => {
@@ -824,6 +1004,7 @@ const ClassLessonScreen: React.FC<any> = ({ route }) => {
     <ScrollView style={styles.lessonScroll} contentContainerStyle={styles.lessonContent}>
       <Text style={styles.kicker}>Class</Text>
       <Text variant="headlineSmall" style={styles.title}>{lesson.title || 'Class lesson'}</Text>
+      <Text style={styles.progressText}>{progressPercent}% complete</Text>
       <Text style={styles.subtitle}>{status}</Text>
 
       <View style={styles.speechRow}>
@@ -837,6 +1018,20 @@ const ClassLessonScreen: React.FC<any> = ({ route }) => {
           style={styles.speechButton}
         >
           {speechEnabled ? 'Spoken replies on' : 'Spoken replies off'}
+        </Button>
+        <Button
+          mode={speechInputMode === 'target' ? 'contained-tonal' : 'outlined'}
+          onPress={() => setSpeechInputMode('target')}
+          style={styles.speechButton}
+        >
+          Target mic
+        </Button>
+        <Button
+          mode={speechInputMode === 'native' ? 'contained-tonal' : 'outlined'}
+          onPress={() => setSpeechInputMode('native')}
+          style={styles.speechButton}
+        >
+          Native mic
         </Button>
         <Button
           mode={listening ? 'contained' : 'outlined'}
@@ -904,6 +1099,9 @@ const ClassLessonScreen: React.FC<any> = ({ route }) => {
       </View>
 
       <View style={styles.mobileTutorInput}>
+        <Text style={styles.syncNote}>
+          {progressSyncState === 'synced' ? 'Progress synced.' : 'Progress saved on this device.'}
+        </Text>
         <TextInput
           mode="outlined"
           value={input}
@@ -979,7 +1177,11 @@ const ClassLessonScreen: React.FC<any> = ({ route }) => {
                     return (
                       <TouchableOpacity
                         key={`${item.type}-${globalIndex}`}
-                        style={[styles.itemChip, selectedIndex === globalIndex && styles.itemChipActive]}
+                        style={[
+                          styles.itemChip,
+                          completedItems.includes(globalIndex) && styles.itemChipDone,
+                          selectedIndex === globalIndex && styles.itemChipActive,
+                        ]}
                         onPress={() => setSelectedIndex(globalIndex)}
                       >
                         <Text style={[styles.itemChipText, selectedIndex === globalIndex && styles.itemChipTextActive]}>
@@ -1027,7 +1229,9 @@ const ClassLessonScreen: React.FC<any> = ({ route }) => {
         <Text style={styles.kicker}>{selectedItem?.type || 'Practice'} {selectedIndex + 1} / {items.length}</Text>
         <Text style={styles.lessonTarget}>{itemTarget(selectedItem)}</Text>
         {!!selectedItem?.romanization && <Text style={styles.lessonRomanization}>{selectedItem.romanization}</Text>}
-        <Text style={styles.lessonNative}>{itemNative(selectedItem)}</Text>
+        <Text style={styles.lessonNative}>
+          {itemNative(selectedItem) || (selectedItem?._translationPending ? 'Translation is being prepared for your language.' : '')}
+        </Text>
         {!!itemExampleTarget(selectedItem) && <Text style={styles.lessonExample}>{itemExampleTarget(selectedItem)}</Text>}
         {!!itemExampleNative(selectedItem) && <Text style={styles.lessonNative}>{itemExampleNative(selectedItem)}</Text>}
       </View>
@@ -1035,6 +1239,13 @@ const ClassLessonScreen: React.FC<any> = ({ route }) => {
       <View style={styles.lessonActions}>
         <Button mode="contained" onPress={teachSelected} disabled={tutorLoading}>Teach</Button>
         <Button mode="outlined" onPress={practiceSelected} disabled={tutorLoading}>Practice</Button>
+        <Button
+          mode="outlined"
+          onPress={markComplete}
+          disabled={completedItems.includes(selectedIndex)}
+        >
+          {completedItems.includes(selectedIndex) ? 'Completed' : 'Mark complete'}
+        </Button>
         <Button
           mode="outlined"
           onPress={() => {
@@ -1075,7 +1286,7 @@ const ExerciseHomeScreen: React.FC<any> = ({ navigation }) => {
       <View style={styles.panel}>
         <Text style={styles.kicker}>Exercise</Text>
         <Text variant="headlineSmall" style={styles.title}>Choose an exercise</Text>
-        <Text style={styles.subtitle}>Practice with quizzes or review vocabulary with flashcards.</Text>
+        <Text style={styles.subtitle}>Practice with quizzes, flashcards, or handwriting drills.</Text>
 
         <TouchableOpacity
           style={styles.exerciseCard}
@@ -1102,6 +1313,19 @@ const ExerciseHomeScreen: React.FC<any> = ({ navigation }) => {
           </View>
           <MaterialCommunityIcons name="chevron-right" color={colors.textMuted} size={24} />
         </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.exerciseCard}
+          activeOpacity={0.75}
+          onPress={() => navigation.navigate('Writing')}
+        >
+          <MaterialCommunityIcons name="pencil-outline" color={colors.primary} size={28} />
+          <View style={styles.exerciseText}>
+            <Text style={styles.exerciseTitle}>Writing</Text>
+            <Text style={styles.exerciseDesc}>Trace, copy, listen, and keep a writing notebook.</Text>
+          </View>
+          <MaterialCommunityIcons name="chevron-right" color={colors.textMuted} size={24} />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -1112,6 +1336,7 @@ const ExerciseStackScreen: React.FC = () => (
     <ExerciseStack.Screen name="ExerciseHome" component={ExerciseHomeScreen} />
     <ExerciseStack.Screen name="Quiz" component={QuizStackScreen} />
     <ExerciseStack.Screen name="Flashcards" component={FlashcardsScreen} />
+    <ExerciseStack.Screen name="Writing" component={WritingPracticeScreen} />
   </ExerciseStack.Navigator>
 );
 
@@ -1430,12 +1655,21 @@ const createLocalStyles = (colors: AppColors) => StyleSheet.create({
     borderColor: colors.primary,
     backgroundColor: colors.primary,
   },
+  itemChipDone: {
+    borderColor: colors.accentGreen,
+    backgroundColor: 'rgba(88, 204, 2, 0.12)',
+  },
   itemChipText: {
     color: colors.textSecondary,
     fontWeight: '800',
   },
   itemChipTextActive: {
     color: '#fff',
+  },
+  progressText: {
+    color: colors.accentGreen,
+    fontSize: 13,
+    fontWeight: '900',
   },
   lessonCard: {
     gap: 8,
@@ -1701,6 +1935,11 @@ const createLocalStyles = (colors: AppColors) => StyleSheet.create({
     borderColor: colors.border,
     borderRadius: 14,
     backgroundColor: colors.surface,
+  },
+  syncNote: {
+    color: colors.textMuted,
+    fontSize: 12,
+    fontWeight: '700',
   },
   classTutorInput: {
     minHeight: 54,

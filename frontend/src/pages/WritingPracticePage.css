@@ -1,0 +1,347 @@
+.writing-page {
+  min-height: calc(100vh - 64px);
+  padding: 24px;
+  background: #f8f6f1;
+}
+
+.writing-header {
+  display: flex;
+  max-width: 1180px;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0 auto 16px;
+  padding: 22px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: var(--card-shadow);
+}
+
+.writing-kicker {
+  margin: 0 0 6px;
+  color: var(--primary);
+  font-size: 0.74rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.writing-header h1,
+.writing-card h2 {
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.writing-header p {
+  max-width: 720px;
+  margin: 8px 0 0;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.writing-stat {
+  min-width: 128px;
+  padding: 14px 18px;
+  border-radius: 8px;
+  background: #edfbe8;
+  color: #2d8700;
+  text-align: center;
+}
+
+.writing-stat strong {
+  display: block;
+  font-size: 1.6rem;
+}
+
+.writing-layout {
+  display: grid;
+  max-width: 1180px;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 16px;
+  margin: 0 auto;
+}
+
+.writing-card {
+  padding: 18px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: var(--card-shadow);
+}
+
+.writing-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.writing-source-tabs,
+.writing-mode-tabs,
+.writing-pad-actions,
+.writing-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.writing-source-tabs {
+  margin: 14px 0;
+}
+
+.writing-mode-tabs {
+  margin-bottom: 12px;
+}
+
+.writing-source-tabs button,
+.writing-mode-tabs button,
+.writing-pad-actions button,
+.writing-actions button,
+.writing-practice-head button,
+.writing-primary {
+  min-height: 38px;
+  padding: 8px 12px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text-primary);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.writing-source-tabs button.active,
+.writing-mode-tabs button.active,
+.writing-primary {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: #fff;
+}
+
+.writing-list {
+  display: flex;
+  max-height: 430px;
+  flex-direction: column;
+  gap: 8px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.writing-list button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  background: #faf9f6;
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+}
+
+.writing-list button.active {
+  border-color: #1cb0f6;
+  background: #eaf8ff;
+}
+
+.writing-list strong,
+.writing-list span {
+  display: block;
+}
+
+.writing-list strong {
+  font-size: 1rem;
+  word-break: break-word;
+}
+
+.writing-list span {
+  margin-top: 4px;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+}
+
+.writing-card input {
+  display: block;
+  width: 100%;
+  min-height: 42px;
+  margin-top: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  font: inherit;
+}
+
+.writing-card input + .writing-primary {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.writing-workspace {
+  min-width: 0;
+}
+
+.writing-practice-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.writing-practice-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.writing-instruction,
+.writing-status,
+.writing-empty {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.writing-answer-card,
+.writing-stroke-guide,
+.writing-reveal {
+  padding: 14px;
+  border: 1px solid #dbeed2;
+  border-radius: 8px;
+  background: #f5ffef;
+}
+
+.writing-answer-card span,
+.writing-answer-card strong,
+.writing-answer-card small,
+.writing-answer-card em,
+.writing-reveal strong,
+.writing-reveal span {
+  display: block;
+}
+
+.writing-answer-card span {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.writing-answer-card strong {
+  margin-top: 6px;
+  color: var(--text-primary);
+  font-size: clamp(1.4rem, 4vw, 2.4rem);
+  line-height: 1.25;
+  word-break: break-word;
+}
+
+.writing-answer-card small,
+.writing-answer-card em,
+.writing-reveal span {
+  margin-top: 6px;
+  color: var(--text-secondary);
+}
+
+.writing-stroke-guide {
+  display: grid;
+  gap: 8px;
+  color: var(--text-primary);
+}
+
+.writing-pad-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.writing-canvas-wrap {
+  position: relative;
+  min-height: 360px;
+  overflow: hidden;
+  border: 1px solid #d7e7ef;
+  border-radius: 8px;
+  background:
+    linear-gradient(#f0f7fb 1px, transparent 1px),
+    linear-gradient(90deg, #f0f7fb 1px, transparent 1px),
+    #fff;
+  background-size: 36px 36px;
+  touch-action: none;
+}
+
+.writing-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.writing-ghost {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  color: rgba(23, 20, 40, 0.14);
+  font-size: clamp(3rem, 12vw, 8rem);
+  font-weight: 900;
+  line-height: 1.1;
+  pointer-events: none;
+  text-align: center;
+  word-break: break-word;
+}
+
+.writing-review {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.writing-review label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-weight: 800;
+}
+
+.writing-reveal summary {
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.writing-reveal strong {
+  margin-top: 10px;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+}
+
+@media (max-width: 860px) {
+  .writing-page {
+    padding: 14px;
+  }
+
+  .writing-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .writing-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .writing-list {
+    max-height: 260px;
+  }
+
+  .writing-review {
+    grid-template-columns: 1fr;
+  }
+
+  .writing-canvas-wrap {
+    min-height: 310px;
+  }
+}
