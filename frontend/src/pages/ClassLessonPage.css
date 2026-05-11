@@ -262,6 +262,103 @@
   line-height: 1.5;
 }
 
+/* Saved context prompts: lightweight ways to adapt the current class lesson. */
+.class-context-prompts {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 12px 14px;
+  border: 1px solid rgba(28, 176, 246, 0.22);
+  border-radius: 8px;
+  background: rgba(28, 176, 246, 0.06);
+}
+
+.class-context-prompts > span {
+  color: var(--accent-blue);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.class-context-prompts > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.class-context-prompts button {
+  max-width: 100%;
+  padding: 8px 11px;
+  border: 1px solid rgba(28, 176, 246, 0.26);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1.25;
+  text-align: left;
+}
+
+.class-context-prompts button:hover {
+  background: rgba(28, 176, 246, 0.1);
+  border-color: rgba(28, 176, 246, 0.45);
+  color: var(--accent-blue);
+}
+
+.class-context-prompts button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+/* Expression Practice (workbook 표현 연습): functional language goals. */
+.class-expression-practice {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 12px 14px;
+  border: 1px solid rgba(88, 204, 2, 0.25);
+  border-radius: 8px;
+  background: rgba(88, 204, 2, 0.06);
+}
+
+.class-expression-label {
+  color: var(--accent-green);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.class-expression-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.class-expression-chip {
+  padding: 6px 12px;
+  border: 1px solid rgba(88, 204, 2, 0.45);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.class-expression-chip:hover {
+  background: var(--accent-green);
+  border-color: var(--accent-green);
+  color: #fff;
+}
+
+.class-expression-chip:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
 .class-item-strip {
   display: flex;
   flex-wrap: wrap;

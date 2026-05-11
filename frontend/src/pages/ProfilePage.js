@@ -90,6 +90,7 @@ function ProfilePage({ onLogout }) {
             subscriptionTier: 'pro',
             canUseAI: true,
             canSyncAIMemory: true,
+            canUsePracticeContext: true,
             aiMemoryScope: 'cloud',
           }
           : userResponse.data.aiEntitlements;

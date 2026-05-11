@@ -11,7 +11,7 @@ import { ExpoSpeechRecognitionModule, useSpeechRecognitionEvent } from 'expo-spe
 import { useRoute } from '@react-navigation/native';
 import { Button, Card, Menu, SegmentedButtons, Text, TextInput } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { aiService } from '../../services/api';
+import { aiService, practiceContextService } from '../../services/api';
 import speechService from '../../services/speechService';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
@@ -30,6 +30,16 @@ const CUSTOM_SETUP_STEPS = ['learnerRole', 'partnerRole', 'situation', 'goal'] a
 
 type CustomSetupStep = typeof CUSTOM_SETUP_STEPS[number];
 type CustomRoleplay = Partial<Record<CustomSetupStep | 'id' | 'title', string>>;
+type PracticeRecommendation = {
+  title?: string;
+  text?: string;
+  prompt?: string;
+};
+type PracticeRecommendations = {
+  hasContext?: boolean;
+  roleplays?: PracticeRecommendation[];
+  reviewDrills?: PracticeRecommendation[];
+};
 
 const scenarios = [
   {
@@ -521,6 +531,7 @@ function normalizeEntitlements(entitlements: ReturnType<typeof useAuthStore.getS
       subscriptionTier: 'pro' as const,
       canUseAI: true,
       canSyncAIMemory: true,
+      canUsePracticeContext: true,
       aiMemoryScope: 'cloud' as const,
     };
   }
@@ -557,6 +568,10 @@ function formatResetCountdown(resetAt?: string, now = Date.now()) {
   return `${seconds}s`;
 }
 
+function isProOrUltraTier(tier?: string) {
+  return ['pro', 'ultra'].includes(String(tier || '').toLowerCase());
+}
+
 function quotaLimitCopy(tier = 'free', resetAt?: string, now = Date.now()) {
   const normalizedTier = String(tier || 'free').toLowerCase();
   const countdown = formatResetCountdown(resetAt, now);
@@ -564,7 +579,7 @@ function quotaLimitCopy(tier = 'free', resetAt?: string, now = Date.now()) {
     ? `You can continue in ${countdown}.`
     : 'You can continue when your daily conversation allowance resets.';
 
-  if (normalizedTier === 'pro') {
+  if (isProOrUltraTier(normalizedTier)) {
     return {
       title: "You've practiced a lot today.",
       body: countdown
@@ -643,6 +658,7 @@ const slowerCommands = new Set([
 const ConversationScreen: React.FC = () => {
   const route = useRoute<any>();
   const lessonId = typeof route.params?.lessonId === 'string' ? route.params.lessonId : '';
+  const starterParam = typeof route.params?.starter === 'string' ? route.params.starter : '';
   const colors = useAppColors();
   const insets = useSafeAreaInsets();
   const styles = useMemo(() => createStyles(colors), [colors]);
@@ -668,6 +684,7 @@ const ConversationScreen: React.FC = () => {
   const [roleState, setRoleState] = useState<ConversationRoleState | null>(null);
   const [customRoleplay, setCustomRoleplay] = useState<CustomRoleplay>({});
   const [scenarioMenuOpen, setScenarioMenuOpen] = useState(false);
+  const [contextRecommendations, setContextRecommendations] = useState<PracticeRecommendations | null>(null);
   const [countdownNow, setCountdownNow] = useState(Date.now());
 
   useEffect(() => {
@@ -692,7 +709,16 @@ const ConversationScreen: React.FC = () => {
   );
   const tier = userRole === 'admin' ? 'pro' : entitlements?.subscriptionTier || subscriptionTier || 'free';
   const canUseAI = entitlements?.canUseAI !== false;
-  const memoryScope = entitlements?.aiMemoryScope || (tier === 'pro' || entitlements?.canSyncAIMemory ? 'cloud' : canUseAI ? 'device' : 'none');
+  const canUsePracticeContextFeature = Boolean(
+    entitlements?.canUsePracticeContext
+    || isProOrUltraTier(tier)
+    || isProOrUltraTier(subscriptionTier),
+  );
+  const memoryScope = (
+    isProOrUltraTier(tier) || isProOrUltraTier(subscriptionTier) || entitlements?.canSyncAIMemory
+      ? 'cloud'
+      : entitlements?.aiMemoryScope || (canUseAI ? 'device' : 'none')
+  );
   const tokenUsage = entitlements?.tokenUsage || null;
   const quotaExceeded = Boolean(tokenUsage?.quotaExceeded || entitlements?.canSendAI === false);
   const quotaCopy = quotaLimitCopy(tier, tokenUsage?.resetAt, countdownNow);
@@ -716,6 +742,21 @@ const ConversationScreen: React.FC = () => {
     }
     return (history.length ? scenario.followUps : scenario.starters).slice(0, 3);
   }, [canUseAI, quotaExceeded, history, scenario, isCustomScenario, customIsReady]);
+
+  const contextPracticeActions = useMemo(() => {
+    if (!canUsePracticeContextFeature || !contextRecommendations?.hasContext) return [];
+    const roleplays = (contextRecommendations.roleplays || []).slice(0, 2).map((item) => ({
+      key: `roleplay-${item.prompt}`,
+      label: item.title || 'Practice roleplay',
+      prompt: item.prompt,
+    }));
+    const drills = (contextRecommendations.reviewDrills || []).slice(0, 2).map((item) => ({
+      key: `drill-${item.prompt}`,
+      label: item.text || 'Review drill',
+      prompt: item.prompt,
+    }));
+    return [...roleplays, ...drills].filter((item) => item.prompt);
+  }, [canUsePracticeContextFeature, contextRecommendations]);
 
   useEffect(() => {
     const load = async () => {
@@ -763,6 +804,32 @@ const ConversationScreen: React.FC = () => {
     };
     load();
   }, [scenarioId, nativeLanguage, targetLanguage]);
+
+  useEffect(() => {
+    if (!starterParam) return;
+    setTurn(starterParam);
+    setStatus('Saved context starter ready.');
+  }, [starterParam]);
+
+  useEffect(() => {
+    let cancelled = false;
+    if (!canUsePracticeContextFeature) {
+      setContextRecommendations(null);
+      return () => {
+        cancelled = true;
+      };
+    }
+    practiceContextService.recommendations(targetLanguage)
+      .then((res) => {
+        if (!cancelled) setContextRecommendations((res.data || null) as PracticeRecommendations | null);
+      })
+      .catch(() => {
+        if (!cancelled) setContextRecommendations(null);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [canUsePracticeContextFeature, targetLanguage]);
 
   useEffect(() => {
     aiService.getEntitlements()
@@ -1419,6 +1486,26 @@ const ConversationScreen: React.FC = () => {
             ))}
           </ScrollView>
         )}
+        {contextPracticeActions.length > 0 && (
+          <>
+            <Text style={styles.contextStarterHeader}>Based on saved context</Text>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.contextStarters}>
+              {contextPracticeActions.map((item) => (
+                <Button
+                  key={item.key}
+                  mode="contained-tonal"
+                  compact
+                  onPress={() => sendTurn(item.prompt || '')}
+                  disabled={loading || !canUseAI || quotaExceeded}
+                  style={styles.contextStarterButton}
+                  labelStyle={styles.starterLabel}
+                >
+                  {item.label}
+                </Button>
+              ))}
+            </ScrollView>
+          </>
+        )}
       </View>
 
       <View style={styles.threadShell}>
@@ -1623,6 +1710,18 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
     borderRadius: 999,
     borderColor: 'rgba(255, 107, 53, 0.22)',
     backgroundColor: '#fffdf9',
+  },
+  contextStarterHeader: {
+    color: colors.accentBlue,
+    fontSize: 10,
+    fontWeight: '900',
+    marginTop: 10,
+    textTransform: 'uppercase',
+  },
+  contextStarters: { gap: 8, paddingTop: 7, paddingRight: 16 },
+  contextStarterButton: {
+    borderRadius: 999,
+    backgroundColor: 'rgba(28, 176, 246, 0.1)',
   },
   starterLabel: { fontSize: 12, fontWeight: '800', marginHorizontal: 4 },
   threadShell: {

@@ -10,6 +10,10 @@ function getEffectiveSubscriptionTier(user = {}) {
   return user.subscriptionTier || 'plus';
 }
 
+function isProOrUltraTier(tier) {
+  return ['pro', 'ultra'].includes(String(tier || '').toLowerCase());
+}
+
 function getEffectiveAiEntitlements(user = {}) {
   if (user.role === 'admin') {
     return {
@@ -17,10 +21,21 @@ function getEffectiveAiEntitlements(user = {}) {
       subscriptionTier: 'pro',
       canUseAI: true,
       canSyncAIMemory: true,
+      canUsePracticeContext: true,
       aiMemoryScope: 'cloud',
     };
   }
-  return user.aiEntitlements || {};
+  if (user.aiEntitlements) return user.aiEntitlements;
+
+  const subscriptionTier = getEffectiveSubscriptionTier(user);
+  const hasCloudFeatures = isProOrUltraTier(subscriptionTier);
+  return {
+    subscriptionTier,
+    canUseAI: true,
+    canSyncAIMemory: hasCloudFeatures,
+    canUsePracticeContext: hasCloudFeatures,
+    aiMemoryScope: hasCloudFeatures ? 'cloud' : subscriptionTier === 'plus' ? 'device' : 'none',
+  };
 }
 
 function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {

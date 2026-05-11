@@ -1239,6 +1239,9 @@ function sanitizeClassAction(classAction) {
   const action = String(classAction.action || '').trim().slice(0, 80);
   if (!action) return null;
   const goalsRaw = Array.isArray(classAction.activityGoals) ? classAction.activityGoals : [];
+  const expressionPracticeId = String(classAction.expressionPracticeId || '').trim().slice(0, 60);
+  const expressionPracticeLabel = String(classAction.expressionPracticeLabel || '').trim().slice(0, 120);
+  const expressionPracticeGoal = String(classAction.expressionPracticeGoal || '').trim().slice(0, 320);
   return {
     action,
     activityId: String(classAction.activityId || '').trim().slice(0, 80),
@@ -1254,6 +1257,13 @@ function sanitizeClassAction(classAction) {
     exampleTarget: String(classAction.exampleTarget || '').trim().slice(0, 320),
     exampleNative: String(classAction.exampleNative || '').trim().slice(0, 320),
     lessonTitle: String(classAction.lessonTitle || '').trim().slice(0, 200),
+    // Optional: drill a specific Expression Practice goal (id matches one of
+    // lessonBrief.expressionPractice[].id). Empty when the action is item-based.
+    ...(expressionPracticeId ? {
+      expressionPracticeId,
+      expressionPracticeLabel,
+      expressionPracticeGoal,
+    } : {}),
   };
 }
 
@@ -1313,6 +1323,31 @@ function summarizeActiveActivity(activity) {
 //   activityId  — when present, filter `items` to those tagged with this activity. The
 //                 untagged items (no `activityIds` array, or empty) stay visible so legacy
 //                 lessons that predate activity tagging still teach normally.
+function summarizeExpressionPractice(list = []) {
+  if (!Array.isArray(list)) return [];
+  return list
+    .map(entry => {
+      if (!entry || typeof entry !== 'object') return null;
+      const id = String(entry.id || '').trim().slice(0, 60);
+      if (!id) return null;
+      return {
+        id,
+        label: String(entry.label || '').trim().slice(0, 120),
+        goal: String(entry.goal || '').trim().slice(0, 320),
+      };
+    })
+    .filter(Boolean)
+    .slice(0, 8);
+}
+
+function summarizeRelatedPools(list = []) {
+  if (!Array.isArray(list)) return [];
+  return list
+    .map(key => String(key || '').trim().slice(0, 80))
+    .filter(Boolean)
+    .slice(0, 12);
+}
+
 function buildLessonBrief(lesson, activityId = '') {
   if (!lesson || !Array.isArray(lesson.content)) return null;
   const safeActivityId = String(activityId || '').trim().slice(0, 80);
@@ -1344,9 +1379,12 @@ function buildLessonBrief(lesson, activityId = '') {
     title: String(lesson.title || '').slice(0, 200),
     category: String(lesson.category || '').slice(0, 60),
     difficulty: String(lesson.difficulty || '').slice(0, 30),
+    lessonType: String(lesson.lessonType || '').slice(0, 30),
     activeActivity,
     availableActivities,
     items,
+    expressionPractice: summarizeExpressionPractice(lesson.expressionPractice),
+    relatedPools: summarizeRelatedPools(lesson.relatedPools),
     truncated: dropped > 0,
     truncatedCount: dropped,
   };
@@ -1395,12 +1433,46 @@ const DEFAULT_ACTIVITY_DIRECTIVES = [
   'No specific activity is selected. Walk through lessonBrief.items in order: introduce the item, share the example, ask the learner to use it. Move on after one attempt.',
 ];
 
+// Per-lessonType adjustments. Most lessons are 'thematic' and don't need
+// extra guidance; foundation/grammar/workplace/review tweak the tutor's
+// emphasis. See docs/curriculum/MERGED_SYLLABUS.md for the taxonomy.
+const LESSON_TYPE_DIRECTIVES_BY_TYPE = Object.freeze({
+  foundation: [
+    'This is a foundation lesson (Hangul or pre-grammar fundamentals). Focus on script, sound, and recognition. Avoid grammar patterns the learner has not yet been introduced to.',
+  ],
+  grammar: [
+    'This is a grammar-pattern lesson. Anchor every example around the pattern; the learner is here to internalize one (or a few related) forms. Briefly contrast with similar patterns when it clarifies usage.',
+  ],
+  workplace: [
+    'This is a workplace/adult-life lesson. Default to formal register (-ㅂ/습니다, 존댓말). Examples should reflect adult contexts — work, dormitory, contracts, services — not school life.',
+  ],
+  review: [
+    'This is a review lesson covering material from earlier units. Recombine vocabulary and grammar from those source units; do not introduce new patterns. Confirm what the learner remembers before extending.',
+  ],
+  thematic: [],
+});
+
 function teachingDirectivesFor(lessonBrief) {
   if (!lessonBrief) return [];
   const sectionKey = String(lessonBrief?.activeActivity?.section || '').trim().toLowerCase();
   const sectionDirectives = sectionKey
     ? (ACTIVITY_DIRECTIVES_BY_SECTION[sectionKey] || DEFAULT_ACTIVITY_DIRECTIVES)
     : DEFAULT_ACTIVITY_DIRECTIVES;
+
+  const lessonTypeKey = String(lessonBrief?.lessonType || '').trim().toLowerCase();
+  const lessonTypeDirectives = LESSON_TYPE_DIRECTIVES_BY_TYPE[lessonTypeKey] || [];
+
+  const hasExpressionPractice = Array.isArray(lessonBrief.expressionPractice)
+    && lessonBrief.expressionPractice.length > 0;
+  const expressionPracticeDirectives = hasExpressionPractice ? [
+    'lessonBrief.expressionPractice lists functional language goals from the workbook (e.g. "Seeking advice", "Expressing degree"). When the active activity is Speaking — or when the learner asks to practice a function — pick one expressionPractice entry, model one short example of the function, and ask the learner to produce their own use of it. Tag the practiced goal in memory.lessonProgress.expressionPracticeId.',
+  ] : [];
+
+  const hasRelatedPools = Array.isArray(lessonBrief.relatedPools)
+    && lessonBrief.relatedPools.length > 0;
+  const relatedPoolsDirectives = hasRelatedPools ? [
+    'lessonBrief.relatedPools lists vocabulary pool keys (e.g. "topic-health", "pos-idioms") the learner can dip into for more words. The pool contents are not in this brief — only the keys. If the learner asks for more vocabulary on a topic the pool covers, mention the pool by name and offer to draw from it; do not invent words and claim they are from the pool.',
+  ] : [];
 
   return [
     'You are running a structured class lesson, not freeform chat. The lessonBrief is the curriculum.',
@@ -1410,8 +1482,11 @@ function teachingDirectivesFor(lessonBrief) {
     'lessonBrief.items is already filtered to the active activity (when one is set). Stay inside that filtered set; do not jump to items not present.',
     'Each class response should include a brief explanation or prompt, then ask the learner to do activeActivity.task or answer one short participation question.',
     'For class lesson replies, speechParts is mandatory: split every spoken target-language sentence and native-language explanation into separate speechParts entries with the correct short language code.',
+    ...lessonTypeDirectives,
     ...sectionDirectives,
-    'Track lesson progress in memory.lessonProgress = { activityId, activitySection, activityTitle, itemIndex, itemType }. activityId comes from lessonBrief.activeActivity.id. itemIndex is the globalIndex of the lessonBrief.items entry the learner is currently practicing. itemType is "word" | "sentence" | "conversation". Update these fields each turn so the next request resumes correctly.',
+    ...expressionPracticeDirectives,
+    ...relatedPoolsDirectives,
+    'Track lesson progress in memory.lessonProgress = { activityId, activitySection, activityTitle, itemIndex, itemType, expressionPracticeId? }. activityId comes from lessonBrief.activeActivity.id. itemIndex is the globalIndex of the lessonBrief.items entry the learner is currently practicing. itemType is "word" | "sentence" | "conversation". expressionPracticeId is set when the turn was an expressionPractice drill, otherwise omit. Update these fields each turn so the next request resumes correctly.',
     'When the learner finishes the active activity, congratulate them and offer to move to one of availableActivities. Do not unilaterally switch — wait for the learner or for the next CLASS_LESSON_ACTION.',
     'If lessonBrief.truncated is true, the activity has more items than the brief sent. Tell the learner there is more to practice if they want to continue past what fits in this turn.',
     'On the very first turn of an activity, briefly introduce the activity by activeActivity.title and goals before teaching the first item.',

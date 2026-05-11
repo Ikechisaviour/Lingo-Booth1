@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { FiVolume2 } from 'react-icons/fi';
 import { useNavigate, useParams } from 'react-router-dom';
-import { aiService, classLessonService } from '../services/api';
+import { aiService, classLessonService, practiceContextService } from '../services/api';
 import speechService from '../services/speechService';
 import LANGUAGES from '../config/languages';
 import {
@@ -32,6 +32,24 @@ function ttsLocaleFor(languageCode, fallbackCode) {
   return LANGUAGES[languageCode]?.ttsLocale
     || LANGUAGES[fallbackCode]?.ttsLocale
     || 'en-US';
+}
+
+function isProOrUltraTier(tier) {
+  return ['pro', 'ultra'].includes(String(tier || '').toLowerCase());
+}
+
+function getStoredPracticeContextAccess() {
+  if (localStorage.getItem('userRole') === 'admin') return true;
+
+  try {
+    const entitlements = JSON.parse(localStorage.getItem('aiEntitlements') || '{}');
+    if (entitlements.canUsePracticeContext) return true;
+    if (isProOrUltraTier(entitlements.subscriptionTier)) return true;
+  } catch (_) {
+    // Ignore malformed local settings and fall back to the stored tier below.
+  }
+
+  return isProOrUltraTier(localStorage.getItem('subscriptionTier'));
 }
 
 // Default activity plan used when a Lesson document does not declare its own activities[].
@@ -240,7 +258,7 @@ function itemIndicesForActivity(items, activityId) {
 // legacy CLASS_LESSON_ACTION text prefix that used to ride inside the transcript
 // field — now the action travels in its own `classAction` request field, and
 // `transcript` carries the short user-visible message.
-function buildClassAction(action, lesson, item, index, activity) {
+function buildClassAction(action, lesson, item, index, activity, expressionPractice) {
   return {
     action,
     activityId: activity?.id || '',
@@ -256,6 +274,11 @@ function buildClassAction(action, lesson, item, index, activity) {
     exampleTarget: itemExampleTarget(item),
     exampleNative: itemExampleNative(item),
     lessonTitle: lesson?.title || '',
+    ...(expressionPractice ? {
+      expressionPracticeId: expressionPractice.id || '',
+      expressionPracticeLabel: expressionPractice.label || '',
+      expressionPracticeGoal: expressionPractice.goal || '',
+    } : {}),
   };
 }
 
@@ -333,12 +356,15 @@ function ClassLessonPage() {
   const [status, setStatus] = useState('Ready');
   const [summary, setSummary] = useState('');
   const [memory, setMemory] = useState({});
+  const [contextRecommendations, setContextRecommendations] = useState(null);
+  const [pendingContextPrompt, setPendingContextPrompt] = useState('');
 
   const targetLanguage = getTargetLangCode();
   const nativeLanguage = getNativeLangCode();
   const targetName = getTargetLangName();
   const nativeName = getNativeLangName();
   const speechSupported = !!getSpeechRecognition();
+  const canUsePracticeContextFeature = getStoredPracticeContextAccess();
 
   useEffect(() => {
     let cancelled = false;
@@ -401,6 +427,39 @@ function ClassLessonPage() {
     threadRef.current.scrollTop = threadRef.current.scrollHeight;
   }, [tutorTurns, tutorLoading]);
 
+  useEffect(() => {
+    let cancelled = false;
+    if (!canUsePracticeContextFeature) {
+      setContextRecommendations(null);
+      return () => {
+        cancelled = true;
+      };
+    }
+    practiceContextService.recommendations(targetLanguage)
+      .then((res) => {
+        if (!cancelled) setContextRecommendations(res.data || null);
+      })
+      .catch(() => {
+        if (!cancelled) setContextRecommendations(null);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [canUsePracticeContextFeature, targetLanguage]);
+
+  useEffect(() => {
+    if (!canUsePracticeContextFeature) {
+      sessionStorage.removeItem('lingoContextClassPrompt');
+      setPendingContextPrompt('');
+      return;
+    }
+    const prompt = sessionStorage.getItem('lingoContextClassPrompt');
+    if (!prompt) return;
+    sessionStorage.removeItem('lingoContextClassPrompt');
+    setPendingContextPrompt(prompt);
+    setStatus('Saved context prompt ready.');
+  }, [canUsePracticeContextFeature]);
+
   useEffect(() => (
     () => {
       recognitionRef.current?.abort?.();
@@ -419,6 +478,13 @@ function ClassLessonPage() {
   );
   const positionInActivity = activityItemIndices.indexOf(selectedIndex);
   const progressPercent = items.length ? Math.round((completed.size / items.length) * 100) : 0;
+  const contextClassPrompts = useMemo(() => {
+    if (!canUsePracticeContextFeature) return [];
+    return Array.from(new Set([
+      pendingContextPrompt,
+      ...((contextRecommendations?.classPrompts || [])),
+    ])).filter(Boolean).slice(0, 4);
+  }, [canUsePracticeContextFeature, contextRecommendations, pendingContextPrompt]);
 
   // When the user picks a new activity, jump to its first item if the currently selected
   // item is not part of it. This keeps the focus card in sync with the activity rail.
@@ -650,6 +716,24 @@ function ClassLessonPage() {
     );
   };
 
+  // Drill a specific Expression Practice goal (workbook 표현 연습 column).
+  // Sends a class action with expressionPracticeId set; the AI tutor uses it
+  // as a Speaking sub-mode focused on that one functional goal.
+  const practiceExpression = (expressionPractice) => {
+    if (!expressionPractice) return;
+    sendTutorTurn(
+      `Practice expression: ${expressionPractice.label || expressionPractice.id}`,
+      buildClassAction(
+        'practice_expression',
+        lesson,
+        selectedItem,
+        selectedIndex,
+        selectedActivity,
+        expressionPractice,
+      ),
+    );
+  };
+
   const markComplete = () => {
     setCompleted((prev) => new Set([...prev, selectedIndex]));
     setStatus('Marked complete.');
@@ -837,6 +921,51 @@ function ClassLessonPage() {
               <div className="class-activity-task">
                 <span>Learner task</span>
                 <p>{selectedActivity.task}</p>
+              </div>
+            )}
+
+            {contextClassPrompts.length > 0 && (
+              <div className="class-context-prompts">
+                <span>Based on saved context</span>
+                <div>
+                  {contextClassPrompts.map((prompt) => (
+                    <button
+                      type="button"
+                      key={prompt}
+                      onClick={() => sendTutorTurn(prompt, prompt)}
+                      disabled={tutorLoading}
+                    >
+                      {prompt}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/*
+              Expression Practice (표현 연습): functional language goals from
+              the workbook. Always visible when the lesson defines them so the
+              learner can drill a specific function (e.g. "Seeking advice")
+              independently of the current item. Tutor receives the chosen
+              goal in the classAction payload.
+            */}
+            {Array.isArray(lesson?.expressionPractice) && lesson.expressionPractice.length > 0 && (
+              <div className="class-expression-practice">
+                <span className="class-expression-label">Expression practice</span>
+                <div className="class-expression-chips">
+                  {lesson.expressionPractice.map((expression) => (
+                    <button
+                      type="button"
+                      key={expression.id}
+                      className="class-expression-chip"
+                      onClick={() => practiceExpression(expression)}
+                      disabled={tutorLoading}
+                      title={expression.goal || expression.label}
+                    >
+                      {expression.label || expression.id}
+                    </button>
+                  ))}
+                </div>
               </div>
             )}
 

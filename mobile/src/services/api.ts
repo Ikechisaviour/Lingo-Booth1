@@ -107,11 +107,13 @@ api.interceptors.response.use(
       useAuthStore.getState().logout();
       error._forcedLogout = true;
     }
-    // Detect deleted account (404 on non-auth endpoints)
+    // Detect deleted current account only from the current user's profile endpoints.
+    const currentUserId = useAuthStore.getState().userId;
+    const cleanUrl = String(config?.url || '').split('?')[0];
     if (
       error.response?.status === 404 &&
-      config &&
-      !config.url?.includes('/auth/') &&
+      currentUserId &&
+      (cleanUrl === `/users/${currentUserId}` || cleanUrl.startsWith(`/users/${currentUserId}/`)) &&
       useAuthStore.getState().token
     ) {
       useAuthStore.getState().logout();
@@ -167,6 +169,19 @@ export const classLessonService = {
     const nativeLang = useSettingsStore.getState().nativeLanguage;
     return api.get(`/class-lessons/${classLessonId}`, { params: { nativeLang }, timeout: 30000 });
   },
+};
+
+export const practiceContextService = {
+  analyze: (data: { transcript: string; nativeLanguage: string; targetLanguage: string; source?: 'web' | 'mobile' }) =>
+    api.post('/practice-context/analyze', { ...data, source: data.source || 'mobile' }, { timeout: 30000 }),
+  save: (context: Record<string, any>) =>
+    api.post('/practice-context', { ...context, source: context.source || 'mobile' }),
+  list: (targetLanguage?: string) =>
+    api.get('/practice-context', { params: { targetLanguage } }),
+  recommendations: (targetLanguage?: string) =>
+    api.get('/practice-context/recommendations', { params: { targetLanguage } }),
+  delete: (contextId: string) =>
+    api.delete(`/practice-context/${contextId}`),
 };
 
 export const flashcardService = {

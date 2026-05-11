@@ -109,6 +109,7 @@ app.use('/api/flashcards', require('./routes/flashcards'));
 app.use('/api/progress', require('./routes/progress'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/error-reports', require('./routes/errorReports'));
+app.use('/api/practice-context', require('./routes/practiceContext'));
 app.use('/api/admin', require('./routes/admin'));
 app.use('/api/tts', require('./routes/tts'));
 app.use('/api/ai', require('./routes/ai'));

@@ -128,6 +128,30 @@ const unit1 = {
   targetLang: 'ko',
   nativeLang: 'en',
   track: 'textbook',
+  lessonType: 'thematic',
+  // Functional language goals from the workbook's "표현 연습" (Expression Practice).
+  // Unit 1 lists two: 조언 구하기 (Seeking advice) and 조언하기 (Giving advice).
+  // The AI tutor surfaces these as Speaking sub-modes.
+  expressionPractice: [
+    {
+      id: 'seeking-advice',
+      label: 'Seeking advice',
+      goal: 'Ask another speaker for guidance about a major, career, or life decision. Use polite forms and follow up with a clarifying question.',
+    },
+    {
+      id: 'giving-advice',
+      label: 'Giving advice',
+      goal: "Offer a short, practical recommendation about a classmate's major or career choice. Use grammar from this unit (e.g. V-다 보면, V-는 대로, N대로) when natural.",
+    },
+  ],
+  // Reference vocab pools the AI tutor may pull from when the learner needs more
+  // words. Pool contents are not in this brief — only the keys.
+  relatedPools: [
+    'topic-school',
+    'topic-society',
+    'topic-people',
+    'pos-prefix-suffix',
+  ],
   activities,
   content: [
     // ── Vocabulary: aptitudes, abilities, careers ──
