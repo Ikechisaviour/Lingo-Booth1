@@ -8,6 +8,7 @@ const { verifyToken, optionalAuth, isAdmin } = require('../middleware/auth');
 const { getAiEntitlements } = require('../utils/subscription');
 const { getOrCreateTranslation, applyTranslation, batchTranslateRaw } = require('../utils/translationService');
 const { normalizeLessonForLanguagePair } = require('../utils/languageConcepts');
+const { enrichLessonWithPronunciation } = require('../utils/pronunciationService');
 
 const VALID_CATEGORIES = ['daily-life', 'business', 'travel', 'greetings', 'food', 'shopping', 'healthcare', 'career'];
 const VALID_DIFFICULTIES = ['beginner', 'intermediate', 'advanced', 'sentences'];
@@ -391,6 +392,8 @@ router.get('/:id', optionalAuth, async (req, res) => {
         }
       }
     }
+
+    await enrichLessonWithPronunciation(lessonObj, targetLang, nativeLang || 'en');
 
     res.json(lessonObj);
   } catch (error) {

@@ -88,6 +88,14 @@ const lessonSchema = new mongoose.Schema({
     // Generic language-agnostic fields
     targetText: String,
     romanization: String,
+    officialPronunciation: String,
+    learnerPronunciation: String,
+    pronunciationConfidence: {
+      type: String,
+      enum: ['strong', 'approximate', 'audioFirst'],
+    },
+    officialPronunciationSource: String,
+    learnerPronunciationSource: String,
     nativeText: String,
     conceptId: String,
     conceptGloss: String,

@@ -198,6 +198,7 @@ class SpeechService {
    * satisfies Chrome's autoplay gate for subsequent plays.
    */
   _setupAudioUnlock() {
+    this._unlockListeners = new Set();
     const unlock = () => {
       if (this._audioUnlocked) return;
       this._audioUnlocked = true;
@@ -209,6 +210,10 @@ class SpeechService {
         audio.pause();
         audio.removeAttribute('src');
         audio.volume = 1;
+        // Notify subscribers that audio is now playable in this tab.
+        this._unlockListeners.forEach((listener) => {
+          try { listener(); } catch (_) { /* listener errors are non-fatal */ }
+        });
         // Replay any deferred speech that failed before unlock
         if (this._deferredSpeak) {
           const { text, times, options } = this._deferredSpeak;
@@ -223,6 +228,31 @@ class SpeechService {
     document.addEventListener('click', unlock, true);
     document.addEventListener('touchstart', unlock, true);
     document.addEventListener('keydown', unlock, true);
+  }
+
+  /**
+   * True once a user gesture has unlocked HTMLAudio playback in this tab.
+   * Chrome desktop and iOS Safari both block programmatic .play() until
+   * after the first user interaction.
+   */
+  isAudioUnlocked() {
+    return !!this._audioUnlocked;
+  }
+
+  /**
+   * Subscribe to the one-time audio-unlock event. The callback fires the
+   * moment the user interacts with the page (or immediately if already
+   * unlocked). Returns an unsubscribe function.
+   */
+  onAudioUnlocked(callback) {
+    if (typeof callback !== 'function') return () => {};
+    if (this._audioUnlocked) {
+      callback();
+      return () => {};
+    }
+    if (!this._unlockListeners) this._unlockListeners = new Set();
+    this._unlockListeners.add(callback);
+    return () => this._unlockListeners.delete(callback);
   }
 
   /**

@@ -214,7 +214,7 @@ const HomeScreen: React.FC = () => {
             <Text style={styles.quickIcon}>🏫</Text>
             <View style={styles.quickTextCol}>
               <Text style={styles.quickTitle}>{t('navbar.class', 'Class')}</Text>
-              <Text style={styles.quickDesc}>Coming soon</Text>
+              <Text style={styles.quickDesc}>Guided tutor lessons</Text>
             </View>
             <Text style={styles.quickArrow}>›</Text>
           </TouchableOpacity>

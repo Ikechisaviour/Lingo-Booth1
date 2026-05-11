@@ -5,8 +5,9 @@ const UserCardPreference = require('../models/UserCardPreference');
 const GuestSession = require('../models/GuestSession');
 const { verifyToken, isOwner } = require('../middleware/auth');
 const { getClientIp, getGeoInfo } = require('../utils/geo');
-const { batchTranslateRaw, batchRomanize, batchNativePhonetic, ROMANIZATION_LANGS, NON_LATIN_LANGS } = require('../utils/translationService');
+const { batchTranslateRaw } = require('../utils/translationService');
 const { languageField, normalizeFlashcardsForLanguagePair } = require('../utils/languageConcepts');
+const { enrichFlashcardsWithPronunciation } = require('../utils/pronunciationService');
 
 // Normalize category: handles old string format and new array format
 const normalizeCategory = (cat) => {
@@ -15,23 +16,9 @@ const normalizeCategory = (cat) => {
   return ['uncategorized'];
 };
 
-// --- Native-script phonetic cache (nativeLang:targetLang -> Map<text, phonetic>) ---
-const phoneticCache = new Map();
-const PHONETIC_CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours
-
-// --- Romanization cache for non-Korean target languages ---
-const romanCache = new Map(); // `${targetLang}:${text}` -> romanization
-const ROMAN_CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours
-let romanCacheTimestamp = Date.now();
-
-/**
- * Generate correct romanization for non-Korean non-Latin target languages.
- * Korean cards already have romanization; Latin-script languages don't need it.
- * For non-Latin targets (zh, ja, ar, hi, etc.), uses batchRomanize via Google Translate.
- */
-async function fillTargetRomanization(cards, targetLang) {
-  if (targetLang === 'ko') return; // Korean cards already have correct romanization
-
+async function unusedLegacyPronunciationHelpers(cards, targetLang, nativeLang) {
+  return cards;
+  /*
   if (!ROMANIZATION_LANGS.has(targetLang)) {
     // Latin-script language — no romanization needed
     cards.forEach(c => { c.romanization = ''; });
@@ -75,6 +62,7 @@ async function fillTargetRomanization(cards, targetLang) {
       uncachedIndices.forEach(i => { cards[i].romanization = ''; });
     }
   }
+  */
 }
 
 /**
@@ -84,6 +72,8 @@ async function fillTargetRomanization(cards, targetLang) {
  * Latin-script native speakers keep standard romanization as-is.
  */
 async function applyNativePhonetics(cards, targetLang, nativeLang) {
+  return cards;
+  /*
   // Only needed when both target and native use non-Latin scripts
   if (!ROMANIZATION_LANGS.has(targetLang) || !NON_LATIN_LANGS.has(nativeLang)) {
     return cards;
@@ -128,6 +118,7 @@ async function applyNativePhonetics(cards, targetLang, nativeLang) {
   }
 
   return cards;
+  */
 }
 
 /**
@@ -323,12 +314,17 @@ router.get('/category-cards', async (req, res) => {
 
     // Translate missing native fields (same logic as main flashcard routes)
     await fillNativeTranslations(filtered, nativeLang);
+    await enrichFlashcardsWithPronunciation(filtered, targetLang, nativeLang);
 
     // Strip helper fields before sending
     const cards = filtered.map(c => ({
       _id: c._id.toString(),
       [targetField]: c[targetField] || '',
       [nativeField]: c[nativeField] || c.english || '',
+      officialPronunciation: c.officialPronunciation || '',
+      learnerPronunciation: c.learnerPronunciation || '',
+      pronunciationConfidence: c.pronunciationConfidence || 'audioFirst',
+      pronunciationGuide: c.pronunciationGuide || null,
       ...(c._translationPending ? { _translationPending: true } : {}),
     }));
 
@@ -406,12 +402,7 @@ router.get('/guest', async (req, res) => {
 
     // Translate missing native language fields (English → native), with DB caching
     await fillNativeTranslations(pageCards, nativeLang);
-
-    // Replace romanization with native-script phonetics for non-Latin native speakers
-    await applyNativePhonetics(pageCards, targetLang, nativeLang);
-
-    // Generate correct romanization for non-Korean non-Latin target languages
-    await fillTargetRomanization(pageCards, targetLang);
+    await enrichFlashcardsWithPronunciation(pageCards, targetLang, nativeLang);
 
     res.json({ cards: pageCards, total, page, limit, hasMore: start + limit < total, seed });
   } catch (error) {
@@ -477,19 +468,7 @@ router.get('/user/:userId', isOwner('userId'), async (req, res) => {
 
     // Translate missing native language fields (English → native), with DB caching
     await fillNativeTranslations(pageCards, nativeLang);
-
-    // Replace romanization with native-script phonetics for non-Latin native speakers
-    await applyNativePhonetics(pageCards, targetLang, nativeLang);
-
-    // Generate correct romanization for non-Korean non-Latin target languages.
-    // Only applies to default cards; user-created cards keep their own romanization.
-    const defaultPageCards = pageCards.filter(c => c.isDefault);
-    const userPageCards = pageCards.filter(c => !c.isDefault);
-    await fillTargetRomanization(defaultPageCards, targetLang);
-    // User-created cards for Latin-script targets: clear Korean romanization
-    if (targetLang !== 'ko' && !ROMANIZATION_LANGS.has(targetLang)) {
-      userPageCards.forEach(c => { if (!c.romanization || c.romanization === c.korean) c.romanization = ''; });
-    }
+    await enrichFlashcardsWithPronunciation(pageCards, targetLang, nativeLang);
 
     res.json({ cards: pageCards, total, page, limit, hasMore: start + limit < total, seed });
   } catch (error) {
@@ -504,7 +483,16 @@ const LANG_FIELDS = ['korean','english','es','fr','de','zh','ja','hi','ar','he',
 // Create flashcard (uses authenticated user's ID)
 router.post('/', async (req, res) => {
   try {
-    const { romanization, audioUrl, category, targetLang, nativeLang } = req.body;
+    const {
+      romanization,
+      officialPronunciation,
+      learnerPronunciation,
+      pronunciationConfidence,
+      audioUrl,
+      category,
+      targetLang,
+      nativeLang,
+    } = req.body;
 
     if (!targetLang || !nativeLang) {
       return res.status(400).json({ message: 'targetLang and nativeLang are required' });
@@ -525,6 +513,9 @@ router.post('/', async (req, res) => {
       userId: req.userId,
       ...langData,
       romanization,
+      officialPronunciation,
+      learnerPronunciation,
+      pronunciationConfidence,
       audioUrl,
       category: normalizeCategory(category),
       targetLang,

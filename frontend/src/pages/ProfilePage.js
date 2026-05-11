@@ -11,6 +11,18 @@ import LANGUAGES, {
 } from '../config/languages';
 import './ProfilePage.css';
 
+function isProOrUltraTier(tier) {
+  return ['pro', 'ultra'].includes(String(tier || '').toLowerCase());
+}
+
+function effectiveSubscriptionTier(user) {
+  if (user?.role === 'admin') return 'pro';
+  return user?.aiEntitlements?.subscriptionTier
+    || user?.subscriptionTier
+    || localStorage.getItem('subscriptionTier')
+    || 'plus';
+}
+
 function ProfilePage({ onLogout }) {
   const { t, i18n } = useTranslation();
   const [user, setUser] = useState(null);
@@ -290,6 +302,12 @@ function ProfilePage({ onLogout }) {
   };
 
   const totalXP = user?.totalXP || 0;
+  const personalizationTier = effectiveSubscriptionTier(user);
+  const canUseLearningPersonalization = Boolean(
+    user?.role === 'admin'
+    || user?.aiEntitlements?.canUsePracticeContext
+    || isProOrUltraTier(personalizationTier),
+  );
 
   return (
     <div className="profile-container">
@@ -399,6 +417,29 @@ function ProfilePage({ onLogout }) {
                     </span>
                   </div>
                 </div>
+              </div>
+
+              <div className={`card personalization-card ${canUseLearningPersonalization ? '' : 'locked'}`}>
+                <div className="personalization-card-main">
+                  <div>
+                    <p className="personalization-kicker">
+                      {canUseLearningPersonalization ? 'Available on your plan' : 'Pro or Ultra'}
+                    </p>
+                    <h2>Learning Personalization</h2>
+                    <p className="card-description">
+                      Save approved words, phrases, and situations from real life so lessons, conversation,
+                      quiz, flashcards, and writing practice can become more relevant to you.
+                    </p>
+                  </div>
+                  <span className="personalization-tier">{String(personalizationTier || 'free').toUpperCase()}</span>
+                </div>
+                <button
+                  type="button"
+                  className={canUseLearningPersonalization ? 'btn btn-primary' : 'btn btn-outline'}
+                  onClick={() => navigate('/learning-personalization')}
+                >
+                  {canUseLearningPersonalization ? 'Manage Personalization' : 'View Upgrade Details'}
+                </button>
               </div>
 
               <div className="card">

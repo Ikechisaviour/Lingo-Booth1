@@ -79,6 +79,26 @@ function escapeXml(text) {
     .replace(/'/g, '&apos;');
 }
 
+// Normalize a rate value to SSML-compatible syntax. Azure / Edge TTS interprets
+// `rate` either as a named constant ("slow", "fast", "default") or as a signed
+// percentage like "-10%" / "+5%". Raw multipliers ("0.9", "1.1") look superficially
+// reasonable but Azure silently falls back to default speed for them, so legacy
+// callers that pass "0.9" expecting a 10% slowdown were getting normal speed.
+const NAMED_RATES = new Set(['x-slow', 'slow', 'medium', 'default', 'fast', 'x-fast']);
+function normalizeRate(rate) {
+  if (rate == null) return '';
+  const raw = String(rate).trim();
+  if (!raw) return '';
+  if (NAMED_RATES.has(raw.toLowerCase())) return raw.toLowerCase();
+  if (/^[+-]\d+(?:\.\d+)?%$/.test(raw)) return raw;
+  const num = Number(raw.replace('%', ''));
+  if (!Number.isFinite(num)) return '';
+  // Treat <= 3 as a multiplier (0.9 → -10%); larger numbers as already-percent (10 → +10%).
+  const percent = Math.abs(num) <= 3 ? Math.round((num - 1) * 100) : Math.round(num);
+  if (percent === 0) return '+0%';
+  return `${percent > 0 ? '+' : ''}${percent}%`;
+}
+
 /**
  * Attempt TTS synthesis with a specific voice.
  * Returns the audio Buffer on success, throws on failure.
@@ -88,7 +108,8 @@ async function attemptSynth(MsEdgeTTS, OUTPUT_FORMAT, voiceName, voiceLocale, es
   await tts.setMetadata(voiceName, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3, voiceLocale);
 
   const options = {};
-  if (rate) options.rate = rate;
+  const normalizedRate = normalizeRate(rate);
+  if (normalizedRate) options.rate = normalizedRate;
 
   const { audioStream } = tts.toStream(escapedText, options);
 

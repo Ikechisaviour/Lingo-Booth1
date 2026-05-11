@@ -10,6 +10,7 @@ import LANGUAGES, {
   getLangField, getTargetField, getNativeField,
   targetLangHasRomanization,
 } from '../config/languages';
+import PronunciationGuide from '../components/PronunciationGuide';
 import './FlashcardsPage.css';
 
 // Normalize category: handles old string format and new array format
@@ -1169,7 +1170,7 @@ function FlashcardsPage() {
                                   </button>
                                 )}
                               </div>
-                              {targetLangHasRomanization() && current.romanization && <span className="romanization">{current.romanization}</span>}
+                              <PronunciationGuide item={current} targetText={displayTarget} />
                             </>
                           ) : translationPending ? (
                             <div className="translation-pending" onClick={(e) => e.stopPropagation()}>
@@ -1252,7 +1253,7 @@ function FlashcardsPage() {
                               </button>
                             )}
                           </div>
-                          {targetLangHasRomanization() && current.romanization && <span className="romanization">{current.romanization}</span>}
+                          <PronunciationGuide item={current} targetText={displayTarget} />
                         </>
                       )}
                       <span className="tap-hint">{t('flashcards.tapToFlipBack')}</span>

@@ -4,24 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { userService } from '../services/api';
 import './Navbar.css';
 
-function isProOrUltraTier(tier) {
-  return ['pro', 'ultra'].includes(String(tier || '').toLowerCase());
-}
-
-function canUseContextPracticeFromStorage(userRole, hasToken) {
-  if (userRole === 'admin' || localStorage.getItem('userRole') === 'admin') return true;
-
-  try {
-    const entitlements = JSON.parse(localStorage.getItem('aiEntitlements') || '{}');
-    if (entitlements.canUsePracticeContext || isProOrUltraTier(entitlements.subscriptionTier)) return true;
-  } catch (_) {
-    // Ignore malformed local settings and fall back to the stored tier.
-  }
-
-  const storedTier = localStorage.getItem('subscriptionTier') || (hasToken ? 'plus' : 'free');
-  return isProOrUltraTier(storedTier);
-}
-
 function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -30,7 +12,6 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
   const userId = localStorage.getItem('userId');
   const hasToken = !!localStorage.getItem('token');
   const [activityState, setActivityState] = useState(null);
-  const canUseContextPractice = canUseContextPracticeFromStorage(userRole, hasToken);
 
   // Sync challenge mode theme with DB state.
   useEffect(() => {
@@ -164,15 +145,6 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
               <span className="nav-text">Conversation</span>
             </Link>
           </li>
-
-          {canUseContextPractice && (
-            <li className="nav-item">
-              <Link to="/context" className={`nav-link ${isActive('/context') ? 'active' : ''}`}>
-                <span className="nav-icon">&#127911;</span>
-                <span className="nav-text">Context</span>
-              </Link>
-            </li>
-          )}
 
           {!isGuest && userRole === 'admin' && (
             <li className="nav-item">

@@ -1,16 +1,17 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FiArrowRight, FiBookOpen, FiCheckCircle, FiLayers, FiMessageCircle, FiTarget } from 'react-icons/fi';
 import { classLessonService } from '../services/api';
 import './HubPages.css';
 import './ClassLessonsPage.css';
 
 // Track displayed order and labels. Adjust here when adding new tracks/levels.
 const TRACK_GROUPS = [
-  { level: 1, track: 'foundation', label: 'Level 1 · Foundation (Hangul)', subtitle: 'Start here — read and write 한글 first.' },
-  { level: 1, track: 'thematic', label: 'Level 1 · Korean Basics', subtitle: 'Everyday Korean — greetings, ordering food, getting around.' },
-  { level: 2, track: 'thematic', label: 'Level 2 · Thematic Intermediate', subtitle: 'Topic-driven units on aptitude, health, sports, culture and more.' },
-  { level: 2, track: 'adult', label: 'Level 2 · Workplace Korean', subtitle: 'Adult / migrant-worker register: shifts, contracts, safety, housing.' },
-  { level: 3, track: 'grammar', label: 'Level 3 · Advanced Grammar', subtitle: 'Pattern-driven clusters that consolidate 30 grammar forms.' },
+  { level: 1, track: 'foundation', label: 'Level 1 · Foundation', subtitle: 'Start here: read, write, and recognize Hangul confidently.', accent: 'mint', icon: FiBookOpen },
+  { level: 1, track: 'thematic', label: 'Level 1 · Korean Basics', subtitle: 'Everyday Korean for greetings, food, places, and simple plans.', accent: 'lime', icon: FiTarget },
+  { level: 2, track: 'thematic', label: 'Level 2 · Thematic Intermediate', subtitle: 'Topic-driven units on aptitude, health, sports, culture, and more.', accent: 'sky', icon: FiLayers },
+  { level: 2, track: 'adult', label: 'Level 2 · Workplace Korean', subtitle: 'Practical register for shifts, contracts, safety, housing, and services.', accent: 'orange', icon: FiMessageCircle },
+  { level: 3, track: 'grammar', label: 'Level 3 · Advanced Grammar', subtitle: 'Pattern clusters that consolidate complex grammar forms.', accent: 'violet', icon: FiCheckCircle },
 ];
 
 // Parse the position of a lesson inside its track from the title text.
@@ -58,6 +59,25 @@ function classifyLesson(lesson) {
   if (difficulty === 'intermediate') return { level: 2, track: 'thematic', position };
   if (difficulty === 'advanced') return { level: 3, track: 'grammar', position };
   return { level: 9, track: 'other', position };
+}
+
+function lessonStats(classLesson) {
+  const items = Array.isArray(classLesson.content) ? classLesson.content : [];
+  return {
+    total: items.length,
+    vocab: items.filter((item) => item.type === 'word').length,
+    grammar: items.filter((item) => item.type === 'sentence').length,
+    dialogues: items.filter((item) => item.type === 'conversation').length,
+  };
+}
+
+function readableDifficulty(value = '') {
+  const label = String(value || 'class').replace(/[-_]/g, ' ').trim();
+  return label ? label.charAt(0).toUpperCase() + label.slice(1) : 'Class';
+}
+
+function trackLabelFor(classify) {
+  return TRACK_GROUPS.find((item) => item.level === classify.level && item.track === classify.track)?.label || 'Class';
 }
 
 function ClassLessonsPage() {
@@ -108,14 +128,80 @@ function ClassLessonsPage() {
   };
 
   const totalLessons = classLessons.length;
+  const overview = useMemo(() => classLessons.reduce((acc, lesson) => {
+    const stats = lessonStats(lesson);
+    return {
+      vocab: acc.vocab + stats.vocab,
+      grammar: acc.grammar + stats.grammar,
+      dialogues: acc.dialogues + stats.dialogues,
+    };
+  }, { vocab: 0, grammar: 0, dialogues: 0 }), [classLessons]);
+
+  const firstClassLesson = useMemo(() => {
+    for (const { level, track } of TRACK_GROUPS) {
+      const lessons = groups.get(`${level}:${track}`);
+      if (lessons?.[0]) return lessons[0];
+    }
+    return classLessons[0];
+  }, [classLessons, groups]);
 
   return (
-    <div className="hub-page">
-      <div className="hub-container">
-        <section className="hub-panel" aria-label="Class">
-          <p className="hub-kicker">Class</p>
-          <h1>Learn with your tutor</h1>
-          <p>Pick a unit. Your tutor walks you through vocabulary, grammar, and dialogues one item at a time.</p>
+    <div className="class-lessons-page">
+      <div className="class-lessons-container">
+        <section className="class-lessons-hero" aria-label="Class">
+          <div className="class-hero-copy">
+            <p className="class-kicker">Class</p>
+            <h1>Learn with your tutor</h1>
+            <p>
+              Choose a structured class unit and move through vocabulary, grammar, dialogue,
+              speaking, and writing with guided support.
+            </p>
+            <div className="class-hero-actions">
+              <button
+                type="button"
+                className="class-primary-action"
+                onClick={() => firstClassLesson && startClassLesson(firstClassLesson._id)}
+                disabled={!firstClassLesson}
+              >
+                <FiBookOpen aria-hidden="true" />
+                Start first available class
+              </button>
+              <span className="class-hero-note">Built for guided lessons, not quick drills.</span>
+            </div>
+          </div>
+
+          <div className="class-hero-panel" aria-label="Class overview">
+            <div className="class-hero-panel-top">
+              <span className="class-hero-icon"><FiLayers aria-hidden="true" /></span>
+              <span className="class-hero-count">{totalLessons || '--'}</span>
+            </div>
+            <p>available class units</p>
+            <div className="class-hero-meter" aria-hidden="true">
+              <span style={{ width: totalLessons ? '72%' : '24%' }} />
+            </div>
+          </div>
+        </section>
+
+        <section className="class-overview-strip" aria-label="Class content overview">
+          <div>
+            <span>{totalLessons}</span>
+            <p>Units</p>
+          </div>
+          <div>
+            <span>{overview.vocab}</span>
+            <p>Vocabulary</p>
+          </div>
+          <div>
+            <span>{overview.grammar}</span>
+            <p>Grammar examples</p>
+          </div>
+          <div>
+            <span>{overview.dialogues}</span>
+            <p>Dialogues</p>
+          </div>
+        </section>
+
+        <section className="class-lessons-panel" aria-label="Class units">
 
           {loading && <p className="class-loading">Loading lessons...</p>}
           {error && <p className="class-error">{error}</p>}
@@ -129,32 +215,48 @@ function ClassLessonsPage() {
           {!loading && !error && TRACK_GROUPS.map(({ level, track, label, subtitle }) => {
             const lessons = groups.get(`${level}:${track}`);
             if (!lessons || lessons.length === 0) return null;
+            const trackInfo = TRACK_GROUPS.find((item) => item.level === level && item.track === track);
+            const TrackIcon = trackInfo?.icon || FiBookOpen;
             return (
-              <section key={`${level}:${track}`} className="class-track" aria-label={label}>
+              <section key={`${level}:${track}`} className={`class-track class-track-${trackInfo?.accent || 'lime'}`} aria-label={label}>
                 <header className="class-track-header">
-                  <h2>{label}</h2>
+                  <div className="class-track-title">
+                    <span className="class-track-icon"><TrackIcon aria-hidden="true" /></span>
+                    <div>
+                      <h2>{label}</h2>
+                      <p className="class-track-subtitle">{subtitle}</p>
+                    </div>
+                  </div>
                   <span className="class-track-count">{lessons.length} lessons</span>
                 </header>
-                <p className="class-track-subtitle">{subtitle}</p>
                 <div className="class-grid">
                   {lessons.map((classLesson) => {
-                    const items = Array.isArray(classLesson.content) ? classLesson.content : [];
-                    const vocab = items.filter((item) => item.type === 'word').length;
-                    const sentences = items.filter((item) => item.type === 'sentence').length;
-                    const conversations = items.filter((item) => item.type === 'conversation').length;
+                    const stats = lessonStats(classLesson);
+                    const titleParts = String(classLesson.title || '').split(/\s*\((.+)\)\s*$/).filter(Boolean);
+                    const primaryTitle = titleParts[0] || classLesson.title;
+                    const secondaryTitle = titleParts[1] || '';
                     return (
                       <article key={classLesson._id} className="class-card">
                         <header className="class-card-header">
-                          <h3>{classLesson.title}</h3>
-                          <span className="class-card-meta">{classLesson.difficulty}</span>
+                          <span className="class-card-track">{trackLabelFor(classLesson._classify)}</span>
+                          <span className="class-card-meta">{readableDifficulty(classLesson.difficulty)}</span>
                         </header>
+                        <div className="class-card-title-block">
+                          <h3>{primaryTitle}</h3>
+                          {secondaryTitle && <p>{secondaryTitle}</p>}
+                        </div>
                         <ul className="class-card-stats">
-                          <li><strong>{vocab}</strong> vocabulary</li>
-                          <li><strong>{sentences}</strong> grammar examples</li>
-                          <li><strong>{conversations}</strong> dialogues</li>
+                          <li><strong>{stats.vocab}</strong><span>Vocabulary</span></li>
+                          <li><strong>{stats.grammar}</strong><span>Grammar</span></li>
+                          <li><strong>{stats.dialogues}</strong><span>Dialogues</span></li>
                         </ul>
+                        <div className="class-card-footer">
+                          <span>{stats.total} activities</span>
+                          <span>Guided tutor</span>
+                        </div>
                         <button type="button" className="class-card-cta" onClick={() => startClassLesson(classLesson._id)}>
                           Start class
+                          <FiArrowRight aria-hidden="true" />
                         </button>
                       </article>
                     );

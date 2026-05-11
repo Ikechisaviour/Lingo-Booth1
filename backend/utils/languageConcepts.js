@@ -72,10 +72,15 @@ function normalizeConceptKey(text) {
 }
 
 function slugifyConcept(text) {
-  return normalizeConceptKey(text)
+  const asciiSlug = normalizeConceptKey(text)
     .replace(/[^a-z0-9]+/g, '_')
     .replace(/^_+|_+$/g, '')
-    .slice(0, 80) || 'item';
+    .slice(0, 80);
+  if (asciiSlug) return asciiSlug;
+
+  const unicodeKey = normalizeConceptKey(text);
+  if (!unicodeKey) return 'item';
+  return `u_${Buffer.from(unicodeKey, 'utf8').toString('hex').slice(0, 80)}`;
 }
 
 function trailingParenthetical(text) {
@@ -280,7 +285,6 @@ function applyConceptToLearningItem(item, targetLang, options = {}) {
 function normalizeLessonForLanguagePair(lessonObj, targetLang, nativeLang, options = {}) {
   if (!lessonObj || !Array.isArray(lessonObj.content)) return lessonObj;
   const shouldDedupe = options.dedupe !== false;
-  const seen = new Set();
   const normalizedContent = [];
 
   for (const rawItem of lessonObj.content) {
@@ -289,22 +293,15 @@ function normalizeLessonForLanguagePair(lessonObj, targetLang, nativeLang, optio
       nativeField: 'nativeText',
     });
 
-    if (!shouldDedupe) {
-      normalizedContent.push(item);
-      continue;
-    }
-
-    const key = [
-      item.type || '',
-      normalizeConceptKey(item.targetText || item.korean || ''),
-      normalizeConceptKey(item.conceptGloss || item.nativeText || item.english || ''),
-    ].join('|');
-    if (seen.has(key)) continue;
-    seen.add(key);
     normalizedContent.push(item);
   }
 
-  lessonObj.content = normalizedContent;
+  lessonObj.content = shouldDedupe
+    ? mergeLearningItemsByTarget(normalizedContent, 'targetText', 'nativeText', {
+      includeType: true,
+      targetLang,
+    })
+    : normalizedContent;
   return lessonObj;
 }
 
@@ -312,7 +309,6 @@ function normalizeFlashcardsForLanguagePair(cards, targetLang, nativeLang) {
   if (!Array.isArray(cards)) return cards;
   const targetField = languageField(targetLang);
   const nativeField = languageField(nativeLang);
-  const seen = new Set();
   const normalized = [];
 
   for (const sourceCard of cards) {
@@ -334,23 +330,154 @@ function normalizeFlashcardsForLanguagePair(cards, targetLang, nativeLang) {
       card[nativeField] = '';
     }
 
-    const key = [
-      normalizeLang(targetLang),
-      normalizeConceptKey(targetText),
-      normalizeConceptKey(card.conceptGloss || card.english || ''),
-      normalizeCategoryForKey(card.category),
-    ].join('|');
-    if (seen.has(key)) continue;
-    seen.add(key);
     normalized.push(card);
   }
 
-  return normalized;
+  return mergeLearningItemsByTarget(normalized, targetField, 'english', {
+    includeType: false,
+    targetLang,
+  });
 }
 
 function normalizeCategoryForKey(category) {
   if (Array.isArray(category)) return category.map(cleanText).filter(Boolean).join(',');
   return cleanText(category || 'uncategorized');
+}
+
+function categoryList(category) {
+  if (Array.isArray(category)) return category.map(cleanText).filter(Boolean);
+  const value = cleanText(category);
+  return value ? [value] : [];
+}
+
+function uniqueByNormalized(values) {
+  const seen = new Set();
+  const result = [];
+  values.forEach((value) => {
+    const text = cleanText(value);
+    if (!text) return;
+    const key = normalizeConceptKey(text);
+    if (seen.has(key)) return;
+    seen.add(key);
+    result.push(text);
+  });
+  return result;
+}
+
+function mergeCategories(first, second) {
+  const merged = uniqueByNormalized([
+    ...categoryList(first),
+    ...categoryList(second),
+  ]);
+  return merged.length ? merged : ['uncategorized'];
+}
+
+function cleanUsageSnapshot(usage) {
+  if (!usage || typeof usage !== 'object' || Array.isArray(usage)) return {};
+  const { meanings, multiMeaning, mergedCount, ...rest } = usage;
+  return rest;
+}
+
+function meaningForItem(item, meaningField) {
+  const text = cleanText(item?.conceptGloss || item?.[meaningField] || item?.english || item?.nativeText || '');
+  if (!text) return null;
+  return {
+    text,
+    conceptId: cleanText(item?.conceptId || ''),
+    usage: cleanUsageSnapshot(item?.usage),
+  };
+}
+
+function mergeMeaningLists(first = [], second = []) {
+  const seen = new Set();
+  const result = [];
+  [...first, ...second].forEach((meaning) => {
+    if (!meaning?.text) return;
+    const key = normalizeConceptKey(meaning.text);
+    if (seen.has(key)) return;
+    seen.add(key);
+    result.push(meaning);
+  });
+  return result;
+}
+
+function mergeLearningItemsByTarget(items, targetField, meaningField, options = {}) {
+  const includeType = options.includeType !== false;
+  const targetLang = normalizeLang(options.targetLang || '');
+  const byTarget = new Map();
+  const merged = [];
+
+  for (const item of items) {
+    const targetText = cleanText(item?.[targetField] || item?.targetText || item?.korean || '');
+    if (!targetText) {
+      merged.push(item);
+      continue;
+    }
+
+    const key = [
+      targetLang,
+      includeType ? cleanText(item.type || '') : '',
+      normalizeConceptKey(targetText),
+    ].join('|');
+
+    if (!byTarget.has(key)) {
+      const baseMeaning = meaningForItem(item, meaningField);
+      item.usage = {
+        ...(item.usage && typeof item.usage === 'object' ? item.usage : {}),
+        ...(baseMeaning ? { meanings: [baseMeaning] } : {}),
+        mergedCount: 1,
+      };
+      byTarget.set(key, item);
+      merged.push(item);
+      continue;
+    }
+
+    const existing = byTarget.get(key);
+    const existingMeanings = Array.isArray(existing.usage?.meanings)
+      ? existing.usage.meanings
+      : [meaningForItem(existing, meaningField)].filter(Boolean);
+    const incomingMeaning = meaningForItem(item, meaningField);
+    const nextMeanings = mergeMeaningLists(existingMeanings, incomingMeaning ? [incomingMeaning] : []);
+    const meaningTexts = uniqueByNormalized(nextMeanings.map(meaning => meaning.text));
+    const displayMeaning = meaningTexts.join(' / ');
+
+    if (displayMeaning) {
+      existing[meaningField] = displayMeaning;
+      existing.conceptGloss = displayMeaning;
+      if (meaningField === 'english' || 'english' in existing) {
+        existing.english = displayMeaning;
+      }
+      if (meaningField === 'nativeText' || 'nativeText' in existing) {
+        existing.nativeText = displayMeaning;
+      }
+    }
+
+    if ('category' in existing || 'category' in item) {
+      existing.category = mergeCategories(existing.category, item.category);
+    }
+    existing.usage = {
+      ...(existing.usage && typeof existing.usage === 'object' ? existing.usage : {}),
+      meanings: nextMeanings,
+      multiMeaning: nextMeanings.length > 1,
+      mergedCount: (existing.usage?.mergedCount || 1) + 1,
+    };
+
+    const conceptIds = uniqueByNormalized(nextMeanings.map(meaning => meaning.conceptId).filter(Boolean));
+    if (conceptIds.length > 1 || !existing.conceptId) {
+      existing.conceptId = `lexeme.${slugifyConcept(targetText)}`;
+    }
+  }
+
+  return merged.map((item) => {
+    if (item.usage && typeof item.usage === 'object' && !Array.isArray(item.usage)) {
+      const meanings = Array.isArray(item.usage.meanings) ? item.usage.meanings : [];
+      const { meanings: _meanings, multiMeaning: _multiMeaning, mergedCount: _mergedCount, ...rest } = item.usage;
+      item.usage = meanings.length > 1
+        ? { ...rest, meanings, multiMeaning: true }
+        : rest;
+    }
+    return item;
+  });
 }
 
 function prepareDefaultFlashcardForSeed(card, targetLang, index) {
@@ -359,6 +486,9 @@ function prepareDefaultFlashcardForSeed(card, targetLang, index) {
     korean: card.korean,
     english: card.english,
     romanization: card.romanization || '',
+    officialPronunciation: card.officialPronunciation || card.romanization || '',
+    learnerPronunciation: card.learnerPronunciation || '',
+    pronunciationConfidence: card.pronunciationConfidence || undefined,
     category: Array.isArray(card.category) ? card.category : [card.category || 'uncategorized'],
     isDefault: true,
     defaultIndex: index,
@@ -374,11 +504,22 @@ function prepareDefaultFlashcardForSeed(card, targetLang, index) {
   return doc;
 }
 
+function prepareDefaultFlashcardsForSeed(cards, targetLang, startIndex = 0) {
+  const docs = (cards || []).map((card, index) => prepareDefaultFlashcardForSeed(card, card.targetLang || targetLang, startIndex + index));
+  const normalized = normalizeFlashcardsForLanguagePair(docs, targetLang, 'en');
+  normalized.forEach((doc, index) => {
+    doc.defaultIndex = startIndex + index;
+  });
+  return normalized;
+}
+
 module.exports = {
   LANGUAGE_FIELDS,
   languageField,
+  normalizeConceptKey,
   parseConceptGloss,
   normalizeLessonForLanguagePair,
   normalizeFlashcardsForLanguagePair,
   prepareDefaultFlashcardForSeed,
+  prepareDefaultFlashcardsForSeed,
 };

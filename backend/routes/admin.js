@@ -7,9 +7,11 @@ const Flashcard = require('../models/Flashcard');
 const Progress = require('../models/Progress');
 const GuestSession = require('../models/GuestSession');
 const ErrorReport = require('../models/ErrorReport');
+const Pronunciation = require('../models/Pronunciation');
 const { verifyToken, isAdmin } = require('../middleware/auth');
 const { getAiEntitlements } = require('../utils/subscription');
 const { recordServerError } = require('../utils/errorReporting');
+const { normalizeTextKey } = require('../utils/pronunciationService');
 
 const DEEPSEEK_API_URL = 'https://api.deepseek.com/chat/completions';
 
@@ -297,6 +299,63 @@ router.post('/local-demo/speaking-demo/conversation', async (req, res) => {
 // Apply auth middleware to all routes below this line.
 router.use(verifyToken);
 router.use(isAdmin);
+
+router.get('/pronunciation-audit', async (req, res) => {
+  try {
+    const targetLang = String(req.query.targetLang || 'ko').trim().toLowerCase();
+    const nativeLang = String(req.query.nativeLang || 'en').trim().toLowerCase();
+    const limit = Math.min(100, Math.max(1, Number(req.query.limit) || 25));
+    const targetField = targetLang === 'ko' ? 'korean' : (targetLang === 'en' ? 'english' : targetLang);
+
+    const defaultCards = await Flashcard.find({ isDefault: true, targetLang })
+      .select(`${targetField} korean english romanization officialPronunciation learnerPronunciation pronunciationConfidence`)
+      .limit(limit)
+      .lean();
+
+    const normalizedTargets = defaultCards
+      .map(card => normalizeTextKey(card[targetField] || card.korean || card.english || ''))
+      .filter(Boolean);
+
+    const cached = await Pronunciation.find({
+      targetLang,
+      nativeLang,
+      normalizedTargetText: { $in: normalizedTargets },
+    }).lean();
+    const cachedMap = new Map(cached.map(item => [item.normalizedTargetText, item]));
+
+    const missing = [];
+    const weak = [];
+
+    defaultCards.forEach((card) => {
+      const targetText = String(card[targetField] || card.korean || card.english || '').trim();
+      const normalized = normalizeTextKey(targetText);
+      const pronunciation = cachedMap.get(normalized);
+      if (!pronunciation) {
+        missing.push({ id: card._id, targetText });
+      } else if (pronunciation.pronunciationConfidence === 'audioFirst') {
+        weak.push({
+          id: card._id,
+          targetText,
+          officialPronunciation: pronunciation.officialPronunciation || '',
+          learnerPronunciation: pronunciation.learnerPronunciation || '',
+          confidence: pronunciation.pronunciationConfidence,
+        });
+      }
+    });
+
+    res.json({
+      targetLang,
+      nativeLang,
+      sampled: defaultCards.length,
+      cached: cached.length,
+      missing,
+      weak,
+    });
+  } catch (error) {
+    console.error('Admin pronunciation audit error:', error);
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+});
 
 // Get comprehensive dashboard statistics
 router.get('/stats', async (req, res) => {
@@ -955,7 +1014,7 @@ router.post('/seed-lessons', async (req, res) => {
 router.post('/seed-flashcards', async (req, res) => {
   try {
     const Flashcard = require('../models/Flashcard');
-    const { prepareDefaultFlashcardForSeed } = require('../utils/languageConcepts');
+    const { prepareDefaultFlashcardsForSeed } = require('../utils/languageConcepts');
     const existingLangs = await Flashcard.distinct('targetLang', { isDefault: true });
 
     const langDataMap = {};
@@ -970,8 +1029,10 @@ router.post('/seed-flashcards', async (req, res) => {
     }
 
     let inserted = 0;
+    const normalizedCounts = {};
     for (const [lang, cards] of Object.entries(langDataMap)) {
-      const docs = cards.map((card, i) => prepareDefaultFlashcardForSeed(card, card.targetLang || lang, i));
+      const docs = prepareDefaultFlashcardsForSeed(cards, lang, 0);
+      normalizedCounts[lang] = { source: cards.length, inserted: docs.length };
       if (docs.length > 0) {
         const result = await Flashcard.insertMany(docs);
         inserted += result.length;
@@ -983,6 +1044,7 @@ router.post('/seed-flashcards', async (req, res) => {
       inserted,
       existingLangs,
       newLangs: Object.keys(langDataMap),
+      normalizedCounts,
     });
   } catch (error) {
     console.error('Admin seed-flashcards error:', error);

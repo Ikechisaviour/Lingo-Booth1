@@ -5,6 +5,7 @@ import { quizService, progressService, userService, guestXPHelper } from '../ser
 import guestActivityTracker from '../services/guestActivityTracker';
 import speechService from '../services/speechService';
 import { getTargetLangCode, getNativeLangCode, getTargetLangName, getNativeLangName } from '../config/languages';
+import PronunciationGuide from '../components/PronunciationGuide';
 import './QuizDetailPage.css';
 
 function QuizDetailPage() {
@@ -602,7 +603,7 @@ function QuizDetailPage() {
                   {showRomanization ? t('lessonDetail.hideRomanization') : t('lessonDetail.showRomanization')}
                 </button>
                 {showRomanization && (
-                  <p className="romanization">{t('lessonDetail.pronunciation')}: {content.romanization}</p>
+                  <PronunciationGuide item={content} targetText={content.targetText} />
                 )}
               </>
             ) : (
@@ -617,7 +618,7 @@ function QuizDetailPage() {
                     {isSpeaking ? '🔇' : '🔊'}
                   </button>
                 </div>
-                <p className="romanization">{t('lessonDetail.pronunciation')}: {content.romanization}</p>
+                <PronunciationGuide item={content} targetText={content.targetText} />
               </>
             )}
 

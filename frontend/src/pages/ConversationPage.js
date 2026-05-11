@@ -10,6 +10,13 @@ import {
   languageRole,
   spokenPartsForMessage,
 } from '../utils/languageSegments';
+import {
+  CONVERSATION_REPEAT_COMMANDS,
+  CONVERSATION_SLOWER_COMMANDS,
+  CONVERSATION_STOP_COMMANDS,
+  conversationVoiceForLocale,
+  handsFreeCopy,
+} from '../utils/conversationSpeech';
 import './ConversationPage.css';
 
 const SESSION_ID = 'learner-conversation';
@@ -643,6 +650,10 @@ const SLOWER_COMMANDS = new Set([
   'habla mas despacio',
 ]);
 
+const LOCALIZED_STOP_COMMANDS = new Set(CONVERSATION_STOP_COMMANDS.map(normalizeVoiceCommand));
+const LOCALIZED_REPEAT_COMMANDS = new Set(CONVERSATION_REPEAT_COMMANDS.map(normalizeVoiceCommand));
+const LOCALIZED_SLOWER_COMMANDS = new Set(CONVERSATION_SLOWER_COMMANDS.map(normalizeVoiceCommand));
+
 function ConversationPage() {
   const [searchParams] = useSearchParams();
   const lessonId = searchParams.get('lessonId') || '';
@@ -772,7 +783,7 @@ function ConversationPage() {
     if (!starter) return;
     sessionStorage.removeItem('lingoContextConversationStarter');
     setTurn(starter);
-    setStatus('Saved context starter ready. Press Send to begin.');
+    setStatus('Personalized starter ready. Press Send to begin.');
     setStatusTone('idle');
   }, []);
 
@@ -842,20 +853,24 @@ function ConversationPage() {
       if (speechParts.length) {
         for (const part of speechParts) {
           if (part?.text) {
+            const lang = ttsLocaleFor(part.language, targetLanguage);
             await speechService.speakAsync(part.text, {
-              lang: ttsLocaleFor(part.language, targetLanguage),
+              lang,
+              voice: message?.role === 'assistant' ? conversationVoiceForLocale(lang, part.speaker) : undefined,
               rate: options.rate || '0.9',
             });
           }
         }
         return;
       }
+      const lang = ttsLocaleFor(message?.language || targetLanguage, targetLanguage);
       await speechService.speakAsync(message?.content || '', {
-        lang: ttsLocaleFor(message?.language || targetLanguage, targetLanguage),
+        lang,
+        voice: message?.role === 'assistant' ? conversationVoiceForLocale(lang) : undefined,
         rate: options.rate || '0.9',
       });
     } catch (_) {
-      setStatus('Audio playback was interrupted.');
+      setStatus(handsFreeCopy(nativeLanguage).audioInterrupted);
       setStatusTone('error');
     }
   };
@@ -1144,7 +1159,7 @@ function ConversationPage() {
     recognitionRef.current?.abort?.();
     recognitionRef.current = null;
     speechService.cancel();
-    setStatus('Hands-free mode stopped.');
+    setStatus(handsFreeCopy(nativeLanguage).stoppedStatus);
     setStatusTone('idle');
   };
 
@@ -1159,16 +1174,17 @@ function ConversationPage() {
   const handleHandsFreeCommand = async (transcript) => {
     const command = normalizeVoiceCommand(transcript);
 
-    if (STOP_COMMANDS.has(command)) {
+    if (LOCALIZED_STOP_COMMANDS.has(command) || STOP_COMMANDS.has(command)) {
+      const copy = handsFreeCopy(nativeLanguage);
       stopHandsFree();
-      await speechService.speakAsync('Hands-free mode stopped.', {
-        lang: ttsLocaleFor('en', 'en'),
+      await speechService.speakAsync(copy.stoppedSpoken, {
+        lang: ttsLocaleFor(nativeLanguage, 'en'),
         rate: '0.9',
       });
       return true;
     }
 
-    if (REPEAT_COMMANDS.has(command)) {
+    if (LOCALIZED_REPEAT_COMMANDS.has(command) || REPEAT_COMMANDS.has(command)) {
       if (lastAssistantRef.current) {
         await speakMessage(lastAssistantRef.current);
       }
@@ -1176,7 +1192,7 @@ function ConversationPage() {
       return true;
     }
 
-    if (SLOWER_COMMANDS.has(command)) {
+    if (LOCALIZED_SLOWER_COMMANDS.has(command) || SLOWER_COMMANDS.has(command)) {
       if (lastAssistantRef.current) {
         await speakMessage(lastAssistantRef.current, { rate: '0.72' });
       }
@@ -1187,11 +1203,36 @@ function ConversationPage() {
     return false;
   };
 
+  // Map terse Web Speech error codes to actionable guidance for the learner.
+  const speechErrorMessage = (event) => {
+    const copy = handsFreeCopy(nativeLanguage);
+    if (event?.error === 'not-allowed' || event?.error === 'service-not-allowed') return copy.permission;
+    if (event?.error === 'no-speech') return copy.noSpeech;
+    if (event?.error === 'audio-capture') return copy.audioCapture;
+    if (event?.error === 'network') return copy.network;
+    if (event?.error === 'aborted') return copy.aborted;
+    switch (event?.error) {
+      case 'not-allowed':
+      case 'service-not-allowed':
+        return 'Microphone permission is blocked. Open your browser site settings, allow the microphone, then reload this page.';
+      case 'no-speech':
+        return 'No speech was heard. Try again — speak after the "Listening…" indicator appears.';
+      case 'audio-capture':
+        return 'No microphone detected. Plug in or enable a microphone, then try again.';
+      case 'network':
+        return 'Network error during speech recognition. Check your connection and try again.';
+      case 'aborted':
+        return 'Speech input was cancelled.';
+      default:
+        return copy.captureFailed;
+    }
+  };
+
   const startListening = (options = {}) => {
     const { autoContinue = false } = options;
     const Recognition = getSpeechRecognition();
     if (!Recognition) {
-      setStatus('Speech input is not available in this browser.');
+      setStatus(handsFreeCopy(nativeLanguage).unavailable);
       setStatusTone('error');
       if (autoContinue) {
         handsFreeRef.current = false;
@@ -1206,61 +1247,90 @@ function ConversationPage() {
 
     const recognition = new Recognition();
     recognition.lang = ttsLocaleFor(targetLanguage, targetLanguage);
-    recognition.interimResults = false;
+    // Live captions in the input field so the learner can see (and trust) what
+    // the recognizer is hearing as they speak. Auto-stop after the pause is
+    // preserved so hands-free turn-taking still works.
+    recognition.interimResults = true;
     recognition.maxAlternatives = 1;
     recognition.continuous = false;
     recognitionRef.current = recognition;
+    const copy = handsFreeCopy(nativeLanguage);
     let heardSpeech = false;
     let restartOnEnd = false;
+    let finalTranscript = '';
 
     recognition.onstart = () => {
       setListening(true);
-      setStatus(autoContinue ? 'Hands-free is listening...' : 'Listening...');
+      setStatus(autoContinue ? copy.listening : 'Listening...');
       setStatusTone('loading');
     };
     recognition.onerror = (event) => {
       if (autoContinue && handsFreeRef.current && event.error === 'no-speech') {
         restartOnEnd = true;
-        setStatus('Still listening...');
+        setStatus(copy.stillListening);
         setStatusTone('loading');
         return;
       }
       setListening(false);
-      setStatus(event.error === 'not-allowed'
-        ? 'Microphone permission is blocked.'
-        : 'Could not capture speech. Please try again.');
+      setStatus(speechErrorMessage(event));
       setStatusTone('error');
       if (autoContinue) {
         handsFreeRef.current = false;
         setHandsFreeActive(false);
       }
     };
-    recognition.onend = () => {
+    recognition.onend = async () => {
       setListening(false);
       recognitionRef.current = null;
       if (autoContinue && handsFreeRef.current && (restartOnEnd || !heardSpeech)) {
         scheduleHandsFreeListening();
         return;
       }
+      const captured = finalTranscript.trim();
+      if (captured) {
+        setTurn(captured);
+        if (autoContinue && handsFreeRef.current) {
+          const handled = await handleHandsFreeCommand(captured);
+          if (handled) return;
+          sendTurn(captured, { autoContinue });
+          return;
+        }
+        // Push-to-talk: leave the transcript in the input box so the learner
+        // can correct misrecognitions before sending. Avoids "wrong words go
+        // straight to the AI" surprise.
+        setStatus(copy.captured);
+        setStatusTone('idle');
+        return;
+      }
       if (!loading) {
-        setStatus((currentStatus) => (currentStatus === 'Listening...' || currentStatus === 'Hands-free is listening...' ? 'Ready' : currentStatus));
+        setStatus((currentStatus) => (currentStatus === 'Listening...' || currentStatus === copy.listening ? 'Ready' : currentStatus));
         setStatusTone((currentTone) => (currentTone === 'loading' ? 'idle' : currentTone));
       }
     };
-    recognition.onresult = async (event) => {
-      const transcript = event.results?.[0]?.[0]?.transcript || '';
-      heardSpeech = Boolean(transcript.trim());
-      if (transcript.trim()) {
-        setTurn(transcript);
-        if (autoContinue && handsFreeRef.current) {
-          const handled = await handleHandsFreeCommand(transcript);
-          if (handled) return;
-        }
-        sendTurn(transcript, { autoContinue });
+    recognition.onresult = (event) => {
+      let interim = '';
+      let finalChunk = '';
+      for (let i = event.resultIndex; i < event.results.length; i += 1) {
+        const result = event.results[i];
+        const text = result?.[0]?.transcript || '';
+        if (result.isFinal) finalChunk += text;
+        else interim += text;
+      }
+      if (finalChunk) finalTranscript = (finalTranscript + ' ' + finalChunk).trim();
+      const preview = `${finalTranscript} ${interim}`.trim();
+      if (preview) {
+        heardSpeech = true;
+        setTurn(preview);
       }
     };
 
-    recognition.start();
+    try {
+      recognition.start();
+    } catch (err) {
+      setListening(false);
+      setStatus(speechErrorMessage({ error: 'aborted' }));
+      setStatusTone('error');
+    }
   };
 
   const stopListening = () => {
@@ -1271,8 +1341,9 @@ function ConversationPage() {
 
   const startHandsFree = async () => {
     if (!canUseAI || quotaExceeded || loading) return;
+    const copy = handsFreeCopy(nativeLanguage);
     if (!speechSupported) {
-      setStatus('Hands-free mode needs a browser with speech input support.');
+      setStatus(copy.unavailable);
       setStatusTone('error');
       return;
     }
@@ -1285,16 +1356,16 @@ function ConversationPage() {
     handsFreeRef.current = true;
     setHandsFreeActive(true);
     setSpeechEnabled(true);
-    setStatus('Starting hands-free mode...');
+    setStatus(copy.starting);
     setStatusTone('loading');
 
     try {
-      await speechService.speakAsync('Hands-free mode started. I will listen after each reply. Say stop to end.', {
-        lang: ttsLocaleFor('en', 'en'),
+      await speechService.speakAsync(copy.startedSpoken, {
+        lang: ttsLocaleFor(nativeLanguage, 'en'),
         rate: '0.9',
       });
     } catch (_) {
-      setStatus('Audio playback was interrupted.');
+      setStatus(copy.audioInterrupted);
       setStatusTone('error');
     }
 
@@ -1415,7 +1486,7 @@ function ConversationPage() {
 
               {contextPracticeActions.length > 0 && (
                 <div className="conversation-context-actions">
-                  <span>Based on saved context</span>
+                  <span>Personalized for you</span>
                   {contextPracticeActions.map((item) => (
                     <button
                       key={item.key}

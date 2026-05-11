@@ -94,7 +94,7 @@ function itemsFromLesson(lesson = {}) {
 }
 
 function itemsFromContext(context = {}) {
-  const sourceLabel = context.summary || 'Saved context';
+  const sourceLabel = context.summary || 'Personalized';
   return [
     ...(context.vocabulary || []),
     ...(context.phrases || []),
@@ -350,7 +350,7 @@ function WritingPracticePage() {
   const sources = useMemo(() => ([
     ['all', 'All'],
     ['class', 'Class'],
-    ['context', 'Context'],
+    ['context', 'Personalized'],
     ['conversation', 'Conversation'],
     ['personal', 'Personal'],
   ]), []);

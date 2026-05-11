@@ -96,6 +96,15 @@ const ContextPracticeScreen: React.FC = () => {
   );
 
   const items = useMemo(() => selectableItems(analysis), [analysis]);
+  const openConversation = (params?: Record<string, unknown>) => {
+    const parent = navigation.getParent?.();
+    if (parent) parent.navigate('Conversation', params);
+    else navigation.navigate('Conversation', params);
+  };
+  const goBackToProfile = () => {
+    if (navigation.canGoBack?.()) navigation.goBack();
+    else navigation.navigate('ProfileMain');
+  };
 
   const loadSavedContext = async () => {
     if (!canUseContextPractice) {
@@ -124,7 +133,7 @@ const ContextPracticeScreen: React.FC = () => {
 
   const startListening = async () => {
     if (!canUseContextPractice) {
-      setStatus('Real-life context practice is available on Pro and Ultra.');
+      setStatus('Learning Personalization is available on Pro and Ultra.');
       return;
     }
 
@@ -198,7 +207,7 @@ const ContextPracticeScreen: React.FC = () => {
 
   const analyze = async () => {
     if (!canUseContextPractice) {
-      setStatus('Real-life context practice is available on Pro and Ultra.');
+      setStatus('Learning Personalization is available on Pro and Ultra.');
       return;
     }
 
@@ -238,13 +247,13 @@ const ContextPracticeScreen: React.FC = () => {
 
   const saveSelected = async () => {
     if (!canUseContextPractice) {
-      setStatus('Real-life context practice is available on Pro and Ultra.');
+      setStatus('Learning Personalization is available on Pro and Ultra.');
       return;
     }
 
     if (!analysis) return;
     setLoading(true);
-    setStatus('Saving approved learning context...');
+    setStatus('Saving approved personalization items...');
     try {
       const grouped = groupSelected(items, selectedKeys);
       const res = await practiceContextService.save({
@@ -264,9 +273,9 @@ const ContextPracticeScreen: React.FC = () => {
       setAnalysis(null);
       setTranscript('');
       setSelectedKeys(new Set());
-      setStatus('Saved. Future practice can use this context.');
+      setStatus('Saved. Future practice can use these items.');
     } catch {
-      setStatus('Could not save this context. Please try again.');
+      setStatus('Could not save these items. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -275,7 +284,7 @@ const ContextPracticeScreen: React.FC = () => {
   const deleteContext = (contextId: string) => {
     if (!canUseContextPractice) return;
 
-    Alert.alert('Delete context?', 'This removes the saved learning context from personalization.', [
+    Alert.alert('Delete saved item?', 'This removes the saved item from Learning Personalization.', [
       { text: 'Cancel', style: 'cancel' },
       {
         text: 'Delete',
@@ -288,7 +297,7 @@ const ContextPracticeScreen: React.FC = () => {
               .then((recommendationRes) => setRecommendations((recommendationRes.data || null) as PracticeRecommendations | null))
               .catch(() => {});
           } catch {
-            setStatus('Could not delete that context.');
+            setStatus('Could not delete that saved item.');
           }
         },
       },
@@ -298,13 +307,16 @@ const ContextPracticeScreen: React.FC = () => {
   if (!canUseContextPractice) {
     return (
       <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
+        <Button mode="text" icon="arrow-left" onPress={goBackToProfile} style={styles.backButton}>
+          Back to Profile
+        </Button>
         <View style={styles.header}>
           <View style={{ flex: 1 }}>
-            <Text style={styles.kicker}>Context practice</Text>
-            <Text variant="headlineSmall" style={styles.title}>Teach from real life</Text>
+            <Text style={styles.kicker}>Learning Personalization</Text>
+            <Text variant="headlineSmall" style={styles.title}>Lessons shaped around you</Text>
             <Text style={styles.subtitle}>
-              Real-life context practice is available on Pro and Ultra. Conversation and class practice still work,
-              but this plan will not save or use background learning context.
+              Pro and Ultra can save approved words, phrases, and situations from real life so future practice
+              feels more relevant. Free and Plus can keep using regular practice.
             </Text>
           </View>
           <View style={styles.statusPill}>
@@ -312,11 +324,11 @@ const ContextPracticeScreen: React.FC = () => {
           </View>
         </View>
         <View style={styles.panel}>
-          <Text style={styles.panelTitle}>Pro or Ultra required</Text>
+          <Text style={styles.panelTitle}>Upgrade to personalize practice</Text>
           <Text style={styles.emptyText}>
-            Upgrade later to let approved real-life words, phrases, and situations shape future lessons.
+            Upgrade when you want lessons, review prompts, and roleplays to adapt to the everyday language you approve.
           </Text>
-          <Button mode="contained" icon="message-text" onPress={() => navigation.navigate('Conversation')} style={styles.lockedButton}>
+          <Button mode="contained" icon="message-text" onPress={() => openConversation()} style={styles.lockedButton}>
             Open Conversation
           </Button>
         </View>
@@ -326,10 +338,13 @@ const ContextPracticeScreen: React.FC = () => {
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
+      <Button mode="text" icon="arrow-left" onPress={goBackToProfile} style={styles.backButton}>
+        Back to Profile
+      </Button>
       <View style={styles.header}>
         <View>
-          <Text style={styles.kicker}>Context practice</Text>
-          <Text variant="headlineSmall" style={styles.title}>Teach from real life</Text>
+          <Text style={styles.kicker}>Learning Personalization</Text>
+          <Text variant="headlineSmall" style={styles.title}>Lessons shaped around you</Text>
           <Text style={styles.subtitle}>
             Listen during an intentional session, review the useful items, and save only what you approve.
           </Text>
@@ -394,7 +409,7 @@ const ContextPracticeScreen: React.FC = () => {
       <View style={styles.panel}>
         <Text style={styles.panelTitle}>Practice next</Text>
         {!recommendations?.hasContext ? (
-          <Text style={styles.emptyText}>Save context to unlock roleplays, review drills, and tutor prompts.</Text>
+          <Text style={styles.emptyText}>Save personalization items to unlock roleplays, review drills, and class prompts.</Text>
         ) : (
           <>
             {(recommendations.roleplays || []).slice(0, 3).map((item) => (
@@ -404,7 +419,7 @@ const ContextPracticeScreen: React.FC = () => {
                 <Button
                   mode="contained-tonal"
                   compact
-                  onPress={() => navigation.navigate('Conversation', { starter: item.prompt })}
+                  onPress={() => openConversation({ starter: item.prompt })}
                   style={styles.practiceButton}
                 >
                   Start in Conversation
@@ -418,7 +433,7 @@ const ContextPracticeScreen: React.FC = () => {
                 <Button
                   mode="outlined"
                   compact
-                  onPress={() => navigation.navigate('Conversation', { starter: item.prompt })}
+                  onPress={() => openConversation({ starter: item.prompt })}
                   style={styles.practiceButton}
                 >
                   Practice this
@@ -435,12 +450,12 @@ const ContextPracticeScreen: React.FC = () => {
       </View>
 
       <View style={styles.panel}>
-        <Text style={styles.panelTitle}>Saved learning context</Text>
+        <Text style={styles.panelTitle}>Saved personalization</Text>
         {savedContexts.length === 0 ? (
-          <Text style={styles.emptyText}>No saved context yet.</Text>
+          <Text style={styles.emptyText}>No saved personalization items yet.</Text>
         ) : savedContexts.map((context) => (
           <View key={context._id} style={styles.savedCard}>
-            <Text style={styles.summary}>{context.summary || 'Saved practice context'}</Text>
+            <Text style={styles.summary}>{context.summary || 'Saved personalization item'}</Text>
             <View style={styles.tagRow}>
               {(context.environmentTags || []).map((tag: string) => <Text key={tag} style={styles.tag}>{tag}</Text>)}
             </View>
@@ -458,6 +473,10 @@ const ContextPracticeScreen: React.FC = () => {
 const createStyles = (colors: AppColors) => StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
   content: { padding: 14, paddingBottom: 96 },
+  backButton: {
+    alignSelf: 'flex-start',
+    marginBottom: 8,
+  },
   header: {
     backgroundColor: colors.surface,
     borderRadius: 12,

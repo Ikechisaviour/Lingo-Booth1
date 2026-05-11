@@ -143,6 +143,49 @@
   gap: 24px;
 }
 
+.personalization-card {
+  display: grid;
+  gap: 16px;
+  border-left: 4px solid var(--primary);
+  background:
+    linear-gradient(135deg, rgba(88, 204, 2, 0.08), rgba(255, 140, 90, 0.08)),
+    var(--surface);
+}
+
+.personalization-card.locked {
+  border-left-color: #ff8c5a;
+}
+
+.personalization-card-main {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.personalization-kicker {
+  margin: 0 0 6px;
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.personalization-card h2 {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+}
+
+.personalization-tier {
+  flex-shrink: 0;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
 /* Info Card */
 .info-card .card-header {
   display: flex;
@@ -649,6 +692,10 @@
 
   .info-grid {
     grid-template-columns: 1fr;
+  }
+
+  .personalization-card-main {
+    flex-direction: column;
   }
 
   .stats-grid {
