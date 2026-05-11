@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(node -e ' *)",
-      "Bash(node scripts/seedLevel1Foundation.js)"
+      "Bash(node scripts/seedLevel1Foundation.js)",
+      "Bash(git push *)",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\Saviour ICT-CRC\\\\Desktop\\\\Personal Project\\\\Personal Projects2\\\\korean-learning-app\" -Directory)"
     ]
   }
 }

@@ -20,6 +20,12 @@ const flashcardSchema = new mongoose.Schema({
   romanization: String,
   english: String,
   audioUrl: String,
+  conceptId: String,
+  conceptGloss: String,
+  usage: {
+    type: mongoose.Schema.Types.Mixed,
+    default: {},
+  },
   // Translations of the 'english' field into each supported native language
   es: String,  // Spanish
   fr: String,  // French
@@ -39,6 +45,7 @@ const flashcardSchema = new mongoose.Schema({
   tr: String,  // Turkish
   bn: String,  // Bengali
   ta: String,  // Tamil
+  th: String,  // Thai
   category: {
     type: [String],
     default: ['uncategorized'],

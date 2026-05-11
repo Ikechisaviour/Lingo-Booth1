@@ -93,14 +93,29 @@ const isAuthRequest = (url = '') => (
   url.includes('/auth/google')
 );
 
-const endExpiredSession = () => {
+// Guard so concurrent 401s from a single stale token don't each report
+// and re-dispatch sessionExpired. Reset on any successful response.
+let sessionExpiryActive = false;
+
+const endExpiredSession = (error, phase) => {
+  if (sessionExpiryActive) return;
+  sessionExpiryActive = true;
+  if (error && phase) reportApiError(error, { phase });
   clearSession();
   window.dispatchEvent(new CustomEvent('sessionExpired'));
 };
 
+const isExpectedStatus = (config, status) => {
+  const expected = config?.expectedStatuses;
+  return Array.isArray(expected) && status != null && expected.includes(status);
+};
+
 // Retry logic for network errors and 5xx server errors + auto-refresh on 401
 api.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    sessionExpiryActive = false;
+    return response;
+  },
   async (error) => {
     const config = error.config;
 
@@ -121,6 +136,7 @@ api.interceptors.response.use(
               .then((res) => {
                 const newToken = res.data.token;
                 localStorage.setItem('token', newToken);
+                sessionExpiryActive = false;
                 return newToken;
               })
               .finally(() => { refreshPromise = null; });
@@ -129,14 +145,12 @@ api.interceptors.response.use(
           config.headers.Authorization = `Bearer ${newToken}`;
           return api(config);
         } catch {
-          // Refresh failed — force logout
-          reportApiError(error, { phase: 'auth-refresh-failed' });
-          endExpiredSession();
+          // Refresh failed — force logout (deduped across concurrent 401s)
+          endExpiredSession(error, 'auth-refresh-failed');
           return Promise.reject(error);
         }
       }
-      reportApiError(error, { phase: 'auth-expired' });
-      endExpiredSession();
+      endExpiredSession(error, 'auth-expired');
     }
 
     // Only retry GET requests, max 2 retries
@@ -170,7 +184,9 @@ api.interceptors.response.use(
       clearSession();
       window.dispatchEvent(new CustomEvent('accountSuspended'));
     }
-    reportApiError(error);
+    if (!isExpectedStatus(config, error.response?.status)) {
+      reportApiError(error);
+    }
     return Promise.reject(error);
   }
 );
@@ -224,8 +240,26 @@ export const classLessonService = {
     return api.get('/class-lessons', { params: { targetLang, nativeLang } });
   },
   getClassLesson: (classLessonId) => {
+    if (!classLessonId) {
+      return Promise.reject(new Error('classLessonId is required'));
+    }
     const nativeLang = localStorage.getItem('nativeLanguage') || '';
     return api.get(`/class-lessons/${classLessonId}`, { params: { nativeLang }, timeout: 30000 });
+  },
+  getProgress: (classLessonId) => {
+    const targetLang = localStorage.getItem('targetLanguage') || '';
+    const nativeLang = localStorage.getItem('nativeLanguage') || '';
+    return api.get(`/class-lessons/${classLessonId}/progress`, { params: { targetLang, nativeLang } });
+  },
+  saveProgress: (classLessonId, progress) => {
+    const targetLanguage = localStorage.getItem('targetLanguage') || '';
+    const nativeLanguage = localStorage.getItem('nativeLanguage') || '';
+    return api.put(`/class-lessons/${classLessonId}/progress`, {
+      ...progress,
+      targetLanguage,
+      nativeLanguage,
+      source: 'web',
+    });
   },
 };
 
@@ -237,7 +271,12 @@ export const practiceContextService = {
   list: (targetLanguage) =>
     api.get('/practice-context', { params: { targetLanguage } }),
   recommendations: (targetLanguage) =>
-    api.get('/practice-context/recommendations', { params: { targetLanguage } }),
+    api.get('/practice-context/recommendations', {
+      params: { targetLanguage },
+      // Recommendations are optional UI sugar — entitlement (403) or missing
+      // backend route (404) shouldn't show up as admin-side failures.
+      expectedStatuses: [403, 404],
+    }),
   delete: (contextId) =>
     api.delete(`/practice-context/${contextId}`),
 };
@@ -364,6 +403,8 @@ export const adminService = {
     api.get('/admin/error-reports', { params: { page, status, severity, source } }),
   acknowledgeErrorReport: (reportId) =>
     api.put(`/admin/error-reports/${reportId}/acknowledge`),
+  clearOpenErrorReports: () =>
+    api.put('/admin/error-reports/clear-open'),
   sendSpeakingDemoTurn: (data) =>
     api.post('/admin/speaking-demo/conversation', data, { timeout: 60000 }),
   sendLocalSpeakingDemoTurn: (data) =>

@@ -1,5 +1,6 @@
 const {
   buildLanguagePairRedirect,
+  buildClassLessonFallbackResult,
   buildLessonBrief,
   detectDominantLanguage,
   detectOutOfPairLanguage,
@@ -277,6 +278,31 @@ describe('class lesson brief and teaching directives', () => {
       target: '여권',
     });
     expect(cleaned.activityGoals).toEqual(['Notice tense-sound pronunciation.']);
+  });
+
+  it('builds structured fallback parts from classAction without legacy transcript markup', () => {
+    const result = buildClassLessonFallbackResult({
+      transcript: 'Teach Vocabulary: item 1',
+      targetLanguage: 'es',
+      nativeLanguage: 'en',
+      classAction: {
+        action: 'teach_selected_item',
+        activityTitle: 'Greetings',
+        itemType: 'word',
+        target: 'hola',
+        native: 'hello',
+        exampleTarget: 'Hola, Ana.',
+        exampleNative: 'Hello, Ana.',
+      },
+    });
+
+    expect(result).toMatchObject({
+      providerFallback: true,
+      expectedLanguage: 'es',
+    });
+    expect(result.reply).toContain('hola');
+    expect(result.displayParts.length).toBeGreaterThan(1);
+    expect(result.speechParts.map(part => part.language)).toEqual(expect.arrayContaining(['es', 'en']));
   });
 
   it('rejects classAction payloads without an action verb', () => {

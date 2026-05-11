@@ -6,6 +6,7 @@ const GuestSession = require('../models/GuestSession');
 const { verifyToken, isOwner } = require('../middleware/auth');
 const { getClientIp, getGeoInfo } = require('../utils/geo');
 const { batchTranslateRaw, batchRomanize, batchNativePhonetic, ROMANIZATION_LANGS, NON_LATIN_LANGS } = require('../utils/translationService');
+const { languageField, normalizeFlashcardsForLanguagePair } = require('../utils/languageConcepts');
 
 // Normalize category: handles old string format and new array format
 const normalizeCategory = (cat) => {
@@ -47,7 +48,9 @@ async function fillTargetRomanization(cards, targetLang) {
   const uncachedIndices = [];
 
   for (let i = 0; i < cards.length; i++) {
-    const text = cards[i].korean || cards[i][targetLang] || '';
+    const text = targetLang === 'ko'
+      ? (cards[i].korean || '')
+      : (cards[i][targetLang] || cards[i].korean || '');
     if (!text.trim()) { cards[i].romanization = ''; continue; }
     const key = `${targetLang}:${text}`;
     if (romanCache.has(key)) {
@@ -273,7 +276,11 @@ router.get('/categories', async (req, res) => {
   try {
     const targetLang = req.query.targetLang || 'ko';
     const nativeLang = req.query.nativeLang || 'en';
-    const defaultCards = await getDefaultCards(targetLang);
+    const defaultCards = normalizeFlashcardsForLanguagePair(
+      (await getDefaultCards(targetLang)).map(card => ({ ...card })),
+      targetLang,
+      nativeLang,
+    );
     const categoryMap = {};
     for (const card of defaultCards) {
       const primary = normalizeCategory(card.category)[0];
@@ -297,9 +304,13 @@ router.get('/category-cards', async (req, res) => {
     const category = (req.query.category || '').toLowerCase();
     if (!category) return res.status(400).json({ message: 'category is required' });
 
-    const defaultCards = await getDefaultCards(targetLang);
-    const targetField = targetLang === 'ko' ? 'korean' : targetLang === 'en' ? 'english' : targetLang;
-    const nativeField = nativeLang === 'ko' ? 'korean' : nativeLang === 'en' ? 'english' : nativeLang;
+    const defaultCards = normalizeFlashcardsForLanguagePair(
+      (await getDefaultCards(targetLang)).map(card => ({ ...card })),
+      targetLang,
+      nativeLang,
+    );
+    const targetField = languageField(targetLang);
+    const nativeField = languageField(nativeLang);
 
     const filtered = defaultCards
       .filter(c => normalizeCategory(c.category)[0].toLowerCase() === category)
@@ -376,7 +387,7 @@ router.get('/guest', async (req, res) => {
     const { shuffle, seed, categoryFilter } = parseFilterParams(req.query);
 
     const defaultCards = await getDefaultCards(targetLang);
-    const targetFieldName = targetLang === 'ko' ? 'korean' : targetLang === 'en' ? 'english' : targetLang;
+    const targetFieldName = languageField(targetLang);
 
     // Prepare guest cards with default mastery
     const allGuestCards = defaultCards.map((card) => {
@@ -384,9 +395,10 @@ router.get('/guest', async (req, res) => {
       if (!c[targetFieldName] && c.korean) c[targetFieldName] = c.korean;
       return c;
     });
+    const normalizedGuestCards = normalizeFlashcardsForLanguagePair(allGuestCards, targetLang, nativeLang);
 
     // Apply category filter + weighted shuffle
-    const processed = applyFilterAndShuffle(allGuestCards, { shuffle, seed, categoryFilter });
+    const processed = applyFilterAndShuffle(normalizedGuestCards, { shuffle, seed, categoryFilter });
 
     const total = processed.length;
     const start = (page - 1) * limit;
@@ -438,7 +450,7 @@ router.get('/user/:userId', isOwner('userId'), async (req, res) => {
     const preferences = await UserCardPreference.find({ userId });
     const prefMap = new Map(preferences.map(p => [p.cardId, p.masteryLevel]));
 
-    const targetFieldName = targetLang === 'ko' ? 'korean' : targetLang === 'en' ? 'english' : targetLang;
+    const targetFieldName = languageField(targetLang);
 
     const defaultCardsWithPrefs = defaultCards.map(card => {
       const cardIdStr = card._id.toString();
@@ -452,8 +464,9 @@ router.get('/user/:userId', isOwner('userId'), async (req, res) => {
       if (!c[targetFieldName] && c.korean) c[targetFieldName] = c.korean;
       return c;
     });
+    const normalizedDefaultCards = normalizeFlashcardsForLanguagePair(defaultCardsWithPrefs, targetLang, nativeLang);
 
-    const allCards = [...defaultCardsWithPrefs, ...normalizedUserCards];
+    const allCards = [...normalizedDefaultCards, ...normalizedUserCards];
 
     // Apply category filter + weighted shuffle
     const processed = applyFilterAndShuffle(allCards, { shuffle, seed, categoryFilter });
@@ -486,7 +499,7 @@ router.get('/user/:userId', isOwner('userId'), async (req, res) => {
 });
 
 // Allowed dynamic language field names on Flashcard (all schema fields except system fields)
-const LANG_FIELDS = ['korean','english','es','fr','de','zh','ja','hi','ar','he','pt','it','nl','ru','id','ms','fil','tr','bn','ta'];
+const LANG_FIELDS = ['korean','english','es','fr','de','zh','ja','hi','ar','he','pt','it','nl','ru','id','ms','fil','tr','bn','ta','th'];
 
 // Create flashcard (uses authenticated user's ID)
 router.post('/', async (req, res) => {

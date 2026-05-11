@@ -11,7 +11,7 @@ function ExercisePage() {
         <section className="hub-panel" aria-label="Exercise">
           <p className="hub-kicker">Exercise</p>
           <h1>Choose an exercise</h1>
-          <p>Practice with quizzes or review vocabulary with flashcards.</p>
+          <p>Practice with quizzes, review vocabulary with flashcards, or build handwriting memory.</p>
 
           <div className="hub-grid">
             <button type="button" className="hub-card" onClick={() => navigate('/quiz')}>
@@ -27,6 +27,14 @@ function ExercisePage() {
               <div>
                 <h2>Flashcards</h2>
                 <p>Review words and phrases until they feel familiar.</p>
+              </div>
+            </button>
+
+            <button type="button" className="hub-card" onClick={() => navigate('/writing')}>
+              <span className="hub-card-icon" aria-hidden="true">&#9998;</span>
+              <div>
+                <h2>Writing</h2>
+                <p>Trace, copy, listen, recall by meaning, and keep a handwriting notebook.</p>
               </div>
             </button>
           </div>

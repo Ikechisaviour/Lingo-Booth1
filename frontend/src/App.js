@@ -13,6 +13,7 @@ import ClassLessonPage from './pages/ClassLessonPage';
 import ExercisePage from './pages/ExercisePage';
 import QuizPage from './pages/QuizPage';
 import FlashcardsPage from './pages/FlashcardsPage';
+import WritingPracticePage from './pages/WritingPracticePage';
 import ConversationPage from './pages/ConversationPage';
 import ContextPracticePage from './pages/ContextPracticePage';
 import ProgressPage from './pages/ProgressPage';
@@ -430,6 +431,12 @@ function App() {
             path="/flashcards"
             element={
               canAccessApp ? <FlashcardsPage isGuest={isGuest} /> : <Navigate to="/login" />
+            }
+          />
+          <Route
+            path="/writing"
+            element={
+              canAccessApp ? <WritingPracticePage /> : <Navigate to="/login" />
             }
           />
           <Route

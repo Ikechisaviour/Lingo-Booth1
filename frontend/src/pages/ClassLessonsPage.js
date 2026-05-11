@@ -39,6 +39,14 @@ function parsePosition(title = '') {
 
 // Classify a lesson into (level, track, position) using its metadata + title.
 function classifyLesson(lesson) {
+  if (lesson?.course?.level && lesson?.course?.track) {
+    return {
+      level: lesson.course.level,
+      track: lesson.course.track,
+      position: Number(lesson.course.position || 99),
+    };
+  }
+
   const { difficulty, lessonType, title = '' } = lesson;
   const position = parsePosition(title);
 

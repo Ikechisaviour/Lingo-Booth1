@@ -208,6 +208,8 @@ function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
             width="340"
             text="signup_with"
             shape="pill"
+            locale="en"
+            use_fedcm_for_button={false}
           />
         </div>
         <div className="auth-divider"><span>{t('common.or', 'or')}</span></div>

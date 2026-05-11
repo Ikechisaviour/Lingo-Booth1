@@ -1,9 +1,22 @@
 .auth-container {
+  --primary: #58cc02;
+  --primary-hover: #4fbd00;
+  --primary-dark: #3f9f00;
+  --primary-light: rgba(88, 204, 2, 0.14);
+  --surface: #ffffff;
+  --bg-secondary: #f3eee6;
+  --border-light: #e8dfd3;
+  --border-medium: #d8cfc4;
+  --text-primary: #0b1026;
+  --text-secondary: #5f6678;
+  --text-muted: #9aa1b2;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, var(--primary) 0%, #ff8c5a 100%);
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.16), transparent 26%),
+    linear-gradient(135deg, #58cc02 0%, #a9b72a 48%, #ff8c5a 100%);
   padding: 20px;
 }
 
@@ -149,20 +162,20 @@
 }
 
 .auth-card .btn-primary {
-  background: var(--primary);
+  background: #58cc02;
   color: white;
-  box-shadow: 0 4px 0 var(--primary-dark);
+  box-shadow: 0 4px 0 #3f9f00;
 }
 
 .auth-card .btn-primary:hover {
-  background: var(--primary-hover);
+  background: #4fbd00;
   transform: translateY(-2px);
-  box-shadow: 0 6px 0 var(--primary-dark);
+  box-shadow: 0 6px 0 #3f9f00;
 }
 
 .auth-card .btn-primary:active {
   transform: translateY(2px);
-  box-shadow: 0 2px 0 var(--primary-dark);
+  box-shadow: 0 2px 0 #3f9f00;
 }
 
 .auth-card .btn-primary:disabled {

@@ -12,6 +12,7 @@
 const fs = require('fs');
 const path = require('path');
 const cards = require('../flashcardData');
+const { prepareDefaultFlashcardForSeed } = require('../utils/languageConcepts');
 
 const LANGS = ['es','fr','de','zh','ja','hi','ar','he','pt','it','nl','ru','id','tr','bn','ta','ms','fil'];
 
@@ -110,6 +111,22 @@ function escapeStr(s) {
   return s.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
 }
 
+function metadataForGeneratedItem(card, lang, index) {
+  const doc = prepareDefaultFlashcardForSeed({
+    ...card,
+    korean: card[lang] || '',
+  }, lang, index);
+  const metadata = {};
+  if (doc.conceptId) metadata.conceptId = doc.conceptId;
+  if (doc.conceptGloss) metadata.conceptGloss = doc.conceptGloss;
+  if (doc.usage && Object.keys(doc.usage).length > 0) metadata.usage = doc.usage;
+  return {
+    targetText: doc[lang] || doc.korean || '',
+    nativeText: doc.english || '',
+    metadata,
+  };
+}
+
 // Group flashcard data by lesson category
 function groupByCategory() {
   const groups = {};
@@ -125,14 +142,16 @@ function groupByCategory() {
 }
 
 // Generate a createContentItem call string
-function genWordItem(targetText, romanization, english) {
-  return `    createContentItem('${escapeStr(targetText)}', '${escapeStr(romanization)}', '${escapeStr(english)}'),`;
+function genWordItem(targetText, romanization, english, metadata = {}) {
+  const metadataArg = Object.keys(metadata).length > 0 ? `, ${JSON.stringify(metadata)}` : '';
+  return `    createContentItem('${escapeStr(targetText)}', '${escapeStr(romanization)}', '${escapeStr(english)}', 'word', '', '', null${metadataArg}),`;
 }
 
 // Generate a sentence-type item (no breakdown — mechanical word-splitting produces
 // garbage for non-Korean languages; runtime translationService handles romanization)
-function genSentenceItem(targetText, romanization, english) {
-  return `    createContentItem('${escapeStr(targetText)}', '${escapeStr(romanization)}', '${escapeStr(english)}', 'sentence'),`;
+function genSentenceItem(targetText, romanization, english, metadata = {}) {
+  const metadataArg = Object.keys(metadata).length > 0 ? `, ${JSON.stringify(metadata)}` : '';
+  return `    createContentItem('${escapeStr(targetText)}', '${escapeStr(romanization)}', '${escapeStr(english)}', 'sentence', '', '', null${metadataArg}),`;
 }
 
 // Variable name mapping for categories
@@ -154,7 +173,7 @@ function generateLangFile(lang) {
   lines.push(`// ${lang.toUpperCase()} - Complete Lesson Data (all 7 categories × 4 difficulty levels)`);
   lines.push(`// Auto-generated from master flashcardData.js translations`);
   lines.push('');
-  lines.push(`const createContentItem = (targetText, romanization, nativeText, type = 'word', exampleTarget = '', exampleNative = '', breakdown = null) => ({`);
+  lines.push(`const createContentItem = (targetText, romanization, nativeText, type = 'word', exampleTarget = '', exampleNative = '', breakdown = null, metadata = null) => ({`);
   lines.push('  type,');
   lines.push('  targetText,');
   lines.push('  romanization,');
@@ -163,6 +182,7 @@ function generateLangFile(lang) {
   lines.push('  exampleTarget: exampleTarget || targetText,');
   lines.push('  exampleNative: exampleNative || nativeText,');
   lines.push(`  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.target, native: b.native })) } : {}),`);
+  lines.push('  ...(metadata || {}),');
   lines.push('});');
   lines.push('');
 
@@ -205,9 +225,11 @@ function generateLangFile(lang) {
       lines.push(`  targetLang: '${lang}',`);
       lines.push('  content: [');
 
-      for (const card of items) {
-        const targetText = card[lang] || '';
-        const english = card.english || '';
+      for (let itemOffset = 0; itemOffset < items.length; itemOffset++) {
+        const card = items[itemOffset];
+        const generated = metadataForGeneratedItem(card, lang, start + itemOffset);
+        const targetText = generated.targetText;
+        const english = generated.nativeText;
         // Leave romanization empty — runtime translationService.getOrCreateTranslation()
         // generates correct romanization via Google Translate on first access, then caches it
         const romanization = '';
@@ -215,9 +237,9 @@ function generateLangFile(lang) {
         if (!targetText) continue;
 
         if (isSentence) {
-          lines.push(genSentenceItem(targetText, romanization, english));
+          lines.push(genSentenceItem(targetText, romanization, english, generated.metadata));
         } else {
-          lines.push(genWordItem(targetText, romanization, english));
+          lines.push(genWordItem(targetText, romanization, english, generated.metadata));
         }
       }
 

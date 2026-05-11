@@ -706,6 +706,11 @@
   background: #e53935;
 }
 
+.btn-danger:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
 /* Responsive */
 @media (max-width: 1200px) {
   .stats-row {
@@ -1262,6 +1267,13 @@
   color: var(--text-secondary);
 }
 
+.failure-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .failure-critical-note {
   color: var(--accent-red);
   font-weight: 700;
@@ -1420,6 +1432,10 @@
     font-size: 0.65rem;
   }
   .failure-item-header {
+    flex-direction: column;
+  }
+  .failure-toolbar {
+    align-items: flex-start;
     flex-direction: column;
   }
   .failure-detail-grid {

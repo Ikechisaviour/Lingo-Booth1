@@ -169,6 +169,19 @@ export const classLessonService = {
     const nativeLang = useSettingsStore.getState().nativeLanguage;
     return api.get(`/class-lessons/${classLessonId}`, { params: { nativeLang }, timeout: 30000 });
   },
+  getProgress: (classLessonId: string) => {
+    const { targetLanguage, nativeLanguage } = useSettingsStore.getState();
+    return api.get(`/class-lessons/${classLessonId}/progress`, { params: { targetLang: targetLanguage, nativeLang: nativeLanguage } });
+  },
+  saveProgress: (classLessonId: string, progress: Record<string, any>) => {
+    const { targetLanguage, nativeLanguage } = useSettingsStore.getState();
+    return api.put(`/class-lessons/${classLessonId}/progress`, {
+      ...progress,
+      targetLanguage,
+      nativeLanguage,
+      source: 'mobile',
+    });
+  },
 };
 
 export const practiceContextService = {
