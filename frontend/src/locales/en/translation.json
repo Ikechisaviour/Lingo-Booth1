@@ -70,6 +70,8 @@
     "contactSupport": "Please contact support for more information.",
     "suspendedMistake": "If you believe this is a mistake, please contact support.",
     "reason": "Reason",
+    "backToHome": "Back to home",
+    "sessionExpired": "Your session expired. Please sign in again.",
     "forgotPassword": "Forgot password?"
   },
   "register": {

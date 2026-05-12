@@ -2,16 +2,21 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import api, { authService } from '../services/api';
+import { applyPublicLanguage } from '../utils/publicLanguage';
 import './Auth.css';
 
 function VerifyEmailPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [searchParams] = useSearchParams();
   const [status, setStatus] = useState('verifying'); // 'verifying' | 'success' | 'error'
   const [message, setMessage] = useState('');
   const [resending, setResending] = useState(false);
   const [resendMsg, setResendMsg] = useState('');
   const verifyAttempted = useRef(false);
+
+  useEffect(() => {
+    applyPublicLanguage(i18n);
+  }, [i18n]);
 
   useEffect(() => {
     if (verifyAttempted.current) return;

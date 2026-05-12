@@ -11,7 +11,13 @@
   --surface: #ffffff;
   --primary: #ff6b35;
   --primary-hover: #e55a2b;
+  --primary-dark: #c94920;
   --primary-light: rgba(255, 107, 53, 0.1);
+  --primary-soft: rgba(255, 107, 53, 0.08);
+  --primary-soft-strong: rgba(255, 107, 53, 0.14);
+  --primary-border-soft: rgba(255, 107, 53, 0.28);
+  --primary-gradient-end: #ff8c5a;
+  --primary-shadow-color: rgba(255, 107, 53, 0.22);
   --secondary: #1a1a2e;
   --accent-green: #58cc02;
   --accent-green-dark: #46a302;
@@ -322,7 +328,12 @@ input:focus, textarea:focus, select:focus {
   --primary: #58cc02;
   --primary-hover: #46a302;
   --primary-light: rgba(88, 204, 2, 0.1);
+  --primary-soft: rgba(88, 204, 2, 0.08);
+  --primary-soft-strong: rgba(88, 204, 2, 0.14);
+  --primary-border-soft: rgba(88, 204, 2, 0.28);
   --primary-dark: #3d8a02;
+  --primary-gradient-end: #7ed957;
+  --primary-shadow-color: rgba(88, 204, 2, 0.22);
 }
 
 /* ===== RTL Support for Arabic & Hebrew ===== */

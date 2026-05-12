@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useSearchParams, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import LANGUAGES from '../config/languages';
 import { userService } from '../services/api';
+import {
+  applyPublicLanguage,
+  getPublicLanguagePair,
+  setLandingLanguagePreference,
+  targetLanguageForPublicNative,
+} from '../utils/publicLanguage';
 import './LanguageSelectPage.css';
 
 function LanguageSelectPage({ setIsGuest, onLogout }) {
@@ -10,19 +16,25 @@ function LanguageSelectPage({ setIsGuest, onLogout }) {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const mode = searchParams.get('mode'); // 'register' or 'guest'
+  const suggestedPair = useMemo(() => getPublicLanguagePair(), []);
 
   const [nativeLanguage, setNativeLanguage] = useState(
-    localStorage.getItem('nativeLanguage') || ''
+    suggestedPair.nativeLanguage || localStorage.getItem('nativeLanguage') || ''
   );
   const [targetLanguage, setTargetLanguage] = useState(
-    localStorage.getItem('targetLanguage') || ''
+    suggestedPair.targetLanguage || localStorage.getItem('targetLanguage') || ''
   );
+
+  useEffect(() => {
+    applyPublicLanguage(i18n);
+  }, [i18n]);
 
   const handleNativeChange = (code) => {
     setNativeLanguage(code);
+    setLandingLanguagePreference(code);
     // If native and target are now the same, reset target
     if (code === targetLanguage) {
-      setTargetLanguage('');
+      setTargetLanguage(targetLanguageForPublicNative(code));
     }
     // Immediately switch UI language for real-time feedback
     i18n.changeLanguage(code);
@@ -52,6 +64,7 @@ function LanguageSelectPage({ setIsGuest, onLogout }) {
     if (!canContinue) return;
     localStorage.setItem('nativeLanguage', nativeLanguage);
     localStorage.setItem('targetLanguage', targetLanguage);
+    setLandingLanguagePreference(nativeLanguage);
     i18n.changeLanguage(nativeLanguage);
 
     if (mode === 'guest') {

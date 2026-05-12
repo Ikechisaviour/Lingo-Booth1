@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { authService } from '../services/api';
+import { applyPublicLanguage } from '../utils/publicLanguage';
 import './Auth.css';
 
 function ResetPasswordPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const token = searchParams.get('token');
@@ -19,6 +20,10 @@ function ResetPasswordPage() {
 
   const passwordsMatch = password === confirmPassword;
   const canSubmit = password.length >= 6 && passwordsMatch && !loading;
+
+  useEffect(() => {
+    applyPublicLanguage(i18n);
+  }, [i18n]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -123,7 +128,7 @@ function ResetPasswordPage() {
                   fontSize: '0.85rem',
                   color: passwordsMatch ? '#16a34a' : '#dc2626',
                 }}>
-                  {passwordsMatch ? '✓ Passwords match' : '✗ Passwords do not match'}
+                  {passwordsMatch ? `✓ ${t('register.passwordsMatch')}` : `✗ ${t('register.passwordsNoMatch')}`}
                 </p>
               )}
             </div>

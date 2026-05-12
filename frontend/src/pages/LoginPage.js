@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { GoogleLogin } from '@react-oauth/google';
 import { authService, userService, guestXPHelper } from '../services/api';
+import { applyPublicLanguage, getPreferredPublicLanguage, googleLocaleForPublicLanguage } from '../utils/publicLanguage';
 import './Auth.css';
 
 function getEffectiveSubscriptionTier(user = {}) {
@@ -51,6 +52,10 @@ function LoginPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
   // Check if user was redirected here after mid-session suspension
   const wasSuspendedMidSession = location.state?.suspended;
   const sessionExpired = location.state?.sessionExpired;
+
+  useEffect(() => {
+    applyPublicLanguage(i18n);
+  }, [i18n]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -194,7 +199,7 @@ function LoginPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
           className="auth-home-link"
           onClick={() => navigate('/')}
         >
-          Back to home
+          {t('login.backToHome', 'Back to home')}
         </button>
         <img src="/images/logo.png" alt="Lingo Booth" className="auth-logo" />
         <h1>{t('login.welcomeBack')}</h1>
@@ -211,7 +216,7 @@ function LoginPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
 
         {sessionExpired && !suspended && (
           <div className="error">
-            Your session expired. Please sign in again.
+            {t('login.sessionExpired', 'Your session expired. Please sign in again.')}
           </div>
         )}
 
@@ -236,7 +241,7 @@ function LoginPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
             width="340"
             text="continue_with"
             shape="pill"
-            locale="en"
+            locale={googleLocaleForPublicLanguage(getPreferredPublicLanguage())}
             use_fedcm_for_button={false}
           />
         </div>

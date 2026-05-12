@@ -456,13 +456,13 @@
 }
 
 .flashcard-face.front {
-  background: linear-gradient(135deg, var(--primary) 0%, #ff8c5a 100%);
-  box-shadow: 0 8px 0 var(--primary-hover), 0 16px 40px rgba(255, 107, 53, 0.2);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-gradient-end) 100%);
+  box-shadow: 0 8px 0 var(--primary-hover), 0 16px 40px var(--primary-shadow-color);
 }
 
 .flashcard-face.back {
   background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary) 100%);
-  box-shadow: 0 8px 0 var(--primary-dark), 0 16px 40px rgba(255, 107, 53, 0.2);
+  box-shadow: 0 8px 0 var(--primary-dark), 0 16px 40px var(--primary-shadow-color);
   transform: rotateX(180deg);
 }
 
@@ -1415,11 +1415,11 @@
 
 /* Challenge Theme overrides */
 .challenge-theme .flashcard-face.front {
-  background: linear-gradient(135deg, #58cc02 0%, #7ed957 100%);
-  box-shadow: 0 8px 0 #3d8a02, 0 16px 40px rgba(88, 204, 2, 0.2);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-gradient-end) 100%);
+  box-shadow: 0 8px 0 var(--primary-dark), 0 16px 40px var(--primary-shadow-color);
 }
 
 .challenge-theme .flashcard-face.back {
-  background: linear-gradient(135deg, #46a302 0%, #58cc02 100%);
-  box-shadow: 0 8px 0 #3d8a02, 0 16px 40px rgba(88, 204, 2, 0.2);
+  background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary) 100%);
+  box-shadow: 0 8px 0 var(--primary-dark), 0 16px 40px var(--primary-shadow-color);
 }

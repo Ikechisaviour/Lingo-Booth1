@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { GoogleLogin } from '@react-oauth/google';
 import { authService, guestXPHelper } from '../services/api';
+import { applyPublicLanguage, getPreferredPublicLanguage, googleLocaleForPublicLanguage } from '../utils/publicLanguage';
 import './Auth.css';
 
 function getEffectiveSubscriptionTier(user = {}) {
@@ -39,7 +40,7 @@ function getEffectiveAiEntitlements(user = {}) {
 }
 
 function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
 
   // Languages should already be set by LanguageSelectPage
@@ -56,6 +57,10 @@ function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  useEffect(() => {
+    applyPublicLanguage(i18n);
+  }, [i18n]);
 
   const handleGoogleSuccess = async (credentialResponse) => {
     setError('');
@@ -208,7 +213,7 @@ function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
             width="340"
             text="signup_with"
             shape="pill"
-            locale="en"
+            locale={googleLocaleForPublicLanguage(getPreferredPublicLanguage())}
             use_fedcm_for_button={false}
           />
         </div>

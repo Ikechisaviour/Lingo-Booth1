@@ -345,7 +345,7 @@ const QuizDetailScreen: React.FC = () => {
                   onPress={handleNextLesson}
                   icon="chevron-right"
                   contentStyle={{ flexDirection: 'row-reverse' }}
-                  style={[styles.completionBtn, { backgroundColor: colors.accentGreen }]}
+                  style={[styles.completionBtn, { backgroundColor: colors.primary }]}
                 >
                   {t('lessons.nextLesson', 'Next Lesson')} →
                 </Button>
@@ -362,7 +362,7 @@ const QuizDetailScreen: React.FC = () => {
                 <Button
                   mode="contained"
                   onPress={() => navigation.goBack()}
-                  style={[styles.completionBtn, { backgroundColor: colors.accentGreen }]}
+                  style={[styles.completionBtn, { backgroundColor: colors.primary }]}
                 >
                   {isInPlaylist
                     ? t('lessons.playlistDone', '🎊 Playlist Complete!')
@@ -534,7 +534,7 @@ const QuizDetailScreen: React.FC = () => {
             onPress={handleComplete}
             icon={hasNextLesson ? 'chevron-right' : 'check'}
             contentStyle={hasNextLesson ? { flexDirection: 'row-reverse' } : undefined}
-            style={[styles.navBtn, { backgroundColor: colors.accentGreen }]}
+            style={[styles.navBtn, { backgroundColor: colors.primary }]}
           >
             {hasNextLesson
               ? t('lessons.completeAndNext', 'Complete & Next')

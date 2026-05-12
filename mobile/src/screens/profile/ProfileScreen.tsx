@@ -822,7 +822,7 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
     elevation: 1,
   },
   personalizationCardLocked: {
-    borderLeftColor: '#ff8c5a',
+    borderLeftColor: colors.primary,
   },
   personalizationTopRow: {
     flexDirection: 'row',
@@ -843,7 +843,7 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
   },
   personalizationTier: {
     color: colors.primary,
-    backgroundColor: 'rgba(88, 204, 2, 0.12)',
+    backgroundColor: colors.primary + '18',
     borderRadius: 999,
     paddingHorizontal: 10,
     paddingVertical: 5,
@@ -915,7 +915,7 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
   },
   voiceRowSelected: {
     borderColor: colors.primary,
-    backgroundColor: '#eff6ff',
+    backgroundColor: colors.primary + '12',
   },
   voiceName: { fontSize: 14, fontWeight: '600', color: colors.textPrimary },
   voiceMeta: { fontSize: 12, color: colors.textMuted, marginTop: 2 },
