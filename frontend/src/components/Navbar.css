@@ -19,7 +19,7 @@
 
 /* Challenge Mode — green accent navbar */
 .navbar.challenge-active {
-  border-bottom: 2px solid #58cc02;
+  border-bottom: 2px solid var(--primary);
 }
 
 /* Brand / Logo */
@@ -134,7 +134,7 @@
   align-items: center;
   gap: 8px;
   padding: 8px 16px;
-  background: linear-gradient(135deg, var(--primary-light), rgba(255, 107, 53, 0.15));
+  background: linear-gradient(135deg, var(--primary-light), var(--primary-soft-strong));
   border-radius: 20px;
   border: 1px dashed var(--primary);
 }
@@ -337,7 +337,7 @@
 
   .navbar.challenge-active {
     border-bottom: none;
-    border-right: 2px solid #58cc02;
+    border-right: 2px solid var(--primary);
   }
 
   .navbar-container {

@@ -224,7 +224,7 @@
   border: 1px solid var(--border-light);
   border-radius: 8px;
   background:
-    linear-gradient(180deg, rgba(88, 204, 2, 0.08), transparent 180px),
+    linear-gradient(180deg, var(--primary-soft), transparent 180px),
     #fff;
 }
 
@@ -255,7 +255,7 @@
 .class-activity-goals p {
   margin: 0;
   padding-left: 14px;
-  border-left: 3px solid rgba(88, 204, 2, 0.42);
+  border-left: 3px solid var(--primary-border-soft);
   color: var(--text-secondary);
   line-height: 1.5;
 }
@@ -339,13 +339,13 @@
   gap: 8px;
   margin-top: 14px;
   padding: 12px 14px;
-  border: 1px solid rgba(88, 204, 2, 0.25);
+  border: 1px solid var(--primary-border-soft);
   border-radius: 8px;
-  background: rgba(88, 204, 2, 0.06);
+  background: var(--primary-soft);
 }
 
 .class-expression-label {
-  color: var(--accent-green);
+  color: var(--primary);
   font-size: 0.72rem;
   font-weight: 900;
   letter-spacing: 0.04em;
@@ -360,7 +360,7 @@
 
 .class-expression-chip {
   padding: 6px 12px;
-  border: 1px solid rgba(88, 204, 2, 0.45);
+  border: 1px solid var(--primary-border-soft);
   border-radius: 999px;
   background: var(--surface);
   color: var(--text-primary);
@@ -370,8 +370,8 @@
 }
 
 .class-expression-chip:hover {
-  background: var(--accent-green);
-  border-color: var(--accent-green);
+  background: var(--primary);
+  border-color: var(--primary);
   color: #fff;
 }
 
@@ -640,9 +640,9 @@
 }
 
 .class-speech-controls button.active {
-  border-color: rgba(88, 204, 2, 0.4);
-  background: rgba(88, 204, 2, 0.12);
-  color: var(--accent-green);
+  border-color: var(--primary-border-soft);
+  background: var(--primary-light);
+  color: var(--primary);
 }
 
 .class-speech-controls button:disabled {
@@ -784,18 +784,18 @@
   width: 28px;
   height: 28px;
   padding: 0;
-  border: 1px solid rgba(88, 204, 2, 0.28);
+  border: 1px solid var(--primary-border-soft);
   border-radius: 999px;
   appearance: none;
   background: #fff;
-  color: var(--primary-green);
+  color: var(--primary);
   cursor: pointer;
   line-height: 0;
 }
 
 .class-segment-audio:hover {
-  border-color: rgba(88, 204, 2, 0.5);
-  background: rgba(88, 204, 2, 0.1);
+  border-color: var(--primary);
+  background: var(--primary-light);
 }
 
 .class-segment-audio svg {

@@ -337,7 +337,7 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
     marginTop: 4,
   },
   selectionCount: { fontSize: 13, color: 'rgba(255,255,255,0.85)' },
-  startBtn: { borderRadius: 8, backgroundColor: colors.accentGreen },
+  startBtn: { borderRadius: 8, backgroundColor: colors.primary },
 
   filterRow: { backgroundColor: colors.surface, paddingBottom: 4 },
   filterList: { paddingHorizontal: 12, gap: 6 },

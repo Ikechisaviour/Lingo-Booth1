@@ -147,7 +147,7 @@
   background: var(--primary);
   border-color: var(--primary);
   color: white;
-  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+  box-shadow: 0 2px 8px var(--primary-shadow-color);
 }
 
 .filter-pill.active:hover {
@@ -465,7 +465,7 @@
   font-size: 0.85rem;
   font-weight: 700;
   z-index: 2;
-  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.4);
+  box-shadow: 0 2px 8px var(--primary-shadow-color);
   animation: badgePop 0.2s ease;
 }
 

@@ -21,6 +21,7 @@ import fil from './locales/fil/translation.json';
 import tr from './locales/tr/translation.json';
 import bn from './locales/bn/translation.json';
 import ta from './locales/ta/translation.json';
+import { getInitialI18nLanguage } from './utils/publicLanguage';
 
 const resources = {
   en: { translation: en },
@@ -46,11 +47,8 @@ const resources = {
 };
 
 const detectLanguage = () => {
-  const stored = localStorage.getItem('nativeLanguage');
-  if (stored && resources[stored]) return stored;
-  const browserLang = navigator.language?.split('-')[0];
-  if (browserLang && resources[browserLang]) return browserLang;
-  return 'en';
+  const preferred = getInitialI18nLanguage();
+  return resources[preferred] ? preferred : 'en';
 };
 
 i18n

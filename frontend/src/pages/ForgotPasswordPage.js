@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { authService } from '../services/api';
+import { applyPublicLanguage } from '../utils/publicLanguage';
 import './Auth.css';
 
 function ForgotPasswordPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    applyPublicLanguage(i18n);
+  }, [i18n]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

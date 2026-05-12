@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Text } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../stores/authStore';
 import { userService, authService } from '../services/api';
-import { colors } from '../config/theme';
+import { useAppColors, type AppColors } from '../config/theme';
 
 const EmailVerificationBanner: React.FC = () => {
   const { t } = useTranslation();
+  const colors = useAppColors();
+  const styles = useMemo(() => createStyles(colors), [colors]);
   const { userId, isGuest, token } = useAuthStore();
   const [emailVerified, setEmailVerified] = useState(true);
   const [sending, setSending] = useState(false);
@@ -62,7 +64,7 @@ const EmailVerificationBanner: React.FC = () => {
   );
 };
 
-const styles = StyleSheet.create({
+const createStyles = (colors: AppColors) => StyleSheet.create({
   banner: {
     backgroundColor: '#fff8f0',
     borderBottomWidth: 1,

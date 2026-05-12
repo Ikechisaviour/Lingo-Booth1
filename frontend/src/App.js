@@ -28,6 +28,7 @@ import AdminSpeakingDemo from './pages/AdminSpeakingDemo';
 import VerifyEmailPage from './pages/VerifyEmailPage';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import ResetPasswordPage from './pages/ResetPasswordPage';
+import { getPreferredPublicLanguage, googleLocaleForPublicLanguage } from './utils/publicLanguage';
 import './App.css';
 
 const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID || '';
@@ -114,6 +115,7 @@ function GuestSignupPrompt({ onClose, onGuestExit }) {
 
 function App() {
   const { i18n } = useTranslation();
+  const [googleLocale, setGoogleLocale] = useState(() => googleLocaleForPublicLanguage(getPreferredPublicLanguage()));
   const [isAuthenticated, setIsAuthenticated] = useState(
     !!localStorage.getItem('token')
   );
@@ -130,6 +132,18 @@ function App() {
 
   useEffect(() => {
     installGlobalErrorReporting();
+  }, []);
+
+  useEffect(() => {
+    const syncGoogleLocale = () => {
+      setGoogleLocale(googleLocaleForPublicLanguage(getPreferredPublicLanguage()));
+    };
+    window.addEventListener('publicLanguageChanged', syncGoogleLocale);
+    window.addEventListener('storage', syncGoogleLocale);
+    return () => {
+      window.removeEventListener('publicLanguageChanged', syncGoogleLocale);
+      window.removeEventListener('storage', syncGoogleLocale);
+    };
   }, []);
 
   // RTL support for Arabic and Hebrew
@@ -301,7 +315,7 @@ function App() {
   const localDemoPreviewAllowed = ['localhost', '127.0.0.1'].includes(window.location.hostname);
 
   return (
-    <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
+    <GoogleOAuthProvider key={googleLocale} clientId={GOOGLE_CLIENT_ID} locale={googleLocale}>
     <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <AuthSessionListener onSessionEnded={handleSessionEnded} />
       <div className={`App${challengeMode ? ' challenge-theme' : ''}`}>

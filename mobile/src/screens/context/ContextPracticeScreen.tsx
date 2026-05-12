@@ -500,7 +500,7 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.border,
   },
-  statusPillActive: { backgroundColor: '#ecffe5', borderColor: colors.primary },
+  statusPillActive: { backgroundColor: colors.primary + '14', borderColor: colors.primary },
   statusText: { color: colors.textMuted, fontWeight: '800' },
   statusTextActive: { color: colors.primary },
   panel: {
