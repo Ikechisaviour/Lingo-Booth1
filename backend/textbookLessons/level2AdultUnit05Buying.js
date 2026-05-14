@@ -76,8 +76,8 @@ const lesson = {
   ],
   relatedPools: ['topic-shopping'],
   content: [
-    createContentItem('Lesson goal', 'buying + refunds', 'By end: buy items, pay by method, request refund/exchange.', 'word', 'Functions: buy · pay · refund · commit', 'Shopping toolkit.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'shirt return', 'You bought a shirt at 이마트 yesterday. It does not fit. You return it with the receipt for a refund.', 'word', 'You: 어제 산 셔츠인데 환불 가능합니까? — Staff: 영수증 있으세요?', 'You: Shirt I bought yesterday — refund? — Staff: Receipt?', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: buy items, pay by method, request refund/exchange.', 'word', 'Functions: buy · pay · refund · commit', 'Shopping toolkit.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'You bought a shirt at 이마트 yesterday. It does not fit. You return it with the receipt for a refund.', 'word', 'You: 어제 산 셔츠인데 환불 가능합니까? — Staff: 영수증 있으세요?', 'You: Shirt I bought yesterday — refund? — Staff: Receipt?', null, [ACT.orientation]),
 
     createContentItem('결제하겠습니다 → [결쩨하게씀니다]', 'gyeoljehagetseumnida', '경음화 + 비음화.', 'word', '카드로 결제하겠습니다.', 'I will pay by card.', null, [ACT.pronunciation]),
     createContentItem('환불 → [환불]', 'hwanbul', 'No change.', 'word', '환불받고 싶습니다.', 'I want a refund.', null, [ACT.pronunciation]),

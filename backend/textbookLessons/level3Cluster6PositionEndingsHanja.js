@@ -73,7 +73,7 @@ const lesson = {
   ],
   relatedPools: ['pos-prefix-suffix', 'pos-hanja-phrases'],
   content: [
-    createContentItem('Cluster goal', 'mixed grammar', 'By end: master position, register switching, Hanja recognition, irregular verbs.', 'word', '5 areas combined', 'Mixed cluster.', null, [ACT.orientation]),
+    createContentItem('단원 목표', 'danwon mokpyo', 'By end: master position, register switching, Hanja recognition, irregular verbs.', 'word', '5 areas combined', 'Mixed cluster.', null, [ACT.orientation]),
 
     createContentItem('앞에', 'ape', 'in front', 'word', '학교 앞에 카페가 있어요.', 'Cafe in front of school.', null, [ACT.position]),
     createContentItem('뒤에', 'dwie', 'behind', 'word', '집 뒤에 산이 있어요.', 'Mountain behind house.', null, [ACT.position]),

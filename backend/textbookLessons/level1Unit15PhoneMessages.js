@@ -81,8 +81,8 @@ const lesson = {
   ],
   relatedPools: ['topic-people'],
   content: [
-    createContentItem('Lesson goal', 'phone calls', 'By end: open/close calls, ask for someone, leave messages, use honorific phone vocabulary.', 'word', 'Functions: open · ask · leave message · humble', 'Four phone micro-skills.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'office call', 'You need to reach 김 교수님 but the office staff answers. You ask, get told the professor is out, and leave a message.', 'word', 'Staff: 컴공과 사무실입니다. — You: 김 교수님 계세요?', 'Staff: Computer Eng office. — You: Is Prof Kim there?', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: open/close calls, ask for someone, leave messages, use honorific phone vocabulary.', 'word', 'Functions: open · ask · leave message · humble', 'Four phone micro-skills.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'You need to reach 김 교수님 but the office staff answers. You ask, get told the professor is out, and leave a message.', 'word', 'Staff: 컴공과 사무실입니다. — You: 김 교수님 계세요?', 'Staff: Computer Eng office. — You: Is Prof Kim there?', null, [ACT.orientation]),
 
     createContentItem('여보세요 → [여보세요]', 'yeoboseyo', 'No sound change — but distinctive 4-syllable rhythm.', 'word', '여보세요? 누구세요?', 'Hello? Who is this?', null, [ACT.pronunciation]),
     createContentItem('받으세요 → [바드세요]', 'badeuseyo', '연음: ㄷ받침 of 받 jumps to 으.', 'word', '전화 받으세요. → [전화 바드세요]', 'Please answer the phone.', null, [ACT.pronunciation]),

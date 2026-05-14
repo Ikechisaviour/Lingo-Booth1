@@ -30,6 +30,8 @@ const linking: LinkingOptions<any> = {
       Class: 'class',
       Exercise: 'exercise',
       Profile: 'profile',
+      Billing: 'billing',
+      Institution: 'institution',
     },
   },
 };

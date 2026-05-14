@@ -81,8 +81,8 @@ const lesson = {
   ],
   relatedPools: ['topic-society'],
   content: [
-    createContentItem('Lesson goal', 'post office', 'By end: send package, pick method, address it correctly, say what you want.', 'word', 'Functions: want · ship · receive · try', 'Four post-office micro-skills.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'Chuseok gift', 'It is mid-September — 추석 (mid-autumn festival). You want to mail Korean snacks to your family back home.', 'word', 'Clerk: 안에 뭐가 있어요? — You: 한국 과자예요. 가족 선물이에요.', 'Clerk: What\'s inside? — You: Korean snacks. A gift for my family.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: send package, pick method, address it correctly, say what you want.', 'word', 'Functions: want · ship · receive · try', 'Four post-office micro-skills.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'It is mid-September — 추석 (mid-autumn festival). You want to mail Korean snacks to your family back home.', 'word', 'Clerk: 안에 뭐가 있어요? — You: 한국 과자예요. 가족 선물이에요.', 'Clerk: What\'s inside? — You: Korean snacks. A gift for my family.', null, [ACT.orientation]),
 
     createContentItem('보내고 → [보내고]', 'bonaego', 'No major change. Smooth flow.', 'word', '소포를 보내고 싶어요.', 'I want to send a package.', null, [ACT.pronunciation]),
     createContentItem('싶어요 → [시퍼요]', 'sipeoyo', '연음: ㅂ받침 of 싶 jumps to 어요.', 'word', '보내고 싶어요. → [보내고 시퍼요]', 'I want to send.', null, [ACT.pronunciation]),

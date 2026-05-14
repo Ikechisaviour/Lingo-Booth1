@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useSearchParams, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import LANGUAGES from '../config/languages';
+import LANGUAGES, { getLanguageDisplayName } from '../config/languages';
 import { userService } from '../services/api';
 import {
   applyPublicLanguage,
@@ -9,6 +9,7 @@ import {
   setLandingLanguagePreference,
   targetLanguageForPublicNative,
 } from '../utils/publicLanguage';
+import { normalizeLanguageCode } from '../utils/languagePairPolicy';
 import './LanguageSelectPage.css';
 
 function LanguageSelectPage({ setIsGuest, onLogout }) {
@@ -19,10 +20,10 @@ function LanguageSelectPage({ setIsGuest, onLogout }) {
   const suggestedPair = useMemo(() => getPublicLanguagePair(), []);
 
   const [nativeLanguage, setNativeLanguage] = useState(
-    suggestedPair.nativeLanguage || localStorage.getItem('nativeLanguage') || ''
+    normalizeLanguageCode(suggestedPair.nativeLanguage || localStorage.getItem('nativeLanguage')) || ''
   );
   const [targetLanguage, setTargetLanguage] = useState(
-    suggestedPair.targetLanguage || localStorage.getItem('targetLanguage') || ''
+    normalizeLanguageCode(suggestedPair.targetLanguage || localStorage.getItem('targetLanguage')) || ''
   );
 
   useEffect(() => {
@@ -30,18 +31,19 @@ function LanguageSelectPage({ setIsGuest, onLogout }) {
   }, [i18n]);
 
   const handleNativeChange = (code) => {
-    setNativeLanguage(code);
-    setLandingLanguagePreference(code);
+    const nextCode = normalizeLanguageCode(code);
+    setNativeLanguage(nextCode);
+    setLandingLanguagePreference(nextCode);
     // If native and target are now the same, reset target
-    if (code === targetLanguage) {
-      setTargetLanguage(targetLanguageForPublicNative(code));
+    if (nextCode === targetLanguage) {
+      setTargetLanguage(targetLanguageForPublicNative(nextCode));
     }
     // Immediately switch UI language for real-time feedback
-    i18n.changeLanguage(code);
+    i18n.changeLanguage(nextCode);
   };
 
   const handleTargetChange = (code) => {
-    setTargetLanguage(code);
+    setTargetLanguage(normalizeLanguageCode(code));
   };
 
   const handleBack = () => {
@@ -62,10 +64,12 @@ function LanguageSelectPage({ setIsGuest, onLogout }) {
 
   const handleContinue = async () => {
     if (!canContinue) return;
-    localStorage.setItem('nativeLanguage', nativeLanguage);
-    localStorage.setItem('targetLanguage', targetLanguage);
-    setLandingLanguagePreference(nativeLanguage);
-    i18n.changeLanguage(nativeLanguage);
+    const canonicalNative = normalizeLanguageCode(nativeLanguage);
+    const canonicalTarget = normalizeLanguageCode(targetLanguage);
+    localStorage.setItem('nativeLanguage', canonicalNative);
+    localStorage.setItem('targetLanguage', canonicalTarget);
+    setLandingLanguagePreference(canonicalNative);
+    i18n.changeLanguage(canonicalNative);
 
     if (mode === 'guest') {
       localStorage.setItem('guestMode', 'true');
@@ -89,7 +93,7 @@ function LanguageSelectPage({ setIsGuest, onLogout }) {
       if (userId) {
         setSaving(true);
         try {
-          await userService.updateProfile(userId, { nativeLanguage, targetLanguage });
+          await userService.updateProfile(userId, { nativeLanguage: canonicalNative, targetLanguage: canonicalTarget });
           localStorage.removeItem('needsLanguageSetup');
           navigate('/');
         } catch {
@@ -124,10 +128,7 @@ function LanguageSelectPage({ setIsGuest, onLogout }) {
               >
                 <span className="lang-flag">{lang.flag}</span>
                 <span className="lang-name">
-                  <span className="lang-english">{lang.name}</span>
-                  {lang.nativeName !== lang.name && (
-                    <span className="lang-native">{lang.nativeName}</span>
-                  )}
+                  <span className="lang-english">{getLanguageDisplayName(code, t)}</span>
                 </span>
               </button>
             ))}
@@ -149,10 +150,7 @@ function LanguageSelectPage({ setIsGuest, onLogout }) {
                 >
                   <span className="lang-flag">{lang.flag}</span>
                   <span className="lang-name">
-                    <span className="lang-english">{lang.name}</span>
-                    {lang.nativeName !== lang.name && (
-                      <span className="lang-native">{lang.nativeName}</span>
-                    )}
+                    <span className="lang-english">{getLanguageDisplayName(code, t)}</span>
                   </span>
                 </button>
               );

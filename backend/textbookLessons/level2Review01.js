@@ -63,8 +63,8 @@ const lesson = {
   ],
   relatedPools: ['topic-people', 'topic-school', 'topic-society', 'topic-health'],
   content: [
-    createContentItem('Review goal', 'consolidation', 'By end: confidently mix vocab + grammar from Units 1-3 in extended dialogue.', 'word', 'Units 1+2+3 combined', 'Recombination training.', null, [ACT.orientation]),
-    createContentItem('Scenario', 'career counseling', 'A Kumoh classmate confides they want to be a professional athlete but their parents are worried about their health. You give cross-topic advice.', 'word', 'Friend: 운동선수가 되고 싶은데 ~ 부모님이 ~ — You: ~ 다 보면 ~ㄹ 거예요.', 'Friend wants to be athlete; you advise.', null, [ACT.orientation]),
+    createContentItem('복습 목표', 'bokseup mokpyo', 'By end: confidently mix vocab + grammar from Units 1-3 in extended dialogue.', 'word', 'Units 1+2+3 combined', 'Recombination training.', null, [ACT.orientation]),
+    createContentItem('상황 설정', 'sanghwang seoljeong', 'A Kumoh classmate confides they want to be a professional athlete but their parents are worried about their health. You give cross-topic advice.', 'word', 'Friend: 운동선수가 되고 싶은데 ~ 부모님이 ~ — You: ~ 다 보면 ~ㄹ 거예요.', 'Friend wants to be athlete; you advise.', null, [ACT.orientation]),
 
     createContentItem('적성', 'jeokseong', 'aptitude (U1)', 'word', '적성에 맞는 일을 찾아요.', 'I look for fitting work.', null, [ACT.vocabulary]),
     createContentItem('진로', 'jinro', 'career path (U1)', 'word', '진로 상담을 받았어요.', 'I had career counseling.', null, [ACT.vocabulary]),

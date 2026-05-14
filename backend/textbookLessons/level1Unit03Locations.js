@@ -87,13 +87,11 @@ const lesson = {
   ],
   relatedPools: ['topic-school', 'topic-city'],
   content: [
-    createContentItem(
-      'Lesson goal', 'finding & directing',
+    createContentItem('학습 목표', 'hakseup mokpyo',
       'By end of lesson: ask where something is, give 2-3 step directions, describe a building\'s position relative to another.',
       'word', 'Functions: ask location · describe position · give directions', 'Three skills that unlock independent travel in Korea.',
       null, [ACT.orientation]),
-    createContentItem(
-      'Real-world scenario', 'lost on campus',
+    createContentItem('오늘의 상황', 'oneurui sanghwang',
       'It is your second week at Kumoh and a new exchange student asks you where the library is. You need to direct them clearly.',
       'word', 'Visitor: 실례합니다, 도서관이 어디에 있어요?', 'Excuse me, where is the library?',
       null, [ACT.orientation]),

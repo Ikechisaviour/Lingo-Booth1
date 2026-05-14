@@ -6,7 +6,8 @@
       "Bash(git check-ignore *)",
       "PowerShell(if \\(Test-Path 'C:\\\\m'\\) { \"C:\\\\m already exists: $\\(\\(Get-Item 'C:\\\\m'\\).LinkType\\) -> $\\(\\(Get-Item 'C:\\\\m'\\).Target\\)\" } else { New-Item -ItemType Junction -Path 'C:\\\\m' -Target 'C:\\\\Users\\\\Saviour ICT-CRC\\\\Desktop\\\\Personal Project\\\\Personal Projects2\\\\korean-learning-app\\\\mobile' | Out-Null; \"Created junction C:\\\\m\" }; if \\(Test-Path 'C:\\\\m\\\\android\\\\app\\\\build'\\) { Remove-Item -Recurse -Force 'C:\\\\m\\\\android\\\\app\\\\build'; \"cleaned app/build\" }; if \\(Test-Path 'C:\\\\m\\\\android\\\\.gradle'\\) { Remove-Item -Recurse -Force 'C:\\\\m\\\\android\\\\.gradle'; \"cleaned .gradle\" }; Get-ChildItem -Path 'C:\\\\m\\\\node_modules' -Filter '.cxx' -Recurse -Directory -ErrorAction SilentlyContinue | ForEach-Object { Remove-Item -Recurse -Force $_.FullName; \"cleaned $\\($_.FullName\\)\" })",
       "Bash(ls -lh /c/rn/android/app/build/outputs/apk/release/ 2>&1)",
-      "Read(//c/rn/android/app/build/outputs/apk/**)"
+      "Read(//c/rn/android/app/build/outputs/apk/**)",
+      "Bash(node -e \"const f = require\\('./textbookLessons/en/level1Foundation'\\); const u = require\\('./textbookLessons/en/level1Unit01Greetings'\\); console.log\\('Foundation:', f.title, '|', f.targetLang, '| activities:', f.activities.length, '| content items:', f.content.length\\); console.log\\('Unit 1:', u.title, '|', u.targetLang, '| activities:', u.activities.length, '| content items:', u.content.length\\);\")"
     ]
   }
 }

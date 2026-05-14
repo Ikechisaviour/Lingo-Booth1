@@ -76,8 +76,8 @@ const lesson = {
   ],
   relatedPools: ['topic-people'],
   content: [
-    createContentItem('Lesson goal', 'dorm life', 'By end: describe dorm, evaluate, request changes politely.', 'word', 'Functions: describe · evaluate · request', 'Dorm toolkit.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'noisy roommate', 'Your roommate plays music loudly at midnight. You need to politely ask them to turn it down.', 'word', 'You: 죄송한데 소리 좀 줄여 주실 수 있어요? — Roommate: 미안해요.', 'You: Sorry, turn it down? — Roommate: Sorry.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: describe dorm, evaluate, request changes politely.', 'word', 'Functions: describe · evaluate · request', 'Dorm toolkit.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'Your roommate plays music loudly at midnight. You need to politely ask them to turn it down.', 'word', 'You: 죄송한데 소리 좀 줄여 주실 수 있어요? — Roommate: 미안해요.', 'You: Sorry, turn it down? — Roommate: Sorry.', null, [ACT.orientation]),
 
     createContentItem('기숙사 → [기숙싸]', 'gisuksa', '경음화: ㄱ-받침 + ㅅ → tense ㅆ.', 'word', '기숙사에 살아요.', 'Live in dorm.', null, [ACT.pronunciation]),
     createContentItem('빨래방 → [빨래방]', 'ppallaebang', 'No change.', 'word', '빨래방이 1층에 있어요.', 'Laundry is on 1F.', null, [ACT.pronunciation]),

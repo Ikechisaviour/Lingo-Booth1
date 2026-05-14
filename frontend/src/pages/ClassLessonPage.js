@@ -1,14 +1,14 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { FiVolume2 } from 'react-icons/fi';
 import { useNavigate, useParams } from 'react-router-dom';
-import { aiService, classLessonService, practiceContextService } from '../services/api';
+import { useTranslation } from 'react-i18next';
+import { aiService, certificateService, classLessonService, practiceContextService } from '../services/api';
 import speechService from '../services/speechService';
 import LANGUAGES from '../config/languages';
 import {
+  getLanguageDisplayName,
   getNativeLangCode,
-  getNativeLangName,
   getTargetLangCode,
-  getTargetLangName,
 } from '../config/languages';
 import {
   displayPartsForMessage,
@@ -17,6 +17,7 @@ import {
   speechChunksForPart,
   spokenPartsForMessage,
 } from '../utils/languageSegments';
+import { looksLikeRawEnglishForNative } from '../utils/languagePairPolicy';
 import PronunciationGuide from '../components/PronunciationGuide';
 import VoicePickerModal from '../components/VoicePickerModal';
 import { contrastingVoiceForLocale, roleVoiceForLocale, tutorVoiceForLocale } from '../utils/roleVoices';
@@ -24,31 +25,11 @@ import './ClassLessonPage.css';
 
 const FORMATTING_FALLBACK_REPLY = 'I had trouble formatting that reply. Please try again naturally.';
 const firstText = (...values) => values.find((value) => String(value || '').trim()) || '';
-const CLASS_SETUP_TEXT = {
-  en: 'I am ready to teach this lesson. Start with the first item, ask for an explanation, or type your own question.',
-  ko: '이 수업을 안내할 준비가 됐어요. 첫 항목부터 시작하거나, 설명을 요청하거나, 질문을 입력해 주세요.',
-  es: 'Estoy listo para guiar esta clase. Empieza con el primer punto, pide una explicación o escribe tu pregunta.',
-  fr: 'Je suis prêt à guider cette leçon. Commence par le premier élément, demande une explication ou écris ta question.',
-  de: 'Ich bin bereit, diese Lektion zu begleiten. Beginne mit dem ersten Punkt, bitte um eine Erklärung oder stelle deine Frage.',
-  zh: '我已经准备好带你学习这一课。你可以从第一项开始，要求解释，或输入你的问题。',
-  ja: 'このレッスンを案内できます。最初の項目から始めるか、説明を求めるか、質問を入力してください。',
-  hi: 'मैं यह पाठ सिखाने के लिए तैयार हूँ। पहले भाग से शुरू करें, समझाने को कहें, या अपना प्रश्न लिखें।',
-  ar: 'أنا جاهز لإرشادك في هذا الدرس. ابدأ بالعنصر الأول، أو اطلب شرحًا، أو اكتب سؤالك.',
-  he: 'אני מוכן להדריך אותך בשיעור הזה. אפשר להתחיל מהפריט הראשון, לבקש הסבר או לכתוב שאלה.',
-  pt: 'Estou pronto para orientar esta aula. Comece pelo primeiro item, peça uma explicação ou digite sua pergunta.',
-  it: 'Sono pronto a guidare questa lezione. Inizia dal primo elemento, chiedi una spiegazione o scrivi una domanda.',
-  nl: 'Ik ben klaar om deze les te begeleiden. Begin met het eerste onderdeel, vraag uitleg of typ je vraag.',
-  ru: 'Я готов провести этот урок. Начните с первого пункта, попросите объяснение или введите свой вопрос.',
-  id: 'Saya siap memandu pelajaran ini. Mulai dari bagian pertama, minta penjelasan, atau ketik pertanyaan Anda.',
-  ms: 'Saya bersedia membimbing pelajaran ini. Mulakan dengan item pertama, minta penjelasan, atau taip soalan anda.',
-  fil: 'Handa na akong gabayan ang araling ito. Magsimula sa unang item, humingi ng paliwanag, o i-type ang tanong mo.',
-  tr: 'Bu dersi anlatmaya hazırım. İlk maddeden başlayın, açıklama isteyin veya sorunuzu yazın.',
-  bn: 'আমি এই পাঠ শেখাতে প্রস্তুত। প্রথম আইটেম দিয়ে শুরু করুন, ব্যাখ্যা চান, অথবা আপনার প্রশ্ন লিখুন।',
-  ta: 'இந்த பாடத்தை வழிநடத்த நான் தயாராக இருக்கிறேன். முதல் உருப்படியிலிருந்து தொடங்குங்கள், விளக்கம் கேளுங்கள், அல்லது உங்கள் கேள்வியை எழுதுங்கள்.',
-};
-
-function classSetupText(language = 'en') {
-  return CLASS_SETUP_TEXT[String(language || '').toLowerCase()] || CLASS_SETUP_TEXT.en;
+function classSetupText(t) {
+  return t(
+    'classLesson.setupReady',
+    'I am ready to guide this lesson. Choose a lesson action, or type your own question.'
+  );
 }
 
 function getSpeechRecognition() {
@@ -80,39 +61,38 @@ function getStoredPracticeContextAccess() {
   return isProOrUltraTier(localStorage.getItem('subscriptionTier'));
 }
 
-// Default activity plan used when a Lesson document does not declare its own activities[].
-// Real textbook units should ship their activities + per-item activityIds in the seed data
-// (see backend/textbookLessons/unit1.js). This fallback covers legacy lessons only.
-const DEFAULT_ACTIVITY_PLAN = [
-  {
-    id: 'preview',
-    section: 'Preview',
-    title: 'Lesson overview',
-    goals: ['Preview the lesson and set a learning goal.'],
-    task: 'Tell the tutor what you want to understand first.',
-  },
-  {
-    id: 'learn',
-    section: 'Learn',
-    title: 'Guided explanation',
-    goals: ['Study the selected lesson item with the tutor.'],
-    task: 'Ask for a simple explanation or example.',
-  },
-  {
-    id: 'practice',
-    section: 'Practice',
-    title: 'Active practice',
-    goals: ['Use the target language in a short answer.'],
-    task: 'Write or say one original answer using the lesson material.',
-  },
-  {
-    id: 'review',
-    section: 'Review',
-    title: 'Check understanding',
-    goals: ['Review mistakes and summarize what you learned.'],
-    task: 'Summarize one thing you learned and one thing that is still unclear.',
-  },
-];
+function defaultActivityPlan(t) {
+  return [
+    {
+      id: 'preview',
+      section: t('classLesson.defaultActivities.preview.section', 'Preview'),
+      title: t('classLesson.defaultActivities.preview.title', 'Lesson overview'),
+      goals: [t('classLesson.defaultActivities.preview.goal', 'Preview the lesson and set a learning goal.')],
+      task: t('classLesson.defaultActivities.preview.task', 'Tell the tutor what you want to understand first.'),
+    },
+    {
+      id: 'learn',
+      section: t('classLesson.defaultActivities.learn.section', 'Learn'),
+      title: t('classLesson.defaultActivities.learn.title', 'Guided explanation'),
+      goals: [t('classLesson.defaultActivities.learn.goal', 'Study the selected lesson item with the tutor.')],
+      task: t('classLesson.defaultActivities.learn.task', 'Ask for a simple explanation or example.'),
+    },
+    {
+      id: 'practice',
+      section: t('classLesson.defaultActivities.practice.section', 'Practice'),
+      title: t('classLesson.defaultActivities.practice.title', 'Active practice'),
+      goals: [t('classLesson.defaultActivities.practice.goal', 'Use the target language in a short answer.')],
+      task: t('classLesson.defaultActivities.practice.task', 'Write or say one original answer using the lesson material.'),
+    },
+    {
+      id: 'review',
+      section: t('classLesson.defaultActivities.review.section', 'Review'),
+      title: t('classLesson.defaultActivities.review.title', 'Check understanding'),
+      goals: [t('classLesson.defaultActivities.review.goal', 'Review mistakes and summarize what you learned.')],
+      task: t('classLesson.defaultActivities.review.task', 'Summarize one thing you learned and one thing that is still unclear.'),
+    },
+  ];
+}
 
 const itemTarget = (item = {}) => firstText(item.targetText, item.korean);
 const itemNative = (item = {}) => firstText(item.nativeText, item.english);
@@ -120,10 +100,24 @@ const itemExampleTarget = (item = {}) => firstText(item.exampleTarget, item.exam
 const itemExampleNative = (item = {}) => firstText(item.exampleNative, item.exampleEnglish);
 
 function itemSection(item = {}) {
-  if (item.type === 'word') return 'Vocabulary';
-  if (item.type === 'sentence') return 'Grammar';
-  if (item.type === 'conversation') return 'Dialogue';
-  return 'Practice';
+  if (item.type === 'word') return 'vocabulary';
+  if (item.type === 'sentence') return 'grammar';
+  if (item.type === 'conversation') return 'dialogue';
+  return 'practice';
+}
+
+function sectionLabel(section, t) {
+  const key = String(section || 'practice').toLowerCase();
+  return t(`classLesson.section.${key}`, key);
+}
+
+function nativeScaffoldText(value, nativeLanguage, t, fallbackKey = 'classLesson.translationPending') {
+  const text = String(value || '').trim();
+  if (!text) return '';
+  if (looksLikeRawEnglishForNative(text, nativeLanguage)) {
+    return t(fallbackKey, 'Translation is being prepared.');
+  }
+  return text;
 }
 
 function classStorageKey(classLessonId) {
@@ -180,7 +174,7 @@ function isFormattingFallbackTurn(turn = {}) {
     && String(turn.content || '').trim() === FORMATTING_FALLBACK_REPLY;
 }
 
-function normalizeTutorTurns(turns = [], nativeLanguage = 'en') {
+function normalizeTutorTurns(turns = [], nativeLanguage = 'en', t) {
   const cleaned = turns
     .filter(turn => turn && !isFormattingFallbackTurn(turn))
     .map(turn => ({
@@ -207,10 +201,10 @@ function normalizeTutorTurns(turns = [], nativeLanguage = 'en') {
 
   return cleaned.length
     ? cleaned
-    : [makeTutorSetupTurn(classSetupText(nativeLanguage), nativeLanguage)];
+    : [makeTutorSetupTurn(classSetupText(t), nativeLanguage)];
 }
 
-function normalizeProgressRecord(record = {}, nativeLanguage = 'en') {
+function normalizeProgressRecord(record = {}, nativeLanguage = 'en', t) {
   const completedItems = Array.isArray(record.completedItems)
     ? record.completedItems
     : (Array.isArray(record.completed) ? record.completed : []);
@@ -221,8 +215,8 @@ function normalizeProgressRecord(record = {}, nativeLanguage = 'en') {
     summary: record.summary || '',
     memory: migrateMemory(record.memory || {}),
     tutorTurns: Array.isArray(record.tutorTurns) && record.tutorTurns.length
-      ? normalizeTutorTurns(record.tutorTurns, nativeLanguage)
-      : [makeTutorSetupTurn(classSetupText(nativeLanguage), nativeLanguage)],
+      ? normalizeTutorTurns(record.tutorTurns, nativeLanguage, t)
+      : [makeTutorSetupTurn(classSetupText(t), nativeLanguage)],
   };
 }
 
@@ -273,11 +267,11 @@ function lessonActionFallback(item, activity, targetLanguage = 'ko', nativeLangu
   return lines.join('\n').trim() || 'Let us continue with the next part of the lesson.';
 }
 
-function activityPlanForLesson(lesson) {
+function activityPlanForLesson(lesson, t) {
   if (Array.isArray(lesson?.activities) && lesson.activities.length > 0) {
     return lesson.activities;
   }
-  return DEFAULT_ACTIVITY_PLAN;
+  return defaultActivityPlan(t);
 }
 
 // Group an activity's item indices into consecutive runs of the same item type.
@@ -287,10 +281,10 @@ function activityPlanForLesson(lesson) {
 // caller can render a single ungrouped strip — see classMixedActivity below.
 function groupActivityItemsBySection(items, indices) {
   const labelFor = (type) => {
-    if (type === 'word') return 'Vocabulary';
-    if (type === 'sentence') return 'Grammar';
-    if (type === 'conversation') return 'Dialogue';
-    return 'Practice';
+    if (type === 'word') return 'vocabulary';
+    if (type === 'sentence') return 'grammar';
+    if (type === 'conversation') return 'dialogue';
+    return 'practice';
   };
   const groups = [];
   for (const idx of indices) {
@@ -396,16 +390,21 @@ function exampleTopicFromGroup(group = {}) {
   return '';
 }
 
-function exampleCueFor(_language, group) {
+function exampleCueFor(_language, group, t) {
   const speakers = new Set((group.parts || []).map((part) => part.speaker).filter(Boolean));
   const isDialogue = speakers.size >= 2;
   const topic = exampleTopicFromGroup(group);
   if (isDialogue) {
     return topic
-      ? `Example conversation about ${topic}. Listen to Person A and Person B.`
-      : 'Example conversation. Listen to Person A and Person B.';
+      ? t('classLesson.exampleCue.dialogueWithTopic', {
+        topic,
+        defaultValue: 'Example conversation about {{topic}}. Listen to Person A and Person B.',
+      })
+      : t('classLesson.exampleCue.dialogue', 'Example conversation. Listen to Person A and Person B.');
   }
-  return topic ? `Example: ${topic}.` : 'Example.';
+  return topic
+    ? t('classLesson.exampleCue.exampleWithTopic', { topic, defaultValue: 'Example: {{topic}}.' })
+    : t('classLesson.exampleCue.example', 'Example.');
 }
 
 function shouldSpeakTutorPart(part = {}, options = {}) {
@@ -427,6 +426,7 @@ function shouldSpeakTutorPart(part = {}, options = {}) {
 function ClassLessonPage() {
   const { classLessonId } = useParams();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const threadRef = useRef(null);
   const recognitionRef = useRef(null);
   const tutorRequestInFlightRef = useRef(false);
@@ -445,7 +445,7 @@ function ClassLessonPage() {
     localStorage.getItem('classSpeakNativeGloss') === 'true'
   ));
   const [speechInputMode, setSpeechInputMode] = useState('target');
-  const [status, setStatus] = useState('Ready');
+  const [status, setStatus] = useState(() => t('classLesson.status.ready', 'Ready'));
   const [audioUnlocked, setAudioUnlocked] = useState(() => speechService.isAudioUnlocked());
   const [showVoicePicker, setShowVoicePicker] = useState(false);
   // Per-session set of example groups that have already played their intro cue.
@@ -467,11 +467,14 @@ function ClassLessonPage() {
   const [progressSyncState, setProgressSyncState] = useState('local');
   const [contextRecommendations, setContextRecommendations] = useState(null);
   const [pendingContextPrompt, setPendingContextPrompt] = useState('');
+  const [certificateStatus, setCertificateStatus] = useState(null);
+  const [certificateLoading, setCertificateLoading] = useState(false);
+  const [certificateIssuing, setCertificateIssuing] = useState(false);
 
   const targetLanguage = getTargetLangCode();
   const nativeLanguage = getNativeLangCode();
-  const targetName = getTargetLangName();
-  const nativeName = getNativeLangName();
+  const targetName = getLanguageDisplayName(targetLanguage, t);
+  const nativeName = getLanguageDisplayName(nativeLanguage, t);
   const speechSupported = !!getSpeechRecognition();
   const canUsePracticeContextFeature = getStoredPracticeContextAccess();
 
@@ -508,7 +511,7 @@ function ClassLessonPage() {
         setLesson(response.data);
 
         const applyProgress = (record) => {
-          const progress = normalizeProgressRecord(record, nativeLanguage);
+          const progress = normalizeProgressRecord(record, nativeLanguage, t);
           setSelectedIndex(progress.selectedIndex);
           setSelectedActivityIndex(progress.selectedActivityIndex);
           setCompleted(progress.completed);
@@ -521,7 +524,7 @@ function ClassLessonPage() {
           const stored = JSON.parse(localStorage.getItem(classStorageKey(classLessonId)) || '{}');
           applyProgress(stored);
         } catch {
-          setTutorTurns([makeTutorSetupTurn(classSetupText(nativeLanguage), nativeLanguage)]);
+          setTutorTurns([makeTutorSetupTurn(classSetupText(t), nativeLanguage)]);
         }
 
         try {
@@ -537,7 +540,7 @@ function ClassLessonPage() {
           if (!cancelled) setProgressSyncState('local');
         }
       } catch (err) {
-        if (!cancelled) setError('Could not load this class lesson.');
+        if (!cancelled) setError(t('classLesson.loadError', 'Could not load this class lesson.'));
       } finally {
         if (!cancelled) {
           setProgressLoaded(true);
@@ -550,7 +553,7 @@ function ClassLessonPage() {
     return () => {
       cancelled = true;
     };
-  }, [classLessonId, nativeLanguage]);
+  }, [classLessonId, nativeLanguage, t]);
 
   useEffect(() => {
     if (!lesson || !progressLoaded) return undefined;
@@ -579,10 +582,10 @@ function ClassLessonPage() {
   useEffect(() => {
     setTutorTurns((prev) => (
       prev.some(isFormattingFallbackTurn)
-        ? normalizeTutorTurns(prev, nativeLanguage)
+        ? normalizeTutorTurns(prev, nativeLanguage, t)
         : prev
     ));
-  }, [nativeLanguage]);
+  }, [nativeLanguage, t]);
 
   useEffect(() => {
     if (!threadRef.current) return;
@@ -619,8 +622,8 @@ function ClassLessonPage() {
     if (!prompt) return;
     sessionStorage.removeItem('lingoContextClassPrompt');
     setPendingContextPrompt(prompt);
-    setStatus('Personalized class prompt ready.');
-  }, [canUsePracticeContextFeature]);
+    setStatus(t('classLesson.status.personalizedPromptReady', 'Personalized class prompt ready.'));
+  }, [canUsePracticeContextFeature, t]);
 
   useEffect(() => (
     () => {
@@ -632,8 +635,18 @@ function ClassLessonPage() {
 
   const items = useMemo(() => lesson?.content || [], [lesson]);
   const selectedItem = items[selectedIndex] || {};
-  const activityPlan = useMemo(() => activityPlanForLesson(lesson), [lesson]);
+  const activityPlan = useMemo(() => activityPlanForLesson(lesson, t), [lesson, t]);
   const selectedActivity = activityPlan[selectedActivityIndex] || activityPlan[0];
+  const displayActivityPlan = useMemo(() => activityPlan.map((activity) => ({
+    ...activity,
+    section: nativeScaffoldText(activity?.section, nativeLanguage, t, 'classLesson.section.practice'),
+    title: nativeScaffoldText(activity?.title, nativeLanguage, t, 'classLesson.lessonFallback'),
+    task: nativeScaffoldText(activity?.task, nativeLanguage, t),
+    goals: Array.isArray(activity?.goals)
+      ? activity.goals.map((goal) => nativeScaffoldText(goal, nativeLanguage, t)).filter(Boolean)
+      : [],
+  })), [activityPlan, nativeLanguage, t]);
+  const displaySelectedActivity = displayActivityPlan[selectedActivityIndex] || displayActivityPlan[0] || selectedActivity;
   const activityItemIndices = useMemo(
     () => itemIndicesForActivity(items, selectedActivity?.id),
     [items, selectedActivity?.id],
@@ -647,6 +660,78 @@ function ClassLessonPage() {
       ...((contextRecommendations?.classPrompts || [])),
     ])).filter(Boolean).slice(0, 4);
   }, [canUsePracticeContextFeature, contextRecommendations, pendingContextPrompt]);
+  const isAuthenticated = !!localStorage.getItem('token') && localStorage.getItem('guestMode') !== 'true';
+  const certificate = certificateStatus?.certificate || null;
+  const certificateVerifyPath = certificate?.certificateId
+    ? `/certificates/verify/${encodeURIComponent(certificate.certificateId)}`
+    : '';
+
+  useEffect(() => {
+    let cancelled = false;
+    if (!lesson || progressPercent < 100 || !isAuthenticated) {
+      setCertificateStatus(null);
+      return () => {
+        cancelled = true;
+      };
+    }
+
+    setCertificateLoading(true);
+    certificateService.getClassLessonStatus(classLessonId)
+      .then((res) => {
+        if (!cancelled) setCertificateStatus(res.data || null);
+      })
+      .catch(() => {
+        if (!cancelled) setCertificateStatus(null);
+      })
+      .finally(() => {
+        if (!cancelled) setCertificateLoading(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [classLessonId, isAuthenticated, lesson, progressPercent]);
+
+  const issueCertificate = async () => {
+    if (!lesson || progressPercent < 100) return;
+    const payload = buildProgressRecord({
+      selectedIndex,
+      selectedActivityIndex,
+      completed,
+      summary,
+      memory,
+      tutorTurns,
+    });
+
+    try {
+      setCertificateIssuing(true);
+      await classLessonService.saveProgress(classLessonId, payload).catch(() => {});
+      const res = await certificateService.issueClassLessonCertificate(classLessonId, {
+        completedItems: Array.from(completed),
+      });
+      if (res.status === 402) {
+        setCertificateStatus(res.data || null);
+        setStatus(t('certificates.paymentRequiredShort'));
+        return;
+      }
+      setCertificateStatus((current) => ({
+        ...(current || {}),
+        certificate: res.data?.certificate,
+        canIssue: false,
+        access: res.data?.access || current?.access,
+      }));
+      setStatus(t('certificates.issuedSuccess'));
+    } catch (err) {
+      if (err.response?.status === 402) {
+        setCertificateStatus(err.response.data || null);
+        setStatus(t('certificates.paymentRequiredShort'));
+        return;
+      }
+      setStatus(err.response?.data?.message || t('certificates.issueFailed'));
+    } finally {
+      setCertificateIssuing(false);
+    }
+  };
 
   // When the user picks a new activity, jump to its first item if the currently selected
   // item is not part of it. This keeps the focus card in sync with the activity rail.
@@ -690,7 +775,7 @@ function ClassLessonPage() {
     const speechParts = shouldUseVisibleOrder
       ? groups.flatMap((group) => [
         ...(group.kind === 'example' && shouldPlayExampleCue(group)
-          ? [{ language: nativeLanguage, text: exampleCueFor(nativeLanguage, group), speaker: '' }]
+          ? [{ language: nativeLanguage, text: exampleCueFor(nativeLanguage, group, t), speaker: '' }]
           : []),
         ...group.parts
           .filter(part => shouldSpeakTutorPart(part, { speakNativeGloss }))
@@ -727,7 +812,7 @@ function ClassLessonPage() {
         rate: options.rate || '-10%',
       });
     } catch (_) {
-      setStatus('Audio playback was interrupted.');
+      setStatus(t('classLesson.status.audioInterrupted', 'Audio playback was interrupted.'));
     }
   };
 
@@ -746,15 +831,15 @@ function ClassLessonPage() {
           rate: options.rate || '-10%',
         });
       }
-      setStatus('Playing selected line.');
+      setStatus(t('classLesson.status.playingSelectedLine', 'Playing selected line.'));
     } catch (_) {
-      setStatus('Audio playback was interrupted.');
+      setStatus(t('classLesson.status.audioInterrupted', 'Audio playback was interrupted.'));
     }
   };
 
   const stopSpeech = () => {
     speechService.cancel();
-    setStatus('Speech stopped.');
+    setStatus(t('classLesson.status.speechStopped', 'Speech stopped.'));
   };
 
   const sendTutorTurn = async (displayText, classActionOrText, options = {}) => {
@@ -777,7 +862,7 @@ function ClassLessonPage() {
       .slice(-10);
     setTutorTurns(options.skipUserTurn ? cleanedTurns : [...cleanedTurns, userTurn]);
     setTutorLoading(true);
-    setStatus('Tutor is preparing your next step...');
+    setStatus(t('classLesson.status.preparingNextStep', 'Tutor is preparing your next step...'));
 
     try {
       const response = await aiService.sendConversationTurn({
@@ -837,7 +922,7 @@ function ClassLessonPage() {
         setSelectedIndex(aiProgress.itemIndex);
       }
 
-      setStatus('Tutor replied.');
+      setStatus(t('classLesson.status.tutorReplied', 'Tutor replied.'));
       if (speechEnabled) await speakTutorTurn(assistantTurn);
     } catch (err) {
       const quotaMessage = err?.response?.data?.message;
@@ -851,7 +936,7 @@ function ClassLessonPage() {
           retryInstructionText: classAction ? undefined : transcriptForTurn,
         }),
       ]);
-      setStatus('Tutor had trouble replying.');
+      setStatus(t('classLesson.status.tutorTrouble', 'Tutor had trouble replying.'));
     } finally {
       tutorRequestInFlightRef.current = false;
       setTutorLoading(false);
@@ -919,9 +1004,9 @@ function ClassLessonPage() {
     const nextPos = positionInActivity + 1;
     if (positionInActivity >= 0 && nextPos < activityItemIndices.length) {
       setSelectedIndex(activityItemIndices[nextPos]);
-      setStatus('Marked complete. Moving to the next item.');
+      setStatus(t('classLesson.status.markedCompleteNext', 'Marked complete. Moving to the next item.'));
     } else {
-      setStatus('Marked complete.');
+      setStatus(t('classLesson.status.markedComplete', 'Marked complete.'));
     }
   };
 
@@ -951,24 +1036,24 @@ function ClassLessonPage() {
     switch (event?.error) {
       case 'not-allowed':
       case 'service-not-allowed':
-        return 'Microphone permission is blocked. Open your browser site settings, allow the microphone, then reload this page.';
+        return t('classLesson.speechErrors.permissionBlocked', 'Microphone permission is blocked. Open your browser site settings, allow the microphone, then reload this page.');
       case 'no-speech':
-        return 'No speech was heard. Try again — speak after the "Listening…" indicator appears.';
+        return t('classLesson.speechErrors.noSpeech', 'No speech was heard. Try again - speak after the listening indicator appears.');
       case 'audio-capture':
-        return 'No microphone detected. Plug in or enable a microphone, then try again.';
+        return t('classLesson.speechErrors.noMicrophone', 'No microphone detected. Plug in or enable a microphone, then try again.');
       case 'network':
-        return 'Network error during speech recognition. Check your connection and try again.';
+        return t('classLesson.speechErrors.network', 'Network error during speech recognition. Check your connection and try again.');
       case 'aborted':
-        return 'Speech input was cancelled.';
+        return t('classLesson.speechErrors.cancelled', 'Speech input was cancelled.');
       default:
-        return 'Could not capture speech. Please try again.';
+        return t('classLesson.speechErrors.captureFailed', 'Could not capture speech. Please try again.');
     }
   };
 
   const startListening = () => {
     const Recognition = getSpeechRecognition();
     if (!Recognition) {
-      setStatus('Voice input is unavailable in this browser. You can type in the box below instead — Chrome or Edge on a laptop supports speaking.');
+      setStatus(t('classLesson.status.voiceUnavailable', 'Voice input is unavailable in this browser. You can type in the box below instead - Chrome or Edge on a laptop supports speaking.'));
       return;
     }
     if (tutorLoading) return;
@@ -991,7 +1076,7 @@ function ClassLessonPage() {
     let finalTranscript = '';
     recognition.onstart = () => {
       setListening(true);
-      setStatus('Listening… tap the mic again when you finish.');
+      setStatus(t('classLesson.status.listeningPrompt', 'Listening... tap the mic again when you finish.'));
     };
 
     recognition.onerror = (event) => {
@@ -1007,9 +1092,9 @@ function ClassLessonPage() {
         // Hand the transcript to the user for review/edit before it's sent —
         // a misrecognized phrase shouldn't go straight to the tutor.
         setTurn(captured);
-        setStatus('Speech captured. Edit if needed, then press send.');
+        setStatus(t('classLesson.status.speechCaptured', 'Speech captured. Edit if needed, then press send.'));
       } else {
-        setStatus('No speech captured. Try again.');
+        setStatus(t('classLesson.status.noSpeechCaptured', 'No speech captured. Try again.'));
       }
     };
 
@@ -1069,8 +1154,11 @@ function ClassLessonPage() {
                         type="button"
                         className="class-segment-audio"
                         onClick={() => speakTutorPart(part)}
-                        aria-label={`Play ${part.speaker ? `${part.speaker} ` : ''}${languageLabel(part)} line`}
-                        title="Play this line"
+                        aria-label={t('classLesson.playLanguageLine', {
+                          label: `${part.speaker ? `${part.speaker} ` : ''}${languageLabel(part)}`,
+                          defaultValue: 'Play {{label}} line',
+                        })}
+                        title={t('classLesson.playLine', 'Play this line')}
                       >
                         <FiVolume2 aria-hidden="true" />
                       </button>
@@ -1086,20 +1174,20 @@ function ClassLessonPage() {
     );
   };
   if (loading) {
-    return <div className="class-lesson-loading">Loading class lesson...</div>;
+    return <div className="class-lesson-loading">{t('classLesson.loading', 'Loading class lesson...')}</div>;
   }
 
   if (error || !lesson) {
     return (
       <div className="class-lesson-loading">
-        <strong>{error || 'Lesson not found.'}</strong>
-        <button type="button" onClick={() => navigate('/class')}>Back to Class</button>
+        <strong>{error || t('classLesson.notFound', 'Lesson not found.')}</strong>
+        <button type="button" onClick={() => navigate('/class')}>{t('classLesson.backToClass', 'Back to Class')}</button>
       </div>
     );
   }
 
   return (
-    <div className="class-lesson-page">
+    <div className={`class-lesson-page ${progressPercent >= 100 ? 'has-certificate-banner' : ''}`}>
       <VoicePickerModal
         open={showVoicePicker}
         targetLangCode={targetLanguage}
@@ -1109,7 +1197,7 @@ function ClassLessonPage() {
         onPicked={() => {
           localStorage.setItem('classVoicePickerSeen', '1');
           setShowVoicePicker(false);
-          setStatus('Voice updated. Click any line to hear it.');
+          setStatus(t('classLesson.status.voiceUpdated', 'Voice updated. Click any line to hear it.'));
         }}
       />
       {!audioUnlocked && speechEnabled && (
@@ -1118,33 +1206,75 @@ function ClassLessonPage() {
           className="class-audio-unlock"
           onClick={() => setAudioUnlocked(speechService.isAudioUnlocked() || true)}
         >
-          Tap anywhere to enable spoken tutor replies on this device.
+          {t('classLesson.tapToEnableAudio', 'Tap anywhere to enable spoken tutor replies on this device.')}
         </button>
       )}
       <header className="class-lesson-header">
-        <button type="button" className="class-back" onClick={() => navigate('/class')}>Back to Class</button>
+        <button type="button" className="class-back" onClick={() => navigate('/class')}>{t('classLesson.backToClass', 'Back to Class')}</button>
         <div>
-          <p className="class-kicker">Class</p>
+          <p className="class-kicker">{t('classLesson.kicker', 'Class')}</p>
           <h1>{lesson.title}</h1>
           <p>{nativeName} -> {targetName}</p>
         </div>
         <div className="class-progress">
           <strong>{progressPercent}%</strong>
-          <span>complete</span>
+          <span>{t('classLesson.complete', 'complete')}</span>
         </div>
       </header>
 
+      {progressPercent >= 100 && (
+        <section className="class-certificate-banner" aria-label={t('certificates.classBannerLabel')}>
+          <div>
+            <p className="class-kicker">{t('certificates.kicker')}</p>
+            <h2>{certificate ? t('certificates.issuedTitle') : t('certificates.readyTitle')}</h2>
+            <p>
+              {certificate
+                ? t('certificates.issuedBody')
+                : isAuthenticated
+                  ? certificateStatus?.access?.requiresPayment
+                    ? t('certificates.paymentRequiredBody')
+                    : t('certificates.readyBody')
+                  : t('certificates.signInBody')}
+            </p>
+          </div>
+          <div className="class-certificate-actions">
+            {certificate ? (
+              <button type="button" className="class-action-primary" onClick={() => navigate(certificateVerifyPath)}>
+                {t('certificates.viewCertificate')}
+              </button>
+            ) : isAuthenticated && certificateStatus?.access?.requiresPayment ? (
+              <button type="button" className="class-action-primary" onClick={() => navigate('/pricing')}>
+                {t('certificates.viewPlans')}
+              </button>
+            ) : isAuthenticated ? (
+              <button
+                type="button"
+                className="class-action-primary"
+                onClick={issueCertificate}
+                disabled={certificateLoading || certificateIssuing}
+              >
+                {certificateIssuing ? t('common.saving') : t('certificates.issueCertificate')}
+              </button>
+            ) : (
+              <button type="button" className="class-action-primary" onClick={() => navigate('/login')}>
+                {t('certificates.signIn')}
+              </button>
+            )}
+          </div>
+        </section>
+      )}
+
       <main className="class-lesson-shell">
-        <aside className="class-agenda" aria-label="Lesson agenda">
+        <aside className="class-agenda" aria-label={t('classLesson.agendaAriaLabel', 'Lesson agenda')}>
           <div className="class-agenda-summary">
-            <span>{activityPlan.length} textbook activities</span>
-            <span>Unit sequence</span>
+            <span>{t('classLesson.textbookActivities', { count: activityPlan.length, defaultValue: '{{count}} textbook activities' })}</span>
+            <span>{t('classLesson.unitSequence', 'Unit sequence')}</span>
             {Object.entries(sectionCounts).map(([section, count]) => (
-              <span key={section}>{section}: {count}</span>
+              <span key={section}>{sectionLabel(section, t)}: {count}</span>
             ))}
           </div>
           <div className="class-agenda-list">
-            {activityPlan.map((activity, index) => (
+            {displayActivityPlan.map((activity, index) => (
               <button
                 type="button"
                 key={`${activity.section}-${index}`}
@@ -1159,26 +1289,26 @@ function ClassLessonPage() {
           </div>
         </aside>
 
-        <section className="class-focus" aria-label="Selected lesson item">
+        <section className="class-focus" aria-label={t('classLesson.selectedItemAriaLabel', 'Selected lesson item')}>
           <div className="class-focus-card">
             <div className="class-focus-topline">
-              <span>{selectedActivity?.section}</span>
-              <span>Activity {selectedActivityIndex + 1} of {activityPlan.length}</span>
+              <span>{displaySelectedActivity?.section}</span>
+              <span>{t('classLesson.activityXOfY', { current: selectedActivityIndex + 1, total: activityPlan.length, defaultValue: 'Activity {{current}} of {{total}}' })}</span>
             </div>
-            <h2>{selectedActivity?.title}</h2>
+            <h2>{displaySelectedActivity?.title}</h2>
             <div className="class-activity-goals">
-              {(selectedActivity?.goals || []).map((goal) => <p key={goal}>{goal}</p>)}
+              {(displaySelectedActivity?.goals || []).map((goal) => <p key={goal}>{goal}</p>)}
             </div>
-            {selectedActivity?.task && (
+            {displaySelectedActivity?.task && (
               <div className="class-activity-task">
-                <span>Learner task</span>
-                <p>{selectedActivity.task}</p>
+                <span>{t('classLesson.learnerTask', 'Learner task')}</span>
+                <p>{displaySelectedActivity.task}</p>
               </div>
             )}
 
             {contextClassPrompts.length > 0 && (
               <div className="class-context-prompts">
-                <span>Personalized for you</span>
+                <span>{t('classLesson.personalizedForYou', 'Personalized for you')}</span>
                 <div>
                   {contextClassPrompts.map((prompt) => (
                     <button
@@ -1203,7 +1333,7 @@ function ClassLessonPage() {
             */}
             {Array.isArray(lesson?.expressionPractice) && lesson.expressionPractice.length > 0 && (
               <div className="class-expression-practice">
-                <span className="class-expression-label">Expression practice</span>
+                <span className="class-expression-label">{t('classLesson.expressionPractice', 'Expression practice')}</span>
                 <div className="class-expression-chips">
                   {lesson.expressionPractice.map((expression) => (
                     <button
@@ -1212,9 +1342,9 @@ function ClassLessonPage() {
                       className="class-expression-chip"
                       onClick={() => practiceExpression(expression)}
                       disabled={tutorLoading}
-                      title={expression.goal || expression.label}
+                      title={nativeScaffoldText(expression.goal || expression.label, nativeLanguage, t)}
                     >
-                      {expression.label || expression.id}
+                      {nativeScaffoldText(expression.label, nativeLanguage, t) || expression.id}
                     </button>
                   ))}
                 </div>
@@ -1229,21 +1359,21 @@ function ClassLessonPage() {
               as one flat group without a redundant heading.
             */}
             {activityItemIndices.length === 0 ? (
-              <div className="class-item-strip" aria-label="Lesson material">
+              <div className="class-item-strip" aria-label={t('classLesson.lessonMaterialAriaLabel', 'Lesson material')}>
                 <p className="class-item-strip-empty">
-                  No items are tagged for this activity yet. Pick another activity, or seed reading/listening/pronunciation/culture content for this section.
+                  {t('classLesson.noItemsTagged', 'No items are tagged for this activity yet. Pick another activity, or seed reading/listening/pronunciation/culture content for this section.')}
                 </p>
               </div>
             ) : (() => {
               const groups = groupActivityItemsBySection(items, activityItemIndices);
               const showHeadings = groups.length > 1;
               return (
-                <div className="class-item-groups" aria-label="Lesson material">
+                <div className="class-item-groups" aria-label={t('classLesson.lessonMaterialAriaLabel', 'Lesson material')}>
                   {groups.map((group, groupIndex) => (
                     <div key={`${group.label}-${groupIndex}`} className="class-item-group">
                       {showHeadings && (
                         <span className="class-item-group-label">
-                          {group.label} ({group.indices.length})
+                          {sectionLabel(group.label, t)} ({group.indices.length})
                         </span>
                       )}
                       <div className="class-item-strip">
@@ -1257,7 +1387,12 @@ function ClassLessonPage() {
                               key={`${item.type}-${originalIndex}`}
                               className={`${originalIndex === selectedIndex ? 'active' : ''} ${completed.has(originalIndex) ? 'done' : ''}`}
                               onClick={() => goToItem(originalIndex)}
-                              title={`Item ${positionInActivity + 1} of ${activityItemIndices.length} in this activity`}
+                              title={t('classLesson.itemXOfYInActivity', {
+                                current: positionInActivity + 1,
+                                total: activityItemIndices.length,
+                                section: selectedActivity?.section || t('classLesson.section.practice', 'Practice'),
+                                defaultValue: 'Item {{current}} of {{total}} in {{section}}',
+                              })}
                             >
                               {positionInActivity + 1}
                             </button>
@@ -1272,11 +1407,20 @@ function ClassLessonPage() {
 
             <div className="class-material-card">
               <div className="class-focus-topline">
-                <span>{itemSection(selectedItem)}</span>
+                <span>{sectionLabel(itemSection(selectedItem), t)}</span>
                 <span>
                   {activityItemIndices.length > 0 && positionInActivity >= 0
-                    ? `Item ${positionInActivity + 1} of ${activityItemIndices.length} in ${selectedActivity?.section || 'activity'}`
-                    : `Item ${selectedIndex + 1} of ${items.length}`}
+                    ? t('classLesson.itemXOfYInActivity', {
+                      current: positionInActivity + 1,
+                      total: activityItemIndices.length,
+                      section: selectedActivity?.section || t('classLesson.section.practice', 'Practice'),
+                      defaultValue: 'Item {{current}} of {{total}} in {{section}}',
+                    })
+                    : t('classLesson.itemXOfY', {
+                      current: selectedIndex + 1,
+                      total: items.length,
+                      defaultValue: 'Item {{current}} of {{total}}',
+                    })}
                 </span>
               </div>
               <h3>{itemTarget(selectedItem)}</h3>
@@ -1286,23 +1430,29 @@ function ClassLessonPage() {
                 className="pronunciation-guide--inline"
               />
               <p className="class-meaning">
-                {itemNative(selectedItem) || (selectedItem._translationPending ? 'Translation is being prepared for your language.' : '')}
+                {looksLikeRawEnglishForNative(itemNative(selectedItem), nativeLanguage)
+                  ? t('classLesson.translationPending', 'Translation is being prepared for your language.')
+                  : (itemNative(selectedItem) || (selectedItem._translationPending ? t('classLesson.translationPending', 'Translation is being prepared for your language.') : ''))}
               </p>
 
               {(itemExampleTarget(selectedItem) || itemExampleNative(selectedItem)) && (
                 <div className="class-example">
-                  {itemExampleTarget(selectedItem) && <p><strong>Example:</strong> {itemExampleTarget(selectedItem)}</p>}
-                  {itemExampleNative(selectedItem) && <p>{itemExampleNative(selectedItem)}</p>}
+                  {itemExampleTarget(selectedItem) && <p><strong>{t('classLesson.examplePrefix', 'Example:')}</strong> {itemExampleTarget(selectedItem)}</p>}
+                  {itemExampleNative(selectedItem) && !looksLikeRawEnglishForNative(itemExampleNative(selectedItem), nativeLanguage) && <p>{itemExampleNative(selectedItem)}</p>}
                 </div>
               )}
 
               {Array.isArray(selectedItem.breakdown) && selectedItem.breakdown.length > 0 && (
                 <div className="class-breakdown">
-                  <h3>Breakdown</h3>
+                  <h3>{t('classLesson.breakdown', 'Breakdown')}</h3>
                   {selectedItem.breakdown.map((part, index) => (
                     <div key={`${part.target || part.korean}-${index}`} className="class-breakdown-row">
                       <strong>{firstText(part.target, part.korean)}</strong>
-                      <span>{firstText(part.native, part.english)}</span>
+                      <span>
+                        {looksLikeRawEnglishForNative(firstText(part.native, part.english), nativeLanguage)
+                          ? t('classLesson.translationPending', 'Translation is being prepared for your language.')
+                          : firstText(part.native, part.english)}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -1337,7 +1487,7 @@ function ClassLessonPage() {
                   || positionInActivity >= activityItemIndices.length - 1
                 }
               >
-                Next item
+                {t('classLesson.nextItem', 'Next item')}
               </button>
             ) : (
               <button
@@ -1346,31 +1496,31 @@ function ClassLessonPage() {
                 onClick={teachSelected}
                 disabled={tutorLoading}
               >
-                Teach this
+                {t('classLesson.teachThis', 'Teach this')}
               </button>
             )}
-            <button type="button" className="class-action-secondary" onClick={practiceSelected} disabled={tutorLoading}>Practice</button>
-            <button type="button" className="class-action-secondary" onClick={explainSelected} disabled={tutorLoading}>Explain</button>
+            <button type="button" className="class-action-secondary" onClick={practiceSelected} disabled={tutorLoading}>{t('classLesson.practice', 'Practice')}</button>
+            <button type="button" className="class-action-secondary" onClick={explainSelected} disabled={tutorLoading}>{t('classLesson.explain', 'Explain')}</button>
             <button
               type="button"
               className="class-action-ghost"
               onClick={markComplete}
               disabled={completed.has(selectedIndex)}
             >
-              {completed.has(selectedIndex) ? '✓ Marked complete' : 'Mark complete'}
+              {completed.has(selectedIndex) ? t('classLesson.markedComplete', '✓ Marked complete') : t('classLesson.markComplete', 'Mark complete')}
             </button>
           </div>
         </section>
 
-        <section className="class-tutor" aria-label="Lesson tutor">
+        <section className="class-tutor" aria-label={t('classLesson.tutorAriaLabel', 'Lesson tutor')}>
           <div className="class-tutor-header">
             <div>
-              <p className="class-kicker">Tutor</p>
-              <h2>Guided lesson</h2>
+              <p className="class-kicker">{t('classLesson.tutorKicker', 'Tutor')}</p>
+              <h2>{t('classLesson.guidedLesson', 'Guided lesson')}</h2>
             </div>
             <div className="class-tutor-status">
               <span>{status}</span>
-              <div className="class-speech-controls" aria-label="Tutor speech controls">
+              <div className="class-speech-controls" aria-label={t('classLesson.tutorSpeechControlsAriaLabel', 'Tutor speech controls')}>
                 <button
                   type="button"
                   className={speechEnabled ? 'active' : ''}
@@ -1379,7 +1529,9 @@ function ClassLessonPage() {
                     setSpeechEnabled((enabled) => !enabled);
                   }}
                 >
-                  {speechEnabled ? 'Spoken replies on' : 'Spoken replies off'}
+                  {speechEnabled
+                    ? t('classLesson.spokenRepliesOn', 'Spoken replies on')
+                    : t('classLesson.spokenRepliesOff', 'Spoken replies off')}
                 </button>
                 <button
                   type="button"
@@ -1391,33 +1543,39 @@ function ClassLessonPage() {
                       return next;
                     });
                   }}
-                  title={`Read ${nativeName} aloud after each ${targetName} line. Click any line individually to hear it regardless.`}
+                  title={t('classLesson.nativeGlossToggleHint', {
+                    native: nativeName,
+                    target: targetName,
+                    defaultValue: 'Read {{native}} aloud after each {{target}} line. Click any line individually to hear it regardless.',
+                  })}
                 >
-                  {speakNativeGloss ? `Speak ${nativeName}` : `${nativeName} silent`}
+                  {speakNativeGloss
+                    ? t('classLesson.speakLanguage', { lang: nativeName, defaultValue: 'Speak {{lang}}' })
+                    : t('classLesson.languageSilent', { lang: nativeName, defaultValue: '{{lang}} silent' })}
                 </button>
                 <button
                   type="button"
                   className={speechInputMode === 'target' ? 'active' : ''}
                   onClick={() => setSpeechInputMode('target')}
-                  title={`Listen for ${targetName}`}
+                  title={t('classLesson.listenForLang', { lang: targetName, defaultValue: 'Listen for {{lang}}' })}
                 >
-                  Target mic
+                  {t('classLesson.languageMic', { lang: targetName, defaultValue: '{{lang}} mic' })}
                 </button>
                 <button
                   type="button"
                   className={speechInputMode === 'native' ? 'active' : ''}
                   onClick={() => setSpeechInputMode('native')}
-                  title={`Listen for ${nativeName}`}
+                  title={t('classLesson.listenForLang', { lang: nativeName, defaultValue: 'Listen for {{lang}}' })}
                 >
-                  Native mic
+                  {t('classLesson.languageMic', { lang: nativeName, defaultValue: '{{lang}} mic' })}
                 </button>
                 <button
                   type="button"
                   onClick={listening ? stopListening : startListening}
                   disabled={!speechSupported || tutorLoading}
-                  title={speechSupported ? 'Speak your answer' : 'Speech input is not available in this browser'}
+                  title={speechSupported ? t('classLesson.speakYourAnswer', 'Speak your answer') : t('classLesson.speechUnavailable', 'Speech input is not available in this browser')}
                 >
-                  {listening ? 'Stop mic' : 'Speak'}
+                  {listening ? t('classLesson.stopMic', 'Stop mic') : t('classLesson.speak', 'Speak')}
                 </button>
               </div>
             </div>
@@ -1426,7 +1584,7 @@ function ClassLessonPage() {
           <div className="class-tutor-thread" ref={threadRef}>
             {tutorTurns.map((message) => (
               <div key={message.id} className={`class-tutor-message ${message.role} ${message.error ? 'error' : ''}`}>
-                <strong>{message.role === 'user' ? 'You' : 'Tutor'}</strong>
+                <strong>{message.role === 'user' ? t('classLesson.you', 'You') : t('classLesson.tutorKicker', 'Tutor')}</strong>
                 {renderTutorMessageBody(message)}
                 {message.coachingTip && <small>{message.coachingTip}</small>}
                 {message.role === 'assistant' && !message.error && (
@@ -1435,7 +1593,7 @@ function ClassLessonPage() {
                     className="class-replay"
                     onClick={() => speakTutorTurn(message)}
                   >
-                    Replay
+                    {t('classLesson.replay', 'Replay')}
                   </button>
                 )}
                 {message.role === 'assistant' && message.error && message.retryInstructionText && (
@@ -1445,22 +1603,22 @@ function ClassLessonPage() {
                     onClick={() => retryTutorTurn(message)}
                     disabled={tutorLoading}
                   >
-                    Retry
+                    {t('classLesson.retry', 'Retry')}
                   </button>
                 )}
               </div>
             ))}
             {tutorLoading && (
               <div className="class-tutor-message assistant">
-                <strong>Tutor</strong>
-                <p>Preparing a helpful explanation...</p>
+                <strong>{t('classLesson.tutorKicker', 'Tutor')}</strong>
+                <p>{t('classLesson.preparingExplanation', 'Preparing a helpful explanation...')}</p>
               </div>
             )}
           </div>
 
           <div className="class-tutor-input">
             <div className="class-sync-note">
-              {progressSyncState === 'synced' ? 'Progress synced.' : 'Progress saved on this device.'}
+              {progressSyncState === 'synced' ? t('classLesson.progressSynced', 'Progress synced.') : t('classLesson.progressLocal', 'Progress saved on this device.')}
             </div>
             <textarea
               value={turn}
@@ -1471,7 +1629,7 @@ function ClassLessonPage() {
                   sendFreeTurn();
                 }
               }}
-              placeholder="Ask a question or type your answer..."
+              placeholder={t('classLesson.inputPlaceholder', 'Ask a question or type your answer...')}
               rows={3}
             />
             <div className="class-input-actions">
@@ -1480,11 +1638,11 @@ function ClassLessonPage() {
                 className="class-mic-button"
                 onClick={listening ? stopListening : startListening}
                 disabled={!speechSupported || tutorLoading}
-                title={speechSupported ? 'Speak your answer' : 'Speech input is not available in this browser'}
+                title={speechSupported ? t('classLesson.speakYourAnswer', 'Speak your answer') : t('classLesson.speechUnavailable', 'Speech input is not available in this browser')}
               >
-                {listening ? 'Stop' : 'Speak'}
+                {listening ? t('classLesson.stop', 'Stop') : t('classLesson.speak', 'Speak')}
               </button>
-              <button type="button" onClick={sendFreeTurn} disabled={!turn.trim() || tutorLoading}>Send</button>
+              <button type="button" onClick={sendFreeTurn} disabled={!turn.trim() || tutorLoading}>{t('classLesson.send', 'Send')}</button>
             </div>
           </div>
         </section>

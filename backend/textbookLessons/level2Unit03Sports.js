@@ -74,8 +74,8 @@ const lesson = {
   ],
   relatedPools: ['topic-society'],
   content: [
-    createContentItem('Lesson goal', 'sports + advanced grammar', 'By end: recap matches with cause/comparison, use 4 advanced patterns, understand 씨름.', 'word', 'Functions: cause · comparison · obviousness · prediction', 'Sports-talk toolkit.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'sports chat', 'A friend asks who won last night\'s Korea vs Japan baseball game. You should be able to recap the score + key moments + a comparison.', 'word', 'Friend: 한국 어떻게 됐어요? — You: 비가 오는 바람에 잠시 멈췄지만 4대2로 이겼어요.', 'Friend: How did Korea do? — You: Paused for rain but won 4-2.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: recap matches with cause/comparison, use 4 advanced patterns, understand 씨름.', 'word', 'Functions: cause · comparison · obviousness · prediction', 'Sports-talk toolkit.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'A friend asks who won last night\'s Korea vs Japan baseball game. You should be able to recap the score + key moments + a comparison.', 'word', 'Friend: 한국 어떻게 됐어요? — You: 비가 오는 바람에 잠시 멈췄지만 4대2로 이겼어요.', 'Friend: How did Korea do? — You: Paused for rain but won 4-2.', null, [ACT.orientation]),
 
     createContentItem('경기', 'gyeonggi', 'match / game', 'word', '어제 경기를 봤어요.', 'I watched yesterday\'s match.', null, [ACT.vocabulary]),
     createContentItem('선수', 'seonsu', 'player / athlete', 'word', '한국 선수가 1등이에요.', 'The Korean is 1st.', null, [ACT.vocabulary]),

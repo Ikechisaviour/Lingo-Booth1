@@ -25,10 +25,11 @@ import {
 } from '../../services/practicePromptService';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
-import LANGUAGES from '../../config/languages';
+import LANGUAGES, { getLanguageDisplayName, getLanguageOptionLabel } from '../../config/languages';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useAppColors, type AppColors } from '../../config/theme';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { normalizeLanguageCode } from '../../utils/languagePairPolicy';
 
 function isProOrUltraTier(tier?: string | null) {
   return ['pro', 'ultra'].includes(String(tier || '').toLowerCase());
@@ -87,6 +88,16 @@ const ProfileScreen: React.FC = () => {
   const styles = useMemo(() => createStyles(colors, isCompact), [colors, isCompact]);
   const voiceLanguageCode = voiceLanguage === 'native' ? nativeLanguage : targetLanguage;
   const selectedVoice = preferredVoices?.[voiceLanguageCode] || (voiceLanguage === 'target' ? preferredVoice : null);
+  const languageLabel = (code?: string) => {
+    const normalized = normalizeLanguageCode(code);
+    const localizedName = t(`languages.${normalized}`, LANGUAGES[normalized]?.name || t('profilePage.selectLanguage', 'Select language'));
+    return getLanguageDisplayName(normalized, null, localizedName) || t('profilePage.selectLanguage', 'Select language');
+  };
+  const languageOptionLabel = (code?: string) => {
+    const normalized = normalizeLanguageCode(code);
+    const localizedName = t(`languages.${normalized}`, LANGUAGES[normalized]?.name || normalized);
+    return getLanguageOptionLabel(normalized, null, localizedName);
+  };
   const personalizationTier = userRole === 'admin'
     ? 'pro'
     : (aiEntitlements?.subscriptionTier || user?.aiEntitlements?.subscriptionTier || user?.subscriptionTier || subscriptionTier || 'free');
@@ -97,6 +108,10 @@ const ProfileScreen: React.FC = () => {
     || user?.aiEntitlements?.canUsePracticeContext
     || isProOrUltraTier(personalizationTier)
     || isProOrUltraTier(subscriptionTier),
+  );
+  const canManageInstitution = Boolean(
+    aiEntitlements?.canManageOrganization
+    || user?.aiEntitlements?.canManageOrganization
   );
 
   const fetchData = useCallback(async () => {
@@ -436,20 +451,20 @@ const ProfileScreen: React.FC = () => {
             <View style={styles.personalizationTopRow}>
               <View style={styles.personalizationTextBlock}>
                 <Text style={styles.personalizationKicker}>
-                  {canUseLearningPersonalization ? 'Available on your plan' : 'Pro or Ultra'}
+                  {canUseLearningPersonalization ? t('profilePage.personalizationAvailable') : t('profilePage.personalizationTier')}
                 </Text>
                 <Text variant="titleMedium" style={styles.cardTitle}>
-                  Learning Personalization
+                  {t('profilePage.personalizationTitle')}
                 </Text>
               </View>
               <Text style={styles.personalizationTier}>{String(personalizationTier || 'free').toUpperCase()}</Text>
             </View>
             <Text style={styles.hintText}>
-              Save approved words, phrases, and situations from real life so practice can become more relevant to you.
+              {t('profilePage.personalizationDesc')}
             </Text>
             <View style={styles.personalizationActionRow}>
               <Text style={styles.personalizationActionText}>
-                {canUseLearningPersonalization ? 'Manage personalization' : 'View upgrade details'}
+                {canUseLearningPersonalization ? t('profilePage.managePersonalization') : t('profilePage.viewUpgradeDetails')}
               </Text>
               <Text style={styles.personalizationArrow}>›</Text>
             </View>
@@ -513,7 +528,7 @@ const ProfileScreen: React.FC = () => {
                 activeOpacity={0.7}
               >
                 <Text style={styles.dropdownText}>
-                  {LANGUAGES[nativeLanguage]?.flag} {LANGUAGES[nativeLanguage]?.name || t('profilePage.selectLanguage', 'Select language')}
+                  {LANGUAGES[nativeLanguage]?.flag} {languageLabel(nativeLanguage)}
                 </Text>
                 <Text style={styles.dropdownArrow}>{showNativePicker ? '▲' : '▼'}</Text>
               </TouchableOpacity>
@@ -523,7 +538,7 @@ const ProfileScreen: React.FC = () => {
                     data={Object.entries(LANGUAGES).filter(([code]) => code !== targetLanguage)}
                     keyExtractor={([code]) => code}
                     style={{ maxHeight: 200 }}
-                    renderItem={({ item: [code, lang] }) => (
+                    renderItem={({ item: [code] }) => (
                       <TouchableOpacity
                         style={[styles.dropdownItem, nativeLanguage === code && styles.dropdownItemSelected]}
                         onPress={async () => {
@@ -534,7 +549,7 @@ const ProfileScreen: React.FC = () => {
                           }
                         }}
                       >
-                        <Text style={styles.dropdownItemText}>{lang.flag}  {lang.name}</Text>
+                        <Text style={styles.dropdownItemText}>{languageOptionLabel(code)}</Text>
                         {nativeLanguage === code && <Text style={styles.langCheck}>✓</Text>}
                       </TouchableOpacity>
                     )}
@@ -550,7 +565,7 @@ const ProfileScreen: React.FC = () => {
                 activeOpacity={0.7}
               >
                 <Text style={styles.dropdownText}>
-                  {LANGUAGES[targetLanguage]?.flag} {LANGUAGES[targetLanguage]?.name || t('profilePage.selectLanguage', 'Select language')}
+                  {LANGUAGES[targetLanguage]?.flag} {languageLabel(targetLanguage)}
                 </Text>
                 <Text style={styles.dropdownArrow}>{showTargetPicker ? '▲' : '▼'}</Text>
               </TouchableOpacity>
@@ -560,7 +575,7 @@ const ProfileScreen: React.FC = () => {
                     data={Object.entries(LANGUAGES).filter(([code]) => code !== nativeLanguage)}
                     keyExtractor={([code]) => code}
                     style={{ maxHeight: 200 }}
-                    renderItem={({ item: [code, lang] }) => (
+                    renderItem={({ item: [code] }) => (
                       <TouchableOpacity
                         style={[styles.dropdownItem, targetLanguage === code && styles.dropdownItemSelected]}
                         onPress={async () => {
@@ -573,7 +588,7 @@ const ProfileScreen: React.FC = () => {
                           fetchVoices();
                         }}
                       >
-                        <Text style={styles.dropdownItemText}>{lang.flag}  {lang.name}</Text>
+                        <Text style={styles.dropdownItemText}>{languageOptionLabel(code)}</Text>
                         {targetLanguage === code && <Text style={styles.langCheck}>✓</Text>}
                       </TouchableOpacity>
                     )}
@@ -604,8 +619,8 @@ const ProfileScreen: React.FC = () => {
                   setVoices([]);
                 }}
                 buttons={[
-                  { value: 'target', label: `${LANGUAGES[targetLanguage]?.name || 'Target'}` },
-                  { value: 'native', label: `${LANGUAGES[nativeLanguage]?.name || 'Native'}` },
+                  { value: 'target', label: languageLabel(targetLanguage) },
+                  { value: 'native', label: languageLabel(nativeLanguage) },
                 ]}
                 style={{ marginBottom: 12 }}
               />
@@ -672,10 +687,10 @@ const ProfileScreen: React.FC = () => {
               <View style={styles.settingSwitchRow}>
                 <View style={styles.settingTextBlock}>
                   <Text variant="titleMedium" style={styles.cardTitle}>
-                    Practice Prompts
+                    {t('profilePage.practicePromptsTitle', 'Practice Prompts')}
                   </Text>
                   <Text style={styles.hintText}>
-                    Show a quick word question with action buttons, so you can answer from the notification shade.
+                    {t('profilePage.practicePromptsHint', 'Show a quick word question with action buttons, so you can answer from the notification shade.')}
                   </Text>
                 </View>
                 <Switch
@@ -686,8 +701,8 @@ const ProfileScreen: React.FC = () => {
               </View>
               <Text style={styles.notificationStatus}>
                 {practiceNotificationsGranted
-                  ? 'Notifications are allowed on this device.'
-                  : 'Notifications are not allowed yet.'}
+                  ? t('profilePage.notificationsAllowed', 'Notifications are allowed on this device.')
+                  : t('profilePage.notificationsBlocked', 'Notifications are not allowed yet.')}
               </Text>
               <Button
                 mode="outlined"
@@ -696,7 +711,7 @@ const ProfileScreen: React.FC = () => {
                 disabled={practiceNotificationBusy}
                 style={{ marginTop: 12 }}
               >
-                Send test prompt
+                {t('profilePage.sendTestPrompt', 'Send test prompt')}
               </Button>
             </Card.Content>
           </Card>
@@ -738,6 +753,36 @@ const ProfileScreen: React.FC = () => {
       {/* Account Tab */}
       {activeTab === 'account' && (
         <>
+          <Card style={styles.card}>
+            <Card.Content>
+              <Text variant="titleMedium" style={styles.cardTitle}>
+                {t('billing.title')}
+              </Text>
+              <Text style={styles.hintText}>
+                {t('billing.profileText')}
+              </Text>
+              <Button mode="contained" onPress={() => navigation.navigate('Billing')} style={{ marginTop: 12 }}>
+                {t('billing.viewPlans')}
+              </Button>
+            </Card.Content>
+          </Card>
+
+          {canManageInstitution && (
+            <Card style={styles.card}>
+              <Card.Content>
+                <Text variant="titleMedium" style={styles.cardTitle}>
+                  {t('institution.title')}
+                </Text>
+                <Text style={styles.hintText}>
+                  {t('institution.subtitle')}
+                </Text>
+                <Button mode="contained" onPress={() => navigation.navigate('Institution')} style={{ marginTop: 12 }}>
+                  {t('navbar.institution')}
+                </Button>
+              </Card.Content>
+            </Card>
+          )}
+
           <Card style={[styles.card, styles.dangerCard]}>
             <Card.Content>
               <Text variant="titleMedium" style={styles.cardTitle}>

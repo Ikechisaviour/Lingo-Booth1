@@ -176,8 +176,7 @@ const lesson = {
     // ────────────────────────────────────────────────────────────────────
     // Activity 1 — Orientation
     // ────────────────────────────────────────────────────────────────────
-    createContentItem(
-      'Lesson goal', 'self-introduction',
+    createContentItem('학습 목표', 'hakseup mokpyo',
       'By the end of this lesson, you can greet a Korean stranger, say your name, state where you are from, ask the same of them, and farewell — all politely.',
       'word',
       'Functional language: greet · introduce · ask origin · negate · farewell',
@@ -185,8 +184,7 @@ const lesson = {
       null,
       [ACT.orientation],
     ),
-    createContentItem(
-      'Real-world scenario', 'first day at Kumoh',
+    createContentItem('오늘의 상황', 'oneurui sanghwang',
       'Imagine: it is your first day at 금오공과대학교 (Kumoh National Institute of Technology). A Korean classmate sits next to you and turns to you.',
       'word',
       'Classmate: 안녕하세요. 저는 김민수예요. 어디에서 왔어요?',
@@ -198,8 +196,7 @@ const lesson = {
       ],
       [ACT.orientation],
     ),
-    createContentItem(
-      'Two politeness levels', 'formal vs polite',
+    createContentItem('두 가지 말투', 'du gaji maltu',
       'Korean has formal (-ㅂ니다/입니다) and polite (-요/이에요) styles. Formal is for strangers, interviews, presentations. Polite is for daily life with classmates and coworkers. THIS LESSON teaches both — pick by situation.',
       'word',
       '학생입니다. (formal) vs 학생이에요. (polite)',

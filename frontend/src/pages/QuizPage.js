@@ -173,10 +173,10 @@ function QuizPage() {
         <div className="lessons-hero">
           <div className="hero-text">
             <h1>
-              {t(`languages.${getTargetLangCode()}`, getTargetLangName())} <span className="text-accent">Quiz</span>
+              {t(`languages.${getTargetLangCode()}`, getTargetLangName())} <span className="text-accent">{t('navbar.quiz')}</span>
             </h1>
-            <p>Choose a quiz and answer practice questions.</p>
-            <span className="hero-stat">&#128221; {quizzes.length} quizzes available</span>
+            <p>{t('quizPage.subtitle', 'Choose a quiz and answer practice questions.')}</p>
+            <span className="hero-stat">&#128221; {t('quizPage.availableCount', '{{count}} quizzes available', { count: quizzes.length })}</span>
           </div>
           <div className="hero-actions">
             {!customizeMode && quizzes.length > 0 && filter.category === '' && filter.difficulty === '' && (

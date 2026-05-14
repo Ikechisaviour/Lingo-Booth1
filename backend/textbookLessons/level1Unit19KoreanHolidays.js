@@ -81,8 +81,8 @@ const lesson = {
   ],
   relatedPools: ['topic-culture'],
   content: [
-    createContentItem('Lesson goal', 'holidays', 'By end: name 명절, describe customs, use V-(으)면서/V-(으)면 + N의 N.', 'word', 'Functions: name · describe · compare · combine', 'Holiday + grammar combo.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'invited to Chuseok', 'Your Korean friend invites you to their 할머니\'s house for Chuseok. You will wear 한복, eat 송편, and meet relatives.', 'word', 'Friend: 우리 집에 와요. 같이 송편 빚어요. — You: 정말요? 좋아요!', 'Friend: Come to my house. Let us make songpyeon. — You: Really? Great!', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: name 명절, describe customs, use V-(으)면서/V-(으)면 + N의 N.', 'word', 'Functions: name · describe · compare · combine', 'Holiday + grammar combo.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'Your Korean friend invites you to their 할머니\'s house for Chuseok. You will wear 한복, eat 송편, and meet relatives.', 'word', 'Friend: 우리 집에 와요. 같이 송편 빚어요. — You: 정말요? 좋아요!', 'Friend: Come to my house. Let us make songpyeon. — You: Really? Great!', null, [ACT.orientation]),
 
     createContentItem('떡국 → [떡꾹]', 'tteokkkuk', '경음화: ㄱ받침 + ㄱ → ㄱ + ㄲ.', 'word', '떡국을 먹어요. → [떡꾸글 머거요]', 'I eat rice-cake soup.', null, [ACT.pronunciation]),
     createContentItem('송편을 → [송펴늘]', 'songpyeoneul', '연음: ㄴ받침 of 편 jumps to 을.', 'word', '송편을 빚어요. → [송펴늘 비저요]', 'I make songpyeon.', null, [ACT.pronunciation]),

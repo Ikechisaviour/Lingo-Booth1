@@ -1,6 +1,8 @@
 import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { setLandingLanguagePreference } from '../utils/publicLanguage';
+import { getLanguageDisplayName } from '../config/languages';
 import {
   FiBookOpen,
   FiCheck,
@@ -592,6 +594,7 @@ function samplePhrasesFor(nativeCode, targetCode) {
 
 function LandingPage() {
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
   const [landingLanguage, setLandingLanguage] = useState(detectLandingLanguage);
 
   const landing = useMemo(() => {
@@ -616,6 +619,8 @@ function LandingPage() {
       samplePhrases: samplePhrasesFor(nativeCode, targetCode),
     };
   }, [landingLanguage]);
+
+  const landingLanguageT = useMemo(() => i18n.getFixedT(landingLanguage), [i18n, landingLanguage]);
 
   const handleLandingLanguageChange = (event) => {
     const code = event.target.value;
@@ -642,9 +647,9 @@ function LandingPage() {
   return (
     <div className={`landing-page${landing.isRtl ? ' landing-rtl' : ''}`} lang={landing.nativeCode} dir={landing.isRtl ? 'rtl' : 'ltr'}>
       <header className="landing-nav">
-        <button type="button" className="landing-brand" onClick={() => navigate('/')}>
+        <button type="button" className="landing-brand" onClick={() => navigate('/')} aria-label={t('common.backToHome')}>
           <span className="landing-brand-mark" aria-hidden="true">
-            <FiMessageCircle />
+            <img src="/images/logo.png" alt="" />
           </span>
           <span>Lingo Booth</span>
         </button>
@@ -656,13 +661,19 @@ function LandingPage() {
             <select value={landingLanguage} onChange={handleLandingLanguageChange} aria-label={landing.copy.languageLabel}>
               {LANGUAGE_OPTIONS.map(language => (
                 <option key={language.code} value={language.code}>
-                  {language.name}
+                  {getLanguageDisplayName(language.code, landingLanguageT)}
                 </option>
               ))}
             </select>
           </label>
           <button type="button" className="landing-login" onClick={() => navigate('/login')}>
             {landing.copy.login}
+          </button>
+          <button type="button" className="landing-login" onClick={() => navigate('/contact')}>
+            {t('contact.navLabel')}
+          </button>
+          <button type="button" className="landing-login" onClick={() => navigate('/pricing')}>
+            {t('navbar.plans')}
           </button>
           <button type="button" className="landing-primary landing-primary-small" onClick={startFree}>
             {landing.copy.startFree}

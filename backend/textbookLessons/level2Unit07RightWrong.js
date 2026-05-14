@@ -73,8 +73,8 @@ const lesson = {
   ],
   relatedPools: ['topic-society'],
   content: [
-    createContentItem('Lesson goal', 'right + wrong', 'By end: assert, defend, qualify opinions with native-like grammar.', 'word', 'Functions: assert · qualify · example · uncertain', 'Argument toolkit.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'noisy neighbor', 'Your upstairs neighbor parties past midnight every weekend. You decide to confront politely — you need careful Korean.', 'word', 'You: 늦더라도 한번 이야기해 볼게요. — Neighbor: 죄송해요.', 'You: Even if late, I will speak with them. — Neighbor: Sorry.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: assert, defend, qualify opinions with native-like grammar.', 'word', 'Functions: assert · qualify · example · uncertain', 'Argument toolkit.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'Your upstairs neighbor parties past midnight every weekend. You decide to confront politely — you need careful Korean.', 'word', 'You: 늦더라도 한번 이야기해 볼게요. — Neighbor: 죄송해요.', 'You: Even if late, I will speak with them. — Neighbor: Sorry.', null, [ACT.orientation]),
 
     createContentItem('의견', 'uigyeon', 'opinion', 'word', '제 의견을 말할게요.', 'I will share my opinion.', null, [ACT.vocabulary]),
     createContentItem('행동', 'haengdong', 'action / behavior', 'word', '행동이 무례해요.', 'Behavior is rude.', null, [ACT.vocabulary]),

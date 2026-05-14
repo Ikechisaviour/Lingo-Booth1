@@ -82,8 +82,8 @@ const lesson = {
   ],
   relatedPools: ['topic-people', 'topic-society'],
   content: [
-    createContentItem('Lesson goal', 'going somewhere', 'By end: state where, why, with whom you are going + use future tense V-(으)ㄹ 거예요.', 'word', 'Functions: destination · purpose · companion · future', 'Four micro-skills.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'Saturday morning', 'A classmate sees you with a backpack and asks where you are off to.', 'word', 'Classmate: 어디에 가요? — You: 친구를 만나러 카페에 가요.', 'Classmate: Where are you going? — You: I am going to the cafe to meet a friend.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: state where, why, with whom you are going + use future tense V-(으)ㄹ 거예요.', 'word', 'Functions: destination · purpose · companion · future', 'Four micro-skills.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'A classmate sees you with a backpack and asks where you are off to.', 'word', 'Classmate: 어디에 가요? — You: 친구를 만나러 카페에 가요.', 'Classmate: Where are you going? — You: I am going to the cafe to meet a friend.', null, [ACT.orientation]),
 
     createContentItem('갈 거예요 → [갈꺼예요]', 'gal kkeoyeyo', 'ㄹ + ㄱ → tensification: the ㄱ of 거 becomes ㄲ.', 'word', '주말에 갈 거예요. → [갈꺼예요]', 'I will go on the weekend.', null, [ACT.pronunciation]),
     createContentItem('읽으러 → [일그러]', 'ilgeureo', '연음 of the ㄺ cluster: ㄱ jumps to the next syllable.', 'word', '책을 읽으러 가요. → [일그러 가요]', 'I am going to read a book.', null, [ACT.pronunciation]),

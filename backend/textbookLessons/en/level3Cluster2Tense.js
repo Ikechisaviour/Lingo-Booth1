@@ -1,0 +1,262 @@
+// Level 3 Cluster 2 — Tense
+// Patterns: present perfect, past perfect, future perfect, perfect continuous, sequence of tenses.
+
+const createContentItem = (
+  target, ipa, note, type = 'word',
+  example = '', exampleNote = '', breakdown = null, activityIds = [],
+) => ({
+  type, activityIds,
+  targetText: target, romanization: ipa, nativeText: note, pronunciation: ipa,
+  exampleTarget: example || target, exampleNative: exampleNote || note,
+  korean: target, english: note, example: example || target, exampleEnglish: exampleNote || note,
+  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.target, native: b.english, korean: b.target, english: b.english })) } : {}),
+});
+
+const ACT = {
+  orientation: 'en-l3c2-orientation',
+  overview: 'en-l3c2-overview',
+  presentPerfect: 'en-l3c2-pres-perfect',
+  pastPerfect: 'en-l3c2-past-perfect',
+  futurePerfect: 'en-l3c2-future-perfect',
+  perfectContinuous: 'en-l3c2-perfect-cont',
+  sequenceOfTenses: 'en-l3c2-sot',
+  reading: 'en-l3c2-reading',
+  speaking: 'en-l3c2-speaking',
+  writing: 'en-l3c2-writing',
+  task: 'en-l3c2-task',
+};
+
+const activities = [
+  { id: ACT.orientation, section: 'Orientation', title: 'What you will be able to do',
+    goals: ['Use the 4 perfect tenses (present/past/future perfect + perfect continuous).', 'Master sequence of tenses in reported speech.', 'Avoid the #1 ESL tense error: simple past vs present perfect confusion.'],
+    task: 'Picture telling a friend about your year — you\'ll need past, present perfect, and reflection.' },
+  { id: ACT.overview, section: 'Patterns', title: 'Perfect tenses overview',
+    goals: ['Recognize the 3 perfect tenses + their continuous forms.', 'Distinguish each from its simple counterpart.'],
+    task: 'Map each to its function.' },
+  { id: ACT.presentPerfect, section: 'Tense 1', title: '"have/has + PP" — present perfect',
+    goals: ['Use for: experience ("I\'ve been to Japan"), recent completion ("She\'s just left"), continuing situation ("I\'ve lived here for 3 years").', 'Avoid with specific past times: NOT "I\'ve seen him yesterday".'],
+    task: 'Make 3 present perfect sentences.' },
+  { id: ACT.pastPerfect, section: 'Tense 2', title: '"had + PP" — past perfect',
+    goals: ['Use for the earlier of two past events.', '"When I arrived, she had already left."'],
+    task: 'Make 3 past perfect sentences.' },
+  { id: ACT.futurePerfect, section: 'Tense 3', title: '"will have + PP" — future perfect',
+    goals: ['Use for action completed by a future point.', '"By 2030, AI will have changed every industry."'],
+    task: 'Make 3 future perfect sentences.' },
+  { id: ACT.perfectContinuous, section: 'Tense 4', title: '"have/had/will have + been + V-ing" — perfect continuous',
+    goals: ['Stress duration up to a point.', '"I\'ve been studying for 3 hours" (still studying or just stopped).'],
+    task: 'Make 3 perfect continuous sentences.' },
+  { id: ACT.sequenceOfTenses, section: 'Sequence of tenses', title: 'Reported speech + backshift',
+    goals: ['Backshift in reported speech: "She said she was tired" (not "is").', 'Exceptions: universal truths, recent reporting.'],
+    task: 'Backshift 5 direct-speech sentences.' },
+  { id: ACT.reading, section: 'Reading', title: 'A paragraph with all 4 perfect tenses',
+    goals: ['Read a personal essay and identify each perfect tense.'],
+    task: 'Label each perfect tense.' },
+  { id: ACT.speaking, section: 'Speaking', title: 'Personal recap',
+    goals: ['Tell about a year of your life using all 4 perfect tenses.'],
+    task: '3-minute personal recap.' },
+  { id: ACT.writing, section: 'Writing', title: '"Year in review" paragraph',
+    goals: ['Write a 6-sentence year-in-review using all 4 perfect tenses.'],
+    task: 'Write your own.' },
+  { id: ACT.task, section: 'Task', title: 'Reflective interview',
+    goals: ['Combine all 4 perfect tenses + sequence of tenses.'],
+    task: 'Answer 4 reflective questions.' },
+];
+
+const lesson = {
+  title: 'Level 3 · Cluster 2: Tense — Perfect tenses + sequence of tenses',
+  category: 'daily-life',
+  difficulty: 'advanced',
+  targetLang: 'en', nativeLang: 'en',
+  track: 'textbook', lessonType: 'grammar',
+  activities,
+  expressionPractice: [
+    { id: 'pres-perfect-en', label: 'Present perfect', goal: 'Use for experience, recent completion, ongoing.' },
+    { id: 'past-perfect-en', label: 'Past perfect', goal: 'Mark the earlier of two past events.' },
+    { id: 'sot-en', label: 'Sequence of tenses', goal: 'Backshift in reported speech.' },
+  ],
+  relatedPools: ['topic-grammar'],
+  content: [
+    createContentItem('Lesson goal', 'tense mastery', 'By end: use all perfect tenses confidently, manage backshift in reported speech.', 'word', 'Functions: experience · sequence · duration · report.', 'Four tense micro-skills.', null, [ACT.orientation]),
+    createContentItem('Real-world scenario', 'year in review', 'Your friend asks "What\'s new?" after a year of not seeing each other. You\'ll naturally use: have done (experience), had done (earlier past), have been doing (duration), will have done (by next milestone).', 'word', 'You: "I\'ve moved to Seoul, gotten a new job, and started learning English seriously. By December, I\'ll have lived here 18 months."', 'Standard reflective talk.', null, [ACT.orientation]),
+
+    createContentItem('Three perfect tenses', 'patterns', 'Present perfect (have/has + PP). Past perfect (had + PP). Future perfect (will have + PP).', 'word', 'I have seen / I had seen / I will have seen.', 'All link two time points.', null, [ACT.overview]),
+    createContentItem('Perfect continuous', 'patterns', 'Add "been + V-ing" — stress duration. Present perfect continuous (have been + V-ing). Past perfect continuous (had been + V-ing).', 'word', 'I have been studying / I had been studying.', 'Duration > completion.', null, [ACT.overview]),
+
+    createContentItem(
+      '"have/has + past participle" — present perfect',
+      'three uses',
+      'Link past action to present.',
+      'sentence',
+      'EXPERIENCE: I\'ve been to Japan twice. — RECENT COMPLETION: She\'s just left the office. — CONTINUING: I\'ve lived in Seoul for 3 years.',
+      'NEVER with specific past time: NOT "I\'ve seen him yesterday" — use simple past.',
+      [
+        { target: 'have/has + PP', english: 'standard form' },
+        { target: 'experience: ever, never, before', english: 'time markers' },
+        { target: 'recent: just, already, yet', english: 'time markers' },
+        { target: 'continuing: for, since', english: 'duration markers' },
+        { target: 'NEVER with: yesterday, last week, in 2020', english: 'use simple past instead' },
+      ],
+      [ACT.presentPerfect],
+    ),
+    createContentItem(
+      'Present perfect vs simple past — the #1 ESL trap',
+      'when to use each',
+      'Use simple past for COMPLETED time periods. Present perfect for UNFINISHED time / link to now.',
+      'sentence',
+      'I lived in Seoul for 3 years. (I no longer live there) — I have lived in Seoul for 3 years. (still there)\nI saw him yesterday. (completed past) — I haven\'t seen him today. (today not finished)',
+      'Key test: is the time period over? Yes → simple past. No → present perfect.',
+      [
+        { target: 'completed time → simple past', english: 'last week, yesterday, in 2020' },
+        { target: 'unfinished time → present perfect', english: 'today, this year, recently' },
+        { target: 'still happening → present perfect', english: 'I\'ve lived (still living)' },
+      ],
+      [ACT.presentPerfect],
+    ),
+
+    createContentItem(
+      '"had + past participle" — past perfect',
+      'earlier of two past events',
+      'When two past events: the earlier one takes "had + PP".',
+      'sentence',
+      'When I arrived, she had already left. — By 2020, I had moved to three different countries. — She told me she had never seen snow.',
+      'Often paired with "by + time" or "when/after/before + simple past clause".',
+      [
+        { target: 'When/After/Before + past, had + PP', english: 'two-event sequence' },
+        { target: 'By + past time + had + PP', english: 'cumulative before a point' },
+        { target: 'reported speech backshift', english: '"She said she had + PP"' },
+      ],
+      [ACT.pastPerfect],
+    ),
+
+    createContentItem(
+      '"will have + past participle" — future perfect',
+      'completed by a future point',
+      'Project completion into the future.',
+      'sentence',
+      'By 2030, AI will have transformed most industries. — By the time you arrive, I will have finished dinner. — In ten years, she will have published five novels.',
+      'Always with "by + future time".',
+      [
+        { target: 'By + future time + will have + PP', english: 'standard pattern' },
+        { target: 'common with "by the time / by + date"', english: 'time markers' },
+        { target: 'less common in casual speech', english: 'mainly writing/formal' },
+      ],
+      [ACT.futurePerfect],
+    ),
+
+    createContentItem(
+      '"have/had been + V-ing" — perfect continuous',
+      'duration up to a point',
+      'Stress how LONG the action has been happening.',
+      'sentence',
+      'I\'ve been studying for three hours. (still or just finished) — She had been working all night when the deadline was extended. — By August, we\'ll have been living here for ten years.',
+      'Perfect continuous emphasizes duration; perfect simple emphasizes result.',
+      [
+        { target: 'have/has been + V-ing', english: 'present perfect cont' },
+        { target: 'had been + V-ing', english: 'past perfect cont' },
+        { target: 'will have been + V-ing', english: 'future perfect cont' },
+        { target: 'duration > completion', english: 'core difference' },
+      ],
+      [ACT.perfectContinuous],
+    ),
+    createContentItem(
+      'Perfect simple vs perfect continuous',
+      'duration vs result',
+      'Continuous stresses "how long"; simple stresses "what got done".',
+      'sentence',
+      'I\'ve written three chapters. (result: 3 chapters done) — I\'ve been writing for three hours. (duration: 3 hours of writing)\nShe had cooked dinner. (cooked it) — She had been cooking all afternoon. (cooking for hours)',
+      'Continuous works best with action verbs; not great with state verbs ("know", "believe").',
+      [
+        { target: 'simple → result', english: 'what got done' },
+        { target: 'continuous → duration', english: 'how long' },
+        { target: 'state verbs avoid continuous', english: 'NOT "I have been knowing"' },
+      ],
+      [ACT.perfectContinuous],
+    ),
+
+    createContentItem(
+      'Sequence of tenses — backshift',
+      'reported speech',
+      'When the reporting verb is past, backshift the reported tense.',
+      'sentence',
+      'Direct: "I am tired." → Reported: She said she WAS tired.\nDirect: "I have eaten." → Reported: He said he HAD eaten.\nDirect: "I will go." → Reported: She said she WOULD go.\nDirect: "I went yesterday." → Reported: He said he HAD gone the day before.',
+      'Backshift rules: present → past · past → past perfect · will → would · can → could · may → might.',
+      [
+        { target: 'present → past', english: 'is → was' },
+        { target: 'past → past perfect', english: 'went → had gone' },
+        { target: 'will → would', english: 'will go → would go' },
+        { target: 'can → could / may → might', english: 'modal backshift' },
+      ],
+      [ACT.sequenceOfTenses],
+    ),
+    createContentItem(
+      'Backshift exceptions',
+      'when NOT to backshift',
+      'Universal truths and recent reporting can skip backshift.',
+      'sentence',
+      'Universal truth: She said the sun rises in the east. (no backshift)\nRecent reporting: He just said he is sick. (still sick)',
+      'Use judgment: if the original statement is still true, backshift is optional.',
+      [
+        { target: 'universal truth → keep present', english: 'still always true' },
+        { target: 'still true → no backshift needed', english: 'optional shift' },
+        { target: 'when in doubt → backshift', english: 'safer default' },
+      ],
+      [ACT.sequenceOfTenses],
+    ),
+
+    createContentItem(
+      'Year-in-review paragraph',
+      'reading practice',
+      'Identify each perfect tense.',
+      'sentence',
+      'It\'s been an intense year. I\'ve started a new job, moved to Seoul, and joined a hiking club. Before this year, I had never lived alone or commuted by subway. By December, I\'ll have completed my first year at the company. I\'ve been studying English every morning, and my fluency has improved noticeably. Looking back, I\'d say it\'s been the most transformative year of my twenties so far.',
+      'All 4 perfect tenses + reflection.',
+      [
+        { target: 'It\'s been an intense year', english: 'present perfect: continuing' },
+        { target: 'I\'ve started, moved, joined', english: 'present perfect: experience' },
+        { target: 'I had never lived alone', english: 'past perfect' },
+        { target: 'I\'ll have completed my first year', english: 'future perfect' },
+        { target: 'I\'ve been studying every morning', english: 'present perfect cont' },
+      ],
+      [ACT.reading],
+    ),
+
+    createContentItem(
+      'Personal recap',
+      'speaking practice',
+      'Recap a year of your life with all 4 perfect tenses.',
+      'sentence',
+      'This year, I\'ve started learning English, joined a study group, and traveled to Japan twice. Before this year, I\'d never traveled alone. I\'ve been studying every morning for six months, and my listening has improved a lot. By my next birthday, I\'ll have read 20 English books.',
+      'Frame: experience + earlier past + duration + future projection.',
+      null,
+      [ACT.speaking],
+    ),
+
+    createContentItem(
+      'Writing prompt',
+      'reflection paragraph',
+      'Write a 6-sentence "year in review". Use all 4 perfect tenses.',
+      'sentence',
+      'Example: It\'s been a year of change. I\'ve switched careers, moved cities, and made new friends. Before 2024, I had never imagined myself working in tech. I\'ve been learning a new framework every quarter to keep up. By 2027, I\'ll have completed two graduate certificates. Looking back, I\'ve grown in ways I didn\'t expect.',
+      'Required: present perfect, past perfect, future perfect, present perfect continuous.',
+      null, [ACT.writing],
+    ),
+
+    createContentItem(
+      'Task: Reflective interview',
+      'consolidation task',
+      'AI tutor asks 4 reflective questions. Answer each using a perfect tense.',
+      'conversation',
+      'Tutor: What have you done this year?\nYou: [present perfect: experiences]\nTutor: Had you done anything like that before?\nYou: [past perfect: earlier]\nTutor: How long have you been at it?\nYou: [present perfect continuous]\nTutor: What will you have accomplished by next year?\nYou: [future perfect]',
+      'AI tutor will play the interviewer.',
+      [
+        { target: 'present perfect', english: 'experience' },
+        { target: 'past perfect', english: 'earlier' },
+        { target: 'present perfect continuous', english: 'duration' },
+        { target: 'future perfect', english: 'projection' },
+      ],
+      [ACT.task],
+    ),
+  ],
+};
+
+module.exports = lesson;

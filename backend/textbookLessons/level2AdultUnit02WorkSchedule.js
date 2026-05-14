@@ -76,8 +76,8 @@ const lesson = {
   ],
   relatedPools: ['topic-society'],
   content: [
-    createContentItem('Lesson goal', 'schedule', 'By end: state shift formally, ask coworker schedule, request shift swap.', 'word', 'Functions: state · ask · negotiate · swap', 'Schedule toolkit.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'Saturday swap', 'A coworker asks you to swap Saturday for Sunday. You must understand their shift, agree/decline, propose details.', 'word', 'Coworker: 토요일에 바꿔 주실 수 있습니까? — You: 일요일은 가능합니다.', 'Coworker: Can you swap? — You: Sunday works.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: state shift formally, ask coworker schedule, request shift swap.', 'word', 'Functions: state · ask · negotiate · swap', 'Schedule toolkit.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'A coworker asks you to swap Saturday for Sunday. You must understand their shift, agree/decline, propose details.', 'word', 'Coworker: 토요일에 바꿔 주실 수 있습니까? — You: 일요일은 가능합니다.', 'Coworker: Can you swap? — You: Sunday works.', null, [ACT.orientation]),
 
     createContentItem('출근합니다 → [출근함니다]', 'chulgeunhamnida', '비음화: ㅂ받침 + ㄴ → ㅁ + ㄴ.', 'word', '8시에 출근합니다.', 'I clock in at 8.', null, [ACT.pronunciation]),
     createContentItem('퇴근합니다 → [퇴근함니다]', 'toegeunhamnida', 'Same 비음화.', 'word', '6시에 퇴근합니다.', 'I leave at 6.', null, [ACT.pronunciation]),

@@ -85,8 +85,8 @@ const lesson = {
   ],
   relatedPools: ['topic-shopping', 'topic-numbers'],
   content: [
-    createContentItem('Lesson goal', 'shopping basics', 'By end: count items, ask prices, make purchases, and politely bargain at a traditional market.', 'word', 'Functions: count · ask price · order · negotiate', 'Four shopping micro-skills.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'fruit market', 'You walk into a 전통시장 (traditional market). A vendor calls out "어서 오세요!" You point at the apples.', 'word', 'Vendor: 어서 오세요. 사과 얼마예요? — You: 다섯 개에 얼마예요?', 'Vendor: Welcome. — You: How much for five?', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: count items, ask prices, make purchases, and politely bargain at a traditional market.', 'word', 'Functions: count · ask price · order · negotiate', 'Four shopping micro-skills.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'You walk into a 전통시장 (traditional market). A vendor calls out "어서 오세요!" You point at the apples.', 'word', 'Vendor: 어서 오세요. 사과 얼마예요? — You: 다섯 개에 얼마예요?', 'Vendor: Welcome. — You: How much for five?', null, [ACT.orientation]),
 
     createContentItem('하나 → 한 (개)', 'han', 'Native numbers 1, 2, 3, 4, and 20 DROP their final consonant before a counter.', 'word', '하나 + 개 → 한 개', 'one piece.',
       [

@@ -4,6 +4,7 @@ import { Button, Text, TextInput } from 'react-native-paper';
 import { ExpoSpeechRecognitionModule, useSpeechRecognitionEvent } from 'expo-speech-recognition';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 import { practiceContextService } from '../../services/api';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
@@ -73,6 +74,7 @@ function isProOrUltraTier(tier?: string) {
 
 const ContextPracticeScreen: React.FC = () => {
   const navigation = useNavigation<any>();
+  const { t } = useTranslation();
   const colors = useAppColors();
   const styles = useMemo(() => createStyles(colors), [colors]);
   const { nativeLanguage, targetLanguage } = useSettingsStore();
@@ -308,15 +310,14 @@ const ContextPracticeScreen: React.FC = () => {
     return (
       <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
         <Button mode="text" icon="arrow-left" onPress={goBackToProfile} style={styles.backButton}>
-          Back to Profile
+          {t('context.backToProfile', 'Back to Profile')}
         </Button>
         <View style={styles.header}>
           <View style={{ flex: 1 }}>
-            <Text style={styles.kicker}>Learning Personalization</Text>
-            <Text variant="headlineSmall" style={styles.title}>Lessons shaped around you</Text>
+            <Text style={styles.kicker}>{t('context.kicker', 'Learning Personalization')}</Text>
+            <Text variant="headlineSmall" style={styles.title}>{t('context.title', 'Lessons shaped around you')}</Text>
             <Text style={styles.subtitle}>
-              Pro and Ultra can save approved words, phrases, and situations from real life so future practice
-              feels more relevant. Free and Plus can keep using regular practice.
+              {t('context.lockedSubtitle', 'Pro and Ultra can save approved words, phrases, and situations from real life so future practice feels more relevant. Free and Plus can keep using regular practice.')}
             </Text>
           </View>
           <View style={styles.statusPill}>
@@ -324,12 +325,12 @@ const ContextPracticeScreen: React.FC = () => {
           </View>
         </View>
         <View style={styles.panel}>
-          <Text style={styles.panelTitle}>Upgrade to personalize practice</Text>
+          <Text style={styles.panelTitle}>{t('context.upgradeTitle', 'Upgrade to personalize practice')}</Text>
           <Text style={styles.emptyText}>
-            Upgrade when you want lessons, review prompts, and roleplays to adapt to the everyday language you approve.
+            {t('context.upgradeBody', 'Upgrade when you want lessons, review prompts, and roleplays to adapt to the everyday language you approve.')}
           </Text>
           <Button mode="contained" icon="message-text" onPress={() => openConversation()} style={styles.lockedButton}>
-            Open Conversation
+            {t('context.openConversation', 'Open Conversation')}
           </Button>
         </View>
       </ScrollView>
@@ -339,50 +340,50 @@ const ContextPracticeScreen: React.FC = () => {
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
       <Button mode="text" icon="arrow-left" onPress={goBackToProfile} style={styles.backButton}>
-        Back to Profile
+        {t('context.backToProfile', 'Back to Profile')}
       </Button>
       <View style={styles.header}>
         <View>
-          <Text style={styles.kicker}>Learning Personalization</Text>
-          <Text variant="headlineSmall" style={styles.title}>Lessons shaped around you</Text>
+          <Text style={styles.kicker}>{t('context.kicker', 'Learning Personalization')}</Text>
+          <Text variant="headlineSmall" style={styles.title}>{t('context.title', 'Lessons shaped around you')}</Text>
           <Text style={styles.subtitle}>
-            Listen during an intentional session, review the useful items, and save only what you approve.
+            {t('context.subtitle', 'Listen during an intentional session, review the useful items, and save only what you approve.')}
           </Text>
         </View>
         <View style={[styles.statusPill, listening && styles.statusPillActive]}>
-          <Text style={[styles.statusText, listening && styles.statusTextActive]}>{listening ? 'Listening' : 'Off'}</Text>
+          <Text style={[styles.statusText, listening && styles.statusTextActive]}>{listening ? t('context.listeningPill', 'Listening') : t('context.offPill', 'Off')}</Text>
         </View>
       </View>
 
       <View style={styles.panel}>
-        <Text style={styles.panelTitle}>Session capture</Text>
+        <Text style={styles.panelTitle}>{t('context.sessionCapture', 'Session capture')}</Text>
         <Text style={styles.statusLine}>{status}</Text>
         <TextInput
           mode="outlined"
           value={transcript}
           onChangeText={setTranscript}
           multiline
-          placeholder="Captured transcript or notes appear here."
+          placeholder={t('context.transcriptPlaceholder', 'Captured transcript or notes appear here.')}
           style={styles.input}
         />
-        <Text style={styles.privacy}>Raw audio is not stored. The transcript is used only for analysis before you approve saving.</Text>
+        <Text style={styles.privacy}>{t('context.privacyNote', 'Raw audio is not stored. The transcript is used only for analysis before you approve saving.')}</Text>
         <View style={styles.buttonRow}>
           <Button mode={listening ? 'contained' : 'outlined'} icon={listening ? 'microphone-off' : 'microphone'} onPress={listening ? stopListening : startListening} disabled={loading} style={styles.flexButton}>
-            {listening ? 'Stop' : 'Start'}
+            {listening ? t('context.stop', 'Stop') : t('context.start', 'Start')}
           </Button>
           <Button mode="contained" icon="magnify" onPress={analyze} disabled={loading || !transcript.trim()} style={styles.flexButton}>
-            Analyze
+            {t('context.analyze', 'Analyze')}
           </Button>
         </View>
       </View>
 
       <View style={styles.panel}>
         <View style={styles.panelHeaderRow}>
-          <Text style={styles.panelTitle}>Approve what to save</Text>
-          <Button mode="contained" compact onPress={saveSelected} disabled={loading || !analysis || selectedKeys.size === 0}>Save</Button>
+          <Text style={styles.panelTitle}>{t('context.approveTitle', 'Approve what to save')}</Text>
+          <Button mode="contained" compact onPress={saveSelected} disabled={loading || !analysis || selectedKeys.size === 0}>{t('context.save', 'Save')}</Button>
         </View>
         {!analysis ? (
-          <Text style={styles.emptyText}>Analyze a session to see suggested topics, words, and phrases.</Text>
+          <Text style={styles.emptyText}>{t('context.analyzeHint', 'Analyze a session to see suggested topics, words, and phrases.')}</Text>
         ) : (
           <>
             <Text style={styles.summary}>{analysis.summary}</Text>
@@ -407,14 +408,14 @@ const ContextPracticeScreen: React.FC = () => {
       </View>
 
       <View style={styles.panel}>
-        <Text style={styles.panelTitle}>Practice next</Text>
+        <Text style={styles.panelTitle}>{t('context.practiceNext', 'Practice next')}</Text>
         {!recommendations?.hasContext ? (
-          <Text style={styles.emptyText}>Save personalization items to unlock roleplays, review drills, and class prompts.</Text>
+          <Text style={styles.emptyText}>{t('context.practiceNextEmpty', 'Save personalization items to unlock roleplays, review drills, and class prompts.')}</Text>
         ) : (
           <>
             {(recommendations.roleplays || []).slice(0, 3).map((item) => (
               <View key={item.prompt} style={styles.practiceCard}>
-                <Text style={styles.practiceTitle}>{item.title || item.text || 'Roleplay'}</Text>
+                <Text style={styles.practiceTitle}>{item.title || item.text || t('context.roleplayFallback', 'Roleplay')}</Text>
                 <Text style={styles.practicePrompt}>{item.prompt}</Text>
                 <Button
                   mode="contained-tonal"
@@ -422,13 +423,13 @@ const ContextPracticeScreen: React.FC = () => {
                   onPress={() => openConversation({ starter: item.prompt })}
                   style={styles.practiceButton}
                 >
-                  Start in Conversation
+                  {t('context.startInConversation', 'Start in Conversation')}
                 </Button>
               </View>
             ))}
             {(recommendations.reviewDrills || []).slice(0, 4).map((item) => (
               <View key={item.prompt} style={styles.practiceCard}>
-                <Text style={styles.practiceTitle}>{item.text || 'Review drill'}</Text>
+                <Text style={styles.practiceTitle}>{item.text || t('context.reviewDrillFallback', 'Review drill')}</Text>
                 <Text style={styles.practicePrompt}>{item.prompt}</Text>
                 <Button
                   mode="outlined"
@@ -436,7 +437,7 @@ const ContextPracticeScreen: React.FC = () => {
                   onPress={() => openConversation({ starter: item.prompt })}
                   style={styles.practiceButton}
                 >
-                  Practice this
+                  {t('context.practiceThis', 'Practice this')}
                 </Button>
               </View>
             ))}
@@ -450,19 +451,19 @@ const ContextPracticeScreen: React.FC = () => {
       </View>
 
       <View style={styles.panel}>
-        <Text style={styles.panelTitle}>Saved personalization</Text>
+        <Text style={styles.panelTitle}>{t('context.savedTitle', 'Saved personalization')}</Text>
         {savedContexts.length === 0 ? (
-          <Text style={styles.emptyText}>No saved personalization items yet.</Text>
+          <Text style={styles.emptyText}>{t('context.savedEmpty', 'No saved personalization items yet.')}</Text>
         ) : savedContexts.map((context) => (
           <View key={context._id} style={styles.savedCard}>
-            <Text style={styles.summary}>{context.summary || 'Saved personalization item'}</Text>
+            <Text style={styles.summary}>{context.summary || t('context.savedItemFallback', 'Saved personalization item')}</Text>
             <View style={styles.tagRow}>
               {(context.environmentTags || []).map((tag: string) => <Text key={tag} style={styles.tag}>{tag}</Text>)}
             </View>
             <Text style={styles.suggestionNote}>
               {(context.vocabulary || []).slice(0, 5).map((item: ContextItem) => item.text).join(', ')}
             </Text>
-            <Button mode="outlined" compact textColor={colors.error} onPress={() => deleteContext(context._id)}>Delete</Button>
+            <Button mode="outlined" compact textColor={colors.error} onPress={() => deleteContext(context._id)}>{t('context.delete', 'Delete')}</Button>
           </View>
         ))}
       </View>

@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { aiService, practiceContextService } from '../services/api';
 import { getNativeLangCode, getTargetLangCode, getTargetLangName } from '../config/languages';
 import './ContextPracticePage.css';
@@ -60,6 +61,7 @@ function getStoredContextAccess() {
 }
 
 function ContextPracticePage() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const recognitionRef = useRef(null);
   const restartRef = useRef(false);
@@ -288,30 +290,29 @@ function ContextPracticePage() {
       <div className="context-page">
         <section className="context-hero">
           <div>
-            <p className="context-kicker">Learning Personalization</p>
-            <h1>Lessons shaped around you</h1>
+            <p className="context-kicker">{t('profilePage.personalizationTitle')}</p>
+            <h1>{t('contextPractice.title', 'Lessons shaped around you')}</h1>
             <p>
-              Pro and Ultra can save approved words, phrases, and situations from real life so future practice
-              feels more relevant. Free and Plus can continue using the regular lessons and conversation practice.
+              {t('contextPractice.lockedDesc', 'Pro and Ultra can save approved words, phrases, and situations from real life so future practice feels more relevant. Free and Plus can continue using the regular lessons and conversation practice.')}
             </p>
           </div>
           <div className="context-status">
             <span>{String(contextAccess.tier || 'free').toUpperCase()}</span>
-            <strong>Upgrade to personalize practice</strong>
+            <strong>{t('contextPractice.upgradeTitle', 'Upgrade to personalize practice')}</strong>
           </div>
         </section>
         <section className="context-panel">
           <div className="context-panel-head">
             <div>
-              <p className="context-kicker">Available now</p>
-              <h2>Keep learning</h2>
+              <p className="context-kicker">{t('contextPractice.availableNow', 'Available now')}</p>
+              <h2>{t('contextPractice.keepLearning', 'Keep learning')}</h2>
             </div>
             <button type="button" onClick={() => navigate('/conversation')}>
-              Open Conversation
+              {t('contextPractice.openConversation', 'Open Conversation')}
             </button>
           </div>
           <div className="context-empty">
-            Upgrade when you want lessons, review prompts, and roleplays to adapt to the everyday language you approve.
+            {t('contextPractice.upgradeDesc', 'Upgrade when you want lessons, review prompts, and roleplays to adapt to the everyday language you approve.')}
           </div>
         </section>
       </div>
@@ -322,15 +323,14 @@ function ContextPracticePage() {
     <div className="context-page">
       <section className="context-hero">
         <div>
-          <p className="context-kicker">Learning Personalization</p>
-          <h1>Lessons shaped around you</h1>
+          <p className="context-kicker">{t('profilePage.personalizationTitle')}</p>
+          <h1>{t('contextPractice.title', 'Lessons shaped around you')}</h1>
           <p>
-            Capture a visible practice session, review the useful words and situations, then save only what you approve.
-            Saved items help {targetName} class and conversation practice feel more relevant.
+            {t('contextPractice.subtitle', 'Capture a visible practice session, review the useful words and situations, then save only what you approve. Saved items help {{language}} class and conversation practice feel more relevant.', { language: targetName })}
           </p>
         </div>
         <div className={`context-status ${listening ? 'active' : ''}`}>
-          <span>{listening ? 'Listening' : 'Off'}</span>
+          <span>{listening ? t('contextPractice.listening', 'Listening') : t('contextPractice.off', 'Off')}</span>
           <strong>{status}</strong>
         </div>
       </section>
@@ -339,41 +339,41 @@ function ContextPracticePage() {
         <div className="context-panel">
           <div className="context-panel-head">
             <div>
-              <p className="context-kicker">Session</p>
-              <h2>Live capture</h2>
+              <p className="context-kicker">{t('contextPractice.session', 'Session')}</p>
+              <h2>{t('contextPractice.liveCapture', 'Live capture')}</h2>
             </div>
             <div className="context-actions">
               <button type="button" onClick={listening ? stopListening : startListening} disabled={!supported || loading}>
-                {listening ? 'Stop listening' : 'Start listening'}
+                {listening ? t('contextPractice.stopListening', 'Stop listening') : t('contextPractice.startListening', 'Start listening')}
               </button>
               <button type="button" className="secondary" onClick={analyze} disabled={loading || !transcript.trim()}>
-                Analyze
+                {t('contextPractice.analyze', 'Analyze')}
               </button>
             </div>
           </div>
           {!supported && (
-            <p className="context-warning">This browser does not support speech recognition. You can paste notes below instead.</p>
+            <p className="context-warning">{t('contextPractice.unsupportedSpeech', 'This browser does not support speech recognition. You can paste notes below instead.')}</p>
           )}
           <textarea
             value={transcript}
             onChange={(event) => setTranscript(event.target.value)}
-            placeholder="Captured transcript or notes appear here. Raw transcript is not saved unless you copy it somewhere yourself."
+            placeholder={t('contextPractice.transcriptPlaceholder', 'Captured transcript or notes appear here. Raw transcript is not saved unless you copy it somewhere yourself.')}
           />
-          <p className="context-privacy">Raw audio is not stored. The transcript is used only for this analysis request.</p>
+          <p className="context-privacy">{t('contextPractice.privacyNote', 'Raw audio is not stored. The transcript is used only for this analysis request.')}</p>
         </div>
 
         <div className="context-panel">
           <div className="context-panel-head">
             <div>
-              <p className="context-kicker">Review</p>
-              <h2>Approve what to save</h2>
+              <p className="context-kicker">{t('contextPractice.review', 'Review')}</p>
+              <h2>{t('contextPractice.approveTitle', 'Approve what to save')}</h2>
             </div>
             <button type="button" onClick={saveSelected} disabled={loading || !analysis || selectedKeys.size === 0}>
-              Save selected
+              {t('contextPractice.saveSelected', 'Save selected')}
             </button>
           </div>
           {!analysis ? (
-            <div className="context-empty">Analyze a session to see suggested topics, words, and phrases.</div>
+            <div className="context-empty">{t('contextPractice.emptyAnalysis', 'Analyze a session to see suggested topics, words, and phrases.')}</div>
           ) : (
             <>
               <p className="context-summary">{analysis.summary}</p>
@@ -403,40 +403,40 @@ function ContextPracticePage() {
       <section className="context-panel">
         <div className="context-panel-head">
           <div>
-            <p className="context-kicker">Practice next</p>
-            <h2>Personalized actions</h2>
+            <p className="context-kicker">{t('contextPractice.practiceNext', 'Practice next')}</p>
+            <h2>{t('contextPractice.personalizedActions', 'Personalized actions')}</h2>
           </div>
         </div>
         {!recommendations?.hasContext ? (
-          <div className="context-empty">Save personalization items to unlock roleplays, review drills, and class prompts.</div>
+          <div className="context-empty">{t('contextPractice.emptyRecommendations', 'Save personalization items to unlock roleplays, review drills, and class prompts.')}</div>
         ) : (
           <div className="context-actions-grid">
             <div>
-              <h3>Roleplays</h3>
+              <h3>{t('contextPractice.roleplays', 'Roleplays')}</h3>
               {(recommendations.roleplays || []).map((item) => (
                 <div key={item.prompt} className="context-action-card">
                   <strong>{item.title}</strong>
                   <p>{item.prompt}</p>
-                  <button type="button" onClick={() => startConversationPractice(item.prompt)}>Start in Conversation</button>
+                  <button type="button" onClick={() => startConversationPractice(item.prompt)}>{t('contextPractice.startInConversation', 'Start in Conversation')}</button>
                 </div>
               ))}
             </div>
             <div>
-              <h3>Review drills</h3>
+              <h3>{t('contextPractice.reviewDrills', 'Review drills')}</h3>
               {(recommendations.reviewDrills || []).slice(0, 6).map((item) => (
                 <div key={item.prompt} className="context-action-card">
                   <strong>{item.text}</strong>
                   <p>{item.prompt}</p>
-                  <button type="button" onClick={() => startConversationPractice(item.prompt)}>Practice this</button>
+                  <button type="button" onClick={() => startConversationPractice(item.prompt)}>{t('contextPractice.practiceThis', 'Practice this')}</button>
                 </div>
               ))}
             </div>
             <div>
-              <h3>Tutor prompts</h3>
+              <h3>{t('contextPractice.tutorPrompts', 'Tutor prompts')}</h3>
               {(recommendations.classPrompts || []).map((prompt) => (
                 <div key={prompt} className="context-action-card">
                   <p>{prompt}</p>
-                  <button type="button" onClick={() => saveClassPrompt(prompt)}>Use in Class</button>
+                  <button type="button" onClick={() => saveClassPrompt(prompt)}>{t('contextPractice.useInClass', 'Use in Class')}</button>
                 </div>
               ))}
             </div>
@@ -447,24 +447,24 @@ function ContextPracticePage() {
       <section className="context-panel">
         <div className="context-panel-head">
           <div>
-            <p className="context-kicker">Saved</p>
-            <h2>Saved personalization</h2>
+            <p className="context-kicker">{t('contextPractice.saved', 'Saved')}</p>
+            <h2>{t('contextPractice.savedPersonalization', 'Saved personalization')}</h2>
           </div>
         </div>
         {savedContexts.length === 0 ? (
-          <div className="context-empty">No saved personalization items yet.</div>
+          <div className="context-empty">{t('contextPractice.emptySaved', 'No saved personalization items yet.')}</div>
         ) : (
           <div className="context-saved-grid">
             {savedContexts.map((context) => (
               <article key={context._id} className="context-saved-card">
-                <p>{context.summary || 'Saved personalization item'}</p>
+                <p>{context.summary || t('contextPractice.savedItem', 'Saved personalization item')}</p>
                 <div className="context-chip-row">
                   {(context.environmentTags || []).map((tag) => <span key={tag}>{tag}</span>)}
                 </div>
                 <small>
                   {(context.vocabulary || []).slice(0, 5).map((item) => item.text).join(', ')}
                 </small>
-                <button type="button" className="danger" onClick={() => deleteContext(context._id)}>Delete</button>
+                <button type="button" className="danger" onClick={() => deleteContext(context._id)}>{t('common.delete')}</button>
               </article>
             ))}
           </div>

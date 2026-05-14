@@ -937,7 +937,7 @@ function FlashcardsPage() {
                       <input
                         type="text"
                         list="category-suggestions"
-                        placeholder="numbers, time, vocabulary…"
+                        placeholder={t('flashcards.categoryPlaceholder', 'numbers, time, vocabulary...')}
                         value={newFlashcard.category[0] || ''}
                         onChange={(e) => setNewFlashcard({ ...newFlashcard, category: [e.target.value] })}
                       />
@@ -950,7 +950,7 @@ function FlashcardsPage() {
                       <input
                         type="text"
                         list="topic-suggestions"
-                        placeholder="days-of-week, 1-10, months…"
+                        placeholder={t('flashcards.topicPlaceholder', 'days-of-week, 1-10, months...')}
                         value={newFlashcard.topic || ''}
                         onChange={(e) => setNewFlashcard({ ...newFlashcard, topic: e.target.value })}
                       />
@@ -1067,7 +1067,7 @@ function FlashcardsPage() {
                       </div>
                       <div className="form-group">
                         <label>{t('flashcards.categoryLabel')}</label>
-                        <input type="text" placeholder="vocabulary, verbs" value={newFlashcard.category.join(', ')}
+                        <input type="text" placeholder={t('flashcards.categorySimplePlaceholder', 'vocabulary, verbs')} value={newFlashcard.category.join(', ')}
                           onChange={(e) => setNewFlashcard({ ...newFlashcard,
                             category: e.target.value.split(',').map(s => s.trim()).filter(Boolean) })} />
                       </div>
@@ -1304,7 +1304,7 @@ function FlashcardsPage() {
                       {t('flashcards.showNativeFirst', { native: t(`languages.${getNativeLangCode()}`, getNativeLangName()), target: t(`languages.${getTargetLangCode()}`, getTargetLangName()) })}
                     </button>
                     <button className={`mode-btn ${displayMode === 'random' ? 'active' : ''}`} onClick={() => { setDisplayMode('random'); setShowsTargetFirst(Math.random() < 0.5); }}>
-                      <span className="mode-icon">🎲</span> Random
+                      <span className="mode-icon">🎲</span> {t('flashcards.random', 'Random')}
                     </button>
                   </div>
                 </div>
@@ -1415,7 +1415,7 @@ function FlashcardsPage() {
                     </button>
                     <button className={`mode-btn ${displayMode === 'random' ? 'active' : ''}`}
                       onClick={() => { setDisplayMode('random'); setShowsTargetFirst(Math.random() < 0.5); }}>
-                      <span className="mode-icon">🎲</span> Random
+                      <span className="mode-icon">🎲</span> {t('flashcards.random', 'Random')}
                     </button>
                   </div>
                 </div>

@@ -81,8 +81,8 @@ const lesson = {
   ],
   relatedPools: ['topic-health'],
   content: [
-    createContentItem('Lesson goal', 'health', 'By end: describe symptoms, understand doctor\'s prohibitions, ask permission.', 'word', 'Functions: describe pain · understand prohibition · ask permission', 'Three clinic micro-skills.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'cold at the clinic', 'You wake up with a fever and a sore throat. You need to visit a 의원 (small clinic) near campus.', 'word', 'Doctor: 어디가 아파요? — You: 목이 아프고 열이 나요.', 'Doctor: Where hurts? — You: My throat hurts and I have a fever.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: describe symptoms, understand doctor\'s prohibitions, ask permission.', 'word', 'Functions: describe pain · understand prohibition · ask permission', 'Three clinic micro-skills.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'You wake up with a fever and a sore throat. You need to visit a 의원 (small clinic) near campus.', 'word', 'Doctor: 어디가 아파요? — You: 목이 아프고 열이 나요.', 'Doctor: Where hurts? — You: My throat hurts and I have a fever.', null, [ACT.orientation]),
 
     createContentItem('아파요', 'apayo', '으-irregular: 아프 → drop ㅡ → 아파요.', 'word', '머리가 아파요.', 'My head hurts.', [{ korean: '아프 + 아요', english: 'drop ㅡ before 아 → 아파요' }], [ACT.pronunciation]),
     createContentItem('콧물 → [콘물]', 'konmul', '비음화: ㅅ받침 + ㅁ → ㄴ + ㅁ.', 'word', '콧물이 나요. → [콘무리 나요]', 'I have a runny nose.', null, [ACT.pronunciation]),

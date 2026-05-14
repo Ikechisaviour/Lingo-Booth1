@@ -114,6 +114,49 @@
   color: var(--primary);
 }
 
+.home-contact-strip,
+.home-billing-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 24px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--surface), var(--primary-soft));
+  border: 1px solid var(--primary-border-soft);
+}
+
+.home-billing-strip {
+  background: var(--surface);
+}
+
+.home-contact-strip div,
+.home-billing-strip div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.home-contact-strip strong,
+.home-billing-strip strong {
+  color: var(--text-primary);
+  font-size: 0.98rem;
+}
+
+.home-contact-strip span,
+.home-billing-strip span {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.home-contact-strip .btn,
+.home-billing-strip .btn {
+  flex-shrink: 0;
+}
+
 /* Sidebar */
 .sidebar {
   display: flex;
@@ -325,7 +368,7 @@
 
 .xp-status-badge.off {
   background: rgba(88, 204, 2, 0.1);
-  color: var(--accent-green, #58cc02);
+  color: var(--accent-green);
 }
 
 .xp-tracker-card.off {
@@ -334,7 +377,7 @@
 
 .xp-status-badge.safe {
   background: rgba(88, 204, 2, 0.15);
-  color: var(--accent-green, #58cc02);
+  color: var(--accent-green);
 }
 
 .xp-status-badge.grace {
@@ -668,6 +711,12 @@
 
   .quick-actions {
     grid-template-columns: 1fr;
+  }
+
+  .home-contact-strip,
+  .home-billing-strip {
+    align-items: stretch;
+    flex-direction: column;
   }
 
   .sidebar {

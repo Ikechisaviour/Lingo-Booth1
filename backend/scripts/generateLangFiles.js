@@ -5,15 +5,23 @@
  * The generated files keep target-language text plus a neutral concept gloss.
  * They do not carry every possible native-language translation pair.
  *
+ * Language-preparation rule:
+ * - target text fields must contain only the language being taught.
+ * - do not embed English meanings in target strings, e.g. "mā 妈 (mother)".
+ * - keep meanings in neutral concept gloss / canonical English explanation
+ *   fields so runtime translation can serve each learner's native language.
+ * - generated files must be written as UTF-8 and must not contain mojibake
+ *   placeholders such as "????" in non-Latin content.
+ *
  * Usage: node scripts/generateLangFiles.js
  */
 
 const fs = require('fs');
 const path = require('path');
 const cards = require('../flashcardData');
-const { prepareDefaultFlashcardForSeed } = require('../utils/languageConcepts');
+const { prepareDefaultFlashcardForSeed, languageField } = require('../utils/languageConcepts');
 
-const langs = ['es', 'fr', 'de', 'zh', 'ja', 'hi', 'ar', 'he', 'pt', 'it', 'nl', 'ru', 'id', 'tr', 'bn', 'ta', 'ms', 'fil'];
+const langs = ['en', 'ko', 'es', 'fr', 'de', 'zh', 'ja', 'hi', 'ar', 'he', 'pt', 'it', 'nl', 'ru', 'id', 'tr', 'bn', 'ta', 'ms', 'fil'];
 
 const catOrder = [];
 const cardsByCat = {};
@@ -35,13 +43,21 @@ function jsValue(value) {
   return JSON.stringify(value || null);
 }
 
+function hasEnglishMeaningParenthetical(value) {
+  return /\([A-Za-z][A-Za-z\s,'/-]{2,}\)/.test(String(value || ''));
+}
+
 function generatedCardForLanguage(card, lang, index) {
+  const targetField = languageField(lang);
   const doc = prepareDefaultFlashcardForSeed({
     ...card,
-    korean: card[lang] || '',
+    korean: card[targetField] || '',
   }, lang, index);
-  const targetWord = doc[lang] || doc.korean || '';
+  const targetWord = doc[targetField] || doc.korean || '';
   if (!targetWord) return '';
+  if (lang !== 'en' && hasEnglishMeaningParenthetical(targetWord)) {
+    throw new Error(`Refusing to generate ${lang} target text with embedded English meaning: ${targetWord}`);
+  }
 
   const category = Array.isArray(doc.category) ? doc.category : [doc.category || 'uncategorized'];
   const conceptId = doc.conceptId ? `, conceptId: '${escapeStr(doc.conceptId)}'` : '';
@@ -70,7 +86,11 @@ langs.forEach((lang) => {
   lines.push('];');
 
   const outPath = path.join(__dirname, '..', 'flashcardData', `${lang}.js`);
-  fs.writeFileSync(outPath, `${lines.join('\n')}\n`);
+  const output = `${lines.join('\n')}\n`;
+  if (/\?\?\?\?/.test(output)) {
+    throw new Error(`Refusing to write ${lang}.js because generated output contains mojibake placeholders.`);
+  }
+  fs.writeFileSync(outPath, output, 'utf8');
   console.log(`Generated ${lang}.js with ${cards.length} source cards`);
 });
 

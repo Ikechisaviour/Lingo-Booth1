@@ -76,8 +76,8 @@ const lesson = {
   ],
   relatedPools: ['topic-society'],
   content: [
-    createContentItem('Lesson goal', 'workplace greetings', 'By end: use formal -ㅂ/습니다, address titles correctly, handle first-day scenarios.', 'word', 'Functions: greet · introduce · humble · close', 'Workplace toolkit.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'first factory day', 'You start a new job at a 구미 factory. The 과장님 greets you. You must respond formally and acknowledge your Korean limits politely.', 'word', '과장님: 안녕하십니까. — You: 안녕하십니까. 신입 김민수입니다.', 'Section chief greets; you respond formally.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: use formal -ㅂ/습니다, address titles correctly, handle first-day scenarios.', 'word', 'Functions: greet · introduce · humble · close', 'Workplace toolkit.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'You start a new job at a 구미 factory. The 과장님 greets you. You must respond formally and acknowledge your Korean limits politely.', 'word', '과장님: 안녕하십니까. — You: 안녕하십니까. 신입 김민수입니다.', 'Section chief greets; you respond formally.', null, [ACT.orientation]),
 
     createContentItem('합니다 → [함니다]', 'hamnida', '비음화: ㅂ받침 + ㄴ → ㅁ + ㄴ.', 'word', '일합니다 → [일함니다]', 'I work.', null, [ACT.pronunciation]),
     createContentItem('입니다 → [임니다]', 'imnida', 'Same 비음화.', 'word', '직원입니다 → [직워님니다]', 'I am an employee.', null, [ACT.pronunciation]),

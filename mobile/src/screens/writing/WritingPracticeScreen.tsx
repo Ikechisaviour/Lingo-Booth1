@@ -4,12 +4,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Svg, { Path } from 'react-native-svg';
 import { Button, Text, TextInput } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useTranslation } from 'react-i18next';
 import { classLessonService, practiceContextService } from '../../services/api';
 import speechService from '../../services/speechService';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import LANGUAGES from '../../config/languages';
 import { useAppColors, type AppColors } from '../../config/theme';
+import { looksLikeRawEnglishForNative } from '../../utils/languagePairPolicy';
 
 const PERSONAL_NOTEBOOK_KEY = 'lingoWritingNotebook';
 const ATTEMPT_KEY = 'lingoWritingAttempts';
@@ -65,17 +67,18 @@ function makeItem(data: Partial<WritingItem> & { target?: string }): WritingItem
   };
 }
 
-function lessonItems(lesson: any): WritingItem[] {
+function lessonItems(lesson: any, t: any, nativeLanguage?: string): WritingItem[] {
+  const lessonTitle = lesson?.title || t('writing.sourceLabels.classLesson', 'Class lesson');
   return (lesson?.content || []).flatMap((item: any, index: number) => {
     const entries: Array<WritingItem | null> = [];
     const target = compact(item.targetText || item.korean);
     if (target) {
       entries.push(makeItem({
         target,
-        native: item.nativeText || item.english,
+        native: looksLikeRawEnglishForNative(item.nativeText || item.english, nativeLanguage) ? '' : (item.nativeText || item.english),
         romanization: item.romanization || item.pronunciation,
         source: 'class',
-        sourceLabel: lesson.title || 'Class lesson',
+        sourceLabel: lessonTitle,
         type: item.type || 'word',
       }));
     }
@@ -83,9 +86,13 @@ function lessonItems(lesson: any): WritingItem[] {
     if (example && example !== target) {
       entries.push(makeItem({
         target: example,
-        native: item.exampleNative || item.exampleEnglish,
+        native: looksLikeRawEnglishForNative(item.exampleNative || item.exampleEnglish, nativeLanguage) ? '' : (item.exampleNative || item.exampleEnglish),
         source: 'class',
-        sourceLabel: `${lesson.title || 'Class lesson'} example ${index + 1}`,
+        sourceLabel: t('writing.sourceLabels.classExample', {
+          title: lessonTitle,
+          number: index + 1,
+          defaultValue: '{{title}} example {{number}}',
+        }),
         type: 'sentence',
       }));
     }
@@ -93,7 +100,7 @@ function lessonItems(lesson: any): WritingItem[] {
   });
 }
 
-function contextItems(context: any): WritingItem[] {
+function contextItems(context: any, t: any): WritingItem[] {
   return [
     ...(context?.vocabulary || []),
     ...(context?.phrases || []),
@@ -102,7 +109,7 @@ function contextItems(context: any): WritingItem[] {
     target: item.text,
     native: item.note || item.context,
     source: 'context',
-    sourceLabel: context.summary || 'Personalized',
+    sourceLabel: context.summary || t('writing.sourceLabels.personalized', 'Personalized'),
     type: 'context',
   })).filter(Boolean) as WritingItem[];
 }
@@ -122,16 +129,32 @@ function pathFrom(points: Point[]) {
   return points.map((point, index) => `${index === 0 ? 'M' : 'L'}${point.x.toFixed(1)} ${point.y.toFixed(1)}`).join(' ');
 }
 
-function strokeGuide(text: string, language: string) {
+function strokeGuide(text: string, language: string, t: any) {
   const chars = Array.from(text || '').filter((char) => char.trim()).slice(0, 8);
-  if (!chars.length) return ['Write the main shape slowly.', 'Check spacing.', 'Write it again without the guide.'];
+  if (!chars.length) return [
+    t('writing.strokeGuide.emptyMain', 'Write the main shape slowly.'),
+    t('writing.strokeGuide.emptySpacing', 'Check spacing.'),
+    t('writing.strokeGuide.emptyMemory', 'Write it again without the guide.'),
+  ];
   if (language === 'ko') {
-    return chars.map((char, index) => `${index + 1}. ${char}: top to bottom, left to right, balanced block.`);
+    return chars.map((char, index) => t('writing.strokeGuide.hangul', {
+      index: index + 1,
+      char,
+      defaultValue: '{{index}}. {{char}}: top to bottom, left to right, balanced block.',
+    }));
   }
   if (language === 'zh' || language === 'ja') {
-    return chars.map((char, index) => `${index + 1}. ${char}: horizontal before vertical, top before bottom.`);
+    return chars.map((char, index) => t('writing.strokeGuide.cjk', {
+      index: index + 1,
+      char,
+      defaultValue: '{{index}}. {{char}}: horizontal before vertical, top before bottom.',
+    }));
   }
-  return chars.map((char, index) => `${index + 1}. ${char}: copy the shape, then write from memory.`);
+  return chars.map((char, index) => t('writing.strokeGuide.default', {
+    index: index + 1,
+    char,
+    defaultValue: '{{index}}. {{char}}: copy the shape, then write from memory.',
+  }));
 }
 
 const DrawingPad: React.FC<{
@@ -141,6 +164,7 @@ const DrawingPad: React.FC<{
   onStrokeCount: (count: number) => void;
   colors: AppColors;
 }> = ({ ghostText, showGhost, resetKey, onStrokeCount, colors }) => {
+  const { t } = useTranslation();
   const [paths, setPaths] = useState<string[]>([]);
   const [current, setCurrent] = useState<Point[]>([]);
   const [size, setSize] = useState({ width: 1, height: 1 });
@@ -229,8 +253,8 @@ const DrawingPad: React.FC<{
         </Svg>
       </View>
       <View style={stylesForDrawing.padActions}>
-        <Button mode="outlined" compact onPress={undo}>Undo</Button>
-        <Button mode="outlined" compact onPress={clear}>Clear</Button>
+        <Button mode="outlined" compact onPress={undo}>{t('writing.undo', 'Undo')}</Button>
+        <Button mode="outlined" compact onPress={clear}>{t('writing.clear', 'Clear')}</Button>
       </View>
     </View>
   );
@@ -239,6 +263,7 @@ const DrawingPad: React.FC<{
 const WritingPracticeScreen: React.FC = () => {
   const colors = useAppColors();
   const styles = useMemo(() => createStyles(colors), [colors]);
+  const { t } = useTranslation();
   const { nativeLanguage, targetLanguage } = useSettingsStore();
   const { userRole, subscriptionTier, aiEntitlements } = useAuthStore();
   const canLoadContext = Boolean(
@@ -251,7 +276,7 @@ const WritingPracticeScreen: React.FC = () => {
   const [selectedId, setSelectedId] = useState('');
   const [sourceFilter, setSourceFilter] = useState('all');
   const [mode, setMode] = useState('trace');
-  const [status, setStatus] = useState('Loading writing notebook...');
+  const [status, setStatus] = useState(() => t('writing.status.loadingNotebook', 'Loading writing notebook...'));
   const [strokeCount, setStrokeCount] = useState(0);
   const [customTarget, setCustomTarget] = useState('');
   const [customNative, setCustomNative] = useState('');
@@ -261,7 +286,7 @@ const WritingPracticeScreen: React.FC = () => {
   useEffect(() => {
     let cancelled = false;
     async function loadNotebook() {
-      setStatus('Building your writing notebook...');
+      setStatus(t('writing.status.buildingNotebook', 'Building your writing notebook...'));
       let personal: WritingItem[] = [];
       let lessons: WritingItem[] = [];
       let contexts: WritingItem[] = [];
@@ -273,13 +298,13 @@ const WritingPracticeScreen: React.FC = () => {
 
       try {
         const lessonRes = await classLessonService.getClassLessons();
-        lessons = (Array.isArray(lessonRes.data) ? lessonRes.data : []).flatMap(lessonItems);
+        lessons = (Array.isArray(lessonRes.data) ? lessonRes.data : []).flatMap((lesson: any) => lessonItems(lesson, t, nativeLanguage));
       } catch {}
 
       if (canLoadContext) {
         try {
           const contextRes = await practiceContextService.list(targetLanguage);
-          contexts = (Array.isArray(contextRes.data) ? contextRes.data : []).flatMap(contextItems);
+          contexts = (Array.isArray(contextRes.data) ? contextRes.data : []).flatMap((context: any) => contextItems(context, t));
         } catch {}
       }
 
@@ -296,9 +321,9 @@ const WritingPracticeScreen: React.FC = () => {
               .slice(-3)
               .map((turn: any) => makeItem({
                 target: turn.content,
-                native: 'From your conversation practice',
+                native: t('writing.sourceLabels.conversationNative', 'From your conversation practice'),
                 source: 'conversation',
-                sourceLabel: 'Conversation history',
+                sourceLabel: t('writing.sourceLabels.conversationHistory', 'Conversation history'),
                 type: 'sentence',
               }))
               .filter(Boolean) as WritingItem[];
@@ -312,13 +337,15 @@ const WritingPracticeScreen: React.FC = () => {
       if (cancelled) return;
       setItems(next);
       setSelectedId((current) => current || next[0]?.id || '');
-      setStatus(next.length ? 'Ready' : 'Add a word or open Class to fill your notebook.');
+      setStatus(next.length
+        ? t('writing.status.ready', 'Ready')
+        : t('writing.status.emptyNotebook', 'Add a word or open Class to fill your notebook.'));
     }
     loadNotebook();
     return () => {
       cancelled = true;
     };
-  }, [canLoadContext, nativeLanguage, targetLanguage]);
+  }, [canLoadContext, nativeLanguage, targetLanguage, t]);
 
   const filteredItems = useMemo(() => (
     sourceFilter === 'all' ? items : items.filter((item) => item.source === sourceFilter)
@@ -327,8 +354,10 @@ const WritingPracticeScreen: React.FC = () => {
   const resetKey = `${selectedItem?.id || 'empty'}:${mode}`;
   const shouldHideAnswer = mode === 'listen' || mode === 'meaning';
   const practiceTitle = shouldHideAnswer
-    ? (mode === 'listen' ? 'Listen and write' : 'Meaning to writing')
-    : (selectedItem?.target || 'No item selected');
+    ? (mode === 'listen'
+      ? t('writing.practiceTitles.listen', 'Listen and write')
+      : t('writing.practiceTitles.meaning', 'Meaning to writing'))
+    : (selectedItem?.target || t('writing.practiceTitles.empty', 'No item selected'));
 
   useEffect(() => {
     setAnswerVisible(false);
@@ -344,12 +373,12 @@ const WritingPracticeScreen: React.FC = () => {
 
   const speakPrompt = async () => {
     if (!selectedItem?.target) return;
-    setStatus('Playing target text...');
+    setStatus(t('writing.status.playingTarget', 'Playing target text...'));
     await speechService.speakAsync(selectedItem.target, {
       lang: LANGUAGES[targetLanguage]?.ttsLocale || targetLanguage,
       rate: '0.9',
     });
-    setStatus('Ready');
+    setStatus(t('writing.status.ready', 'Ready'));
   };
 
   const addPersonalItem = async () => {
@@ -357,11 +386,11 @@ const WritingPracticeScreen: React.FC = () => {
       target: customTarget,
       native: customNative,
       source: 'personal',
-      sourceLabel: 'Personal notebook',
+      sourceLabel: t('writing.sourceLabels.personalNotebook', 'Personal notebook'),
       type: 'custom',
     });
     if (!item) {
-      setStatus('Add target text first.');
+      setStatus(t('writing.status.addTargetFirst', 'Add target text first.'));
       return;
     }
     const personal = uniqueItems([item, ...items.filter((entry) => entry.source === 'personal')]).slice(0, 80);
@@ -370,7 +399,7 @@ const WritingPracticeScreen: React.FC = () => {
     setSelectedId(item.id);
     setCustomTarget('');
     setCustomNative('');
-    setStatus('Added to your writing notebook.');
+    setStatus(t('writing.status.addedNotebook', 'Added to your writing notebook.'));
   };
 
   const saveAttempt = async (result: 'complete' | 'needs-practice') => {
@@ -390,44 +419,41 @@ const WritingPracticeScreen: React.FC = () => {
       createdAt: new Date().toISOString(),
     }, ...attempts].slice(0, 120);
     await AsyncStorage.setItem(ATTEMPT_KEY, JSON.stringify(next));
-    setStatus(result === 'complete' ? 'Saved as complete.' : 'Saved for review.');
+    setStatus(result === 'complete'
+      ? t('writing.status.savedComplete', 'Saved as complete.')
+      : t('writing.status.savedReview', 'Saved for review.'));
     if (result === 'complete') selectNext();
   };
 
   const instruction = (() => {
-    if (!selectedItem) return 'Add a word or sentence to begin.';
-    if (mode === 'listen') return 'Listen first, then write what you hear.';
-    if (mode === 'meaning') return 'Use the meaning to recall and write the target text.';
-    if (mode === 'stroke') return 'Follow the guide, then practice in the writing area.';
-    if (mode === 'review') return 'Compare your writing with the answer and mark what was strong.';
-    if (mode === 'trace') return 'Trace over the guide, then clear and write from memory.';
-    return 'Copy the target text carefully.';
+    if (!selectedItem) return t('writing.instructions.addToBegin', 'Add a word or sentence to begin.');
+    return t(`writing.instructions.${mode}`, 'Copy the target text carefully.');
   })();
 
   const sourceButtons = [
-    { value: 'all', label: 'All' },
-    { value: 'class', label: 'Class' },
-    { value: 'context', label: 'Personalized' },
-    { value: 'conversation', label: 'Talk' },
-    { value: 'personal', label: 'Mine' },
+    { value: 'all', label: t('writing.sources.all', 'All') },
+    { value: 'class', label: t('writing.sources.class', 'Class') },
+    { value: 'context', label: t('writing.sources.personalized', 'Personalized') },
+    { value: 'conversation', label: t('writing.sources.conversation', 'Conversation') },
+    { value: 'personal', label: t('writing.sources.personal', 'Mine') },
   ];
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
       <View style={styles.header}>
         <View style={{ flex: 1 }}>
-          <Text style={styles.kicker}>Exercise</Text>
-          <Text variant="headlineSmall" style={styles.title}>Writing practice</Text>
-          <Text style={styles.subtitle}>Trace, copy, listen, recall by meaning, and keep a handwriting notebook.</Text>
+          <Text style={styles.kicker}>{t('writing.kicker', 'Exercise')}</Text>
+          <Text variant="headlineSmall" style={styles.title}>{t('writing.title', 'Writing practice')}</Text>
+          <Text style={styles.subtitle}>{t('writing.subtitle', 'Trace, copy, listen, recall by meaning, and keep a handwriting notebook.')}</Text>
         </View>
         <View style={styles.countPill}>
           <Text style={styles.countNumber}>{items.length}</Text>
-          <Text style={styles.countLabel}>items</Text>
+          <Text style={styles.countLabel}>{t('writing.itemsLabel', 'items')}</Text>
         </View>
       </View>
 
       <View style={styles.panel}>
-        <Text style={styles.panelTitle}>Notebook</Text>
+        <Text style={styles.panelTitle}>{t('writing.notebook', 'Notebook')}</Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chipRow}>
           {sourceButtons.map((item) => (
             <Button
@@ -455,15 +481,15 @@ const WritingPracticeScreen: React.FC = () => {
               <Text style={styles.itemNative} numberOfLines={1}>{item.native || item.sourceLabel}</Text>
             </TouchableOpacity>
           ))}
-          {filteredItems.length === 0 && <Text style={styles.emptyText}>No items in this source yet.</Text>}
+          {filteredItems.length === 0 && <Text style={styles.emptyText}>{t('writing.empty', 'No items in this source yet.')}</Text>}
         </ScrollView>
       </View>
 
       <View style={styles.panel}>
-        <Text style={styles.panelTitle}>Add your own</Text>
-        <TextInput mode="outlined" value={customTarget} onChangeText={setCustomTarget} placeholder="Target word or sentence" style={styles.input} />
-        <TextInput mode="outlined" value={customNative} onChangeText={setCustomNative} placeholder="Meaning or note" style={styles.input} />
-        <Button mode="contained" icon="plus" onPress={addPersonalItem} style={styles.actionButton}>Add to notebook</Button>
+        <Text style={styles.panelTitle}>{t('writing.addYourOwn', 'Add your own')}</Text>
+        <TextInput mode="outlined" value={customTarget} onChangeText={setCustomTarget} placeholder={t('writing.customTargetPlaceholder', 'Target word or sentence')} style={styles.input} />
+        <TextInput mode="outlined" value={customNative} onChangeText={setCustomNative} placeholder={t('writing.customNativePlaceholder', 'Meaning or note')} style={styles.input} />
+        <Button mode="contained" icon="plus" onPress={addPersonalItem} style={styles.actionButton}>{t('writing.addToNotebook', 'Add to notebook')}</Button>
       </View>
 
       <View style={styles.panel}>
@@ -475,22 +501,22 @@ const WritingPracticeScreen: React.FC = () => {
               mode={mode === item.value ? 'contained' : 'outlined'}
               onPress={() => setMode(item.value)}
             >
-              {item.label}
+              {t(`writing.modes.${item.value}`, item.label)}
             </Button>
           ))}
         </ScrollView>
         <View style={styles.practiceHead}>
           <View style={{ flex: 1 }}>
-            <Text style={styles.kicker}>{selectedItem?.sourceLabel || 'Writing notebook'}</Text>
+            <Text style={styles.kicker}>{selectedItem?.sourceLabel || t('writing.writingNotebook', 'Writing notebook')}</Text>
             <Text style={styles.panelTitle}>{practiceTitle}</Text>
           </View>
-          <Button mode="outlined" icon="volume-high" onPress={speakPrompt} disabled={!selectedItem}>Play</Button>
+          <Button mode="outlined" icon="volume-high" onPress={speakPrompt} disabled={!selectedItem}>{t('writing.play', 'Play')}</Button>
         </View>
         <Text style={styles.subtitle}>{instruction}</Text>
 
         {!!selectedItem && mode !== 'listen' && mode !== 'meaning' && (
           <View style={styles.answerCard}>
-            <Text style={styles.answerLabel}>Target</Text>
+            <Text style={styles.answerLabel}>{t('writing.target', 'Target')}</Text>
             <Text style={styles.answerTarget}>{selectedItem.target}</Text>
             {!!selectedItem.romanization && <Text style={styles.itemNative}>{selectedItem.romanization}</Text>}
             {!!selectedItem.native && <Text style={styles.itemNative}>{selectedItem.native}</Text>}
@@ -499,14 +525,14 @@ const WritingPracticeScreen: React.FC = () => {
 
         {!!selectedItem && mode === 'meaning' && (
           <View style={styles.answerCard}>
-            <Text style={styles.answerLabel}>Meaning</Text>
-            <Text style={styles.answerTarget}>{selectedItem.native || 'Recall the target text from your notebook.'}</Text>
+            <Text style={styles.answerLabel}>{t('writing.meaning', 'Meaning')}</Text>
+            <Text style={styles.answerTarget}>{selectedItem.native || t('writing.recallFallback', 'Recall the target text from your notebook.')}</Text>
           </View>
         )}
 
         {!!selectedItem && mode === 'stroke' && (
           <View style={styles.strokeGuide}>
-            {strokeGuide(selectedItem.target, targetLanguage).map((line) => <Text key={line} style={styles.strokeLine}>{line}</Text>)}
+            {strokeGuide(selectedItem.target, targetLanguage, t).map((line) => <Text key={line} style={styles.strokeLine}>{line}</Text>)}
           </View>
         )}
 
@@ -520,13 +546,13 @@ const WritingPracticeScreen: React.FC = () => {
 
         {shouldHideAnswer && !!selectedItem && !answerVisible && (
           <Button mode="outlined" icon="eye" onPress={() => setAnswerVisible(true)} style={styles.revealButton}>
-            Show answer
+            {t('writing.showAnswer', 'Show answer')}
           </Button>
         )}
 
         {((shouldHideAnswer && answerVisible) || mode === 'review') && !!selectedItem && (
           <View style={styles.answerCard}>
-            <Text style={styles.answerLabel}>Answer</Text>
+            <Text style={styles.answerLabel}>{t('writing.answer', 'Answer')}</Text>
             <Text style={styles.answerTarget}>{selectedItem.target}</Text>
             {!!selectedItem.native && <Text style={styles.itemNative}>{selectedItem.native}</Text>}
           </View>
@@ -534,9 +560,9 @@ const WritingPracticeScreen: React.FC = () => {
 
         <View style={styles.reviewGrid}>
           {[
-            ['shape', 'Shape matches'],
-            ['spacing', 'Spacing is clear'],
-            ['memory', 'From memory'],
+            ['shape', t('writing.review.shape', 'Shape matches')],
+            ['spacing', t('writing.review.spacing', 'Spacing is clear')],
+            ['memory', t('writing.review.memory', 'From memory')],
           ].map(([key, label]) => (
             <TouchableOpacity
               key={key}
@@ -550,8 +576,8 @@ const WritingPracticeScreen: React.FC = () => {
         </View>
 
         <View style={styles.buttonRow}>
-          <Button mode="outlined" onPress={() => saveAttempt('needs-practice')} disabled={!selectedItem} style={styles.flexButton}>Save for review</Button>
-          <Button mode="contained" onPress={() => saveAttempt('complete')} disabled={!selectedItem} style={styles.flexButton}>Complete</Button>
+          <Button mode="outlined" onPress={() => saveAttempt('needs-practice')} disabled={!selectedItem} style={styles.flexButton}>{t('writing.saveForReview', 'Save for review')}</Button>
+          <Button mode="contained" onPress={() => saveAttempt('complete')} disabled={!selectedItem} style={styles.flexButton}>{t('writing.complete', 'Complete')}</Button>
         </View>
         <Text style={styles.status}>{status}</Text>
       </View>

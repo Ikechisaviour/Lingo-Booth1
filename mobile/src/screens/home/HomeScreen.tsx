@@ -121,6 +121,21 @@ const HomeScreen: React.FC = () => {
   const xpStatus = ['off', 'safe', 'grace', 'decaying'].includes(xpStats?.status)
     ? xpStats.status as keyof typeof xpBadgeStyles
     : 'safe';
+  const weekdayKeys = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+  const questTaskLabel = (quest: any) => {
+    const defaults: Record<string, string> = {
+      xp: 'Earn {{xp}} XP',
+      lessons: 'Score {{score}}%+ in {{lessons}} lessons',
+      time: 'Study for {{minutes}} minutes',
+    };
+    return t(`home.quests.${quest.id}`, {
+      xp: quest.total || 20,
+      score: 80,
+      lessons: quest.total || 2,
+      minutes: quest.total || 15,
+      defaultValue: defaults[quest.id] || quest.task || '',
+    });
+  };
   const questIcons: Record<string, string> = { xp: '⚡', lessons: '🎯', time: '⏱️' };
   const leagueBadges: Record<string, string> = { bronze: '🥉', silver: '🥈', gold: '🥇', diamond: '💎' };
 
@@ -214,7 +229,7 @@ const HomeScreen: React.FC = () => {
             <Text style={styles.quickIcon}>🏫</Text>
             <View style={styles.quickTextCol}>
               <Text style={styles.quickTitle}>{t('navbar.class', 'Class')}</Text>
-              <Text style={styles.quickDesc}>Guided tutor lessons</Text>
+              <Text style={styles.quickDesc}>{t('home.classDesc', 'Guided tutor lessons')}</Text>
             </View>
             <Text style={styles.quickArrow}>›</Text>
           </TouchableOpacity>
@@ -227,7 +242,7 @@ const HomeScreen: React.FC = () => {
             <Text style={styles.quickIcon}>✍</Text>
             <View style={styles.quickTextCol}>
               <Text style={styles.quickTitle}>{t('navbar.exercise', 'Exercise')}</Text>
-              <Text style={styles.quickDesc}>Quiz and flashcards</Text>
+              <Text style={styles.quickDesc}>{t('home.exerciseDesc', 'Quiz and flashcards')}</Text>
             </View>
             <Text style={styles.quickArrow}>›</Text>
           </TouchableOpacity>
@@ -265,10 +280,10 @@ const HomeScreen: React.FC = () => {
                   </Text>
                 </View>
                 <View style={styles.streakCalendar}>
-                  {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((day, i) => (
+                  {weekdayKeys.map((dayKey, i) => (
                     <View key={i} style={[styles.calDay, gamification.streak.history[i] && styles.calDayActive]}>
                       <Text style={styles.calDayText}>
-                        {gamification.streak.history[i] ? '🔥' : day}
+                        {gamification.streak.history[i] ? '🔥' : t(`home.weekdays.${dayKey}`, dayKey.slice(0, 1).toUpperCase())}
                       </Text>
                     </View>
                   ))}
@@ -287,7 +302,7 @@ const HomeScreen: React.FC = () => {
                   <View key={quest.id} style={styles.questItem}>
                     <Text style={styles.questIcon}>{questIcons[quest.id] || '⭐'}</Text>
                     <View style={styles.questInfo}>
-                      <Text style={styles.questTask}>{quest.task}</Text>
+                      <Text style={styles.questTask}>{questTaskLabel(quest)}</Text>
                       <ProgressBar
                         progress={quest.total > 0 ? quest.progress / quest.total : 0}
                         color={quest.completed ? colors.accentGreen : activeColor}

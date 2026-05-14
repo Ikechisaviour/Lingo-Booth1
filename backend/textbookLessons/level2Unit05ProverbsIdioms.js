@@ -73,8 +73,8 @@ const lesson = {
   ],
   relatedPools: ['topic-proverbs-idioms', 'pos-proverbs', 'pos-idioms'],
   content: [
-    createContentItem('Lesson goal', 'proverbs + idioms', 'By end: use 10+ proverbs/idioms, console with grammar patterns, sound native.', 'word', 'Functions: quote · console · reflect · explain', 'Native-like fluency.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'consoling friend', 'A Korean friend failed an exam. They are devastated. You console with a proverb — Koreans love this.', 'word', 'Friend: 시험을 또 못 봤어. — You: 실수는 누구나 하기 마련이야. 다음에 잘하면 돼.', 'Friend: Failed again. — You: Everyone makes mistakes. Next time.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: use 10+ proverbs/idioms, console with grammar patterns, sound native.', 'word', 'Functions: quote · console · reflect · explain', 'Native-like fluency.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'A Korean friend failed an exam. They are devastated. You console with a proverb — Koreans love this.', 'word', 'Friend: 시험을 또 못 봤어. — You: 실수는 누구나 하기 마련이야. 다음에 잘하면 돼.', 'Friend: Failed again. — You: Everyone makes mistakes. Next time.', null, [ACT.orientation]),
 
     createContentItem('속담', 'sokdam', 'proverb', 'word', '한국 속담을 배워요.', 'I learn Korean proverbs.', null, [ACT.vocabulary]),
     createContentItem('관용어', 'gwanyongeo', 'idiomatic expression', 'word', '관용어가 어려워요.', 'Idioms are difficult.', null, [ACT.vocabulary]),

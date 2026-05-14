@@ -76,8 +76,8 @@ const lesson = {
   ],
   relatedPools: ['topic-food'],
   content: [
-    createContentItem('Lesson goal', 'dietary', 'By end: state restrictions, ask ingredients, request modifications.', 'word', 'Functions: negate · prohibit · check · modify', 'Cafeteria toolkit.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'first lunch', 'You start a new job. The cafeteria serves 김치찌개 with pork. You are Muslim and cannot eat pork.', 'word', 'You: 죄송하지만 돼지고기는 못 먹습니다. — Staff: 두부 메뉴가 있습니다.', 'You: Sorry, I cannot eat pork. — Staff: We have tofu option.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: state restrictions, ask ingredients, request modifications.', 'word', 'Functions: negate · prohibit · check · modify', 'Cafeteria toolkit.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'You start a new job. The cafeteria serves 김치찌개 with pork. You are Muslim and cannot eat pork.', 'word', 'You: 죄송하지만 돼지고기는 못 먹습니다. — Staff: 두부 메뉴가 있습니다.', 'You: Sorry, I cannot eat pork. — Staff: We have tofu option.', null, [ACT.orientation]),
 
     createContentItem('돼지고기 → [돼지고기]', 'dwaejigogi', 'No major change.', 'word', '돼지고기를 못 먹습니다.', 'Cannot eat pork.', null, [ACT.pronunciation]),
     createContentItem('닭고기 → [닥꼬기]', 'dakkogi', '경음화: ㄺ-cluster → ㄱ + tense ㄱ.', 'word', '닭고기를 먹습니다.', 'I eat chicken.', null, [ACT.pronunciation]),

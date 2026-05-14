@@ -82,8 +82,8 @@ const lesson = {
   ],
   relatedPools: ['topic-school', 'topic-people'],
   content: [
-    createContentItem('Lesson goal', 'plans', 'By end: tell time, invite, ask availability, accept, decline, and propose alternatives.', 'word', 'Functions: time · invite · ask · accept/decline · propose', 'Full scheduling toolkit.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'study date', 'A classmate sends you a 카톡 message: "토요일에 같이 공부할 수 있어요?" — you need to read, reply, and propose a time/place.', 'word', 'Friend: 토요일에 같이 공부할 수 있어요? — You: 좋아요. 2시 어때요?', 'Friend: Can we study Saturday? — You: Sure. How about 2?', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: tell time, invite, ask availability, accept, decline, and propose alternatives.', 'word', 'Functions: time · invite · ask · accept/decline · propose', 'Full scheduling toolkit.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'A classmate sends you a 카톡 message: "토요일에 같이 공부할 수 있어요?" — you need to read, reply, and propose a time/place.', 'word', 'Friend: 토요일에 같이 공부할 수 있어요? — You: 좋아요. 2시 어때요?', 'Friend: Can we study Saturday? — You: Sure. How about 2?', null, [ACT.orientation]),
 
     createContentItem('공부할 수 → [공부할쑤]', 'gongbuhal ssu', '경음화: ㄹ받침 + ㅅ → ㄹ + ㅆ.', 'word', '같이 공부할 수 있어요? → [공부할쑤 이써요]', 'Can we study together?', null, [ACT.pronunciation]),
     createContentItem('여섯 시 → [여섣씨]', 'yeoseot ssi', '경음화: ㅅ받침 + ㅅ → tensification.', 'word', '여섯 시에 만나요. → [여섣씨에]', 'Let us meet at 6.', null, [ACT.pronunciation]),

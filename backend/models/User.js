@@ -1,5 +1,13 @@
 const mongoose = require('mongoose');
 
+const SUBSCRIPTION_TIERS = ['free', 'plus', 'pro', 'ultra'];
+const NULLABLE_SUBSCRIPTION_TIERS = [...SUBSCRIPTION_TIERS, null];
+const NULLABLE_PERSONAL_STATUSES = ['active', 'trialing', 'past_due', 'cancelled', 'incomplete', 'setup_required', null];
+const NULLABLE_INSTITUTION_STATUSES = ['active', 'trialing', 'past_due', 'cancelled', 'suspended', null];
+const NULLABLE_OVERRIDE_STATUSES = ['active', 'trialing', 'cancelled', null];
+const NULLABLE_PERSONAL_SOURCES = ['web', 'ios', 'android', 'manual', null];
+const NULLABLE_PERSONAL_PROVIDERS = ['stripe', 'apple', 'google', 'manual', null];
+
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -26,8 +34,81 @@ const userSchema = new mongoose.Schema({
   },
   subscriptionTier: {
     type: String,
-    enum: ['free', 'plus', 'pro', 'ultra'],
+    enum: SUBSCRIPTION_TIERS,
     default: 'plus',
+  },
+  personalSubscription: {
+    tier: {
+      type: String,
+      enum: NULLABLE_SUBSCRIPTION_TIERS,
+      default: null,
+    },
+    status: {
+      type: String,
+      enum: NULLABLE_PERSONAL_STATUSES,
+      default: null,
+    },
+    source: {
+      type: String,
+      enum: NULLABLE_PERSONAL_SOURCES,
+      default: null,
+    },
+    provider: {
+      type: String,
+      enum: NULLABLE_PERSONAL_PROVIDERS,
+      default: null,
+    },
+    subscriptionId: { type: String, default: null },
+    customerId: { type: String, default: null },
+    currentPeriodEnd: { type: Date, default: null },
+    cancelAtPeriodEnd: { type: Boolean, default: false },
+    updatedAt: { type: Date, default: null },
+  },
+  institutionalAccess: {
+    organizationId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Organization',
+      default: null,
+    },
+    organizationName: { type: String, default: null },
+    planId: { type: String, default: null },
+    effectiveTier: {
+      type: String,
+      enum: ['plus', 'pro', 'ultra', null],
+      default: null,
+    },
+    role: {
+      type: String,
+      enum: ['owner', 'admin', 'teacher', 'learner', null],
+      default: null,
+    },
+    status: {
+      type: String,
+      enum: NULLABLE_INSTITUTION_STATUSES,
+      default: null,
+    },
+    expiresAt: { type: Date, default: null },
+    updatedAt: { type: Date, default: null },
+  },
+  billingOverride: {
+    tier: {
+      type: String,
+      enum: NULLABLE_SUBSCRIPTION_TIERS,
+      default: null,
+    },
+    status: {
+      type: String,
+      enum: NULLABLE_OVERRIDE_STATUSES,
+      default: null,
+    },
+    reason: { type: String, default: null },
+    expiresAt: { type: Date, default: null },
+    updatedBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      default: null,
+    },
+    updatedAt: { type: Date, default: null },
   },
   status: {
     type: String,
@@ -175,6 +256,32 @@ const userSchema = new mongoose.Schema({
 
 // Index for leaderboard queries
 userSchema.index({ xpDecayEnabled: 1, weekResetDate: 1, weeklyXP: -1 });
+
+function normalizeNullableEnum(value) {
+  return value === undefined || value === '' ? null : value;
+}
+
+userSchema.pre('validate', function normalizeNullableSubscriptionFields(next) {
+  if (this.personalSubscription) {
+    this.personalSubscription.tier = normalizeNullableEnum(this.personalSubscription.tier);
+    this.personalSubscription.status = normalizeNullableEnum(this.personalSubscription.status);
+    this.personalSubscription.source = normalizeNullableEnum(this.personalSubscription.source);
+    this.personalSubscription.provider = normalizeNullableEnum(this.personalSubscription.provider);
+  }
+
+  if (this.institutionalAccess) {
+    this.institutionalAccess.effectiveTier = normalizeNullableEnum(this.institutionalAccess.effectiveTier);
+    this.institutionalAccess.role = normalizeNullableEnum(this.institutionalAccess.role);
+    this.institutionalAccess.status = normalizeNullableEnum(this.institutionalAccess.status);
+  }
+
+  if (this.billingOverride) {
+    this.billingOverride.tier = normalizeNullableEnum(this.billingOverride.tier);
+    this.billingOverride.status = normalizeNullableEnum(this.billingOverride.status);
+  }
+
+  next();
+});
 
 userSchema.pre('save', function syncAdminSubscriptionTier(next) {
   if (this.role === 'admin') {

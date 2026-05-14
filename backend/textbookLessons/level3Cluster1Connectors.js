@@ -81,7 +81,7 @@ const lesson = {
   ],
   relatedPools: ['pos-verbs-1', 'pos-adjectives-1'],
   content: [
-    createContentItem('Cluster goal', 'connectors', 'By end: produce native-flowing speech with the 5 essential Korean connectors.', 'word', '~고 / ~아서 / 그래도 / 그러면 / ~는데', 'Five connectors.', null, [ACT.orientation]),
+    createContentItem('단원 목표', 'danwon mokpyo', 'By end: produce native-flowing speech with the 5 essential Korean connectors.', 'word', '~고 / ~아서 / 그래도 / 그러면 / ~는데', 'Five connectors.', null, [ACT.orientation]),
 
     createContentItem('-고', '-go', 'and (parallel)', 'word', '저는 한국어 공부하고 운동도 해요.', 'I study Korean and exercise.', null, [ACT.patternsOverview]),
     createContentItem('-아/어서', '-aseo/eoseo', 'so / because', 'word', '비가 와서 집에 있어요.', 'Raining so I am home.', null, [ACT.patternsOverview]),

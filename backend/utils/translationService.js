@@ -19,10 +19,11 @@ async function batchTranslateRaw(texts, fromLang, toLang) {
     return results.map(r => ({
       text: r.text,
       pronunciation: r.pronunciation || '',
+      failed: false,
     }));
   } catch (err) {
     console.error(`Batch translation failed ${fromLang}->${toLang}:`, err.message);
-    return texts.map(t => ({ text: t, pronunciation: '' }));
+    return texts.map(t => ({ text: t, pronunciation: '', failed: true }));
   }
 }
 
@@ -107,6 +108,96 @@ async function batchNativePhonetic(romanizations, fromLang, nativeLang) {
  *
  * Returns null only if nativeLang is 'en' AND no romanization is needed.
  */
+// Translate every native-displayed string on `lesson.activities[]` from the
+// canonical English source into `nativeLang`. Returns a 1:1 array matching the
+// shape stored on the Translation document.
+//
+// Per AGENTS.md: activities[].section/title/goals/task are seeded in English
+// and rendered through the translation overlay — never displayed raw to a
+// non-English learner.
+async function translateActivitiesArray(activities, nativeLang) {
+  const list = Array.isArray(activities) ? activities : [];
+  if (!list.length) return [];
+
+  const texts = [];
+  const map = [];
+  list.forEach((act, i) => {
+    if (act?.section) { map.push({ i, field: 'section' }); texts.push(act.section); }
+    if (act?.title)   { map.push({ i, field: 'title' });   texts.push(act.title); }
+    if (act?.task)    { map.push({ i, field: 'task' });    texts.push(act.task); }
+    const goals = Array.isArray(act?.goals) ? act.goals : [];
+    goals.forEach((g, gi) => {
+      if (g) { map.push({ i, field: 'goals', goalIndex: gi }); texts.push(g); }
+    });
+  });
+
+  const results = texts.length ? await batchTranslateRaw(texts, 'en', nativeLang) : [];
+
+  const out = list.map((act) => ({
+    id: act?.id || '',
+    section: '',
+    title: '',
+    goals: Array.isArray(act?.goals) ? act.goals.map(() => '') : [],
+    task: '',
+  }));
+
+  for (let k = 0; k < map.length; k++) {
+    const m = map[k];
+    const translated = results[k]?.failed ? '' : (results[k]?.text || '');
+    const entry = out[m.i];
+    if (m.field === 'goals') {
+      while (entry.goals.length <= m.goalIndex) entry.goals.push('');
+      entry.goals[m.goalIndex] = translated;
+    } else {
+      entry[m.field] = translated;
+    }
+  }
+  return out;
+}
+
+// Translate every native-displayed string on `lesson.expressionPractice[]`.
+async function translateExpressionPracticeArray(expressionPractice, nativeLang) {
+  const list = Array.isArray(expressionPractice) ? expressionPractice : [];
+  if (!list.length) return [];
+
+  const texts = [];
+  const map = [];
+  list.forEach((ep, i) => {
+    if (ep?.label) { map.push({ i, field: 'label' }); texts.push(ep.label); }
+    if (ep?.goal)  { map.push({ i, field: 'goal' });  texts.push(ep.goal); }
+  });
+
+  const results = texts.length ? await batchTranslateRaw(texts, 'en', nativeLang) : [];
+
+  const out = list.map((ep) => ({ id: ep?.id || '', label: '', goal: '' }));
+  for (let k = 0; k < map.length; k++) {
+    const m = map[k];
+    const translated = results[k]?.failed ? '' : (results[k]?.text || '');
+    out[m.i][m.field] = translated;
+  }
+  return out;
+}
+
+async function batchTranslateBySource(texts, mapping, defaultFromLang, toLang) {
+  if (!texts.length) return [];
+  const results = new Array(texts.length);
+  const groups = new Map();
+  mapping.forEach((entry, index) => {
+    const fromLang = entry.fromLang || defaultFromLang;
+    if (!groups.has(fromLang)) groups.set(fromLang, []);
+    groups.get(fromLang).push(index);
+  });
+
+  await Promise.all(Array.from(groups.entries()).map(async ([fromLang, indices]) => {
+    const groupResults = await batchTranslateRaw(indices.map(index => texts[index]), fromLang, toLang);
+    indices.forEach((textIndex, groupIndex) => {
+      results[textIndex] = groupResults[groupIndex] || { text: texts[textIndex], pronunciation: '' };
+    });
+  }));
+
+  return results;
+}
+
 async function getOrCreateTranslation(lesson, nativeLang, targetLang) {
   const needsNativeTranslation = nativeLang && nativeLang !== 'en';
   const needsRomanization = ROMANIZATION_LANGS.has(targetLang);
@@ -117,15 +208,46 @@ async function getOrCreateTranslation(lesson, nativeLang, targetLang) {
 
   const lessonId = lesson._id;
 
-  // Check cache — backfill title if missing from older cached docs
+  // Check cache — backfill any newly-added fields (title, activities,
+  // expressionPractice) for translation rows that pre-date them.
   const cached = await Translation.findOne({ lessonId, lang: cacheKey });
   if (cached) {
-    if (needsNativeTranslation && lesson.title && !cached.title) {
-      try {
-        const [titleResult] = await batchTranslateRaw([lesson.title], 'en', nativeLang);
-        cached.title = titleResult?.text || '';
-        await Translation.updateOne({ _id: cached._id }, { $set: { title: cached.title } });
-      } catch (e) { /* ignore backfill errors */ }
+    if (needsNativeTranslation) {
+      const updates = {};
+
+      if (lesson.title && !cached.title) {
+        try {
+          const [titleResult] = await batchTranslateRaw([lesson.title], 'en', nativeLang);
+          cached.title = titleResult?.failed ? '' : (titleResult?.text || '');
+          updates.title = cached.title;
+        } catch (e) { /* ignore backfill errors */ }
+      }
+
+      const seedActs = Array.isArray(lesson.activities) ? lesson.activities : [];
+      const cachedActs = Array.isArray(cached.activities) ? cached.activities : [];
+      if (seedActs.length > 0 && cachedActs.length === 0) {
+        try {
+          const filled = await translateActivitiesArray(seedActs, nativeLang);
+          cached.activities = filled;
+          updates.activities = filled;
+        } catch (e) { /* ignore backfill errors */ }
+      }
+
+      const seedEps = Array.isArray(lesson.expressionPractice) ? lesson.expressionPractice : [];
+      const cachedEps = Array.isArray(cached.expressionPractice) ? cached.expressionPractice : [];
+      if (seedEps.length > 0 && cachedEps.length === 0) {
+        try {
+          const filled = await translateExpressionPracticeArray(seedEps, nativeLang);
+          cached.expressionPractice = filled;
+          updates.expressionPractice = filled;
+        } catch (e) { /* ignore backfill errors */ }
+      }
+
+      if (Object.keys(updates).length > 0) {
+        try {
+          await Translation.updateOne({ _id: cached._id }, { $set: updates });
+        } catch (e) { /* ignore — overlay will still work from in-memory cached */ }
+      }
     }
     return cached;
   }
@@ -141,23 +263,24 @@ async function getOrCreateTranslation(lesson, nativeLang, targetLang) {
       // Translate targetText directly to nativeLang
       const tt = item.targetText || item.korean || '';
       if (tt.trim()) {
-        targetMapping.push({ itemIndex: i, field: 'nativeText' });
+        targetMapping.push({ itemIndex: i, field: 'nativeText', fromLang: targetLang });
         targetTexts.push(tt);
       }
 
-      // Translate example target text directly to nativeLang
-      const et = item.exampleTarget || item.example || '';
+      // Native-side example explanations are canonical English seed text.
+      // Translate them from English rather than from the target example.
+      const et = item.exampleNative || item.exampleEnglish || '';
       if (et.trim()) {
-        targetMapping.push({ itemIndex: i, field: 'exampleNative' });
+        targetMapping.push({ itemIndex: i, field: 'exampleNative', fromLang: 'en' });
         targetTexts.push(et);
       }
 
-      // Translate breakdown target texts directly to nativeLang
+      // Breakdown notes are learner-facing English explanations.
       if (item.breakdown && item.breakdown.length > 0) {
         for (let j = 0; j < item.breakdown.length; j++) {
-          const bText = item.breakdown[j].target || item.breakdown[j].korean || '';
+          const bText = item.breakdown[j].native || item.breakdown[j].english || '';
           if (bText.trim()) {
-            targetMapping.push({ itemIndex: i, field: 'breakdown', breakdownIndex: j });
+            targetMapping.push({ itemIndex: i, field: 'breakdown', breakdownIndex: j, fromLang: 'en' });
             targetTexts.push(bText);
           }
         }
@@ -195,12 +318,17 @@ async function getOrCreateTranslation(lesson, nativeLang, targetLang) {
   // Native translation: targetLang → nativeLang (direct, no English intermediary)
   // Romanization: targetLang → English (to extract pronunciation)
   // Title translation: English → nativeLang
-  const [nativeResults, romanResults, titleResults] = await Promise.all([
-    targetTexts.length > 0 ? batchTranslateRaw(targetTexts, targetLang, nativeLang) : [],
+  // Activities + expressionPractice translation: English → nativeLang (the
+  //   seed authors these in English as canonical source; they are never shown
+  //   raw to a non-English learner — see AGENTS.md "Class Lesson Content Language").
+  const [nativeResults, romanResults, titleResults, activitiesArr, epArr] = await Promise.all([
+    targetTexts.length > 0 ? batchTranslateBySource(targetTexts, targetMapping, targetLang, nativeLang) : [],
     romanTexts.length > 0 ? batchRomanize(romanTexts, targetLang) : [],
     needsNativeTranslation && lesson.title ? batchTranslateRaw([lesson.title], 'en', nativeLang) : [],
+    needsNativeTranslation ? translateActivitiesArray(lesson.activities, nativeLang) : [],
+    needsNativeTranslation ? translateExpressionPracticeArray(lesson.expressionPractice, nativeLang) : [],
   ]);
-  const translatedTitle = titleResults.length > 0 ? (titleResults[0]?.text || '') : '';
+  const translatedTitle = titleResults.length > 0 && !titleResults[0]?.failed ? (titleResults[0]?.text || '') : '';
 
   // Build items map
   const itemsMap = {};
@@ -215,7 +343,7 @@ async function getOrCreateTranslation(lesson, nativeLang, targetLang) {
   for (let k = 0; k < targetMapping.length; k++) {
     const m = targetMapping[k];
     const entry = ensureItem(m.itemIndex);
-    const translated = nativeResults[k]?.text || targetTexts[k];
+    const translated = nativeResults[k]?.failed ? '' : (nativeResults[k]?.text || '');
 
     if (m.field === 'nativeText') {
       entry.nativeText = translated;
@@ -246,59 +374,119 @@ async function getOrCreateTranslation(lesson, nativeLang, targetLang) {
 
   // Cache
   try {
-    const doc = await Translation.create({ lessonId, lang: cacheKey, title: translatedTitle, items });
+    const doc = await Translation.create({
+      lessonId,
+      lang: cacheKey,
+      title: translatedTitle,
+      items,
+      activities: activitiesArr,
+      expressionPractice: epArr,
+    });
     return doc;
   } catch (err) {
     if (err.code === 11000) {
       return Translation.findOne({ lessonId, lang: cacheKey });
     }
     console.error('Failed to cache translation:', err.message);
-    return { items };
+    return { items, activities: activitiesArr, expressionPractice: epArr };
   }
 }
 
 /**
  * Apply cached translations onto a lesson's JSON object.
  * Mutates and returns the lesson object.
+ *
+ * Native-language scaffolding (activities[], expressionPractice[]) is
+ * overlaid here so non-English learners never see the canonical English
+ * seed text. See AGENTS.md "Class Lesson Content Language".
  */
 function applyTranslation(lessonObj, translation) {
-  if (!translation || !translation.items) return lessonObj;
+  if (!translation) return lessonObj;
 
   if (translation.title) {
     lessonObj.title = translation.title;
   }
 
-  for (const item of translation.items) {
-    const content = lessonObj.content[item.index];
-    if (!content) continue;
+  if (Array.isArray(translation.items)) {
+    for (const item of translation.items) {
+      const content = lessonObj.content?.[item.index];
+      if (!content) continue;
 
-    if (item.nativeText) {
-      content.nativeText = item.nativeText;
-      content.english = item.nativeText;
-    }
-    if (item.exampleNative) {
-      content.exampleNative = item.exampleNative;
-      content.exampleEnglish = item.exampleNative;
-    }
-    if (item.romanization) {
-      content.romanization = item.romanization;
-      content.pronunciation = item.romanization;
-    }
-    if (item.exampleRomanization) {
-      content.exampleRomanization = item.exampleRomanization;
-    }
+      if (item.nativeText) {
+        content.nativeText = item.nativeText;
+        content.english = item.nativeText;
+      }
+      if (item.exampleNative) {
+        content.exampleNative = item.exampleNative;
+        content.exampleEnglish = item.exampleNative;
+      }
+      if (item.romanization) {
+        content.romanization = item.romanization;
+        content.pronunciation = item.romanization;
+      }
+      if (item.exampleRomanization) {
+        content.exampleRomanization = item.exampleRomanization;
+      }
 
-    if (item.breakdown && content.breakdown) {
-      for (let j = 0; j < item.breakdown.length; j++) {
-        if (content.breakdown[j] && item.breakdown[j].native) {
-          content.breakdown[j].native = item.breakdown[j].native;
-          content.breakdown[j].english = item.breakdown[j].native;
+      if (item.breakdown && content.breakdown) {
+        for (let j = 0; j < item.breakdown.length; j++) {
+          if (content.breakdown[j] && item.breakdown[j].native) {
+            content.breakdown[j].native = item.breakdown[j].native;
+            content.breakdown[j].english = item.breakdown[j].native;
+          }
         }
       }
     }
   }
 
+  // Activities overlay — match by id when present, otherwise by index. The
+  // id-anchor protects the overlay if a future seed edit reorders activities.
+  if (Array.isArray(translation.activities) && Array.isArray(lessonObj.activities)) {
+    const byId = new Map();
+    translation.activities.forEach((t, i) => {
+      if (t?.id) byId.set(t.id, t);
+      else byId.set(`__index_${i}`, t);
+    });
+    lessonObj.activities.forEach((dst, i) => {
+      const src = byId.get(dst?.id) || byId.get(`__index_${i}`);
+      if (!src || !dst) return;
+      if (src.section) dst.section = src.section;
+      if (src.title) dst.title = src.title;
+      if (src.task) dst.task = src.task;
+      if (Array.isArray(src.goals) && Array.isArray(dst.goals)) {
+        for (let g = 0; g < src.goals.length && g < dst.goals.length; g++) {
+          if (src.goals[g]) dst.goals[g] = src.goals[g];
+        }
+      }
+    });
+  }
+
+  // ExpressionPractice overlay — same id-or-index matching.
+  if (Array.isArray(translation.expressionPractice) && Array.isArray(lessonObj.expressionPractice)) {
+    const byId = new Map();
+    translation.expressionPractice.forEach((t, i) => {
+      if (t?.id) byId.set(t.id, t);
+      else byId.set(`__index_${i}`, t);
+    });
+    lessonObj.expressionPractice.forEach((dst, i) => {
+      const src = byId.get(dst?.id) || byId.get(`__index_${i}`);
+      if (!src || !dst) return;
+      if (src.label) dst.label = src.label;
+      if (src.goal) dst.goal = src.goal;
+    });
+  }
+
   return lessonObj;
 }
 
-module.exports = { batchTranslateRaw, batchRomanize, batchNativePhonetic, getOrCreateTranslation, applyTranslation, ROMANIZATION_LANGS, NON_LATIN_LANGS };
+module.exports = {
+  batchTranslateRaw,
+  batchRomanize,
+  batchNativePhonetic,
+  getOrCreateTranslation,
+  applyTranslation,
+  translateActivitiesArray,
+  translateExpressionPracticeArray,
+  ROMANIZATION_LANGS,
+  NON_LATIN_LANGS,
+};

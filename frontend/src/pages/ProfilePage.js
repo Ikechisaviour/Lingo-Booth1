@@ -5,10 +5,11 @@ import { userService, progressService } from '../services/api';
 import speechService from '../services/speechService';
 import LANGUAGES, {
   getNativeLangCode,
-  getNativeLangName,
+  getLanguageDisplayName,
+  getLanguageOptionLabel,
   getTargetLangCode,
-  getTargetLangName,
 } from '../config/languages';
+import { normalizeLanguageCode } from '../utils/languagePairPolicy';
 import './ProfilePage.css';
 
 function isProOrUltraTier(tier) {
@@ -25,6 +26,11 @@ function effectiveSubscriptionTier(user) {
 
 function ProfilePage({ onLogout }) {
   const { t, i18n } = useTranslation();
+  const profileLanguageOptionLabel = (code) => getLanguageOptionLabel(
+    code,
+    null,
+    t(`languages.${code}`, LANGUAGES[code]?.name || code)
+  );
   const [user, setUser] = useState(null);
   const [progress, setProgress] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -423,12 +429,11 @@ function ProfilePage({ onLogout }) {
                 <div className="personalization-card-main">
                   <div>
                     <p className="personalization-kicker">
-                      {canUseLearningPersonalization ? 'Available on your plan' : 'Pro or Ultra'}
+                      {canUseLearningPersonalization ? t('profilePage.personalizationAvailable') : t('profilePage.personalizationTier')}
                     </p>
-                    <h2>Learning Personalization</h2>
+                    <h2>{t('profilePage.personalizationTitle')}</h2>
                     <p className="card-description">
-                      Save approved words, phrases, and situations from real life so lessons, conversation,
-                      quiz, flashcards, and writing practice can become more relevant to you.
+                      {t('profilePage.personalizationDesc')}
                     </p>
                   </div>
                   <span className="personalization-tier">{String(personalizationTier || 'free').toUpperCase()}</span>
@@ -438,7 +443,7 @@ function ProfilePage({ onLogout }) {
                   className={canUseLearningPersonalization ? 'btn btn-primary' : 'btn btn-outline'}
                   onClick={() => navigate('/learning-personalization')}
                 >
-                  {canUseLearningPersonalization ? 'Manage Personalization' : 'View Upgrade Details'}
+                  {canUseLearningPersonalization ? t('profilePage.managePersonalization') : t('profilePage.viewUpgradeDetails')}
                 </button>
               </div>
 
@@ -536,9 +541,9 @@ function ProfilePage({ onLogout }) {
                     <label>{t('profilePage.iSpeak')}</label>
                     <select
                       className="profile-select"
-                      value={localStorage.getItem('nativeLanguage') || 'en'}
+                      value={getNativeLangCode()}
                       onChange={async (e) => {
-                        const val = e.target.value;
+                        const val = normalizeLanguageCode(e.target.value) || 'en';
                         localStorage.setItem('nativeLanguage', val);
                         i18n.changeLanguage(val);
                         try {
@@ -547,8 +552,8 @@ function ProfilePage({ onLogout }) {
                         window.location.reload();
                       }}
                     >
-                      {Object.entries(LANGUAGES).map(([code, lang]) => (
-                        <option key={code} value={code}>{lang.flag} {lang.name}</option>
+                      {Object.entries(LANGUAGES).map(([code]) => (
+                        <option key={code} value={code}>{profileLanguageOptionLabel(code)}</option>
                       ))}
                     </select>
                   </div>
@@ -556,9 +561,9 @@ function ProfilePage({ onLogout }) {
                     <label>{t('profilePage.imLearning')}</label>
                     <select
                       className="profile-select"
-                      value={localStorage.getItem('targetLanguage') || 'ko'}
+                      value={getTargetLangCode()}
                       onChange={async (e) => {
-                        const val = e.target.value;
+                        const val = normalizeLanguageCode(e.target.value) || 'ko';
                         localStorage.setItem('targetLanguage', val);
                         try {
                           await userService.updateProfile(userId, { targetLanguage: val });
@@ -567,9 +572,9 @@ function ProfilePage({ onLogout }) {
                       }}
                     >
                       {Object.entries(LANGUAGES)
-                        .filter(([code]) => code !== (localStorage.getItem('nativeLanguage') || 'en'))
-                        .map(([code, lang]) => (
-                          <option key={code} value={code}>{lang.flag} {lang.name}</option>
+                        .filter(([code]) => code !== getNativeLangCode())
+                        .map(([code]) => (
+                          <option key={code} value={code}>{profileLanguageOptionLabel(code)}</option>
                         ))}
                     </select>
                   </div>
@@ -579,19 +584,19 @@ function ProfilePage({ onLogout }) {
               <div className="card">
                 <h2>{t('profilePage.voiceSettings')}</h2>
                 <p className="voice-description">
-                  Choose separate voices for your target language and your native language so mixed replies are pronounced naturally.
+                  {t('profilePage.voiceSettingsDesc', 'Choose separate voices for your target language and your native language so mixed replies are pronounced naturally.')}
                 </p>
                 {renderVoiceSelector({
-                  title: 'Target voice',
+                  title: t('profilePage.targetVoice', 'Target voice'),
                   languageCode: getTargetLangCode(),
-                  languageName: t(`languages.${getTargetLangCode()}`, getTargetLangName()),
+                  languageName: getLanguageDisplayName(getTargetLangCode(), t),
                   voices: targetVoices,
                   selectedVoice: selectedTargetVoice,
                 })}
                 {renderVoiceSelector({
-                  title: 'Native voice',
+                  title: t('profilePage.nativeVoice', 'Native voice'),
                   languageCode: getNativeLangCode(),
-                  languageName: t(`languages.${getNativeLangCode()}`, getNativeLangName()),
+                  languageName: getLanguageDisplayName(getNativeLangCode(), t),
                   voices: nativeVoices,
                   selectedVoice: selectedNativeVoice,
                 })}
@@ -690,6 +695,29 @@ function ProfilePage({ onLogout }) {
           {/* Account Tab */}
           {activeTab === 'account' && (
             <div className="account-section">
+              <div className="card support-zone">
+                <h2>{t('billing.title')}</h2>
+                <p className="card-description">
+                  {t('billing.profileText')}
+                </p>
+                <div className="profile-account-actions">
+                  <button className="btn btn-primary" onClick={() => navigate('/billing')}>
+                    {t('billing.manageBilling')}
+                  </button>
+                  <button className="btn btn-outline" onClick={() => navigate('/pricing')}>
+                    {t('billing.viewPlans')}
+                  </button>
+                </div>
+              </div>
+              <div className="card support-zone">
+                <h2>{t('contact.title')}</h2>
+                <p className="card-description">
+                  {t('contact.subtitle')}
+                </p>
+                <button className="btn btn-outline" onClick={() => navigate('/contact')}>
+                  {t('contact.navLabel')}
+                </button>
+              </div>
               <div className="card danger-zone">
                 <h2>{t('profilePage.resetProgress')}</h2>
                 <p className="card-description">

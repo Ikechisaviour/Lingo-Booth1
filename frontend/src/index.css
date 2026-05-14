@@ -9,15 +9,37 @@
   --bg: #faf7f2;
   --bg-secondary: #f5efe6;
   --surface: #ffffff;
-  --primary: #ff6b35;
-  --primary-hover: #e55a2b;
-  --primary-dark: #c94920;
-  --primary-light: rgba(255, 107, 53, 0.1);
-  --primary-soft: rgba(255, 107, 53, 0.08);
-  --primary-soft-strong: rgba(255, 107, 53, 0.14);
-  --primary-border-soft: rgba(255, 107, 53, 0.28);
-  --primary-gradient-end: #ff8c5a;
-  --primary-shadow-color: rgba(255, 107, 53, 0.22);
+
+  /* Learning mode color tokens. Relaxed is the default; .App.challenge-theme remaps these. */
+  --relaxed-primary: #ff6b35;
+  --relaxed-primary-hover: #e55a2b;
+  --relaxed-primary-dark: #c94920;
+  --relaxed-primary-light: rgba(255, 107, 53, 0.1);
+  --relaxed-primary-soft: rgba(255, 107, 53, 0.08);
+  --relaxed-primary-soft-strong: rgba(255, 107, 53, 0.14);
+  --relaxed-primary-border-soft: rgba(255, 107, 53, 0.28);
+  --relaxed-primary-gradient-end: #ff8c5a;
+  --relaxed-primary-shadow-color: rgba(255, 107, 53, 0.22);
+
+  --challenge-primary: #58cc02;
+  --challenge-primary-hover: #46a302;
+  --challenge-primary-dark: #3d8a02;
+  --challenge-primary-light: rgba(88, 204, 2, 0.1);
+  --challenge-primary-soft: rgba(88, 204, 2, 0.08);
+  --challenge-primary-soft-strong: rgba(88, 204, 2, 0.14);
+  --challenge-primary-border-soft: rgba(88, 204, 2, 0.28);
+  --challenge-primary-gradient-end: #7ed957;
+  --challenge-primary-shadow-color: rgba(88, 204, 2, 0.22);
+
+  --primary: var(--relaxed-primary);
+  --primary-hover: var(--relaxed-primary-hover);
+  --primary-dark: var(--relaxed-primary-dark);
+  --primary-light: var(--relaxed-primary-light);
+  --primary-soft: var(--relaxed-primary-soft);
+  --primary-soft-strong: var(--relaxed-primary-soft-strong);
+  --primary-border-soft: var(--relaxed-primary-border-soft);
+  --primary-gradient-end: var(--relaxed-primary-gradient-end);
+  --primary-shadow-color: var(--relaxed-primary-shadow-color);
   --secondary: #1a1a2e;
   --accent-green: #58cc02;
   --accent-green-dark: #46a302;
@@ -43,6 +65,10 @@
   --comfortable: #ffc800;
   --learning: #1cb0f6;
   --struggling: #ff4b4b;
+  --language-target: #1cb0f6;
+  --language-target-soft: rgba(28, 176, 246, 0.08);
+  --language-native: #58cc02;
+  --language-native-soft: rgba(88, 204, 2, 0.08);
 }
 
 body {
@@ -325,15 +351,15 @@ input:focus, textarea:focus, select:focus {
 
 /* ===== Challenge Mode — Green Theme ===== */
 .App.challenge-theme {
-  --primary: #58cc02;
-  --primary-hover: #46a302;
-  --primary-light: rgba(88, 204, 2, 0.1);
-  --primary-soft: rgba(88, 204, 2, 0.08);
-  --primary-soft-strong: rgba(88, 204, 2, 0.14);
-  --primary-border-soft: rgba(88, 204, 2, 0.28);
-  --primary-dark: #3d8a02;
-  --primary-gradient-end: #7ed957;
-  --primary-shadow-color: rgba(88, 204, 2, 0.22);
+  --primary: var(--challenge-primary);
+  --primary-hover: var(--challenge-primary-hover);
+  --primary-light: var(--challenge-primary-light);
+  --primary-soft: var(--challenge-primary-soft);
+  --primary-soft-strong: var(--challenge-primary-soft-strong);
+  --primary-border-soft: var(--challenge-primary-border-soft);
+  --primary-dark: var(--challenge-primary-dark);
+  --primary-gradient-end: var(--challenge-primary-gradient-end);
+  --primary-shadow-color: var(--challenge-primary-shadow-color);
 }
 
 /* ===== RTL Support for Arabic & Hebrew ===== */

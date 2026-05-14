@@ -76,8 +76,8 @@ const lesson = {
   ],
   relatedPools: ['topic-society'],
   content: [
-    createContentItem('Lesson goal', 'housing', 'By end: navigate Korean real estate confidently — find studio, understand lease, sign contract.', 'word', 'Functions: ask · compare · read lease · sign', 'Housing toolkit.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'studio search', 'You want to move out of the company dorm into your own studio near Kumoh. Visit a 부동산 and negotiate.', 'word', 'Agent: 보증금과 월세 예산은요? — You: 500만 원과 40만 원입니다.', 'Agent: Deposit + rent budget? — You: 5M + 400K.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: navigate Korean real estate confidently — find studio, understand lease, sign contract.', 'word', 'Functions: ask · compare · read lease · sign', 'Housing toolkit.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'You want to move out of the company dorm into your own studio near Kumoh. Visit a 부동산 and negotiate.', 'word', 'Agent: 보증금과 월세 예산은요? — You: 500만 원과 40만 원입니다.', 'Agent: Deposit + rent budget? — You: 5M + 400K.', null, [ACT.orientation]),
 
     createContentItem('월세 → [월쎄]', 'wolsse', '경음화: ㄹ-받침 + ㅅ → ㄹ + ㅆ.', 'word', '월세가 40만 원이에요.', 'Rent is 400K.', null, [ACT.pronunciation]),
     createContentItem('보증금 → [보증금]', 'bojeunggeum', 'No major change.', 'word', '보증금이 큽니다.', 'Deposit is large.', null, [ACT.pronunciation]),

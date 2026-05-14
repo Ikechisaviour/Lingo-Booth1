@@ -81,8 +81,8 @@ const lesson = {
   ],
   relatedPools: ['topic-school', 'topic-people'],
   content: [
-    createContentItem('Lesson goal', 'clubs + leisure', 'By end: describe clubs with -고/-지만, modify nouns with adjectives, recommend a club.', 'word', 'Functions: describe · contrast · modify · recommend', 'Four micro-skills.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'club fair', 'It is 동아리 fair week at Kumoh. A new student asks you which club they should join.', 'word', 'New student: 어떤 동아리가 좋아요? — You: 음악 동아리는 재미있고 친구도 많아요.', 'New student: Which club is good? — You: The music club is fun and has many friends.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: describe clubs with -고/-지만, modify nouns with adjectives, recommend a club.', 'word', 'Functions: describe · contrast · modify · recommend', 'Four micro-skills.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'It is 동아리 fair week at Kumoh. A new student asks you which club they should join.', 'word', 'New student: 어떤 동아리가 좋아요? — You: 음악 동아리는 재미있고 친구도 많아요.', 'New student: Which club is good? — You: The music club is fun and has many friends.', null, [ACT.orientation]),
 
     createContentItem('재미있고 → [재미읻꼬]', 'jaemiitggo', '경음화: ㅆ받침 (in 있) + ㄱ → ㄱ + ㄲ.', 'word', '재미있고 좋아요. → [재미읻꼬]', 'Fun and good.', null, [ACT.pronunciation]),
     createContentItem('좋은 → [조은]', 'joeun', 'ㅎ-deletion: the ㅎ받침 of 좋 disappears before 은.', 'word', '좋은 동아리 → [조은 동아리]', 'a good club.', null, [ACT.pronunciation]),

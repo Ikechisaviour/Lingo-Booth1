@@ -1,39 +1,15 @@
-const SUPPORTED_PUBLIC_LANGUAGES = [
-  'en',
-  'ko',
-  'es',
-  'fr',
-  'de',
-  'zh',
-  'ja',
-  'hi',
-  'ar',
-  'he',
-  'pt',
-  'it',
-  'nl',
-  'ru',
-  'id',
-  'ms',
-  'fil',
-  'tr',
-  'bn',
-  'ta',
-];
+import {
+  SUPPORTED_LANGUAGE_CODES,
+  defaultTargetForNative,
+  isRtlLanguage,
+  normalizeLanguageCode,
+} from './languagePairPolicy';
 
+const SUPPORTED_PUBLIC_LANGUAGES = SUPPORTED_LANGUAGE_CODES;
 const SUPPORTED_LANGUAGE_SET = new Set(SUPPORTED_PUBLIC_LANGUAGES);
 
 export function normalizePublicLanguage(value) {
-  const raw = String(value || '').trim();
-  if (!raw) return '';
-  const lower = raw.toLowerCase();
-  if (lower.startsWith('zh')) return 'zh';
-  if (lower.startsWith('pt')) return 'pt';
-  const base = lower.split(/[-_]/)[0];
-  if (base === 'iw') return 'he';
-  if (base === 'in') return 'id';
-  if (base === 'tl') return 'fil';
-  return base;
+  return normalizeLanguageCode(value);
 }
 
 export function isSupportedPublicLanguage(value) {
@@ -102,8 +78,7 @@ export function googleLocaleForPublicLanguage(language) {
 }
 
 export function targetLanguageForPublicNative(nativeLanguage) {
-  const code = normalizePublicLanguage(nativeLanguage) || 'en';
-  return code === 'en' ? 'ko' : 'en';
+  return defaultTargetForNative(nativeLanguage);
 }
 
 export function getPublicLanguagePair() {
@@ -121,7 +96,7 @@ export function applyPublicLanguage(i18n) {
   }
   if (typeof document !== 'undefined') {
     document.documentElement.lang = language;
-    document.documentElement.dir = ['ar', 'he'].includes(language) ? 'rtl' : 'ltr';
+    document.documentElement.dir = isRtlLanguage(language) ? 'rtl' : 'ltr';
   }
   return language;
 }

@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import i18n from '../i18n';
+import { normalizeLanguageCode } from '../utils/languagePairPolicy';
 
 interface SettingsState {
   nativeLanguage: string;
@@ -25,17 +26,20 @@ export const useSettingsStore = create<SettingsState>()(
       preferredVoices: {},
 
       setLanguages: (native, target) => {
-        i18n.changeLanguage(native);
-        set({ nativeLanguage: native, targetLanguage: target });
+        const nativeCode = normalizeLanguageCode(native);
+        const targetCode = normalizeLanguageCode(target);
+        i18n.changeLanguage(nativeCode);
+        set({ nativeLanguage: nativeCode, targetLanguage: targetCode });
       },
 
       setNativeLanguage: (lang) => {
-        i18n.changeLanguage(lang);
-        set({ nativeLanguage: lang });
+        const code = normalizeLanguageCode(lang);
+        i18n.changeLanguage(code);
+        set({ nativeLanguage: code });
       },
 
       setTargetLanguage: (lang) =>
-        set({ targetLanguage: lang }),
+        set({ targetLanguage: normalizeLanguageCode(lang) }),
 
       setVoice: (voice, language) =>
         set((state) => {
@@ -55,6 +59,15 @@ export const useSettingsStore = create<SettingsState>()(
     {
       name: 'settings-storage',
       storage: createJSONStorage(() => AsyncStorage),
+      merge: (persisted, current) => {
+        const saved = (persisted || {}) as Partial<SettingsState>;
+        return {
+          ...current,
+          ...saved,
+          nativeLanguage: normalizeLanguageCode(saved.nativeLanguage) || current.nativeLanguage,
+          targetLanguage: normalizeLanguageCode(saved.targetLanguage) || current.targetLanguage,
+        };
+      },
     }
   )
 );

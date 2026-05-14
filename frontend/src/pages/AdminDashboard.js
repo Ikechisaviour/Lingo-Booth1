@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { adminService } from '../services/api';
+import { adminService, billingService } from '../services/api';
 import LANGUAGES, { getTargetLangName, getNativeLangName, getTargetLangCode, getNativeLangCode, getTargetField, getNativeField } from '../config/languages';
 import AdminSpeakingDemo from './AdminSpeakingDemo';
 import './AdminDashboard.css';
@@ -20,6 +20,7 @@ function AdminDashboard() {
       totalUsers: 0, activeUsers: 0, suspendedUsers: 0, adminCount: 0,
       totalLessons: 0, totalFlashcards: 0, totalProgress: 0, totalLogins: 0,
       challengeModeUsers: 0, relaxedModeUsers: 0,
+      totalContactMessages: 0, openContactMessages: 0,
     },
     activity: { activeUsersToday: 0, activeUsersThisWeek: 0, avgTimeSpent: 0, newUsersLastWeek: 0, newUsersLastMonth: 0 },
     userGrowth: [],
@@ -40,14 +41,76 @@ function AdminDashboard() {
   const [errorReports, setErrorReports] = useState({
     reports: [], total: 0, page: 1, totalPages: 1, openCount: 0, criticalOpenCount: 0,
   });
+  const [contactMessages, setContactMessages] = useState({
+    messages: [], total: 0, page: 1, totalPages: 1, openCount: 0, registeredCount: 0, guestCount: 0, senderType: 'all',
+  });
+  const [billingAdmin, setBillingAdmin] = useState({
+    counts: { activeIndividual: 0, activeInstitutional: 0, openInstitutionLeads: 0 },
+    subscriptions: [],
+    organizations: [],
+    leads: [],
+    recentEvents: [],
+    plans: { individual: [], institutional: [] },
+    planOverrides: [],
+    discounts: [],
+  });
+  const [billingLoading, setBillingLoading] = useState(false);
+  const [selectedPricingPlanId, setSelectedPricingPlanId] = useState('plus');
+  const [planOverrideForm, setPlanOverrideForm] = useState({
+    active: true,
+    name: '',
+    tagline: '',
+    monthlyPrice: '',
+    annualPrice: '',
+    seatPriceMonthly: '',
+    seatPriceAnnual: '',
+    minimumSeats: '',
+    stripeMonthlyPriceId: '',
+    stripeAnnualPriceId: '',
+    notes: '',
+  });
+  const [discountForm, setDiscountForm] = useState({
+    code: '',
+    active: true,
+    description: '',
+    discountType: 'percent',
+    percentOff: '20',
+    amountOff: '',
+    appliesToAudience: 'all',
+    appliesToPlanIds: [],
+    startsAt: '',
+    expiresAt: '',
+    maxRedemptions: '',
+    stripePromotionCodeId: '',
+    stripeCouponId: '',
+    notes: '',
+  });
+  const [manualPlanForm, setManualPlanForm] = useState({
+    userIdOrEmail: '',
+    planId: 'pro',
+    status: 'active',
+    reason: '',
+    expiresAt: '',
+  });
+  const [organizationForm, setOrganizationForm] = useState({
+    name: '',
+    type: 'school',
+    planId: 'institution_pro',
+    seatsPurchased: 25,
+    billingEmail: '',
+    notes: '',
+  });
   const [loading, setLoading] = useState(true);
   const [guestsLoading, setGuestsLoading] = useState(false);
   const [errorReportsLoading, setErrorReportsLoading] = useState(false);
   const [errorReportsClearing, setErrorReportsClearing] = useState(false);
+  const [contactMessagesLoading, setContactMessagesLoading] = useState(false);
+  const [contactMessagesClearing, setContactMessagesClearing] = useState(false);
   const [error, setError] = useState('');
   const [activeTab, setActiveTab] = useState('dashboard');
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState('all');
+  const [contactSenderFilter, setContactSenderFilter] = useState('all');
   const [suspendModal, setSuspendModal] = useState({ show: false, user: null, reason: '' });
   const [successMessage, setSuccessMessage] = useState('');
   const [selectedUser, setSelectedUser] = useState(null);
@@ -81,10 +144,85 @@ function AdminDashboard() {
     }
   }, []);
 
+  const fetchContactMessages = useCallback(async (page = 1) => {
+    try {
+      setContactMessagesLoading(true);
+      const res = await adminService.getContactMessages({ page, status: 'open', senderType: contactSenderFilter });
+      setContactMessages(res.data);
+    } catch (err) {
+      console.error('Contact messages fetch error:', err);
+    } finally {
+      setContactMessagesLoading(false);
+    }
+  }, [contactSenderFilter]);
+
+  const fetchBillingAdmin = useCallback(async () => {
+    try {
+      setBillingLoading(true);
+      const res = await billingService.getAdminOverview();
+      setBillingAdmin({
+        counts: res.data?.counts || { activeIndividual: 0, activeInstitutional: 0, openInstitutionLeads: 0 },
+        subscriptions: res.data?.subscriptions || [],
+        organizations: res.data?.organizations || [],
+        leads: res.data?.leads || [],
+        recentEvents: res.data?.recentEvents || [],
+        plans: res.data?.plans || { individual: [], institutional: [] },
+        planOverrides: res.data?.planOverrides || [],
+        discounts: res.data?.discounts || [],
+      });
+    } catch (err) {
+      console.error('Billing admin fetch error:', err);
+    } finally {
+      setBillingLoading(false);
+    }
+  }, []);
+
   useEffect(() => {
     if (activeTab === 'guests') fetchGuests(1);
     if (activeTab === 'failures') fetchErrorReports(1);
-  }, [activeTab, fetchGuests, fetchErrorReports]);
+    if (activeTab === 'messages') fetchContactMessages(1);
+    if (activeTab === 'billing') fetchBillingAdmin();
+  }, [activeTab, fetchGuests, fetchErrorReports, fetchContactMessages, fetchBillingAdmin]);
+
+  const billingPlans = [
+    ...(billingAdmin.plans?.individual || []),
+    ...(billingAdmin.plans?.institutional || []),
+  ];
+
+  const selectedPricingPlan = billingPlans.find((plan) => plan.id === selectedPricingPlanId) || billingPlans[0] || null;
+
+  const centsToPriceInput = (cents) => (
+    cents === undefined || cents === null || cents === '' ? '' : (Number(cents) / 100).toFixed(2)
+  );
+
+  const priceInputToCents = (value) => {
+    if (value === undefined || value === null || String(value).trim() === '') return null;
+    const amount = Number(value);
+    return Number.isFinite(amount) ? Math.max(Math.round(amount * 100), 0) : null;
+  };
+
+  const formatAdminPrice = (cents) => {
+    if (cents === undefined || cents === null) return 'Custom';
+    return `$${(Number(cents) / 100).toFixed(Number(cents) % 100 === 0 ? 0 : 2)}`;
+  };
+
+  useEffect(() => {
+    if (!selectedPricingPlan) return;
+    const override = (billingAdmin.planOverrides || []).find((entry) => entry.planId === selectedPricingPlan.id);
+    setPlanOverrideForm({
+      active: override?.active !== false,
+      name: override?.name || '',
+      tagline: override?.tagline || '',
+      monthlyPrice: centsToPriceInput(override?.monthlyPriceCents),
+      annualPrice: centsToPriceInput(override?.annualPriceCents),
+      seatPriceMonthly: centsToPriceInput(override?.seatPriceMonthlyCents),
+      seatPriceAnnual: centsToPriceInput(override?.seatPriceAnnualCents),
+      minimumSeats: override?.minimumSeats || '',
+      stripeMonthlyPriceId: override?.stripeMonthlyPriceId || '',
+      stripeAnnualPriceId: override?.stripeAnnualPriceId || '',
+      notes: override?.notes || '',
+    });
+  }, [selectedPricingPlanId, billingAdmin.planOverrides, billingAdmin.plans, selectedPricingPlan]);
 
   const fetchData = async () => {
     try {
@@ -113,6 +251,13 @@ function AdminDashboard() {
           ...prev,
           openCount: data.overview.openErrorReports,
           total: data.overview.totalErrorReports || prev.total,
+        }));
+      }
+      if (typeof data.overview?.openContactMessages === 'number') {
+        setContactMessages(prev => ({
+          ...prev,
+          openCount: data.overview.openContactMessages,
+          total: data.overview.totalContactMessages || prev.total,
         }));
       }
       setError('');
@@ -191,6 +336,197 @@ function AdminDashboard() {
     const user = report.userId || {};
     const snapshot = report.userSnapshot || {};
     return user.username || snapshot.username || report.reportedUserId || report.deviceId || 'Unknown user';
+  };
+
+  const acknowledgeContactMessage = async (messageId) => {
+    try {
+      await adminService.acknowledgeContactMessage(messageId);
+      const acknowledgedMessage = contactMessages.messages.find(message => message._id === messageId);
+      const acknowledgedGuest = acknowledgedMessage?.session?.isGuest === true;
+      setContactMessages(prev => ({
+        ...prev,
+        messages: prev.messages.filter(message => message._id !== messageId),
+        total: Math.max((prev.total || 1) - 1, 0),
+        openCount: Math.max((prev.openCount || 1) - 1, 0),
+        guestCount: acknowledgedGuest ? Math.max((prev.guestCount || 1) - 1, 0) : prev.guestCount,
+        registeredCount: acknowledgedGuest ? prev.registeredCount : Math.max((prev.registeredCount || 1) - 1, 0),
+      }));
+      showSuccess('Message marked as read');
+      fetchData();
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to mark message as read');
+    }
+  };
+
+  const clearOpenContactMessages = async () => {
+    const openCount = contactMessages.openCount || 0;
+    if (openCount <= 0) return;
+
+    const confirmed = window.confirm(
+      `Clear all ${openCount} open contact message${openCount === 1 ? '' : 's'}? This marks them as read and removes them from the open queue.`
+    );
+    if (!confirmed) return;
+
+    try {
+      setContactMessagesClearing(true);
+      const res = await adminService.clearOpenContactMessages();
+      const acknowledgedCount = res.data?.acknowledgedCount ?? openCount;
+      setContactMessages(prev => ({
+        ...prev,
+        messages: [],
+        total: 0,
+        page: 1,
+        totalPages: 1,
+        openCount: 0,
+        registeredCount: 0,
+        guestCount: 0,
+      }));
+      showSuccess(`${acknowledgedCount} message${acknowledgedCount === 1 ? '' : 's'} cleared`);
+      fetchData();
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to clear messages');
+    } finally {
+      setContactMessagesClearing(false);
+    }
+  };
+
+  const handleManualPlanSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await billingService.assignManualPlan({
+        ...manualPlanForm,
+        expiresAt: manualPlanForm.expiresAt || null,
+      });
+      setManualPlanForm({
+        userIdOrEmail: '',
+        planId: 'pro',
+        status: 'active',
+        reason: '',
+        expiresAt: '',
+      });
+      showSuccess('Plan access updated');
+      fetchBillingAdmin();
+      fetchData();
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to update plan access');
+    }
+  };
+
+  const handleOrganizationSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await billingService.createOrganization({
+        ...organizationForm,
+        seatsPurchased: Number(organizationForm.seatsPurchased) || 1,
+      });
+      setOrganizationForm({
+        name: '',
+        type: 'school',
+        planId: 'institution_pro',
+        seatsPurchased: 25,
+        billingEmail: '',
+        notes: '',
+      });
+      showSuccess('Organization created');
+      fetchBillingAdmin();
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to create organization');
+    }
+  };
+
+  const handlePlanOverrideSubmit = async (event) => {
+    event.preventDefault();
+    if (!selectedPricingPlan) return;
+    try {
+      await billingService.updatePlanOverride(selectedPricingPlan.id, {
+        active: planOverrideForm.active,
+        name: planOverrideForm.name,
+        tagline: planOverrideForm.tagline,
+        monthlyPriceCents: selectedPricingPlan.audience === 'individual' ? priceInputToCents(planOverrideForm.monthlyPrice) : null,
+        annualPriceCents: selectedPricingPlan.audience === 'individual' ? priceInputToCents(planOverrideForm.annualPrice) : null,
+        seatPriceMonthlyCents: selectedPricingPlan.audience === 'institution' ? priceInputToCents(planOverrideForm.seatPriceMonthly) : null,
+        seatPriceAnnualCents: selectedPricingPlan.audience === 'institution' ? priceInputToCents(planOverrideForm.seatPriceAnnual) : null,
+        minimumSeats: selectedPricingPlan.audience === 'institution' ? planOverrideForm.minimumSeats : null,
+        stripeMonthlyPriceId: selectedPricingPlan.audience === 'individual' ? planOverrideForm.stripeMonthlyPriceId : '',
+        stripeAnnualPriceId: selectedPricingPlan.audience === 'individual' ? planOverrideForm.stripeAnnualPriceId : '',
+        notes: planOverrideForm.notes,
+      });
+      showSuccess('Plan pricing updated');
+      fetchBillingAdmin();
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to update plan pricing');
+    }
+  };
+
+  const resetDiscountForm = () => {
+    setDiscountForm({
+      code: '',
+      active: true,
+      description: '',
+      discountType: 'percent',
+      percentOff: '20',
+      amountOff: '',
+      appliesToAudience: 'all',
+      appliesToPlanIds: [],
+      startsAt: '',
+      expiresAt: '',
+      maxRedemptions: '',
+      stripePromotionCodeId: '',
+      stripeCouponId: '',
+      notes: '',
+    });
+  };
+
+  const handleDiscountSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await billingService.createDiscount({
+        ...discountForm,
+        code: discountForm.code.toUpperCase(),
+        percentOff: discountForm.discountType === 'percent' ? Number(discountForm.percentOff) || 1 : null,
+        amountOffCents: discountForm.discountType === 'fixed' ? priceInputToCents(discountForm.amountOff) : null,
+        startsAt: discountForm.startsAt || null,
+        expiresAt: discountForm.expiresAt || null,
+        maxRedemptions: discountForm.maxRedemptions || null,
+      });
+      resetDiscountForm();
+      showSuccess('Discount created');
+      fetchBillingAdmin();
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to create discount');
+    }
+  };
+
+  const toggleDiscountActive = async (discount) => {
+    try {
+      await billingService.updateDiscount(discount._id, {
+        ...discount,
+        active: !discount.active,
+        startsAt: discount.startsAt || null,
+        expiresAt: discount.expiresAt || null,
+      });
+      showSuccess(discount.active ? 'Discount paused' : 'Discount enabled');
+      fetchBillingAdmin();
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to update discount');
+    }
+  };
+
+  const updateLeadStatus = async (leadId, status) => {
+    try {
+      await billingService.updateInstitutionalLeadStatus(leadId, status);
+      showSuccess('Institution request updated');
+      fetchBillingAdmin();
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to update institution request');
+    }
+  };
+
+  const contactMessageUserLabel = (message) => {
+    const user = message.userId || {};
+    const snapshot = message.userSnapshot || {};
+    if (message.session?.isGuest) return `${message.name || 'Guest'} (guest user)`;
+    return user.username || snapshot.username || message.name || message.email || 'Unknown user';
   };
 
   // Parse a User-Agent string into human-readable components
@@ -394,16 +730,20 @@ function AdminDashboard() {
             { id: 'dashboard', icon: '📊', label: t('admin.dashboard') },
             { id: 'users', icon: '👥', label: `${t('admin.users')} (${users.length})` },
             { id: 'activity', icon: '📈', label: t('admin.activity') },
-            { id: 'guests', icon: '👤', label: `Guests (${guests.total})` },
+            { id: 'guests', icon: '👤', label: `${t('admin.guests', 'Guests')} (${guests.total})` },
             { id: 'flashcards', icon: '🎴', label: `${t('admin.userFlashcards')} (${userFlashcards.length})` },
-            { id: 'demo', icon: '▶', label: 'Demo' },
+            { id: 'billing', icon: '$', label: `${t('admin.billing', 'Billing')} (${billingAdmin.counts.openInstitutionLeads || 0})` },
+            { id: 'demo', icon: '▶', label: t('admin.demo', 'Demo') },
           ].map(tab => (
             <button key={tab.id} className={`tab-btn ${activeTab === tab.id ? 'active' : ''}`} onClick={() => setActiveTab(tab.id)}>
               <span className="tab-icon">{tab.icon}</span>{tab.label}
             </button>
           ))}
           <button className={`tab-btn ${activeTab === 'failures' ? 'active' : ''}`} onClick={() => setActiveTab('failures')}>
-            <span className="tab-icon">!</span>Failures ({errorReports.openCount || stats?.overview?.openErrorReports || 0})
+            <span className="tab-icon">!</span>{t('admin.failures', 'Failures')} ({errorReports.openCount || stats?.overview?.openErrorReports || 0})
+          </button>
+          <button className={`tab-btn ${activeTab === 'messages' ? 'active' : ''}`} onClick={() => setActiveTab('messages')}>
+            <span className="tab-icon">✉</span>{t('admin.messages', 'Messages')} ({contactMessages.openCount || stats?.overview?.openContactMessages || 0})
           </button>
         </div>
 
@@ -999,6 +1339,640 @@ function AdminDashboard() {
                   </button>
                 </div>
               )}
+            </div>
+          )}
+
+          {activeTab === 'messages' && (
+            <div className="messages-section">
+              <div className="section-title">
+                <h2>Contact messages</h2>
+              </div>
+              <div className="failure-toolbar">
+                <div>
+                  <strong>{contactMessages.openCount || 0}</strong> unread messages
+                </div>
+                <div className="failure-toolbar-actions">
+                  <button className="btn btn-outline" onClick={() => fetchContactMessages(contactMessages.page || 1)} disabled={contactMessagesLoading || contactMessagesClearing}>
+                    Refresh
+                  </button>
+                  <button className="btn btn-danger" onClick={clearOpenContactMessages} disabled={contactMessagesLoading || contactMessagesClearing || !(contactMessages.openCount > 0)}>
+                    {contactMessagesClearing ? 'Clearing...' : 'Clear all'}
+                  </button>
+                </div>
+              </div>
+
+              <div className="contact-message-filters" role="group" aria-label="Contact message sender filter">
+                {[
+                  { id: 'all', label: 'All messages', count: contactMessages.openCount || 0 },
+                  { id: 'registered', label: 'Registered users', count: contactMessages.registeredCount || 0 },
+                  { id: 'guest', label: 'Guest users', count: contactMessages.guestCount || 0 },
+                ].map(filter => (
+                  <button
+                    key={filter.id}
+                    type="button"
+                    className={`contact-message-filter ${contactSenderFilter === filter.id ? 'active' : ''}`}
+                    onClick={() => {
+                      setContactSenderFilter(filter.id);
+                      setContactMessages(prev => ({ ...prev, messages: [], page: 1, senderType: filter.id }));
+                    }}
+                  >
+                    <span>{filter.label}</span>
+                    <strong>{filter.count}</strong>
+                  </button>
+                ))}
+              </div>
+
+              <div className="card failures-card contact-messages-card">
+                {contactMessagesLoading ? (
+                  <div className="no-data" style={{ padding: 40 }}>Loading messages...</div>
+                ) : contactMessages.messages.length > 0 ? (
+                  <div className="failure-list">
+                    {contactMessages.messages.map((message) => {
+                      const senderIsGuest = message.session?.isGuest === true;
+                      const senderLabel = senderIsGuest ? 'Guest user' : 'Registered user';
+                      return (
+                        <div key={message._id} className={`failure-item contact-message-item ${senderIsGuest ? 'guest' : 'registered'}`}>
+                          <div className="failure-item-header">
+                            <div>
+                              <div className="failure-title contact-message-title">
+                                <span className={`contact-message-badge ${senderIsGuest ? 'guest' : 'registered'}`}>{senderLabel}</span>
+                                <span>{message.subject || 'Contact message'}</span>
+                              </div>
+                              <div className="failure-meta">
+                                {formatDate(message.createdAt)} | {message.source || 'web'} | {contactMessageUserLabel(message)}
+                              </div>
+                            </div>
+                            <button className="btn btn-outline failure-ack" onClick={() => acknowledgeContactMessage(message._id)}>
+                              Mark read
+                            </button>
+                          </div>
+
+                          <div className="failure-detail-grid contact-message-grid">
+                            <div><span>Sender Type</span><strong>{senderLabel}</strong></div>
+                            <div><span>Name</span><strong>{message.name || 'Unknown'}</strong></div>
+                            <div><span>Email</span><strong>{message.email || 'Unknown'}</strong></div>
+                            <div><span>Account Tier</span><strong>{message.session?.subscriptionTier || message.userSnapshot?.subscriptionTier || 'free'}</strong></div>
+                            <div><span>Language Pair</span><strong>{message.session?.nativeLanguage || '?'} -> {message.session?.targetLanguage || '?'}</strong></div>
+                            <div><span>Page</span><strong>{message.page || 'Unknown'}</strong></div>
+                            <div><span>Device</span><strong>{message.deviceId || 'Unknown'}</strong></div>
+                            <div><span>Browser Language</span><strong>{message.client?.language || 'Unknown'}</strong></div>
+                            <div><span>IP</span><strong>{message.request?.ip || 'Unknown'}</strong></div>
+                          </div>
+
+                          <div className="contact-message-body">
+                            {message.message}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <div className="no-results">
+                    <span className="no-results-icon">OK</span>
+                    <p>No unread contact messages.</p>
+                  </div>
+                )}
+              </div>
+
+              {contactMessages.totalPages > 1 && (
+                <div className="pagination-row">
+                  <button className="btn btn-outline" disabled={contactMessages.page <= 1 || contactMessagesLoading} onClick={() => fetchContactMessages(contactMessages.page - 1)}>
+                    Previous
+                  </button>
+                  <span className="page-info">Page {contactMessages.page} of {contactMessages.totalPages}</span>
+                  <button className="btn btn-outline" disabled={contactMessages.page >= contactMessages.totalPages || contactMessagesLoading} onClick={() => fetchContactMessages(contactMessages.page + 1)}>
+                    Next
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+
+          {activeTab === 'billing' && (
+            <div className="billing-admin-section">
+              <div className="section-header-row">
+                <div>
+                  <h2>Subscriptions and institutions</h2>
+                  <p>Manage individual access, institutional leads, and organization seats.</p>
+                </div>
+                <button className="btn btn-outline btn-sm" onClick={fetchBillingAdmin} disabled={billingLoading}>
+                  {billingLoading ? 'Loading...' : 'Refresh billing'}
+                </button>
+              </div>
+
+              <div className="stats-row small">
+                <div className="stat-card">
+                  <span className="stat-emoji">$</span>
+                  <span className="stat-number">{billingAdmin.counts.activeIndividual || 0}</span>
+                  <span className="stat-label">Active individual</span>
+                </div>
+                <div className="stat-card">
+                  <span className="stat-emoji">🏫</span>
+                  <span className="stat-number">{billingAdmin.counts.activeInstitutional || 0}</span>
+                  <span className="stat-label">Active institutions</span>
+                </div>
+                <div className="stat-card">
+                  <span className="stat-emoji">✉</span>
+                  <span className="stat-number">{billingAdmin.counts.openInstitutionLeads || 0}</span>
+                  <span className="stat-label">Open requests</span>
+                </div>
+              </div>
+
+              <div className="billing-pricing-grid">
+                <form className="card billing-admin-form pricing-control-card" onSubmit={handlePlanOverrideSubmit}>
+                  <div className="billing-card-title-row">
+                    <div>
+                      <h3>Plan pricing</h3>
+                      <p>Override public plan prices without changing the codebase.</p>
+                    </div>
+                    <label className="billing-switch">
+                      <input
+                        type="checkbox"
+                        checked={planOverrideForm.active}
+                        onChange={(event) => setPlanOverrideForm({ ...planOverrideForm, active: event.target.checked })}
+                      />
+                      Active
+                    </label>
+                  </div>
+                  <label>
+                    Plan
+                    <select value={selectedPricingPlanId} onChange={(event) => setSelectedPricingPlanId(event.target.value)}>
+                      {billingPlans.map((plan) => (
+                        <option key={plan.id} value={plan.id}>
+                          {plan.name} ({plan.audience})
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                  {selectedPricingPlan && (
+                    <div className="billing-price-summary">
+                      <span>Current public price</span>
+                      <strong>
+                        {selectedPricingPlan.audience === 'institution'
+                          ? `${formatAdminPrice(selectedPricingPlan.seatPriceMonthlyCents)} / seat`
+                          : `${formatAdminPrice(selectedPricingPlan.monthlyPriceCents)} monthly`}
+                      </strong>
+                    </div>
+                  )}
+                  <div className="billing-admin-form-row">
+                    <label>
+                      Display name
+                      <input
+                        value={planOverrideForm.name}
+                        onChange={(event) => setPlanOverrideForm({ ...planOverrideForm, name: event.target.value })}
+                        placeholder={selectedPricingPlan?.name || ''}
+                      />
+                    </label>
+                    <label>
+                      Short description
+                      <input
+                        value={planOverrideForm.tagline}
+                        onChange={(event) => setPlanOverrideForm({ ...planOverrideForm, tagline: event.target.value })}
+                        placeholder={selectedPricingPlan?.tagline || ''}
+                      />
+                    </label>
+                  </div>
+
+                  {selectedPricingPlan?.audience === 'individual' ? (
+                    <>
+                      <div className="billing-admin-form-row">
+                        <label>
+                          Monthly price
+                          <input
+                            type="number"
+                            min="0"
+                            step="0.01"
+                            value={planOverrideForm.monthlyPrice}
+                            onChange={(event) => setPlanOverrideForm({ ...planOverrideForm, monthlyPrice: event.target.value })}
+                            placeholder={centsToPriceInput(selectedPricingPlan.monthlyPriceCents)}
+                          />
+                        </label>
+                        <label>
+                          Annual price
+                          <input
+                            type="number"
+                            min="0"
+                            step="0.01"
+                            value={planOverrideForm.annualPrice}
+                            onChange={(event) => setPlanOverrideForm({ ...planOverrideForm, annualPrice: event.target.value })}
+                            placeholder={centsToPriceInput(selectedPricingPlan.annualPriceCents)}
+                          />
+                        </label>
+                      </div>
+                      <div className="billing-admin-form-row">
+                        <label>
+                          Stripe monthly price id
+                          <input
+                            value={planOverrideForm.stripeMonthlyPriceId}
+                            onChange={(event) => setPlanOverrideForm({ ...planOverrideForm, stripeMonthlyPriceId: event.target.value })}
+                            placeholder="price_..."
+                          />
+                        </label>
+                        <label>
+                          Stripe annual price id
+                          <input
+                            value={planOverrideForm.stripeAnnualPriceId}
+                            onChange={(event) => setPlanOverrideForm({ ...planOverrideForm, stripeAnnualPriceId: event.target.value })}
+                            placeholder="price_..."
+                          />
+                        </label>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="billing-admin-form-row">
+                      <label>
+                        Monthly seat price
+                        <input
+                          type="number"
+                          min="0"
+                          step="0.01"
+                          value={planOverrideForm.seatPriceMonthly}
+                          onChange={(event) => setPlanOverrideForm({ ...planOverrideForm, seatPriceMonthly: event.target.value })}
+                          placeholder={centsToPriceInput(selectedPricingPlan?.seatPriceMonthlyCents)}
+                        />
+                      </label>
+                      <label>
+                        Annual seat price
+                        <input
+                          type="number"
+                          min="0"
+                          step="0.01"
+                          value={planOverrideForm.seatPriceAnnual}
+                          onChange={(event) => setPlanOverrideForm({ ...planOverrideForm, seatPriceAnnual: event.target.value })}
+                          placeholder={centsToPriceInput(selectedPricingPlan?.seatPriceAnnualCents)}
+                        />
+                      </label>
+                      <label>
+                        Minimum seats
+                        <input
+                          type="number"
+                          min="1"
+                          value={planOverrideForm.minimumSeats}
+                          onChange={(event) => setPlanOverrideForm({ ...planOverrideForm, minimumSeats: event.target.value })}
+                          placeholder={selectedPricingPlan?.minimumSeats || ''}
+                        />
+                      </label>
+                    </div>
+                  )}
+                  <label>
+                    Internal notes
+                    <textarea
+                      value={planOverrideForm.notes}
+                      onChange={(event) => setPlanOverrideForm({ ...planOverrideForm, notes: event.target.value })}
+                    />
+                  </label>
+                  <button className="btn btn-primary" type="submit" disabled={!selectedPricingPlan}>Save pricing</button>
+                </form>
+
+                <form className="card billing-admin-form pricing-control-card" onSubmit={handleDiscountSubmit}>
+                  <h3>Discount codes</h3>
+                  <div className="billing-admin-form-row">
+                    <label>
+                      Code
+                      <input
+                        value={discountForm.code}
+                        onChange={(event) => setDiscountForm({ ...discountForm, code: event.target.value.toUpperCase() })}
+                        placeholder="LAUNCH20"
+                        required
+                      />
+                    </label>
+                    <label>
+                      Type
+                      <select
+                        value={discountForm.discountType}
+                        onChange={(event) => setDiscountForm({ ...discountForm, discountType: event.target.value })}
+                      >
+                        <option value="percent">Percent</option>
+                        <option value="fixed">Fixed amount</option>
+                      </select>
+                    </label>
+                  </div>
+                  <div className="billing-admin-form-row">
+                    {discountForm.discountType === 'percent' ? (
+                      <label>
+                        Percent off
+                        <input
+                          type="number"
+                          min="1"
+                          max="100"
+                          value={discountForm.percentOff}
+                          onChange={(event) => setDiscountForm({ ...discountForm, percentOff: event.target.value })}
+                        />
+                      </label>
+                    ) : (
+                      <label>
+                        Amount off
+                        <input
+                          type="number"
+                          min="0.01"
+                          step="0.01"
+                          value={discountForm.amountOff}
+                          onChange={(event) => setDiscountForm({ ...discountForm, amountOff: event.target.value })}
+                        />
+                      </label>
+                    )}
+                    <label>
+                      Audience
+                      <select
+                        value={discountForm.appliesToAudience}
+                        onChange={(event) => setDiscountForm({ ...discountForm, appliesToAudience: event.target.value })}
+                      >
+                        <option value="all">All</option>
+                        <option value="individual">Individual</option>
+                        <option value="institution">Institution</option>
+                      </select>
+                    </label>
+                  </div>
+                  <label>
+                    Description
+                    <input
+                      value={discountForm.description}
+                      onChange={(event) => setDiscountForm({ ...discountForm, description: event.target.value })}
+                    />
+                  </label>
+                  <div className="discount-plan-picker">
+                    <span>Limit to plans</span>
+                    <div>
+                      {billingPlans.map((plan) => (
+                        <label key={plan.id}>
+                          <input
+                            type="checkbox"
+                            checked={discountForm.appliesToPlanIds.includes(plan.id)}
+                            onChange={(event) => {
+                              const nextPlans = event.target.checked
+                                ? [...discountForm.appliesToPlanIds, plan.id]
+                                : discountForm.appliesToPlanIds.filter((planId) => planId !== plan.id);
+                              setDiscountForm({ ...discountForm, appliesToPlanIds: nextPlans });
+                            }}
+                          />
+                          {plan.name}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="billing-admin-form-row">
+                    <label>
+                      Starts
+                      <input
+                        type="date"
+                        value={discountForm.startsAt}
+                        onChange={(event) => setDiscountForm({ ...discountForm, startsAt: event.target.value })}
+                      />
+                    </label>
+                    <label>
+                      Ends
+                      <input
+                        type="date"
+                        value={discountForm.expiresAt}
+                        onChange={(event) => setDiscountForm({ ...discountForm, expiresAt: event.target.value })}
+                      />
+                    </label>
+                    <label>
+                      Usage limit
+                      <input
+                        type="number"
+                        min="1"
+                        value={discountForm.maxRedemptions}
+                        onChange={(event) => setDiscountForm({ ...discountForm, maxRedemptions: event.target.value })}
+                      />
+                    </label>
+                  </div>
+                  <div className="billing-admin-form-row">
+                    <label>
+                      Stripe promotion code id
+                      <input
+                        value={discountForm.stripePromotionCodeId}
+                        onChange={(event) => setDiscountForm({ ...discountForm, stripePromotionCodeId: event.target.value })}
+                        placeholder="promo_..."
+                      />
+                    </label>
+                    <label>
+                      Stripe coupon id
+                      <input
+                        value={discountForm.stripeCouponId}
+                        onChange={(event) => setDiscountForm({ ...discountForm, stripeCouponId: event.target.value })}
+                        placeholder="coupon_..."
+                      />
+                    </label>
+                  </div>
+                  <button className="btn btn-primary" type="submit">Create discount</button>
+                </form>
+              </div>
+
+              <div className="card discount-list-card">
+                <div className="billing-card-title-row">
+                  <div>
+                    <h3>Active and recent discounts</h3>
+                    <p>Pause a code when a promotion ends, or keep it active until its expiry date.</p>
+                  </div>
+                </div>
+                {billingAdmin.discounts.length === 0 ? (
+                  <p className="no-data">No discount codes yet.</p>
+                ) : (
+                  <div className="discount-list">
+                    {billingAdmin.discounts.slice(0, 10).map((discount) => (
+                      <div key={discount._id} className={`discount-list-item ${discount.active ? 'active' : 'paused'}`}>
+                        <div>
+                          <strong>{discount.code}</strong>
+                          <span>
+                            {discount.discountType === 'percent'
+                              ? `${discount.percentOff}% off`
+                              : `${formatAdminPrice(discount.amountOffCents)} off`}
+                            {' '}| {discount.appliesToAudience}
+                          </span>
+                          <small>
+                            {discount.appliesToPlanIds?.length ? discount.appliesToPlanIds.join(', ') : 'All plans'}
+                            {' '}| {discount.redemptions || 0}{discount.maxRedemptions ? `/${discount.maxRedemptions}` : ''} used
+                          </small>
+                        </div>
+                        <button type="button" className="btn btn-outline btn-sm" onClick={() => toggleDiscountActive(discount)}>
+                          {discount.active ? 'Pause' : 'Enable'}
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className="billing-admin-grid">
+                <form className="card billing-admin-form" onSubmit={handleManualPlanSubmit}>
+                  <h3>Assign individual access</h3>
+                  <label>
+                    User email or id
+                    <input
+                      value={manualPlanForm.userIdOrEmail}
+                      onChange={(event) => setManualPlanForm({ ...manualPlanForm, userIdOrEmail: event.target.value })}
+                      required
+                    />
+                  </label>
+                  <div className="billing-admin-form-row">
+                    <label>
+                      Plan
+                      <select
+                        value={manualPlanForm.planId}
+                        onChange={(event) => setManualPlanForm({ ...manualPlanForm, planId: event.target.value })}
+                      >
+                        <option value="plus">Plus</option>
+                        <option value="pro">Pro</option>
+                        <option value="ultra">Ultra</option>
+                      </select>
+                    </label>
+                    <label>
+                      Status
+                      <select
+                        value={manualPlanForm.status}
+                        onChange={(event) => setManualPlanForm({ ...manualPlanForm, status: event.target.value })}
+                      >
+                        <option value="active">Active</option>
+                        <option value="trialing">Trialing</option>
+                        <option value="cancelled">Cancelled</option>
+                      </select>
+                    </label>
+                  </div>
+                  <label>
+                    Ends at
+                    <input
+                      type="date"
+                      value={manualPlanForm.expiresAt}
+                      onChange={(event) => setManualPlanForm({ ...manualPlanForm, expiresAt: event.target.value })}
+                    />
+                  </label>
+                  <label>
+                    Reason
+                    <textarea
+                      value={manualPlanForm.reason}
+                      onChange={(event) => setManualPlanForm({ ...manualPlanForm, reason: event.target.value })}
+                    />
+                  </label>
+                  <button className="btn btn-primary" type="submit">Update access</button>
+                </form>
+
+                <form className="card billing-admin-form" onSubmit={handleOrganizationSubmit}>
+                  <h3>Create institution</h3>
+                  <label>
+                    Organization name
+                    <input
+                      value={organizationForm.name}
+                      onChange={(event) => setOrganizationForm({ ...organizationForm, name: event.target.value })}
+                      required
+                    />
+                  </label>
+                  <div className="billing-admin-form-row">
+                    <label>
+                      Type
+                      <select
+                        value={organizationForm.type}
+                        onChange={(event) => setOrganizationForm({ ...organizationForm, type: event.target.value })}
+                      >
+                        <option value="school">School</option>
+                        <option value="company">Company</option>
+                        <option value="church">Religious</option>
+                        <option value="language_center">Language center</option>
+                        <option value="nonprofit">Nonprofit</option>
+                        <option value="government">Government</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </label>
+                    <label>
+                      Plan
+                      <select
+                        value={organizationForm.planId}
+                        onChange={(event) => setOrganizationForm({ ...organizationForm, planId: event.target.value })}
+                      >
+                        <option value="institution_basic">Institution Basic</option>
+                        <option value="institution_pro">Institution Pro</option>
+                        <option value="institution_enterprise">Institution Enterprise</option>
+                      </select>
+                    </label>
+                  </div>
+                  <div className="billing-admin-form-row">
+                    <label>
+                      Seats
+                      <input
+                        type="number"
+                        min="1"
+                        value={organizationForm.seatsPurchased}
+                        onChange={(event) => setOrganizationForm({ ...organizationForm, seatsPurchased: event.target.value })}
+                      />
+                    </label>
+                    <label>
+                      Billing email
+                      <input
+                        type="email"
+                        value={organizationForm.billingEmail}
+                        onChange={(event) => setOrganizationForm({ ...organizationForm, billingEmail: event.target.value })}
+                      />
+                    </label>
+                  </div>
+                  <label>
+                    Notes
+                    <textarea
+                      value={organizationForm.notes}
+                      onChange={(event) => setOrganizationForm({ ...organizationForm, notes: event.target.value })}
+                    />
+                  </label>
+                  <button className="btn btn-primary" type="submit">Create institution</button>
+                </form>
+              </div>
+
+              <div className="billing-admin-panels">
+                <div className="card">
+                  <h3>Institution requests</h3>
+                  {billingAdmin.leads.length === 0 ? (
+                    <p className="no-data">No open institution requests.</p>
+                  ) : (
+                    <div className="billing-admin-list">
+                      {billingAdmin.leads.map((lead) => (
+                        <div key={lead._id} className="billing-admin-list-item">
+                          <div>
+                            <strong>{lead.organizationName}</strong>
+                            <span>{lead.contactName} · {lead.email}</span>
+                            <small>{lead.planId} · {lead.seatsRequested} seats · {formatDate(lead.createdAt)}</small>
+                            {lead.message && <p>{lead.message}</p>}
+                          </div>
+                          <div className="billing-admin-actions">
+                            <button type="button" className="btn btn-outline btn-sm" onClick={() => updateLeadStatus(lead._id, 'contacted')}>Contacted</button>
+                            <button type="button" className="btn btn-primary btn-sm" onClick={() => updateLeadStatus(lead._id, 'converted')}>Converted</button>
+                            <button type="button" className="btn btn-outline btn-sm" onClick={() => updateLeadStatus(lead._id, 'closed')}>Close</button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                <div className="card">
+                  <h3>Recent subscriptions</h3>
+                  <div className="billing-admin-list compact">
+                    {billingAdmin.subscriptions.slice(0, 12).map((subscription) => (
+                      <div key={subscription._id} className="billing-admin-list-item">
+                        <div>
+                          <strong>{subscription.planId}</strong>
+                          <span>{subscription.ownerId?.email || subscription.ownerId?.name || subscription.ownerType}</span>
+                          <small>{subscription.status} · {subscription.source} · {formatDate(subscription.createdAt)}</small>
+                        </div>
+                      </div>
+                    ))}
+                    {billingAdmin.subscriptions.length === 0 && <p className="no-data">No subscription records yet.</p>}
+                  </div>
+                </div>
+
+                <div className="card">
+                  <h3>Organizations</h3>
+                  <div className="billing-admin-list compact">
+                    {billingAdmin.organizations.slice(0, 12).map((org) => (
+                      <div key={org._id} className="billing-admin-list-item">
+                        <div>
+                          <strong>{org.name}</strong>
+                          <span>{org.planId} · {org.status}</span>
+                          <small>{org.seatsUsed || 0}/{org.seatsPurchased || 0} seats</small>
+                        </div>
+                      </div>
+                    ))}
+                    {billingAdmin.organizations.length === 0 && <p className="no-data">No organizations yet.</p>}
+                  </div>
+                </div>
+              </div>
             </div>
           )}
 

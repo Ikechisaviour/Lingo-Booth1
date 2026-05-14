@@ -150,7 +150,7 @@ async function fillNativeTranslations(cards, nativeLang) {
       const chunk = missingTexts.slice(start, start + CHUNK);
       const results = await batchTranslateRaw(chunk, 'en', nativeLang);
       for (let k = 0; k < results.length; k++) {
-        const translated = results[k]?.text;
+        const translated = results[k]?.failed ? '' : results[k]?.text;
         const cardIdx = missingIndices[start + k];
         if (translated) {
           cards[cardIdx][nativeField] = translated;

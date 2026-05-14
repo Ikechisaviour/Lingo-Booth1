@@ -516,7 +516,7 @@ function QuizDetailPage() {
       <div className="container">
         <div className="error">{error || t('lessonDetail.contentNotAvailable')}</div>
         <button className="btn btn-primary" onClick={() => navigate('/quiz')}>
-          Back to Quiz
+          {t('quizPage.backToQuiz', 'Back to Quiz')}
         </button>
       </div>
     );

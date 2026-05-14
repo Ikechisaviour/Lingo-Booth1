@@ -1,0 +1,217 @@
+// Level 2 Adult Unit 5 — Buying in Adult Contexts (English)
+// Functions: prices, payment methods, returns, receipts, warranties.
+
+const createContentItem = (
+  target, ipa, note, type = 'word',
+  example = '', exampleNote = '', breakdown = null, activityIds = [],
+) => ({
+  type, activityIds,
+  targetText: target, romanization: ipa, nativeText: note, pronunciation: ipa,
+  exampleTarget: example || target, exampleNative: exampleNote || note,
+  korean: target, english: note, example: example || target, exampleEnglish: exampleNote || note,
+  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.target, native: b.english, korean: b.target, english: b.english })) } : {}),
+});
+
+const ACT = {
+  orientation: 'en-l2au5-orientation',
+  pronunciation: 'en-l2au5-pronunciation',
+  vocabularyShop: 'en-l2au5-vocab-shop',
+  vocabularyPay: 'en-l2au5-vocab-pay',
+  grammarPrice: 'en-l2au5-grammar-price',
+  grammarReturn: 'en-l2au5-grammar-return',
+  reading: 'en-l2au5-reading',
+  listening: 'en-l2au5-listening',
+  writing: 'en-l2au5-writing',
+  culture: 'en-l2au5-culture',
+  task: 'en-l2au5-task',
+};
+
+const activities = [
+  { id: ACT.orientation, section: 'Orientation', title: 'What you will be able to do',
+    goals: ['Ask about prices, taxes, and deals.', 'Choose payment methods (cash, card, Apple Pay).', 'Return a defective item with a receipt.', 'Understand a warranty.'],
+    task: 'Picture buying a laptop in a US store, then returning it the next day due to a defect.' },
+  { id: ACT.pronunciation, section: 'Pronunciation', title: 'Money phrases',
+    goals: ['Pronounce "$29.99" → "twenty-nine ninety-nine".', '"Receipt" /rɪˈsiːt/ — silent "p".', '"Warranty" /ˈwɒrənti/ — three syllables.'],
+    task: 'Read 3 price phrases aloud.' },
+  { id: ACT.vocabularyShop, section: 'Vocabulary I', title: 'Shopping vocabulary',
+    goals: ['Use price, tag, sale, discount, deal, receipt, cashier, register.'],
+    task: 'Use 5 shopping words.' },
+  { id: ACT.vocabularyPay, section: 'Vocabulary II', title: 'Payment + returns',
+    goals: ['Use cash, credit card, debit, Apple Pay, return, refund, exchange, warranty, defective.'],
+    task: 'Describe a return process.' },
+  { id: ACT.grammarPrice, section: 'Grammar I', title: 'Price-asking patterns',
+    goals: ['"How much is + N?" / "How much does + N + cost?"', '"Is + N + on sale?" / "Are there any deals?"', '"Does the price include tax?"'],
+    task: 'Ask 3 price questions.' },
+  { id: ACT.grammarReturn, section: 'Grammar II', title: 'Return patterns',
+    goals: ['"I\'d like to return / exchange this".', '"It\'s defective / broken / the wrong size".', '"Do you have your receipt?" / "Yes, I do".'],
+    task: 'State a return scenario.' },
+  { id: ACT.reading, section: 'Reading and Speaking', title: 'Receipt + warranty',
+    goals: ['Read a typical US receipt and warranty.'],
+    task: 'Identify the return policy.' },
+  { id: ACT.listening, section: 'Listening and Speaking', title: 'Return dialogue',
+    goals: ['Follow a return conversation.'],
+    task: 'Reproduce with your own scenario.' },
+  { id: ACT.writing, section: 'Writing', title: 'Complaint email',
+    goals: ['Write a 5-line complaint email about a defective product.'],
+    task: 'Write your own email.' },
+  { id: ACT.culture, section: 'Culture Note', title: 'US sales tax + return culture',
+    goals: ['Know sales tax is added at checkout (not on tag).', 'Know typical return windows: 30/60/90 days.', 'Understand "no receipt, no return" exceptions.'],
+    task: 'Compare with shopping in your country.' },
+  { id: ACT.task, section: 'Task', title: 'Return a defective item',
+    goals: ['Combine return + reason + receipt + result.'],
+    task: 'Roleplay returning a defective laptop.' },
+];
+
+const lesson = {
+  title: 'Level 2 (Workplace) · Unit 5: I\'d like to return this — Buying & Returns',
+  category: 'business',
+  difficulty: 'intermediate',
+  targetLang: 'en', nativeLang: 'en',
+  track: 'textbook', lessonType: 'workplace',
+  activities,
+  expressionPractice: [
+    { id: 'asking-price-en', label: 'Asking price', goal: 'Use "How much is + N?" / "Is + N + on sale?".' },
+    { id: 'returning-item-en', label: 'Returning item', goal: 'Use "I\'d like to return / exchange this".' },
+    { id: 'paying-en', label: 'Paying', goal: 'Use "Cash or card?" / "Apple Pay?".' },
+  ],
+  relatedPools: ['topic-society'],
+  content: [
+    createContentItem('Lesson goal', 'buying & returns', 'By end: ask prices, choose payment, return items, read warranties.', 'word', 'Functions: ask · pay · return · understand.', 'Four shopping micro-skills.', null, [ACT.orientation]),
+    createContentItem('Real-world scenario', 'defective laptop return', 'Yesterday you bought a $1,200 laptop at Best Buy. Today the screen flickers and the keyboard sticks. You return to the store with your receipt to get a refund or exchange.', 'word', 'You: "I\'d like to return this laptop — the screen flickers, and the keyboard is sticking. Here\'s the receipt."', 'Standard return scenario.', null, [ACT.orientation]),
+
+    createContentItem('"$29.99" /ˈtwɛnti naɪn ˈnaɪnti naɪn/', '/twɛnti naɪn ˈnaɪnti naɪn/', 'Read "twenty-nine ninety-nine".', 'word', 'It\'s twenty-nine ninety-nine.', 'Cents read as separate digits or as group.', null, [ACT.pronunciation]),
+    createContentItem('receipt /rɪˈsiːt/', '/rɪˈsiːt/', 'Silent "p"; long /iː/.', 'word', 'May I have a receipt?', 'Often confused with "recipe" /ˈrɛsɪpi/.', null, [ACT.pronunciation]),
+    createContentItem('warranty /ˈwɒrənti/', '/ˈwɒrənti/', 'Three syllables, stress on 1.', 'word', 'The warranty is one year.', 'UK: /ˈwɒrəntɪ/.', null, [ACT.pronunciation]),
+
+    createContentItem('price', '/praɪs/', 'cost of an item', 'word', 'What\'s the price?', 'Noun + verb.', null, [ACT.vocabularyShop]),
+    createContentItem('tag', '/tæɡ/', 'price label', 'word', 'Check the tag for the size.', 'Verb: to tag an item.', null, [ACT.vocabularyShop]),
+    createContentItem('sale / on sale', '/seɪl/ /ɒn seɪl/', 'discounted', 'word', 'These shoes are on sale.', '"For sale" — available to buy; "on sale" — discounted.', null, [ACT.vocabularyShop]),
+    createContentItem('discount / deal', '/ˈdɪskaʊnt/ /diːl/', 'price reduction / promotion', 'word', 'I got a 20% discount.', '"Get a deal" — get a discount.', null, [ACT.vocabularyShop]),
+    createContentItem('receipt', '/rɪˈsiːt/', 'proof of purchase', 'word', 'Keep your receipt for returns.', 'Critical for returns.', null, [ACT.vocabularyShop]),
+    createContentItem('cashier / register', '/kæˈʃɪər/ /ˈrɛdʒɪstər/', 'staff / checkout', 'word', 'Pay at register 3.', '"Cashier" = person; "register" = the machine.', null, [ACT.vocabularyShop]),
+    createContentItem('tax', '/tæks/', 'government surcharge', 'word', 'Tax is added at checkout.', 'US: 5-10% sales tax, varies by state.', null, [ACT.vocabularyShop]),
+
+    createContentItem('cash', '/kæʃ/', 'paper money', 'word', 'I\'ll pay cash.', 'Less common now.', null, [ACT.vocabularyPay]),
+    createContentItem('credit card / debit card', '/ˈkrɛdɪt kɑːrd/ /ˈdɛbɪt kɑːrd/', 'plastic payment', 'word', 'I\'ll use my credit card.', 'Credit = borrow; debit = your own money.', null, [ACT.vocabularyPay]),
+    createContentItem('Apple Pay / Google Pay', '/ˈæpəl peɪ/', 'mobile payment', 'word', 'Do you take Apple Pay?', 'Tap your phone at the terminal.', null, [ACT.vocabularyPay]),
+    createContentItem('return / refund / exchange', '/rɪˈtɜːrn/ /ˈriːfʌnd/ /ɪksˈtʃeɪndʒ/', 'three return outcomes', 'word', 'I want a refund, not an exchange.', 'Return = give back; refund = money back; exchange = swap.', null, [ACT.vocabularyPay]),
+    createContentItem('warranty', '/ˈwɒrənti/', 'manufacturer\'s guarantee', 'word', 'The warranty covers defects for one year.', 'Different from store return policy.', null, [ACT.vocabularyPay]),
+    createContentItem('defective / broken / faulty', '/dɪˈfɛktɪv/ /ˈbroʊkən/ /ˈfɔːlti/', 'not working properly', 'word', 'This phone is defective.', '"Faulty" = UK preferred.', null, [ACT.vocabularyPay]),
+
+    createContentItem(
+      'Asking about prices',
+      'standard questions',
+      'Get price info before buying.',
+      'sentence',
+      'How much is this? — How much does this cost? — Is this on sale? — Are there any deals today? — Does the price include tax?',
+      'Tax is NOT on the tag in the US — always added at checkout.',
+      [
+        { target: 'How much is + N?', english: 'price question' },
+        { target: 'How much does + N + cost?', english: 'alternative' },
+        { target: 'Is + N + on sale?', english: 'discount check' },
+        { target: 'Does the price include tax?', english: 'tax check' },
+      ],
+      [ACT.grammarPrice],
+    ),
+    createContentItem(
+      'Returning an item',
+      'standard pattern',
+      'Walk into the return desk and state your case.',
+      'sentence',
+      'I\'d like to return this. It\'s defective. Here\'s the receipt. — I\'d like to exchange this for a different size. — Can I get a refund?',
+      'Start with intent → reason → receipt.',
+      [
+        { target: 'I\'d like to return / exchange this', english: 'state intent' },
+        { target: 'It\'s defective / broken / the wrong size', english: 'reason' },
+        { target: 'Here\'s the receipt', english: 'show proof' },
+        { target: 'Can I get a refund?', english: 'desired outcome' },
+      ],
+      [ACT.grammarReturn],
+    ),
+
+    createContentItem(
+      'US receipt',
+      'reading practice',
+      'Read this typical receipt.',
+      'sentence',
+      'BEST BUY — Store #456\n2024-03-15 14:32\n\nMacBook Air M2  $1,099.99\nSales Tax 8%    $88.00\nTOTAL          $1,187.99\n\nPaid: VISA ending 1234\n\nReturn Policy: 15 days, original packaging, receipt required\nWarranty: 1 year manufacturer\'s warranty',
+      'Standard US store receipt.',
+      [
+        { target: 'subtotal + sales tax = total', english: 'tax added at checkout' },
+        { target: 'Paid: payment method + last 4 digits', english: 'payment record' },
+        { target: 'Return Policy: 15 days, receipt required', english: 'return window' },
+        { target: '1 year manufacturer\'s warranty', english: 'warranty period' },
+      ],
+      [ACT.reading],
+    ),
+
+    createContentItem(
+      'Return dialogue',
+      'customer-service',
+      'Returning a defective laptop.',
+      'conversation',
+      'You: Hi, I\'d like to return this laptop. I bought it yesterday.\nClerk: Sure. What\'s the issue?\nYou: The screen flickers, and the keyboard sticks on the space bar.\nClerk: That sounds defective. Do you have the receipt?\nYou: Yes, here you go.\nClerk: Original packaging too? Great. Would you like a refund or exchange?\nYou: A full refund, please.\nClerk: It\'ll go back to your credit card — 3 to 5 business days.\nYou: Perfect. Thanks for your help.',
+      'Standard return interaction.',
+      [
+        { target: 'I\'d like to return this', english: 'state intent' },
+        { target: 'screen flickers + keyboard sticks', english: 'specific defects' },
+        { target: 'Do you have the receipt?', english: 'proof check' },
+        { target: 'refund or exchange?', english: 'two options' },
+        { target: '3 to 5 business days', english: 'refund timing' },
+      ],
+      [ACT.listening],
+    ),
+
+    createContentItem(
+      'Complaint email',
+      'writing model',
+      'For online purchases.',
+      'sentence',
+      'Subject: Defective MacBook Air — Order #BB123456\n\nHi Best Buy,\n\nI purchased a MacBook Air M2 on March 14 (Order #BB123456). On Day 2 of use, the screen began flickering and the keyboard sticks. I\'d like a full refund. The product is still in original packaging. Please advise on the return process.\n\nThanks,\nMin-su Kim',
+      'Defective-product complaint format.',
+      [
+        { target: 'Subject: + issue + order #', english: 'specific subject' },
+        { target: 'I purchased X on date (Order #)', english: 'purchase context' },
+        { target: 'On Day N of use, + symptom', english: 'defect description' },
+        { target: 'I\'d like + outcome', english: 'desired resolution' },
+        { target: 'Please advise on + process', english: 'next step' },
+      ],
+      [ACT.writing],
+    ),
+
+    createContentItem(
+      'US sales tax + returns',
+      'cultural overview',
+      'Sales tax: added at checkout, not on price tags — varies 0-10% by state (no tax in OR, MT, NH, DE; ~9% in CA, NY). Returns: 30 days standard, 90 days for Apple/Costco, 15 days for opened tech. Receipt required for most returns.',
+      'sentence',
+      'Always check the return policy before you buy expensive items.',
+      'Costco has the most generous return policy; Apple has 14 days.',
+      [
+        { target: 'sales tax added at checkout', english: 'not on tag' },
+        { target: '30 days standard return', english: 'typical window' },
+        { target: 'receipt required', english: 'keep proof' },
+        { target: 'Costco: generous; Apple: 14 days', english: 'policy varies' },
+      ],
+      [ACT.culture],
+    ),
+
+    createContentItem(
+      'Task: Return a defective laptop',
+      'consolidation task',
+      'AI tutor plays a Best Buy clerk. Return your defective laptop.',
+      'conversation',
+      'Tutor: How can I help you?\nYou: [state intent + reason]\nTutor: [ask for receipt]\nYou: [provide receipt]\nTutor: [refund or exchange?]\nYou: [choose + reason]\nTutor: [process]\nYou: [thank + close]',
+      'AI tutor plays clerk.',
+      [
+        { target: 'I\'d like to return this', english: 'intent' },
+        { target: 'specific defect description', english: 'reason' },
+        { target: 'Here\'s the receipt', english: 'proof' },
+        { target: 'A refund, please', english: 'outcome' },
+        { target: 'Thanks for your help', english: 'close' },
+      ],
+      [ACT.task],
+    ),
+  ],
+};
+
+module.exports = lesson;

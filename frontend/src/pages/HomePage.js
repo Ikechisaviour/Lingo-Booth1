@@ -106,6 +106,23 @@ function HomePage() {
   };
 
   const isReturningUser = userId && (lastActivity || xpStats);
+  const weekdayKeys = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+  const questTaskLabel = (quest) => {
+    if (!quest?.id) return quest?.task || '';
+    const defaults = {
+      xp: 'Earn {{xp}} XP',
+      lessons: 'Score {{score}}%+ in {{lessons}} lessons',
+      time: 'Study for {{minutes}} minutes',
+    };
+    return t(`home.quests.${quest.id}`, {
+      xp: quest.total || 20,
+      score: 80,
+      lessons: quest.total || 2,
+      minutes: quest.total || 15,
+      defaultValue: defaults[quest.id] || quest.task || '',
+    });
+  };
 
   const questIcons = { xp: '⚡', lessons: '🎯', time: '⏱️' };
   const leagueBadges = { bronze: '🥉', silver: '🥈', gold: '🥇', diamond: '💎' };
@@ -198,7 +215,7 @@ function HomePage() {
               <span className="quick-action-icon">&#127979;</span>
               <div className="quick-action-text">
                 <strong>{t('navbar.class', 'Class')}</strong>
-                <span>Guided tutor lessons</span>
+                <span>{t('home.classDesc', 'Guided tutor lessons')}</span>
               </div>
               <span className="quick-action-arrow">→</span>
             </div>
@@ -206,7 +223,7 @@ function HomePage() {
               <span className="quick-action-icon">&#9997;</span>
               <div className="quick-action-text">
                 <strong>{t('navbar.exercise', 'Exercise')}</strong>
-                <span>Quiz and flashcards</span>
+                <span>{t('home.exerciseDesc', 'Quiz and flashcards')}</span>
               </div>
               <span className="quick-action-arrow">→</span>
             </div>
@@ -218,6 +235,26 @@ function HomePage() {
               </div>
               <span className="quick-action-arrow">→</span>
             </div>
+          </section>
+
+          <section className="home-contact-strip">
+            <div>
+              <strong>{t('contact.infoTitle')}</strong>
+              <span>{t('contact.subtitle')}</span>
+            </div>
+            <button type="button" className="btn btn-outline btn-sm" onClick={() => navigate('/contact')}>
+              {t('contact.navLabel')}
+            </button>
+          </section>
+
+          <section className="home-billing-strip">
+            <div>
+              <strong>{t('home.billingTitle')}</strong>
+              <span>{t('home.billingDesc')}</span>
+            </div>
+            <button type="button" className="btn btn-primary btn-sm" onClick={() => navigate('/pricing')}>
+              {t('home.billingAction')}
+            </button>
           </section>
 
         </main>
@@ -238,9 +275,9 @@ function HomePage() {
                   <span className="streak-label">{gamification.streak.current !== 1 ? t('home.days') : t('home.day')}</span>
                 </div>
                 <div className="streak-calendar">
-                  {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((day, i) => (
+                  {weekdayKeys.map((dayKey, i) => (
                     <div key={i} className={`calendar-day ${gamification.streak.history[i] ? 'active' : ''}`}>
-                      {gamification.streak.history[i] ? '🔥' : day}
+                      {gamification.streak.history[i] ? '🔥' : t(`home.weekdays.${dayKey}`, dayKey.slice(0, 1).toUpperCase())}
                     </div>
                   ))}
                 </div>
@@ -257,7 +294,7 @@ function HomePage() {
                     <li key={quest.id} className={`quest-item ${quest.completed ? 'completed' : ''}`}>
                       <span className="quest-icon">{questIcons[quest.id]}</span>
                       <div className="quest-info">
-                        <span className="quest-task">{quest.task}</span>
+                        <span className="quest-task">{questTaskLabel(quest)}</span>
                         <div className="quest-progress">
                           <div
                             className="quest-progress-fill"

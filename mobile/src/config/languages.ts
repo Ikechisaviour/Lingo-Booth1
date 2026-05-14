@@ -1,3 +1,5 @@
+import { normalizeLanguageCode } from '../utils/languagePairPolicy';
+
 export interface Language {
   name: string;
   nativeName: string;
@@ -33,12 +35,31 @@ const LANGUAGES: Record<string, Language> = {
 
 export const RTL_LANGUAGES = ['ar', 'he'];
 
-export const getLangName = (code: string): string => LANGUAGES[code]?.name || code;
-export const getLangNativeName = (code: string): string => LANGUAGES[code]?.nativeName || code;
-export const getLangFlag = (code: string): string => LANGUAGES[code]?.flag || '🌍';
-export const getLangTtsLocale = (code: string): string => LANGUAGES[code]?.ttsLocale || code;
-export const getLangHello = (code: string): string => LANGUAGES[code]?.hello || '';
-export const isRTL = (code: string): boolean => RTL_LANGUAGES.includes(code);
+export const getLangName = (code: string): string => LANGUAGES[normalizeLanguageCode(code)]?.name || normalizeLanguageCode(code) || code;
+export const getLangNativeName = (code: string): string => LANGUAGES[normalizeLanguageCode(code)]?.nativeName || getLangName(code);
+export const getLanguageDisplayName = (code?: string | null, t?: any, localizedNameOverride = ''): string => {
+  const normalized = normalizeLanguageCode(code);
+  const language = LANGUAGES[normalized];
+  if (!language) return normalized || String(code || '');
+
+  const localizedName = localizedNameOverride || (typeof t === 'function'
+    ? t(`languages.${normalized}`, language.name)
+    : language.name);
+  const nativeName = language.nativeName || language.name;
+  return nativeName && nativeName !== localizedName
+    ? `${localizedName} · ${nativeName}`
+    : localizedName;
+};
+export const getLanguageOptionLabel = (code?: string | null, t?: any, localizedNameOverride = ''): string => {
+  const normalized = normalizeLanguageCode(code);
+  const language = LANGUAGES[normalized];
+  const displayName = getLanguageDisplayName(normalized, t, localizedNameOverride);
+  return `${language?.flag || ''} ${displayName}`.trim();
+};
+export const getLangFlag = (code: string): string => LANGUAGES[normalizeLanguageCode(code)]?.flag || '🌍';
+export const getLangTtsLocale = (code: string): string => LANGUAGES[normalizeLanguageCode(code)]?.ttsLocale || code;
+export const getLangHello = (code: string): string => LANGUAGES[normalizeLanguageCode(code)]?.hello || '';
+export const isRTL = (code: string): boolean => RTL_LANGUAGES.includes(normalizeLanguageCode(code));
 // Returns true if the target language uses a non-Latin script.
 // The backend adapts the content: Latin-script native speakers get romanization,
 // non-Latin native speakers get native-script phonetic approximations.

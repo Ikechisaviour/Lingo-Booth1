@@ -17,15 +17,9 @@ import { adminService, aiService } from '../../services/api';
 import speechService from '../../services/speechService';
 import { useAppColors, type AppColors } from '../../config/theme';
 import { useSettingsStore } from '../../stores/settingsStore';
-import LANGUAGES from '../../config/languages';
+import LANGUAGES, { getLanguageDisplayName } from '../../config/languages';
 
 type Tab = 'dashboard' | 'users' | 'guests' | 'demo';
-
-const languageOptions = Object.entries(LANGUAGES).map(([value, language]) => ({
-  value,
-  label: language.name,
-  speech: language.ttsLocale,
-}));
 
 const difficultyOptions = [
   { value: 'casual beginner', label: 'Beginner' },
@@ -35,7 +29,7 @@ const difficultyOptions = [
 ];
 
 const demoScenarios = [
-  'Friendly chat while practicing Korean',
+  'Friendly chat',
   'Talking with a cafe worker',
   'Asking a taxi driver for help',
   'Meeting someone new',
@@ -48,6 +42,11 @@ type SpeechPart = {
 
 const AdminScreen: React.FC = () => {
   const { t } = useTranslation();
+  const languageOptions = useMemo(() => Object.entries(LANGUAGES).map(([value, language]) => ({
+    value,
+    label: getLanguageDisplayName(value, t),
+    speech: language.ttsLocale,
+  })), [t]);
   const colors = useAppColors();
   const preferredVoice = useSettingsStore((state) => state.preferredVoice);
   const preferredVoices = useSettingsStore((state) => state.preferredVoices);
@@ -68,7 +67,7 @@ const AdminScreen: React.FC = () => {
   const [demoTurn, setDemoTurn] = useState('');
   const [demoTranscript, setDemoTranscript] = useState('');
   const [demoReply, setDemoReply] = useState('The practice partner response will appear here.');
-  const [demoTip, setDemoTip] = useState('Ask in English or Korean. You can change topic, ask for meanings, or request easier wording.');
+  const [demoTip, setDemoTip] = useState('Ask in either selected language. You can change topic, ask for meanings, or request easier wording.');
   const [demoLoading, setDemoLoading] = useState(false);
   const [demoTargetLanguage, setDemoTargetLanguage] = useState('ko');
   const [demoNativeLanguage, setDemoNativeLanguage] = useState('en');
@@ -307,7 +306,12 @@ const AdminScreen: React.FC = () => {
       </View>
 
       {/* Tab switcher */}
-      <View style={styles.tabRow}>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.tabRow}
+        style={styles.tabScroller}
+      >
         <Chip selected={activeTab === 'dashboard'} onPress={() => setActiveTab('dashboard')} style={styles.tabChip}>
           {t('admin.dashboard', 'Dashboard')}
         </Chip>
@@ -315,12 +319,12 @@ const AdminScreen: React.FC = () => {
           {t('admin.users', 'Users')} ({users.length})
         </Chip>
         <Chip selected={activeTab === 'guests'} onPress={() => setActiveTab('guests')} style={styles.tabChip}>
-          👤 {t('admin.guests', 'Guests')}
+          {t('admin.guests', 'Guests')}
         </Chip>
         <Chip selected={activeTab === 'demo'} onPress={() => setActiveTab('demo')} style={styles.tabChip}>
-          Demo
+          {t('admin.demo', 'Demo')}
         </Chip>
-      </View>
+      </ScrollView>
 
       <ScrollView
         contentContainerStyle={styles.content}
@@ -671,7 +675,7 @@ const AdminScreen: React.FC = () => {
                   }}
                   buttons={demoScenarios.map((scenario) => ({
                     value: scenario,
-                    label: scenario.replace(' while practicing Korean', ''),
+                    label: scenario,
                   }))}
                   style={styles.segmented}
                 />
@@ -868,7 +872,8 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
   centered: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 24 },
   header: { paddingTop: 48, paddingHorizontal: 16, paddingBottom: 8, backgroundColor: colors.surface },
   headerTitle: { fontWeight: '700', color: colors.textPrimary },
-  tabRow: { flexDirection: 'row', gap: 8, paddingHorizontal: 16, paddingVertical: 8, backgroundColor: colors.surface },
+  tabScroller: { backgroundColor: colors.surface, flexGrow: 0 },
+  tabRow: { flexDirection: 'row', gap: 8, paddingHorizontal: 16, paddingVertical: 8 },
   tabChip: {},
   content: { padding: 16, paddingBottom: 32 },
 

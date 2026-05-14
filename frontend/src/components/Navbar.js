@@ -12,6 +12,14 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
   const userId = localStorage.getItem('userId');
   const hasToken = !!localStorage.getItem('token');
   const [activityState, setActivityState] = useState(null);
+  const storedEntitlements = (() => {
+    try {
+      return JSON.parse(localStorage.getItem('aiEntitlements') || '{}');
+    } catch (_) {
+      return {};
+    }
+  })();
+  const canManageInstitution = !isGuest && !!storedEntitlements.canManageOrganization;
 
   // Sync challenge mode theme with DB state.
   useEffect(() => {
@@ -123,7 +131,7 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
               <span className="nav-icon">&#9997;</span>
               <span className="nav-text">{t('navbar.exercise', 'Exercise')}</span>
             </Link>
-            <div className="nav-submenu" aria-label="Exercise options">
+            <div className="nav-submenu" aria-label={t('navbar.exerciseOptions', 'Exercise options')}>
               <Link to="/quiz" className={`nav-submenu-link ${isActiveSection(['/quiz']) ? 'active' : ''}`}>
                 <span>&#128221;</span>
                 {t('navbar.quiz', 'Quiz')}
@@ -134,7 +142,7 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
               </Link>
               <Link to="/writing" className={`nav-submenu-link ${isActiveSection(['/writing']) ? 'active' : ''}`}>
                 <span>&#9998;</span>
-                Writing
+                {t('navbar.writing')}
               </Link>
             </div>
           </li>
@@ -142,9 +150,27 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
           <li className="nav-item">
             <Link to="/conversation" className={`nav-link ${isActive('/conversation') ? 'active' : ''}`}>
               <span className="nav-icon">&#128172;</span>
-              <span className="nav-text">Conversation</span>
+              <span className="nav-text">{t('navbar.conversation')}</span>
             </Link>
           </li>
+
+          {isGuest && (
+            <li className="nav-item">
+              <Link to="/pricing" className={`nav-link ${isActive('/pricing') || isActive('/billing') ? 'active' : ''}`}>
+                <span className="nav-icon">&#128142;</span>
+                <span className="nav-text">{t('navbar.plans')}</span>
+              </Link>
+            </li>
+          )}
+
+          {canManageInstitution && (
+            <li className="nav-item">
+              <Link to="/institution" className={`nav-link ${isActive('/institution') ? 'active' : ''}`}>
+                <span className="nav-icon">&#127970;</span>
+                <span className="nav-text">{t('navbar.institution')}</span>
+              </Link>
+            </li>
+          )}
 
           {!isGuest && userRole === 'admin' && (
             <li className="nav-item">

@@ -1132,7 +1132,7 @@ const FlashcardsScreen: React.FC = () => {
               onChangeText={(v) => setNewCard({ ...newCard, category: v })}
               mode="outlined"
               style={styles.formInput}
-              placeholder="e.g. numbers, greetings"
+              placeholder={t('flashcards.categoryPlaceholder', 'e.g. numbers, greetings')}
             />
             <TextInput
               label={t('flashcards.topic', 'Topic (optional)')}
@@ -1140,7 +1140,7 @@ const FlashcardsScreen: React.FC = () => {
               onChangeText={(v) => setNewCard({ ...newCard, topic: v })}
               mode="outlined"
               style={styles.formInput}
-              placeholder="e.g. days of the week, 1-10"
+              placeholder={t('flashcards.topicPlaceholder', 'e.g. days of the week, 1-10')}
             />
             <View style={styles.modalActions}>
               <Button onPress={() => setShowAddForm(false)}>{t('common.cancel', 'Cancel')}</Button>
