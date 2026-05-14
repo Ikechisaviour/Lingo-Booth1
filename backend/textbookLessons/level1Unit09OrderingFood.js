@@ -82,8 +82,8 @@ const lesson = {
   ],
   relatedPools: ['topic-food'],
   content: [
-    createContentItem('Lesson goal', 'restaurant flow', 'By end: suggest a dish, order with the right counter, ask for sides/refills, and pay.', 'word', 'Functions: suggest · order · request · pay', 'Four restaurant micro-skills.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'dinner with a friend', 'A Korean friend asks "오늘 저녁 뭐 먹을까요?" You should suggest, choose a place, order for two, and settle the bill.', 'word', 'Friend: 뭐 먹을까요? — You: 김치찌개 먹을까요? 학교 앞 식당이 좋아요.', 'Friend: What shall we eat? — You: Shall we have kimchi stew? The restaurant in front of school is good.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: suggest a dish, order with the right counter, ask for sides/refills, and pay.', 'word', 'Functions: suggest · order · request · pay', 'Four restaurant micro-skills.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'A Korean friend asks "오늘 저녁 뭐 먹을까요?" You should suggest, choose a place, order for two, and settle the bill.', 'word', 'Friend: 뭐 먹을까요? — You: 김치찌개 먹을까요? 학교 앞 식당이 좋아요.', 'Friend: What shall we eat? — You: Shall we have kimchi stew? The restaurant in front of school is good.', null, [ACT.orientation]),
 
     createContentItem('먹을까요 → [머글까요]', 'meogeulkkayo', '연음 + 경음화: ㄱ받침 of 먹 jumps to 을, then ㄲ tensifies in 까요.', 'word', '뭐 먹을까요? → [뭐 머글까요]', 'What shall we eat?', null, [ACT.pronunciation]),
     createContentItem('갑니다 → [감니다]', 'gamnida', '비음화: ㅂ받침 + ㄴ → ㅁ + ㄴ.', 'word', '같이 갑니다. → [감니다]', 'I will go with you.', null, [ACT.pronunciation]),

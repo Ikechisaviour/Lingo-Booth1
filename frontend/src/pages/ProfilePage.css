@@ -644,6 +644,25 @@
   margin-right: 6px;
 }
 
+.support-zone {
+  border: 1px solid var(--primary-border-soft);
+  background: linear-gradient(135deg, var(--surface), var(--primary-soft));
+}
+
+.support-zone h2 {
+  color: var(--text-primary);
+}
+
+.support-zone .btn {
+  width: fit-content;
+}
+
+.profile-account-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 /* Danger Zone */
 .danger-zone {
   border: 1px solid rgba(255, 75, 75, 0.3);

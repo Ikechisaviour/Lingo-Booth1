@@ -76,7 +76,7 @@ const lesson = {
   ],
   relatedPools: ['pos-verbs-1'],
   content: [
-    createContentItem('Cluster goal', 'tense + sequence', 'By end: distinguish prediction vs commitment + sequence actions natively.', 'word', '~ㄹ 거예요 / ~ㄹ게요 / ~기 전에 / ~ㄴ 후에', 'Six patterns.', null, [ACT.orientation]),
+    createContentItem('단원 목표', 'danwon mokpyo', 'By end: distinguish prediction vs commitment + sequence actions natively.', 'word', '~ㄹ 거예요 / ~ㄹ게요 / ~기 전에 / ~ㄴ 후에', 'Six patterns.', null, [ACT.orientation]),
 
     createContentItem('-(으)ㄹ 거예요', '-(eu)l geoyeyo', 'will / probably will', 'word', '내일은 비가 올 거예요.', 'Will probably rain tomorrow.', null, [ACT.patterns]),
     createContentItem('-(으)ㄹ게요', '-(eu)lgeyo', 'I will (commit)', 'word', '제가 도와드릴게요.', 'I will help you.', null, [ACT.patterns]),

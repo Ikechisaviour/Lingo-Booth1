@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { AuthStackParamList } from '../../navigation/AuthStack';
-import LANGUAGES, { Language } from '../../config/languages';
+import LANGUAGES, { getLanguageDisplayName, Language } from '../../config/languages';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
@@ -106,13 +106,8 @@ const LanguageSelectScreen: React.FC = () => {
       <Text style={styles.langFlag}>{lang.flag}</Text>
       <View style={styles.langNameCol}>
         <Text style={[styles.langEnglish, disabled && styles.langTextDisabled]}>
-          {lang.name}
+          {getLanguageDisplayName(code, t)}
         </Text>
-        {lang.nativeName !== lang.name && (
-          <Text style={[styles.langNative, disabled && styles.langTextDisabled]}>
-            {lang.nativeName}
-          </Text>
-        )}
       </View>
       {selected && <Text style={styles.selectedCheck}>✓</Text>}
     </TouchableOpacity>
@@ -147,7 +142,7 @@ const LanguageSelectScreen: React.FC = () => {
             <Text style={styles.sectionLabel}>{t('languageSelect.iSpeak')}</Text>
             {nativeLang && (
               <Text style={styles.sectionSelected}>
-                {LANGUAGES[nativeLang]?.flag} {LANGUAGES[nativeLang]?.name}
+                {LANGUAGES[nativeLang]?.flag} {getLanguageDisplayName(nativeLang, t)}
               </Text>
             )}
           </View>
@@ -164,7 +159,7 @@ const LanguageSelectScreen: React.FC = () => {
             <Text style={styles.sectionLabel}>{t('languageSelect.iWantToLearn')}</Text>
             {targetLang && (
               <Text style={styles.sectionSelected}>
-                {LANGUAGES[targetLang]?.flag} {LANGUAGES[targetLang]?.name}
+                {LANGUAGES[targetLang]?.flag} {getLanguageDisplayName(targetLang, t)}
               </Text>
             )}
           </View>

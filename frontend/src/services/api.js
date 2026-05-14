@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { reportApiError } from './errorReporter';
+import { normalizeLanguageCode } from '../utils/languagePairPolicy';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
 
@@ -30,6 +31,7 @@ const clearSession = ({ preserveGuest = false } = {}) => {
     'refreshToken',
     'userId',
     'username',
+    'userEmail',
     'userRole',
     'subscriptionTier',
     'aiEntitlements',
@@ -221,39 +223,122 @@ export const authService = {
     api.post('/auth/activity', { userId, timeSpent }),
 };
 
+const getStoredLanguageCode = (key, fallback = '') => {
+  const raw = localStorage.getItem(key) || '';
+  const normalized = normalizeLanguageCode(raw) || fallback;
+  if (raw && normalized && normalized !== raw) {
+    localStorage.setItem(key, normalized);
+  }
+  return normalized;
+};
+
+const getLanguageParams = () => ({
+  targetLang: getStoredLanguageCode('targetLanguage'),
+  nativeLang: getStoredLanguageCode('nativeLanguage'),
+});
+
+export const contactService = {
+  sendMessage: (message) =>
+    api.post('/contact', message, { timeout: 30000 }),
+};
+
+export const certificateService = {
+  list: () =>
+    api.get('/certificates'),
+  getClassLessonStatus: (classLessonId) => {
+    const { targetLang, nativeLang } = getLanguageParams();
+    return api.get(`/certificates/class-lessons/${classLessonId}/status`, {
+      params: { targetLang, nativeLang },
+    });
+  },
+  issueClassLessonCertificate: (classLessonId, payload = {}) => {
+    const { targetLang: targetLanguage, nativeLang: nativeLanguage } = getLanguageParams();
+    return api.post(`/certificates/class-lessons/${classLessonId}/issue`, {
+      ...payload,
+      targetLanguage,
+      nativeLanguage,
+    }, { expectedStatuses: [402] });
+  },
+  verify: (certificateId) =>
+    api.get(`/certificates/verify/${encodeURIComponent(certificateId)}`, { expectedStatuses: [404] }),
+};
+
+export const billingService = {
+  getPlans: () =>
+    api.get('/billing/plans'),
+  getAccount: () =>
+    api.get('/billing/me', { expectedStatuses: [401] }),
+  createCheckoutSession: ({ planId, interval = 'monthly', successUrl, cancelUrl, discountCode = '' }) =>
+    api.post('/billing/checkout-session', { planId, interval, successUrl, cancelUrl, discountCode }, { timeout: 30000, expectedStatuses: [202] }),
+  validateDiscount: ({ planId, discountCode }) =>
+    api.post('/billing/discounts/validate', { planId, discountCode }, { expectedStatuses: [404] }),
+  openCustomerPortal: (returnUrl) =>
+    api.post('/billing/customer-portal', { returnUrl }, { timeout: 30000, expectedStatuses: [202] }),
+  sendInstitutionalInquiry: (payload) =>
+    api.post('/billing/institutional-inquiry', payload, { timeout: 30000 }),
+  getAdminOverview: () =>
+    api.get('/billing/admin/overview'),
+  getAdminSubscriptions: () =>
+    api.get('/billing/admin/subscriptions'),
+  getAdminPricing: () =>
+    api.get('/billing/admin/pricing'),
+  updatePlanOverride: (planId, payload) =>
+    api.put(`/billing/admin/plan-overrides/${planId}`, payload),
+  createDiscount: (payload) =>
+    api.post('/billing/admin/discounts', payload),
+  updateDiscount: (discountId, payload) =>
+    api.put(`/billing/admin/discounts/${discountId}`, payload),
+  assignManualPlan: (payload) =>
+    api.post('/billing/admin/manual-plan', payload),
+  createOrganization: (payload) =>
+    api.post('/billing/admin/organizations', payload),
+  updateOrganization: (organizationId, payload) =>
+    api.put(`/billing/admin/organizations/${organizationId}`, payload),
+  addOrganizationMember: (organizationId, payload) =>
+    api.post(`/billing/admin/organizations/${organizationId}/members`, payload),
+  getInstitutionalLeads: (status = '') =>
+    api.get('/billing/admin/institutional-leads', { params: status ? { status } : {} }),
+  updateInstitutionalLeadStatus: (leadId, status) =>
+    api.put(`/billing/admin/institutional-leads/${leadId}/status`, { status }),
+  getInstitutionDashboard: (organizationId = '') =>
+    api.get('/billing/institution/dashboard', { params: organizationId ? { organizationId } : {}, expectedStatuses: [403] }),
+  updateInstitutionProfile: (organizationId, payload) =>
+    api.put(`/billing/institution/organizations/${organizationId}`, payload),
+  addInstitutionMember: (organizationId, payload) =>
+    api.post(`/billing/institution/organizations/${organizationId}/members`, payload),
+  updateInstitutionMember: (organizationId, membershipId, payload) =>
+    api.put(`/billing/institution/organizations/${organizationId}/members/${membershipId}`, payload),
+};
+
 export const quizService = {
   getQuizzes: (category, difficulty) => {
-    const targetLang = localStorage.getItem('targetLanguage') || '';
-    const nativeLang = localStorage.getItem('nativeLanguage') || '';
+    const { targetLang, nativeLang } = getLanguageParams();
     return api.get('/quiz', { params: { category, difficulty, targetLang, nativeLang } });
   },
   getQuiz: (quizId) => {
-    const nativeLang = localStorage.getItem('nativeLanguage') || '';
-    return api.get(`/quiz/${quizId}`, { params: { nativeLang }, timeout: 30000 });
+    const { targetLang, nativeLang } = getLanguageParams();
+    return api.get(`/quiz/${quizId}`, { params: { targetLang, nativeLang }, timeout: 30000 });
   },
 };
 
 export const classLessonService = {
   getClassLessons: () => {
-    const targetLang = localStorage.getItem('targetLanguage') || '';
-    const nativeLang = localStorage.getItem('nativeLanguage') || '';
+    const { targetLang, nativeLang } = getLanguageParams();
     return api.get('/class-lessons', { params: { targetLang, nativeLang } });
   },
   getClassLesson: (classLessonId) => {
     if (!classLessonId) {
       return Promise.reject(new Error('classLessonId is required'));
     }
-    const nativeLang = localStorage.getItem('nativeLanguage') || '';
-    return api.get(`/class-lessons/${classLessonId}`, { params: { nativeLang }, timeout: 30000 });
+    const { targetLang, nativeLang } = getLanguageParams();
+    return api.get(`/class-lessons/${classLessonId}`, { params: { targetLang, nativeLang }, timeout: 30000 });
   },
   getProgress: (classLessonId) => {
-    const targetLang = localStorage.getItem('targetLanguage') || '';
-    const nativeLang = localStorage.getItem('nativeLanguage') || '';
+    const { targetLang, nativeLang } = getLanguageParams();
     return api.get(`/class-lessons/${classLessonId}/progress`, { params: { targetLang, nativeLang } });
   },
   saveProgress: (classLessonId, progress) => {
-    const targetLanguage = localStorage.getItem('targetLanguage') || '';
-    const nativeLanguage = localStorage.getItem('nativeLanguage') || '';
+    const { targetLang: targetLanguage, nativeLang: nativeLanguage } = getLanguageParams();
     return api.put(`/class-lessons/${classLessonId}/progress`, {
       ...progress,
       targetLanguage,
@@ -283,18 +368,15 @@ export const practiceContextService = {
 
 export const flashcardService = {
   getCategories: () => {
-    const targetLang = localStorage.getItem('targetLanguage') || '';
-    const nativeLang = localStorage.getItem('nativeLanguage') || '';
+    const { targetLang, nativeLang } = getLanguageParams();
     return api.get('/flashcards/categories', { params: { targetLang, nativeLang } });
   },
   getCategoryCards: (category) => {
-    const targetLang = localStorage.getItem('targetLanguage') || '';
-    const nativeLang = localStorage.getItem('nativeLanguage') || '';
+    const { targetLang, nativeLang } = getLanguageParams();
     return api.get('/flashcards/category-cards', { params: { targetLang, nativeLang, category } });
   },
   getFlashcards: (userId, page = 1, limit = 50, opts = {}) => {
-    const targetLang = localStorage.getItem('targetLanguage') || '';
-    const nativeLang = localStorage.getItem('nativeLanguage') || '';
+    const { targetLang, nativeLang } = getLanguageParams();
     const params = { targetLang, nativeLang, page, limit };
     if (opts.categories) params.categories = opts.categories;
     if (opts.shuffle !== undefined) params.shuffle = opts.shuffle;
@@ -302,8 +384,7 @@ export const flashcardService = {
     return api.get(`/flashcards/user/${userId}`, { params });
   },
   getGuestFlashcards: (page = 1, limit = 50, opts = {}) => {
-    const nativeLang = localStorage.getItem('nativeLanguage') || '';
-    const targetLang = localStorage.getItem('targetLanguage') || '';
+    const { targetLang, nativeLang } = getLanguageParams();
     const params = { nativeLang, targetLang, page, limit };
     if (opts.categories) params.categories = opts.categories;
     if (opts.shuffle !== undefined) params.shuffle = opts.shuffle;
@@ -405,6 +486,12 @@ export const adminService = {
     api.put(`/admin/error-reports/${reportId}/acknowledge`),
   clearOpenErrorReports: () =>
     api.put('/admin/error-reports/clear-open'),
+  getContactMessages: ({ page = 1, status = 'open', senderType = 'all' } = {}) =>
+    api.get('/admin/contact-messages', { params: { page, status, senderType } }),
+  acknowledgeContactMessage: (messageId) =>
+    api.put(`/admin/contact-messages/${messageId}/acknowledge`),
+  clearOpenContactMessages: () =>
+    api.put('/admin/contact-messages/clear-open'),
   sendSpeakingDemoTurn: (data) =>
     api.post('/admin/speaking-demo/conversation', data, { timeout: 60000 }),
   sendLocalSpeakingDemoTurn: (data) =>

@@ -39,7 +39,7 @@
 
 .language-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 8px;
 }
 
@@ -94,10 +94,9 @@
 }
 
 .lang-english {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   font-size: 0.85rem;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
 }
 
 .lang-native {
@@ -116,7 +115,7 @@
   }
 
   .language-grid {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
     gap: 6px;
   }
 

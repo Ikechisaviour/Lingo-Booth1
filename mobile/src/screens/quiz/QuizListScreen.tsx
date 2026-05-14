@@ -189,10 +189,10 @@ const QuizListScreen: React.FC = () => {
         <View style={styles.headerTop}>
           <View>
             <Text variant="headlineSmall" style={styles.headerTitle}>
-              {t(`languages.${targetLanguage}`, getLangName(targetLanguage))} Quiz
+              {t('quizList.title', { lang: t(`languages.${targetLanguage}`, getLangName(targetLanguage)), defaultValue: '{{lang}} Quiz' })}
             </Text>
             <Text style={styles.headerStat}>
-              ✍ {quizzes.length} quizzes available
+              ✍ {t('quizList.availableCount', { count: quizzes.length, defaultValue: '{{count}} quizzes available' })}
             </Text>
           </View>
           {quizzes.length > 0 && (

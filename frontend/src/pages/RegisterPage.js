@@ -82,6 +82,7 @@ function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
         if (data.refreshToken) localStorage.setItem('refreshToken', data.refreshToken);
         localStorage.setItem('userId', user.id);
         localStorage.setItem('username', user.username);
+        localStorage.setItem('userEmail', user.email || '');
         localStorage.setItem('userRole', user.role || 'user');
         localStorage.setItem('subscriptionTier', getEffectiveSubscriptionTier(user));
         localStorage.setItem('aiEntitlements', JSON.stringify(getEffectiveAiEntitlements(user)));
@@ -102,6 +103,7 @@ function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
       if (data.refreshToken) localStorage.setItem('refreshToken', data.refreshToken);
       localStorage.setItem('userId', user.id);
       localStorage.setItem('username', user.username);
+      localStorage.setItem('userEmail', user.email || '');
       localStorage.setItem('userRole', user.role || 'user');
       localStorage.setItem('subscriptionTier', getEffectiveSubscriptionTier(user));
       localStorage.setItem('aiEntitlements', JSON.stringify(getEffectiveAiEntitlements(user)));
@@ -166,6 +168,7 @@ function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
       if (data.refreshToken) localStorage.setItem('refreshToken', data.refreshToken);
       localStorage.setItem('userId', user.id);
       localStorage.setItem('username', user.username);
+      localStorage.setItem('userEmail', user.email || '');
       localStorage.setItem('userRole', user.role);
       localStorage.setItem('subscriptionTier', getEffectiveSubscriptionTier(user));
       localStorage.setItem('aiEntitlements', JSON.stringify(getEffectiveAiEntitlements(user)));

@@ -1,9 +1,10 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { FiMic, FiRefreshCw, FiSend, FiShield, FiVolume2, FiVolumeX, FiWifiOff } from 'react-icons/fi';
 import { aiService, practiceContextService } from '../services/api';
 import speechService from '../services/speechService';
-import LANGUAGES from '../config/languages';
+import LANGUAGES, { getLanguageDisplayName } from '../config/languages';
 import {
   displayPartsForMessage,
   languageLabel as segmentLanguageLabel,
@@ -17,6 +18,7 @@ import {
   conversationVoiceForLocale,
   handsFreeCopy,
 } from '../utils/conversationSpeech';
+import { normalizeLanguageCode } from '../utils/languagePairPolicy';
 import './ConversationPage.css';
 
 const SESSION_ID = 'learner-conversation';
@@ -104,10 +106,247 @@ const SCENARIOS = [
 ];
 
 const SUPPORT_LEVELS = [
-  { id: 'guided', label: 'Guided', difficulty: 'friendly beginner with brief native-language support' },
-  { id: 'balanced', label: 'Balanced', difficulty: 'balanced natural conversation' },
-  { id: 'natural', label: 'Natural', difficulty: 'natural conversation with minimal coaching' },
+  { id: 'guided', difficulty: 'friendly beginner with brief native-language support' },
+  { id: 'balanced', difficulty: 'balanced natural conversation' },
+  { id: 'natural', difficulty: 'natural conversation with minimal coaching' },
 ];
+
+const CONVERSATION_COPY = {
+  en: {
+    supportLevels: {
+      guided: 'Guided',
+      balanced: 'Balanced',
+      natural: 'Natural',
+    },
+    labels: {
+      learner: 'You',
+      partner: 'Partner',
+      goal: 'Goal',
+      conversationPartner: 'Conversation partner',
+      practiceRoleplay: 'Practice roleplay',
+      reviewDrill: 'Review drill',
+    },
+    roles: {
+      customer: 'Customer',
+      cafeStaff: 'Cafe staff',
+      traveler: 'Traveler',
+      localGuide: 'Local guide',
+      learnerSelf: 'You',
+      newAcquaintance: 'New acquaintance',
+      guest: 'Guest',
+      frontDesk: 'Hotel front desk',
+    },
+    scenarios: {
+      cafe: {
+        title: 'Ordering at a cafe',
+        partner: 'Cafe staff',
+        goal: 'Order, change details, and confirm what will be prepared.',
+        starters: [
+          'Please start the cafe roleplay.',
+          'What do you recommend today?',
+          'I want to order a drink.',
+        ],
+        followUps: [
+          'Please ask me the next question.',
+          'Can you say that more naturally?',
+          'Please remind me what I ordered.',
+        ],
+      },
+      directions: {
+        title: 'Asking for directions',
+        partner: 'Local guide',
+        goal: 'Ask where to go, understand landmarks, and confirm the route.',
+        starters: [
+          'Please start a directions roleplay.',
+          'I need help finding the station.',
+          'Can you ask where I want to go?',
+        ],
+        followUps: [
+          'Please give me one direction at a time.',
+          'Can you explain that in easier words?',
+          'How long will it take?',
+        ],
+      },
+      introductions: {
+        title: 'Meeting someone new',
+        partner: 'New acquaintance',
+        goal: 'Greet, exchange basic details, and keep a friendly conversation moving.',
+        starters: [
+          'Please start a first-meeting roleplay.',
+          'Ask me about myself.',
+          'Help me introduce myself naturally.',
+        ],
+        followUps: [
+          'Please ask a follow-up question.',
+          'Can you make my answer more natural?',
+          'What should I ask next?',
+        ],
+      },
+      hotel: {
+        title: 'Checking into a hotel',
+        partner: 'Hotel front desk',
+        goal: 'Check in, handle questions, and confirm room details.',
+        starters: [
+          'Please start a hotel check-in roleplay.',
+          'I want to check in.',
+          'Ask me for my booking details.',
+        ],
+        followUps: [
+          'Please ask for one detail at a time.',
+          'Can you repeat that more simply?',
+          'What room details have we confirmed?',
+        ],
+      },
+      custom: {
+        title: 'Custom roleplay',
+        partner: 'Conversation partner',
+        goal: 'Build your own roleplay by choosing the roles, situation, and goal.',
+        starters: [],
+        followUps: [
+          'Start the roleplay.',
+          'Ask me the first question.',
+          'Start a new custom roleplay.',
+        ],
+      },
+    },
+    status: {
+      ready: 'Ready',
+      personalizedStarterReady: 'Personalized starter ready. Press Send to begin.',
+      savedAccessSettings: 'Using saved access settings.',
+      speechStopped: 'Speech stopped.',
+      conversationReset: 'Conversation reset.',
+      customRoleplayReady: 'Custom roleplay is ready.',
+      planUnavailable: 'Conversation practice is not available on this plan.',
+      partnerThinking: 'Practice partner is thinking...',
+      partnerUnavailable: 'Practice partner is temporarily unavailable.',
+      partnerReplied: 'Practice partner replied.',
+      connectionIssue: 'Connection issue. Try again in a moment.',
+      listening: 'Listening...',
+      microphoneBlocked: 'Microphone permission is blocked. Open your browser site settings, allow the microphone, then reload this page.',
+      noSpeech: 'No speech was heard. Try again after the listening indicator appears.',
+      noMicrophone: 'No microphone detected. Plug in or enable a microphone, then try again.',
+      speechNetwork: 'Network error during speech recognition. Check your connection and try again.',
+      speechCancelled: 'Speech input was cancelled.',
+    },
+  },
+  ko: {
+    supportLevels: {
+      guided: '안내형',
+      balanced: '균형형',
+      natural: '자연형',
+    },
+    labels: {
+      learner: '나',
+      partner: '상대',
+      goal: '목표',
+      conversationPartner: '대화 상대',
+      practiceRoleplay: '역할극 연습',
+      reviewDrill: '복습 연습',
+    },
+    roles: {
+      customer: '손님',
+      cafeStaff: '카페 직원',
+      traveler: '여행자',
+      localGuide: '현지 안내자',
+      learnerSelf: '나',
+      newAcquaintance: '처음 만난 사람',
+      guest: '투숙객',
+      frontDesk: '호텔 프런트 직원',
+    },
+    scenarios: {
+      cafe: {
+        title: '카페에서 주문하기',
+        partner: '카페 직원',
+        goal: '주문하고, 세부 사항을 바꾸고, 준비될 내용을 확인합니다.',
+        starters: [
+          '카페 역할극을 시작해 주세요.',
+          '오늘 무엇을 추천하시나요?',
+          '음료를 주문하고 싶어요.',
+        ],
+        followUps: [
+          '다음 질문을 해 주세요.',
+          '더 자연스럽게 말하려면 어떻게 하나요?',
+          '제가 무엇을 주문했는지 알려 주세요.',
+        ],
+      },
+      directions: {
+        title: '길 묻기',
+        partner: '현지 안내자',
+        goal: '목적지를 묻고, 주요 지점을 이해하고, 가는 길을 확인합니다.',
+        starters: [
+          '길 묻기 역할극을 시작해 주세요.',
+          '역을 찾는 데 도움이 필요해요.',
+          '제가 어디에 가고 싶은지 물어봐 주세요.',
+        ],
+        followUps: [
+          '한 번에 한 방향씩 알려 주세요.',
+          '더 쉬운 말로 설명해 주세요.',
+          '얼마나 걸리나요?',
+        ],
+      },
+      introductions: {
+        title: '처음 만난 사람과 대화하기',
+        partner: '처음 만난 사람',
+        goal: '인사하고, 기본 정보를 주고받고, 자연스럽게 대화를 이어 갑니다.',
+        starters: [
+          '첫 만남 역할극을 시작해 주세요.',
+          '저에 대해 질문해 주세요.',
+          '자연스럽게 자기소개하도록 도와주세요.',
+        ],
+        followUps: [
+          '후속 질문을 해 주세요.',
+          '제 대답을 더 자연스럽게 바꿔 주세요.',
+          '다음에는 무엇을 물어보면 좋을까요?',
+        ],
+      },
+      hotel: {
+        title: '호텔 체크인하기',
+        partner: '호텔 프런트 직원',
+        goal: '체크인하고, 질문에 답하고, 객실 정보를 확인합니다.',
+        starters: [
+          '호텔 체크인 역할극을 시작해 주세요.',
+          '체크인하고 싶어요.',
+          '예약 정보를 물어봐 주세요.',
+        ],
+        followUps: [
+          '한 번에 한 가지 정보씩 물어봐 주세요.',
+          '더 쉽게 다시 말해 주세요.',
+          '지금까지 어떤 객실 정보를 확인했나요?',
+        ],
+      },
+      custom: {
+        title: '맞춤 역할극',
+        partner: '대화 상대',
+        goal: '역할, 상황, 목표를 정해서 나만의 역할극을 만듭니다.',
+        starters: [],
+        followUps: [
+          '역할극을 시작해 주세요.',
+          '첫 번째 질문을 해 주세요.',
+          '새 맞춤 역할극을 시작해 주세요.',
+        ],
+      },
+    },
+    status: {
+      ready: '준비됨',
+      personalizedStarterReady: '맞춤 시작 문장이 준비되었습니다. 보내기를 눌러 시작하세요.',
+      savedAccessSettings: '저장된 이용 설정을 사용합니다.',
+      speechStopped: '음성이 중지되었습니다.',
+      conversationReset: '대화가 초기화되었습니다.',
+      customRoleplayReady: '맞춤 역할극이 준비되었습니다.',
+      planUnavailable: '이 플랜에서는 회화 연습을 사용할 수 없습니다.',
+      partnerThinking: '연습 파트너가 생각 중입니다...',
+      partnerUnavailable: '연습 파트너가 잠시 응답할 수 없습니다.',
+      partnerReplied: '연습 파트너가 응답했습니다.',
+      connectionIssue: '연결 문제가 있습니다. 잠시 후 다시 시도해 주세요.',
+      listening: '듣고 있습니다...',
+      microphoneBlocked: '마이크 권한이 차단되어 있습니다. 브라우저 사이트 설정에서 마이크를 허용한 뒤 페이지를 새로고침하세요.',
+      noSpeech: '음성이 들리지 않았습니다. 듣기 표시가 나타난 뒤 다시 말해 주세요.',
+      noMicrophone: '마이크를 감지하지 못했습니다. 마이크를 연결하거나 활성화한 뒤 다시 시도해 주세요.',
+      speechNetwork: '음성 인식 중 네트워크 오류가 발생했습니다. 연결을 확인하고 다시 시도해 주세요.',
+      speechCancelled: '음성 입력이 취소되었습니다.',
+    },
+  },
+};
 
 const CUSTOM_SETUP_COPY = {
   en: {
@@ -201,149 +440,35 @@ const KOREAN_CUSTOM_SETUP_COPY = {
   situationLabel: '상황',
 };
 
-const CONVERSATION_UI_LABELS = {
-  en: {
-    learner: 'You',
-    partner: 'Partner',
-    goal: 'Goal',
-    partners: {
-      cafe: 'Cafe staff',
-      directions: 'Local guide',
-      introductions: 'New acquaintance',
-      hotel: 'Hotel front desk',
-    },
-    roles: {
-      customer: 'Customer',
-      cafeStaff: 'Cafe staff',
-      traveler: 'Traveler',
-      localGuide: 'Local guide',
-      learnerSelf: 'You',
-      newAcquaintance: 'New acquaintance',
-      guest: 'Guest',
-      frontDesk: 'Hotel front desk',
-    },
-  },
-  fil: {
-    learner: 'Ikaw',
-    partner: 'Kapareha',
-    goal: 'Layunin',
-    partners: {
-      cafe: 'Staff sa cafe',
-      directions: 'Lokal na gabay',
-      introductions: 'Bagong kakilala',
-      hotel: 'Front desk ng hotel',
-    },
-    roles: {
-      customer: 'Customer',
-      cafeStaff: 'Staff sa cafe',
-      traveler: 'Traveler',
-      localGuide: 'Lokal na gabay',
-      learnerSelf: 'Ikaw',
-      newAcquaintance: 'Bagong kakilala',
-      guest: 'Guest',
-      frontDesk: 'Front desk ng hotel',
-    },
-  },
-  es: {
-    learner: 'Tu',
-    partner: 'Companero',
-    goal: 'Meta',
-    partners: {
-      cafe: 'Personal del cafe',
-      directions: 'Guia local',
-      introductions: 'Nueva persona',
-      hotel: 'Recepcion del hotel',
-    },
-    roles: {
-      customer: 'Cliente',
-      cafeStaff: 'Personal del cafe',
-      traveler: 'Viajero',
-      localGuide: 'Guia local',
-      learnerSelf: 'Tu',
-      newAcquaintance: 'Nueva persona',
-      guest: 'Huesped',
-      frontDesk: 'Recepcion del hotel',
-    },
-  },
-  de: {
-    learner: 'Du',
-    partner: 'Partner',
-    goal: 'Ziel',
-    partners: {
-      cafe: 'Cafe-Personal',
-      directions: 'Lokaler Guide',
-      introductions: 'Neue Bekanntschaft',
-      hotel: 'Hotelrezeption',
-    },
-    roles: {
-      customer: 'Kunde',
-      cafeStaff: 'Cafe-Personal',
-      traveler: 'Reisender',
-      localGuide: 'Lokaler Guide',
-      learnerSelf: 'Du',
-      newAcquaintance: 'Neue Bekanntschaft',
-      guest: 'Gast',
-      frontDesk: 'Hotelrezeption',
-    },
-  },
-  id: {
-    learner: 'Anda',
-    partner: 'Mitra',
-    goal: 'Tujuan',
-    partners: {
-      cafe: 'Staf kafe',
-      directions: 'Pemandu lokal',
-      introductions: 'Kenalan baru',
-      hotel: 'Resepsionis hotel',
-    },
-    roles: {
-      customer: 'Pelanggan',
-      cafeStaff: 'Staf kafe',
-      traveler: 'Pelancong',
-      localGuide: 'Pemandu lokal',
-      learnerSelf: 'Anda',
-      newAcquaintance: 'Kenalan baru',
-      guest: 'Tamu',
-      frontDesk: 'Resepsionis hotel',
-    },
-  },
-  ms: {
-    learner: 'Anda',
-    partner: 'Rakan',
-    goal: 'Matlamat',
-    partners: {
-      cafe: 'Staf kafe',
-      directions: 'Pemandu tempatan',
-      introductions: 'Kenalan baru',
-      hotel: 'Kaunter hotel',
-    },
-    roles: {
-      customer: 'Pelanggan',
-      cafeStaff: 'Staf kafe',
-      traveler: 'Pelancong',
-      localGuide: 'Pemandu tempatan',
-      learnerSelf: 'Anda',
-      newAcquaintance: 'Kenalan baru',
-      guest: 'Tetamu',
-      frontDesk: 'Kaunter hotel',
-    },
-  },
-};
-
 function roleStateForMemory(memory = {}) {
   return memory?.roleState && typeof memory.roleState === 'object' ? memory.roleState : null;
 }
 
+function conversationCopyFor(nativeLanguage) {
+  const language = normalizeLanguageCode(nativeLanguage);
+  return CONVERSATION_COPY[language] || CONVERSATION_COPY.en;
+}
+
+function scenarioCopyFor(nativeLanguage, scenarioId) {
+  const copy = conversationCopyFor(nativeLanguage);
+  return copy.scenarios[scenarioId] || CONVERSATION_COPY.en.scenarios[scenarioId] || CONVERSATION_COPY.en.scenarios.cafe;
+}
+
+function supportLabelFor(nativeLanguage, supportId) {
+  const copy = conversationCopyFor(nativeLanguage);
+  return copy.supportLevels[supportId] || CONVERSATION_COPY.en.supportLevels[supportId] || supportId;
+}
+
 function labelsFor(nativeLanguage, scenarioId, roleState = null) {
-  const labels = CONVERSATION_UI_LABELS[nativeLanguage] || CONVERSATION_UI_LABELS.en;
-  const fallbackPartner = labels.partners?.[scenarioId] || CONVERSATION_UI_LABELS.en.partners[scenarioId] || 'Conversation partner';
-  const roleLabel = (roleKey, rawRole) => labels.roles?.[roleKey] || CONVERSATION_UI_LABELS.en.roles[roleKey] || rawRole || roleKey;
+  const copy = conversationCopyFor(nativeLanguage);
+  const fallbackPartner = scenarioCopyFor(nativeLanguage, scenarioId).partner || copy.labels.conversationPartner;
+  const roleLabel = (roleKey, rawRole) => copy.roles?.[roleKey] || CONVERSATION_COPY.en.roles[roleKey] || rawRole || roleKey;
   const learnerRole = roleState?.learnerRoleKey ? roleLabel(roleState.learnerRoleKey, roleState.learnerRole) : '';
   const partnerRole = roleState?.partnerRoleKey ? roleLabel(roleState.partnerRoleKey, roleState.partnerRole) : fallbackPartner;
 
   return {
-    ...labels,
-    activeLearner: learnerRole && learnerRole !== labels.learner ? `${labels.learner} · ${learnerRole}` : labels.learner,
+    ...copy.labels,
+    activeLearner: learnerRole && learnerRole !== copy.labels.learner ? `${copy.labels.learner} · ${learnerRole}` : copy.labels.learner,
     activePartner: partnerRole,
   };
 }
@@ -351,21 +476,22 @@ function labelsFor(nativeLanguage, scenarioId, roleState = null) {
 function displayLabelsFor(nativeLanguage, scenarioId, roleState = null) {
   const labels = labelsFor(nativeLanguage, scenarioId, roleState);
   if (!roleState?.learnerRoleKey) return labels;
-  const baseLabels = CONVERSATION_UI_LABELS[nativeLanguage] || CONVERSATION_UI_LABELS.en;
-  const roleLabel = baseLabels.roles?.[roleState.learnerRoleKey]
-    || CONVERSATION_UI_LABELS.en.roles[roleState.learnerRoleKey]
+  const copy = conversationCopyFor(nativeLanguage);
+  const roleLabel = copy.roles?.[roleState.learnerRoleKey]
+    || CONVERSATION_COPY.en.roles[roleState.learnerRoleKey]
     || roleState.learnerRole
     || roleState.learnerRoleKey;
 
   return {
     ...labels,
-    activeLearner: roleLabel && roleLabel !== baseLabels.learner ? `${baseLabels.learner} - ${roleLabel}` : baseLabels.learner,
+    activeLearner: roleLabel && roleLabel !== copy.labels.learner ? `${copy.labels.learner} - ${roleLabel}` : copy.labels.learner,
   };
 }
 
 function customSetupCopy(nativeLanguage) {
-  if (nativeLanguage === 'ko') return KOREAN_CUSTOM_SETUP_COPY;
-  return CUSTOM_SETUP_COPY[nativeLanguage] || CUSTOM_SETUP_COPY.en;
+  const language = normalizeLanguageCode(nativeLanguage);
+  if (language === 'ko') return KOREAN_CUSTOM_SETUP_COPY;
+  return CUSTOM_SETUP_COPY[language] || CUSTOM_SETUP_COPY.en;
 }
 
 function customRoleplayFromMemory(memory = {}) {
@@ -655,13 +781,14 @@ const LOCALIZED_REPEAT_COMMANDS = new Set(CONVERSATION_REPEAT_COMMANDS.map(norma
 const LOCALIZED_SLOWER_COMMANDS = new Set(CONVERSATION_SLOWER_COMMANDS.map(normalizeVoiceCommand));
 
 function ConversationPage() {
+  const { t } = useTranslation();
   const [searchParams] = useSearchParams();
   const lessonId = searchParams.get('lessonId') || '';
   const [scenarioId, setScenarioId] = useState(SCENARIOS[0].id);
   const [supportLevel, setSupportLevel] = useState(SUPPORT_LEVELS[0].id);
   const [turn, setTurn] = useState('');
   const [history, setHistory] = useState([]);
-  const [status, setStatus] = useState('Ready');
+  const [status, setStatus] = useState(() => conversationCopyFor(normalizeLanguageCode(localStorage.getItem('nativeLanguage')) || 'en').status.ready);
   const [statusTone, setStatusTone] = useState('idle');
   const [loading, setLoading] = useState(false);
   const [entitlements, setEntitlements] = useState(getStoredEntitlements);
@@ -679,10 +806,6 @@ function ConversationPage() {
   const restartTimerRef = useRef(null);
   const lastAssistantRef = useRef(null);
 
-  const scenario = useMemo(
-    () => SCENARIOS.find(item => item.id === scenarioId) || SCENARIOS[0],
-    [scenarioId],
-  );
   const isCustomScenario = scenarioId === CUSTOM_SCENARIO_ID;
   const customIsReady = isCustomScenario && completeCustomRoleplay(customRoleplay);
   const support = useMemo(
@@ -690,8 +813,18 @@ function ConversationPage() {
     [supportLevel],
   );
 
-  const nativeLanguage = localStorage.getItem('nativeLanguage') || 'en';
-  const targetLanguage = localStorage.getItem('targetLanguage') || 'ko';
+  const nativeLanguage = normalizeLanguageCode(localStorage.getItem('nativeLanguage')) || 'en';
+  const targetLanguage = normalizeLanguageCode(localStorage.getItem('targetLanguage')) || 'ko';
+  const conversationCopy = useMemo(() => conversationCopyFor(nativeLanguage), [nativeLanguage]);
+  const statusCopy = conversationCopy.status;
+  const localizedScenario = useMemo(
+    () => scenarioCopyFor(nativeLanguage, scenarioId),
+    [nativeLanguage, scenarioId],
+  );
+  const supportLabel = useMemo(
+    () => supportLabelFor(nativeLanguage, supportLevel),
+    [nativeLanguage, supportLevel],
+  );
   const uiLabels = useMemo(
     () => displayLabelsFor(nativeLanguage, scenarioId, roleState),
     [nativeLanguage, scenarioId, roleState],
@@ -706,47 +839,54 @@ function ConversationPage() {
   const speechSupported = !!getSpeechRecognition();
 
   const languageLabel = useMemo(() => {
-    const target = LANGUAGES[targetLanguage]?.name || targetLanguage;
-    const native = LANGUAGES[nativeLanguage]?.name || nativeLanguage;
+    const target = getLanguageDisplayName(targetLanguage, t) || targetLanguage;
+    const native = getLanguageDisplayName(nativeLanguage, t) || nativeLanguage;
     return `${native} -> ${target}`;
-  }, [nativeLanguage, targetLanguage]);
+  }, [nativeLanguage, targetLanguage, t]);
 
   const activeScenarioTitle = isCustomScenario && customIsReady
     ? customRoleplayTitle(customRoleplay)
-    : scenario.title;
+    : localizedScenario.title;
+
+  useEffect(() => {
+    const storedNative = localStorage.getItem('nativeLanguage');
+    const storedTarget = localStorage.getItem('targetLanguage');
+    if (storedNative && storedNative !== nativeLanguage) localStorage.setItem('nativeLanguage', nativeLanguage);
+    if (storedTarget && storedTarget !== targetLanguage) localStorage.setItem('targetLanguage', targetLanguage);
+  }, [nativeLanguage, targetLanguage]);
 
   const activeScenarioGoal = isCustomScenario
-    ? (customRoleplay.goal || scenario.goal)
-    : scenario.goal;
+    ? (customRoleplay.goal || localizedScenario.goal)
+    : localizedScenario.goal;
 
   const quickTurns = useMemo(() => {
     if (!canUseAI || quotaExceeded) return [];
     if (isCustomScenario && !customIsReady) return [];
     if (isCustomScenario && customIsReady) {
       const latestAssistant = [...history].reverse().find(message => message.role === 'assistant' && !message.error);
-      if (latestAssistant?.nextSuggestedIntent) return [latestAssistant.nextSuggestedIntent, ...scenario.followUps].slice(0, 3);
-      return (history.length ? scenario.followUps : ['Start the roleplay.']).slice(0, 3);
+      if (latestAssistant?.nextSuggestedIntent) return [latestAssistant.nextSuggestedIntent, ...localizedScenario.followUps].slice(0, 3);
+      return (history.length ? localizedScenario.followUps : localizedScenario.followUps.slice(0, 1)).slice(0, 3);
     }
     const latestAssistant = [...history].reverse().find(message => message.role === 'assistant' && !message.error);
     const suggested = latestAssistant?.nextSuggestedIntent;
-    if (suggested) return [suggested, ...scenario.followUps].slice(0, 3);
-    return (history.length ? scenario.followUps : scenario.starters).slice(0, 3);
-  }, [canUseAI, quotaExceeded, history, scenario, isCustomScenario, customIsReady]);
+    if (suggested) return [suggested, ...localizedScenario.followUps].slice(0, 3);
+    return (history.length ? localizedScenario.followUps : localizedScenario.starters).slice(0, 3);
+  }, [canUseAI, quotaExceeded, history, localizedScenario, isCustomScenario, customIsReady]);
 
   const contextPracticeActions = useMemo(() => {
     if (!canUsePracticeContextFeature || !contextRecommendations?.hasContext) return [];
     const roleplays = (contextRecommendations.roleplays || []).slice(0, 2).map((item) => ({
       key: `roleplay-${item.prompt}`,
-      label: item.title || 'Practice roleplay',
+      label: item.title || conversationCopy.labels.practiceRoleplay,
       prompt: item.prompt,
     }));
     const drills = (contextRecommendations.reviewDrills || []).slice(0, 2).map((item) => ({
       key: `drill-${item.prompt}`,
-      label: item.text || 'Review drill',
+      label: item.text || conversationCopy.labels.reviewDrill,
       prompt: item.prompt,
     }));
     return [...roleplays, ...drills].filter(item => item.prompt);
-  }, [canUsePracticeContextFeature, contextRecommendations]);
+  }, [canUsePracticeContextFeature, contextRecommendations, conversationCopy]);
 
   useEffect(() => {
     const stored = loadMemory(scenarioId, nativeLanguage, targetLanguage);
@@ -774,18 +914,18 @@ function ConversationPage() {
     setHistory(loadedHistory);
     lastAssistantRef.current = [...loadedHistory].reverse().find(message => message.role === 'assistant' && !message.error) || null;
     setTurn('');
-    setStatus('Ready');
+    setStatus(statusCopy.ready);
     setStatusTone('idle');
-  }, [scenarioId, nativeLanguage, targetLanguage]);
+  }, [scenarioId, nativeLanguage, targetLanguage, statusCopy.ready]);
 
   useEffect(() => {
     const starter = sessionStorage.getItem('lingoContextConversationStarter');
     if (!starter) return;
     sessionStorage.removeItem('lingoContextConversationStarter');
     setTurn(starter);
-    setStatus('Personalized starter ready. Press Send to begin.');
+    setStatus(statusCopy.personalizedStarterReady);
     setStatusTone('idle');
-  }, []);
+  }, [statusCopy.personalizedStarterReady]);
 
   useEffect(() => {
     let cancelled = false;
@@ -816,10 +956,10 @@ function ConversationPage() {
         localStorage.setItem('subscriptionTier', nextEntitlements.subscriptionTier || tierFromEntitlements(nextEntitlements));
       })
       .catch(() => {
-        setStatus('Using saved access settings.');
+        setStatus(statusCopy.savedAccessSettings);
         setStatusTone('idle');
       });
-  }, []);
+  }, [statusCopy.savedAccessSettings]);
 
   useEffect(() => {
     if (!threadRef.current) return;
@@ -877,7 +1017,7 @@ function ConversationPage() {
 
   const stopSpeech = () => {
     speechService.cancel();
-    setStatus('Speech stopped.');
+    setStatus(statusCopy.speechStopped);
     setStatusTone('idle');
   };
 
@@ -908,7 +1048,7 @@ function ConversationPage() {
       setHistory([]);
     }
     setTurn('');
-    setStatus('Conversation reset.');
+    setStatus(statusCopy.conversationReset);
     setStatusTone('idle');
     speechService.cancel();
   };
@@ -976,7 +1116,7 @@ function ConversationPage() {
         },
         history: updatedHistory.map(({ role, content }) => ({ role, content })),
       });
-      setStatus('Custom roleplay is ready.');
+      setStatus(statusCopy.customRoleplayReady);
       setStatusTone('success');
       setTurn('');
       if (speechEnabled || autoContinue) await speakMessage(assistantTurn);
@@ -1011,7 +1151,7 @@ function ConversationPage() {
     const text = String(textOverride ?? turn).trim();
     if (!text || loading) return;
     if (!canUseAI) {
-      setStatus('Conversation Practice is not available on this plan.');
+      setStatus(statusCopy.planUnavailable);
       setStatusTone('error');
       return;
     }
@@ -1040,7 +1180,7 @@ function ConversationPage() {
 
     setTurn('');
     setLoading(true);
-    setStatus('Practice partner is thinking...');
+    setStatus(statusCopy.partnerThinking);
     setStatusTone('loading');
     setHistory(prev => [...prev.slice(-11), userTurn]);
 
@@ -1073,10 +1213,10 @@ function ConversationPage() {
         handsFreeRef.current = false;
         setHandsFreeActive(false);
         appendAssistantFallback(
-          'The practice partner is temporarily unavailable. Please try again shortly.',
-          'Your message was kept on this device.',
+          statusCopy.partnerUnavailable,
+          statusCopy.savedAccessSettings,
         );
-        setStatus('Practice partner is temporarily unavailable.');
+        setStatus(statusCopy.partnerUnavailable);
         setStatusTone('error');
         return;
       }
@@ -1084,7 +1224,7 @@ function ConversationPage() {
       const assistantTurn = {
         id: turnId('assistant'),
         role: 'assistant',
-        content: data.reply || 'Let me try that again. What would you like to say next?',
+        content: data.reply || localizedScenario.followUps[0] || statusCopy.connectionIssue,
         language: data.expectedLanguage || targetLanguage,
         coachingTip: data.coachingTip || '',
         nextSuggestedIntent: data.nextSuggestedIntent || '',
@@ -1102,7 +1242,7 @@ function ConversationPage() {
         });
         return updated;
       });
-      setStatus('Practice partner replied.');
+      setStatus(statusCopy.partnerReplied);
       setStatusTone('success');
       if (speechEnabled || autoContinue) {
         if (autoContinue) {
@@ -1125,17 +1265,17 @@ function ConversationPage() {
         ? quotaResetMessage(error.response?.data?.tokenUsage)
         : '';
       const message = planDenied
-        ? 'Conversation Practice is not available on this plan.'
+        ? statusCopy.planUnavailable
         : quotaDenied
           ? resetMessage
-        : 'The practice partner had trouble replying. Please try again.';
+        : statusCopy.connectionIssue;
       appendAssistantFallback(
         message,
         planDenied
-          ? 'Your plan settings were refreshed.'
+          ? statusCopy.savedAccessSettings
           : quotaDenied
             ? quotaLimitCopy(tier, error.response?.data?.tokenUsage?.resetAt).tip
-            : 'Your message was not sent again.',
+            : statusCopy.connectionIssue,
       );
       setStatus(quotaDenied ? resetMessage : (error.response?.data?.message || message));
       setStatusTone('error');
@@ -1214,15 +1354,15 @@ function ConversationPage() {
     switch (event?.error) {
       case 'not-allowed':
       case 'service-not-allowed':
-        return 'Microphone permission is blocked. Open your browser site settings, allow the microphone, then reload this page.';
+        return statusCopy.microphoneBlocked;
       case 'no-speech':
-        return 'No speech was heard. Try again — speak after the "Listening…" indicator appears.';
+        return statusCopy.noSpeech;
       case 'audio-capture':
-        return 'No microphone detected. Plug in or enable a microphone, then try again.';
+        return statusCopy.noMicrophone;
       case 'network':
-        return 'Network error during speech recognition. Check your connection and try again.';
+        return statusCopy.speechNetwork;
       case 'aborted':
-        return 'Speech input was cancelled.';
+        return statusCopy.speechCancelled;
       default:
         return copy.captureFailed;
     }
@@ -1261,7 +1401,7 @@ function ConversationPage() {
 
     recognition.onstart = () => {
       setListening(true);
-      setStatus(autoContinue ? copy.listening : 'Listening...');
+      setStatus(autoContinue ? copy.listening : statusCopy.listening);
       setStatusTone('loading');
     };
     recognition.onerror = (event) => {
@@ -1303,7 +1443,7 @@ function ConversationPage() {
         return;
       }
       if (!loading) {
-        setStatus((currentStatus) => (currentStatus === 'Listening...' || currentStatus === copy.listening ? 'Ready' : currentStatus));
+        setStatus((currentStatus) => (currentStatus === statusCopy.listening || currentStatus === copy.listening ? statusCopy.ready : currentStatus));
         setStatusTone((currentTone) => (currentTone === 'loading' ? 'idle' : currentTone));
       }
     };
@@ -1395,16 +1535,16 @@ function ConversationPage() {
 
   return (
     <div className="conversation-page">
-      <section className="conversation-shell" aria-label="Conversation practice">
+      <section className="conversation-shell" aria-label={t('conversation.practiceLabel', 'Conversation practice')}>
         <header className="conversation-header">
           <div>
-            <p className="conversation-kicker">Conversation Practice</p>
+            <p className="conversation-kicker">{t('conversation.practiceLabel', 'Conversation Practice')}</p>
             <div className="conversation-scenario-row">
               <label className="conversation-header-scenario">
-                <span>Scenario</span>
+                <span>{t('conversation.scenario', 'Scenario')}</span>
                 <select value={scenarioId} onChange={(event) => setScenarioId(event.target.value)}>
                   {SCENARIOS.map((item) => (
-                    <option key={item.id} value={item.id}>{item.title}</option>
+                    <option key={item.id} value={item.id}>{scenarioCopyFor(nativeLanguage, item.id).title}</option>
                   ))}
                 </select>
               </label>
@@ -1413,41 +1553,45 @@ function ConversationPage() {
                 className={`conversation-header-handsfree ${handsFreeActive ? 'active' : ''}`}
                 onClick={handsFreeActive ? stopHandsFree : startHandsFree}
                 disabled={!canUseAI || quotaExceeded || !speechSupported || loading}
-                title={speechSupported ? 'Start hands-free conversation' : 'Speech input is not available in this browser'}
+                title={speechSupported ? t('conversation.startHandsFreeTitle', 'Start hands-free conversation') : t('conversation.speechUnavailableTitle', 'Speech input is not available in this browser')}
               >
                 <FiMic aria-hidden="true" />
-                {handsFreeActive ? 'Stop hands-free' : 'Hands-free'}
+                {handsFreeActive ? t('conversation.stopHandsFree', 'Stop hands-free') : t('conversation.handsFree', 'Hands-free')}
               </button>
             </div>
           </div>
-          <div className="conversation-badges" aria-label="Plan and memory status">
+          <div className="conversation-badges" aria-label={t('conversation.planMemoryStatus', 'Plan and memory status')}>
             <span className={`conversation-plan ${tier} ${memoryScope}`}>{tier.toUpperCase()}</span>
             <span className={`conversation-memory ${memoryScope}`}>
               <FiShield aria-hidden="true" />
-              {memoryScope === 'cloud' ? 'Synced memory' : memoryScope === 'device' ? 'Device memory' : 'No saved memory'}
+              {memoryScope === 'cloud'
+                ? t('conversation.syncedMemory', 'Synced memory')
+                : memoryScope === 'device'
+                  ? t('conversation.deviceMemory', 'Device memory')
+                  : t('conversation.noSavedMemory', 'No saved memory')}
             </span>
             <span className="conversation-language-badge">{languageLabel}</span>
           </div>
         </header>
 
         <div className="conversation-body">
-          <aside className={`conversation-side ${setupOpen ? 'open' : ''}`} aria-label="Practice setup">
+          <aside className={`conversation-side ${setupOpen ? 'open' : ''}`} aria-label={t('conversation.practiceSetup', 'Practice setup')}>
             <button
               type="button"
               className="conversation-setup-toggle"
               onClick={() => setSetupOpen((open) => !open)}
               aria-expanded={setupOpen}
             >
-              <span>Practice setup</span>
-              <strong>{scenario.title} · {support.label}</strong>
+              <span>{t('conversation.practiceSetup', 'Practice setup')}</span>
+              <strong>{localizedScenario.title} · {supportLabel}</strong>
             </button>
 
             <div className="conversation-side-content">
               <label className="conversation-field">
-                Support
+                {t('conversation.support', 'Support')}
                 <select value={supportLevel} onChange={(event) => setSupportLevel(event.target.value)}>
                   {SUPPORT_LEVELS.map((item) => (
-                    <option key={item.id} value={item.id}>{item.label}</option>
+                    <option key={item.id} value={item.id}>{supportLabelFor(nativeLanguage, item.id)}</option>
                   ))}
                 </select>
               </label>
@@ -1486,7 +1630,7 @@ function ConversationPage() {
 
               {contextPracticeActions.length > 0 && (
                 <div className="conversation-context-actions">
-                  <span>Personalized for you</span>
+                  <span>{t('conversation.personalizedForYou', 'Personalized for you')}</span>
                   {contextPracticeActions.map((item) => (
                     <button
                       key={item.key}
@@ -1502,7 +1646,7 @@ function ConversationPage() {
 
               <button type="button" className="conversation-reset" onClick={resetConversation}>
                 <FiRefreshCw aria-hidden="true" />
-                Reset roleplay
+                {t('conversation.resetRoleplay', 'Reset roleplay')}
               </button>
               <button
                 type="button"
@@ -1513,7 +1657,7 @@ function ConversationPage() {
                 }}
               >
                 {speechEnabled ? <FiVolume2 aria-hidden="true" /> : <FiVolumeX aria-hidden="true" />}
-                {speechEnabled ? 'Spoken replies on' : 'Spoken replies off'}
+                {speechEnabled ? t('conversation.spokenRepliesOn', 'Spoken replies on') : t('conversation.spokenRepliesOff', 'Spoken replies off')}
               </button>
             </div>
           </aside>
@@ -1523,8 +1667,8 @@ function ConversationPage() {
               {!canUseAI && (
                 <div className="conversation-locked">
                   <FiWifiOff aria-hidden="true" />
-                <strong>Conversation Practice is not available on this plan.</strong>
-                  <span>Daily conversation practice is available on Free, Plus, and Pro.</span>
+                  <strong>{t('conversation.notAvailableTitle', 'Conversation Practice is not available on this plan.')}</strong>
+                  <span>{t('conversation.notAvailableBody', 'Daily conversation practice is available on Free, Plus, and Pro.')}</span>
                 </div>
               )}
 
@@ -1538,8 +1682,8 @@ function ConversationPage() {
 
               {canUseAI && !quotaExceeded && history.length === 0 && !loading && (
                 <div className="conversation-empty-main">
-                  <strong>Begin {activeScenarioTitle.toLowerCase()}</strong>
-                  <span>{uiLabels.activePartner} is ready.</span>
+                  <strong>{t('conversation.beginScenario', 'Begin {{scenario}}', { scenario: activeScenarioTitle.toLowerCase() })}</strong>
+                  <span>{t('conversation.partnerReady', '{{partner}} is ready.', { partner: uiLabels.activePartner })}</span>
                 </div>
               )}
 
@@ -1549,7 +1693,7 @@ function ConversationPage() {
                     <span>{message.role === 'user' ? uiLabels.activeLearner : uiLabels.activePartner}</span>
                     <span className="message-tools">
                       {message.role === 'assistant' && !message.error && (
-                        <button type="button" onClick={() => speakMessage(message)} title="Play reply">
+                        <button type="button" onClick={() => speakMessage(message)} title={t('conversation.playReply', 'Play reply')}>
                           <FiVolume2 aria-hidden="true" />
                         </button>
                       )}
@@ -1564,7 +1708,7 @@ function ConversationPage() {
               {loading && (
                 <div className="conversation-message assistant pending">
                   <div className="message-label">{uiLabels.activePartner}</div>
-                  <div className="typing-dots" aria-label="Practice partner is typing">
+                  <div className="typing-dots" aria-label={t('conversation.partnerTyping', 'Practice partner is typing')}>
                     <span />
                     <span />
                     <span />
@@ -1583,7 +1727,7 @@ function ConversationPage() {
                     sendTurn();
                   }
                 }}
-                placeholder={canUseAI ? 'Type your turn...' : 'Conversation Practice is not available on this plan.'}
+                placeholder={canUseAI ? t('conversation.typeYourTurn', 'Type your turn...') : t('conversation.notAvailableTitle', 'Conversation Practice is not available on this plan.')}
                 rows={3}
                 disabled={!canUseAI || quotaExceeded}
               />
@@ -1593,14 +1737,14 @@ function ConversationPage() {
                   className={`mic-button ${listening ? 'listening' : ''}`}
                   onClick={listening ? stopListening : startListening}
                   disabled={!speechSupported || loading || !canUseAI || quotaExceeded || handsFreeActive}
-                  title={speechSupported ? 'Speak your turn' : 'Speech input is not available in this browser'}
+                  title={speechSupported ? t('conversation.speakYourTurn', 'Speak your turn') : t('conversation.speechUnavailableTitle', 'Speech input is not available in this browser')}
                 >
                   <FiMic aria-hidden="true" />
-                  {listening ? 'Stop' : 'Speak'}
+                  {listening ? t('conversation.stop', 'Stop') : t('conversation.speak', 'Speak')}
                 </button>
                 <button type="button" onClick={() => sendTurn()} disabled={!turn.trim() || loading || !canUseAI || quotaExceeded}>
                   <FiSend aria-hidden="true" />
-                  Send
+                  {t('conversation.send', 'Send')}
                 </button>
               </div>
             </div>

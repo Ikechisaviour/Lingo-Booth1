@@ -1,0 +1,8 @@
+{
+  "name": "lingo-booth-workspace",
+  "private": true,
+  "scripts": {
+    "audit:all": "npm --prefix backend run audit:language-guardrails && npm --prefix frontend run audit:guardrails && npm --prefix mobile run audit:guardrails",
+    "build:web": "npm --prefix frontend run build"
+  }
+}

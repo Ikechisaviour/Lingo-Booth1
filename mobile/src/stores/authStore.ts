@@ -11,7 +11,10 @@ type AiEntitlements = {
   canSendAI?: boolean;
   canSyncAIMemory?: boolean;
   canUsePracticeContext?: boolean;
+  canManageOrganization?: boolean;
+  billingSource?: string;
   aiMemoryScope?: AIMemoryScope;
+  subscription?: Record<string, any>;
   tokenUsage?: {
     quotaExceeded: boolean;
     resetAt: string;

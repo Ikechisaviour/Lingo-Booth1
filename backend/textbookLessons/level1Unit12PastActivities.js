@@ -81,8 +81,8 @@ const lesson = {
   ],
   relatedPools: ['topic-people'],
   content: [
-    createContentItem('Lesson goal', 'past tense', 'By end: conjugate past tense; describe when, where, with whom, and connect two past actions.', 'word', 'Functions: past conjugation · companion · location · sequence', 'Four micro-skills.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'Monday morning', 'It is Monday morning. Your classmate asks "주말에 뭐 했어요?" — you should respond with 2-3 past sentences.', 'word', 'Classmate: 주말에 뭐 했어요? — You: 친구하고 등산했어요.', 'Classmate: What did you do on the weekend? — You: I went hiking with a friend.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: conjugate past tense; describe when, where, with whom, and connect two past actions.', 'word', 'Functions: past conjugation · companion · location · sequence', 'Four micro-skills.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'It is Monday morning. Your classmate asks "주말에 뭐 했어요?" — you should respond with 2-3 past sentences.', 'word', 'Classmate: 주말에 뭐 했어요? — You: 친구하고 등산했어요.', 'Classmate: What did you do on the weekend? — You: I went hiking with a friend.', null, [ACT.orientation]),
 
     createContentItem('했어요 → [해써요]', 'haesseoyo', '연음 + tensification: ㅆ받침 of 했 jumps to 어요.', 'word', '운동했어요. → [운동해써요]', 'I exercised.', null, [ACT.pronunciation]),
     createContentItem('갔어요 → [가써요]', 'gasseoyo', 'Same pattern: ㅆ받침 of 갔 jumps to 어요.', 'word', '학교에 갔어요. → [학꾜에 가써요]', 'I went to school.', null, [ACT.pronunciation]),

@@ -7,6 +7,7 @@ const Flashcard = require('../models/Flashcard');
 const Progress = require('../models/Progress');
 const GuestSession = require('../models/GuestSession');
 const ErrorReport = require('../models/ErrorReport');
+const ContactMessage = require('../models/ContactMessage');
 const Pronunciation = require('../models/Pronunciation');
 const { verifyToken, isAdmin } = require('../middleware/auth');
 const { getAiEntitlements } = require('../utils/subscription');
@@ -53,7 +54,22 @@ const LATIN_LANGUAGE_CODES = new Set(['en', 'es', 'fr', 'de', 'pt', 'it', 'nl', 
 function normalizeLanguageCode(language) {
   const value = String(language || '').trim().toLowerCase();
   if (!value || value === 'auto') return '';
-  return value.split('-')[0];
+  const aliases = {
+    kr: 'ko',
+    kor: 'ko',
+    cn: 'zh',
+    chn: 'zh',
+    jp: 'ja',
+    jpn: 'ja',
+    iw: 'he',
+    in: 'id',
+    tl: 'fil',
+  };
+  if (aliases[value]) return aliases[value];
+  if (value.startsWith('zh')) return 'zh';
+  if (value.startsWith('pt')) return 'pt';
+  const base = value.split(/[-_]/)[0];
+  return aliases[base] || base;
 }
 
 function detectScriptLanguage(text) {
@@ -361,7 +377,7 @@ router.get('/pronunciation-audit', async (req, res) => {
 router.get('/stats', async (req, res) => {
   try {
     // Basic counts
-    const [totalUsers, totalLessons, totalFlashcards, totalProgress, totalGuestSessions, totalErrorReports, openErrorReports] = await Promise.all([
+    const [totalUsers, totalLessons, totalFlashcards, totalProgress, totalGuestSessions, totalErrorReports, openErrorReports, totalContactMessages, openContactMessages] = await Promise.all([
       User.countDocuments(),
       Lesson.countDocuments(),
       Flashcard.countDocuments({ isDefault: { $ne: true } }),
@@ -369,6 +385,8 @@ router.get('/stats', async (req, res) => {
       GuestSession.countDocuments(),
       ErrorReport.countDocuments(),
       ErrorReport.countDocuments({ acknowledged: false }),
+      ContactMessage.countDocuments(),
+      ContactMessage.countDocuments({ acknowledged: false }),
     ]);
 
     // User status counts
@@ -474,6 +492,8 @@ router.get('/stats', async (req, res) => {
         totalGuestSessions,
         totalErrorReports,
         openErrorReports,
+        totalContactMessages,
+        openContactMessages,
       },
       activity: {
         activeUsersToday,
@@ -578,6 +598,112 @@ router.put('/error-reports/clear-open', async (req, res) => {
     });
   } catch (error) {
     console.error('Admin error reports clear error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Get user-submitted contact messages for admins.
+router.get('/contact-messages', async (req, res) => {
+  try {
+    const page = Math.max(parseInt(req.query.page, 10) || 1, 1);
+    const limit = Math.min(Math.max(parseInt(req.query.limit, 10) || 50, 1), 100);
+    const status = String(req.query.status || 'open').toLowerCase();
+    const senderType = String(req.query.senderType || 'all').toLowerCase();
+
+    const statusFilter = {};
+    if (status === 'open') statusFilter.acknowledged = false;
+    if (status === 'acknowledged') statusFilter.acknowledged = true;
+
+    const withSenderFilter = (baseFilter, type) => {
+      const nextFilter = { ...baseFilter };
+      if (type === 'guest') {
+        nextFilter['session.isGuest'] = true;
+      } else if (type === 'registered') {
+        nextFilter.$or = [
+          { 'session.isGuest': false },
+          { userId: { $exists: true, $ne: null } },
+        ];
+      }
+      return nextFilter;
+    };
+
+    const filter = withSenderFilter(statusFilter, senderType);
+
+    const skip = (page - 1) * limit;
+    const [messages, total, openCount, registeredCount, guestCount] = await Promise.all([
+      ContactMessage.find(filter)
+        .populate('userId', 'username email role subscriptionTier')
+        .sort({ createdAt: -1 })
+        .skip(skip)
+        .limit(limit)
+        .lean(),
+      ContactMessage.countDocuments(filter),
+      ContactMessage.countDocuments({ acknowledged: false }),
+      ContactMessage.countDocuments(withSenderFilter(statusFilter, 'registered')),
+      ContactMessage.countDocuments(withSenderFilter(statusFilter, 'guest')),
+    ]);
+
+    res.json({
+      messages,
+      total,
+      page,
+      totalPages: Math.max(Math.ceil(total / limit), 1),
+      openCount,
+      registeredCount,
+      guestCount,
+      senderType,
+    });
+  } catch (error) {
+    console.error('Admin contact messages fetch error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Mark a contact message as read after an admin has reviewed it.
+router.put('/contact-messages/:messageId/acknowledge', async (req, res) => {
+  try {
+    const message = await ContactMessage.findByIdAndUpdate(
+      req.params.messageId,
+      {
+        acknowledged: true,
+        acknowledgedAt: new Date(),
+        acknowledgedBy: req.userId,
+      },
+      { new: true }
+    );
+
+    if (!message) {
+      return res.status(404).json({ message: 'Contact message not found' });
+    }
+
+    res.json({ message: 'Contact message marked as read', contactMessage: message });
+  } catch (error) {
+    console.error('Admin contact message acknowledge error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Clear the open contact message queue without deleting historical messages.
+router.put('/contact-messages/clear-open', async (req, res) => {
+  try {
+    const acknowledgedAt = new Date();
+    const result = await ContactMessage.updateMany(
+      { acknowledged: false },
+      {
+        $set: {
+          acknowledged: true,
+          acknowledgedAt,
+          acknowledgedBy: req.userId,
+        },
+      }
+    );
+
+    res.json({
+      message: 'Open contact messages cleared',
+      acknowledgedCount: result.modifiedCount || 0,
+    });
+  } catch (error) {
+    console.error('Admin contact messages clear error:', error);
     res.status(500).json({ message: 'Server error' });
   }
 });
@@ -963,6 +1089,7 @@ router.post('/seed-lessons', async (req, res) => {
     // Step 2: Seed new multi-language lessons (skip languages already in DB)
     const existingLangs = await Lesson.distinct('targetLang');
     const langDataMap = {
+      en: require('../lessonData/en'),
       es: require('../lessonData/es'),
       fr: require('../lessonData/fr'),
       de: require('../lessonData/de'),
@@ -1018,7 +1145,7 @@ router.post('/seed-flashcards', async (req, res) => {
     const existingLangs = await Flashcard.distinct('targetLang', { isDefault: true });
 
     const langDataMap = {};
-    const langCodes = ['es','fr','de','zh','ja','hi','ar','he','pt','it','nl','ru','id','ms','fil','tr','bn','ta'];
+    const langCodes = ['en','es','fr','de','zh','ja','hi','ar','he','pt','it','nl','ru','id','ms','fil','tr','bn','ta'];
     for (const lang of langCodes) {
       if (existingLangs.includes(lang)) continue;
       try {

@@ -280,8 +280,11 @@ describe('class lesson brief and teaching directives', () => {
     expect(cleaned.activityGoals).toEqual(['Notice tense-sound pronunciation.']);
   });
 
-  it('builds structured fallback parts from classAction without legacy transcript markup', () => {
-    const result = buildClassLessonFallbackResult({
+  it('builds structured fallback parts from classAction without legacy transcript markup', async () => {
+    // buildClassLessonFallbackResult is async because the phrase bank for
+    // non-English natives is lazy-translated on first use. With nativeLanguage='en'
+    // the cache hits synchronously, but the function still returns a Promise.
+    const result = await buildClassLessonFallbackResult({
       transcript: 'Teach Vocabulary: item 1',
       targetLanguage: 'es',
       nativeLanguage: 'en',

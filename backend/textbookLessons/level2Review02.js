@@ -63,8 +63,8 @@ const lesson = {
   ],
   relatedPools: ['topic-people', 'topic-society', 'topic-culture', 'pos-proverbs', 'pos-idioms'],
   content: [
-    createContentItem('Review goal', 'consolidation', 'By end: vent + console + recommend across Units 4-6 grammar.', 'word', 'Units 4+5+6 combined', 'Mixed practice.', null, [ACT.orientation]),
-    createContentItem('Scenario', 'cheer-up chat', 'Your friend vents about a frustrating classmate; you console with a proverb; then propose going to a campus festival to lift the mood.', 'word', 'Friend complains → You console with proverb → You invite to festival', 'Cross-unit flow.', null, [ACT.orientation]),
+    createContentItem('복습 목표', 'bokseup mokpyo', 'By end: vent + console + recommend across Units 4-6 grammar.', 'word', 'Units 4+5+6 combined', 'Mixed practice.', null, [ACT.orientation]),
+    createContentItem('상황 설정', 'sanghwang seoljeong', 'Your friend vents about a frustrating classmate; you console with a proverb; then propose going to a campus festival to lift the mood.', 'word', 'Friend complains → You console with proverb → You invite to festival', 'Cross-unit flow.', null, [ACT.orientation]),
 
     createContentItem('태도', 'taedo', 'attitude (U4)', 'word', '태도가 좋아요.', 'Good attitude.', null, [ACT.vocabulary]),
     createContentItem('불만', 'bulman', 'complaint (U4)', 'word', '불만이 많아요.', 'Many complaints.', null, [ACT.vocabulary]),

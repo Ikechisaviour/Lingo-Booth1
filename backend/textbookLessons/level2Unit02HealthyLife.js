@@ -74,8 +74,8 @@ const lesson = {
   ],
   relatedPools: ['topic-health'],
   content: [
-    createContentItem('Lesson goal', 'health + advanced grammar', 'By end: describe symptoms with sophisticated degree expressions, call 119, understand 한의원.', 'word', 'Functions: degree · habit warning · addition · call 119', 'Four advanced micro-skills.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', '119 call', 'Your roommate suddenly collapses in the dorm. You must call 119 and clearly describe the situation in Korean.', 'word', 'Operator: 어디세요? — You: 금오공과대학교 기숙사예요. 친구가 쓰러졌어요.', 'Operator: Where? — You: Kumoh dorm. My friend collapsed.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: describe symptoms with sophisticated degree expressions, call 119, understand 한의원.', 'word', 'Functions: degree · habit warning · addition · call 119', 'Four advanced micro-skills.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'Your roommate suddenly collapses in the dorm. You must call 119 and clearly describe the situation in Korean.', 'word', 'Operator: 어디세요? — You: 금오공과대학교 기숙사예요. 친구가 쓰러졌어요.', 'Operator: Where? — You: Kumoh dorm. My friend collapsed.', null, [ACT.orientation]),
 
     createContentItem('증상', 'jeungsang', 'symptom', 'word', '어떤 증상이 있어요?', 'What symptoms?', null, [ACT.vocabulary]),
     createContentItem('두통', 'dutong', 'headache', 'word', '두통이 심해요.', 'Bad headache.', null, [ACT.vocabulary]),

@@ -76,8 +76,8 @@ const lesson = {
   ],
   relatedPools: ['topic-health'],
   content: [
-    createContentItem('Lesson goal', 'medical', 'By end: describe symptoms, request sick leave, follow prescription.', 'word', 'Functions: describe · soften · request · follow', 'Medical toolkit.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'sick day', 'You wake up with a fever. Call your manager, request a half-day, see a doctor, follow the prescription.', 'word', 'You: 몸살이 난 것 같습니다. 병가를 신청하고 싶습니다. — Manager: 푹 쉬세요.', 'Body aches. Want sick leave. — Rest well.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: describe symptoms, request sick leave, follow prescription.', 'word', 'Functions: describe · soften · request · follow', 'Medical toolkit.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'You wake up with a fever. Call your manager, request a half-day, see a doctor, follow the prescription.', 'word', 'You: 몸살이 난 것 같습니다. 병가를 신청하고 싶습니다. — Manager: 푹 쉬세요.', 'Body aches. Want sick leave. — Rest well.', null, [ACT.orientation]),
 
     createContentItem('신청합니다 → [신청함니다]', 'sincheonghamnida', '비음화.', 'word', '병가를 신청합니다.', 'Applying for leave.', null, [ACT.pronunciation]),
     createContentItem('식후 30분 → [시쿠 삼십푼]', 'sikhu samsippun', '격음화 + 경음화.', 'word', '식후 30분 후에 드십시오.', '30 min after meal.', null, [ACT.pronunciation]),

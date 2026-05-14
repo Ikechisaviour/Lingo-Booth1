@@ -76,8 +76,8 @@ const lesson = {
   ],
   relatedPools: ['topic-society'],
   content: [
-    createContentItem('Lesson goal', 'rules', 'By end: explain rules + 3 obligation patterns + welcome new hire.', 'word', 'Functions: explain · prohibit · softer command', 'Rule toolkit.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'new hire onboarding', 'A new Filipino coworker just arrived. You explain the factory + dorm rules in clear formal Korean.', 'word', 'You: ~ 지키셔야 합니다. ~ 면 안 됩니다. ~ 도록 하세요.', 'Must follow ~. Must not ~. Make sure ~.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: explain rules + 3 obligation patterns + welcome new hire.', 'word', 'Functions: explain · prohibit · softer command', 'Rule toolkit.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'A new Filipino coworker just arrived. You explain the factory + dorm rules in clear formal Korean.', 'word', 'You: ~ 지키셔야 합니다. ~ 면 안 됩니다. ~ 도록 하세요.', 'Must follow ~. Must not ~. Make sure ~.', null, [ACT.orientation]),
 
     createContentItem('합니다 → [함니다]', 'hamnida', '비음화.', 'word', '지켜야 합니다.', 'Must keep.', null, [ACT.pronunciation]),
     createContentItem('잊지 → [읻찌]', 'itjji', '경음화: ㅈ → 찌.', 'word', '잊지 마십시오.', 'Do not forget.', null, [ACT.pronunciation]),

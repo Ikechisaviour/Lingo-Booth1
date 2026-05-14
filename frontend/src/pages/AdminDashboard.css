@@ -50,12 +50,18 @@
   gap: 8px;
   margin-bottom: 24px;
   border-bottom: 2px solid var(--border-light);
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 2px;
+  scrollbar-width: thin;
 }
 
 .tab-btn {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex: 0 0 auto;
+  min-width: max-content;
   padding: 14px 24px;
   background: transparent;
   border: none;
@@ -66,6 +72,7 @@
   border-bottom: 3px solid transparent;
   margin-bottom: -2px;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .tab-btn:hover {
@@ -470,13 +477,13 @@
 }
 
 .mode-badge.challenge {
-  background: rgba(255, 107, 53, 0.15);
-  color: #ff6b35;
+  background: var(--challenge-primary-light);
+  color: var(--challenge-primary);
 }
 
 .mode-badge.relaxed {
-  background: rgba(88, 204, 2, 0.12);
-  color: #3a9a00;
+  background: var(--relaxed-primary-light);
+  color: var(--relaxed-primary);
 }
 
 /* Actions Cell */
@@ -1416,6 +1423,319 @@
   overflow: auto;
 }
 
+.contact-message-item {
+  border-left-color: var(--primary);
+}
+
+.contact-message-item.guest {
+  border-left-color: var(--text-muted);
+}
+
+.contact-message-filters {
+  display: flex;
+  gap: 10px;
+  margin: 0 0 16px;
+  flex-wrap: wrap;
+}
+
+.contact-message-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border-light);
+  background: var(--surface);
+  color: var(--text-secondary);
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.contact-message-filter:hover,
+.contact-message-filter.active {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.contact-message-filter strong {
+  min-width: 24px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+.contact-message-title {
+  align-items: center;
+}
+
+.contact-message-badge {
+  flex-shrink: 0;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.contact-message-badge.guest {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-light);
+}
+
+.contact-message-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.contact-message-body {
+  margin-top: 12px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  line-height: 1.65;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.billing-admin-section {
+  display: grid;
+  gap: 20px;
+}
+
+.section-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.section-header-row p {
+  color: var(--text-secondary);
+}
+
+.billing-admin-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.billing-pricing-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 18px;
+}
+
+.pricing-control-card {
+  align-content: start;
+}
+
+.billing-card-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.billing-card-title-row p {
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.billing-switch {
+  display: inline-flex !important;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 8px !important;
+  white-space: nowrap;
+}
+
+.billing-switch input {
+  width: auto;
+}
+
+.billing-price-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+  background: var(--primary-soft);
+}
+
+.billing-price-summary span {
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.billing-price-summary strong {
+  color: var(--primary);
+}
+
+.billing-admin-form {
+  display: grid;
+  gap: 14px;
+}
+
+.billing-admin-form h3,
+.billing-admin-panels h3 {
+  margin-bottom: 4px;
+}
+
+.billing-admin-form label {
+  display: grid;
+  gap: 6px;
+  color: var(--text-primary);
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
+.billing-admin-form input,
+.billing-admin-form select,
+.billing-admin-form textarea {
+  width: 100%;
+}
+
+.billing-admin-form textarea {
+  min-height: 88px;
+}
+
+.billing-admin-form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.billing-admin-panels {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr) minmax(0, 0.9fr);
+  gap: 18px;
+}
+
+.billing-admin-list {
+  display: grid;
+  gap: 12px;
+}
+
+.billing-admin-list.compact {
+  gap: 8px;
+}
+
+.billing-admin-list-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  background: var(--bg-secondary);
+}
+
+.billing-admin-list-item div:first-child {
+  display: grid;
+  gap: 3px;
+}
+
+.billing-admin-list-item span,
+.billing-admin-list-item small,
+.billing-admin-list-item p {
+  color: var(--text-secondary);
+}
+
+.billing-admin-list-item p {
+  margin-top: 8px;
+  white-space: pre-wrap;
+}
+
+.billing-admin-actions {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.discount-plan-picker {
+  display: grid;
+  gap: 8px;
+}
+
+.discount-plan-picker > span {
+  color: var(--text-primary);
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
+.discount-plan-picker > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.discount-plan-picker label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.discount-plan-picker input {
+  width: auto;
+}
+
+.discount-list-card {
+  display: grid;
+  gap: 14px;
+}
+
+.discount-list {
+  display: grid;
+  gap: 10px;
+}
+
+.discount-list-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-secondary);
+}
+
+.discount-list-item.active {
+  border-left: 4px solid var(--primary);
+}
+
+.discount-list-item.paused {
+  opacity: 0.72;
+}
+
+.discount-list-item div:first-child {
+  display: grid;
+  gap: 3px;
+}
+
+.discount-list-item span,
+.discount-list-item small {
+  color: var(--text-secondary);
+}
+
 @media (max-width: 768px) {
   .user-detail-panel {
     max-width: 100%;
@@ -1439,6 +1759,20 @@
     flex-direction: column;
   }
   .failure-detail-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-message-grid {
+    grid-template-columns: 1fr;
+  }
+  .section-header-row,
+  .billing-admin-list-item {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .billing-admin-grid,
+  .billing-pricing-grid,
+  .billing-admin-form-row,
+  .billing-admin-panels {
     grid-template-columns: 1fr;
   }
 }

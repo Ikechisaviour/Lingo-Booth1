@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import './PronunciationGuide.css';
 
 const clean = (value) => String(value || '').replace(/\s+/g, ' ').trim();
@@ -32,6 +33,7 @@ export function getPronunciationLines(item = {}, targetText = '') {
 }
 
 function PronunciationGuide({ item, targetText, className = '' }) {
+  const { t } = useTranslation();
   const { learner, official, confidence } = getPronunciationLines(item, targetText);
   if (!learner && !official) return null;
 
@@ -40,7 +42,7 @@ function PronunciationGuide({ item, targetText, className = '' }) {
       {learner && <span className="pronunciation-guide__learner">{learner}</span>}
       {official && <span className="pronunciation-guide__official">{official}</span>}
       {confidence === 'audioFirst' && (
-        <span className="pronunciation-guide__note">Listen closely. This spelling is only a guide.</span>
+        <span className="pronunciation-guide__note">{t('pronunciation.audioFirstNote', 'Listen closely. This spelling is only a guide.')}</span>
       )}
     </div>
   );

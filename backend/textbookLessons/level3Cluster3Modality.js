@@ -76,7 +76,7 @@ const lesson = {
   ],
   relatedPools: ['pos-adverbs-1'],
   content: [
-    createContentItem('Cluster goal', 'modality', 'By end: use 5 advanced modal patterns in interview-quality speech.', 'word', '~ㄹ까요? / 위해 / 밖에 / ~아/어도 / ~ㄹ 수도', 'Five patterns.', null, [ACT.orientation]),
+    createContentItem('단원 목표', 'danwon mokpyo', 'By end: use 5 advanced modal patterns in interview-quality speech.', 'word', '~ㄹ까요? / 위해 / 밖에 / ~아/어도 / ~ㄹ 수도', 'Five patterns.', null, [ACT.orientation]),
 
     createContentItem('-(으)ㄹ까요?', '-(eu)lkkayo', 'shall we?', 'word', '같이 갈까요?', 'Shall we go?', null, [ACT.patterns]),
     createContentItem('N을/를 위해서', 'wihaeseo', 'for the sake of', 'word', '건강을 위해서.', 'For health.', null, [ACT.patterns]),

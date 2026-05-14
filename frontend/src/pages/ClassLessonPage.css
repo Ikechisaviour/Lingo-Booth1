@@ -118,6 +118,47 @@
   gap: 12px;
 }
 
+.class-lesson-page.has-certificate-banner .class-lesson-shell {
+  height: calc(100% - 196px);
+}
+
+.class-certificate-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0 0 12px;
+  padding: 14px 16px;
+  border: 1px solid rgba(88, 204, 2, 0.28);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(88, 204, 2, 0.12), rgba(255, 255, 255, 0.92)),
+    var(--surface);
+  box-shadow: var(--card-shadow);
+}
+
+.class-certificate-banner h2,
+.class-certificate-banner p {
+  margin: 0;
+}
+
+.class-certificate-banner h2 {
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.class-certificate-banner p:not(.class-kicker) {
+  margin-top: 4px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.class-certificate-actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: 8px;
+}
+
 .class-agenda,
 .class-focus,
 .class-tutor {
@@ -746,13 +787,13 @@
 }
 
 .class-language-segment.target {
-  border-left-color: #1cb0f6;
-  background: rgba(28, 176, 246, 0.08);
+  border-left-color: var(--language-target);
+  background: var(--language-target-soft);
 }
 
 .class-language-segment.native {
-  border-left-color: #58cc02;
-  background: rgba(88, 204, 2, 0.08);
+  border-left-color: var(--language-native);
+  background: var(--language-native-soft);
 }
 
 .class-language-segment.romanization {
@@ -941,6 +982,20 @@
     height: auto;
   }
 
+  .class-lesson-page.has-certificate-banner .class-lesson-shell {
+    height: auto;
+  }
+
+  .class-certificate-banner {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .class-certificate-actions,
+  .class-certificate-actions button {
+    width: 100%;
+  }
+
   .class-agenda {
     max-height: none;
   }
@@ -1026,6 +1081,14 @@
     align-items: flex-start;
     min-width: 0;
     padding: 10px;
+  }
+
+  .class-certificate-banner {
+    margin: 0;
+    border-right: none;
+    border-left: none;
+    border-radius: 0;
+    box-shadow: none;
   }
 
   .class-lesson-shell {

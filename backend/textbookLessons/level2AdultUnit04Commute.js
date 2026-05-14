@@ -76,8 +76,8 @@ const lesson = {
   ],
   relatedPools: ['topic-travel'],
   content: [
-    createContentItem('Lesson goal', 'commute', 'By end: state commute formally, ask bus route, handle transfer + payment.', 'word', 'Functions: state · ask · transfer · pay', 'Commute toolkit.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'new commute', 'Your factory is in 산업단지. You must commute from Gumi Station — which bus, where to transfer, how to pay.', 'word', 'You: 어디서 100번 버스를 탑니까? — Local: 저기에서요.', 'Where do I take bus 100? — Over there.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: state commute formally, ask bus route, handle transfer + payment.', 'word', 'Functions: state · ask · transfer · pay', 'Commute toolkit.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'Your factory is in 산업단지. You must commute from Gumi Station — which bus, where to transfer, how to pay.', 'word', 'You: 어디서 100번 버스를 탑니까? — Local: 저기에서요.', 'Where do I take bus 100? — Over there.', null, [ACT.orientation]),
 
     createContentItem('출근합니다 → [출근함니다]', 'chulgeunhamnida', '비음화.', 'word', '버스로 출근합니다.', 'Commute by bus.', null, [ACT.pronunciation]),
     createContentItem('환승 → [환승]', 'hwanseung', 'No major change.', 'word', '환승해야 합니다.', 'Must transfer.', null, [ACT.pronunciation]),

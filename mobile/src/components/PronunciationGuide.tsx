@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleProp, StyleSheet, Text, TextStyle, View, ViewStyle } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { colors } from '../config/theme';
 
 type PronunciationItem = {
@@ -59,6 +60,7 @@ const PronunciationGuide: React.FC<Props> = ({
   learnerStyle,
   officialStyle,
 }) => {
+  const { t } = useTranslation();
   const { learner, official, confidence } = getPronunciationLines(item || {}, targetText);
   if (!learner && !official) return null;
 
@@ -67,7 +69,7 @@ const PronunciationGuide: React.FC<Props> = ({
       {!!learner && <Text style={[styles.learner, learnerStyle]}>{learner}</Text>}
       {!!official && <Text style={[styles.official, officialStyle]}>{official}</Text>}
       {confidence === 'audioFirst' && (
-        <Text style={styles.note}>Listen closely. This spelling is only a guide.</Text>
+        <Text style={styles.note}>{t('pronunciationGuide.audioFirstNote', 'Listen closely. This spelling is only a guide.')}</Text>
       )}
     </View>
   );

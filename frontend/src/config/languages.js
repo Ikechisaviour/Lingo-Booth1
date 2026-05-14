@@ -1,3 +1,5 @@
+import { normalizeLanguageCode } from '../utils/languagePairPolicy';
+
 const LANGUAGES = {
   en:  { name: 'English',    nativeName: 'English',          flag: '🇬🇧', ttsLocale: 'en-US',  hello: 'Hello',       showRomanization: false, latinScript: true  },
   ko:  { name: 'Korean',     nativeName: '한국어',            flag: '🇰🇷', ttsLocale: 'ko-KR',  hello: '안녕하세요',   showRomanization: true,  latinScript: false },
@@ -22,12 +24,44 @@ const LANGUAGES = {
 };
 
 // ── Language code getters ────────────────────────────────────────────────────
-export const getTargetLangCode = () => localStorage.getItem('targetLanguage') || 'ko';
-export const getNativeLangCode = () => localStorage.getItem('nativeLanguage') || 'en';
+const getStoredLanguageCode = (key, fallback) => {
+  const raw = localStorage.getItem(key) || fallback;
+  const normalized = normalizeLanguageCode(raw) || fallback;
+  if (raw && normalized !== raw) {
+    localStorage.setItem(key, normalized);
+  }
+  return normalized;
+};
+
+export const getTargetLangCode = () => getStoredLanguageCode('targetLanguage', 'ko');
+export const getNativeLangCode = () => getStoredLanguageCode('nativeLanguage', 'en');
 
 // ── Display helpers ──────────────────────────────────────────────────────────
 export const getTargetLangName = () => LANGUAGES[getTargetLangCode()]?.name || getTargetLangCode();
 export const getNativeLangName = () => LANGUAGES[getNativeLangCode()]?.name || getNativeLangCode();
+export const getLangName = (code) => LANGUAGES[normalizeLanguageCode(code)]?.name || normalizeLanguageCode(code) || code;
+export const getLangNativeName = (code) => LANGUAGES[normalizeLanguageCode(code)]?.nativeName || getLangName(code);
+
+export const getLanguageDisplayName = (code, t, localizedNameOverride = '') => {
+  const normalized = normalizeLanguageCode(code);
+  const language = LANGUAGES[normalized];
+  if (!language) return normalized || code || '';
+
+  const localizedName = localizedNameOverride || (typeof t === 'function'
+    ? t(`languages.${normalized}`, language.name)
+    : language.name);
+  const nativeName = language.nativeName || language.name;
+  return nativeName && nativeName !== localizedName
+    ? `${localizedName} · ${nativeName}`
+    : localizedName;
+};
+
+export const getLanguageOptionLabel = (code, t, localizedNameOverride = '') => {
+  const normalized = normalizeLanguageCode(code);
+  const language = LANGUAGES[normalized];
+  const displayName = getLanguageDisplayName(normalized, t, localizedNameOverride);
+  return `${language?.flag || ''} ${displayName}`.trim();
+};
 
 export const getTargetTtsLocale = () => LANGUAGES[getTargetLangCode()]?.ttsLocale || getTargetLangCode();
 export const getNativeTtsLocale = () => LANGUAGES[getNativeLangCode()]?.ttsLocale || getNativeLangCode();

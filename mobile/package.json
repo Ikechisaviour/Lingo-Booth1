@@ -8,7 +8,12 @@
     "ios": "expo run:ios",
     "web": "expo start --web",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "audit:i18n-leaks": "node scripts/auditI18nLeaks.js",
+    "audit:locale-keys": "node scripts/auditLocaleKeys.js",
+    "audit:guardrails": "node scripts/auditLocaleKeys.js && node ../frontend/scripts/auditLocalePlaceholders.js && node scripts/auditI18nLeaks.js && npx tsc --noEmit",
+    "i18n:harvest": "node scripts/harvestI18nDefaults.js",
+    "i18n:fill-locales": "node ../backend/scripts/translateLocaleKeys.js --surface=mobile"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.1.1",

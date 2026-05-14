@@ -72,7 +72,7 @@ const lesson = {
   ],
   relatedPools: ['pos-adverbs-1', 'pos-adjectives-1'],
   content: [
-    createContentItem('Cluster goal', 'resemblance', 'By end: express too / about / like / seems naturally.', 'word', '너무 / 쯤·정도·약 / 같다 / ㄴ 것 같다', 'Four patterns.', null, [ACT.orientation]),
+    createContentItem('단원 목표', 'danwon mokpyo', 'By end: express too / about / like / seems naturally.', 'word', '너무 / 쯤·정도·약 / 같다 / ㄴ 것 같다', 'Four patterns.', null, [ACT.orientation]),
 
     createContentItem('너무', 'neomu', 'too / very', 'word', '너무 매워요.', 'Too spicy.', null, [ACT.patterns]),
     createContentItem('-쯤', '-jjeum', 'about (after num)', 'word', '3시쯤 만나요.', 'Meet around 3.', null, [ACT.patterns]),

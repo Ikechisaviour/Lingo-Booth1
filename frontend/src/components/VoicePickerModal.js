@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import speechService from '../services/speechService';
 import './VoicePickerModal.css';
 
@@ -39,6 +40,7 @@ function VoicePickerModal({
   onClose,
   onPicked,
 }) {
+  const { t } = useTranslation();
   const [voices, setVoices] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -99,12 +101,12 @@ function VoicePickerModal({
   if (!open) return null;
 
   return (
-    <div className="voice-picker-backdrop" role="dialog" aria-modal="true" aria-label="Pick a tutor voice">
+    <div className="voice-picker-backdrop" role="dialog" aria-modal="true" aria-label={t('voicePicker.ariaLabel', 'Pick a tutor voice')}>
       <div className="voice-picker-modal">
-        <h2>Pick a voice for {targetLangName || 'your target language'}</h2>
-        <p>Tap a voice to hear a sample sentence, then choose the one you want for class.</p>
+        <h2>{t('voicePicker.title', { lang: targetLangName || t('voicePicker.targetFallback', 'your target language') })}</h2>
+        <p>{t('voicePicker.subtitle', 'Tap a voice to hear a sample sentence, then choose the one you want for class.')}</p>
 
-        {loading && <p className="voice-picker-status">Loading voices…</p>}
+        {loading && <p className="voice-picker-status">{t('voicePicker.loading', 'Loading voices…')}</p>}
         {error && <p className="voice-picker-error">{error}</p>}
 
         <ul className="voice-picker-list">
@@ -112,7 +114,7 @@ function VoicePickerModal({
             <li key={voice.name}>
               <div className="voice-picker-info">
                 <strong>{voice.displayName || voice.name}</strong>
-                <span>{voice.lang} · {voice.gender || 'unspecified'}</span>
+                <span>{voice.lang} · {voice.gender || t('voicePicker.genderUnspecified', 'unspecified')}</span>
               </div>
               <div className="voice-picker-actions">
                 <button
@@ -121,14 +123,14 @@ function VoicePickerModal({
                   onClick={() => preview(voice)}
                   disabled={previewingVoice === voice.name}
                 >
-                  {previewingVoice === voice.name ? 'Playing…' : 'Listen'}
+                  {previewingVoice === voice.name ? t('voicePicker.playing', 'Playing…') : t('voicePicker.listen', 'Listen')}
                 </button>
                 <button
                   type="button"
                   className="voice-picker-choose"
                   onClick={() => choose(voice)}
                 >
-                  Use this voice
+                  {t('voicePicker.useThisVoice', 'Use this voice')}
                 </button>
               </div>
             </li>
@@ -136,7 +138,7 @@ function VoicePickerModal({
         </ul>
 
         <div className="voice-picker-footer">
-          <button type="button" onClick={skip}>Use the default voice for now</button>
+          <button type="button" onClick={skip}>{t('voicePicker.useDefault', 'Use the default voice for now')}</button>
         </div>
       </div>
     </div>

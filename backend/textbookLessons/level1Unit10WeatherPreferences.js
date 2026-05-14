@@ -81,8 +81,8 @@ const lesson = {
   ],
   relatedPools: ['topic-weather', 'topic-society'],
   content: [
-    createContentItem('Lesson goal', 'weather + preference', 'By end: describe weather, name seasons, give reasoned preferences, pick favorites.', 'word', 'Functions: describe · prefer · reason · rank', 'Four micro-skills.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'fall chat', 'A Korean friend asks: 한국 사계절 중에 뭐 좋아해요? You need to pick, explain why, and ask back.', 'word', 'Friend: 어떤 계절을 좋아해요? — You: 가을이 시원해서 좋아요.', 'Friend: Which season do you like? — You: I like autumn because it is cool.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: describe weather, name seasons, give reasoned preferences, pick favorites.', 'word', 'Functions: describe · prefer · reason · rank', 'Four micro-skills.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'A Korean friend asks: 한국 사계절 중에 뭐 좋아해요? You need to pick, explain why, and ask back.', 'word', 'Friend: 어떤 계절을 좋아해요? — You: 가을이 시원해서 좋아요.', 'Friend: Which season do you like? — You: I like autumn because it is cool.', null, [ACT.orientation]),
 
     createContentItem('덥다 → 더워요', 'deowoyo', 'ㅂ-irregular: 덥 → 더우 + 어요 → 더워요.', 'word', '오늘 더워요. → [더워요]', 'It is hot today.', null, [ACT.pronunciation]),
     createContentItem('춥다 → 추워요', 'chuwoyo', 'ㅂ-irregular: 춥 → 추우 + 어요 → 추워요.', 'word', '겨울이 추워요.', 'Winter is cold.', null, [ACT.pronunciation]),

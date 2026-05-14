@@ -1,0 +1,329 @@
+.pricing-page {
+  min-height: 100vh;
+  padding: 28px clamp(16px, 4vw, 48px) 56px;
+  background:
+    radial-gradient(circle at top left, var(--primary-soft-strong), transparent 34%),
+    var(--bg);
+}
+
+.pricing-hero,
+.pricing-institutional,
+.pricing-footer-cta {
+  max-width: 1180px;
+  margin: 0 auto 24px;
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 18px;
+  box-shadow: var(--card-shadow);
+}
+
+.pricing-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  padding: clamp(24px, 4vw, 42px);
+}
+
+.pricing-hero > div:first-child {
+  flex: 1;
+}
+
+.pricing-hero-controls {
+  display: grid;
+  gap: 12px;
+}
+
+.pricing-kicker {
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.pricing-hero h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  max-width: 760px;
+  margin-bottom: 12px;
+}
+
+.pricing-hero p:not(.pricing-kicker),
+.pricing-institutional-copy p,
+.pricing-footer-cta p {
+  color: var(--text-secondary);
+  max-width: 760px;
+}
+
+.pricing-interval {
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  align-self: flex-start;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  white-space: nowrap;
+}
+
+.pricing-interval button {
+  border-radius: 999px;
+  padding: 10px 18px;
+  background: transparent;
+  color: var(--text-secondary);
+  box-shadow: none;
+}
+
+.pricing-interval button.active {
+  background: var(--primary);
+  color: #fff;
+}
+
+.pricing-discount-box {
+  display: grid;
+  gap: 6px;
+  min-width: 250px;
+}
+
+.pricing-discount-box span {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.pricing-discount-box input {
+  min-height: 42px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+  color: var(--text-primary);
+  font: inherit;
+  font-weight: 800;
+  padding: 0 12px;
+  text-transform: uppercase;
+}
+
+.pricing-notice,
+.pricing-form-status {
+  max-width: 1180px;
+  margin: 0 auto 18px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--primary-border-soft);
+  background: var(--primary-soft);
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.pricing-grid {
+  max-width: 1180px;
+  margin: 0 auto 28px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.pricing-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 420px;
+  padding: 24px;
+  border-radius: 18px;
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--card-shadow);
+}
+
+.pricing-card.highlighted {
+  border-color: var(--primary);
+  box-shadow: 0 18px 44px var(--primary-shadow-color);
+}
+
+.pricing-ribbon {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.pricing-card-head {
+  padding-right: 72px;
+}
+
+.pricing-card h2 {
+  font-size: 1.45rem;
+}
+
+.pricing-card-head span,
+.pricing-features li,
+.pricing-institutional-list span {
+  color: var(--text-secondary);
+  font-size: 0.94rem;
+}
+
+.pricing-price {
+  margin: 24px 0 18px;
+}
+
+.pricing-price strong {
+  font-size: 2rem;
+}
+
+.pricing-features {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.pricing-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.pricing-features svg {
+  flex: 0 0 auto;
+  margin-top: 3px;
+  color: var(--primary);
+}
+
+.pricing-primary,
+.pricing-secondary {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: auto;
+  border-radius: 12px;
+}
+
+.pricing-primary {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 4px 0 var(--primary-hover);
+}
+
+.pricing-secondary {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+
+.pricing-primary:disabled,
+.pricing-secondary:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.pricing-institutional {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+  gap: 28px;
+  padding: clamp(22px, 4vw, 36px);
+}
+
+.pricing-institutional-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.pricing-institutional-list div {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 12px;
+  padding: 14px;
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+  background: var(--bg);
+}
+
+.pricing-institutional-list svg {
+  grid-row: span 2;
+  color: var(--primary);
+  margin-top: 4px;
+}
+
+.pricing-lead-form {
+  display: grid;
+  gap: 14px;
+  padding: 20px;
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  background: var(--bg);
+}
+
+.pricing-lead-form label {
+  display: grid;
+  gap: 6px;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.pricing-lead-form input,
+.pricing-lead-form select,
+.pricing-lead-form textarea {
+  width: 100%;
+}
+
+.pricing-form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.pricing-form-status {
+  margin: 0;
+}
+
+.pricing-footer-cta {
+  text-align: center;
+  padding: 28px;
+}
+
+.pricing-footer-cta .pricing-secondary {
+  max-width: 240px;
+  margin: 18px auto 0;
+}
+
+@media (max-width: 960px) {
+  .pricing-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pricing-institutional,
+  .pricing-hero {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 620px) {
+  .pricing-page {
+    padding: 14px 12px 40px;
+  }
+
+  .pricing-grid,
+  .pricing-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-card {
+    min-height: auto;
+  }
+
+  .pricing-interval {
+    width: 100%;
+  }
+}

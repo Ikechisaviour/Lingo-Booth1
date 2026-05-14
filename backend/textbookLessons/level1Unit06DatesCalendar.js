@@ -81,8 +81,8 @@ const lesson = {
   ],
   relatedPools: [],
   content: [
-    createContentItem('Lesson goal', 'dates', 'By end: say any Korean date, name the 7 weekdays, ask & answer when events happen.', 'word', 'Functions: read date · pick day · ask when', 'Three skills for scheduling in Korean.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'birthday plan', 'Your Korean friend\'s birthday is coming up. You need to confirm the date and pick a day to meet.', 'word', 'Friend: 생일이 언제예요? — You: 6월 11일이에요.', 'Friend: When is your birthday? — You: It is June 11.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: say any Korean date, name the 7 weekdays, ask & answer when events happen.', 'word', 'Functions: read date · pick day · ask when', 'Three skills for scheduling in Korean.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'Your Korean friend\'s birthday is coming up. You need to confirm the date and pick a day to meet.', 'word', 'Friend: 생일이 언제예요? — You: 6월 11일이에요.', 'Friend: When is your birthday? — You: It is June 11.', null, [ACT.orientation]),
 
     createContentItem('6 → [육]', 'yuk', '6 is 육. Watch for liaison with adjacent numbers.', 'word', '6월 → [유월]', 'June is irregular: 육 + 월 → 유월.', null, [ACT.pronunciation]),
     createContentItem('10 → [십]', 'sip', '10 is 십. Always tense after a stop받침.', 'word', '학생 십 명 → [학쌩 심 명]', 'ten students.', null, [ACT.pronunciation]),

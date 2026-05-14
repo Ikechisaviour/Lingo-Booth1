@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate, useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { guestXPHelper, authService, userService } from './services/api';
@@ -28,6 +28,11 @@ import AdminSpeakingDemo from './pages/AdminSpeakingDemo';
 import VerifyEmailPage from './pages/VerifyEmailPage';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import ResetPasswordPage from './pages/ResetPasswordPage';
+import ContactPage from './pages/ContactPage';
+import PricingPage from './pages/PricingPage';
+import BillingPage from './pages/BillingPage';
+import InstitutionDashboard from './pages/InstitutionDashboard';
+import CertificateVerifyPage from './pages/CertificateVerifyPage';
 import { getPreferredPublicLanguage, googleLocaleForPublicLanguage } from './utils/publicLanguage';
 import './App.css';
 
@@ -110,6 +115,21 @@ function GuestSignupPrompt({ onClose, onGuestExit }) {
         </button>
       </div>
     </div>
+  );
+}
+
+function GlobalHomeLogo({ hidden }) {
+  const { t } = useTranslation();
+  const location = useLocation();
+
+  if (hidden || location.pathname === '/') {
+    return null;
+  }
+
+  return (
+    <Link to="/" className="global-home-logo" aria-label={t('common.backToHome')}>
+      <img src="/images/logo.png" alt="" />
+    </Link>
   );
 }
 
@@ -282,6 +302,7 @@ function App() {
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('userId');
     localStorage.removeItem('username');
+    localStorage.removeItem('userEmail');
     localStorage.removeItem('userRole');
     localStorage.removeItem('subscriptionTier');
     localStorage.removeItem('aiEntitlements');
@@ -313,13 +334,15 @@ function App() {
   const needsLanguageSetup = localStorage.getItem('needsLanguageSetup') === 'true';
   const languagesReady = !!localStorage.getItem('nativeLanguage') && !!localStorage.getItem('targetLanguage');
   const localDemoPreviewAllowed = ['localhost', '127.0.0.1'].includes(window.location.hostname);
+  const showAppNavbar = canAccessApp && !needsLanguageSetup && languagesReady;
 
   return (
     <GoogleOAuthProvider key={googleLocale} clientId={GOOGLE_CLIENT_ID} locale={googleLocale}>
     <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <AuthSessionListener onSessionEnded={handleSessionEnded} />
       <div className={`App${challengeMode ? ' challenge-theme' : ''}`}>
-        {canAccessApp && !needsLanguageSetup && languagesReady && (
+        <GlobalHomeLogo hidden={showAppNavbar} />
+        {showAppNavbar && (
           <Navbar
             onLogout={handleLogout}
             isGuest={isGuest}
@@ -381,6 +404,9 @@ function App() {
           <Route path="/verify-email" element={<VerifyEmailPage />} />
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
           <Route path="/reset-password" element={<ResetPasswordPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/certificates/verify/:certificateId" element={<CertificateVerifyPage />} />
           <Route
             path="/demo-preview"
             element={
@@ -486,6 +512,18 @@ function App() {
             path="/profile"
             element={
               isAuthenticated ? <ProfilePage onLogout={handleLogout} /> : <Navigate to="/login" />
+            }
+          />
+          <Route
+            path="/billing"
+            element={
+              isAuthenticated ? <BillingPage /> : <Navigate to="/login" />
+            }
+          />
+          <Route
+            path="/institution"
+            element={
+              isAuthenticated ? <InstitutionDashboard /> : <Navigate to="/login" />
             }
           />
 

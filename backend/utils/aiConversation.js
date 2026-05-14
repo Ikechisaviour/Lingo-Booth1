@@ -223,7 +223,22 @@ const LATIN_LANGUAGE_MARKERS = {
 function normalizeLanguageCode(language) {
   const value = String(language || '').trim().toLowerCase();
   if (!value || value === 'auto') return '';
-  return value.split('-')[0];
+  const aliases = {
+    kr: 'ko',
+    kor: 'ko',
+    cn: 'zh',
+    chn: 'zh',
+    jp: 'ja',
+    jpn: 'ja',
+    iw: 'he',
+    in: 'id',
+    tl: 'fil',
+  };
+  if (aliases[value]) return aliases[value];
+  if (value.startsWith('zh')) return 'zh';
+  if (value.startsWith('pt')) return 'pt';
+  const base = value.split(/[-_]/)[0];
+  return aliases[base] || base;
 }
 
 function detectScriptLanguage(text) {
@@ -785,7 +800,7 @@ function makeDisplayPart({ type, language, text, speak = true, speaker = '', sec
   return part;
 }
 
-function buildClassLessonDisplayParts(transcript = '', targetLanguage = 'ko', nativeLanguage = 'en', classAction = null) {
+function buildClassLessonDisplayParts(transcript = '', targetLanguage = 'ko', nativeLanguage = 'en', classAction = null, phrases = FALLBACK_PHRASE_TEMPLATES) {
   const action = classAction || parseClassLessonAction(transcript);
   if (!action) return [];
 
@@ -866,7 +881,7 @@ function buildClassLessonDisplayParts(transcript = '', targetLanguage = 'ko', na
 
   if (mode === 'practice') {
     // Prompt the learner to produce — never reveal the answer up front.
-    pushMeta(`Practice ${title} — your turn.`);
+    pushMeta(fillPhrase(phrases.practiceTitle, { title }));
     const targetPart = pushTarget(target);
     if (itemType === 'word') {
       pushPronunciationGuides(targetPart?.speaker);
@@ -874,41 +889,41 @@ function buildClassLessonDisplayParts(transcript = '', targetLanguage = 'ko', na
     if (pairHasEnglish) {
       const prompt = target
         ? (itemType === 'sentence' || itemType === 'conversation'
-          ? `Read it aloud and tell me what it means. I'll check your answer.`
-          : `What does this mean? Say it aloud or type your answer — I'll confirm.`)
-        : 'Tell me what you remember about this item.';
+          ? phrases.practicePromptSentence
+          : phrases.practicePromptWord)
+        : phrases.practicePromptFallback;
       pushNative(prompt);
     }
     return parts;
   }
 
   if (mode === 'explain') {
-    pushMeta(target ? `Breaking down ${target}.` : `Explaining ${title}.`);
+    pushMeta(target ? fillPhrase(phrases.breakingDown, { target }) : fillPhrase(phrases.explaining, { title }));
     const targetPart = pushTarget(target);
     pushPronunciationGuides(targetPart?.speaker);
     pushNative(native, { speaker: targetPart?.speaker });
     if (exampleTarget || exampleNative) {
-      pushMeta('Example', 'example');
+      pushMeta(phrases.exampleHeader, 'example');
       const exampleTargetPart = pushTarget(exampleTarget, { section: 'example' });
       pushNative(exampleNative, { speaker: exampleTargetPart?.speaker, section: 'example' });
     }
-    pushNative('Ask "why" or "when do I use this?" if you want me to go deeper, or say "next" to move on.');
+    pushNative(phrases.explainCta);
     return parts;
   }
 
   // mode === 'teach'
-  pushMeta(`Let's learn ${title}.`);
+  pushMeta(fillPhrase(phrases.letsLearn, { title }));
   const targetPart = pushTarget(target);
   if (itemType !== 'sentence' && itemType !== 'conversation') {
     pushPronunciationGuides(targetPart?.speaker);
   }
   pushNative(native, { speaker: targetPart?.speaker });
   if (exampleTarget || exampleNative) {
-    pushMeta('Example', 'example');
+    pushMeta(phrases.exampleHeader, 'example');
     const exampleTargetPart = pushTarget(exampleTarget, { section: 'example' });
     pushNative(exampleNative, { speaker: exampleTargetPart?.speaker, section: 'example' });
   }
-  pushNative('Try saying it back, or tell me one thing that stands out — then we can practice it.');
+  pushNative(phrases.teachCta);
   return parts;
 }
 
@@ -934,13 +949,13 @@ function speechPartsFromDisplayParts(parts = []) {
     .slice(0, 8);
 }
 
-function buildClassLessonActionFallback(transcript = '', targetLanguage = 'ko', nativeLanguage = 'en', lessonBrief = null, classAction = null) {
+function buildClassLessonActionFallback(transcript = '', targetLanguage = 'ko', nativeLanguage = 'en', lessonBrief = null, classAction = null, phrases = FALLBACK_PHRASE_TEMPLATES) {
   // Prefer the structured classAction object when provided; fall back to parsing
   // the legacy CLASS_LESSON_ACTION text from the transcript for older callers.
   const action = classAction || parseClassLessonAction(transcript);
   if (!action) return '';
 
-  const displayParts = buildClassLessonDisplayParts(transcript, targetLanguage, nativeLanguage, action);
+  const displayParts = buildClassLessonDisplayParts(transcript, targetLanguage, nativeLanguage, action, phrases);
   if (displayParts.length) return displayPartsToReply(displayParts);
 
   const targetLanguageCode = normalizeLanguageCode(targetLanguage) || 'ko';
@@ -964,9 +979,9 @@ function buildClassLessonActionFallback(transcript = '', targetLanguage = 'ko', 
 
   const lines = [];
   if (pairHasEnglish) {
-    if (mode === 'practice') lines.push(`Practice ${title} — your turn.`);
-    else if (mode === 'explain') lines.push(target ? `Breaking down ${target}.` : `Explaining ${title}.`);
-    else lines.push(`Let's learn ${title}.`);
+    if (mode === 'practice') lines.push(fillPhrase(phrases.practiceTitle, { title }));
+    else if (mode === 'explain') lines.push(target ? fillPhrase(phrases.breakingDown, { target }) : fillPhrase(phrases.explaining, { title }));
+    else lines.push(fillPhrase(phrases.letsLearn, { title }));
   }
 
   if (mode === 'practice') {
@@ -977,9 +992,9 @@ function buildClassLessonActionFallback(transcript = '', targetLanguage = 'ko', 
     if (pairHasEnglish) {
       lines.push(target
         ? (itemType === 'sentence' || itemType === 'conversation'
-          ? 'Read it aloud and tell me what it means. I will confirm.'
-          : 'What does this mean? Say it aloud or type your answer.')
-        : 'Tell me what you remember about this item.');
+          ? phrases.practicePromptSentencePlain
+          : phrases.practicePromptWordPlain)
+        : phrases.practicePromptFallback);
     }
     return lines.join('\n').slice(0, 800);
   }
@@ -990,23 +1005,78 @@ function buildClassLessonActionFallback(transcript = '', targetLanguage = 'ko', 
   else if (targetLine || native) lines.push(targetLine || native);
 
   if (exampleTarget && exampleNative) {
-    lines.push(pairHasEnglish ? `Example: ${exampleTarget} - ${exampleNative}` : `${exampleTarget} - ${exampleNative}`);
+    lines.push(pairHasEnglish ? `${phrases.examplePrefix} ${exampleTarget} - ${exampleNative}` : `${exampleTarget} - ${exampleNative}`);
   } else if (exampleTarget || exampleNative) {
-    lines.push(pairHasEnglish ? `Example: ${exampleTarget || exampleNative}` : (exampleTarget || exampleNative));
+    lines.push(pairHasEnglish ? `${phrases.examplePrefix} ${exampleTarget || exampleNative}` : (exampleTarget || exampleNative));
   }
 
   if (pairHasEnglish) {
     if (mode === 'explain') {
-      lines.push('Ask "why" or "when do I use this?" if you want me to go deeper, or say "next" to move on.');
+      lines.push(phrases.explainCta);
     } else {
-      lines.push('Try saying it back, or tell me one thing that stands out — then we can practice it.');
+      lines.push(phrases.teachCta);
     }
   }
 
   return lines.join('\n').slice(0, 800);
 }
 
-function buildClassLessonFallbackResult({
+// Canonical English templates for tutor fallback prose. These render to the
+// learner ONLY when the AI provider failed and we hand off to the structured
+// fallback path. Translated per-native via the cache below so a Spanish
+// learner never sees "Try saying it back…" in English on the tutor pane.
+//
+// `{{title}}` / `{{target}}` are i18next-style placeholders that survive
+// Google Translate well enough for the languages we ship. If a future
+// language breaks one, fix that template entry directly (this is a backend-
+// only path, not an i18next bundle).
+const FALLBACK_PHRASE_TEMPLATES = Object.freeze({
+  practiceTitle: 'Practice {{title}} — your turn.',
+  practicePromptSentence: "Read it aloud and tell me what it means. I'll check your answer.",
+  practicePromptWord: "What does this mean? Say it aloud or type your answer — I'll confirm.",
+  practicePromptFallback: 'Tell me what you remember about this item.',
+  breakingDown: 'Breaking down {{target}}.',
+  explaining: 'Explaining {{title}}.',
+  explainCta: 'Ask "why" or "when do I use this?" if you want me to go deeper, or say "next" to move on.',
+  letsLearn: "Let's learn {{title}}.",
+  teachCta: 'Try saying it back, or tell me one thing that stands out — then we can practice it.',
+  exampleHeader: 'Example',
+  examplePrefix: 'Example:',
+  practicePromptSentencePlain: 'Read it aloud and tell me what it means. I will confirm.',
+  practicePromptWordPlain: 'What does this mean? Say it aloud or type your answer.',
+});
+
+const fallbackPhraseCache = new Map();
+fallbackPhraseCache.set('en', { ...FALLBACK_PHRASE_TEMPLATES });
+
+async function getLocalizedFallbackPhrases(nativeLanguage) {
+  const code = normalizeLanguageCode(nativeLanguage) || 'en';
+  if (fallbackPhraseCache.has(code)) return fallbackPhraseCache.get(code);
+
+  const keys = Object.keys(FALLBACK_PHRASE_TEMPLATES);
+  const texts = keys.map((k) => FALLBACK_PHRASE_TEMPLATES[k]);
+
+  try {
+    const results = await batchTranslateRaw(texts, 'en', code);
+    const localized = {};
+    keys.forEach((k, i) => {
+      const translated = results?.[i]?.failed ? '' : results?.[i]?.text;
+      localized[k] = translated && translated.trim() ? translated : FALLBACK_PHRASE_TEMPLATES[k];
+    });
+    fallbackPhraseCache.set(code, localized);
+    return localized;
+  } catch (_) {
+    // Translation failed — return English templates. They'll be retried on
+    // the next fallback request; not caching keeps the door open to a fix.
+    return { ...FALLBACK_PHRASE_TEMPLATES };
+  }
+}
+
+function fillPhrase(template, vars = {}) {
+  return String(template || '').replace(/\{\{(\w+)\}\}/g, (_, name) => (vars[name] != null ? String(vars[name]) : `{{${name}}}`));
+}
+
+async function buildClassLessonFallbackResult({
   transcript = '',
   targetLanguage = 'ko',
   nativeLanguage = 'en',
@@ -1016,10 +1086,11 @@ function buildClassLessonFallbackResult({
   classAction = null,
 } = {}) {
   const safeClassAction = sanitizeClassAction(classAction);
-  const displayParts = buildClassLessonDisplayParts(transcript, targetLanguage, nativeLanguage, safeClassAction);
+  const phrases = await getLocalizedFallbackPhrases(nativeLanguage);
+  const displayParts = buildClassLessonDisplayParts(transcript, targetLanguage, nativeLanguage, safeClassAction, phrases);
   const reply = displayParts.length
     ? displayPartsToReply(displayParts)
-    : buildClassLessonActionFallback(transcript, targetLanguage, nativeLanguage, lessonBrief, safeClassAction);
+    : buildClassLessonActionFallback(transcript, targetLanguage, nativeLanguage, lessonBrief, safeClassAction, phrases);
 
   if (!reply) return null;
 

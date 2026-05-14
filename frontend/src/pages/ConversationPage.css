@@ -481,13 +481,13 @@
 }
 
 .language-segment.target {
-  border-left-color: #1cb0f6;
-  background: rgba(28, 176, 246, 0.08);
+  border-left-color: var(--language-target);
+  background: var(--language-target-soft);
 }
 
 .language-segment.native {
-  border-left-color: #58cc02;
-  background: rgba(88, 204, 2, 0.08);
+  border-left-color: var(--language-native);
+  background: var(--language-native-soft);
 }
 
 .language-segment.romanization {

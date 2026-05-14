@@ -81,8 +81,8 @@ const lesson = {
   ],
   relatedPools: ['topic-people'],
   content: [
-    createContentItem('Lesson goal', 'ability', 'By end: state abilities at every grade, distinguish 못 vs 안, reply modestly to compliments.', 'word', 'Functions: ability · grade · modesty', 'Three micro-skills.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', '동아리 interview', 'A Kumoh club leader asks "한국어 잘 하세요? 김치 만들 수 있어요?" — you should answer truthfully but modestly.', 'word', 'Leader: 한국어 잘 하세요? — You: 아니요, 아직 잘 못해요. 좀 할 수 있어요.', 'Leader: Do you speak Korean well? — You: No, I cannot yet. I can speak a little.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: state abilities at every grade, distinguish 못 vs 안, reply modestly to compliments.', 'word', 'Functions: ability · grade · modesty', 'Three micro-skills.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'A Kumoh club leader asks "한국어 잘 하세요? 김치 만들 수 있어요?" — you should answer truthfully but modestly.', 'word', 'Leader: 한국어 잘 하세요? — You: 아니요, 아직 잘 못해요. 좀 할 수 있어요.', 'Leader: Do you speak Korean well? — You: No, I cannot yet. I can speak a little.', null, [ACT.orientation]),
 
     createContentItem('만들 수 → [만들쑤]', 'mandeulssu', '경음화: ㄹ받침 + ㅅ → ㄹ + ㅆ.', 'word', '김치를 만들 수 있어요. → [만들쑤 이써요]', 'I can make kimchi.', null, [ACT.pronunciation]),
     createContentItem('못해요 → [모태요]', 'motaeyo', '격음화: ㅅ받침 + ㅎ → ㅌ.', 'word', '운전 못해요. → [운전 모태요]', 'I cannot drive.', null, [ACT.pronunciation]),

@@ -261,10 +261,10 @@
   text-transform: capitalize;
 }
 
-.detail-difficulty-beginner { background: #58cc02; }
+.detail-difficulty-beginner { background: var(--mastered); }
 .detail-difficulty-intermediate { background: #1cb0f6; }
 .detail-difficulty-advanced { background: #a560e8; }
-.detail-difficulty-sentences { background: #ff6b35; }
+.detail-difficulty-sentences { background: var(--primary); }
 
 .detail-item-stats {
   display: flex;
@@ -307,7 +307,7 @@
 
 .btn-review {
   padding: 8px 16px;
-  background: var(--accent-green, #58cc02);
+  background: var(--accent-green);
   color: white;
   border: none;
   border-radius: 10px;
@@ -321,7 +321,7 @@
 }
 
 .btn-review:hover {
-  background: #46a302;
+  background: var(--accent-green-dark);
   transform: translateY(-1px);
   color: white;
 }

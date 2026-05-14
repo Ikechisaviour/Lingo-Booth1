@@ -1,0 +1,857 @@
+// Level 1 — Foundation: English Sound System & IPA Basics
+// First lesson on the English / Foundation track. Pre-grammar, pre-vocabulary.
+// Covers the 44 phonemes of English, the spelling-sound gap, word stress,
+// connected speech, and the sounds most learners find hardest.
+//
+// All content is authored in English (the target). The AI conversation tutor
+// reads this curriculum and delivers it to each learner in their preferred
+// native language at runtime — never assume a specific L1 in this file.
+//
+// Glosses follow the rich-gloss rule (AGENTS.md → "Gloss Richness"):
+// every nativeText, exampleNative, and breakdown.native carries register,
+// usage context, or contrast info — not a bare definition.
+
+const createContentItem = (
+  target,
+  ipa,
+  note,
+  type = 'word',
+  example = '',
+  exampleNote = '',
+  breakdown = null,
+  activityIds = [],
+) => ({
+  type,
+  activityIds,
+  targetText: target,
+  romanization: ipa,
+  nativeText: note,
+  pronunciation: ipa,
+  exampleTarget: example || target,
+  exampleNative: exampleNote || note,
+  // Legacy keys for UI fallback — same convention as the Korean source:
+  // the "korean" slot holds the target text, the "english" slot holds the note.
+  korean: target,
+  english: note,
+  example: example || target,
+  exampleEnglish: exampleNote || note,
+  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.target, native: b.note, korean: b.target, english: b.note })) } : {}),
+});
+
+const ACT = {
+  intro: 'en-foundation-intro',
+  alphabet: 'en-foundation-alphabet',
+  shortVowels: 'en-foundation-short-vowels',
+  longVowels: 'en-foundation-long-vowels-diphthongs',
+  schwa: 'en-foundation-schwa',
+  voicedPairs: 'en-foundation-voiced-pairs',
+  tricky: 'en-foundation-tricky-consonants',
+  wordStress: 'en-foundation-word-stress',
+  weakForms: 'en-foundation-weak-forms',
+  connectedSpeech: 'en-foundation-connected-speech',
+  spelling: 'en-foundation-spelling-vs-sound',
+  reading: 'en-foundation-reading-practice',
+};
+
+const activities = [
+  {
+    id: ACT.intro,
+    section: 'Why a Phonics Lesson',
+    title: 'English has 26 letters but 44 sounds — why this matters',
+    goals: [
+      'Understand that English spelling does not map cleanly to sound; the same letter can spell several sounds, and the same sound can be spelled several ways.',
+      'See why memorizing letters alone never tells you how a word is pronounced — sound and spelling must be learned together.',
+      'Know that the IPA (International Phonetic Alphabet) gives one symbol per sound and appears in every modern dictionary.',
+    ],
+    task: 'Read the four structural facts. By the end you should be able to read an IPA-spelled English word out loud, even if you have never seen the word before.',
+  },
+  {
+    id: ACT.alphabet,
+    section: 'The Alphabet',
+    title: 'A–Z — the 26 letters and their names',
+    goals: [
+      'Recite the alphabet song A through Z so you can spell your own name and address out loud.',
+      'Distinguish the letter NAME (how you spell it aloud) from the letter SOUND (how it acts inside a word) — these are often different.',
+    ],
+    task: 'Spell your full name out loud, one letter at a time, using each letter\'s name (not its sound).',
+  },
+  {
+    id: ACT.shortVowels,
+    section: 'Short Vowels',
+    title: 'The 6 short vowels — /æ/ /ɛ/ /ɪ/ /ɒ/ /ʌ/ /ʊ/',
+    goals: [
+      'Recognize the 6 short-vowel sounds in minimal pairs (cat / bed / sit / hot / cup / book), which differ only in the vowel.',
+      'Notice these vowels are quick and lax — never held long, never tense like their long-vowel counterparts.',
+    ],
+    task: 'Read each minimal-pair set aloud and hold your hand on your jaw to feel how the mouth opens differently for each vowel.',
+  },
+  {
+    id: ACT.longVowels,
+    section: 'Long Vowels & Diphthongs',
+    title: 'Long vowels and the 8 diphthongs (gliding vowels)',
+    goals: [
+      'Hear long vowels /iː/ /uː/ /ɜːr/ — tense and held longer than their short pairs (sit vs seat, book vs boot).',
+      'Hear diphthongs /eɪ/ /aɪ/ /ɔɪ/ /aʊ/ /oʊ/ — two vowel sounds glided together inside one syllable, never a flat single vowel.',
+    ],
+    task: 'Read each long vowel and diphthong aloud, drilling the minimal pair ship /ɪ/ vs sheep /iː/ five times to internalize the length contrast.',
+  },
+  {
+    id: ACT.schwa,
+    section: 'The Schwa',
+    title: 'Schwa /ə/ — the most common vowel in English',
+    goals: [
+      'Know that every unstressed vowel in English tends to collapse to /ə/ — schwa is what unstressed syllables sound like.',
+      'Spot the schwa inside common words: about /əˈbaʊt/, banana /bəˈnænə/, the /ðə/ — three of the most frequent words in the language.',
+    ],
+    task: 'Read 5 multi-syllable words and mark the schwa in each one; if you can hear schwas, you can mimic natural English rhythm.',
+  },
+  {
+    id: ACT.voicedPairs,
+    section: 'Voiced / Voiceless Pairs',
+    title: 'The 8 voiced/voiceless consonant pairs',
+    goals: [
+      'Hear the difference between voiced and voiceless consonants by feeling vocal-cord vibration with a hand on the throat.',
+      'Identify all 8 pairs by same mouth position + different voicing: p/b, t/d, k/g, f/v, s/z, ʃ/ʒ, tʃ/dʒ, θ/ð.',
+    ],
+    task: 'For each pair, say both sounds with a hand on your throat — the voiced one buzzes, the voiceless one is silent.',
+  },
+  {
+    id: ACT.tricky,
+    section: 'Tricky Consonants',
+    title: 'Sounds that often need extra drilling',
+    goals: [
+      'Pronounce /θ/ and /ð/ (the two "th" sounds) by placing the tongue tip between the upper and lower teeth — a position no language other than English commonly uses.',
+      'Distinguish /l/ from /r/ — /l/ touches the roof of the mouth firmly, /r/ touches nothing and curls back.',
+      'Distinguish /f/ from /p/ and /v/ from /b/ — /f/ and /v/ use the upper teeth on the lower lip; /p/ and /b/ use both lips together.',
+    ],
+    task: 'Drill the three minimal pairs (think/sink, light/right, very/berry) ten times each until you can switch between them cleanly without warmup.',
+  },
+  {
+    id: ACT.wordStress,
+    section: 'Word Stress',
+    title: 'Every English word with 2+ syllables has one stressed syllable',
+    goals: [
+      'Find the stressed syllable in a multi-syllable word; it is louder, longer, and higher in pitch than the others.',
+      'Know that wrong stress can make a familiar word unintelligible — native listeners locate words primarily by stress pattern, not by individual vowel quality.',
+    ],
+    task: 'Underline the stressed syllable in 5 words (hello, banana, computer, important, beautiful) and say each one twice.',
+  },
+  {
+    id: ACT.weakForms,
+    section: 'Sentence Stress & Weak Forms',
+    title: 'Function words shrink — content words stay strong',
+    goals: [
+      'Know that English is stress-timed: content words (nouns, main verbs, adjectives, adverbs) take stress; function words (am/are/is/can/the/of) ride between strong beats.',
+      'Hear how am, are, is, have, can, of, to all reduce to schwa in fast speech — recognizing these weak forms is essential for understanding natural English.',
+    ],
+    task: 'Listen to "I am a student" said quickly and notice how "am" almost disappears: /aɪ əm ə ˈstuːdənt/.',
+  },
+  {
+    id: ACT.connectedSpeech,
+    section: 'Connected Speech',
+    title: 'How words blend together in real conversation',
+    goals: [
+      'Understand linking: a final consonant joins the next vowel, so "an apple" sounds like "a napple" /ə ˈnæpl/.',
+      'Recognize the everyday contractions (I am → I\'m, you are → you\'re, do not → don\'t) — using full forms in speech sounds stiff or emphatic.',
+      'Know that fast English drops sounds (elision) and changes others (assimilation) — these are not lazy speech, they are how natives normally talk.',
+    ],
+    task: 'Read "Nice to meet you" first slowly, then at full speed; notice "to meet you" naturally becomes /tə ˈmiːtʃuː/.',
+  },
+  {
+    id: ACT.spelling,
+    section: 'Spelling vs Sound',
+    title: 'Why English spelling is irregular — and how to cope',
+    goals: [
+      'Know the 5 main reasons English spelling is irregular: foreign borrowings, the Great Vowel Shift, preserved silent letters, no central spelling reform, and dialect mixing.',
+      'Memorize a few high-yield patterns — -tion = /ʃən/, -sion = /ʃən/ or /ʒən/, -ough has 7 distinct pronunciations — and use IPA to verify everything else.',
+    ],
+    task: 'Read 5 trap words (enough, through, thought, though, cough) and verify each pronunciation against the IPA.',
+  },
+  {
+    id: ACT.reading,
+    section: 'Reading Practice',
+    title: 'Read a full English sentence applying every rule',
+    goals: [
+      'Read a short English sentence aloud with correct word stress, schwa reduction, and consonant-vowel linking — the three habits that make English sound English.',
+      'Identify which sound or rule is happening at each point so you can recognize them in any new sentence later.',
+    ],
+    task: 'Read aloud: "Hello! My name is Sarah. I\'m a student at MIT." Then point out every schwa and every linked word boundary.',
+  },
+];
+
+const level1Foundation = {
+  title: 'Foundation: English Sounds & IPA — Reading & Pronouncing Real English',
+  category: 'greetings', // foundation lessons live under greetings until a 'foundation' category is added
+  difficulty: 'beginner',
+  targetLang: 'en',
+  nativeLang: 'en',
+  track: 'textbook',
+  lessonType: 'foundation',
+  activities,
+  expressionPractice: [],
+  relatedPools: [],
+  content: [
+    // ────────────────────────────────────────────────────────────────────
+    // Activity 1 — Why a Phonics Lesson
+    // ────────────────────────────────────────────────────────────────────
+    createContentItem(
+      'English alphabet vs sounds',
+      '26 letters → 44 sounds',
+      'English uses 26 letters to represent roughly 44 distinct speech sounds. The mismatch is why spelling cannot be trusted to predict pronunciation — and why every reliable dictionary shows IPA next to a word.',
+      'word',
+      '"cat" /kæt/ — 3 letters, 3 sounds. "though" /ðoʊ/ — 6 letters, only 2 sounds.',
+      '"cat" is a rare clean case where each letter maps to one sound; "though" has four silent letters out of six.',
+      [
+        { target: '26 letters', note: 'the visible alphabet A through Z' },
+        { target: '44 phonemes', note: 'the actual sounds produced when speaking; varies slightly by dialect' },
+        { target: '1 letter ≠ 1 sound', note: 'one letter can spell several sounds (the "g" in go vs giant) and one sound can be spelled several ways (/f/ as f, ph, gh)' },
+      ],
+      [ACT.intro],
+    ),
+    createContentItem(
+      'Why English spelling is irregular',
+      'historical reasons',
+      'English spelling froze in the 1400s while pronunciation kept evolving, then absorbed words from French, Latin, Greek, and dozens of other languages with their original spellings preserved. Learners must accept this and lean on IPA, not letters, for pronunciation.',
+      'word',
+      'know /noʊ/ — silent k preserved from Old English. through /θruː/ — silent gh preserved from Middle English. ballet /bæˈleɪ/ — kept French.',
+      'Each example shows a different reason: archaic letter preserved, archaic letter preserved, foreign spelling adopted.',
+      null,
+      [ACT.intro],
+    ),
+    createContentItem(
+      'The IPA solves it',
+      'one symbol = one sound',
+      'The International Phonetic Alphabet gives exactly one symbol per sound, so /...../ always tells you the truth even when spelling lies. Every dictionary in this course shows the IPA — read it instead of guessing from the letters.',
+      'word',
+      'cat → /kæt/ · sheep → /ʃiːp/ · about → /əˈbaʊt/',
+      'IPA notation is universal — the same symbol means the same sound in any dictionary worldwide.',
+      [
+        { target: '/.../ slashes', note: 'mark IPA notation; without them you cannot tell IPA apart from regular spelling' },
+        { target: 'ˈ before a syllable', note: 'shows which syllable carries the main stress — louder, longer, higher pitch' },
+        { target: 'ː after a vowel', note: 'shows the vowel is held long; absence means short' },
+      ],
+      [ACT.intro],
+    ),
+    createContentItem(
+      'How to use this Foundation',
+      'practice workflow',
+      'By the end of this lesson you should be able to recite the alphabet, hear the 44 English sounds apart, and read an IPA-spelled word aloud without seeing the regular spelling. A solid phonics base makes every later lesson dramatically easier.',
+      'word',
+      'Goal: by the end, hear "ship" /ʃɪp/ vs "sheep" /ʃiːp/ as obviously different and pronounce both correctly.',
+      'If you cannot hear or produce this minimal pair, return to the long/short vowel section before moving on.',
+      null,
+      [ACT.intro],
+    ),
+
+    // ────────────────────────────────────────────────────────────────────
+    // Activity 2 — The Alphabet
+    // ────────────────────────────────────────────────────────────────────
+    createContentItem('A', '/eɪ/', 'First letter; its letter-name is the diphthong /eɪ/, but inside short words it usually sounds /æ/ (apple) or /ɑː/ (father).', 'word', 'A as in apple /ˈæpl/', 'Letter-name /eɪ/ vs in-word /æ/ — the same letter often sounds different depending on position.', null, [ACT.alphabet]),
+    createContentItem('B', '/biː/', 'Second letter; voiced bilabial stop /b/. The throat vibrates as the lips release — contrast with voiceless /p/ which has no vibration.', 'word', 'B as in book /bʊk/', '/b/ is voiced — put a hand on your throat to feel the buzz.', null, [ACT.alphabet]),
+    createContentItem('C', '/siː/', 'Third letter; pronounced /k/ before a/o/u (cat, cot, cut) and /s/ before e/i/y (cell, city, cycle). C never spells its own letter-name sound.', 'word', 'C as in cat /kæt/ or city /ˈsɪti/', 'The two-sound rule for C is one of the more reliable patterns in English spelling.', null, [ACT.alphabet]),
+    createContentItem('D', '/diː/', 'Fourth letter; voiced alveolar stop /d/. Tongue tip touches just behind the upper teeth, throat vibrates.', 'word', 'D as in dog /dɒɡ/', 'Voiced pair of /t/ — same tongue position, different voicing.', null, [ACT.alphabet]),
+    createContentItem('E', '/iː/', 'Fifth and most common letter in English; often silent at the end of a word (where it lengthens the previous vowel: hop vs hope).', 'word', 'E as in egg /ɛɡ/', 'Stressed inside a short word E sounds /ɛ/; at the end of a word E is usually silent.', null, [ACT.alphabet]),
+    createContentItem('F', '/ɛf/', 'Sixth letter; voiceless labiodental fricative /f/. Upper teeth touch the lower lip and push air — this lip-teeth contact is the key feature.', 'word', 'F as in fish /fɪʃ/', 'Distinct from /p/ — F uses teeth on lip, P uses both lips together.', null, [ACT.alphabet]),
+    createContentItem('G', '/dʒiː/', 'Seventh letter; sounds /ɡ/ before a/o/u (go, got, gut) and often /dʒ/ before e/i/y (gem, giant, gym), though exceptions exist (get, give).', 'word', 'G as in go /ɡoʊ/ or giant /ˈdʒaɪənt/', 'G has the same hard/soft split as C but with more exceptions — always check the IPA.', null, [ACT.alphabet]),
+    createContentItem('H', '/eɪtʃ/', 'Eighth letter; voiceless glottal /h/. A soft, breathy puff from the throat with no tongue or lip action. Silent in many loanwords (hour, honest).', 'word', 'H as in hello /həˈloʊ/', 'Pronounced H is light; never throaty or harsh.', null, [ACT.alphabet]),
+    createContentItem('I', '/aɪ/', 'Ninth letter; the letter-name is /aɪ/ but inside short words it usually sounds /ɪ/ (sit). Always capitalized when used alone as the pronoun "I".', 'word', 'I as in sit /sɪt/', 'Pronoun-I is unique to English — most languages don\'t capitalize their first-person pronoun.', null, [ACT.alphabet]),
+    createContentItem('J', '/dʒeɪ/', 'Tenth letter; voiced affricate /dʒ/ (start of "judge"). One of the rarer letters in English text.', 'word', 'J as in job /dʒɒb/', 'Voiced pair of /tʃ/ (church) — same articulation, different voicing.', null, [ACT.alphabet]),
+    createContentItem('K', '/keɪ/', 'Eleventh letter; voiceless velar stop /k/, often with a strong puff of air (aspirated) at the start of a word. Silent before n at the start of native words (know, knee).', 'word', 'K as in key /kiː/', 'Aspirated /k/ at word start; lighter /k/ inside a word.', null, [ACT.alphabet]),
+    createContentItem('L', '/ɛl/', 'Twelfth letter; voiced lateral /l/. Tongue tip presses firmly against the ridge behind the upper teeth — the firm contact is what distinguishes /l/ from /r/.', 'word', 'L as in love /lʌv/', 'Many learners mis-pronounce English /l/ as too soft — make the tongue contact firm and audible.', null, [ACT.alphabet]),
+    createContentItem('M', '/ɛm/', 'Thirteenth letter; voiced bilabial nasal /m/. Lips closed, air exits through the nose.', 'word', 'M as in moon /muːn/', 'Hum with closed lips and you are making /m/.', null, [ACT.alphabet]),
+    createContentItem('N', '/ɛn/', 'Fourteenth letter; voiced alveolar nasal /n/. Tongue tip on the alveolar ridge, air through the nose.', 'word', 'N as in name /neɪm/', 'Same place as /d/ and /t/ but with airflow through the nose.', null, [ACT.alphabet]),
+    createContentItem('O', '/oʊ/', 'Fifteenth letter; the letter-name is the diphthong /oʊ/ (always glides toward /ʊ/, never a flat single vowel). Inside short closed words it sounds /ɒ/ (hot) or /ʌ/ (son).', 'word', 'O as in go /ɡoʊ/', 'English O is never a pure single vowel like Spanish or Korean — it always glides.', null, [ACT.alphabet]),
+    createContentItem('P', '/piː/', 'Sixteenth letter; voiceless bilabial stop /p/, strongly aspirated at the start of a stressed syllable. Both lips press together and release with a puff of air.', 'word', 'P as in pen /pɛn/', 'Hold a tissue in front of your mouth; it should flap clearly on word-initial /p/.', null, [ACT.alphabet]),
+    createContentItem('Q', '/kjuː/', 'Seventeenth letter; almost always followed by U and pronounced /kw/ as a pair. Standalone Q is rare outside loanwords (qi, Qatar).', 'word', 'Q as in question /ˈkwɛstʃən/', '"qu" behaves as a single unit /kw/ in almost every English word.', null, [ACT.alphabet]),
+    createContentItem('R', '/ɑːr/', 'Eighteenth letter; American /r/ is unique — the tongue curls back without touching the roof, lips slightly rounded. Different from rolled-r or tapped-r found in most other languages.', 'word', 'R as in run /rʌn/', 'If your tongue touches anything, the sound is wrong — English /r/ is the only consonant with no tongue contact.', null, [ACT.alphabet]),
+    createContentItem('S', '/ɛs/', 'Nineteenth letter; voiceless alveolar fricative /s/. Often pronounced /z/ between vowels (rose, busy) or at the end of plurals after a voiced sound (dogs /dɒɡz/).', 'word', 'S as in sun /sʌn/', 'S is voiceless at the start, often voiced /z/ in the middle or end — check the IPA.', null, [ACT.alphabet]),
+    createContentItem('T', '/tiː/', 'Twentieth letter; voiceless alveolar stop /t/, strongly aspirated at the start of stressed syllables. In American English, /t/ between vowels often becomes a soft flap (water → ˈwɒɾər).', 'word', 'T as in time /taɪm/', 'Aspirated word-initial /t/; tapped or flapped between vowels in American English.', null, [ACT.alphabet]),
+    createContentItem('U', '/juː/', 'Twenty-first letter; the letter-name is /juː/ (you), but inside short closed words it usually sounds /ʌ/ (cup) or /ʊ/ (put). After a consonant, "u_e" often makes the /juː/ sound (cute, music).', 'word', 'U as in cup /kʌp/', 'Three common values: /juː/, /ʌ/, /ʊ/, each tied to a different spelling pattern.', null, [ACT.alphabet]),
+    createContentItem('V', '/viː/', 'Twenty-second letter; voiced labiodental fricative /v/. Upper teeth touch the lower lip and the throat vibrates — exactly the same articulation as /f/ but voiced.', 'word', 'V as in voice /vɔɪs/', 'Distinct from /b/, which uses both lips and no teeth-on-lip contact.', null, [ACT.alphabet]),
+    createContentItem('W', '/ˈdʌbljuː/', 'Twenty-third letter; voiced labio-velar /w/. Lips round into a small tight circle, then move outward — like a brief /uː/ that starts the next vowel.', 'word', 'W as in water /ˈwɔːtər/', 'Lip rounding is what separates /w/ from /v/ — completely different mouth shape.', null, [ACT.alphabet]),
+    createContentItem('X', '/ɛks/', 'Twenty-fourth letter; almost always pronounced as the consonant cluster /ks/. Sometimes /ɡz/ between vowels (exam /ɪɡˈzæm/).', 'word', 'X as in box /bɒks/', 'X is two sounds, not one — count it as a consonant cluster.', null, [ACT.alphabet]),
+    createContentItem('Y', '/waɪ/', 'Twenty-fifth letter; a consonant /j/ at the start of a syllable (yes), a vowel /ɪ/ at the end of short syllables (gym), a vowel /aɪ/ at the end of long syllables (my), and /i/ at the end of multi-syllable words (happy).', 'word', 'Y as in yes /jɛs/, my /maɪ/, happy /ˈhæpi/', 'Y switches between consonant and vowel based on position in the word.', null, [ACT.alphabet]),
+    createContentItem('Z', '/ziː/', 'Twenty-sixth letter; voiced alveolar fricative /z/. Identical articulation to /s/ but with throat vibration. British letter-name is /zɛd/, American is /ziː/.', 'word', 'Z as in zoo /zuː/', 'Z is the voiced pair of S — make S, then turn on the throat vibration.', null, [ACT.alphabet]),
+
+    // ────────────────────────────────────────────────────────────────────
+    // Activity 3 — Short Vowels
+    // ────────────────────────────────────────────────────────────────────
+    createContentItem(
+      '/æ/ — cat',
+      'open front',
+      'Short, flat front vowel. Mouth opens wide and lips pull slightly to the sides. Distinct from /ɛ/ (bed) in that the jaw drops noticeably lower.',
+      'word',
+      'cat /kæt/, hat /hæt/, apple /ˈæpl/, man /mæn/',
+      'A signature American vowel; British English uses a similar but slightly tenser version.',
+      null,
+      [ACT.shortVowels],
+    ),
+    createContentItem(
+      '/ɛ/ — bed',
+      'mid front',
+      'Mid-open front vowel, halfway between /æ/ and /ɪ/ in mouth height. Shorter and laxer than the diphthong /eɪ/ in "day".',
+      'word',
+      'bed /bɛd/, red /rɛd/, hello /həˈloʊ/, head /hɛd/',
+      'Common in everyday function words: get, let, them, when.',
+      null,
+      [ACT.shortVowels],
+    ),
+    createContentItem(
+      '/ɪ/ — sit',
+      'short i',
+      'Short, relaxed front vowel with the lips less spread than long /iː/. The most commonly confused vowel for learners — many shorten /iː/ until both vowels merge.',
+      'word',
+      'sit /sɪt/, big /bɪɡ/, ship /ʃɪp/, kit /kɪt/',
+      'Stay relaxed and short — tense it up and it turns into /iː/ (seat).',
+      null,
+      [ACT.shortVowels],
+    ),
+    createContentItem(
+      '/ɒ/ — hot (UK) / /ɑː/ (US)',
+      'open back',
+      'Open back vowel; lightly rounded in British English, longer and less rounded in American English. The same word "hot" sounds different across dialects but spells the same.',
+      'word',
+      'hot /hɒt/ /hɑːt/, box /bɒks/, dog /dɒɡ/, stop /stɒp/',
+      'Treat as the same vowel for spelling purposes; let dialect choose the exact shade.',
+      null,
+      [ACT.shortVowels],
+    ),
+    createContentItem(
+      '/ʌ/ — cup',
+      'central',
+      'Short, neutral central vowel with relaxed lips. Almost identical to schwa /ə/ in mouth shape — the only difference is /ʌ/ appears in stressed syllables, /ə/ in unstressed.',
+      'word',
+      'cup /kʌp/, love /lʌv/, sun /sʌn/, bus /bʌs/',
+      'When a syllable is stressed, schwa "wakes up" into /ʌ/.',
+      null,
+      [ACT.shortVowels],
+    ),
+    createContentItem(
+      '/ʊ/ — book',
+      'short u',
+      'Short, lax back vowel with light lip rounding. Shorter and laxer than /uː/ (boot) — losing the contrast turns "book" into "boo-k".',
+      'word',
+      'book /bʊk/, look /lʊk/, good /ɡʊd/, put /pʊt/',
+      'A relatively rare vowel; only a few dozen common English words use it.',
+      null,
+      [ACT.shortVowels],
+    ),
+    createContentItem(
+      'Minimal pair drill',
+      'short vowel contrasts',
+      'Five real words built from the same consonant frame "b_t" — only the vowel changes. Drilling minimal pairs is the fastest way to internalize a sound contrast.',
+      'sentence',
+      'bat / bet / bit / bot / but',
+      'Same start, same end, only the vowel distinguishes each word.',
+      [
+        { target: 'bat /bæt/', note: 'a wooden stick or a flying mammal — open front /æ/' },
+        { target: 'bet /bɛt/', note: 'a wager — mid front /ɛ/' },
+        { target: 'bit /bɪt/', note: 'a small amount, or past tense of "bite" — short front /ɪ/' },
+        { target: 'bot /bɒt/', note: 'a software robot — open back /ɒ/' },
+        { target: 'but /bʌt/', note: 'a contrast conjunction (however) — central /ʌ/' },
+      ],
+      [ACT.shortVowels],
+    ),
+
+    // ────────────────────────────────────────────────────────────────────
+    // Activity 4 — Long Vowels & Diphthongs
+    // ────────────────────────────────────────────────────────────────────
+    createContentItem(
+      '/iː/ — sheep',
+      'long i',
+      'Long, tense front vowel with lips spread wide. The "ee" sound — held visibly longer than /ɪ/. Confusing this pair (ship vs sheep) is the single most common L2 pronunciation error.',
+      'word',
+      'sheep /ʃiːp/, see /siː/, key /kiː/, eat /iːt/',
+      'Drill against /ɪ/: ship/sheep, bit/beat, fit/feet, his/he\'s.',
+      null,
+      [ACT.longVowels],
+    ),
+    createContentItem(
+      '/uː/ — boot',
+      'long u',
+      'Long, tense back vowel with firmly rounded lips. Held longer than /ʊ/. The "oo" sound — pull the lips into a tight forward circle.',
+      'word',
+      'boot /buːt/, food /fuːd/, true /truː/, two /tuː/',
+      'Drill against /ʊ/: book/boot, pull/pool, full/fool.',
+      null,
+      [ACT.longVowels],
+    ),
+    createContentItem(
+      '/ɜːr/ — bird',
+      'r-colored vowel',
+      'Long central vowel with American r-coloring fused into the vowel itself — never pronounced as two separate sounds. The tongue curls back during the vowel rather than after it.',
+      'word',
+      'bird /bɜːrd/, work /wɜːrk/, learn /lɜːrn/, her /hɜːr/',
+      'Spelled five different ways (er, ir, ur, or, ear) but all sound the same.',
+      null,
+      [ACT.longVowels],
+    ),
+    createContentItem(
+      '/eɪ/ — day',
+      'diphthong /ɛ/ → /ɪ/',
+      'Two-vowel glide that starts at /ɛ/ and slides to /ɪ/. Common in -ay, -ai, and silent-e words. Stopping on the first vowel makes the word sound like a different vowel ("late" → "let").',
+      'word',
+      'day /deɪ/, name /neɪm/, late /leɪt/, eight /eɪt/',
+      'Spelling clues: a + silent e (name), ai (rain), ay (day), eigh (eight).',
+      null,
+      [ACT.longVowels],
+    ),
+    createContentItem(
+      '/aɪ/ — my',
+      'diphthong /a/ → /ɪ/',
+      'Two-vowel glide from open /a/ to high front /ɪ/. The longest of the English diphthongs by mouth movement — the jaw closes significantly during the glide.',
+      'word',
+      'my /maɪ/, time /taɪm/, like /laɪk/, eye /aɪ/',
+      'Common spellings: i + silent e (time), y (my), igh (high), eye/aye.',
+      null,
+      [ACT.longVowels],
+    ),
+    createContentItem(
+      '/ɔɪ/ — boy',
+      'diphthong /ɔ/ → /ɪ/',
+      'Two-vowel glide from rounded /ɔ/ to /ɪ/. The lips start rounded and unround as the tongue rises toward /ɪ/. The rarest of the English diphthongs.',
+      'word',
+      'boy /bɔɪ/, voice /vɔɪs/, coin /kɔɪn/, enjoy /ɪnˈdʒɔɪ/',
+      'Only two common spellings: oi (mid-word) and oy (word-end).',
+      null,
+      [ACT.longVowels],
+    ),
+    createContentItem(
+      '/aʊ/ — now',
+      'diphthong /a/ → /ʊ/',
+      'Two-vowel glide from open /a/ to rounded /ʊ/. Lips start neutral and round as the tongue moves back. Big jaw and lip movement during the glide.',
+      'word',
+      'now /naʊ/, house /haʊs/, town /taʊn/, how /haʊ/',
+      'Two main spellings: ou (mid-word) and ow (mid or end word).',
+      null,
+      [ACT.longVowels],
+    ),
+    createContentItem(
+      '/oʊ/ — go',
+      'diphthong /o/ → /ʊ/',
+      'Two-vowel glide from rounded /o/ to /ʊ/. Sounds like a single "o" but is always a glide in standard English — stopping the glide makes a learner sound non-native immediately.',
+      'word',
+      'go /ɡoʊ/, home /hoʊm/, no /noʊ/, slow /sloʊ/',
+      'The most commonly flattened diphthong by learners — always remind yourself to glide.',
+      null,
+      [ACT.longVowels],
+    ),
+
+    // ────────────────────────────────────────────────────────────────────
+    // Activity 5 — Schwa
+    // ────────────────────────────────────────────────────────────────────
+    createContentItem(
+      'The schwa /ə/',
+      'the weak vowel',
+      'Short, neutral, completely unstressed vowel. Every unstressed syllable in English tends to collapse toward schwa — it appears in almost every multi-syllable word and is by far the most frequent vowel in spoken English.',
+      'word',
+      'about /əˈbaʊt/, banana /bəˈnænə/, the /ðə/, of /əv/',
+      'Notice how each example has at least one schwa in an unstressed position.',
+      [
+        { target: 'a in "about"', note: 'unstressed prefix → /ə/ rather than full /æ/' },
+        { target: 'a in "banana" (1st & 3rd)', note: 'only the middle syllable is stressed; the outer "a"s reduce to schwa' },
+        { target: 'the (unstressed)', note: 'pronounced /ðə/ in normal speech; only /ðiː/ when emphasized or before a vowel' },
+        { target: 'of /əv/', note: 'one of the most frequent words in English, almost always reduced to /əv/' },
+      ],
+      [ACT.schwa],
+    ),
+    createContentItem(
+      'Why schwa matters',
+      'natural rhythm',
+      'Reducing unstressed vowels to schwa is what creates the characteristic rhythm of English — strong syllables on the beat, weak syllables filling the gaps. Pronouncing every vowel at full strength flattens the rhythm and marks an accent immediately.',
+      'sentence',
+      '"I am a student" — fast: /aɪ əm ə ˈstuːdənt/',
+      'Both "am" and "a" reduce to /ə/ — stress falls only on the first syllable of "student".',
+      [
+        { target: 'I /aɪ/', note: 'stressed pronoun — keeps its full sound' },
+        { target: 'am /əm/', note: 'unstressed auxiliary → schwa; full form /æm/ only when emphatic ("I AM a student")' },
+        { target: 'a /ə/', note: 'unstressed article → schwa; the strong form /eɪ/ is rare and emphatic' },
+        { target: 'STU-dent /ˈstuː.dənt/', note: 'stress on first syllable; second syllable reduces to /ə/' },
+      ],
+      [ACT.schwa],
+    ),
+    createContentItem(
+      'Find the schwa',
+      'practice',
+      'The single most useful pronunciation drill: take any multi-syllable word, locate the stress mark (ˈ), and assume every other vowel is /ə/.',
+      'sentence',
+      'computer /kəmˈpjuːtər/ · important /ɪmˈpɔːrtənt/ · together /təˈɡɛðər/',
+      'In each word, stress is shown by ˈ; the vowels without stress are all /ə/.',
+      [
+        { target: 'computer', note: 'COM- and -ER both reduce to /ə/; only -PU- carries stress' },
+        { target: 'important', note: 'IM- is /ɪ/ (slight stress), -POR- is stressed, -TANT reduces to /ə/' },
+        { target: 'together', note: 'TO- and -ER both /ə/; -GE- carries stress' },
+      ],
+      [ACT.schwa],
+    ),
+
+    // ────────────────────────────────────────────────────────────────────
+    // Activity 6 — Voiced / Voiceless Pairs
+    // ────────────────────────────────────────────────────────────────────
+    createContentItem(
+      'p / b',
+      '/p/ vs /b/',
+      'Bilabial stop pair — same lips-together position, voicing is the only difference. Word-initial /p/ is also strongly aspirated (a puff of air) while /b/ is not.',
+      'word',
+      'pen /pɛn/ vs Ben /bɛn/',
+      'Three cues separate them: voicing, aspiration, and length of preceding vowel.',
+      [
+        { target: 'pen /pɛn/', note: 'voiceless /p/, aspirated; preceding vowel is shorter' },
+        { target: 'Ben /bɛn/', note: 'voiced /b/, no aspiration; preceding vowel slightly longer' },
+      ],
+      [ACT.voicedPairs],
+    ),
+    createContentItem(
+      't / d',
+      '/t/ vs /d/',
+      'Alveolar stop pair — same tongue position behind the upper teeth, voicing is the difference. Word-initial /t/ is aspirated; /d/ is not.',
+      'word',
+      'time /taɪm/ vs dime /daɪm/, ten /tɛn/ vs den /dɛn/',
+      'A core English contrast — many learner accents merge these into a single voiceless sound.',
+      null,
+      [ACT.voicedPairs],
+    ),
+    createContentItem(
+      'k / g',
+      '/k/ vs /ɡ/',
+      'Velar stop pair — same back-of-tongue position against the soft palate. Word-initial /k/ is aspirated; /ɡ/ is not.',
+      'word',
+      'cap /kæp/ vs gap /ɡæp/, cot /kɒt/ vs got /ɡɒt/',
+      'Easiest pair to feel: place a hand against the throat for the voiced /ɡ/.',
+      null,
+      [ACT.voicedPairs],
+    ),
+    createContentItem(
+      'f / v',
+      '/f/ vs /v/',
+      'Labiodental fricative pair — both use upper teeth on lower lip. Only voicing differs. Crucial for L1 speakers of languages that lack /v/ (often substituted with /b/).',
+      'word',
+      'fan /fæn/ vs van /væn/, file /faɪl/ vs vile /vaɪl/',
+      'The exact same articulation — only voicing changes.',
+      null,
+      [ACT.voicedPairs],
+    ),
+    createContentItem(
+      's / z',
+      '/s/ vs /z/',
+      'Alveolar fricative pair — same hissing tongue position behind the upper teeth. /s/ hisses, /z/ buzzes. Plurals after voiced sounds use /z/ (dogs /dɒɡz/), after voiceless sounds use /s/ (cats /kæts/).',
+      'word',
+      'Sue /suː/ vs zoo /zuː/, sip /sɪp/ vs zip /zɪp/',
+      'Hold each sound for two seconds to feel the buzz contrast.',
+      null,
+      [ACT.voicedPairs],
+    ),
+    createContentItem(
+      'ʃ / ʒ',
+      '/ʃ/ vs /ʒ/',
+      'Post-alveolar fricative pair — same broad tongue position used in "ship" and "measure". /ʃ/ is the common "sh" sound; /ʒ/ is rare in English and almost never appears at the start of a word.',
+      'word',
+      'shoe /ʃuː/ vs measure /ˈmɛʒər/, ship /ʃɪp/ vs vision /ˈvɪʒən/',
+      '/ʒ/ shows up mostly in French-origin words (genre, garage, leisure).',
+      null,
+      [ACT.voicedPairs],
+    ),
+    createContentItem(
+      'tʃ / dʒ',
+      '/tʃ/ vs /dʒ/',
+      'Affricates — a stop immediately followed by a fricative, treated as one sound. /tʃ/ as in "church", /dʒ/ as in "judge". Same articulation; voicing is the only difference.',
+      'word',
+      'chin /tʃɪn/ vs gin /dʒɪn/, choke /tʃoʊk/ vs joke /dʒoʊk/',
+      'Both common at the start, middle, and end of English words.',
+      null,
+      [ACT.voicedPairs],
+    ),
+    createContentItem(
+      'θ / ð',
+      '/θ/ vs /ð/ — both "th"',
+      'Dental fricative pair — tongue tip lightly between the upper and lower teeth. /θ/ in "think", /ð/ in "this". One of the rarest articulations in world languages — many learners substitute /s/, /f/, or /t/.',
+      'word',
+      'think /θɪŋk/ vs this /ðɪs/, bath /bæθ/ vs bathe /beɪð/',
+      'Voiced /ð/ shows up in very common function words (the, this, that, they, them).',
+      [
+        { target: 'θ — voiceless', note: 'mostly in content words: think, three, thank, math, bath' },
+        { target: 'ð — voiced', note: 'mostly in function words: this, that, they, the, mother, father' },
+      ],
+      [ACT.voicedPairs],
+    ),
+
+    // ────────────────────────────────────────────────────────────────────
+    // Activity 7 — Tricky Consonants
+    // ────────────────────────────────────────────────────────────────────
+    createContentItem(
+      'th (θ and ð) — tongue between teeth',
+      'no equivalent in many languages',
+      'Place the tongue tip lightly between the upper and lower teeth, then push air. /θ/ is voiceless (think); /ð/ adds throat vibration (this). The most distinctive English consonants and the ones most often replaced with substitutes.',
+      'sentence',
+      'think /θɪŋk/, three /θriː/, mother /ˈmʌðər/, the /ðə/',
+      'If you can see your own tongue tip in a mirror while making this sound, you are doing it right.',
+      [
+        { target: 'tongue tip between teeth', note: 'the visible tongue tip is the defining feature; no other English sound uses this position' },
+        { target: 'NOT /s/, /t/, or /f/', note: 'common substitutes — /s/ from East Asian L1s, /t/ from Russian, /f/ from German — all signal an accent' },
+      ],
+      [ACT.tricky],
+    ),
+    createContentItem(
+      'L vs R',
+      '/l/ vs /r/',
+      'Two completely different mouth positions despite both being sonorants. /l/: tongue tip presses firmly against the ridge behind the upper teeth. /r/: tongue curls back and touches nothing. Merging these is the single most stereotyped East Asian L2 error.',
+      'sentence',
+      'light /laɪt/ vs right /raɪt/, lice /laɪs/ vs rice /raɪs/, low /loʊ/ vs row /roʊ/',
+      'The simple rule: if anything touches the roof of your mouth, you are saying /l/.',
+      [
+        { target: 'L: tongue touches roof', note: 'firm contact behind upper teeth; you can feel and hold the position' },
+        { target: 'R: tongue does not touch', note: 'tongue curls back into a hollow shape with no contact anywhere' },
+      ],
+      [ACT.tricky],
+    ),
+    createContentItem(
+      'F vs P',
+      '/f/ vs /p/',
+      'Completely different articulations. /f/: upper teeth touch lower lip, air pushes through the gap continuously. /p/: both lips press together and release as a single burst.',
+      'sentence',
+      'fan /fæn/ vs pan /pæn/, copy /ˈkɒpi/ vs coffee /ˈkɒfi/',
+      'You can hold /f/ for several seconds; /p/ is over instantly because it is a stop.',
+      [
+        { target: 'F: teeth on lip', note: 'continuous fricative — air keeps flowing for as long as you want' },
+        { target: 'P: lips together', note: 'momentary stop — closes airflow, then releases' },
+      ],
+      [ACT.tricky],
+    ),
+    createContentItem(
+      'V vs B',
+      '/v/ vs /b/',
+      'Voiced versions of the F/P contrast. /v/: upper teeth on lower lip with throat vibration. /b/: both lips together with throat vibration. Common merger for Spanish, Korean, and many Indian-language L1s.',
+      'sentence',
+      'very /ˈvɛri/ vs berry /ˈbɛri/, vase /veɪz/ vs base /beɪs/',
+      'Throat vibrates for both; only the lip position differs.',
+      null,
+      [ACT.tricky],
+    ),
+    createContentItem(
+      'W vs V',
+      '/w/ vs /v/',
+      'Easy to confuse on paper, completely different in the mouth. /w/: lips round into a small tight circle, no teeth contact. /v/: upper teeth on lower lip, lips relaxed.',
+      'sentence',
+      'wet /wɛt/ vs vet /vɛt/, wine /waɪn/ vs vine /vaɪn/',
+      'German, Korean, and several other L1s map W to V — train the rounded-lips position first.',
+      null,
+      [ACT.tricky],
+    ),
+    createContentItem(
+      'Final consonants — release',
+      'do not swallow the end',
+      'End-of-word consonants in English are released audibly — the listener needs to hear the final /t/, /d/, /k/, /p/, /b/, /ɡ/ even if the release is brief. A swallowed final consonant can shift "cat" toward "ca" and lose the word entirely.',
+      'sentence',
+      'cat /kæt/, bag /bæɡ/, cup /kʌp/, side /saɪd/',
+      'Practice exaggerating the release; the natural version is softer but always audible.',
+      null,
+      [ACT.tricky],
+    ),
+
+    // ────────────────────────────────────────────────────────────────────
+    // Activity 8 — Word Stress
+    // ────────────────────────────────────────────────────────────────────
+    createContentItem(
+      'What is word stress?',
+      'one strong syllable per word',
+      'Any English word of two or more syllables has exactly one stressed syllable — louder, longer, and higher in pitch than the others. Stress is a property of the word, not a free choice; the dictionary fixes it.',
+      'sentence',
+      'HE-llo / ba-NA-na / com-PU-ter / IM-portant',
+      'Capitalized syllable carries the stress; all other syllables in the word are short and weak.',
+      [
+        { target: 'HE-llo', note: 'two-syllable greeting, stress on the first syllable' },
+        { target: 'ba-NA-na', note: 'three-syllable noun, stress on the middle syllable' },
+        { target: 'com-PU-ter', note: 'three-syllable noun, stress on the second syllable' },
+        { target: 'IM-portant', note: 'three-syllable adjective, stress on the first syllable' },
+      ],
+      [ACT.wordStress],
+    ),
+    createContentItem(
+      'Wrong stress breaks communication',
+      'why it matters',
+      'Native listeners locate words primarily by stress pattern, not by individual vowel quality. Stress in the wrong place can make a familiar word unrecognizable — even when every consonant and vowel is correct.',
+      'sentence',
+      'COMputer vs comPUter vs computER — only the middle one is correct.',
+      'Stress accuracy beats vowel precision; if you can only fix one thing, fix the stress.',
+      null,
+      [ACT.wordStress],
+    ),
+    createContentItem(
+      'Stress patterns to memorize',
+      'common rules',
+      'Two reliable patterns: most two-syllable nouns stress the first syllable; most two-syllable verbs stress the second. Words ending in -tion, -sion, -ity, -ic always stress the syllable directly before that ending.',
+      'sentence',
+      'RE-cord (n.) vs re-CORD (v.) — same spelling, different stress, different word.',
+      'Several dozen English noun-verb pairs are distinguished only by stress placement.',
+      [
+        { target: 'RE-cord (noun)', note: 'a recording or document — stress shifts to the first syllable' },
+        { target: 're-CORD (verb)', note: 'to record something — stress shifts to the second syllable' },
+        { target: 'OB-ject (noun)', note: 'a thing — first-syllable stress' },
+        { target: 'ob-JECT (verb)', note: 'to oppose or disagree — second-syllable stress' },
+      ],
+      [ACT.wordStress],
+    ),
+
+    // ────────────────────────────────────────────────────────────────────
+    // Activity 9 — Sentence Stress & Weak Forms
+    // ────────────────────────────────────────────────────────────────────
+    createContentItem(
+      'Content words vs function words',
+      'strong vs weak',
+      'Content words (nouns, main verbs, adjectives, adverbs, question words) carry the meaning and take stress. Function words (pronouns, be/have/do, modals, prepositions, articles, conjunctions) are grammatical glue and stay weak. This split creates English\'s stress-timed rhythm.',
+      'sentence',
+      'I am a STUDENT at KU-MOH. → STUDENT and KU-MOH ride the strong beats; "I am a at" fill the weak spaces between.',
+      'Native speakers can understand a sentence even if the function words are mumbled — they cannot if the content words are.',
+      [
+        { target: 'STRONG: nouns, verbs, adjectives, adverbs', note: 'words that carry concrete meaning; remove them and the sentence loses its information' },
+        { target: 'WEAK: pronouns, articles, prepositions, be/have/do/can', note: 'grammatical scaffolding; carry structure but not content' },
+      ],
+      [ACT.weakForms],
+    ),
+    createContentItem(
+      'Weak forms',
+      'function words reduce',
+      'In fast speech, common function words shrink to a weak form containing schwa. The weak form is the NORMAL spoken version — the strong form sounds emphatic or unnatural in casual conversation.',
+      'sentence',
+      'am: strong /æm/ → weak /əm/ · are: strong /ɑːr/ → weak /ər/ · can: strong /kæn/ → weak /kən/',
+      'Listening for weak forms is essential for understanding natural speech; learners often miss them entirely.',
+      [
+        { target: 'I am → I\'m /aɪm/', note: 'the contraction is the fully reduced form of the auxiliary' },
+        { target: 'you are → you\'re /jʊr/', note: 'same pattern — pronoun and verb merge' },
+        { target: 'I can go /aɪ kən ɡoʊ/', note: '"can" weakens to /kən/ in affirmative sentences; stays strong /kæn/ in negatives ("can\'t")' },
+        { target: 'a cup of tea /ə kʌp əv tiː/', note: '"of" weakens to /əv/ almost always — its strong /ɒv/ form is rare' },
+      ],
+      [ACT.weakForms],
+    ),
+
+    // ────────────────────────────────────────────────────────────────────
+    // Activity 10 — Connected Speech
+    // ────────────────────────────────────────────────────────────────────
+    createContentItem(
+      'Linking — consonant + vowel',
+      'words join',
+      'When a word ends in a consonant and the next begins with a vowel, the consonant attaches to the next syllable and the boundary disappears. Linking is universal in spoken English and gives phrases the feeling of running together.',
+      'sentence',
+      'an apple → /ə ˈnæpl/ · turn it on → /tɜːr nɪ tɒn/ · pick it up → /pɪ kɪ tʌp/',
+      'A learner who never links sounds robotic; once linking becomes habit, English flows naturally.',
+      [
+        { target: 'an apple', note: 'the /n/ of "an" attaches to the /æ/ of "apple", producing what sounds like "a-napple"' },
+        { target: 'turn it on', note: 'three words flow into one breath group; each consonant climbs to the next vowel' },
+      ],
+      [ACT.connectedSpeech],
+    ),
+    createContentItem(
+      'Contractions — the basic 10',
+      'shortenings',
+      'In spoken and casual written English, subject + auxiliary almost always contracts. Using the full form in casual speech sounds stiff, formal, or emphatic — like switching to a public-address voice mid-conversation.',
+      'sentence',
+      'I am → I\'m · you are → you\'re · he is → he\'s · she is → she\'s · it is → it\'s · we are → we\'re · they are → they\'re · do not → don\'t · cannot → can\'t · will not → won\'t',
+      'These 10 contractions cover the majority of everyday spoken English; using them well makes a learner sound markedly more fluent.',
+      [
+        { target: 'I\'m /aɪm/', note: '"I am"; the most common contraction in English' },
+        { target: 'you\'re /jʊr/', note: '"you are"; same pattern for singular and plural "you"' },
+        { target: 'don\'t /doʊnt/', note: '"do not"; mandatory in spoken negative sentences' },
+        { target: 'won\'t /woʊnt/', note: '"will not"; irregular form — the spelling shape changes substantially' },
+      ],
+      [ACT.connectedSpeech],
+    ),
+    createContentItem(
+      'Assimilation — sounds blend',
+      'fast speech',
+      'When two sounds meet at a word boundary, they often blend. /t/ + /j/ becomes /tʃ/; /d/ + /j/ becomes /dʒ/; /s/ + /j/ becomes /ʃ/. This is not lazy speech — it is how everyone, including formal speakers, naturally talks.',
+      'sentence',
+      'meet you → /miːtʃuː/ · could you → /kʊdʒuː/ · this year → /ðɪʃ jɪər/',
+      'Even broadcasters and presidents do this in fluent speech; resisting it sounds unnaturally precise.',
+      null,
+      [ACT.connectedSpeech],
+    ),
+
+    // ────────────────────────────────────────────────────────────────────
+    // Activity 11 — Spelling vs Sound
+    // ────────────────────────────────────────────────────────────────────
+    createContentItem(
+      'Silent letters',
+      'common silent letters',
+      'Many English words contain letters that are written but never pronounced. Most are historical remnants — the letter was once pronounced and the spelling was preserved after the sound disappeared.',
+      'sentence',
+      'know /noʊ/ (silent k) · write /raɪt/ (silent w) · hour /aʊər/ (silent h) · island /ˈaɪlənd/ (silent s) · thumb /θʌm/ (silent b)',
+      'Always check the IPA before assuming a letter is pronounced — silent letters are common and unpredictable.',
+      [
+        { target: 'kn- (k silent)', note: 'know, knee, knife, knight — the k was pronounced in Old English' },
+        { target: 'wr- (w silent)', note: 'write, wrong, wrist, wrap — w was pronounced until about 1700' },
+        { target: '-mb (b silent)', note: 'thumb, climb, lamb, bomb — b is never pronounced after m at word end' },
+      ],
+      [ACT.spelling],
+    ),
+    createContentItem(
+      'The -ough family',
+      'one spelling, seven sounds',
+      'The four-letter sequence "-ough" has seven distinct pronunciations across common English words — possibly the most extreme spelling-to-sound mismatch in any language. There is no rule; each word must be memorized.',
+      'sentence',
+      'though /ðoʊ/, through /θruː/, thought /θɔːt/, tough /tʌf/, cough /kɒf/, plough /plaʊ/, hiccough /ˈhɪkʌp/',
+      'A famous demonstration of why dictionaries always show IPA; learners cannot guess from the letters.',
+      [
+        { target: 'though /ðoʊ/', note: 'meaning "however" or "even so"' },
+        { target: 'through /θruː/', note: 'passing in one side and out the other' },
+        { target: 'thought /θɔːt/', note: 'past tense of "think"' },
+        { target: 'tough /tʌf/', note: 'hard, durable, or difficult' },
+        { target: 'cough /kɒf/', note: 'a sharp involuntary throat sound' },
+      ],
+      [ACT.spelling],
+    ),
+    createContentItem(
+      '-tion / -sion endings',
+      'almost always /ʃən/ or /ʒən/',
+      'Words ending in -tion almost always pronounce the ending /ʃən/. -sion is /ʃən/ after a consonant (extension) or /ʒən/ after a vowel (vision). Stress always falls on the syllable directly before the ending.',
+      'sentence',
+      'nation /ˈneɪʃən/, station /ˈsteɪʃən/, education /ˌɛdʒəˈkeɪʃən/, decision /dɪˈsɪʒən/, vision /ˈvɪʒən/',
+      'One of the most reliable spelling-to-sound rules in English — applies to thousands of words.',
+      null,
+      [ACT.spelling],
+    ),
+
+    // ────────────────────────────────────────────────────────────────────
+    // Activity 12 — Reading Practice
+    // ────────────────────────────────────────────────────────────────────
+    createContentItem(
+      'Read it all together',
+      'reading practice',
+      'A short sentence that exercises every rule covered in this lesson: word stress, schwa reduction, consonant-vowel linking. Reading it well means every rule has clicked.',
+      'sentence',
+      '"Hello! My name is Sarah. I\'m a student at MIT."\n/həˈloʊ ‖ maɪ ˈneɪm ɪz ˈsɛrə ‖ aɪm ə ˈstuːdənt ət ˌɛm aɪ ˈtiː ‖/',
+      'Identify the stressed syllable in each content word and the schwa in every weak position.',
+      [
+        { target: 'Hello — HE-llo', note: 'two syllables; stress on the first' },
+        { target: 'My NAME is', note: '"name" is the content word and takes the stress; "my" and "is" stay weak' },
+        { target: 'I\'m', note: 'contraction of "I am" — the natural spoken form' },
+        { target: 'a /ə/', note: 'article reduces to schwa, as always when unstressed' },
+        { target: 'STU-dent', note: 'two syllables; stress on the first; "-dent" reduces to /dənt/' },
+        { target: 'at /ət/', note: 'preposition reduces to schwa in natural speech' },
+        { target: 'MIT /ˌɛm aɪ ˈtiː/', note: 'an initialism — each letter pronounced separately, with the main stress on the final letter (a common pattern for English initialisms)' },
+      ],
+      [ACT.reading],
+    ),
+    createContentItem(
+      'Identify the schwa',
+      'comprehension',
+      'List every /ə/ vowel in the reading sentence. Schwas should appear in unstressed syllables of multi-syllable words and in nearly every weak-form function word.',
+      'sentence',
+      'Sarah, a, student, at — find the /ə/ vowels (MIT is an initialism, so it has no schwa)',
+      'Answer: Sarah (final ə), a (whole word is ə), student (final ə), at (the vowel reduces to ə).',
+      null,
+      [ACT.reading],
+    ),
+    createContentItem(
+      'Stretch: read with rhythm',
+      'natural speech',
+      'Read the sentence at full conversational speed. Stress only the strong syllables; let everything else fade. This is the rhythm test — if it sounds like a drumbeat, you have internalized English timing.',
+      'sentence',
+      'BEAT: HE-llo · my NAME is SA-rah · I\'m a STU-dent at KU-moh',
+      'Tap the strong syllables on the table to feel the underlying rhythm — fast English has a steady beat just like music.',
+      null,
+      [ACT.reading],
+    ),
+  ],
+};
+
+module.exports = level1Foundation;

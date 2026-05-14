@@ -90,8 +90,8 @@ const lesson = {
   ],
   relatedPools: ['topic-people', 'topic-school'],
   content: [
-    createContentItem('Lesson goal', 'routine speech', 'By end: describe your daily/weekly routine using polite present, particles, and negation.', 'word', 'Functions: conjugate · mark object/time/place · negate', 'Three skills that unlock present-tense speech in Korean.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'small talk', 'A Korean classmate asks "오늘 뭐 해요?" — you should be able to answer in 2-3 sentences.', 'word', 'Classmate: 오늘 뭐 해요? — You: 오전에 한국어를 공부해요. 오후에 친구를 만나요.', 'Classmate: What are you doing today? — You: I study Korean in the morning. I meet a friend in the afternoon.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: describe your daily/weekly routine using polite present, particles, and negation.', 'word', 'Functions: conjugate · mark object/time/place · negate', 'Three skills that unlock present-tense speech in Korean.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'A Korean classmate asks "오늘 뭐 해요?" — you should be able to answer in 2-3 sentences.', 'word', 'Classmate: 오늘 뭐 해요? — You: 오전에 한국어를 공부해요. 오후에 친구를 만나요.', 'Classmate: What are you doing today? — You: I study Korean in the morning. I meet a friend in the afternoon.', null, [ACT.orientation]),
 
     createContentItem('먹다 → [먹따]', 'meokda', '경음화: ㄱ-받침 of 먹 makes the following ㄷ tense.', 'word', '점심을 먹다. → [먹따]', 'to eat lunch.', null, [ACT.pronunciation]),
     createContentItem('읽다 → [익따]', 'ikda', 'Double-final ㄺ reduces to [ㄱ], then 경음화 makes the ㄷ tense.', 'word', '책을 읽다. → [익따]', 'to read a book.', null, [ACT.pronunciation]),

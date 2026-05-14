@@ -73,8 +73,8 @@ const lesson = {
   ],
   relatedPools: ['topic-culture'],
   content: [
-    createContentItem('Lesson goal', 'pop culture', 'By end: discuss K-pop/K-drama with native-like sophistication.', 'word', 'Functions: explain reason · regret · nominalize · soft infer', 'Interview-ready toolkit.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'celebrity interview', 'You are interviewed by a Korean magazine about your favorite K-drama. They ask hard questions; you need to soften, regret, infer.', 'word', 'Interviewer: 왜 그 드라마예요? — You: 주인공이 정말 멋있거든요.', 'Why that drama? — Because the protagonist is really cool, you see.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: discuss K-pop/K-drama with native-like sophistication.', 'word', 'Functions: explain reason · regret · nominalize · soft infer', 'Interview-ready toolkit.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'You are interviewed by a Korean magazine about your favorite K-drama. They ask hard questions; you need to soften, regret, infer.', 'word', 'Interviewer: 왜 그 드라마예요? — You: 주인공이 정말 멋있거든요.', 'Why that drama? — Because the protagonist is really cool, you see.', null, [ACT.orientation]),
 
     createContentItem('대중문화', 'daejungmunhwa', 'popular culture', 'word', '한국 대중문화가 인기예요.', 'Korean pop culture is popular.', null, [ACT.vocabulary]),
     createContentItem('드라마', 'deurama', 'drama / TV series', 'word', '한국 드라마를 좋아해요.', 'I like K-drama.', null, [ACT.vocabulary]),

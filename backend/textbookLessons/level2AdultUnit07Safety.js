@@ -76,8 +76,8 @@ const lesson = {
   ],
   relatedPools: ['topic-society'],
   content: [
-    createContentItem('Lesson goal', 'safety', 'By end: follow safety rules, report accidents, request emergency help.', 'word', 'Functions: prohibit · require · report · request help', 'Safety toolkit.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'finger injury', 'Your finger gets caught in a machine. You must alert the supervisor immediately and request first aid.', 'word', 'You: 과장님, 손가락을 다쳤습니다. — 과장님: 응급실로 가야 합니다.', 'I hurt my finger. — Must go to emergency.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: follow safety rules, report accidents, request emergency help.', 'word', 'Functions: prohibit · require · report · request help', 'Safety toolkit.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'Your finger gets caught in a machine. You must alert the supervisor immediately and request first aid.', 'word', 'You: 과장님, 손가락을 다쳤습니다. — 과장님: 응급실로 가야 합니다.', 'I hurt my finger. — Must go to emergency.', null, [ACT.orientation]),
 
     createContentItem('마십시오 → [마십씨오]', 'masipssio', '경음화: ㅂ + ㅅ → ㅂ + ㅆ.', 'word', '벗지 마십시오.', 'Do not take off.', null, [ACT.pronunciation]),
     createContentItem('됩니다 → [됨니다]', 'doemnida', '비음화.', 'word', '안 됩니다.', 'Not allowed.', null, [ACT.pronunciation]),

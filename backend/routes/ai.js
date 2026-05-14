@@ -237,7 +237,7 @@ router.post('/conversation', async (req, res) => {
     } catch (providerError) {
       if (!isClassLessonAction) throw providerError;
 
-      const fallbackResult = buildClassLessonFallbackResult({
+      const fallbackResult = await buildClassLessonFallbackResult({
         transcript: transcript.trim(),
         targetLanguage,
         nativeLanguage,

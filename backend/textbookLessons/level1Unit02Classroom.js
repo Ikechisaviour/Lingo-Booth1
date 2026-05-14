@@ -150,8 +150,7 @@ const lesson = {
     // ────────────────────────────────────────────────────────────────────
     // Activity 1 — Orientation
     // ────────────────────────────────────────────────────────────────────
-    createContentItem(
-      'Lesson goal', 'classroom & objects',
+    createContentItem('학습 목표', 'hakseup mokpyo',
       'By the end of this lesson, you can name 15+ classroom objects, point at things and say "this/that," locate items using position words, and borrow things from a classmate.',
       'word',
       'Functions: identify · locate · ask has/has-not · connect nouns',
@@ -159,8 +158,7 @@ const lesson = {
       null,
       [ACT.orientation],
     ),
-    createContentItem(
-      'Real-world scenario', 'first class at Kumoh',
+    createContentItem('오늘의 상황', 'oneurui sanghwang',
       'It is your first Korean class. The teacher writes new vocabulary on the board. The student next to you asks for help.',
       'word',
       'Classmate: 볼펜 있어요? — You: 네, 여기 있어요.',

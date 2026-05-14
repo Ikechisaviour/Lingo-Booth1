@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Modal, ScrollView, StyleSheet, View } from 'react-native';
 import { Button, Text } from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useTranslation } from 'react-i18next';
 import { ttsService } from '../services/api';
 import speechService from '../services/speechService';
 import { useSettingsStore } from '../stores/settingsStore';
@@ -58,6 +59,7 @@ const VoicePickerModal: React.FC<Props> = ({
 }) => {
   const colors = useAppColors();
   const styles = createStyles(colors);
+  const { t } = useTranslation();
   const [voices, setVoices] = useState<Voice[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -135,13 +137,13 @@ const VoicePickerModal: React.FC<Props> = ({
       <View style={styles.backdrop}>
         <View style={styles.modal}>
           <Text variant="titleMedium" style={styles.title}>
-            Pick a voice for {targetLangName || 'your target language'}
+            {t('voicePicker.title', { lang: targetLangName || t('voicePicker.targetFallback', 'your target language'), defaultValue: 'Pick a voice for {{lang}}' })}
           </Text>
           <Text style={styles.subtitle}>
-            Tap a voice to hear a sample sentence, then choose the one you want for class.
+            {t('voicePicker.subtitle', 'Tap a voice to hear a sample sentence, then choose the one you want for class.')}
           </Text>
 
-          {loading && <Text style={styles.status}>Loading voices…</Text>}
+          {loading && <Text style={styles.status}>{t('voicePicker.loading', 'Loading voices…')}</Text>}
           {!!error && <Text style={styles.error}>{error}</Text>}
 
           <ScrollView style={styles.list}>
@@ -149,7 +151,7 @@ const VoicePickerModal: React.FC<Props> = ({
               <View key={voice.name} style={styles.row}>
                 <View style={styles.info}>
                   <Text style={styles.voiceName}>{voice.displayName}</Text>
-                  <Text style={styles.voiceMeta}>{voice.lang} · {voice.gender || 'unspecified'}</Text>
+                  <Text style={styles.voiceMeta}>{voice.lang} · {voice.gender || t('voicePicker.genderUnspecified', 'unspecified')}</Text>
                 </View>
                 <View style={styles.actions}>
                   <Button
@@ -158,14 +160,14 @@ const VoicePickerModal: React.FC<Props> = ({
                     onPress={() => preview(voice)}
                     disabled={previewing === voice.name}
                   >
-                    {previewing === voice.name ? 'Playing…' : 'Listen'}
+                    {previewing === voice.name ? t('voicePicker.playing', 'Playing…') : t('voicePicker.listen', 'Listen')}
                   </Button>
                   <Button
                     mode="contained-tonal"
                     compact
                     onPress={() => choose(voice)}
                   >
-                    Use
+                    {t('voicePicker.use', 'Use')}
                   </Button>
                 </View>
               </View>
@@ -173,7 +175,7 @@ const VoicePickerModal: React.FC<Props> = ({
           </ScrollView>
 
           <Button mode="text" onPress={skip} style={styles.skip}>
-            Use the default voice for now
+            {t('voicePicker.useDefault', 'Use the default voice for now')}
           </Button>
         </View>
       </View>

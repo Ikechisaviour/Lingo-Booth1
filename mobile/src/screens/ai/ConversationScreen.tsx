@@ -9,6 +9,7 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ExpoSpeechRecognitionModule, useSpeechRecognitionEvent } from 'expo-speech-recognition';
 import { useRoute } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 import { Button, Card, Menu, SegmentedButtons, Text, TextInput } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { aiService, practiceContextService } from '../../services/api';
@@ -16,7 +17,7 @@ import speechService from '../../services/speechService';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
 import { useAppColors, type AppColors } from '../../config/theme';
-import LANGUAGES from '../../config/languages';
+import LANGUAGES, { getLanguageDisplayName } from '../../config/languages';
 import {
   displayPartsForMessage,
   languageLabel as segmentLanguageLabel,
@@ -30,6 +31,7 @@ import {
   conversationVoiceForLocale,
   handsFreeCopy,
 } from '../../utils/conversationSpeech';
+import { normalizeLanguageCode } from '../../utils/languagePairPolicy';
 
 const SESSION_ID = 'learner-conversation';
 const CUSTOM_SCENARIO_ID = 'custom';
@@ -137,6 +139,71 @@ const supportLevels = [
   { value: 'balanced', label: 'Balanced', difficulty: 'balanced natural conversation' },
   { value: 'natural', label: 'Natural', difficulty: 'natural conversation with minimal coaching' },
 ];
+
+const scenarioCopyMap: Record<string, Record<string, {
+  title: string;
+  shortLabel: string;
+  partner: string;
+  goal: string;
+  starters: string[];
+  followUps: string[];
+}>> = {
+  en: Object.fromEntries(scenarios.map((item) => [item.id, {
+    title: item.title,
+    shortLabel: item.shortLabel,
+    partner: item.partner,
+    goal: item.goal,
+    starters: item.starters,
+    followUps: item.followUps,
+  }])),
+  ko: {
+    cafe: {
+      title: '카페에서 주문하기',
+      shortLabel: '카페',
+      partner: '카페 직원',
+      goal: '주문하고, 세부 사항을 바꾸고, 준비될 내용을 확인합니다.',
+      starters: ['카페 역할극을 시작해 주세요.', '오늘 무엇을 추천하시나요?', '음료를 주문하고 싶어요.'],
+      followUps: ['다음 질문을 해 주세요.', '더 자연스럽게 말하려면 어떻게 하나요?', '제가 무엇을 주문했는지 알려 주세요.'],
+    },
+    directions: {
+      title: '길 묻기',
+      shortLabel: '길 찾기',
+      partner: '현지 안내자',
+      goal: '목적지를 묻고, 주요 지점을 이해하고, 가는 길을 확인합니다.',
+      starters: ['길 묻기 역할극을 시작해 주세요.', '역을 찾는 데 도움이 필요해요.', '제가 어디에 가고 싶은지 물어봐 주세요.'],
+      followUps: ['한 번에 한 방향씩 알려 주세요.', '더 쉬운 말로 설명해 주세요.', '얼마나 걸리나요?'],
+    },
+    introductions: {
+      title: '처음 만난 사람과 대화하기',
+      shortLabel: '첫 만남',
+      partner: '처음 만난 사람',
+      goal: '인사하고, 기본 정보를 주고받고, 자연스럽게 대화를 이어 갑니다.',
+      starters: ['첫 만남 역할극을 시작해 주세요.', '저에 대해 질문해 주세요.', '자연스럽게 자기소개하도록 도와주세요.'],
+      followUps: ['후속 질문을 해 주세요.', '제 대답을 더 자연스럽게 바꿔 주세요.', '다음에는 무엇을 물어보면 좋을까요?'],
+    },
+    hotel: {
+      title: '호텔 체크인하기',
+      shortLabel: '호텔',
+      partner: '호텔 프런트 직원',
+      goal: '체크인하고, 질문에 답하고, 객실 정보를 확인합니다.',
+      starters: ['호텔 체크인 역할극을 시작해 주세요.', '체크인하고 싶어요.', '예약 정보를 물어봐 주세요.'],
+      followUps: ['한 번에 한 가지 정보씩 물어봐 주세요.', '더 쉽게 다시 말해 주세요.', '지금까지 어떤 객실 정보를 확인했나요?'],
+    },
+    custom: {
+      title: '맞춤 역할극',
+      shortLabel: '맞춤',
+      partner: '대화 상대',
+      goal: '역할, 상황, 목표를 정해서 나만의 역할극을 만듭니다.',
+      starters: [],
+      followUps: ['역할극을 시작해 주세요.', '첫 번째 질문을 해 주세요.', '새 맞춤 역할극을 시작해 주세요.'],
+    },
+  },
+};
+
+const supportLevelLabels: Record<string, Record<string, string>> = {
+  en: { guided: 'Guided', balanced: 'Balanced', natural: 'Natural' },
+  ko: { guided: '안내형', balanced: '균형형', natural: '자연형' },
+};
 
 type CustomSetupCopy = Record<CustomSetupStep, string> & {
   setupLabel: string;
@@ -398,9 +465,25 @@ function roleStateForMemory(memory?: Record<string, unknown>): ConversationRoleS
     : null;
 }
 
+function conversationCopyLanguage(nativeLanguage?: string) {
+  const normalized = normalizeLanguageCode(nativeLanguage) || 'en';
+  return scenarioCopyMap[normalized] ? normalized : 'en';
+}
+
+function scenarioCopyFor(nativeLanguage: string | undefined, scenarioId: string) {
+  const language = conversationCopyLanguage(nativeLanguage);
+  return scenarioCopyMap[language][scenarioId] || scenarioCopyMap.en[scenarioId] || scenarioCopyMap.en.cafe;
+}
+
+function supportLabelFor(nativeLanguage: string | undefined, supportId: string) {
+  const language = conversationCopyLanguage(nativeLanguage);
+  return supportLevelLabels[language]?.[supportId] || supportLevelLabels.en[supportId] || supportId;
+}
+
 function labelsFor(nativeLanguage: string | undefined, scenarioId: string, roleState?: ConversationRoleState | null) {
-  const labels = conversationUiLabels[nativeLanguage || ''] || conversationUiLabels.en;
-  const fallbackPartner = labels.partners[scenarioId] || conversationUiLabels.en.partners[scenarioId] || 'Conversation partner';
+  const language = conversationCopyLanguage(nativeLanguage);
+  const labels = conversationUiLabels[language] || conversationUiLabels.en;
+  const fallbackPartner = labels.partners[scenarioId] || scenarioCopyFor(nativeLanguage, scenarioId).partner || 'Conversation partner';
   const roleLabel = (roleKey?: string, rawRole?: string) => (roleKey ? (labels.roles[roleKey] || conversationUiLabels.en.roles[roleKey] || rawRole || roleKey) : '');
   const learnerRole = roleLabel(roleState?.learnerRoleKey, roleState?.learnerRole);
   const partnerRole = roleLabel(roleState?.partnerRoleKey, roleState?.partnerRole) || fallbackPartner;
@@ -414,7 +497,8 @@ function labelsFor(nativeLanguage: string | undefined, scenarioId: string, roleS
 function displayLabelsFor(nativeLanguage: string | undefined, scenarioId: string, roleState?: ConversationRoleState | null) {
   const labels = labelsFor(nativeLanguage, scenarioId, roleState);
   if (!roleState?.learnerRoleKey) return labels;
-  const baseLabels = conversationUiLabels[nativeLanguage || ''] || conversationUiLabels.en;
+  const language = conversationCopyLanguage(nativeLanguage);
+  const baseLabels = conversationUiLabels[language] || conversationUiLabels.en;
   const roleLabel = baseLabels.roles[roleState.learnerRoleKey]
     || conversationUiLabels.en.roles[roleState.learnerRoleKey]
     || roleState.learnerRole
@@ -446,7 +530,8 @@ type StoredConversation = {
 };
 
 function customSetupCopy(nativeLanguage?: string) {
-  return customSetupCopyMap[nativeLanguage || ''] || customSetupCopyMap.en;
+  const language = normalizeLanguageCode(nativeLanguage) || 'en';
+  return customSetupCopyMap[language] || customSetupCopyMap.en;
 }
 
 function customRoleplayFromMemory(memory?: Record<string, unknown>): CustomRoleplay {
@@ -668,6 +753,7 @@ const localizedSlowerCommands = new Set(CONVERSATION_SLOWER_COMMANDS.map(normali
 
 const ConversationScreen: React.FC = () => {
   const route = useRoute<any>();
+  const { t } = useTranslation();
   const lessonId = typeof route.params?.lessonId === 'string' ? route.params.lessonId : '';
   const starterParam = typeof route.params?.starter === 'string' ? route.params.starter : '';
   const colors = useAppColors();
@@ -686,7 +772,7 @@ const ConversationScreen: React.FC = () => {
   const [supportLevel, setSupportLevel] = useState(supportLevels[0].value);
   const [turn, setTurn] = useState('');
   const [history, setHistory] = useState<Turn[]>([]);
-  const [status, setStatus] = useState('Ready');
+  const [status, setStatus] = useState(() => t('conversation.status.ready', { defaultValue: 'Ready' }));
   const [loading, setLoading] = useState(false);
   const [entitlements, setEntitlements] = useState(() => normalizeEntitlements(aiEntitlements, userRole));
   const [speechEnabled, setSpeechEnabled] = useState(true);
@@ -718,6 +804,12 @@ const ConversationScreen: React.FC = () => {
     () => displayLabelsFor(nativeLanguage, scenarioId, roleState),
     [nativeLanguage, scenarioId, roleState],
   );
+  const localizedScenario = useMemo(
+    () => scenarioCopyFor(nativeLanguage, scenarioId),
+    [nativeLanguage, scenarioId],
+  );
+  const readyStatus = t('conversation.status.ready', { defaultValue: 'Ready' });
+  const listeningStatus = t('conversation.status.listening', { defaultValue: 'Listening...' });
   const tier = userRole === 'admin' ? 'pro' : entitlements?.subscriptionTier || subscriptionTier || 'free';
   const canUseAI = entitlements?.canUseAI !== false;
   const canUsePracticeContextFeature = Boolean(
@@ -733,9 +825,9 @@ const ConversationScreen: React.FC = () => {
   const tokenUsage = entitlements?.tokenUsage || null;
   const quotaExceeded = Boolean(tokenUsage?.quotaExceeded || entitlements?.canSendAI === false);
   const quotaCopy = quotaLimitCopy(tier, tokenUsage?.resetAt, countdownNow);
-  const languageLabel = `${LANGUAGES[nativeLanguage]?.name || nativeLanguage || 'Native'} -> ${LANGUAGES[targetLanguage]?.name || targetLanguage || 'Target'}`;
-  const activeScenarioTitle = isCustomScenario && customIsReady ? customRoleplayTitle(customRoleplay) : scenario.title;
-  const activeScenarioGoal = isCustomScenario ? (customRoleplay.goal || scenario.goal) : scenario.goal;
+  const languageLabel = `${getLanguageDisplayName(nativeLanguage, t) || nativeLanguage || 'Native'} -> ${getLanguageDisplayName(targetLanguage, t) || targetLanguage || 'Target'}`;
+  const activeScenarioTitle = isCustomScenario && customIsReady ? customRoleplayTitle(customRoleplay) : localizedScenario.title;
+  const activeScenarioGoal = isCustomScenario ? (customRoleplay.goal || localizedScenario.goal) : localizedScenario.goal;
 
   const quickTurns = useMemo(() => {
     if (!canUseAI || quotaExceeded) return [];
@@ -743,31 +835,31 @@ const ConversationScreen: React.FC = () => {
     if (isCustomScenario && customIsReady) {
       const latestAssistant = [...history].reverse().find((message) => message.role === 'assistant' && !message.error);
       if (latestAssistant?.nextSuggestedIntent) {
-        return [latestAssistant.nextSuggestedIntent, ...scenario.followUps].slice(0, 3);
+        return [latestAssistant.nextSuggestedIntent, ...localizedScenario.followUps].slice(0, 3);
       }
-      return (history.length ? scenario.followUps : ['Start the roleplay.']).slice(0, 3);
+      return (history.length ? localizedScenario.followUps : localizedScenario.followUps.slice(0, 1)).slice(0, 3);
     }
     const latestAssistant = [...history].reverse().find((message) => message.role === 'assistant' && !message.error);
     if (latestAssistant?.nextSuggestedIntent) {
-      return [latestAssistant.nextSuggestedIntent, ...scenario.followUps].slice(0, 3);
+      return [latestAssistant.nextSuggestedIntent, ...localizedScenario.followUps].slice(0, 3);
     }
-    return (history.length ? scenario.followUps : scenario.starters).slice(0, 3);
-  }, [canUseAI, quotaExceeded, history, scenario, isCustomScenario, customIsReady]);
+    return (history.length ? localizedScenario.followUps : localizedScenario.starters).slice(0, 3);
+  }, [canUseAI, quotaExceeded, history, localizedScenario, isCustomScenario, customIsReady]);
 
   const contextPracticeActions = useMemo(() => {
     if (!canUsePracticeContextFeature || !contextRecommendations?.hasContext) return [];
     const roleplays = (contextRecommendations.roleplays || []).slice(0, 2).map((item) => ({
       key: `roleplay-${item.prompt}`,
-      label: item.title || 'Practice roleplay',
+      label: item.title || (nativeLanguage === 'ko' ? '역할극 연습' : 'Practice roleplay'),
       prompt: item.prompt,
     }));
     const drills = (contextRecommendations.reviewDrills || []).slice(0, 2).map((item) => ({
       key: `drill-${item.prompt}`,
-      label: item.text || 'Review drill',
+      label: item.text || (nativeLanguage === 'ko' ? '복습 연습' : 'Review drill'),
       prompt: item.prompt,
     }));
     return [...roleplays, ...drills].filter((item) => item.prompt);
-  }, [canUsePracticeContextFeature, contextRecommendations]);
+  }, [canUsePracticeContextFeature, contextRecommendations, nativeLanguage]);
 
   useEffect(() => {
     const load = async () => {
@@ -811,10 +903,10 @@ const ConversationScreen: React.FC = () => {
         lastAssistantRef.current = null;
       }
       setTurn('');
-      setStatus('Ready');
+      setStatus(readyStatus);
     };
     load();
-  }, [scenarioId, nativeLanguage, targetLanguage]);
+  }, [scenarioId, nativeLanguage, targetLanguage, readyStatus]);
 
   useEffect(() => {
     if (!starterParam) return;
@@ -1240,7 +1332,7 @@ const ConversationScreen: React.FC = () => {
 
     setTurn('');
     setLoading(true);
-    setStatus('Practice partner is thinking...');
+    setStatus(t('conversation.status.partnerThinking', { defaultValue: 'Practice partner is thinking...' }));
     setHistory((prev) => [...prev.slice(-11), userTurn]);
 
     try {
@@ -1273,17 +1365,17 @@ const ConversationScreen: React.FC = () => {
           setHandsFreeActive(false);
         }
         appendAssistantFallback(
-          'The practice partner is temporarily unavailable. Please try again shortly.',
-          'Your message was kept on this device.',
+          t('conversation.status.partnerUnavailableLong', { defaultValue: 'The practice partner is temporarily unavailable. Please try again shortly.' }),
+          t('conversation.status.messageKept', { defaultValue: 'Your message was kept on this device.' }),
         );
-        setStatus('Practice partner is temporarily unavailable.');
+        setStatus(t('conversation.status.partnerUnavailable', { defaultValue: 'Practice partner is temporarily unavailable.' }));
         return;
       }
 
       const assistantTurn: Turn = {
         id: turnId('assistant'),
         role: 'assistant',
-        content: data.reply || 'Let me try that again. What would you like to say next?',
+        content: data.reply || t('conversation.status.tryAgainPrompt', { defaultValue: 'Let me try that again. What would you like to say next?' }),
         language: data.expectedLanguage || targetLanguage || 'target',
         coachingTip: data.coachingTip || '',
         nextSuggestedIntent: data.nextSuggestedIntent || '',
@@ -1300,7 +1392,7 @@ const ConversationScreen: React.FC = () => {
         }).catch(() => {});
         return updated;
       });
-      setStatus('Practice partner replied.');
+      setStatus(t('conversation.status.partnerReplied', { defaultValue: 'Practice partner replied.' }));
       if (speechEnabled || autoContinue) {
         if (autoContinue) {
           await speakMessage(assistantTurn);
@@ -1324,15 +1416,15 @@ const ConversationScreen: React.FC = () => {
         quotaDenied
           ? resetMessage
           : planDenied
-          ? 'Conversation Practice is not available on this plan.'
-          : 'The practice partner had trouble replying. Please try again.',
+          ? t('conversation.status.planUnavailable', { defaultValue: 'Conversation practice is not available on this plan.' })
+          : t('conversation.status.partnerTrouble', { defaultValue: 'The practice partner had trouble replying. Please try again.' }),
         quotaDenied
           ? quotaLimitCopy(tier, error.response?.data?.tokenUsage?.resetAt).tip
           : planDenied
-            ? 'Your plan settings were refreshed.'
-            : 'Your message was not sent again.',
+            ? t('conversation.status.planRefreshed', { defaultValue: 'Your plan settings were refreshed.' })
+            : t('conversation.status.messageNotResent', { defaultValue: 'Your message was not sent again.' }),
       );
-      setStatus(quotaDenied ? resetMessage : (error.response?.data?.message || 'Connection issue. Try again in a moment.'));
+      setStatus(quotaDenied ? resetMessage : (error.response?.data?.message || t('conversation.status.connectionIssue', { defaultValue: 'Connection issue. Try again in a moment.' })));
       if (autoContinue) {
         handsFreeRef.current = false;
         setHandsFreeActive(false);
@@ -1344,7 +1436,7 @@ const ConversationScreen: React.FC = () => {
 
   useSpeechRecognitionEvent('start', () => {
     setListening(true);
-    setStatus(listeningAutoRef.current ? handsFreeCopy(nativeLanguage).listening : 'Listening...');
+    setStatus(listeningAutoRef.current ? handsFreeCopy(nativeLanguage).listening : listeningStatus);
   });
 
   useSpeechRecognitionEvent('result', (event) => {
@@ -1410,7 +1502,7 @@ const ConversationScreen: React.FC = () => {
     }
     if (!loading) {
       const copy = handsFreeCopy(nativeLanguage);
-      setStatus((currentStatus) => (currentStatus === 'Listening...' || currentStatus === copy.listening ? 'Ready' : currentStatus));
+      setStatus((currentStatus) => (currentStatus === listeningStatus || currentStatus === copy.listening ? readyStatus : currentStatus));
     }
   });
 
@@ -1442,7 +1534,7 @@ const ConversationScreen: React.FC = () => {
     >
       <View style={[styles.header, { paddingTop: insets.top + 14 }]}>
         <View style={styles.headerText}>
-          <Text style={styles.kicker}>Conversation Practice</Text>
+          <Text style={styles.kicker}>{t('conversation.kicker', 'Conversation Practice')}</Text>
           <Text variant="headlineSmall" style={styles.title}>{activeScenarioTitle}</Text>
           <Text style={styles.subtitle}>{languageLabel}</Text>
         </View>
@@ -1459,14 +1551,14 @@ const ConversationScreen: React.FC = () => {
                 style={styles.scenarioMenuButton}
                 labelStyle={styles.scenarioMenuLabel}
               >
-                {scenario.shortLabel}
+                {localizedScenario.shortLabel}
               </Button>
             )}
           >
             {scenarios.map((item) => (
               <Menu.Item
                 key={item.id}
-                title={item.title}
+                title={scenarioCopyFor(nativeLanguage, item.id).title}
                 onPress={() => {
                   setScenarioMenuOpen(false);
                   setScenarioId(item.id);
@@ -1484,15 +1576,15 @@ const ConversationScreen: React.FC = () => {
 
       <View style={styles.controls}>
         <View style={styles.supportHeader}>
-          <Text style={styles.label}>Support</Text>
+          <Text style={styles.label}>{t('conversation.support', 'Support')}</Text>
           <Text style={styles.memoryText}>
-            {memoryScope === 'cloud' ? 'Synced memory' : memoryScope === 'device' ? 'Device memory' : 'No saved memory'}
+            {memoryScope === 'cloud' ? t('conversation.syncedMemory', 'Synced memory') : memoryScope === 'device' ? t('conversation.deviceMemory', 'Device memory') : t('conversation.noSavedMemory', 'No saved memory')}
           </Text>
         </View>
         <SegmentedButtons
           value={supportLevel}
           onValueChange={setSupportLevel}
-          buttons={supportLevels.map(({ value, label }) => ({ value, label }))}
+          buttons={supportLevels.map(({ value }) => ({ value, label: supportLabelFor(nativeLanguage, value) }))}
           style={styles.segmented}
         />
         <View style={styles.brief}>
@@ -1521,7 +1613,7 @@ const ConversationScreen: React.FC = () => {
             style={styles.modeButton}
             labelStyle={styles.modeButtonLabel}
           >
-            {speechEnabled ? 'Spoken on' : 'Spoken off'}
+            {speechEnabled ? t('conversation.spokenRepliesOn', 'Spoken replies on') : t('conversation.spokenRepliesOff', 'Spoken replies off')}
           </Button>
           <Button
             mode={handsFreeActive ? 'contained-tonal' : 'outlined'}
@@ -1532,7 +1624,7 @@ const ConversationScreen: React.FC = () => {
             style={styles.modeButton}
             labelStyle={styles.modeButtonLabel}
           >
-            {handsFreeActive ? 'Stop hands-free' : 'Hands-free'}
+            {handsFreeActive ? t('conversation.stopHandsFree', 'Stop hands-free') : t('conversation.handsFree', 'Hands-free')}
           </Button>
         </View>
         {quickTurns.length > 0 && (
@@ -1554,7 +1646,7 @@ const ConversationScreen: React.FC = () => {
         )}
         {contextPracticeActions.length > 0 && (
           <>
-            <Text style={styles.contextStarterHeader}>Personalized for you</Text>
+            <Text style={styles.contextStarterHeader}>{t('conversation.personalizedForYou', 'Personalized for you')}</Text>
             <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.contextStarters}>
               {contextPracticeActions.map((item) => (
                 <Button
@@ -1577,7 +1669,7 @@ const ConversationScreen: React.FC = () => {
       <View style={styles.threadShell}>
         <View style={styles.threadHeader}>
           <View>
-            <Text style={styles.threadKicker}>Practice thread</Text>
+            <Text style={styles.threadKicker}>{t('conversation.practiceThread', 'Practice thread')}</Text>
             <Text style={styles.threadTitle}>{uiLabels.activePartner}</Text>
           </View>
           <View style={[styles.liveDot, (listening || handsFreeActive || loading) && styles.liveDotActive]} />
@@ -1585,8 +1677,8 @@ const ConversationScreen: React.FC = () => {
         <ScrollView ref={scrollRef} style={styles.thread} contentContainerStyle={styles.threadContent}>
           {!canUseAI && (
             <View style={styles.empty}>
-              <Text style={styles.emptyTitle}>Conversation Practice is not available on this plan.</Text>
-              <Text style={styles.emptyText}>Daily conversation practice is available on Free, Plus, and Pro.</Text>
+              <Text style={styles.emptyTitle}>{t('conversation.notAvailableTitle', 'Conversation Practice is not available on this plan.')}</Text>
+              <Text style={styles.emptyText}>{t('conversation.notAvailableBody', 'Daily conversation practice is available on Free, Plus, and Pro.')}</Text>
             </View>
           )}
           {canUseAI && quotaExceeded && (
@@ -1597,8 +1689,8 @@ const ConversationScreen: React.FC = () => {
           )}
           {canUseAI && !quotaExceeded && history.length === 0 && !loading && (
             <View style={styles.empty}>
-              <Text style={styles.emptyTitle}>Begin {activeScenarioTitle.toLowerCase()}</Text>
-              <Text style={styles.emptyText}>{uiLabels.activePartner} is ready.</Text>
+              <Text style={styles.emptyTitle}>{t('conversation.beginScenario', { scenario: activeScenarioTitle.toLowerCase(), defaultValue: 'Begin {{scenario}}' })}</Text>
+              <Text style={styles.emptyText}>{t('conversation.partnerReady', { partner: uiLabels.activePartner, defaultValue: '{{partner}} is ready.' })}</Text>
             </View>
           )}
           {history.map((message) => (
@@ -1623,7 +1715,7 @@ const ConversationScreen: React.FC = () => {
                         onPress={() => speakMessage(message)}
                         labelStyle={styles.replayLabel}
                       >
-                        Play
+                        {t('conversation.play', 'Play')}
                       </Button>
                     )}
                     {!!message.language && <Text style={styles.languageTag}>{message.language}</Text>}
@@ -1638,7 +1730,7 @@ const ConversationScreen: React.FC = () => {
             <Card style={[styles.message, styles.assistantMessage]}>
               <Card.Content style={styles.messageContent}>
                 <Text style={styles.messageLabel}>{uiLabels.activePartner}</Text>
-                <Text style={styles.messageBody}>Thinking...</Text>
+                <Text style={styles.messageBody}>{t('conversation.thinking', 'Thinking...')}</Text>
               </Card.Content>
             </Card>
           )}
@@ -1650,26 +1742,26 @@ const ConversationScreen: React.FC = () => {
           mode="outlined"
           value={turn}
           onChangeText={setTurn}
-          placeholder={canUseAI ? 'Type your turn...' : 'Conversation Practice is not available on this plan.'}
+          placeholder={canUseAI ? t('conversation.typeYourTurn', 'Type your turn...') : t('conversation.notAvailableTitle', 'Conversation Practice is not available on this plan.')}
           multiline
           disabled={!canUseAI || quotaExceeded}
           style={styles.input}
         />
         <View style={styles.actions}>
           <Button mode="outlined" onPress={resetConversation} style={styles.actionButton}>
-            Reset
+            {t('conversation.reset', 'Reset')}
           </Button>
           <Button
             mode="outlined"
             icon={listening ? 'microphone-off' : 'microphone'}
-            onPress={listening ? stopListening : () => startListening().catch(() => setStatus('Could not start speech input.'))}
+            onPress={listening ? stopListening : () => startListening().catch(() => setStatus(t('conversation.couldNotStartSpeech', 'Could not start speech input.')))}
             disabled={!canUseAI || quotaExceeded || loading || handsFreeActive}
             style={styles.actionButton}
           >
-            {listening ? 'Stop' : 'Speak'}
+            {listening ? t('conversation.stop', 'Stop') : t('conversation.speak', 'Speak')}
           </Button>
           <Button mode="contained" onPress={() => sendTurn()} disabled={!turn.trim() || loading || !canUseAI || quotaExceeded} loading={loading} style={styles.actionButton}>
-            Send
+            {t('conversation.send', 'Send')}
           </Button>
         </View>
         <Text style={styles.status}>{status}</Text>

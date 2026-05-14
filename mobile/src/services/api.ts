@@ -3,12 +3,21 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { API_URL } from '../config/api';
 import { useAuthStore } from '../stores/authStore';
 import { useSettingsStore } from '../stores/settingsStore';
+import { normalizeLanguageCode } from '../utils/languagePairPolicy';
 import { reportApiError } from './errorReporter';
 
 const api = axios.create({
   baseURL: API_URL,
   timeout: 15000,
 });
+
+const currentLanguageParams = () => {
+  const { targetLanguage, nativeLanguage } = useSettingsStore.getState();
+  return {
+    targetLang: normalizeLanguageCode(targetLanguage),
+    nativeLang: normalizeLanguageCode(nativeLanguage),
+  };
+};
 
 const DEVICE_ID_KEY = 'lingoDeviceId';
 let cachedDeviceId: string | null = null;
@@ -41,6 +50,11 @@ api.interceptors.request.use(async (config) => {
 
 // Track whether a token refresh is already in progress to avoid concurrent refreshes
 let refreshPromise: Promise<string> | null = null;
+
+const isExpectedStatus = (config: any, status?: number) => {
+  const expected = config?.expectedStatuses;
+  return Array.isArray(expected) && status != null && expected.includes(status);
+};
 
 // Retry logic for GET 5xx / network errors + auto-refresh on 401 + suspension detection
 api.interceptors.response.use(
@@ -119,7 +133,9 @@ api.interceptors.response.use(
       useAuthStore.getState().logout();
       error._forcedLogout = true;
     }
-    reportApiError(error);
+    if (!isExpectedStatus(config, error.response?.status)) {
+      reportApiError(error);
+    }
     return Promise.reject(error);
   },
 );
@@ -149,38 +165,59 @@ export const authService = {
 
 export const quizService = {
   getQuizzes: (category?: string, difficulty?: string) => {
-    const { targetLanguage, nativeLanguage } = useSettingsStore.getState();
-    const targetLang = targetLanguage;
-    const nativeLang = nativeLanguage;
+    const { targetLang, nativeLang } = currentLanguageParams();
     return api.get('/quiz', { params: { category, difficulty, targetLang, nativeLang } });
   },
   getQuiz: (quizId: string) => {
-    const nativeLang = useSettingsStore.getState().nativeLanguage;
-    return api.get(`/quiz/${quizId}`, { params: { nativeLang }, timeout: 30000 });
+    const { targetLang, nativeLang } = currentLanguageParams();
+    return api.get(`/quiz/${quizId}`, {
+      params: { targetLang, nativeLang },
+      timeout: 30000,
+    });
   },
 };
 
 export const classLessonService = {
   getClassLessons: () => {
-    const { targetLanguage, nativeLanguage } = useSettingsStore.getState();
-    return api.get('/class-lessons', { params: { targetLang: targetLanguage, nativeLang: nativeLanguage } });
+    const { targetLang, nativeLang } = currentLanguageParams();
+    return api.get('/class-lessons', { params: { targetLang, nativeLang } });
   },
   getClassLesson: (classLessonId: string) => {
-    const nativeLang = useSettingsStore.getState().nativeLanguage;
-    return api.get(`/class-lessons/${classLessonId}`, { params: { nativeLang }, timeout: 30000 });
+    const { targetLang, nativeLang } = currentLanguageParams();
+    return api.get(`/class-lessons/${classLessonId}`, {
+      params: { targetLang, nativeLang },
+      timeout: 30000,
+    });
   },
   getProgress: (classLessonId: string) => {
-    const { targetLanguage, nativeLanguage } = useSettingsStore.getState();
-    return api.get(`/class-lessons/${classLessonId}/progress`, { params: { targetLang: targetLanguage, nativeLang: nativeLanguage } });
+    const { targetLang, nativeLang } = currentLanguageParams();
+    return api.get(`/class-lessons/${classLessonId}/progress`, { params: { targetLang, nativeLang } });
   },
   saveProgress: (classLessonId: string, progress: Record<string, any>) => {
-    const { targetLanguage, nativeLanguage } = useSettingsStore.getState();
+    const { targetLang: targetLanguage, nativeLang: nativeLanguage } = currentLanguageParams();
     return api.put(`/class-lessons/${classLessonId}/progress`, {
       ...progress,
       targetLanguage,
       nativeLanguage,
       source: 'mobile',
     });
+  },
+};
+
+export const certificateService = {
+  getClassLessonStatus: (classLessonId: string) => {
+    const { targetLang, nativeLang } = currentLanguageParams();
+    return api.get(`/certificates/class-lessons/${classLessonId}/status`, {
+      params: { targetLang, nativeLang },
+    });
+  },
+  issueClassLessonCertificate: (classLessonId: string, payload: Record<string, any> = {}) => {
+    const { targetLang: targetLanguage, nativeLang: nativeLanguage } = currentLanguageParams();
+    return api.post(`/certificates/class-lessons/${classLessonId}/issue`, {
+      ...payload,
+      targetLanguage,
+      nativeLanguage,
+    }, { expectedStatuses: [402] } as any);
   },
 };
 
@@ -197,26 +234,43 @@ export const practiceContextService = {
     api.delete(`/practice-context/${contextId}`),
 };
 
+export const billingService = {
+  getPlans: () =>
+    api.get('/billing/plans'),
+  getAccount: () =>
+    api.get('/billing/me'),
+  verifyMobilePurchase: (payload: { platform: 'ios' | 'android'; planId: string; productId?: string; transactionId?: string; receipt?: string; purchaseToken?: string }) =>
+    api.post('/billing/mobile/verify', payload, { timeout: 30000 }),
+  sendInstitutionalInquiry: (payload: Record<string, any>) =>
+    api.post('/billing/institutional-inquiry', { ...payload, source: 'mobile' }, { timeout: 30000 }),
+  getInstitutionDashboard: (organizationId = '') =>
+    api.get('/billing/institution/dashboard', { params: organizationId ? { organizationId } : {} }),
+  addInstitutionMember: (organizationId: string, payload: Record<string, any>) =>
+    api.post(`/billing/institution/organizations/${organizationId}/members`, payload),
+  updateInstitutionMember: (organizationId: string, membershipId: string, payload: Record<string, any>) =>
+    api.put(`/billing/institution/organizations/${organizationId}/members/${membershipId}`, payload),
+};
+
 export const flashcardService = {
   getCategories: () => {
-    const { targetLanguage, nativeLanguage } = useSettingsStore.getState();
-    return api.get('/flashcards/categories', { params: { targetLang: targetLanguage, nativeLang: nativeLanguage } });
+    const { targetLang, nativeLang } = currentLanguageParams();
+    return api.get('/flashcards/categories', { params: { targetLang, nativeLang } });
   },
   getCategoryCards: (category: string) => {
-    const { targetLanguage, nativeLanguage } = useSettingsStore.getState();
-    return api.get('/flashcards/category-cards', { params: { targetLang: targetLanguage, nativeLang: nativeLanguage, category } });
+    const { targetLang, nativeLang } = currentLanguageParams();
+    return api.get('/flashcards/category-cards', { params: { targetLang, nativeLang, category } });
   },
   getFlashcards: (userId: string, page = 1, limit = 50, opts: { categories?: string; shuffle?: boolean; seed?: number } = {}) => {
-    const { targetLanguage, nativeLanguage } = useSettingsStore.getState();
-    const params: Record<string, any> = { targetLang: targetLanguage, nativeLang: nativeLanguage, page, limit };
+    const { targetLang, nativeLang } = currentLanguageParams();
+    const params: Record<string, any> = { targetLang, nativeLang, page, limit };
     if (opts.categories) params.categories = opts.categories;
     if (opts.shuffle !== undefined) params.shuffle = opts.shuffle;
     if (opts.seed !== undefined) params.seed = opts.seed;
     return api.get(`/flashcards/user/${userId}`, { params });
   },
   getGuestFlashcards: (page = 1, limit = 50, opts: { categories?: string; shuffle?: boolean; seed?: number } = {}) => {
-    const { nativeLanguage, targetLanguage } = useSettingsStore.getState();
-    const params: Record<string, any> = { nativeLang: nativeLanguage, targetLang: targetLanguage, page, limit };
+    const { targetLang, nativeLang } = currentLanguageParams();
+    const params: Record<string, any> = { nativeLang, targetLang, page, limit };
     if (opts.categories) params.categories = opts.categories;
     if (opts.shuffle !== undefined) params.shuffle = opts.shuffle;
     if (opts.seed !== undefined) params.seed = opts.seed;

@@ -81,8 +81,8 @@ const lesson = {
   ],
   relatedPools: ['topic-travel', 'topic-city'],
   content: [
-    createContentItem('Lesson goal', 'transport', 'By end: ask routes, state means, describe duration & transfers.', 'word', 'Functions: ask · state · duration · transfer', 'Four micro-skills.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'getting around', 'You need to go from 구미 (Gumi) to 서울 (Seoul) but never made the trip. You ask a stranger.', 'word', 'You: 서울에 어떻게 가요? — Stranger: KTX 타세요.', 'You: How do I get to Seoul? — Stranger: Take the KTX.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: ask routes, state means, describe duration & transfers.', 'word', 'Functions: ask · state · duration · transfer', 'Four micro-skills.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'You need to go from 구미 (Gumi) to 서울 (Seoul) but never made the trip. You ask a stranger.', 'word', 'You: 서울에 어떻게 가요? — Stranger: KTX 타세요.', 'You: How do I get to Seoul? — Stranger: Take the KTX.', null, [ACT.orientation]),
 
     createContentItem('어떻게 → [어떠케]', 'eotteoke', '격음화: ㅎ + ㄱ → ㅋ.', 'word', '어떻게 가요? → [어떠케 가요]', 'How do I go?', null, [ACT.pronunciation]),
     createContentItem('지하철로 → [지하철로]', 'jihacheollo', '로 attaches smoothly to ㄹ받침. No sound change.', 'word', '지하철로 가요.', 'I go by subway.', null, [ACT.pronunciation]),

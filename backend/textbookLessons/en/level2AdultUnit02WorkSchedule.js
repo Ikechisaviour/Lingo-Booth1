@@ -1,0 +1,226 @@
+// Level 2 Adult Unit 2 — Work Schedule (English)
+// Functions: telling shifts, days off, scheduling meetings, PTO requests.
+
+const createContentItem = (
+  target, ipa, note, type = 'word',
+  example = '', exampleNote = '', breakdown = null, activityIds = [],
+) => ({
+  type, activityIds,
+  targetText: target, romanization: ipa, nativeText: note, pronunciation: ipa,
+  exampleTarget: example || target, exampleNative: exampleNote || note,
+  korean: target, english: note, example: example || target, exampleEnglish: exampleNote || note,
+  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.target, native: b.english, korean: b.target, english: b.english })) } : {}),
+});
+
+const ACT = {
+  orientation: 'en-l2au2-orientation',
+  pronunciation: 'en-l2au2-pronunciation',
+  vocabularyTime: 'en-l2au2-vocab-time',
+  vocabularySchedule: 'en-l2au2-vocab-schedule',
+  grammarSchedule: 'en-l2au2-grammar-schedule',
+  grammarPTO: 'en-l2au2-grammar-pto',
+  reading: 'en-l2au2-reading',
+  listening: 'en-l2au2-listening',
+  writing: 'en-l2au2-writing',
+  culture: 'en-l2au2-culture',
+  task: 'en-l2au2-task',
+};
+
+const activities = [
+  { id: ACT.orientation, section: 'Orientation', title: 'What you will be able to do',
+    goals: ['State your work schedule (start, end, breaks, days off).', 'Schedule a meeting at a specific time.', 'Request time off (PTO) politely in writing or in person.', 'Read a shift schedule.'],
+    task: 'Picture asking your US manager for a day off next month — frame it politely with a reason.' },
+  { id: ACT.pronunciation, section: 'Pronunciation', title: 'Time + schedule phrases',
+    goals: ['Pronounce "schedule" /ˈskɛdʒuːl/ (US) vs /ˈʃɛdjuːl/ (UK).', 'Reduce "to" in "9 to 5" /naɪn tə faɪv/.'],
+    task: 'Read 3 schedule phrases aloud.' },
+  { id: ACT.vocabularyTime, section: 'Vocabulary I', title: 'Time + shift words',
+    goals: ['Use shift, morning shift, night shift, weekend shift, overtime, double shift, on-call.'],
+    task: 'Describe a typical shift.' },
+  { id: ACT.vocabularySchedule, section: 'Vocabulary II', title: 'Calendar + PTO vocabulary',
+    goals: ['Use PTO, vacation, sick day, personal day, holiday, day off, work from home.'],
+    task: 'List 5 types of time off.' },
+  { id: ACT.grammarSchedule, section: 'Grammar I', title: 'Scheduling structures',
+    goals: ['"I work from + time + to + time" / "I\'m on the + shift".', '"Are you free + time?" / "Could we meet at + time?".', 'Prepositions: at (time), on (day), in (month).'],
+    task: 'Schedule 3 meetings.' },
+  { id: ACT.grammarPTO, section: 'Grammar II', title: 'PTO request patterns',
+    goals: ['"I\'d like to request + time + off".', '"Would it be possible to take + day + off?"', '"I\'ll be out from + date + to + date".'],
+    task: 'Write 3 PTO request sentences.' },
+  { id: ACT.reading, section: 'Reading and Speaking', title: 'Shift schedule',
+    goals: ['Read a weekly shift schedule.'],
+    task: 'Answer comprehension about a schedule.' },
+  { id: ACT.listening, section: 'Listening and Speaking', title: 'PTO request dialogue',
+    goals: ['Follow a PTO request conversation.'],
+    task: 'Reproduce with your own request.' },
+  { id: ACT.writing, section: 'Writing', title: 'PTO email',
+    goals: ['Write a 4-line PTO request email.'],
+    task: 'Write your own email.' },
+  { id: ACT.culture, section: 'Culture Note', title: 'US vacation culture',
+    goals: ['Know US standard: 10-15 days/year (less than UK/EU 25-30).', 'Understand "use it or lose it" PTO policies.', 'Know the 9-to-5 standard and exempt/non-exempt distinction.'],
+    task: 'Compare US PTO with your country.' },
+  { id: ACT.task, section: 'Task', title: 'Request a day off',
+    goals: ['Combine polite request + reason + timeline.'],
+    task: 'Roleplay requesting a day off for a family event.' },
+];
+
+const lesson = {
+  title: 'Level 2 (Workplace) · Unit 2: I work from 9 to 5 — Work Schedule',
+  category: 'business',
+  difficulty: 'intermediate',
+  targetLang: 'en', nativeLang: 'en',
+  track: 'textbook', lessonType: 'workplace',
+  activities,
+  expressionPractice: [
+    { id: 'stating-shifts-en', label: 'Stating shifts', goal: 'Use "I work from X to Y" / "I\'m on the morning/night shift".' },
+    { id: 'requesting-pto-en', label: 'Requesting PTO', goal: 'Use "I\'d like to request" / "Would it be possible to".' },
+    { id: 'scheduling-meetings-en', label: 'Scheduling meetings', goal: 'Use "Could we meet at + time?" with rising intonation.' },
+  ],
+  relatedPools: ['topic-society'],
+  content: [
+    createContentItem('Lesson goal', 'work schedule', 'By end: state shifts, schedule meetings, request PTO professionally.', 'word', 'Functions: state · schedule · request.', 'Three schedule micro-skills.', null, [ACT.orientation]),
+    createContentItem('Real-world scenario', 'PTO request', 'You need to fly back to Korea for your grandfather\'s 70th birthday. You need to request 4 days off two months in advance. You write a polite email to your manager.', 'word', 'You: "I\'d like to request 4 days off from June 10 to June 13 to attend my grandfather\'s 70th birthday in Korea."', 'Standard PTO request.', null, [ACT.orientation]),
+
+    createContentItem('schedule /ˈskɛdʒuːl/ (US)', '/ˈskɛdʒuːl/', 'US pronunciation', 'word', 'What\'s your schedule today?', 'UK: /ˈʃɛdjuːl/.', null, [ACT.pronunciation]),
+    createContentItem('"9 to 5" /naɪn tə faɪv/', '/naɪn tə faɪv/', 'Reduced "to" → /tə/.', 'word', 'I work 9 to 5.', 'Iconic US work-schedule phrase.', null, [ACT.pronunciation]),
+    createContentItem('overtime /ˈoʊvərˌtaɪm/', '/ˈoʊvərˌtaɪm/', 'Stress on syllable 1.', 'word', 'I worked 5 hours of overtime.', '"OT" — common short form.', null, [ACT.pronunciation]),
+
+    createContentItem('shift', '/ʃɪft/', 'block of work hours', 'word', 'My shift starts at 7.', 'morning, afternoon, night, weekend.', null, [ACT.vocabularyTime]),
+    createContentItem('morning / day shift', '/ˈmɔːrnɪŋ ʃɪft/', '~6 AM to 2-3 PM', 'word', 'I prefer the morning shift.', 'Most-wanted shift.', null, [ACT.vocabularyTime]),
+    createContentItem('night shift / graveyard', '/naɪt ʃɪft/', '~11 PM to 7 AM', 'word', 'Night shift pays more.', '"Graveyard" — casual slang.', null, [ACT.vocabularyTime]),
+    createContentItem('overtime / OT', '/ˈoʊvərˌtaɪm/', 'extra paid hours', 'word', 'I worked overtime three nights.', 'Often 1.5x or 2x pay.', null, [ACT.vocabularyTime]),
+    createContentItem('on-call', '/ɒn kɔːl/', 'available outside normal hours', 'word', 'I\'m on-call this weekend.', 'Common in tech / medical.', null, [ACT.vocabularyTime]),
+    createContentItem('clock in / clock out', '/klɒk ɪn/', 'punch a time card', 'word', 'I clock in at 8:55.', 'Hourly workers use this.', null, [ACT.vocabularyTime]),
+    createContentItem('break / lunch', '/breɪk/ /lʌntʃ/', 'short rest / meal', 'word', 'I take a 30-minute lunch.', '15-min coffee break, 30-60 min lunch.', null, [ACT.vocabularyTime]),
+
+    createContentItem('PTO (Paid Time Off)', '/piː tiː oʊ/', 'all paid leave combined', 'word', 'I have 15 days of PTO.', 'Vacation + sick + personal.', null, [ACT.vocabularySchedule]),
+    createContentItem('vacation / holiday', '/veɪˈkeɪʃən/ /ˈhɒlədeɪ/', 'planned time off', 'word', 'I\'m on vacation next week.', 'US: "vacation". UK: "holiday".', null, [ACT.vocabularySchedule]),
+    createContentItem('sick day', '/sɪk deɪ/', 'paid day for illness', 'word', 'I called in sick.', 'Verb: "call in sick".', null, [ACT.vocabularySchedule]),
+    createContentItem('personal day', '/ˈpɜːrsənəl deɪ/', 'flexible paid day', 'word', 'I\'m taking a personal day for errands.', 'Less formal than PTO.', null, [ACT.vocabularySchedule]),
+    createContentItem('public holiday', '/ˈpʌblɪk ˈhɒlədeɪ/', 'federally observed day', 'word', 'Christmas is a public holiday.', 'US: ~10 federal holidays/year.', null, [ACT.vocabularySchedule]),
+    createContentItem('day off', '/deɪ ɒf/', 'not scheduled to work', 'word', 'Monday is my day off.', '"Off" — not working.', null, [ACT.vocabularySchedule]),
+    createContentItem('work from home / WFH', '/wɜːrk frɒm hoʊm/', 'remote work day', 'word', 'I work from home on Fridays.', 'Post-2020 standard.', null, [ACT.vocabularySchedule]),
+
+    createContentItem(
+      '"I work from + time + to + time"',
+      'stating hours',
+      'Standard shift declaration.',
+      'sentence',
+      'I work from 9 to 5 Monday through Friday. — She works from 11 PM to 7 AM on the night shift.',
+      'Prepositions: AT a time (at 9), ON a day (on Friday), IN a month (in June).',
+      [
+        { target: 'I work from X to Y', english: 'state hours' },
+        { target: 'I\'m on the + shift', english: 'state shift name' },
+        { target: 'at + time / on + day / in + month', english: 'time prepositions' },
+      ],
+      [ACT.grammarSchedule],
+    ),
+    createContentItem(
+      'Scheduling meetings',
+      'polite suggestions',
+      'Standard meeting-scheduling phrases.',
+      'sentence',
+      'Are you free at 2 PM on Thursday? — Could we meet at 10? — Does Wednesday afternoon work for you?',
+      'Rising intonation on the question.',
+      [
+        { target: 'Are you free at + time?', english: 'check availability' },
+        { target: 'Could we meet at + time?', english: 'polite suggestion' },
+        { target: 'Does X work for you?', english: 'soft propose' },
+      ],
+      [ACT.grammarSchedule],
+    ),
+    createContentItem(
+      'Requesting PTO',
+      'polite request patterns',
+      'Standard ways to request time off.',
+      'sentence',
+      'I\'d like to request 3 days off from June 10 to June 12. — Would it be possible to take next Friday off? — I\'ll be out of office from July 1 to July 5.',
+      'Always include dates + a brief reason.',
+      [
+        { target: 'I\'d like to request + duration + off', english: 'formal request' },
+        { target: 'Would it be possible to + V?', english: 'softer request' },
+        { target: 'I\'ll be out of office from X to Y', english: 'announcement' },
+      ],
+      [ACT.grammarPTO],
+    ),
+
+    createContentItem(
+      'Shift schedule',
+      'reading practice',
+      'Read this weekly schedule.',
+      'sentence',
+      'WAREHOUSE SCHEDULE — Week of March 17\nMon: Min-su, 7 AM-3 PM (morning)\nTue: Min-su, 7 AM-3 PM (morning)\nWed: OFF\nThu: Min-su, 3 PM-11 PM (afternoon)\nFri: Min-su, 3 PM-11 PM (afternoon)\nSat: Min-su, 11 PM-7 AM (night)\nSun: OFF\nNote: Overtime available Friday. Sign up with Sarah.',
+      'Standard shift schedule.',
+      [
+        { target: 'morning / afternoon / night shifts', english: 'three shift types' },
+        { target: 'OFF', english: 'no work scheduled' },
+        { target: 'Overtime available', english: 'optional extra hours' },
+      ],
+      [ACT.reading],
+    ),
+
+    createContentItem(
+      'PTO request dialogue',
+      'manager talk',
+      'Asking your manager for time off.',
+      'conversation',
+      'You: Hi Sarah, do you have a minute?\nManager: Sure, what\'s up?\nYou: I\'d like to request 4 days off from June 10 to 13 for my grandfather\'s 70th birthday in Korea.\nManager: That\'s a big occasion. Let me check the schedule. … Looks like June is light. Submit it through the HR portal and I\'ll approve it.\nYou: Thank you. Should I find coverage for my shifts?\nManager: We\'ll figure it out. Just give us 6 weeks\' notice in the future for international trips.\nYou: Of course. Thanks again.',
+      'Polite request + reason + follow-through.',
+      [
+        { target: 'I\'d like to request + duration + off', english: 'request' },
+        { target: 'for my grandfather\'s 70th birthday', english: 'reason' },
+        { target: 'Submit it through the HR portal', english: 'process' },
+        { target: '6 weeks\' notice for international trips', english: 'policy' },
+      ],
+      [ACT.listening],
+    ),
+
+    createContentItem(
+      'PTO email',
+      'writing model',
+      'Standard PTO request email.',
+      'sentence',
+      'Subject: PTO Request — June 10-13\n\nHi Sarah,\n\nI\'d like to request 4 days off from June 10 to June 13 to attend my grandfather\'s 70th birthday celebration in Korea. I\'ve already coordinated coverage with Min-jun for my Tuesday and Wednesday shifts. Please let me know if there\'s anything else I need to do.\n\nThanks,\nMin-su',
+      'Standard PTO email format.',
+      [
+        { target: 'Subject: PTO Request — dates', english: 'specific subject' },
+        { target: 'I\'d like to request + duration + off + reason', english: 'main request' },
+        { target: 'I\'ve coordinated coverage with X', english: 'proactive' },
+        { target: 'Please let me know if …', english: 'open close' },
+      ],
+      [ACT.writing],
+    ),
+
+    createContentItem(
+      'US vacation culture',
+      'cultural overview',
+      'US: 10-15 PTO days/year (less than UK 28, EU 25-30). Often "use it or lose it" — unused days expire. Federal holidays: ~10/year. Sick days: usually separate from PTO. UK/AU: more generous statutory leave + sick pay protections.',
+      'sentence',
+      'Americans take less vacation than any other developed country.',
+      'Most US workers feel pressure not to use full PTO.',
+      [
+        { target: 'US: 10-15 PTO days/year', english: 'less than UK/EU' },
+        { target: '"use it or lose it"', english: 'unused days expire' },
+        { target: 'federal holidays: ~10', english: 'paid public holidays' },
+        { target: 'sick days separate from PTO', english: 'depends on employer' },
+      ],
+      [ACT.culture],
+    ),
+
+    createContentItem(
+      'Task: Request a day off',
+      'consolidation task',
+      'AI tutor plays your manager. Request a day off for a family event. Include date, reason, coverage plan.',
+      'conversation',
+      'Tutor: Hi, what can I do for you?\nYou: [polite opener + request with dates + reason]\nTutor: Let me check. Did you arrange coverage?\nYou: [coverage plan]\nTutor: [approval + process]\nYou: [thanks + close]',
+      'AI tutor plays manager.',
+      [
+        { target: 'I\'d like to request + duration + off', english: 'formal request' },
+        { target: 'specific dates', english: 'concrete' },
+        { target: 'I\'ve arranged coverage with X', english: 'proactive' },
+        { target: 'Thank you for considering', english: 'polite close' },
+      ],
+      [ACT.task],
+    ),
+  ],
+};
+
+module.exports = lesson;

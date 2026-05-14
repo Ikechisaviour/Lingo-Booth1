@@ -76,8 +76,8 @@ const lesson = {
   ],
   relatedPools: ['topic-people'],
   content: [
-    createContentItem('Lesson goal', 'weekend chat', 'By end: chat about weekend with coworkers using experience + plan grammar.', 'word', 'Functions: share · recall · plan · invite', 'Small talk toolkit.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'Monday chat', 'It is Monday morning at the factory. Your team gathers for coffee — small talk time.', 'word', 'A: 주말 잘 보내셨어요? — B: 등산했어요. 사라 씨는요?', 'A: Good weekend? — B: I hiked. You?', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: chat about weekend with coworkers using experience + plan grammar.', 'word', 'Functions: share · recall · plan · invite', 'Small talk toolkit.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'It is Monday morning at the factory. Your team gathers for coffee — small talk time.', 'word', 'A: 주말 잘 보내셨어요? — B: 등산했어요. 사라 씨는요?', 'A: Good weekend? — B: I hiked. You?', null, [ACT.orientation]),
 
     createContentItem('갔습니다 → [갇씀니다]', 'gatseumnida', '경음화 + 비음화.', 'word', '주말에 갔습니다.', 'I went on the weekend.', null, [ACT.pronunciation]),
     createContentItem('등산하기 → [등산하기]', 'deungsanhagi', 'No major change.', 'word', '등산하기로 했어요.', 'Decided to hike.', null, [ACT.pronunciation]),

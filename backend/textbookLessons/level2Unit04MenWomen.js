@@ -74,8 +74,8 @@ const lesson = {
   ],
   relatedPools: ['topic-people', 'topic-society'],
   content: [
-    createContentItem('Lesson goal', 'debate + grammar', 'By end: voice complaints, predict outcomes, contrast two groups, debate.', 'word', 'Functions: complain · predict · contrast · debate', 'Argument toolkit.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'frustration', 'You complain to your friend that your group-project partner has not helped at all. You need to express frustration AND predict more issues.', 'word', 'You: 도와주기는커녕 매번 늦어요. 다음번에도 늦을 게 뻔해요.', 'You: Far from helping, he is late every time. He will surely be late next time too.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: voice complaints, predict outcomes, contrast two groups, debate.', 'word', 'Functions: complain · predict · contrast · debate', 'Argument toolkit.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'You complain to your friend that your group-project partner has not helped at all. You need to express frustration AND predict more issues.', 'word', 'You: 도와주기는커녕 매번 늦어요. 다음번에도 늦을 게 뻔해요.', 'You: Far from helping, he is late every time. He will surely be late next time too.', null, [ACT.orientation]),
 
     createContentItem('태도', 'taedo', 'attitude', 'word', '태도가 좋아요.', 'Good attitude.', null, [ACT.vocabulary]),
     createContentItem('불만', 'bulman', 'complaint', 'word', '불만이 많아요.', 'Many complaints.', null, [ACT.vocabulary]),

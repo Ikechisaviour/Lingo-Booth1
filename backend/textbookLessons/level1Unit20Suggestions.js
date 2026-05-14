@@ -81,8 +81,8 @@ const lesson = {
   ],
   relatedPools: ['topic-people'],
   content: [
-    createContentItem('Lesson goal', 'suggestions', 'By end: invite politely + casually, agree, counter-propose, set time/place.', 'word', 'Functions: suggest · invite · accept/counter · plan', 'Suggestion toolkit.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'movie night', 'A new Korean film just released. You want to invite Sarah this Friday. Politely or casually?', 'word', 'You: 금요일에 같이 영화 보러 갈래요? — Sarah: 좋아요!', 'You: Wanna see a movie Friday? — Sarah: Sure!', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: invite politely + casually, agree, counter-propose, set time/place.', 'word', 'Functions: suggest · invite · accept/counter · plan', 'Suggestion toolkit.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'A new Korean film just released. You want to invite Sarah this Friday. Politely or casually?', 'word', 'You: 금요일에 같이 영화 보러 갈래요? — Sarah: 좋아요!', 'You: Wanna see a movie Friday? — Sarah: Sure!', null, [ACT.orientation]),
 
     createContentItem('갈까요 → [갈까요]', 'galkkayo', '경음화: ㄹ받침 + ㄲ stays tense.', 'word', '같이 갈까요? → [갈까요]', 'Shall we go?', null, [ACT.pronunciation]),
     createContentItem('갈래요 → [갈래요]', 'gallaeyo', 'No major change. ㄹ받침 + ㄹ becomes a long ㄹ.', 'word', '같이 갈래요?', 'Wanna go?', null, [ACT.pronunciation]),

@@ -9,6 +9,7 @@ const realLessons = require('./intermediateAdvancedLessons');
 const sentenceLessons = require('./sentenceLessons');
 
 // Import multi-language lesson data
+const enData = require('./lessonData/en');
 const esData = require('./lessonData/es');
 const frData = require('./lessonData/fr');
 const deData = require('./lessonData/de');
@@ -1434,7 +1435,7 @@ const lessons = [
 
 // Collect all multi-language lesson data
 const multiLangData = [
-  esData, frData, deData, zhData, jaData, hiData, arData, heData,
+  enData, esData, frData, deData, zhData, jaData, hiData, arData, heData,
   ptData, itData, nlData, ruData, idData, msData, filData, trData, bnData, taData,
 ];
 

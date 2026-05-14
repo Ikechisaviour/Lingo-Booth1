@@ -73,8 +73,8 @@ const lesson = {
   ],
   relatedPools: ['topic-culture'],
   content: [
-    createContentItem('Lesson goal', 'culture + presentations', 'By end: describe cultural features with native-like connectors and inclusion patterns.', 'word', 'Functions: describe · include · connect · ask', 'Cultural-talk toolkit.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'culture presentation', 'You give a presentation to your Korean class about a unique feature of your country: a market, a game, a tradition.', 'word', 'You: 우리 나라는 N을/를 비롯해서 ~. — Audience: 더 설명해 주세요.', 'You: My country includes N. — Audience: Tell us more.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: describe cultural features with native-like connectors and inclusion patterns.', 'word', 'Functions: describe · include · connect · ask', 'Cultural-talk toolkit.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'You give a presentation to your Korean class about a unique feature of your country: a market, a game, a tradition.', 'word', 'You: 우리 나라는 N을/를 비롯해서 ~. — Audience: 더 설명해 주세요.', 'You: My country includes N. — Audience: Tell us more.', null, [ACT.orientation]),
 
     createContentItem('문화', 'munhwa', 'culture', 'word', '한국 문화는 다양해요.', 'Korean culture is diverse.', null, [ACT.vocabulary]),
     createContentItem('특징', 'teukjing', 'characteristic', 'word', '특징을 설명할게요.', 'I will explain the features.', null, [ACT.vocabulary]),

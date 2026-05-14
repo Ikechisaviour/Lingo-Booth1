@@ -1,19 +1,21 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { classLessonService, practiceContextService } from '../services/api';
 import LANGUAGES, { getNativeLangCode, getTargetLangCode, getTargetLangName } from '../config/languages';
 import speechService from '../services/speechService';
+import { looksLikeRawEnglishForNative, strokeGuideFamilyForLanguage } from '../utils/languagePairPolicy';
 import './WritingPracticePage.css';
 
 const PERSONAL_NOTEBOOK_KEY = 'lingoWritingNotebook';
 const ATTEMPT_KEY = 'lingoWritingAttempts';
 
 const MODES = [
-  { id: 'trace', label: 'Trace', prompt: 'Trace over the guide, then write it again from memory.' },
-  { id: 'copy', label: 'Copy', prompt: 'Look carefully, then copy the word or sentence.' },
-  { id: 'listen', label: 'Listen', prompt: 'Listen first, then write what you heard.' },
-  { id: 'meaning', label: 'Meaning', prompt: 'Use the meaning to recall and write the target text.' },
-  { id: 'stroke', label: 'Stroke order', prompt: 'Practice the shape slowly, one visible part at a time.' },
-  { id: 'review', label: 'Self review', prompt: 'Compare your writing with the answer and decide what to do next.' },
+  { id: 'trace', label: 'Trace' },
+  { id: 'copy', label: 'Copy' },
+  { id: 'listen', label: 'Listen' },
+  { id: 'meaning', label: 'Meaning' },
+  { id: 'stroke', label: 'Stroke order' },
+  { id: 'review', label: 'Self review' },
 ];
 
 function isProOrUltraTier(tier) {
@@ -43,8 +45,9 @@ function targetText(item = {}) {
   return compact(item.targetText || item.korean || item.exampleTarget || item.example);
 }
 
-function nativeText(item = {}) {
-  return compact(item.nativeText || item.english || item.exampleNative || item.exampleEnglish);
+function nativeText(item = {}, nativeLanguage = 'en') {
+  const value = compact(item.nativeText || item.english || item.exampleNative || item.exampleEnglish);
+  return looksLikeRawEnglishForNative(value, nativeLanguage) ? '' : value;
 }
 
 function notebookItem({ target, native, source, sourceLabel, romanization = '', type = 'word' }) {
@@ -64,7 +67,8 @@ function notebookItem({ target, native, source, sourceLabel, romanization = '', 
   };
 }
 
-function itemsFromLesson(lesson = {}) {
+function itemsFromLesson(lesson = {}, t, nativeLanguage = 'en') {
+  const lessonTitle = lesson.title || t('writing.sourceLabels.classLesson', 'Class lesson');
   return (lesson.content || [])
     .flatMap((item, index) => {
       const entries = [];
@@ -72,10 +76,10 @@ function itemsFromLesson(lesson = {}) {
       if (target) {
         entries.push(notebookItem({
           target,
-          native: nativeText(item),
+          native: nativeText(item, nativeLanguage),
           romanization: item.romanization || item.pronunciation,
           source: 'class',
-          sourceLabel: lesson.title || 'Class lesson',
+          sourceLabel: lessonTitle,
           type: item.type || 'word',
         }));
       }
@@ -83,9 +87,13 @@ function itemsFromLesson(lesson = {}) {
       if (example && example !== target) {
         entries.push(notebookItem({
           target: example,
-          native: item.exampleNative || item.exampleEnglish,
+          native: looksLikeRawEnglishForNative(item.exampleNative || item.exampleEnglish, nativeLanguage) ? '' : (item.exampleNative || item.exampleEnglish),
           source: 'class',
-          sourceLabel: `${lesson.title || 'Class lesson'} example ${index + 1}`,
+          sourceLabel: t('writing.sourceLabels.classExample', {
+            title: lessonTitle,
+            number: index + 1,
+            defaultValue: '{{title}} example {{number}}',
+          }),
           type: 'sentence',
         }));
       }
@@ -93,8 +101,8 @@ function itemsFromLesson(lesson = {}) {
     });
 }
 
-function itemsFromContext(context = {}) {
-  const sourceLabel = context.summary || 'Personalized';
+function itemsFromContext(context = {}, t) {
+  const sourceLabel = context.summary || t('writing.sourceLabels.personalized', 'Personalized');
   return [
     ...(context.vocabulary || []),
     ...(context.phrases || []),
@@ -117,7 +125,7 @@ function loadJsonArray(key) {
   }
 }
 
-function loadConversationItems(nativeLanguage, targetLanguage) {
+function loadConversationItems(nativeLanguage, targetLanguage, t) {
   const prefix = `lingoConversation:conversation:${nativeLanguage}-${targetLanguage}`;
   const items = [];
   for (let i = 0; i < localStorage.length; i += 1) {
@@ -131,9 +139,9 @@ function loadConversationItems(nativeLanguage, targetLanguage) {
         .forEach((turn) => {
           const item = notebookItem({
             target: turn.content,
-            native: 'From your conversation practice',
+            native: t('writing.sourceLabels.conversationNative', 'From your conversation practice'),
             source: 'conversation',
-            sourceLabel: 'Conversation history',
+            sourceLabel: t('writing.sourceLabels.conversationHistory', 'Conversation history'),
             type: 'sentence',
           });
           if (item) items.push(item);
@@ -153,19 +161,39 @@ function uniqueItems(items) {
   });
 }
 
-function strokeGuideFor(text, targetLanguage) {
+function strokeGuideFor(text, targetLanguage, t) {
   const chars = Array.from(text || '').filter((char) => char.trim());
-  if (!chars.length) return ['Write the main shape slowly.', 'Check spacing.', 'Write it once more without the guide.'];
-  if (targetLanguage === 'ko') {
-    return chars.slice(0, 8).map((char, index) => `${index + 1}. ${char}: top to bottom, left to right, keep the syllable block balanced.`);
+  if (!chars.length) {
+    return [
+      t('writing.strokeGuide.emptyMain', 'Write the main shape slowly.'),
+      t('writing.strokeGuide.emptySpacing', 'Check spacing.'),
+      t('writing.strokeGuide.emptyMemory', 'Write it once more without the guide.'),
+    ];
   }
-  if (['zh', 'ja'].includes(targetLanguage)) {
-    return chars.slice(0, 8).map((char, index) => `${index + 1}. ${char}: horizontal before vertical, top before bottom, outside before inside.`);
+  const family = strokeGuideFamilyForLanguage(targetLanguage);
+  if (family === 'hangul') {
+    return chars.slice(0, 8).map((char, index) => t('writing.strokeGuide.hangul', {
+      index: index + 1,
+      char,
+      defaultValue: '{{index}}. {{char}}: top to bottom, left to right, keep the syllable block balanced.',
+    }));
   }
-  return chars.slice(0, 8).map((char, index) => `${index + 1}. ${char}: copy the shape, then write it from memory.`);
+  if (family === 'cjk') {
+    return chars.slice(0, 8).map((char, index) => t('writing.strokeGuide.cjk', {
+      index: index + 1,
+      char,
+      defaultValue: '{{index}}. {{char}}: horizontal before vertical, top before bottom, outside before inside.',
+    }));
+  }
+  return chars.slice(0, 8).map((char, index) => t('writing.strokeGuide.default', {
+    index: index + 1,
+    char,
+    defaultValue: '{{index}}. {{char}}: copy the shape, then write it from memory.',
+  }));
 }
 
 function DrawingPad({ ghostText, showGhost, resetKey, onStrokeCount }) {
+  const { t } = useTranslation();
   const canvasRef = useRef(null);
   const drawingRef = useRef(false);
   const strokesRef = useRef([]);
@@ -275,14 +303,15 @@ function DrawingPad({ ghostText, showGhost, resetKey, onStrokeCount }) {
         />
       </div>
       <div className="writing-pad-actions">
-        <button type="button" onClick={undo}>Undo</button>
-        <button type="button" onClick={clear}>Clear</button>
+        <button type="button" onClick={undo}>{t('writing.undo', 'Undo')}</button>
+        <button type="button" onClick={clear}>{t('writing.clear', 'Clear')}</button>
       </div>
     </div>
   );
 }
 
 function WritingPracticePage() {
+  const { t } = useTranslation();
   const targetLanguage = getTargetLangCode();
   const nativeLanguage = getNativeLangCode();
   const targetName = getTargetLangName();
@@ -290,7 +319,7 @@ function WritingPracticePage() {
   const [selectedId, setSelectedId] = useState('');
   const [sourceFilter, setSourceFilter] = useState('all');
   const [mode, setMode] = useState('trace');
-  const [status, setStatus] = useState('Loading writing notebook...');
+  const [status, setStatus] = useState(() => t('writing.status.loadingNotebook', 'Loading writing notebook...'));
   const [strokeCount, setStrokeCount] = useState(0);
   const [review, setReview] = useState({ shape: false, spacing: false, memory: false });
   const [customTarget, setCustomTarget] = useState('');
@@ -299,21 +328,21 @@ function WritingPracticePage() {
   useEffect(() => {
     let cancelled = false;
     async function loadNotebook() {
-      setStatus('Building your writing notebook...');
+      setStatus(t('writing.status.buildingNotebook', 'Building your writing notebook...'));
       const personalItems = loadJsonArray(PERSONAL_NOTEBOOK_KEY);
-      const conversationItems = loadConversationItems(nativeLanguage, targetLanguage);
+      const conversationItems = loadConversationItems(nativeLanguage, targetLanguage, t);
       let lessonItems = [];
       let contextItems = [];
 
       try {
         const lessonRes = await classLessonService.getClassLessons();
-        lessonItems = (Array.isArray(lessonRes.data) ? lessonRes.data : []).flatMap(itemsFromLesson);
+        lessonItems = (Array.isArray(lessonRes.data) ? lessonRes.data : []).flatMap((lesson) => itemsFromLesson(lesson, t, nativeLanguage));
       } catch (_) {}
 
       if (canUsePracticeContext()) {
         try {
           const contextRes = await practiceContextService.list(targetLanguage);
-          contextItems = (Array.isArray(contextRes.data) ? contextRes.data : []).flatMap(itemsFromContext);
+          contextItems = (Array.isArray(contextRes.data) ? contextRes.data : []).flatMap((context) => itemsFromContext(context, t));
         } catch (_) {}
       }
 
@@ -327,13 +356,15 @@ function WritingPracticePage() {
       if (cancelled) return;
       setItems(nextItems);
       setSelectedId((current) => current || nextItems[0]?.id || '');
-      setStatus(nextItems.length ? 'Ready' : 'Add a word or open Class to fill your notebook.');
+      setStatus(nextItems.length
+        ? t('writing.status.ready', 'Ready')
+        : t('writing.status.emptyNotebook', 'Add a word or open Class to fill your notebook.'));
     }
     loadNotebook();
     return () => {
       cancelled = true;
     };
-  }, [nativeLanguage, targetLanguage]);
+  }, [nativeLanguage, targetLanguage, t]);
 
   const filteredItems = useMemo(() => (
     sourceFilter === 'all' ? items : items.filter((item) => item.source === sourceFilter)
@@ -348,12 +379,12 @@ function WritingPracticePage() {
   const resetKey = `${selectedItem?.id || 'empty'}:${mode}`;
   const modeConfig = MODES.find((item) => item.id === mode) || MODES[0];
   const sources = useMemo(() => ([
-    ['all', 'All'],
-    ['class', 'Class'],
-    ['context', 'Personalized'],
-    ['conversation', 'Conversation'],
-    ['personal', 'Personal'],
-  ]), []);
+    ['all', t('writing.sources.all', 'All')],
+    ['class', t('writing.sources.class', t('navbar.class'))],
+    ['context', t('writing.sources.personalized', 'Personalized')],
+    ['conversation', t('writing.sources.conversation', t('navbar.conversation'))],
+    ['personal', t('writing.sources.personal', 'Personal')],
+  ]), [t]);
 
   const selectNext = () => {
     const list = filteredItems.length ? filteredItems : items;
@@ -365,15 +396,15 @@ function WritingPracticePage() {
 
   const speakPrompt = async () => {
     if (!selectedItem?.target) return;
-    setStatus('Playing target text...');
+    setStatus(t('writing.status.playingTarget', 'Playing target text...'));
     try {
       await speechService.speakAsync(selectedItem.target, {
         lang: LANGUAGES[targetLanguage]?.ttsLocale || targetLanguage,
         rate: '0.9',
       });
-      setStatus('Ready');
+      setStatus(t('writing.status.ready', 'Ready'));
     } catch (_) {
-      setStatus('Audio playback was interrupted.');
+      setStatus(t('writing.status.audioInterrupted', 'Audio playback was interrupted.'));
     }
   };
 
@@ -391,7 +422,9 @@ function WritingPracticePage() {
       createdAt: new Date().toISOString(),
     }, ...attempts].slice(0, 120);
     localStorage.setItem(ATTEMPT_KEY, JSON.stringify(next));
-    setStatus(result === 'complete' ? 'Saved as complete. Moving to the next item.' : 'Saved for more practice.');
+    setStatus(result === 'complete'
+      ? t('writing.status.savedComplete', 'Saved as complete. Moving to the next item.')
+      : t('writing.status.savedReview', 'Saved for more practice.'));
     if (result === 'complete') selectNext();
   };
 
@@ -400,11 +433,11 @@ function WritingPracticePage() {
       target: customTarget,
       native: customNative,
       source: 'personal',
-      sourceLabel: 'Personal notebook',
+      sourceLabel: t('writing.sourceLabels.personalNotebook', 'Personal notebook'),
       type: 'custom',
     });
     if (!item) {
-      setStatus('Add target text first.');
+      setStatus(t('writing.status.addTargetFirst', 'Add target text first.'));
       return;
     }
     const personal = uniqueItems([item, ...loadJsonArray(PERSONAL_NOTEBOOK_KEY)]).slice(0, 80);
@@ -413,36 +446,36 @@ function WritingPracticePage() {
     setSelectedId(item.id);
     setCustomTarget('');
     setCustomNative('');
-    setStatus('Added to your writing notebook.');
+    setStatus(t('writing.status.addedNotebook', 'Added to your writing notebook.'));
   };
 
   const instructionText = () => {
-    if (!selectedItem) return 'Add a word or sentence to begin.';
-    if (mode === 'listen') return 'Press Play, write what you hear, then reveal the answer.';
-    if (mode === 'meaning') return `Write the ${targetName} for this meaning.`;
-    if (mode === 'stroke') return 'Follow the guide, then use the writing area to practice.';
-    if (mode === 'review') return 'Compare your writing with the answer and mark what was strong.';
-    return modeConfig.prompt;
+    if (!selectedItem) return t('writing.instructions.addToBegin', 'Add a word or sentence to begin.');
+    if (mode === 'listen') return t('writing.instructions.listen', 'Press Play, write what you hear, then reveal the answer.');
+    if (mode === 'meaning') return t('writing.instructions.meaning', 'Write the {{language}} for this meaning.', { language: targetName });
+    if (mode === 'stroke') return t('writing.instructions.stroke', 'Follow the guide, then use the writing area to practice.');
+    if (mode === 'review') return t('writing.instructions.review', 'Compare your writing with the answer and mark what was strong.');
+    return t(`writing.instructions.${modeConfig.id}`, modeConfig.label);
   };
 
   return (
     <div className="writing-page">
       <section className="writing-header">
         <div>
-          <p className="writing-kicker">Exercise</p>
-          <h1>Writing practice</h1>
-          <p>Trace, copy, listen, recall by meaning, study stroke order, and keep a notebook from your lessons.</p>
+          <p className="writing-kicker">{t('navbar.exercise')}</p>
+          <h1>{t('writing.title', 'Writing practice')}</h1>
+          <p>{t('writing.subtitle', 'Trace, copy, listen, recall by meaning, study stroke order, and keep a notebook from your lessons.')}</p>
         </div>
         <div className="writing-stat">
           <strong>{items.length}</strong>
-          <span>notebook items</span>
+          <span>{t('writing.notebookItems', 'notebook items')}</span>
         </div>
       </section>
 
       <section className="writing-layout">
         <aside className="writing-sidebar">
           <div className="writing-card">
-            <h2>Notebook</h2>
+            <h2>{t('writing.notebook', 'Notebook')}</h2>
             <div className="writing-source-tabs">
               {sources.map(([id, label]) => (
                 <button
@@ -470,20 +503,20 @@ function WritingPracticePage() {
                   <span>{item.native || item.sourceLabel}</span>
                 </button>
               ))}
-              {filteredItems.length === 0 && <p className="writing-empty">No items in this source yet.</p>}
+              {filteredItems.length === 0 && <p className="writing-empty">{t('writing.emptySource', 'No items in this source yet.')}</p>}
             </div>
           </div>
 
           <div className="writing-card">
-            <h2>Add your own</h2>
-            <input value={customTarget} onChange={(event) => setCustomTarget(event.target.value)} placeholder="Target word or sentence" />
-            <input value={customNative} onChange={(event) => setCustomNative(event.target.value)} placeholder="Meaning or note" />
-            <button type="button" className="writing-primary" onClick={addPersonalItem}>Add to notebook</button>
+            <h2>{t('writing.addYourOwn', 'Add your own')}</h2>
+            <input value={customTarget} onChange={(event) => setCustomTarget(event.target.value)} placeholder={t('writing.targetPlaceholder', 'Target word or sentence')} />
+            <input value={customNative} onChange={(event) => setCustomNative(event.target.value)} placeholder={t('writing.meaningPlaceholder', 'Meaning or note')} />
+            <button type="button" className="writing-primary" onClick={addPersonalItem}>{t('writing.addToNotebook', 'Add to notebook')}</button>
           </div>
         </aside>
 
         <main className="writing-workspace">
-          <div className="writing-mode-tabs" role="tablist" aria-label="Writing modes">
+          <div className="writing-mode-tabs" role="tablist" aria-label={t('writing.modesLabel', 'Writing modes')}>
             {MODES.map((item) => (
               <button
                 key={item.id}
@@ -491,7 +524,7 @@ function WritingPracticePage() {
                 className={mode === item.id ? 'active' : ''}
                 onClick={() => setMode(item.id)}
               >
-                {item.label}
+                {t(`writing.modes.${item.id}`, item.label)}
               </button>
             ))}
           </div>
@@ -499,17 +532,17 @@ function WritingPracticePage() {
           <div className="writing-card writing-practice-card">
             <div className="writing-practice-head">
               <div>
-                <p className="writing-kicker">{selectedItem?.sourceLabel || 'Writing notebook'}</p>
-                <h2>{modeConfig.label}</h2>
+                <p className="writing-kicker">{selectedItem?.sourceLabel || t('writing.notebook', 'Writing notebook')}</p>
+                <h2>{t(`writing.modes.${modeConfig.id}`, modeConfig.label)}</h2>
               </div>
-              <button type="button" onClick={speakPrompt} disabled={!selectedItem}>Play</button>
+              <button type="button" onClick={speakPrompt} disabled={!selectedItem}>{t('writing.play', 'Play')}</button>
             </div>
 
             <p className="writing-instruction">{instructionText()}</p>
 
             {selectedItem && mode !== 'listen' && mode !== 'meaning' && (
               <div className="writing-answer-card">
-                <span>Target</span>
+                <span>{t('writing.targetLabel', 'Target')}</span>
                 <strong>{selectedItem.target}</strong>
                 {selectedItem.romanization && <small>{selectedItem.romanization}</small>}
                 {selectedItem.native && <em>{selectedItem.native}</em>}
@@ -518,14 +551,14 @@ function WritingPracticePage() {
 
             {selectedItem && mode === 'meaning' && (
               <div className="writing-answer-card">
-                <span>Meaning</span>
-                <strong>{selectedItem.native || 'Recall the target text from your notebook.'}</strong>
+                <span>{t('writing.meaningLabel', 'Meaning')}</span>
+                <strong>{selectedItem.native || t('writing.recallTarget', 'Recall the target text from your notebook.')}</strong>
               </div>
             )}
 
             {selectedItem && mode === 'stroke' && (
               <div className="writing-stroke-guide">
-                {strokeGuideFor(selectedItem.target, targetLanguage).map((line) => <div key={line}>{line}</div>)}
+                {strokeGuideFor(selectedItem.target, targetLanguage, t).map((line) => <div key={line}>{line}</div>)}
               </div>
             )}
 
@@ -538,7 +571,7 @@ function WritingPracticePage() {
 
             {selectedItem && (mode === 'listen' || mode === 'meaning' || mode === 'review') && (
               <details className="writing-reveal">
-                <summary>Show answer</summary>
+                <summary>{t('writing.showAnswer', 'Show answer')}</summary>
                 <strong>{selectedItem.target}</strong>
                 {selectedItem.native && <span>{selectedItem.native}</span>}
               </details>
@@ -547,22 +580,22 @@ function WritingPracticePage() {
             <div className="writing-review">
               <label>
                 <input type="checkbox" checked={review.shape} onChange={(event) => setReview({ ...review, shape: event.target.checked })} />
-                Shape matches
+                {t('writing.review.shape', 'Shape matches')}
               </label>
               <label>
                 <input type="checkbox" checked={review.spacing} onChange={(event) => setReview({ ...review, spacing: event.target.checked })} />
-                Spacing is clear
+                {t('writing.review.spacing', 'Spacing is clear')}
               </label>
               <label>
                 <input type="checkbox" checked={review.memory} onChange={(event) => setReview({ ...review, memory: event.target.checked })} />
-                I can write it from memory
+                {t('writing.review.memory', 'I can write it from memory')}
               </label>
             </div>
 
             <div className="writing-actions">
-              <button type="button" onClick={() => saveAttempt('needs-practice')} disabled={!selectedItem}>Save for review</button>
+              <button type="button" onClick={() => saveAttempt('needs-practice')} disabled={!selectedItem}>{t('writing.saveForReview', 'Save for review')}</button>
               <button type="button" className="writing-primary" onClick={() => saveAttempt('complete')} disabled={!selectedItem}>
-                Mark complete and next
+                {t('writing.markCompleteNext', 'Mark complete and next')}
               </button>
             </div>
 

@@ -76,8 +76,8 @@ const lesson = {
   ],
   relatedPools: ['topic-society', 'topic-people'],
   content: [
-    createContentItem('Lesson goal', 'job hunt', 'By end: write resume, do interview, sign contract — all in formal Korean.', 'word', 'Functions: intent · experience · interview · contract', 'Job-hunt toolkit.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'shift-leader interview', 'You apply for a shift-leader role at a 구미 factory. You must present experience + intent + handle interview Q.', 'word', 'Interviewer: 자기소개 부탁드립니다. — You: 사라라고 합니다. ~ 경험이 있습니다.', 'Introduce yourself. — I am Sarah. I have experience.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: write resume, do interview, sign contract — all in formal Korean.', 'word', 'Functions: intent · experience · interview · contract', 'Job-hunt toolkit.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'You apply for a shift-leader role at a 구미 factory. You must present experience + intent + handle interview Q.', 'word', 'Interviewer: 자기소개 부탁드립니다. — You: 사라라고 합니다. ~ 경험이 있습니다.', 'Introduce yourself. — I am Sarah. I have experience.', null, [ACT.orientation]),
 
     createContentItem('일자리 → [일짜리]', 'iljjari', '경음화: ㄹ-받침 + ㅈ → ㄹ + ㅉ.', 'word', '일자리를 찾아요.', 'I look for a job.', null, [ACT.pronunciation]),
     createContentItem('지원하다 → [지원하다]', 'jiwonhada', 'No change.', 'word', '지원하려고 합니다.', 'I intend to apply.', null, [ACT.pronunciation]),

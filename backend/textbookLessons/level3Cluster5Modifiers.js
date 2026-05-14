@@ -76,7 +76,7 @@ const lesson = {
   ],
   relatedPools: ['pos-adjectives-1', 'pos-verbs-1'],
   content: [
-    createContentItem('Cluster goal', 'modifiers', 'By end: use all 4 modifier forms (adj-ㄴ, V-는, V-ㄴ, V-ㄹ) for rich descriptions.', 'word', 'A-(으)ㄴ + N / V-는 + N / V-(으)ㄴ + N / V-(으)ㄹ + N', 'Four forms.', null, [ACT.orientation]),
+    createContentItem('단원 목표', 'danwon mokpyo', 'By end: use all 4 modifier forms (adj-ㄴ, V-는, V-ㄴ, V-ㄹ) for rich descriptions.', 'word', 'A-(으)ㄴ + N / V-는 + N / V-(으)ㄴ + N / V-(으)ㄹ + N', 'Four forms.', null, [ACT.orientation]),
 
     createContentItem('A-(으)ㄴ + N', 'adj modifier', 'a [adj] N', 'word', '예쁜 꽃', 'pretty flower.', null, [ACT.patterns]),
     createContentItem('V-는 + N', 'V-ing modifier', 'a [V-ing] N (now)', 'word', '공부하는 학생', 'studying student.', null, [ACT.patterns]),

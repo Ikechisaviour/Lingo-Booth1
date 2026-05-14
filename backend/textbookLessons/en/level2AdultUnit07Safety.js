@@ -1,0 +1,217 @@
+// Level 2 Adult Unit 7 — Workplace Safety (English)
+// Functions: PPE, signs, OSHA basics, hazard reporting.
+
+const createContentItem = (
+  target, ipa, note, type = 'word',
+  example = '', exampleNote = '', breakdown = null, activityIds = [],
+) => ({
+  type, activityIds,
+  targetText: target, romanization: ipa, nativeText: note, pronunciation: ipa,
+  exampleTarget: example || target, exampleNative: exampleNote || note,
+  korean: target, english: note, example: example || target, exampleEnglish: exampleNote || note,
+  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.target, native: b.english, korean: b.target, english: b.english })) } : {}),
+});
+
+const ACT = {
+  orientation: 'en-l2au7-orientation',
+  pronunciation: 'en-l2au7-pronunciation',
+  vocabularyPPE: 'en-l2au7-vocab-ppe',
+  vocabularyHazard: 'en-l2au7-vocab-hazard',
+  grammarImperative: 'en-l2au7-grammar-imperative',
+  grammarReport: 'en-l2au7-grammar-report',
+  reading: 'en-l2au7-reading',
+  listening: 'en-l2au7-listening',
+  writing: 'en-l2au7-writing',
+  culture: 'en-l2au7-culture',
+  task: 'en-l2au7-task',
+};
+
+const activities = [
+  { id: ACT.orientation, section: 'Orientation', title: 'What you will be able to do',
+    goals: ['Identify and name common workplace PPE.', 'Read safety signs (must / must not / warning / danger).', 'Report a hazard to your supervisor.', 'Understand basic OSHA / HSE rights.'],
+    task: 'Picture starting a manufacturing job — you must wear PPE, follow signs, and report any unsafe conditions.' },
+  { id: ACT.pronunciation, section: 'Pronunciation', title: 'Safety command rhythm',
+    goals: ['Use strong stress on safety imperatives: "DO NOT enter".', '"PPE" /piː piː iː/.', '"OSHA" /ˈoʊʃə/.'],
+    task: 'Read 3 safety signs aloud.' },
+  { id: ACT.vocabularyPPE, section: 'Vocabulary I', title: 'PPE (Personal Protective Equipment)',
+    goals: ['Use hard hat / helmet, safety goggles, gloves, mask, ear plugs, steel-toe boots, high-vis vest, harness.'],
+    task: 'List 5 PPE items.' },
+  { id: ACT.vocabularyHazard, section: 'Vocabulary II', title: 'Hazards + warnings',
+    goals: ['Use hazard, danger, warning, caution, spill, slip, fall, fire exit, emergency.'],
+    task: 'Name 5 workplace hazards.' },
+  { id: ACT.grammarImperative, section: 'Grammar I', title: 'Safety imperatives',
+    goals: ['"Must / must not + V" (formal).', '"DO NOT + V" (signs).', '"Always + V" / "Never + V" (rules).'],
+    task: 'Write 5 safety signs.' },
+  { id: ACT.grammarReport, section: 'Grammar II', title: 'Reporting a hazard',
+    goals: ['"I want to report a + hazard".', '"There\'s a + hazard + at + location".', '"Could you take a look at + N + when you have a moment?"'],
+    task: 'Report 3 hazards.' },
+  { id: ACT.reading, section: 'Reading and Speaking', title: 'Safety poster',
+    goals: ['Read a typical workplace safety poster.'],
+    task: 'Identify required PPE.' },
+  { id: ACT.listening, section: 'Listening and Speaking', title: 'Safety briefing',
+    goals: ['Follow a safety supervisor.'],
+    task: 'Reproduce a 5-step briefing.' },
+  { id: ACT.writing, section: 'Writing', title: 'Hazard report',
+    goals: ['Write a 4-line hazard report.'],
+    task: 'Write your own report.' },
+  { id: ACT.culture, section: 'Culture Note', title: 'OSHA / HSE — your rights',
+    goals: ['Know OSHA (US Occupational Safety + Health Admin) / HSE (UK Health + Safety Executive).', 'Know your right to refuse unsafe work.', 'Know how to file a confidential complaint.'],
+    task: 'Compare workplace safety laws with your country.' },
+  { id: ACT.task, section: 'Task', title: 'Report an unsafe condition',
+    goals: ['Combine identify + describe + escalate.'],
+    task: 'Report a slip hazard on the warehouse floor.' },
+];
+
+const lesson = {
+  title: 'Level 2 (Workplace) · Unit 7: Safety first — Workplace Safety',
+  category: 'business',
+  difficulty: 'intermediate',
+  targetLang: 'en', nativeLang: 'en',
+  track: 'textbook', lessonType: 'workplace',
+  activities,
+  expressionPractice: [
+    { id: 'identifying-ppe-en', label: 'Identifying PPE', goal: 'Use "hard hat", "safety goggles", "high-vis vest".' },
+    { id: 'reading-signs-en', label: 'Reading safety signs', goal: 'Recognize "DANGER / WARNING / CAUTION / NOTICE".' },
+    { id: 'reporting-hazard-en', label: 'Reporting a hazard', goal: 'Use "I want to report a + hazard at + location".' },
+  ],
+  relatedPools: ['topic-society'],
+  content: [
+    createContentItem('Lesson goal', 'workplace safety', 'By end: name PPE, read signs, report hazards, understand worker rights.', 'word', 'Functions: identify · read · report · understand.', 'Four safety micro-skills.', null, [ACT.orientation]),
+    createContentItem('Real-world scenario', 'first day at warehouse', 'Your first day at an Amazon warehouse in Seattle. The safety officer reviews PPE requirements, shows you safety signs, and explains how to report hazards. You see a small oil spill in aisle 5 and report it.', 'word', 'You: "There\'s an oil spill in aisle 5 — about 2 feet wide. Slip hazard."', 'Standard safety report.', null, [ACT.orientation]),
+
+    createContentItem('"DO NOT ENTER" strong stress', '/duː nɒt ˈɛntər/', 'Both "DO" and "NOT" stressed; sharp tone.', 'word', 'DO NOT ENTER — RESTRICTED AREA.', 'Safety imperatives use strong stress.', null, [ACT.pronunciation]),
+    createContentItem('PPE /piː piː iː/', '/piː piː iː/', 'Three letters, each said separately.', 'word', 'Wear PPE at all times.', '= Personal Protective Equipment.', null, [ACT.pronunciation]),
+    createContentItem('OSHA /ˈoʊʃə/', '/ˈoʊʃə/', 'Pronounced "OH-sha".', 'word', 'OSHA regulates US workplace safety.', '= Occupational Safety and Health Administration.', null, [ACT.pronunciation]),
+
+    createContentItem('hard hat / helmet', '/hɑːrd hæt/ /ˈhɛlmət/', 'head protection', 'word', 'Wear your hard hat in this zone.', 'Construction / industrial sites.', null, [ACT.vocabularyPPE]),
+    createContentItem('safety goggles', '/ˈseɪfti ˈɡɒɡəlz/', 'eye protection', 'word', 'Goggles required around machines.', 'Lab + workshop standard.', null, [ACT.vocabularyPPE]),
+    createContentItem('gloves', '/ɡlʌvz/', 'hand protection', 'word', 'Use cut-resistant gloves for sharp materials.', 'Always plural for paired items.', null, [ACT.vocabularyPPE]),
+    createContentItem('mask / respirator', '/mæsk/ /ˈrɛspɪˌreɪtər/', 'respiratory protection', 'word', 'N95 masks block fine particles.', 'Respirator = serious mask.', null, [ACT.vocabularyPPE]),
+    createContentItem('ear plugs / ear muffs', '/ɪər plʌɡz/ /ɪər mʌfs/', 'hearing protection', 'word', 'Use ear plugs near the press.', 'Above ~85 dB workplace required.', null, [ACT.vocabularyPPE]),
+    createContentItem('steel-toe boots', '/stiːl toʊ buːts/', 'foot protection', 'word', 'Steel-toe boots are required on the floor.', 'Heavy objects, sharp objects.', null, [ACT.vocabularyPPE]),
+    createContentItem('high-vis vest', '/haɪ vɪz vɛst/', 'visibility vest', 'word', 'High-vis vests are mandatory near forklifts.', 'Bright orange or yellow.', null, [ACT.vocabularyPPE]),
+    createContentItem('harness / safety harness', '/ˈhɑːrnəs/', 'fall protection', 'word', 'Workers on roofs wear harnesses.', 'For heights ≥6 feet.', null, [ACT.vocabularyPPE]),
+
+    createContentItem('hazard', '/ˈhæzərd/', 'something dangerous', 'word', 'Report any hazard you see.', 'Slip / trip / fall hazards common.', null, [ACT.vocabularyHazard]),
+    createContentItem('DANGER / WARNING / CAUTION', '/ˈdeɪndʒər/ /ˈwɔːrnɪŋ/ /ˈkɔːʃən/', 'three severity levels', 'word', 'DANGER means immediate threat; WARNING is serious; CAUTION is moderate.', 'Color-coded: red, orange, yellow.', null, [ACT.vocabularyHazard]),
+    createContentItem('spill', '/spɪl/', 'liquid on floor', 'word', 'Clean up any spill immediately.', 'Slip hazard.', null, [ACT.vocabularyHazard]),
+    createContentItem('slip / trip / fall', '/slɪp/ /trɪp/ /fɔːl/', 'three accident types', 'word', 'Slip-and-fall is the #1 workplace injury.', 'OSHA classification.', null, [ACT.vocabularyHazard]),
+    createContentItem('fire exit / emergency exit', '/ˈfaɪər ˈɛksɪt/', 'emergency way out', 'word', 'Never block the fire exit.', 'Always keep clear.', null, [ACT.vocabularyHazard]),
+    createContentItem('first aid kit', '/fɜːrst eɪd kɪt/', 'medical supplies', 'word', 'The first aid kit is by the door.', 'Required at every site.', null, [ACT.vocabularyHazard]),
+    createContentItem('lockout / tagout', '/ˈlɒkaʊt ˈtæɡaʊt/', 'machine safety protocol', 'word', 'Follow lockout/tagout before maintenance.', 'Prevents accidental machine starts.', null, [ACT.vocabularyHazard]),
+
+    createContentItem(
+      'Safety imperatives',
+      'sign language',
+      'Direct commands.',
+      'sentence',
+      'DO NOT ENTER. — WEAR PPE AT ALL TIMES. — KEEP CLEAR. — Authorized personnel only. — Watch your step.',
+      'Strong, short, all-caps in writing.',
+      [
+        { target: 'DO NOT + V', english: 'absolute prohibition' },
+        { target: 'must / must not + V', english: 'formal obligation' },
+        { target: 'Always / Never + V', english: 'standing rule' },
+        { target: 'Authorized personnel only', english: 'access restriction' },
+      ],
+      [ACT.grammarImperative],
+    ),
+    createContentItem(
+      'Reporting a hazard',
+      'standard pattern',
+      'Clear, specific, urgent.',
+      'sentence',
+      'I want to report a hazard. — There\'s an oil spill in aisle 5, about 2 feet wide. — Could you take a look at the broken rail by the loading dock?',
+      'State: type + location + size/severity.',
+      [
+        { target: 'I want to report a + hazard', english: 'open statement' },
+        { target: 'There\'s a + hazard + at + location', english: 'specific description' },
+        { target: 'Could you take a look at + N?', english: 'request supervisor' },
+        { target: 'It\'s a slip / trip / fall hazard', english: 'classify' },
+      ],
+      [ACT.grammarReport],
+    ),
+
+    createContentItem(
+      'Safety poster',
+      'reading practice',
+      'Read this OSHA-style poster.',
+      'sentence',
+      'WAREHOUSE FLOOR — REQUIRED PPE\n• Hard hat (forklift zone only)\n• Safety goggles (when cutting / grinding)\n• Steel-toe boots (always)\n• High-vis vest (always)\n\nWARNING: FORKLIFT TRAFFIC. Watch for forklifts. Do not walk in marked yellow zones without permission.\n\nREPORT HAZARDS: Slip / Trip / Fall hazards must be reported to your supervisor or via the safety hotline (ext. 999).',
+      'Standard warehouse safety poster.',
+      [
+        { target: 'REQUIRED PPE: list', english: 'mandatory equipment' },
+        { target: 'WARNING: FORKLIFT TRAFFIC', english: 'specific hazard' },
+        { target: 'REPORT HAZARDS', english: 'who to tell' },
+        { target: 'safety hotline (ext. 999)', english: 'reporting channel' },
+      ],
+      [ACT.reading],
+    ),
+
+    createContentItem(
+      'Safety briefing',
+      'supervisor talk',
+      'Day-1 safety walk-through.',
+      'conversation',
+      'Supervisor: Welcome. First, PPE: hard hat in forklift zones, steel-toe boots and high-vis vest always.\nYou: Got it.\nSupervisor: This is your fire exit — never block it. The first aid kit is by the door.\nYou: Where do I report hazards?\nSupervisor: Two ways — tell me directly, or call extension 999. If you see a spill, a frayed cable, or a blocked exit, report it.\nYou: I noticed an oil spill in aisle 5 on my way in.\nSupervisor: Good catch. Let\'s flag it. Always feel free to stop work if something looks unsafe — OSHA gives you that right.',
+      'First-day safety walkthrough.',
+      [
+        { target: 'hard hat in forklift zones', english: 'specific PPE rule' },
+        { target: 'first aid kit is by the door', english: 'location' },
+        { target: 'tell me directly or call extension 999', english: 'reporting channels' },
+        { target: 'OSHA gives you the right to stop unsafe work', english: 'worker right' },
+      ],
+      [ACT.listening],
+    ),
+
+    createContentItem(
+      'Hazard report',
+      'writing model',
+      'Quick incident report.',
+      'sentence',
+      'HAZARD REPORT — 2024-03-15 8:30 AM\nLocation: Aisle 5, near Section B.\nHazard: Oil spill, approx. 2 ft × 1 ft.\nReported by: Min-su Kim, employee #12345.\nAction taken: Placed warning cone, alerted supervisor Sarah Johnson.',
+      'Standard hazard report.',
+      [
+        { target: 'HAZARD REPORT + date + time', english: 'header' },
+        { target: 'Location: specific aisle/section', english: 'precise location' },
+        { target: 'Hazard: type + size', english: 'description' },
+        { target: 'Action taken: what you did', english: 'mitigation' },
+      ],
+      [ACT.writing],
+    ),
+
+    createContentItem(
+      'OSHA / HSE rights',
+      'cultural overview',
+      'US: OSHA (Occupational Safety + Health Administration) protects workers. Key rights: safe workplace, training in your language, refuse unsafe work, file confidential complaint, no retaliation for reporting. UK: HSE (Health + Safety Executive) similar. Both run free complaint hotlines.',
+      'sentence',
+      'You can\'t be fired or punished for reporting a safety violation — that\'s federal law in the US.',
+      'Worker rights are strong on paper; document everything.',
+      [
+        { target: 'OSHA (US) / HSE (UK)', english: 'regulators' },
+        { target: 'right to a safe workplace', english: 'fundamental' },
+        { target: 'right to refuse unsafe work', english: 'with limits' },
+        { target: 'no retaliation for reporting', english: 'whistleblower protection' },
+        { target: 'free confidential complaint', english: 'OSHA hotline' },
+      ],
+      [ACT.culture],
+    ),
+
+    createContentItem(
+      'Task: Report an unsafe condition',
+      'consolidation task',
+      'AI tutor plays your supervisor. Report a slip hazard you noticed.',
+      'conversation',
+      'You: [open with "I want to report"]\nTutor: [where?]\nYou: [specific location + size]\nTutor: [thanks + action]\nYou: [confirm action taken]\nTutor: [close]',
+      'AI tutor plays supervisor.',
+      [
+        { target: 'I want to report a + hazard', english: 'open' },
+        { target: 'There\'s a + hazard + at + location', english: 'specifics' },
+        { target: 'It\'s a + classification + hazard', english: 'severity' },
+        { target: 'I\'ve already + action', english: 'mitigation' },
+      ],
+      [ACT.task],
+    ),
+  ],
+};
+
+module.exports = lesson;

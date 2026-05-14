@@ -63,8 +63,8 @@ const lesson = {
   ],
   relatedPools: ['topic-society', 'topic-culture'],
   content: [
-    createContentItem('Review goal', 'consolidation', 'By end: opinion + culture + interview across U7-9 grammar.', 'word', 'Units 7+8+9 combined', 'Mixed practice.', null, [ACT.orientation]),
-    createContentItem('Scenario', 'celebrity interview', 'A Korean magazine interviews you about your views on Korean culture and a controversial opinion.', 'word', 'Interviewer + You alternate roles', 'Cross-unit flow.', null, [ACT.orientation]),
+    createContentItem('복습 목표', 'bokseup mokpyo', 'By end: opinion + culture + interview across U7-9 grammar.', 'word', 'Units 7+8+9 combined', 'Mixed practice.', null, [ACT.orientation]),
+    createContentItem('상황 설정', 'sanghwang seoljeong', 'A Korean magazine interviews you about your views on Korean culture and a controversial opinion.', 'word', 'Interviewer + You alternate roles', 'Cross-unit flow.', null, [ACT.orientation]),
 
     createContentItem('의견', 'uigyeon', 'opinion (U7)', 'word', '제 의견은 다릅니다.', 'My opinion differs.', null, [ACT.vocabulary]),
     createContentItem('논란', 'nollan', 'controversy (U7)', 'word', '큰 논란이 있어요.', 'Big controversy.', null, [ACT.vocabulary]),

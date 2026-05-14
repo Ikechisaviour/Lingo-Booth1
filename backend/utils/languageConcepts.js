@@ -44,7 +44,23 @@ const CONTEXT_NOTE_PATTERNS = [
 ];
 
 function normalizeLang(code, fallback = 'en') {
-  return String(code || fallback).trim().toLowerCase() || fallback;
+  const value = String(code || fallback).trim().toLowerCase();
+  const aliases = {
+    kr: 'ko',
+    kor: 'ko',
+    cn: 'zh',
+    chn: 'zh',
+    jp: 'ja',
+    jpn: 'ja',
+    iw: 'he',
+    in: 'id',
+    tl: 'fil',
+  };
+  if (aliases[value]) return aliases[value];
+  if (value.startsWith('zh')) return 'zh';
+  if (value.startsWith('pt')) return 'pt';
+  const base = value.split(/[-_]/)[0];
+  return aliases[base] || base || fallback;
 }
 
 function languageField(code) {

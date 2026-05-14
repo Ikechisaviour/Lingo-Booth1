@@ -81,8 +81,8 @@ const lesson = {
   ],
   relatedPools: ['topic-people', 'topic-society'],
   content: [
-    createContentItem('Lesson goal', 'future', 'By end: state your career dream, express wishes, sequence future events.', 'word', 'Functions: dream · wish · become · sequence', 'Career-talk toolkit.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'professor chat', 'Your Korean professor asks about your post-graduation plan. You should be able to state your dream + path + reason in 3-4 sentences.', 'word', 'Professor: 졸업 후에 뭐 하고 싶어요? — You: 한국에서 소프트웨어 개발자가 되고 싶어요.', 'Prof: What after graduation? — You: I want to become a software developer in Korea.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: state your career dream, express wishes, sequence future events.', 'word', 'Functions: dream · wish · become · sequence', 'Career-talk toolkit.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'Your Korean professor asks about your post-graduation plan. You should be able to state your dream + path + reason in 3-4 sentences.', 'word', 'Professor: 졸업 후에 뭐 하고 싶어요? — You: 한국에서 소프트웨어 개발자가 되고 싶어요.', 'Prof: What after graduation? — You: I want to become a software developer in Korea.', null, [ACT.orientation]),
 
     createContentItem('됐으면 → [돼쓰면]', 'dwaesseumyeon', '연음 + ㅆ: smooth past-conditional form.', 'word', '의사가 됐으면 좋겠어요. → [돼쓰면 조케써요]', 'I wish to become a doctor.', null, [ACT.pronunciation]),
     createContentItem('좋겠어요 → [조케써요]', 'jokesseoyo', '격음화: ㅎ + ㄱ → ㅋ.', 'word', '좋겠어요. → [조케써요]', 'It would be good.', null, [ACT.pronunciation]),

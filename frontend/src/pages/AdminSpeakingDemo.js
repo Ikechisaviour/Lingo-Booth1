@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { adminService, aiService, ttsService } from '../services/api';
-import LANGUAGES from '../config/languages';
+import LANGUAGES, { getLanguageDisplayName } from '../config/languages';
 import './AdminSpeakingDemo.css';
 
 const DEMO_PROMPTS = {
@@ -34,12 +35,6 @@ const MODE_LABELS = {
 };
 
 const COMMANDS = new Set(['repeat', 'again', 'next', 'pause', 'stop', 'slower']);
-
-const LANGUAGE_OPTIONS = Object.entries(LANGUAGES).map(([id, language]) => ({
-  id,
-  label: language.name,
-  speech: language.ttsLocale,
-}));
 
 const DIFFICULTY_OPTIONS = ['casual beginner', 'balanced', 'more natural', 'challenge me'];
 const CONVERSATION_SESSION_ID = 'admin-speaking-demo';
@@ -130,6 +125,12 @@ function getSpeechRecognition() {
 }
 
 function AdminSpeakingDemo({ demoBypass = false }) {
+  const { t } = useTranslation();
+  const languageOptions = useMemo(() => Object.entries(LANGUAGES).map(([id, language]) => ({
+    id,
+    label: getLanguageDisplayName(id, t),
+    speech: language.ttsLocale,
+  })), [t]);
   const [mode, setMode] = useState('repeat');
   const [promptIndex, setPromptIndex] = useState(0);
   const [customPrompt, setCustomPrompt] = useState('');
@@ -220,13 +221,13 @@ function AdminSpeakingDemo({ demoBypass = false }) {
   };
 
   const speechLangFor = (languageId) => (
-    LANGUAGE_OPTIONS.find(language => language.id === languageId)?.speech
-    || LANGUAGE_OPTIONS.find(language => language.id === targetLanguage)?.speech
+    languageOptions.find(language => language.id === languageId)?.speech
+    || languageOptions.find(language => language.id === targetLanguage)?.speech
     || 'ko-KR'
   );
 
   const preferredVoiceFor = (lang) => {
-    const languageId = LANGUAGE_OPTIONS.find(language => language.speech === lang)?.id;
+    const languageId = languageOptions.find(language => language.speech === lang)?.id;
     if (languageId) {
       const byLanguage = localStorage.getItem(`preferredVoice:${languageId}`);
       if (byLanguage) return byLanguage;
@@ -281,7 +282,7 @@ function AdminSpeakingDemo({ demoBypass = false }) {
     recognitionRef.current?.abort?.();
     stopSpeech();
     const recognition = new Recognition();
-    const listeningLanguage = LANGUAGE_OPTIONS.find(language => language.id === inputLanguage) || LANGUAGE_OPTIONS[0];
+    const listeningLanguage = languageOptions.find(language => language.id === inputLanguage) || languageOptions[0];
     recognition.lang = isAiConversation ? listeningLanguage.speech : 'ko-KR';
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;
@@ -530,7 +531,7 @@ function AdminSpeakingDemo({ demoBypass = false }) {
               <label>
                 Learning
                 <select value={targetLanguage} onChange={(event) => setTargetLanguage(event.target.value)}>
-                  {LANGUAGE_OPTIONS.map(language => (
+                  {languageOptions.map(language => (
                     <option key={language.id} value={language.id}>{language.label}</option>
                   ))}
                 </select>
@@ -538,7 +539,7 @@ function AdminSpeakingDemo({ demoBypass = false }) {
               <label>
                 Native
                 <select value={nativeLanguage} onChange={(event) => setNativeLanguage(event.target.value)}>
-                  {LANGUAGE_OPTIONS.map(language => (
+                  {languageOptions.map(language => (
                     <option key={language.id} value={language.id}>{language.label}</option>
                   ))}
                 </select>
@@ -546,7 +547,7 @@ function AdminSpeakingDemo({ demoBypass = false }) {
               <label>
                 Listen for
                 <select value={inputLanguage} onChange={(event) => setInputLanguage(event.target.value)}>
-                  {LANGUAGE_OPTIONS.map(language => (
+                  {languageOptions.map(language => (
                     <option key={language.id} value={language.id}>{language.label}</option>
                   ))}
                 </select>
@@ -611,7 +612,7 @@ function AdminSpeakingDemo({ demoBypass = false }) {
             <>
               <div className="conversation-status">
                 <span>{status}</span>
-                <span>{LANGUAGE_OPTIONS.find(language => language.id === inputLanguage)?.label || inputLanguage} mic</span>
+                <span>{languageOptions.find(language => language.id === inputLanguage)?.label || inputLanguage} mic</span>
               </div>
               <div className="conversation-thread" ref={conversationThreadRef}>
                 {conversationHistory.length === 0 && !aiLoading && (

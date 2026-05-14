@@ -1,0 +1,217 @@
+// Level 2 Adult Unit 8 — Workplace Medical (English)
+// Functions: calling in sick, doctor's notes, workers' comp, insurance.
+
+const createContentItem = (
+  target, ipa, note, type = 'word',
+  example = '', exampleNote = '', breakdown = null, activityIds = [],
+) => ({
+  type, activityIds,
+  targetText: target, romanization: ipa, nativeText: note, pronunciation: ipa,
+  exampleTarget: example || target, exampleNative: exampleNote || note,
+  korean: target, english: note, example: example || target, exampleEnglish: exampleNote || note,
+  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.target, native: b.english, korean: b.target, english: b.english })) } : {}),
+});
+
+const ACT = {
+  orientation: 'en-l2au8-orientation',
+  pronunciation: 'en-l2au8-pronunciation',
+  vocabularySymptoms: 'en-l2au8-vocab-symp',
+  vocabularyMedical: 'en-l2au8-vocab-medical',
+  grammarCallIn: 'en-l2au8-grammar-callin',
+  grammarInsurance: 'en-l2au8-grammar-insurance',
+  reading: 'en-l2au8-reading',
+  listening: 'en-l2au8-listening',
+  writing: 'en-l2au8-writing',
+  culture: 'en-l2au8-culture',
+  task: 'en-l2au8-task',
+};
+
+const activities = [
+  { id: ACT.orientation, section: 'Orientation', title: 'What you will be able to do',
+    goals: ['Call in sick professionally.', 'Request a doctor\'s note.', 'Report a workplace injury and file a workers\' comp claim.', 'Understand basic US health insurance terms.'],
+    task: 'Picture waking up with the flu — you need to call your manager and inform HR.' },
+  { id: ACT.pronunciation, section: 'Pronunciation', title: 'Medical workplace phrases',
+    goals: ['Pronounce "I\'m calling in sick" naturally.', '"Workers\' comp" /ˈwɜːrkərz kɒmp/.', '"Co-pay" /ˈkoʊ peɪ/.'],
+    task: 'Read 3 phrases aloud.' },
+  { id: ACT.vocabularySymptoms, section: 'Vocabulary I', title: 'Common symptoms',
+    goals: ['Use under the weather, flu, fever, food poisoning, migraine, sprain, twist, strain.'],
+    task: 'Describe 3 symptoms.' },
+  { id: ACT.vocabularyMedical, section: 'Vocabulary II', title: 'Medical workplace vocabulary',
+    goals: ['Use sick day, doctor\'s note, FMLA, workers\' comp, insurance, deductible, co-pay, in-network.'],
+    task: 'Define 5 terms.' },
+  { id: ACT.grammarCallIn, section: 'Grammar I', title: 'Calling in sick',
+    goals: ['"I won\'t be able to come in today".', '"I\'m calling in sick".', '"I\'m feeling under the weather".'],
+    task: 'Write 3 call-in messages.' },
+  { id: ACT.grammarInsurance, section: 'Grammar II', title: 'Insurance + workers\' comp',
+    goals: ['"I\'d like to file a workers\' comp claim".', '"Is this provider in-network?"', '"What\'s my deductible?"'],
+    task: 'Ask 3 insurance questions.' },
+  { id: ACT.reading, section: 'Reading and Speaking', title: 'Doctor\'s note',
+    goals: ['Read a typical doctor\'s note.'],
+    task: 'Identify return-to-work date.' },
+  { id: ACT.listening, section: 'Listening and Speaking', title: 'Calling in sick',
+    goals: ['Follow a call-in conversation.'],
+    task: 'Reproduce with your own situation.' },
+  { id: ACT.writing, section: 'Writing', title: 'Sick-day Slack message',
+    goals: ['Write a 3-line sick day message.'],
+    task: 'Write your own.' },
+  { id: ACT.culture, section: 'Culture Note', title: 'US health insurance basics',
+    goals: ['Understand employer-sponsored insurance.', 'Know HMO vs PPO, deductible, co-pay, out-of-pocket max.', 'Know ACA marketplace + Medicare/Medicaid basics.'],
+    task: 'Compare with healthcare in your country.' },
+  { id: ACT.task, section: 'Task', title: 'Call in sick',
+    goals: ['Combine sick declaration + reason + return plan.'],
+    task: 'Roleplay calling in sick with the flu.' },
+];
+
+const lesson = {
+  title: 'Level 2 (Workplace) · Unit 8: I\'m calling in sick — Workplace Medical',
+  category: 'business',
+  difficulty: 'intermediate',
+  targetLang: 'en', nativeLang: 'en',
+  track: 'textbook', lessonType: 'workplace',
+  activities,
+  expressionPractice: [
+    { id: 'calling-in-sick-en', label: 'Calling in sick', goal: 'Use "I\'m calling in sick today".' },
+    { id: 'requesting-note-en', label: 'Requesting doctor\'s note', goal: 'Use "Could I get a doctor\'s note?".' },
+    { id: 'insurance-question-en', label: 'Insurance question', goal: 'Use "Is X in-network?".' },
+  ],
+  relatedPools: ['topic-health'],
+  content: [
+    createContentItem('Lesson goal', 'workplace medical', 'By end: call in sick, request medical leave, file workers\' comp, understand insurance.', 'word', 'Functions: notify · request · file · understand.', 'Four medical-workplace micro-skills.', null, [ACT.orientation]),
+    createContentItem('Real-world scenario', 'flu morning', 'You wake up with a fever of 102°F, body aches, and a cough. You can\'t go to work. You need to text your manager and call HR.', 'word', 'You: "Hi Sarah, I\'m calling in sick today — I have flu symptoms (fever 102, body aches). Will see the doctor and follow up."', 'A standard sick-day call.', null, [ACT.orientation]),
+
+    createContentItem('"calling in sick" /ˈkɔːlɪŋ ɪn sɪk/', '/ˈkɔːlɪŋ ɪn sɪk/', 'Fixed phrase; "in" gets light stress.', 'word', 'I\'m calling in sick.', 'Standard professional phrase.', null, [ACT.pronunciation]),
+    createContentItem('"workers\' comp" /ˈwɜːrkərz kɒmp/', '/ˈwɜːrkərz kɒmp/', 'Short for "workers\' compensation".', 'word', 'File workers\' comp for workplace injuries.', 'Always with apostrophe-s in writing.', null, [ACT.pronunciation]),
+    createContentItem('co-pay /ˈkoʊ peɪ/', '/ˈkoʊ peɪ/', 'Hyphenated noun.', 'word', 'My co-pay is $25.', '$ amount you pay per visit.', null, [ACT.pronunciation]),
+
+    createContentItem('under the weather', '/ˈʌndər ðə ˈwɛðər/', 'mildly sick', 'word', 'I\'m feeling a bit under the weather.', 'Idiomatic; softer than "sick".', null, [ACT.vocabularySymptoms]),
+    createContentItem('flu', '/fluː/', 'influenza', 'word', 'I think I have the flu.', 'Stronger than a cold.', null, [ACT.vocabularySymptoms]),
+    createContentItem('food poisoning', '/fuːd ˈpɔɪzənɪŋ/', 'GI illness from bad food', 'word', 'I have food poisoning from last night.', 'Causes nausea, vomiting, diarrhea.', null, [ACT.vocabularySymptoms]),
+    createContentItem('migraine', '/ˈmaɪɡreɪn/', 'severe headache', 'word', 'I have a migraine — can\'t look at screens.', 'Often legitimate sick day.', null, [ACT.vocabularySymptoms]),
+    createContentItem('sprain / twist', '/spreɪn/ /twɪst/', 'joint injury', 'word', 'I sprained my ankle going downstairs.', 'Sprain = ligament; strain = muscle.', null, [ACT.vocabularySymptoms]),
+    createContentItem('strain / pull', '/streɪn/ /pʊl/', 'muscle injury', 'word', 'I pulled my back lifting boxes.', 'Common workplace injury.', null, [ACT.vocabularySymptoms]),
+
+    createContentItem('sick day', '/sɪk deɪ/', 'paid day for illness', 'word', 'I\'m taking a sick day.', 'Verb: "call in sick".', null, [ACT.vocabularyMedical]),
+    createContentItem('doctor\'s note', '/ˈdɒktərz noʊt/', 'medical documentation', 'word', 'Could you provide a doctor\'s note?', 'For 3+ day absences in some companies.', null, [ACT.vocabularyMedical]),
+    createContentItem('FMLA', '/ɛf ɛm ɛl eɪ/', 'Family + Medical Leave Act', 'word', 'I\'m on FMLA for surgery recovery.', 'US: up to 12 weeks unpaid, job-protected.', null, [ACT.vocabularyMedical]),
+    createContentItem('workers\' comp', '/ˈwɜːrkərz kɒmp/', 'workplace-injury insurance', 'word', 'File workers\' comp if you got hurt at work.', 'Covers medical + lost wages.', null, [ACT.vocabularyMedical]),
+    createContentItem('insurance', '/ɪnˈʃʊərəns/', 'health coverage', 'word', 'My insurance starts on day 90.', 'US: usually employer-sponsored.', null, [ACT.vocabularyMedical]),
+    createContentItem('deductible', '/dɪˈdʌktəbəl/', 'amount you pay before insurance kicks in', 'word', 'My deductible is $1,500.', 'Annual; high-deductible plans are common.', null, [ACT.vocabularyMedical]),
+    createContentItem('co-pay', '/ˈkoʊ peɪ/', 'flat fee per visit', 'word', 'A specialist co-pay is $50.', 'You pay it at the doctor\'s office.', null, [ACT.vocabularyMedical]),
+    createContentItem('in-network / out-of-network', '/ɪn ˈnɛtwɜːrk/', 'covered / not covered providers', 'word', 'Is this provider in-network?', 'Out-of-network = much more expensive.', null, [ACT.vocabularyMedical]),
+    createContentItem('HMO / PPO', '/eɪtʃ ɛm oʊ/ /piː piː oʊ/', 'two plan types', 'word', 'HMO requires referrals; PPO doesn\'t.', 'HMO = cheaper, more restrictive; PPO = pricier, more flexible.', null, [ACT.vocabularyMedical]),
+
+    createContentItem(
+      'Calling in sick',
+      'professional phrasing',
+      'Standard phrases.',
+      'sentence',
+      'I\'m calling in sick today. — I won\'t be able to come in today. — I\'m feeling under the weather; I\'ll work from home if I can. — I think I have the flu — will follow up with HR.',
+      'Brief, professional. State: status + plan.',
+      [
+        { target: 'I\'m calling in sick today', english: 'standard' },
+        { target: 'I won\'t be able to come in', english: 'softer' },
+        { target: 'I\'m feeling under the weather', english: 'mild illness' },
+        { target: 'I\'ll work from home if I can', english: 'WFH alternative' },
+      ],
+      [ACT.grammarCallIn],
+    ),
+    createContentItem(
+      'Insurance + workers\' comp questions',
+      'navigation',
+      'Common questions you\'ll need to ask HR.',
+      'sentence',
+      'Is this provider in-network? — What\'s my deductible? — How do I file a workers\' comp claim? — When does my insurance start?',
+      'Health insurance is complex in the US — ask early.',
+      [
+        { target: 'Is X in-network?', english: 'coverage check' },
+        { target: 'What\'s my deductible/co-pay?', english: 'cost question' },
+        { target: 'How do I file workers\' comp?', english: 'process' },
+        { target: 'When does insurance start?', english: 'eligibility' },
+      ],
+      [ACT.grammarInsurance],
+    ),
+
+    createContentItem(
+      'Doctor\'s note',
+      'reading practice',
+      'Read a typical doctor\'s note.',
+      'sentence',
+      'KUMOH MEDICAL CLINIC — 2024-03-15\n\nTo whom it may concern:\n\nMin-su Kim was evaluated today and diagnosed with influenza type A. He is unable to work from 2024-03-15 to 2024-03-20 and may return on 2024-03-21. Please contact our office at (555) 123-4567 with questions.\n\nSincerely,\nDr. Sarah Johnson, MD',
+      'Standard doctor\'s note format.',
+      [
+        { target: 'To whom it may concern', english: 'formal opener' },
+        { target: 'diagnosed with + condition', english: 'medical reason' },
+        { target: 'unable to work from X to Y', english: 'absence dates' },
+        { target: 'may return on date', english: 'return-to-work' },
+      ],
+      [ACT.reading],
+    ),
+
+    createContentItem(
+      'Calling in sick',
+      'manager talk',
+      'Phone/text exchange.',
+      'conversation',
+      'You: Hi Sarah, sorry to text early — I\'m calling in sick today. Flu symptoms — fever 102, body aches.\nManager: No worries, feel better. Are you seeing a doctor?\nYou: Yes, walk-in clinic this afternoon. I\'ll send a doctor\'s note.\nManager: No need unless you\'re out more than 3 days. Just rest. Got your ticket coverage for today?\nYou: Min-jun is covering my standups. I\'ll be back as soon as I can.\nManager: Take the week if you need it. Health first.\nYou: Thanks, Sarah.',
+      'Standard sick-day exchange.',
+      [
+        { target: 'I\'m calling in sick today', english: 'main message' },
+        { target: 'specific symptoms', english: 'optional context' },
+        { target: 'walk-in clinic this afternoon', english: 'plan' },
+        { target: 'Min-jun is covering', english: 'coverage' },
+      ],
+      [ACT.listening],
+    ),
+
+    createContentItem(
+      'Sick-day Slack message',
+      'writing model',
+      'Quick async notification.',
+      'sentence',
+      'Hi team — calling in sick today (flu). I\'ll be offline. Min-jun has my standups. Will reply to urgent messages tomorrow.',
+      'Brief, professional. Include coverage.',
+      [
+        { target: 'calling in sick today', english: 'status' },
+        { target: 'reason (brief)', english: 'flu, migraine, etc.' },
+        { target: 'I\'ll be offline', english: 'expectation' },
+        { target: 'X has my standups', english: 'coverage' },
+      ],
+      [ACT.writing],
+    ),
+
+    createContentItem(
+      'US health insurance',
+      'cultural overview',
+      'Most working Americans get insurance through their employer (employer-sponsored). Plans: HMO (cheaper, requires referrals + in-network), PPO (pricier, more flexible). Key terms: deductible (you pay first), co-pay (flat fee per visit), out-of-pocket max (annual cap). ACA marketplace for self-employed. Medicare for 65+. Medicaid for low-income.',
+      'sentence',
+      'A US trip to the ER without insurance can cost $5,000-$50,000.',
+      'Always check that providers are "in-network" — out-of-network bills can be huge.',
+      [
+        { target: 'employer-sponsored', english: 'most common' },
+        { target: 'HMO vs PPO', english: 'cheap-restrictive vs flexible-pricey' },
+        { target: 'deductible + co-pay + OOP max', english: 'cost layers' },
+        { target: 'in-network / out-of-network', english: 'coverage tier' },
+        { target: 'ACA / Medicare / Medicaid', english: 'public-program tiers' },
+      ],
+      [ACT.culture],
+    ),
+
+    createContentItem(
+      'Task: Call in sick',
+      'consolidation task',
+      'AI tutor plays your manager. Call in sick with the flu.',
+      'conversation',
+      'You: [open with "calling in sick"]\nTutor: [response]\nYou: [symptoms + plan]\nTutor: [doctor\'s note question]\nYou: [respond + coverage]\nTutor: [supportive close]\nYou: [thanks]',
+      'AI tutor plays manager.',
+      [
+        { target: 'I\'m calling in sick today', english: 'main message' },
+        { target: 'specific symptoms', english: 'context' },
+        { target: 'walk-in clinic / doctor', english: 'plan' },
+        { target: 'X has coverage', english: 'continuity' },
+      ],
+      [ACT.task],
+    ),
+  ],
+};
+
+module.exports = lesson;

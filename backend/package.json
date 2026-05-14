@@ -12,7 +12,8 @@
     "seed:pronunciations": "node scripts/backfillPronunciations.js",
     "seed:learning": "node seed.js && node scripts/seedDefaultCards.js",
     "audit:concepts": "node scripts/auditQuizFlashcardConcepts.js",
-    "audit:pronunciations": "node scripts/auditPronunciations.js"
+    "audit:pronunciations": "node scripts/auditPronunciations.js",
+    "audit:language-guardrails": "node scripts/auditLanguageGuardrails.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

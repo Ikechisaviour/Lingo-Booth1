@@ -1,0 +1,972 @@
+// Level 2 Unit 5 — 成语与谚语 (Chengyu and Proverbs)
+// Thematic lesson on Chinese four-character idioms (成语), proverbs (谚语), and
+// related fixed expressions. Chengyu are a massive cultural feature of modern
+// Mandarin — used in speeches, newspapers, classroom essays, and even chat —
+// and learners should both recognize a starter set and understand why they
+// shouldn't over-deploy them.
+//
+// All content is authored with Hanzi (target) + Pinyin (romanization) +
+// English glosses (canonical source). The AI conversation tutor reads this
+// curriculum and delivers it to each learner in their preferred native
+// language at runtime — never assume a specific L1 in this file.
+//
+// Glosses follow the rich-gloss rule (AGENTS.md → "Gloss Richness"):
+// every nativeText, exampleNative, and breakdown.native carries register,
+// usage context, or contrast info — not a bare definition.
+
+const createContentItem = (
+  target,
+  pinyin,
+  note,
+  type = 'word',
+  example = '',
+  exampleNote = '',
+  breakdown = null,
+  activityIds = [],
+) => ({
+  type,
+  activityIds,
+  targetText: target,
+  romanization: pinyin,
+  nativeText: note,
+  pronunciation: pinyin,
+  exampleTarget: example || target,
+  exampleNative: exampleNote || note,
+  korean: target,
+  english: note,
+  example: example || target,
+  exampleEnglish: exampleNote || note,
+  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.target, native: b.note, korean: b.target, english: b.note })) } : {}),
+});
+
+const ACT = {
+  orientation: 'zh-l2u5-orientation',
+  pronunciation: 'zh-l2u5-pronunciation',
+  vocabularyMeta: 'zh-l2u5-vocab-meta',
+  vocabularyChengyu: 'zh-l2u5-vocab-chengyu',
+  grammarAdverbial: 'zh-l2u5-grammar-adverbial',
+  grammarSimile: 'zh-l2u5-grammar-simile',
+  grammarRather: 'zh-l2u5-grammar-rather',
+  reading: 'zh-l2u5-reading',
+  listening: 'zh-l2u5-listening',
+  writing: 'zh-l2u5-writing',
+  culture: 'zh-l2u5-culture',
+  task: 'zh-l2u5-task',
+};
+
+const activities = [
+  {
+    id: ACT.orientation,
+    section: 'Orientation',
+    title: 'What you will be able to do',
+    goals: [
+      'Recognize what a 成语 (chéngyǔ) is — a four-character idiom drawn from classical Chinese — and tell it apart from a 谚语 (proverb), 俗语 (colloquial saying), and 歇后语 (two-part allegorical saying).',
+      'Use a curated set of ~25 high-frequency, beginner-appropriate chengyu in everyday speech: explain the literal image, the figurative meaning, and the situation it fits.',
+      'Apply three grammar patterns that pair naturally with chengyu: 成语 + 地 + V (adverbial use), A 如 B / A 像 B (similes from sayings), and 与其…不如… (chengyu-style preference choices).',
+    ],
+    task: 'Picture a study session at Tsinghua where a classmate from Beijing peppers her speech with chengyu. By the end of this lesson you should follow her, drop two or three appropriate chengyu of your own, and know when to NOT use one because it would sound bookish.',
+  },
+  {
+    id: ACT.pronunciation,
+    section: 'Pronunciation',
+    title: 'Reading four-character chengyu aloud',
+    goals: [
+      'Read four-character chengyu with the correct tones — chengyu compress a lot of meaning into four syllables and mispronouncing one tone often destroys the idiom for the listener.',
+      'Apply third-tone sandhi inside chengyu (滴水穿石 dī shuǐ chuān shí — second syllable shuǐ is third-tone, no adjacent third-tone neighbor; 入乡随俗 rù xiāng suí sú — all clean tones).',
+      'Read tricky high-frequency chengyu cleanly: 成语 chéngyǔ, 入乡随俗 rù xiāng suí sú, 滴水穿石 dī shuǐ chuān shí, 班门弄斧 bān mén nòng fǔ, 对牛弹琴 duì niú tán qín.',
+    ],
+    task: 'Read each chengyu in this lesson aloud twice — once syllable-by-syllable with tone marks, once at full conversational speed in a sample sentence.',
+  },
+  {
+    id: ACT.vocabularyMeta,
+    section: 'Vocabulary I',
+    title: 'Meta-vocabulary — talking about idioms in Chinese',
+    goals: [
+      'Use the six meta-vocabulary words you need to discuss idioms IN Chinese: 成语 (four-character idiom), 谚语 (proverb), 俗语 (colloquial saying), 歇后语 (two-part allegorical saying), 引用 (to quote), 形容 (to describe).',
+      'Distinguish 成语 (literary, four-character, classical origin) from 谚语 (everyday wisdom proverbs, usually one full sentence) from 俗语 (folksy colloquial sayings).',
+    ],
+    task: 'For each of the six meta-terms, say one sentence in Chinese explaining when you would use it.',
+  },
+  {
+    id: ACT.vocabularyChengyu,
+    section: 'Vocabulary II',
+    title: 'Core chengyu and proverbs — a starter set of ~20',
+    goals: [
+      'Learn the literal image AND the figurative meaning of ~15 high-frequency starter chengyu — the literal image is what makes them memorable, the figurative meaning is what you actually use them for.',
+      'Add 6 high-frequency proverbs (谚语) that are full sentences rather than four characters: 千里之行始于足下, 学如逆水行舟, 失败是成功之母, etc.',
+      'See how proverbs differ from chengyu structurally — proverbs are spoken in full sentences, often as complete advice; chengyu are dropped IN to a sentence as a unit.',
+    ],
+    task: 'For each chengyu, say one sentence using it correctly; pick 3 proverbs and explain the meaning of each in your own Chinese sentence.',
+  },
+  {
+    id: ACT.grammarAdverbial,
+    section: 'Grammar I',
+    title: '成语 + 地 + V — chengyu as adverbs',
+    goals: [
+      'Use the pattern [chengyu] 地 [verb] to turn a chengyu into an adverbial expression: 全心全意地学习 ("study wholeheartedly"), 三心二意地工作 ("work half-heartedly"). 地 (de) here is the adverbial particle, not the possessive 的.',
+      'Distinguish the three "de" particles in writing: 的 (possessive), 地 (adverbial), 得 (resultative). All pronounced "de" but spelled differently — chengyu adverbs always take 地.',
+    ],
+    task: 'Write three sentences using a chengyu + 地 + verb pattern to describe HOW someone does something.',
+  },
+  {
+    id: ACT.grammarSimile,
+    section: 'Grammar II',
+    title: 'A 如 B / A 像 B — similes from sayings',
+    goals: [
+      'Use A 如 B ("A is like B") — a classical-flavored comparison pattern that is extremely common inside chengyu and proverbs (学如逆水行舟 "studying is like rowing upstream", 时光如箭 "time is like an arrow").',
+      'Use A 像 B ("A is like B") — the everyday spoken version of the same comparison, less literary, more common in casual speech.',
+      'Choose between 如 (literary, fits chengyu/written text) and 像 (everyday, fits spoken speech) based on register.',
+    ],
+    task: 'Make three similes about your own life — one with 如 (literary) and two with 像 (everyday).',
+  },
+  {
+    id: ACT.grammarRather,
+    section: 'Grammar III',
+    title: '与其 A 不如 B — "rather than A, better B"',
+    goals: [
+      'Use 与其 A 不如 B ("rather than A, it would be better to B") — a formal preference pattern that pairs naturally with chengyu and proverbs about choice and wisdom.',
+      'Apply it to chengyu-style situations: 与其守株待兔，不如主动出击 ("rather than waiting by the stump for rabbits, better to take the initiative").',
+    ],
+    task: 'Write two sentences using 与其…不如… to make a choice — one about studying, one about life decisions — and tie each to a chengyu.',
+  },
+  {
+    id: ACT.reading,
+    section: 'Reading and Speaking',
+    title: 'A speech sprinkled with chengyu',
+    goals: [
+      'Read a short student speech that uses 4–5 chengyu naturally — the way a Chinese middle-school student would write a graduation essay.',
+      'Identify each chengyu in context, explain its literal image, and explain what the speaker is really trying to say with it.',
+    ],
+    task: 'Read the speech aloud, then explain each chengyu in your own words to demonstrate comprehension.',
+  },
+  {
+    id: ACT.listening,
+    section: 'Listening and Speaking',
+    title: 'A conversation about a setback',
+    goals: [
+      'Follow a 4-turn conversation between two friends where one is discouraged and the other consoles with a proverb / chengyu — a real-life use case for these expressions.',
+      'Reproduce a similar conversation using one chengyu and one proverb of your own choice.',
+    ],
+    task: 'Read the dialogue with the AI tutor, then perform a similar consolation using a chengyu of your own.',
+  },
+  {
+    id: ACT.writing,
+    section: 'Writing',
+    title: 'Write a short reflection using chengyu',
+    goals: [
+      'Write a 4–6 sentence reflection on a recent challenge in your life, using at least 2 chengyu and 1 proverb appropriately.',
+      'Place chengyu inside a sentence with correct grammar (subject + chengyu-as-predicate or chengyu + 地 + verb) — not floating on their own.',
+    ],
+    task: 'Write your own reflection and read it aloud with correct tones.',
+  },
+  {
+    id: ACT.culture,
+    section: 'Culture Note',
+    title: 'Chengyu culture — from 高考 essays to chat',
+    goals: [
+      'Understand that chengyu are everywhere in modern Chinese — speeches, newspaper editorials, school exams, government slogans, even WeChat group chat — and signal education and verbal skill.',
+      'Know about Chinese middle-school chengyu drill culture (中学 chengyu dictation tests) and the 高考 essay expectation that good essays use 4–6 chengyu well.',
+      'Recognize the over-deployment trap: a beginner who packs every sentence with chengyu sounds bookish or awkward, like an English learner who only uses Shakespeare quotes. Less is more.',
+    ],
+    task: 'Find a chengyu or proverb in your own language that maps roughly to one of the chengyu in this lesson, and explain the match and the mismatch.',
+  },
+  {
+    id: ACT.task,
+    section: 'Task',
+    title: 'Explain three chengyu to a non-Chinese friend',
+    goals: [
+      'Pick three chengyu from this lesson and explain each one in Chinese to an imaginary non-Chinese friend who is just starting to learn Mandarin — using simple Chinese vocabulary, not a dictionary translation.',
+      'Apply one of the three chengyu to your own current life situation — a project, a study habit, or a relationship — and explain why it fits.',
+    ],
+    task: 'Roleplay this with the AI tutor playing your non-Chinese friend, who asks follow-up questions about each chengyu you explain.',
+  },
+];
+
+const lesson = {
+  title: 'Level 2 · Unit 5: 成语与谚语 — Chinese Idioms and Proverbs',
+  category: 'daily-life',
+  difficulty: 'intermediate',
+  targetLang: 'zh',
+  nativeLang: 'en',
+  track: 'textbook',
+  lessonType: 'thematic',
+  activities,
+  expressionPractice: [
+    { id: 'quoting-chengyu', label: 'Quoting a chengyu', goal: 'Drop a four-character chengyu naturally into a longer sentence using a connector like 正所谓… (zhèng suǒwèi, "as the saying goes…") or 俗话说… (súhuà shuō, "as the folk saying goes…").' },
+    { id: 'consoling', label: 'Consoling someone with a proverb', goal: 'Use a proverb such as 失败是成功之母 to console a friend after a setback — pair with a follow-up sentence offering concrete encouragement.' },
+    { id: 'explaining-idiom', label: 'Explaining an idiom to a beginner', goal: 'Break down a chengyu into (1) literal image, (2) figurative meaning, (3) situation where it fits — in three simple Chinese sentences.' },
+    { id: 'choosing-with-yu-qi', label: 'Making a choice with 与其…不如…', goal: 'Use 与其 A 不如 B to argue for one option over another, tied to a chengyu or proverb justification.' },
+  ],
+  relatedPools: ['topic-proverbs-idioms', 'pos-chengyu', 'topic-society'],
+  content: [
+    // ────────────────────────────────────────────────────────────────────
+    // Activity 1 — Orientation
+    // ────────────────────────────────────────────────────────────────────
+    createContentItem(
+      '本课目标',
+      'běn kè mùbiāo',
+      'By the end of this lesson, you can recognize the four major categories of fixed expressions in Chinese (chengyu / proverbs / colloquial sayings / two-part allegorical sayings), use ~25 high-frequency starter chengyu correctly, and apply three grammar patterns that pair naturally with them.',
+      'word',
+      'Functional language: 成语 chéngyǔ (four-character idiom) · 谚语 yànyǔ (proverb) · 俗语 súyǔ (colloquial saying) · 歇后语 xiēhòuyǔ (two-part allegorical saying) · 引用 yǐnyòng (to quote)',
+      'Mastering even a small set of chengyu signals education and fluency to native speakers — but over-use signals showing off, so judgment matters as much as memorization.',
+      null,
+      [ACT.orientation],
+    ),
+    createContentItem(
+      '真实场景',
+      'zhēnshí chǎngjǐng',
+      'You are studying for finals at Tsinghua University with a classmate from Beijing. She is a heavy chengyu user — every other sentence has one. You need to follow her speech, occasionally drop a chengyu of your own, and know when staying simple is actually the smarter move.',
+      'word',
+      '同学: "你这样三心二意地学习，肯定不行。与其这样，不如先专心一门。"',
+      'A typical chengyu-rich line: 三心二意 (half-heartedly, three hearts two minds) as an adverb, paired with 与其…不如… for the recommendation. Two grammar points from this lesson in one sentence.',
+      [
+        { target: '三心二意 sān xīn èr yì', note: 'chengyu — "three hearts two minds"; meaning half-hearted, indecisive, unfocused' },
+        { target: '地 de', note: 'adverbial particle linking the chengyu to the verb 学习 (study)' },
+        { target: '与其…不如… yǔ qí … bù rú …', note: '"rather than … better to …"; a preference pattern from Grammar III' },
+      ],
+      [ACT.orientation],
+    ),
+    createContentItem(
+      '四种固定表达',
+      'sì zhǒng gùdìng biǎodá',
+      'Chinese has four main types of fixed expressions. 成语 (chengyu) are four-character idioms from classical Chinese. 谚语 (yanyu) are folk proverbs, usually a full sentence with practical wisdom. 俗语 (suyu) are everyday colloquial sayings, looser in form. 歇后语 (xiehouyu) are two-part allegorical sayings where the first half is the image and the second half is the punchline.',
+      'word',
+      '成语: 入乡随俗 (4 characters) · 谚语: 失败是成功之母 (full sentence) · 俗语: 三个臭皮匠，顶个诸葛亮 (folk saying) · 歇后语: 哑巴吃黄连——有苦说不出 (image — punchline)',
+      'Use chengyu when you want compact literary flavor; use proverbs when you want full-sentence wisdom; xiehouyu are playful and very colloquial — beginners should recognize them but rarely produce them.',
+      [
+        { target: '成语 chéngyǔ', note: 'four-character idiom from classical sources; ~5,000 in common use; the focus of this lesson' },
+        { target: '谚语 yànyǔ', note: 'folk proverb — full-sentence everyday wisdom passed down generations' },
+        { target: '俗语 súyǔ', note: 'colloquial folk saying; looser in form than chengyu, more everyday-flavored than yanyu' },
+        { target: '歇后语 xiēhòuyǔ', note: 'two-part allegorical saying; image first, punchline second; very playful and very colloquial' },
+      ],
+      [ACT.orientation],
+    ),
+
+    // ────────────────────────────────────────────────────────────────────
+    // Activity 2 — Pronunciation
+    // ────────────────────────────────────────────────────────────────────
+    createContentItem(
+      '成语',
+      'chéngyǔ',
+      'The word for "four-character idiom" itself: 成 (chéng, second tone) + 语 (yǔ, third tone). The 语 in isolation is third-tone (full dip-and-rise), but when followed by certain particles it can shorten. Read it as a clean 2 + 3.',
+      'word',
+      '成语 chéngyǔ — "four-character idiom"',
+      'High-frequency meta-word; you will say it often in this lesson and in any future conversation about Chinese language.',
+      [
+        { target: '成 chéng (2nd tone)', note: 'rising tone; means "to become" or "to form"' },
+        { target: '语 yǔ (3rd tone)', note: 'dip-and-rise tone; means "speech" or "language"' },
+      ],
+      [ACT.pronunciation],
+    ),
+    createContentItem(
+      '入乡随俗',
+      'rù xiāng suí sú',
+      'A clean four-tone chengyu (4 + 1 + 2 + 2). No sandhi triggers. Read it with even rhythm — chengyu are usually read with light stress on the first and third syllables, lighter on the second and fourth.',
+      'word',
+      '入乡随俗 rù xiāng suí sú — "enter the village, follow the customs" / "when in Rome, do as the Romans do"',
+      'A standard chengyu read in roughly equal beats; the meaning is built from the parallel pairs 入乡 (enter the village) and 随俗 (follow the customs).',
+      [
+        { target: '入 rù (4th)', note: 'sharp falling; "enter"' },
+        { target: '乡 xiāng (1st)', note: 'high level; "countryside / village / hometown"' },
+        { target: '随 suí (2nd)', note: 'rising; "follow / go along with"' },
+        { target: '俗 sú (2nd)', note: 'rising; "custom / convention"' },
+      ],
+      [ACT.pronunciation],
+    ),
+    createContentItem(
+      '滴水穿石',
+      'dī shuǐ chuān shí',
+      'A 1 + 3 + 1 + 2 tone pattern. The third-tone 水 (shuǐ) is sandwiched between two non-third tones, so it keeps its full dip-and-rise. No sandhi triggers.',
+      'word',
+      '滴水穿石 dī shuǐ chuān shí — "dripping water bores through stone" / persistence wears down any obstacle',
+      'A motivational chengyu often used in school speeches; the image (water slowly carving rock) makes it memorable.',
+      [
+        { target: '滴 dī (1st)', note: 'high level; "drip / drop"' },
+        { target: '水 shuǐ (3rd, full)', note: 'dip-and-rise; "water" — keeps full third tone here because neighbors are not third-tone' },
+        { target: '穿 chuān (1st)', note: 'high level; "to penetrate / wear through"' },
+        { target: '石 shí (2nd)', note: 'rising; "stone"' },
+      ],
+      [ACT.pronunciation],
+    ),
+    createContentItem(
+      '班门弄斧',
+      'bān mén nòng fǔ',
+      'A 1 + 2 + 4 + 3 tone pattern. The final 斧 (fǔ) is third-tone and appears at the end of the chengyu, so it keeps the full dip-and-rise. Tricky for beginners because the fourth-tone 弄 (nòng) is sharp and easy to soften.',
+      'word',
+      '班门弄斧 bān mén nòng fǔ — "showing off axe-skills at Lu Ban\'s gate" / showing off in front of a true expert',
+      'Lu Ban (鲁班) was the legendary master carpenter; "playing with an axe at his front gate" = arrogant amateurism. The chengyu is often used self-deprecatingly when offering an opinion to a superior.',
+      [
+        { target: '班 bān (1st)', note: 'high level; here refers to Lu Ban, the master carpenter' },
+        { target: '门 mén (2nd)', note: 'rising; "gate / door"' },
+        { target: '弄 nòng (4th)', note: 'sharp falling; "to play with / handle"' },
+        { target: '斧 fǔ (3rd, full)', note: 'dip-and-rise; "axe" — full third tone at the end of the chengyu' },
+      ],
+      [ACT.pronunciation],
+    ),
+    createContentItem(
+      '对牛弹琴',
+      'duì niú tán qín',
+      'A 4 + 2 + 2 + 2 tone pattern — three rising tones in a row at the end. Easy to flatten if you rush; keep each rising tone distinct.',
+      'word',
+      '对牛弹琴 duì niú tán qín — "playing music to a cow" / speaking sophisticated content to the wrong audience',
+      'Slightly condescending; use carefully. The image is vivid (a musician sitting in front of a cow with a guqin), which makes the chengyu memorable.',
+      [
+        { target: '对 duì (4th)', note: 'sharp falling; "facing / toward"' },
+        { target: '牛 niú (2nd)', note: 'rising; "cow"' },
+        { target: '弹 tán (2nd)', note: 'rising; "to play (a stringed instrument)"' },
+        { target: '琴 qín (2nd)', note: 'rising; "stringed instrument" — historically the guqin' },
+      ],
+      [ACT.pronunciation],
+    ),
+
+    // ────────────────────────────────────────────────────────────────────
+    // Activity 3 — Vocabulary I: Meta-vocabulary
+    // ────────────────────────────────────────────────────────────────────
+    createContentItem(
+      '成语',
+      'chéngyǔ',
+      'A four-character idiom drawn from classical Chinese — usually with a literary or historical origin, packed into exactly four characters. Functions like a single dense vocabulary item: you drop it into a sentence as a unit. About 5,000 chengyu are in common modern use.',
+      'word',
+      '"入乡随俗" 是一个常用的成语。 — "Ru xiang sui su" is a commonly used chengyu.',
+      'Chengyu carry literary weight; saying one well-chosen chengyu can replace a full sentence of explanation.',
+      null,
+      [ACT.vocabularyMeta],
+    ),
+    createContentItem(
+      '谚语',
+      'yànyǔ',
+      'A proverb — a complete-sentence folk saying offering everyday wisdom (often about hard work, persistence, family, or fate). Unlike chengyu, proverbs are full sentences, not four-character units, and they sound everyday rather than literary.',
+      'word',
+      '"失败是成功之母" 是一句谚语。 — "Failure is the mother of success" is a proverb.',
+      'Proverbs are spoken as complete sentences; chengyu are dropped INTO sentences. Use proverbs when you want full-sentence advice.',
+      null,
+      [ACT.vocabularyMeta],
+    ),
+    createContentItem(
+      '俗语',
+      'súyǔ',
+      'A colloquial saying — folk-flavored everyday expressions that are looser than chengyu (not always four characters) and more conversational than proverbs. Often regional or humorous.',
+      'word',
+      '"三个臭皮匠，顶个诸葛亮" 是一句俗语。 — "Three lowly cobblers equal one Zhuge Liang" (= group wisdom beats individual genius) is a colloquial saying.',
+      'Suyu live in spoken speech; you rarely see them in formal writing but they are common in casual conversation, family chats, and humor.',
+      null,
+      [ACT.vocabularyMeta],
+    ),
+    createContentItem(
+      '歇后语',
+      'xiēhòuyǔ',
+      'A two-part allegorical saying — the first half is a vivid image, the second half is the punchline that reveals the actual meaning. Often a pun. Very playful and very colloquial; beginners should recognize them when heard but rarely produce them.',
+      'word',
+      '"哑巴吃黄连——有苦说不出" — "A mute eats bitter goldthread — has bitterness but can\'t speak it" (= suffering in silence)',
+      'The dash (——) separates the image from the punchline; the punchline often turns on a pun in the original.',
+      null,
+      [ACT.vocabularyMeta],
+    ),
+    createContentItem(
+      '引用',
+      'yǐnyòng',
+      'To quote or cite — used when you bring in a chengyu, proverb, or famous saying inside your own speech or writing. Often appears with 正所谓 (zhèng suǒwèi, "as the saying goes") or 俗话说 (súhuà shuō, "as the folk saying goes") as a quoting framer.',
+      'word',
+      '他在演讲中引用了一句古话。 — He quoted an old saying in his speech.',
+      'Quoting a chengyu/proverb signals education and verbal skill, especially in formal speeches and essays.',
+      null,
+      [ACT.vocabularyMeta],
+    ),
+    createContentItem(
+      '形容',
+      'xíngróng',
+      'To describe — used especially when describing WHAT a chengyu or word characterizes. The standard phrasing for unpacking a chengyu is "X 形容…" (X describes…). Essential for explaining idioms to beginners.',
+      'word',
+      '"画蛇添足" 形容做了多余的事。 — "Drawing legs on a snake" describes doing something unnecessary.',
+      'The "X 形容…" structure is the standard way you explain a chengyu in Chinese — memorize it as a unit.',
+      null,
+      [ACT.vocabularyMeta],
+    ),
+
+    // ────────────────────────────────────────────────────────────────────
+    // Activity 4 — Vocabulary II: Core chengyu
+    // ────────────────────────────────────────────────────────────────────
+    createContentItem(
+      '入乡随俗',
+      'rù xiāng suí sú',
+      'Literal: "enter the village, follow the customs". Figurative: when in Rome, do as the Romans do — adapt to the local culture wherever you go. Used to advise travelers, expats, or anyone resisting unfamiliar customs.',
+      'word',
+      '你刚到中国，要入乡随俗。 — You just arrived in China; you should follow local customs.',
+      'A polite, encouraging chengyu; works well as advice to someone struggling with a new environment.',
+      null,
+      [ACT.vocabularyChengyu],
+    ),
+    createContentItem(
+      '守株待兔',
+      'shǒu zhū dài tù',
+      'Literal: "guard the stump, wait for the rabbit". Figurative: passive futility — waiting for luck to strike twice the same way instead of taking initiative. From a fable where a farmer saw a rabbit run into a stump and die, then sat by the stump waiting for more.',
+      'word',
+      '你不能守株待兔，要主动找工作。 — You can\'t wait passively by the stump; you need to actively look for a job.',
+      'Critical of inaction; use it when someone is hoping for a repeat windfall instead of working.',
+      null,
+      [ACT.vocabularyChengyu],
+    ),
+    createContentItem(
+      '画蛇添足',
+      'huà shé tiān zú',
+      'Literal: "draw a snake, add feet". Figurative: ruin something by overdoing it — adding unnecessary details that make the result worse. From a fable where the first person to finish drawing a snake added legs to show off and lost the contest.',
+      'word',
+      '这个设计已经很好了，再加东西就是画蛇添足。 — This design is already good; adding more would be overdoing it.',
+      'A great chengyu for design, writing, and any creative work — the warning against over-polishing.',
+      null,
+      [ACT.vocabularyChengyu],
+    ),
+    createContentItem(
+      '一举两得',
+      'yī jǔ liǎng dé',
+      'Literal: "one move, two gains". Figurative: a win-win — accomplish two things with a single action. Common in business pitches, planning conversations, and advice about efficiency.',
+      'word',
+      '边运动边听书，真是一举两得。 — Exercising while listening to audiobooks — really a win-win.',
+      'A positive chengyu; use it when celebrating an efficient choice.',
+      null,
+      [ACT.vocabularyChengyu],
+    ),
+    createContentItem(
+      '三心二意',
+      'sān xīn èr yì',
+      'Literal: "three hearts, two minds". Figurative: indecisive, half-hearted, unable to focus — a person whose attention is scattered across too many things. Almost always negative.',
+      'word',
+      '学习不能三心二意，要专心。 — Studying can\'t be half-hearted; you need to focus.',
+      'Common in parental and teacher advice; pairs naturally with 地 + verb to describe HOW someone is doing something.',
+      null,
+      [ACT.vocabularyChengyu],
+    ),
+    createContentItem(
+      '半途而废',
+      'bàn tú ér fèi',
+      'Literal: "halfway and abandon". Figurative: give up halfway through — a strong criticism of someone who quits before finishing. The opposite virtue is 坚持到底 (perseverance to the end).',
+      'word',
+      '做事不要半途而废。 — Don\'t give up halfway when you do things.',
+      'A classic moral exhortation; very common in parenting, coaching, and study advice.',
+      null,
+      [ACT.vocabularyChengyu],
+    ),
+    createContentItem(
+      '滴水穿石',
+      'dī shuǐ chuān shí',
+      'Literal: "dripping water bores through stone". Figurative: persistence overcomes any obstacle — small consistent effort eventually breaks through. A motivational chengyu often used in school speeches.',
+      'word',
+      '滴水穿石，每天背十个单词也会有大进步。 — Like dripping water through stone, memorizing ten words daily also produces big progress.',
+      'Encouraging tone; use it to motivate someone discouraged by slow progress.',
+      null,
+      [ACT.vocabularyChengyu],
+    ),
+    createContentItem(
+      '望梅止渴',
+      'wàng méi zhǐ kě',
+      'Literal: "look at plums to quench thirst". Figurative: mental relief that does not solve the real problem — comfort yourself with imagined satisfaction. From a story where Cao Cao told his thirsty troops there were plums ahead so they would keep marching.',
+      'word',
+      '看美食照片只是望梅止渴。 — Looking at food photos is just mental relief, not a real meal.',
+      'Slightly humorous, slightly resigned; common in modern usage about social media and consumption.',
+      null,
+      [ACT.vocabularyChengyu],
+    ),
+    createContentItem(
+      '班门弄斧',
+      'bān mén nòng fǔ',
+      'Literal: "wield an axe at Lu Ban\'s gate" (Lu Ban being the legendary master carpenter). Figurative: showing off in front of a true expert — arrogant amateurism. Often used self-deprecatingly when offering an opinion to a more senior person.',
+      'word',
+      '在专家面前说我的看法，真是班门弄斧。 — Stating my opinion in front of experts — really showing off where I shouldn\'t.',
+      'A modest self-deprecating chengyu; using it about yourself softens an opinion delivered to a superior.',
+      null,
+      [ACT.vocabularyChengyu],
+    ),
+    createContentItem(
+      '对牛弹琴',
+      'duì niú tán qín',
+      'Literal: "play music to a cow". Figurative: presenting sophisticated content to the wrong audience — wasted effort because the audience can\'t appreciate it. Slightly condescending; use carefully.',
+      'word',
+      '跟他讲哲学，简直是对牛弹琴。 — Explaining philosophy to him is just playing music to a cow.',
+      'Risky chengyu — sounds rude if said about a specific person to their face; safer when describing situations in retrospect.',
+      null,
+      [ACT.vocabularyChengyu],
+    ),
+    createContentItem(
+      '马马虎虎',
+      'mǎ ma hū hū',
+      'Literal: "horse horse tiger tiger". Figurative: so-so, careless, mediocre. The second 马 and second 虎 are neutral-toned in spoken use. Very common everyday chengyu for both "so-so" (answering 你好吗?) and "sloppy" (describing work).',
+      'word',
+      '我的中文马马虎虎。 — My Chinese is so-so.',
+      'Extremely conversational; one of the few chengyu beginners can drop into casual chat without sounding bookish.',
+      null,
+      [ACT.vocabularyChengyu],
+    ),
+    createContentItem(
+      '全心全意',
+      'quán xīn quán yì',
+      'Literal: "whole heart, whole mind". Figurative: wholehearted, fully devoted — the positive opposite of 三心二意. Used in praise of someone\'s effort, dedication, or service.',
+      'word',
+      '他全心全意地为人民服务。 — He wholeheartedly serves the people.',
+      'A high-prestige chengyu; common in political speech, eulogies, and professional commendation.',
+      null,
+      [ACT.vocabularyChengyu],
+    ),
+    createContentItem(
+      '不可思议',
+      'bù kě sī yì',
+      'Literal: "cannot be thought-of, cannot be discussed". Figurative: unbelievable, inconceivable — used as an exclamation about something amazing or shocking. Modern equivalent of "incredible" or "mind-blowing".',
+      'word',
+      '这个魔术太不可思议了！ — This magic trick is just incredible!',
+      'Versatile and modern; works in casual speech, journalism, and praise alike.',
+      null,
+      [ACT.vocabularyChengyu],
+    ),
+    createContentItem(
+      '一帆风顺',
+      'yī fān fēng shùn',
+      'Literal: "one sail, smooth wind". Figurative: smooth sailing — a journey or career proceeding without obstacles. Frequently used in farewell wishes and New Year greetings.',
+      'word',
+      '祝你新的工作一帆风顺。 — Wishing you smooth sailing in your new job.',
+      'A blessing-chengyu — very common in cards, toasts, and well-wishes; safe to use generously.',
+      null,
+      [ACT.vocabularyChengyu],
+    ),
+    createContentItem(
+      '日新月异',
+      'rì xīn yuè yì',
+      'Literal: "day-new, month-different". Figurative: rapidly changing and improving — used to describe technology, cities, or any field with fast progress.',
+      'word',
+      '中国的科技日新月异。 — China\'s technology changes rapidly day by day.',
+      'A modern-feeling chengyu; very common in tech journalism and development speeches.',
+      null,
+      [ACT.vocabularyChengyu],
+    ),
+
+    // ── Proverbs (full-sentence sayings, same Activity 4 grouping) ──
+    createContentItem(
+      '千里之行，始于足下',
+      'qiān lǐ zhī xíng, shǐ yú zú xià',
+      'Literal: "a thousand-li journey begins at the foot". Figurative: a journey of a thousand miles starts with a single step — big goals require taking the first concrete step today. Originally from the Daoist classic Tao Te Ching (道德经).',
+      'sentence',
+      '千里之行，始于足下，先把今天的功课做完。 — A long journey starts with the first step; finish today\'s homework first.',
+      'A classical proverb with deep cultural weight; works in motivational speeches and personal pep talks alike.',
+      [
+        { target: '千里之行 qiān lǐ zhī xíng', note: '"a journey of a thousand li"; 之 is a classical possessive particle equivalent to modern 的' },
+        { target: '始于足下 shǐ yú zú xià', note: '"begins at the foot"; 于 is a classical "at / from" preposition' },
+      ],
+      [ACT.vocabularyChengyu],
+    ),
+    createContentItem(
+      '学如逆水行舟，不进则退',
+      'xué rú nì shuǐ xíng zhōu, bù jìn zé tuì',
+      'Literal: "learning is like rowing upstream — if you don\'t advance, you fall back". Figurative: study requires constant effort because stopping equals losing ground. Heavily used in Chinese school exhortation culture.',
+      'sentence',
+      '学如逆水行舟，不进则退，每天都要复习。 — Learning is like rowing upstream; without daily review, you fall back.',
+      'A classic Chinese-school motto; every Chinese student has heard this dozens of times in school.',
+      [
+        { target: '学如逆水行舟 xué rú nì shuǐ xíng zhōu', note: '"learning is like rowing upstream"; uses 如 ("like") — the literary version of A 像 B' },
+        { target: '不进则退 bù jìn zé tuì', note: '"if not advancing, then retreating"; 则 is a classical "then" connector' },
+      ],
+      [ACT.vocabularyChengyu],
+    ),
+    createContentItem(
+      '失败是成功之母',
+      'shī bài shì chéng gōng zhī mǔ',
+      'Literal: "failure is the mother of success". Figurative: failure teaches the lessons that lead to eventual success — used to console anyone who has just failed. The most-used Chinese consolation proverb.',
+      'sentence',
+      '别难过，失败是成功之母。 — Don\'t be sad; failure is the mother of success.',
+      'A go-to consolation line — every Chinese learner should be able to deploy this in a friend-comfort context.',
+      [
+        { target: '失败 shībài', note: '"failure" — the topic noun' },
+        { target: '是…之母', note: '"is the mother of…"; classical-flavored 之 instead of 的' },
+      ],
+      [ACT.vocabularyChengyu],
+    ),
+    createContentItem(
+      '一分耕耘，一分收获',
+      'yī fēn gēng yún, yī fēn shōu huò',
+      'Literal: "one share of plowing-weeding equals one share of harvest". Figurative: you reap what you sow — effort and reward are proportional. Common in parental advice and study encouragement.',
+      'sentence',
+      '一分耕耘，一分收获，你的努力一定有回报。 — You reap what you sow; your effort will definitely pay off.',
+      'Encouraging tone; pairs well with 一定 (definitely) or 总会 (will eventually) when consoling someone working hard.',
+      null,
+      [ACT.vocabularyChengyu],
+    ),
+    createContentItem(
+      '熟能生巧',
+      'shú néng shēng qiǎo',
+      'Literal: "familiarity can produce skill". Figurative: practice makes perfect — repetition leads to mastery. Technically a chengyu (four characters) but functions like a proverb in conversation.',
+      'sentence',
+      '熟能生巧，多练习就会进步。 — Practice makes perfect; more practice means progress.',
+      'A short, easy chengyu that beginners can deploy naturally — very common in study contexts.',
+      null,
+      [ACT.vocabularyChengyu],
+    ),
+    createContentItem(
+      '活到老，学到老',
+      'huó dào lǎo, xué dào lǎo',
+      'Literal: "live until old, study until old". Figurative: lifelong learning — keep learning as long as you live. Common in adult-education contexts and in praise of older students who are still studying.',
+      'sentence',
+      '我爷爷七十岁还在学英语，真是活到老，学到老。 — My grandfather is still learning English at 70 — truly lifelong learning.',
+      'A widely-loved proverb; safe to use anytime someone older is learning something new.',
+      null,
+      [ACT.vocabularyChengyu],
+    ),
+
+    // ────────────────────────────────────────────────────────────────────
+    // Activity 5 — Grammar I: chengyu + 地 + verb
+    // ────────────────────────────────────────────────────────────────────
+    createContentItem(
+      '成语 + 地 + V',
+      'chéngyǔ + de + V',
+      'Use the pattern [chengyu] 地 [verb] to turn a chengyu into an adverbial expression describing HOW someone does an action. 地 (de) here is the adverbial particle. The chengyu describes the manner; the verb is the action.',
+      'sentence',
+      '他全心全意地工作。 — He works wholeheartedly.\n你不要三心二意地学习。 — Don\'t study half-heartedly.',
+      'Very productive pattern — most descriptive chengyu (about manner, attitude, or quality) can be used this way.',
+      [
+        { target: '[chengyu] (manner)', note: 'a chengyu describing how something is done: 全心全意, 三心二意, 马马虎虎' },
+        { target: '地 (adverbial)', note: 'the adverbial particle linking manner to verb; always 地, never 的' },
+        { target: '[verb] (action)', note: 'the actual verb being modified: 工作, 学习, 听' },
+      ],
+      [ACT.grammarAdverbial],
+    ),
+    createContentItem(
+      '的 / 地 / 得',
+      'de / de / de',
+      'CRITICAL writing distinction: all three particles are pronounced "de" but spelled differently and used differently. 的 (possessive: 我的 my); 地 (adverbial: 慢慢地走 walk slowly); 得 (resultative: 跑得快 run fast). Chengyu adverbs always take 地.',
+      'sentence',
+      '我的书 (possessive 的) · 慢慢地走 (adverbial 地) · 跑得很快 (resultative 得)',
+      'Speakers can\'t hear the difference (all "de"), so the writing test is where this matters most. Mistakes are common even among native writers.',
+      [
+        { target: '的 — possessive', note: 'links possessor to possessed: 我的, 你的, 他的; placed before nouns' },
+        { target: '地 — adverbial', note: 'links manner to verb: 高兴地说 ("say happily"); placed before verbs' },
+        { target: '得 — resultative', note: 'links verb to its result/degree: 说得好 ("speaks well"); placed after verbs' },
+      ],
+      [ACT.grammarAdverbial],
+    ),
+    createContentItem(
+      '常见 chengyu-adverb',
+      'cháng jiàn chengyu-adverb',
+      'Five high-frequency chengyu that work especially well as adverbs with 地: 全心全意地 (wholeheartedly), 三心二意地 (half-heartedly), 马马虎虎地 (sloppily), 认认真真地 (very seriously — reduplicated form), 高高兴兴地 (very happily — reduplicated form).',
+      'sentence',
+      '他认认真真地准备考试。 — He prepared for the exam very seriously.\n孩子高高兴兴地去上学。 — The children went to school happily.',
+      'Reduplicated four-character forms (AABB) function like chengyu and pair naturally with 地 + verb.',
+      [
+        { target: '全心全意地', note: 'wholeheartedly — positive, fits work / service / study' },
+        { target: '三心二意地', note: 'half-heartedly — negative, fits criticism' },
+        { target: '马马虎虎地', note: 'sloppily — negative, fits criticism of careless work' },
+        { target: '认认真真地', note: 'very seriously — AABB reduplication of 认真; intensified version' },
+        { target: '高高兴兴地', note: 'very happily — AABB reduplication of 高兴; intensified version' },
+      ],
+      [ACT.grammarAdverbial],
+    ),
+
+    // ────────────────────────────────────────────────────────────────────
+    // Activity 6 — Grammar II: A 如 B / A 像 B similes
+    // ────────────────────────────────────────────────────────────────────
+    createContentItem(
+      'A 如 B',
+      'A rú B',
+      'A 如 B = "A is like B" — a classical-flavored simile pattern that appears constantly inside chengyu and proverbs. 如 (rú) is the literary equivalent of 像 (xiàng). Use it when you want a more elevated, written-style tone.',
+      'sentence',
+      '时光如箭，岁月如梭。 — Time is like an arrow, the years are like a weaving shuttle.\n学如逆水行舟。 — Studying is like rowing upstream.',
+      'Common in chengyu, proverbs, formal speeches, and poetry; sounds bookish in everyday casual speech.',
+      [
+        { target: 'A (subject)', note: 'the thing being compared' },
+        { target: '如 rú (literary "like")', note: 'classical comparison verb; equivalent to modern 像' },
+        { target: 'B (comparison target)', note: 'what A is being likened to' },
+      ],
+      [ACT.grammarSimile],
+    ),
+    createContentItem(
+      'A 像 B',
+      'A xiàng B',
+      'A 像 B = "A is like B" — the everyday spoken equivalent of A 如 B. 像 (xiàng) is the modern colloquial comparison verb. Use it in casual conversation, daily writing, and any context where 如 would feel too literary.',
+      'sentence',
+      '他像他爸爸一样高。 — He is tall like his dad.\n这个苹果像桃子一样甜。 — This apple is sweet like a peach.',
+      'Often paired with 一样 (yīyàng, "the same") for fuller similes: A 像 B 一样 (一样 emphasizes "in the same way").',
+      [
+        { target: 'A (subject)', note: 'the thing being compared' },
+        { target: '像 xiàng (everyday "like")', note: 'colloquial comparison verb; the modern spoken default' },
+        { target: 'B (comparison target)', note: 'what A is being likened to' },
+        { target: '一样 yīyàng (optional)', note: '"the same way"; emphasizes the likeness when added' },
+      ],
+      [ACT.grammarSimile],
+    ),
+    createContentItem(
+      '如 vs 像 — register choice',
+      'rú vs xiàng — register choice',
+      'Choose 如 when writing essays, speeches, or quoting classical sayings — 如 sounds educated and literary. Choose 像 in everyday speech, friendly conversation, and informal writing — 像 sounds natural and unpretentious. Mixing them within one sentence sounds odd.',
+      'sentence',
+      'WRITING/SPEECH: 时光如水。 — Time is like water.\nCASUAL: 时间像水一样过得很快。 — Time goes by fast like water.',
+      'Both sentences say roughly the same thing; the choice of 如 vs 像 signals which register you are in.',
+      [
+        { target: '如 — literary register', note: 'use in essays, speeches, quoted chengyu/proverbs; sounds bookish in chat' },
+        { target: '像 — everyday register', note: 'use in conversation, casual writing, daily speech; sounds plain in formal contexts' },
+      ],
+      [ACT.grammarSimile],
+    ),
+
+    // ────────────────────────────────────────────────────────────────────
+    // Activity 7 — Grammar III: 与其 A 不如 B
+    // ────────────────────────────────────────────────────────────────────
+    createContentItem(
+      '与其 A 不如 B',
+      'yǔ qí A bù rú B',
+      'A formal preference pattern: "rather than A, it would be better to B". 与其 introduces the rejected option; 不如 introduces the preferred alternative. Pairs naturally with chengyu and proverbs in advice-giving.',
+      'sentence',
+      '与其守株待兔，不如主动出击。 — Rather than waiting passively, better to take the initiative.\n与其抱怨，不如行动。 — Rather than complaining, better to act.',
+      'A signature advice pattern in Chinese; combines well with chengyu in the A or B slot for extra rhetorical weight.',
+      [
+        { target: '与其 yǔ qí (introduces A)', note: '"rather than"; marks the rejected option' },
+        { target: 'A (rejected option)', note: 'what you advise AGAINST — often the listener\'s current plan' },
+        { target: '不如 bù rú (introduces B)', note: '"better to"; literally "not as good as"' },
+        { target: 'B (preferred option)', note: 'what you advise FOR — the alternative being recommended' },
+      ],
+      [ACT.grammarRather],
+    ),
+    createContentItem(
+      '与其…不如… + chengyu',
+      'yǔ qí … bù rú … + chengyu',
+      'Drop a chengyu into either the A or B slot for a more rhetorical, advice-style statement. The chengyu carries the cultural weight while 与其…不如… provides the logical structure of the recommendation.',
+      'sentence',
+      '与其三心二意地做十件事，不如全心全意地做一件事。 — Rather than doing ten things half-heartedly, better to do one thing wholeheartedly.',
+      'Three chengyu in one sentence (三心二意, 全心全意, plus the 不如 pattern) — common in motivational writing and parental advice.',
+      [
+        { target: '与其 [chengyu]地 V', note: 'rejected option using a chengyu adverb' },
+        { target: '不如 [chengyu]地 V', note: 'preferred option using a chengyu adverb' },
+      ],
+      [ACT.grammarRather],
+    ),
+    createContentItem(
+      '相关对比',
+      'xiāng guān duì bǐ',
+      '与其…不如… is related to but distinct from two other comparison patterns. 宁可…也… ("would rather… than…") expresses willingness to accept a cost. 与其…还不如… ("rather than X, even better to Y") intensifies the recommendation.',
+      'sentence',
+      '与其…不如… (advice): 与其等机会，不如创造机会。 — Better to create opportunities than wait for them.\n宁可…也… (willingness): 我宁可饿着也不吃这个。 — I\'d rather be hungry than eat this.',
+      'These are all preference patterns but the situation differs: 与其 = pure advice; 宁可 = personal willingness; 与其…还不如 = intensified advice.',
+      [
+        { target: '与其…不如…', note: 'neutral advice: "rather than A, better B"' },
+        { target: '与其…还不如…', note: 'intensified advice: "rather than A, even better B"' },
+        { target: '宁可…也…', note: 'personal willingness: "would rather A than B"' },
+      ],
+      [ACT.grammarRather],
+    ),
+
+    // ────────────────────────────────────────────────────────────────────
+    // Activity 8 — Reading and Speaking
+    // ────────────────────────────────────────────────────────────────────
+    createContentItem(
+      '学生演讲',
+      'xuéshēng yǎn jiǎng',
+      'A short Chinese-middle-school-style speech that demonstrates how a young student naturally embeds 4–5 chengyu and a proverb into a graduation-style address. Notice the chengyu are not floating — each is woven into a sentence with grammar around it.',
+      'sentence',
+      '亲爱的老师，同学们：\n时间过得真快，三年的初中生活就要结束了。回想这三年，我学到了很多。古人说："学如逆水行舟，不进则退。"我一开始三心二意地学习，成绩马马虎虎。后来我明白了滴水穿石的道理，开始认认真真地复习，慢慢有了进步。\n我想感谢全心全意帮助过我的每一位老师。希望大家以后都能一帆风顺！\n谢谢大家。',
+      'Translation: "Dear teachers and classmates, time flies, and our three years of middle school are ending. The ancients said, \'Learning is like rowing upstream — if you don\'t advance, you fall back.\' At first I studied half-heartedly and my grades were mediocre. Later I understood the truth of \'dripping water bores through stone\' and began to study seriously, slowly making progress. I want to thank every teacher who helped me wholeheartedly. I hope everyone has smooth sailing ahead! Thank you all."',
+      [
+        { target: '学如逆水行舟，不进则退', note: 'quoted proverb framed by "古人说" ("the ancients said") — the standard quoting frame' },
+        { target: '三心二意地学习', note: 'chengyu + 地 + verb — half-hearted studying as adverbial' },
+        { target: '马马虎虎', note: 'chengyu used as a predicate adjective ("mediocre")' },
+        { target: '滴水穿石', note: 'chengyu used as a noun-modifier ("the truth of dripping-water-bores-stone")' },
+        { target: '认认真真地复习', note: 'AABB reduplication of 认真, used as adverb with 地' },
+        { target: '全心全意帮助过我的', note: 'chengyu as adverb (without 地 here, modifying a relative clause)' },
+        { target: '一帆风顺', note: 'chengyu used as a wish/blessing — extremely common at end of speeches' },
+      ],
+      [ACT.reading],
+    ),
+    createContentItem(
+      '理解问题',
+      'lǐjiě wèntí',
+      'Four comprehension questions about the speech. Answer each in Chinese using one chengyu from the speech where relevant.',
+      'sentence',
+      'Q1: 学生一开始是怎么学习的？(How did the student study at first?)\nQ2: 后来什么道理改变了他？(What truth changed him later?)\nQ3: 他想感谢哪些老师？(Which teachers does he want to thank?)\nQ4: 他希望大家未来怎么样？(What does he wish for everyone\'s future?)',
+      'Each answer should ideally reuse the chengyu from the speech to demonstrate active recall.',
+      [
+        { target: 'A1: 一开始三心二意地学习。', note: 'reuses 三心二意 + 地 + verb pattern' },
+        { target: 'A2: 滴水穿石的道理。', note: 'reuses 滴水穿石 as noun-modifier' },
+        { target: 'A3: 全心全意帮助过他的老师。', note: 'reuses 全心全意 as adverb' },
+        { target: 'A4: 希望大家一帆风顺。', note: 'reuses 一帆风顺 as blessing' },
+      ],
+      [ACT.reading],
+    ),
+
+    // ────────────────────────────────────────────────────────────────────
+    // Activity 9 — Listening and Speaking
+    // ────────────────────────────────────────────────────────────────────
+    createContentItem(
+      '安慰对话',
+      'ān wèi duì huà',
+      'A natural consolation conversation between two friends at Tsinghua. One has just failed a midterm; the other consoles using a chengyu and a proverb. This is a real-life use case for the expressions in this lesson.',
+      'conversation',
+      'A: 我这次考试又没考好。我真的觉得自己很笨。\nB: 别这样想。失败是成功之母，每次失败都让你更接近成功。\nA: 但我已经很努力了。\nB: 我知道。但是滴水穿石，慢慢来。与其难过，不如想想下次怎么做得更好。\nA: 你说得对。谢谢你。\nB: 不客气。我们一起加油！',
+      'Translation: "A: I did badly on the exam again. I really feel stupid. B: Don\'t think like that. Failure is the mother of success — every failure brings you closer to success. A: But I tried hard already. B: I know. But dripping water bores through stone — take it slowly. Rather than being sad, think about how to do better next time. A: You\'re right. Thanks. B: You\'re welcome. Let\'s work hard together!"',
+      [
+        { target: '失败是成功之母', note: 'proverb used as a complete sentence — standard consolation move' },
+        { target: '滴水穿石', note: 'chengyu used as a free-standing motivational reminder' },
+        { target: '与其难过，不如想想…', note: '与其…不如… pattern from Grammar III; turns sadness into action plan' },
+        { target: '慢慢来 màn man lái', note: '"take it slowly" — a common everyday encouragement, not technically a chengyu but pairs well' },
+        { target: '一起加油 yī qǐ jiā yóu', note: '"let\'s work hard together"; 加油 literally "add oil", a high-frequency cheer-on phrase' },
+      ],
+      [ACT.listening],
+    ),
+    createContentItem(
+      '正式版本',
+      'zhèng shì bǎn běn',
+      'The same scenario in a more formal register — a teacher consoling a student. Notice the formal vocabulary: 同学, 您 (used by student), classical-flavored quotes, more chengyu.',
+      'conversation',
+      '学生: 老师，这次考试我又考砸了。\n老师: 这位同学，你不要太灰心。古人说："失败是成功之母。"重要的是从失败中学到东西。\n学生: 可是我已经很努力了。\n老师: 我相信你的努力。但是学习如逆水行舟，不进则退。与其抱怨结果，不如分析原因。\n学生: 谢谢老师，我明白了。\n老师: 加油，我相信你下次会有进步。',
+      'Same chengyu/proverbs as the casual version but framed with "古人说" (quoting frame) and the literary 学习如逆水行舟 instead of just 滴水穿石. The teacher\'s register signals authority.',
+      [
+        { target: '古人说"…"', note: 'standard formal quoting frame for proverbs; used in writing and speeches' },
+        { target: '学习如逆水行舟', note: 'uses literary 如 instead of everyday 像 — fits the teacher register' },
+        { target: '与其抱怨结果，不如分析原因', note: '与其…不如… pattern with parallel structure (verb + object on each side)' },
+        { target: '考砸了 kǎo zá le', note: '"bombed the exam"; 砸 (zá) literally "to smash" — vivid colloquial expression for failure' },
+      ],
+      [ACT.listening],
+    ),
+
+    // ────────────────────────────────────────────────────────────────────
+    // Activity 10 — Writing
+    // ────────────────────────────────────────────────────────────────────
+    createContentItem(
+      '写作模板',
+      'xiě zuò mú bǎn',
+      'A reusable structure for a short reflection essay that uses chengyu and a proverb correctly. Notice how each chengyu is embedded inside a sentence with grammar around it — not floating as standalone fragments.',
+      'sentence',
+      '[现状] 最近我在学[X]。\n[挑战] 一开始我[chengyu]地学习，但是没有进步。\n[领悟] 后来我想起一句话："[proverb]。"\n[改变] 我决定[chengyu] + 地 + V，每天坚持一点。\n[结果] 现在虽然还有困难，但是我相信[chengyu] + 的道理。',
+      'Five-sentence structure: situation → challenge → realization → change → conclusion. Each step has a slot for a chengyu or proverb.',
+      [
+        { target: '[现状]', note: 'set the scene — what you are currently doing or studying' },
+        { target: '[挑战] [chengyu]地学习', note: 'describe the problem using a negative chengyu like 三心二意 or 马马虎虎' },
+        { target: '[领悟] "[proverb]"', note: 'quote the proverb that changed your thinking; use 失败是成功之母 or 千里之行始于足下 or similar' },
+        { target: '[改变] [chengyu]地 V', note: 'describe your new approach using a positive chengyu like 全心全意 or 认认真真' },
+        { target: '[结果] [chengyu]的道理', note: 'conclude using a chengyu like 滴水穿石 framed as a "truth"' },
+      ],
+      [ACT.writing],
+    ),
+    createContentItem(
+      '写作示例',
+      'xiě zuò shì lì',
+      'A sample reflection essay using the template, written by a Tsinghua student about learning English. Notice how every chengyu is locked into a grammatical slot.',
+      'sentence',
+      '最近我在学英语。一开始我三心二意地学习，常常忘记单词。后来我想起一句话："千里之行，始于足下。"我决定全心全意地每天背十个单词。现在虽然还有很多不会的，但是我相信滴水穿石的道理。',
+      'Translation: "Recently I\'ve been studying English. At first I studied half-heartedly and often forgot words. Then I remembered a saying: \'A thousand-li journey begins with a single step.\' I decided to wholeheartedly memorize ten words a day. Now although there\'s still a lot I don\'t know, I believe in the truth of \'dripping water bores through stone.\'"',
+      [
+        { target: '三心二意地学习', note: 'chengyu + 地 + verb — the half-hearted approach' },
+        { target: '千里之行，始于足下', note: 'proverb quoted inside the essay with quotation marks' },
+        { target: '全心全意地…每天背十个单词', note: 'chengyu + 地 + verb — the new committed approach' },
+        { target: '滴水穿石的道理', note: 'chengyu + 的 + 道理 — "the truth of [chengyu]"; standard concluding move' },
+      ],
+      [ACT.writing],
+    ),
+    createContentItem(
+      '写作练习',
+      'xiě zuò liàn xí',
+      'Write your own 5-sentence reflection following the template, using at least 2 chengyu and 1 proverb correctly. Pick a real situation: a project, a habit, a sport, a relationship. Read it aloud with correct tones.',
+      'sentence',
+      '建议主题: (1) 学习一门新语言 — learning a new language; (2) 坚持运动 — sticking with exercise; (3) 适应新环境 — adapting to a new environment.',
+      'Choose a topic where you can naturally use the chengyu in this lesson — avoid forcing them.',
+      null,
+      [ACT.writing],
+    ),
+
+    // ────────────────────────────────────────────────────────────────────
+    // Activity 11 — Culture Note
+    // ────────────────────────────────────────────────────────────────────
+    createContentItem(
+      '成语在现代汉语',
+      'chéng yǔ zài xiàn dài hàn yǔ',
+      'Chengyu are everywhere in modern Mandarin — government speeches, newspaper editorials, classroom essays, business writing, even WeChat group chat. A well-chosen chengyu signals education, verbal skill, and cultural literacy. Even casual chat among educated Chinese speakers will average a chengyu every few sentences.',
+      'word',
+      '新闻标题: "中国科技日新月异" — "Chinese tech changing rapidly day by day"\n微信聊天: "周末玩得太开心了，简直一举两得！" — "Had so much fun this weekend, really a win-win!"',
+      'Modern Chinese has not phased out chengyu — they remain central to fluent expression across all registers from formal to casual.',
+      null,
+      [ACT.culture],
+    ),
+    createContentItem(
+      '中学成语训练',
+      'zhōng xué chéng yǔ xùn liàn',
+      'Chinese middle schools (中学) have intense chengyu drill culture. Students take regular 听写 (dictation) tests on chengyu, complete fill-in-the-blank exercises (成语填空), and are expected to use 4–6 chengyu in every essay on the 高考 (college entrance exam). The pressure produces deep chengyu knowledge in adult speakers.',
+      'word',
+      '高考作文要求: "用词丰富，恰当使用成语" — Gaokao essay requirement: "rich vocabulary, appropriate use of chengyu"',
+      'Chinese students often know 300–500 chengyu by graduation; an educated adult might know 1,000+. This depth is why chengyu are so culturally important.',
+      [
+        { target: '成语听写 chéngyǔ tīngxiě', note: 'chengyu dictation — write down the chengyu from the teacher\'s reading' },
+        { target: '成语填空 chéngyǔ tiánkòng', note: 'chengyu fill-in-the-blank — given the meaning, supply the chengyu' },
+        { target: '成语接龙 chéngyǔ jiēlóng', note: '"chengyu chain" — game where each player\'s chengyu must start with the previous player\'s last character' },
+      ],
+      [ACT.culture],
+    ),
+    createContentItem(
+      '过度使用的陷阱',
+      'guò dù shǐ yòng de xiàn jǐng',
+      'BIG WARNING for learners: packing every sentence with chengyu sounds bookish, awkward, or like you are showing off. Beginners often over-deploy as soon as they learn a few. The right ratio in casual speech is roughly one chengyu every 5–10 sentences; in formal writing 4–6 per essay; not more.',
+      'word',
+      'OVER-USE (sounds awkward): "我今天起得早早地，认认真真地学习，全心全意地准备考试，希望一帆风顺。"\nBALANCED: "我今天起得很早，认真地准备考试，希望一切顺利。"',
+      'A useful comparison: imagine an English learner who only speaks in Shakespeare quotes — technically correct, socially weird. Chengyu work the same way.',
+      [
+        { target: 'GOAL: 1 chengyu / 5–10 sentences in chat', note: 'natural rate in casual speech among educated adults' },
+        { target: 'GOAL: 4–6 chengyu per essay', note: 'expected rate in 高考-style writing — well-chosen, not packed' },
+        { target: 'WHY: cultural fit', note: 'less is more; one well-placed chengyu beats five stuffed in' },
+      ],
+      [ACT.culture],
+    ),
+    createContentItem(
+      '跨文化对比',
+      'kuà wén huà duì bǐ',
+      'Every culture has fixed expressions, but their structure varies. English idioms are usually multi-word phrases ("kick the bucket"); Spanish has refranes (proverbs); Arabic has hikam (wisdom sayings); Korean has 속담 (proverbs) and 사자성어 (four-character idioms, directly borrowed from Chinese). Chinese chengyu are unusually structured (always exactly four characters from classical sources) and unusually frequent (~5,000 in common use).',
+      'word',
+      'EN: "When in Rome, do as the Romans do." ≈ ZH: 入乡随俗\nEN: "Practice makes perfect." ≈ ZH: 熟能生巧\nEN: "A journey of a thousand miles begins with a single step." = ZH: 千里之行，始于足下 (a direct translation)',
+      'Some chengyu have near-perfect English equivalents; many are culturally specific (班门弄斧 — Lu Ban as a master carpenter — has no direct English counterpart).',
+      [
+        { target: 'Chengyu structure', note: 'exactly 4 characters, classical source, drop-in unit' },
+        { target: 'English idiom structure', note: 'variable length, modern/biblical/Shakespeare sources, often verb phrases' },
+        { target: 'Korean 사자성어', note: 'four-character idioms borrowed from Chinese — many overlap directly' },
+      ],
+      [ACT.culture],
+    ),
+
+    // ────────────────────────────────────────────────────────────────────
+    // Activity 12 — Task
+    // ────────────────────────────────────────────────────────────────────
+    createContentItem(
+      '任务: 解释成语',
+      'rèn wù: jiě shì chéng yǔ',
+      'Pick THREE chengyu from this lesson and explain each one in Chinese to an imaginary non-Chinese friend who is just starting to learn Mandarin. Use simple vocabulary, not dictionary translation. Three parts per chengyu: (1) literal image, (2) figurative meaning, (3) example situation.',
+      'conversation',
+      '示例 (入乡随俗):\n字面意思: 进入一个新地方，跟着那里的风俗。\n比喻意思: 到一个新文化时，要学习并接受当地的习惯。\n例子: 我刚来中国，应该入乡随俗，用筷子吃饭。',
+      'Three-step explanation works for any chengyu and is the standard way native speakers explain idioms to learners.',
+      [
+        { target: '字面意思 zì miàn yì si', note: '"literal meaning" — the surface image of the chengyu' },
+        { target: '比喻意思 bǐ yù yì si', note: '"figurative meaning" — what people actually mean by it' },
+        { target: '例子 lì zi', note: '"example" — a real-life situation where the chengyu would fit' },
+      ],
+      [ACT.task],
+    ),
+    createContentItem(
+      '任务: 应用到自己',
+      'rèn wù: yìng yòng dào zì jǐ',
+      'Pick ONE chengyu from the three you explained and apply it to your own current life — a project, a study habit, a relationship, a challenge you are facing right now. Two sentences: (1) which chengyu fits your situation, (2) why.',
+      'conversation',
+      '示例: 我觉得"滴水穿石"很适合我现在学中文的情况。我每天只学一点点，进步很慢，但我相信像滴水穿石一样，时间长了就会有大变化。',
+      'Tie the chengyu to your real situation; this is what makes a chengyu memorable to you and credible to your listener.',
+      [
+        { target: '"X" 很适合…的情况', note: '"X" fits the situation of…; standard frame for applying a chengyu to a context' },
+        { target: '像 X 一样', note: '"like X" — uses the everyday simile pattern from Grammar II' },
+        { target: '时间长了就会有大变化', note: '"after a long time there will be big change" — a typical conclusion for persistence-based chengyu' },
+      ],
+      [ACT.task],
+    ),
+    createContentItem(
+      '挑战 — 跨文化对话',
+      'tiǎo zhàn — kuà wén huà duì huà',
+      'Stretch goal: in the same scene, your non-Chinese friend tells you a fixed expression from their own language and asks you which Chinese chengyu it most resembles. You match it and explain why the match is partial, not perfect.',
+      'conversation',
+      '朋友: "我们英语有一句话：\'Don\'t put all your eggs in one basket.\' 中文有类似的成语吗？"\n你: "类似的意思中文也有，比如\'不要孤注一掷\'。意思差不多，但中文的孤注一掷更强调赌博的危险，英语的鸡蛋更日常一点。"',
+      'Cross-cultural matching is rarely perfect — practice naming both the overlap and the divergence between the two expressions.',
+      [
+        { target: '类似的意思 lèi sì de yì si', note: '"similar meaning"; the standard frame for cross-cultural idiom matching' },
+        { target: '差不多 chà bu duō', note: '"about the same"; useful for partial-match descriptions' },
+        { target: '更强调 gèng qiáng diào', note: '"more emphasizes"; useful for naming the divergence between two similar expressions' },
+      ],
+      [ACT.task],
+    ),
+  ],
+};
+
+module.exports = lesson;

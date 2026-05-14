@@ -306,7 +306,7 @@
 }
 
 .star-pulse.star-filled {
-  color: #58cc02;
+  color: var(--mastered);
 }
 
 .star-pulse.star-empty {

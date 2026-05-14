@@ -81,8 +81,8 @@ const lesson = {
   ],
   relatedPools: ['topic-people', 'topic-society', 'topic-food'],
   content: [
-    createContentItem('Lesson goal', 'opinions', 'By end: trade opinions about life in Korea, conjugate adjectives, distinguish 좋다 vs 좋아하다.', 'word', 'Functions: ask · share opinion · state preference', 'Three skills that unlock conversational opinions.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'one-month chat', 'A Korean classmate asks how you have been finding life in Korea.', 'word', 'Classmate: 한국 생활이 어때요? — You: 재미있어요. 그런데 음식이 좀 매워요.', 'Classmate: How is life in Korea? — You: It is fun. But the food is a bit spicy.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: trade opinions about life in Korea, conjugate adjectives, distinguish 좋다 vs 좋아하다.', 'word', 'Functions: ask · share opinion · state preference', 'Three skills that unlock conversational opinions.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'A Korean classmate asks how you have been finding life in Korea.', 'word', 'Classmate: 한국 생활이 어때요? — You: 재미있어요. 그런데 음식이 좀 매워요.', 'Classmate: How is life in Korea? — You: It is fun. But the food is a bit spicy.', null, [ACT.orientation]),
 
     createContentItem('좋아요 → [조아요]', 'joayo', 'ㅎ-deletion: the ㅎ받침 of 좋 disappears before 아.', 'word', '날씨가 좋아요. → [날씨가 조아요]', 'The weather is nice.', null, [ACT.pronunciation]),
     createContentItem('맵다 → 매워요', 'maewoyo', 'ㅂ-irregular: ㅂ at the end of an adjective stem changes to ㅜ + 어요 → 워요.', 'word', '음식이 매워요.', 'The food is spicy.', [{ korean: '맵 + 어요', english: 'ㅂ → 우 → 매우어요 → 매워요' }], [ACT.pronunciation]),

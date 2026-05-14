@@ -19,6 +19,12 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "audit:guardrails": "node scripts/auditGuardrails.js && node scripts/auditLocaleKeys.js && node scripts/auditLocalePlaceholders.js && node scripts/auditLanguagePolicy.js && node scripts/auditClassLanguagePolicy.js && node scripts/auditDynamicLocalizedCopy.js && node scripts/auditI18nLeaks.js",
+    "audit:i18n": "node scripts/auditLocaleKeys.js",
+    "audit:i18n-leaks": "node scripts/auditI18nLeaks.js",
+    "i18n:harvest": "node scripts/harvestI18nDefaults.js",
+    "i18n:fill-locales": "node ../backend/scripts/translateLocaleKeys.js",
+    "audit:language-policy": "node scripts/auditLanguagePolicy.js && node scripts/auditClassLanguagePolicy.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

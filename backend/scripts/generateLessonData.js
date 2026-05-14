@@ -6,15 +6,26 @@
  * Korean has 28 lessons (7 categories × 4 difficulties) with ~100 items each.
  * This script generates equivalent lesson files for all other languages.
  *
+ * Language-preparation rule:
+ * - targetText/exampleTarget/breakdown target fields are target-language only.
+ * - nativeText/exampleNative/breakdown native fields are canonical English
+ *   explanations used by the translation cache.
+ * - never generate target strings like "mā 妈 (mother)" or "hola (hello)".
+ *   Put meanings in native/example-native fields instead.
+ * - do not copy Korean-specific distinctions, English-specific distinctions,
+ *   or any other single-language assumption into all languages.
+ * - generated files must remain UTF-8; "????" in non-Latin text is a failed
+ *   generation pass, not acceptable output.
+ *
  * Usage: node scripts/generateLessonData.js
  */
 
 const fs = require('fs');
 const path = require('path');
 const cards = require('../flashcardData');
-const { prepareDefaultFlashcardForSeed } = require('../utils/languageConcepts');
+const { prepareDefaultFlashcardForSeed, languageField } = require('../utils/languageConcepts');
 
-const LANGS = ['es','fr','de','zh','ja','hi','ar','he','pt','it','nl','ru','id','tr','bn','ta','ms','fil'];
+const LANGS = ['en','ko','es','fr','de','zh','ja','hi','ar','he','pt','it','nl','ru','id','tr','bn','ta','ms','fil'];
 
 // Map flashcard categories to lesson categories
 const CATEGORY_MAP = {
@@ -111,17 +122,22 @@ function escapeStr(s) {
   return s.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
 }
 
+function hasEnglishMeaningParenthetical(value) {
+  return /\([A-Za-z][A-Za-z\s,'/-]{2,}\)/.test(String(value || ''));
+}
+
 function metadataForGeneratedItem(card, lang, index) {
+  const targetField = languageField(lang);
   const doc = prepareDefaultFlashcardForSeed({
     ...card,
-    korean: card[lang] || '',
+    korean: card[targetField] || '',
   }, lang, index);
   const metadata = {};
   if (doc.conceptId) metadata.conceptId = doc.conceptId;
   if (doc.conceptGloss) metadata.conceptGloss = doc.conceptGloss;
   if (doc.usage && Object.keys(doc.usage).length > 0) metadata.usage = doc.usage;
   return {
-    targetText: doc[lang] || doc.korean || '',
+    targetText: doc[targetField] || doc.korean || '',
     nativeText: doc.english || '',
     metadata,
   };
@@ -235,6 +251,9 @@ function generateLangFile(lang) {
         const romanization = '';
 
         if (!targetText) continue;
+        if (lang !== 'en' && hasEnglishMeaningParenthetical(targetText)) {
+          throw new Error(`Refusing to generate ${lang} target text with embedded English meaning: ${targetText}`);
+        }
 
         if (isSentence) {
           lines.push(genSentenceItem(targetText, romanization, english, generated.metadata));
@@ -254,7 +273,11 @@ function generateLangFile(lang) {
   lines.push('');
 
   const outPath = path.join(__dirname, '..', 'lessonData', `${lang}.js`);
-  fs.writeFileSync(outPath, lines.join('\n'));
+  const output = lines.join('\n');
+  if (/\?\?\?\?/.test(output)) {
+    throw new Error(`Refusing to write ${lang}.js because generated output contains mojibake placeholders.`);
+  }
+  fs.writeFileSync(outPath, output, 'utf8');
 
   // Verify
   try {

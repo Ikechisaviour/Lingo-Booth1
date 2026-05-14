@@ -73,8 +73,8 @@ const lesson = {
   ],
   relatedPools: ['topic-culture'],
   content: [
-    createContentItem('Lesson goal', 'culture + grammar', 'By end: recommend festivals/performances with native-like emphasis patterns.', 'word', 'Functions: recommend · highlight · evaluate · deflect', 'Festival-talk toolkit.', null, [ACT.orientation]),
-    createContentItem('Real-world scenario', 'Kumoh festival', 'Kumoh\'s annual 대학축제 (uni-festival) is in May. You invite Sarah, hyping the must-see acts and food.', 'word', 'You: 다음 주 우리 학교 축제 있어. 아리랑이야말로 꼭 들어 봐야 해.', 'You: Festival next week. Arirang is the must-listen.', null, [ACT.orientation]),
+    createContentItem('학습 목표', 'hakseup mokpyo', 'By end: recommend festivals/performances with native-like emphasis patterns.', 'word', 'Functions: recommend · highlight · evaluate · deflect', 'Festival-talk toolkit.', null, [ACT.orientation]),
+    createContentItem('오늘의 상황', 'oneurui sanghwang', 'Kumoh\'s annual 대학축제 (uni-festival) is in May. You invite Sarah, hyping the must-see acts and food.', 'word', 'You: 다음 주 우리 학교 축제 있어. 아리랑이야말로 꼭 들어 봐야 해.', 'You: Festival next week. Arirang is the must-listen.', null, [ACT.orientation]),
 
     createContentItem('공연', 'gongyeon', 'performance', 'word', '공연을 봐요.', 'I see a performance.', null, [ACT.vocabulary]),
     createContentItem('축제', 'chukje', 'festival', 'word', '축제가 5월에 있어요.', 'Festival in May.', null, [ACT.vocabulary]),
