@@ -231,6 +231,26 @@
   font-weight: 750;
 }
 
+.conversation-support-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.conversation-support-buttons button {
+  min-height: 38px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.conversation-support-buttons button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
 .conversation-brief {
   display: grid;
   gap: 10px;
@@ -383,6 +403,59 @@
 .conversation-locked strong {
   color: var(--text-primary);
   font-size: 1rem;
+}
+
+.conversation-recap {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 14px;
+  padding: 14px;
+  border: 1px solid var(--primary-border-soft);
+  border-radius: 14px;
+  background: var(--primary-soft);
+}
+
+.conversation-recap div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.conversation-recap span {
+  color: var(--text-secondary);
+}
+
+.conversation-recap button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 38px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.conversation-recap-grid {
+  display: grid !important;
+  flex: 1;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px !important;
+}
+
+.conversation-recap-grid > div {
+  padding: 10px;
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.conversation-recap-grid small {
+  color: var(--text-muted);
+  font-weight: 800;
 }
 
 .conversation-locked svg {
@@ -777,6 +850,15 @@
 
   .conversation-message {
     width: 100%;
+  }
+
+  .conversation-recap {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .conversation-recap-grid {
+    grid-template-columns: 1fr;
   }
 
   .conversation-composer-main {

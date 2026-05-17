@@ -39,6 +39,14 @@ function ExercisePage() {
                 <p>{t('exerciseHub.writingDesc', 'Trace, copy, listen, recall by meaning, and keep a handwriting notebook.')}</p>
               </div>
             </button>
+
+            <button type="button" className="hub-card" onClick={() => navigate('/review')}>
+              <span className="hub-card-icon" aria-hidden="true">&#8635;</span>
+              <div>
+                <h2>{t('navbar.review', 'Review')}</h2>
+                <p>{t('exerciseHub.reviewDesc', 'Return to saved items, weak areas, and what is due today.')}</p>
+              </div>
+            </button>
           </div>
         </section>
       </div>

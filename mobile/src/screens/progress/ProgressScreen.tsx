@@ -2,7 +2,8 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { View, ScrollView, StyleSheet, TouchableOpacity, RefreshControl, ActivityIndicator, useWindowDimensions } from 'react-native';
 import { Text, Button, Card, ProgressBar } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
-import { progressService } from '../../services/api';
+import { useNavigation } from '@react-navigation/native';
+import { learningHubService, progressService } from '../../services/api';
 import { useAuthStore } from '../../stores/authStore';
 import { useAppColors, type AppColors } from '../../config/theme';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -20,6 +21,7 @@ interface MasteryArea {
 
 const ProgressScreen: React.FC = () => {
   const { t } = useTranslation();
+  const navigation = useNavigation<any>();
   const { userId } = useAuthStore();
   const insets = useSafeAreaInsets();
   const colors = useAppColors();
@@ -31,14 +33,19 @@ const ProgressScreen: React.FC = () => {
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState('');
   const [selectedMastery, setSelectedMastery] = useState<string | null>(null);
+  const [learningHub, setLearningHub] = useState<any>(null);
   const styles = useMemo(() => createStyles(colors, isCompact), [colors, isCompact]);
 
   const fetchProgress = useCallback(async () => {
     if (!userId) return;
     try {
       setLoading(true);
-      const res = await progressService.getSummary(userId);
+      const [res, hubRes] = await Promise.all([
+        progressService.getSummary(userId),
+        learningHubService.getOverview().catch(() => ({ data: null })),
+      ]);
       setProgress(res.data);
+      setLearningHub(hubRes.data);
       setError('');
     } catch (err: any) {
       if (err?._forcedLogout) return;
@@ -203,6 +210,7 @@ const ProgressScreen: React.FC = () => {
         { key: 'speaking', label: t('progress.speaking', 'Speaking'), icon: '🗣️', color: '#10b981' },
       ]
     : [];
+  const realWorldRows = Object.entries(learningHub?.realWorldProgress || {});
 
   return (
     <ScrollView
@@ -219,14 +227,14 @@ const ProgressScreen: React.FC = () => {
       </View>
 
       {/* Achievement Banner */}
-      {(progress.mastered || 0) > 0 && (
+      {((progress.totalXP || 0) > 0 || (progress.mastered || 0) > 0) && (
         <View style={styles.achievementBanner}>
           <Text style={styles.achievementIcon}>🏆</Text>
           <View style={{ flex: 1 }}>
             <Text style={styles.achievementTitle}>
               {progress.mastered} {t('progress.mastered', 'Mastered')}!
             </Text>
-            <Text style={styles.achievementXp}>⚡ {progress.mastered * 10} XP {t('progress.xpEarned', 'earned')}</Text>
+            <Text style={styles.achievementXp}>⚡ {progress.totalXP || 0} XP {t('progress.xpEarned', 'earned')}</Text>
           </View>
         </View>
       )}
@@ -288,6 +296,18 @@ const ProgressScreen: React.FC = () => {
                         {area.attempts || 0}x
                       </Text>
                     </View>
+                    <Button
+                      mode="outlined"
+                      compact
+                      onPress={() => navigation.navigate('Conversation', {
+                        starter: t('learningHub.askWeakAreaPrompt', {
+                          area: area.lessonTitle || area.category || t('learningHub.practiceArea', 'Practice area'),
+                          defaultValue: 'Help me practice {{area}}.',
+                        }),
+                      })}
+                    >
+                      {t('learningHub.askTutor', 'Ask tutor')}
+                    </Button>
                   </View>
                 ))
               )}
@@ -321,6 +341,39 @@ const ProgressScreen: React.FC = () => {
                 );
               })}
             </View>
+          </Card.Content>
+        </Card>
+      )}
+
+      {realWorldRows.length > 0 && (
+        <Card style={styles.card}>
+          <Card.Content>
+            <Text variant="titleMedium" style={{ fontWeight: '700', marginBottom: 16 }}>
+              {t('learningHub.abilityTitle', 'Real-world ability progress')}
+            </Text>
+            {realWorldRows.map(([area, metric]: [string, any]) => (
+              <View key={area} style={styles.realWorldRow}>
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.areaTitle}>{String(t(`learningHub.realWorldAreas.${area}`, area))}</Text>
+                  <Text style={styles.areaMeta}>
+                    {t('learningHub.evidenceCount', { count: metric.evidenceCount || 0, defaultValue: '{{count}} pieces of evidence' })}
+                  </Text>
+                </View>
+                <Text style={styles.realWorldScore}>{metric.score == null ? '—' : `${metric.score}%`}</Text>
+                <Button
+                  mode="outlined"
+                  compact
+                  onPress={() => navigation.navigate('Conversation', {
+                    starter: t('learningHub.askAbilityPrompt', {
+                      area: t(`learningHub.realWorldAreas.${area}`, area),
+                      defaultValue: 'Help me practice {{area}}.',
+                    }),
+                  })}
+                >
+                  {t('learningHub.askTutor', 'Ask tutor')}
+                </Button>
+              </View>
+            ))}
           </Card.Content>
         </Card>
       )}
@@ -437,6 +490,13 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
   areaScore: { alignItems: 'flex-end' },
   areaScoreText: { fontSize: 16, fontWeight: '700' },
   areaAttempts: { fontSize: 11, color: colors.textMuted },
+  realWorldRow: {
+    gap: 10,
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.border,
+  },
+  realWorldScore: { color: colors.textPrimary, fontSize: 18, fontWeight: '800' },
 
   skillsGrid: { flexDirection: 'row', justifyContent: 'space-around' },
   skillItem: { alignItems: 'center', width: '23%' },

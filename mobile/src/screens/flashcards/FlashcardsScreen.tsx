@@ -16,8 +16,8 @@ import {
 } from 'react-native';
 import { Text, Button, IconButton, TextInput, FAB, Chip, ProgressBar } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
-import { useNavigation } from '@react-navigation/native';
-import { flashcardService, progressService, userService } from '../../services/api';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { flashcardService, learningHubService, progressService, userService } from '../../services/api';
 import speechService from '../../services/speechService';
 import guestActivityTracker from '../../services/guestActivityTracker';
 
@@ -38,7 +38,8 @@ const normalizeCategory = (cat: any): string[] => {
 
 const FlashcardsScreen: React.FC = () => {
   const { t } = useTranslation();
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
+  const route = useRoute<any>();
   const { userId, isGuest, guestXP, addGuestXP } = useAuthStore();
   const { targetLanguage, nativeLanguage } = useSettingsStore();
   const colors = useAppColors();
@@ -71,6 +72,7 @@ const FlashcardsScreen: React.FC = () => {
   const [totalCards, setTotalCards] = useState(0);
   const [loadingMore, setLoadingMore] = useState(false);
   const [retryingTranslation, setRetryingTranslation] = useState(false);
+  const [savedNotice, setSavedNotice] = useState('');
 
   const [newCard, setNewCard] = useState<Record<string, string>>(() => ({ [getLangField(targetLanguage)]: '', [getLangField(nativeLanguage)]: '', romanization: '', category: 'vocabulary', topic: '' }));
 
@@ -101,6 +103,8 @@ const FlashcardsScreen: React.FC = () => {
   const nativeField = getLangField(nativeLanguage);
   const targetLocale = LANGUAGES[targetLanguage]?.ttsLocale || 'ko-KR';
   const nativeLocale = LANGUAGES[nativeLanguage]?.ttsLocale || 'en-US';
+  const seededTarget = String(route.params?.savedText || '').trim();
+  const seededNative = String(route.params?.nativeText || '').trim();
 
   // Initialise TrackPlayer once on mount
   useEffect(() => {
@@ -138,10 +142,21 @@ const FlashcardsScreen: React.FC = () => {
         setShuffleSeed(returnedSeed);
       }
 
+      const seededCard = seededTarget ? {
+        _id: `review-seed-${seededTarget}`,
+        [targetField]: seededTarget,
+        [nativeField]: seededNative,
+        masteryLevel: 0,
+        category: ['saved-review'],
+        isDefault: true,
+      } : null;
+
       if (append) {
         setFlashcards((prev) => [...prev, ...cards]);
       } else {
-        setFlashcards(cards);
+        setFlashcards(seededCard
+          ? [seededCard, ...cards.filter((card: any) => card[targetField] !== seededTarget)]
+          : cards);
       }
       setTotalCards(total);
       setCurrentPage(page);
@@ -153,7 +168,7 @@ const FlashcardsScreen: React.FC = () => {
       setLoading(false);
       setLoadingMore(false);
     }
-  }, [userId, targetLanguage, nativeLanguage, t, isShuffled, shuffleSeed]);
+  }, [userId, targetLanguage, nativeLanguage, t, isShuffled, shuffleSeed, nativeField, seededNative, seededTarget, targetField]);
 
   // Fetch categories + first page on mount
   useEffect(() => {
@@ -302,6 +317,10 @@ const FlashcardsScreen: React.FC = () => {
       setIsFlipped(false);
     }
   }, [displayedCards.length, currentIndex]);
+
+  useEffect(() => {
+    setSavedNotice('');
+  }, [currentIndex]);
 
   // Reset on individual card-selection change
   useEffect(() => {
@@ -595,7 +614,11 @@ const FlashcardsScreen: React.FC = () => {
       guestActivityTracker.trackCard(true);
     } else if (userId) {
       flashcardService.updateFlashcard(card._id, { masteryLevel: newLevel }).catch(() => {});
-      userService.awardXP(userId, { points: 1, source: 'flashcard_correct' }).catch(() => {});
+      userService.recordLearningEvent(userId, {
+        eventType: 'flashcard_recall',
+        flashcardId: card._id,
+        mode: autoPlay ? 'hands_free' : 'manual',
+      }).catch(() => {});
     }
   };
 
@@ -636,6 +659,94 @@ const FlashcardsScreen: React.FC = () => {
       setNewCard({ [targetField]: '', [nativeField]: '', romanization: '', category: 'vocabulary', topic: '' });
       setShowAddForm(false);
     } catch {}
+  };
+
+  const saveCurrentForReview = async () => {
+    if (!userId || isGuest) return;
+    const card = displayedCards[currentIndex];
+    if (!card?.[targetField]) return;
+    try {
+      await learningHubService.saveItem({
+        itemType: 'word',
+        targetText: card[targetField],
+        nativeText: card[nativeField] || '',
+        romanization: card.romanization || card.officialPronunciation || '',
+        sourceType: 'flashcard',
+        sourceRef: card._id || '',
+        sourceLabel: normalizeCategory(card.category).join(' / '),
+        reason: t('flashcards.savedFromFlashcardReason', 'Saved from flashcards for another pass.'),
+        metadata: { route: '/flashcards' },
+      });
+      setSavedNotice(t('flashcards.savedForReview', 'Saved for review.'));
+    } catch {
+      setSavedNotice(t('flashcards.saveForReviewFailed', 'Could not save this card right now.'));
+    }
+  };
+
+  const bookmarkCurrent = async () => {
+    if (!userId || isGuest) return;
+    const card = displayedCards[currentIndex];
+    if (!card?.[targetField]) return;
+    try {
+      await learningHubService.saveItem({
+        itemType: 'bookmark',
+        targetText: card[targetField],
+        nativeText: card[nativeField] || '',
+        romanization: card.romanization || card.officialPronunciation || '',
+        sourceType: 'flashcard',
+        sourceRef: card._id || '',
+        sourceLabel: normalizeCategory(card.category).join(' / '),
+        reason: t('flashcards.bookmarkedReason', 'Bookmarked from flashcards.'),
+        metadata: { route: '/flashcards' },
+      });
+      setSavedNotice(t('learningHub.bookmarked', 'Bookmarked.'));
+    } catch {
+      setSavedNotice(t('learningHub.bookmarkFailed', 'Could not bookmark this item right now.'));
+    }
+  };
+
+  const askTutorAboutCurrent = () => {
+    const card = displayedCards[currentIndex];
+    if (!card?.[targetField]) return;
+    navigation.navigate('Conversation', {
+      starter: t('learningHub.askTutorPrompt', {
+        text: card[targetField],
+        defaultValue: 'Help me practice "{{text}}".',
+      }),
+    });
+  };
+
+  const writeCurrent = () => {
+    const card = displayedCards[currentIndex];
+    if (!card?.[targetField]) return;
+    navigation.navigate('Exercise', {
+      screen: 'Writing',
+      params: {
+        savedText: card[targetField] || '',
+        nativeText: card[nativeField] || '',
+      },
+    });
+  };
+
+  const selfTestCurrent = async () => {
+    const card = displayedCards[currentIndex];
+    if (!userId || isGuest || !card?.[targetField]) return;
+    try {
+      const response = await learningHubService.saveItem({
+        itemType: 'word',
+        targetText: card[targetField],
+        nativeText: card[nativeField] || '',
+        romanization: card.romanization || card.officialPronunciation || '',
+        sourceType: 'flashcard',
+        sourceRef: card._id || '',
+        sourceLabel: normalizeCategory(card.category).join(' / '),
+        reason: t('flashcards.selfTestReason', 'Saved from flashcards for a quick self-test.'),
+        metadata: { route: '/flashcards' },
+      });
+      navigation.navigate('Review', { quickQuizItem: response.data });
+    } catch {
+      setSavedNotice(t('flashcards.saveForReviewFailed', 'Could not save this card right now.'));
+    }
   };
 
   // Speak button
@@ -903,7 +1014,50 @@ const FlashcardsScreen: React.FC = () => {
           onPress={handleCorrect}
           style={styles.actionBtn}
         />
+        {!isGuest && !!userId && (
+          <IconButton
+            icon="content-save-outline"
+            size={isCompact ? 24 : 28}
+            iconColor={colors.primary}
+            onPress={saveCurrentForReview}
+            style={styles.actionBtn}
+          />
+        )}
+        {!isGuest && !!userId && (
+          <IconButton
+            icon="bookmark-outline"
+            size={isCompact ? 24 : 28}
+            iconColor={colors.primary}
+            onPress={bookmarkCurrent}
+            style={styles.actionBtn}
+          />
+        )}
+        <IconButton
+          icon="message-text-outline"
+          size={isCompact ? 24 : 28}
+          iconColor={colors.textSecondary}
+          onPress={askTutorAboutCurrent}
+          style={styles.actionBtn}
+        />
+        <IconButton
+          icon="pencil-outline"
+          size={isCompact ? 24 : 28}
+          iconColor={colors.textSecondary}
+          onPress={writeCurrent}
+          style={styles.actionBtn}
+        />
+        {!isGuest && !!userId && (
+          <IconButton
+            icon="clipboard-text-outline"
+            size={isCompact ? 24 : 28}
+            iconColor={colors.textSecondary}
+            onPress={selfTestCurrent}
+            style={styles.actionBtn}
+          />
+        )}
       </View>
+
+      {!!savedNotice && <Text style={styles.savedNotice}>{savedNotice}</Text>}
 
       {/* Navigation */}
       {!isCompact && (
@@ -1257,6 +1411,13 @@ const createStyles = (colors: AppColors, winWidth: number, winHeight: number, is
     backgroundColor: colors.surface,
     elevation: 2,
     ...(isCompact ? { margin: 0 } : {}),
+  },
+  savedNotice: {
+    alignSelf: 'center',
+    color: colors.primary,
+    fontSize: 12,
+    fontWeight: '700',
+    marginTop: 2,
   },
 
   // Navigation

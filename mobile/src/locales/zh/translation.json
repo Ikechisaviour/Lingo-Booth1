@@ -20,7 +20,10 @@
     "done": "完成",
     "clearAll": "全部清除",
     "sending": "发送中...",
-    "saving": "保存..."
+    "saving": "保存...",
+    "search": "搜索",
+    "notSet": "未设置",
+    "all": "全部"
   },
   "languages": {
     "en": "英语",
@@ -121,7 +124,8 @@
     "writing": "写作",
     "conversation": "对话",
     "plans": "计划",
-    "institution": "机构"
+    "institution": "机构",
+    "review": "审查"
   },
   "guestPrompt": {
     "title": "你做得很棒！",
@@ -427,7 +431,12 @@
     "topic": "主题（可选）",
     "save": "保存",
     "categoryPlaceholder": "例如 号码、问候语",
-    "topicPlaceholder": "例如 一周中的几天，1-10"
+    "topicPlaceholder": "例如 一周中的几天，1-10",
+    "savedFromFlashcardReason": "从抽认卡中保存以供另一次通行证使用。",
+    "savedForReview": "已保存以供审核。",
+    "saveForReviewFailed": "目前无法保存此卡。",
+    "bookmarkedReason": "从抽认卡添加书签。",
+    "selfTestReason": "从抽认卡中保存以供快速自检。"
   },
   "progress": {
     "title": "你的进度",
@@ -791,13 +800,13 @@
     "priceAnnual": "{{amount}}/年",
     "priceMonthly": "{{amount}}/月",
     "planNames": {
-      "free": "自由的",
-      "plus": "加",
-      "pro": "专业版",
-      "ultra": "极端主义者",
-      "institution_basic": "机构基础",
-      "institution_pro": "机构专业版",
-      "institution_enterprise": "机构企业"
+      "free": "Free",
+      "plus": "Plus",
+      "pro": "Pro",
+      "ultra": "Ultra",
+      "institution_basic": "Institution Basic",
+      "institution_pro": "Institution Pro",
+      "institution_enterprise": "Institution Enterprise"
     },
     "planTaglines": {
       "free": "尝试每日限制的学习循环。",
@@ -810,7 +819,8 @@
     },
     "discountCode": "折扣码",
     "discountPlaceholder": "可选代码",
-    "discountUnavailable": "该折扣代码不适用于此计划。"
+    "discountUnavailable": "该折扣代码不适用于此计划。",
+    "automaticDiscountApplied": "已应用 {{discount}} 自动折扣"
   },
   "billing": {
     "kicker": "计费",
@@ -908,7 +918,10 @@
       "past_due": "逾期",
       "cancelled": "取消",
       "suspended": "暂停"
-    }
+    },
+    "snapshotsKicker": "学习者快照",
+    "needsHelpTitle": "需要注意",
+    "noNeedsHelpLearners": "目前没有学习者需要额外的关注。"
   },
   "errorBoundary": {
     "title": "出了点问题",
@@ -927,7 +940,15 @@
     "playing": "正在播放…",
     "listen": "听",
     "use": "使用",
-    "useDefault": "暂时使用默认语音"
+    "useDefault": "暂时使用默认语音",
+    "gender": {
+      "male": "男声",
+      "female": "女声"
+    },
+    "friendlyVoiceLabelGendered": "{{language}}{{gender}} {{number}}{{region}}",
+    "friendlyVoiceLabelNeutral": "{{language}}语音 {{number}}{{region}}",
+    "voiceRegionSuffix": "· {{region}}",
+    "loadError": "无法加载语音选项。将使用默认语音。"
   },
   "classList": {
     "kicker": "班级",
@@ -1011,7 +1032,9 @@
       "listeningPrefix": "正在聆听",
       "speechCaptured": "已捕捉语音。需要时可编辑，然后发送。",
       "noSpeechCaptured": "没有捕捉到语音。请再试一次。",
-      "voiceUpdated": "语音已更新。点击句子即可收听。"
+      "voiceUpdated": "语音已更新。点击句子即可收听。",
+      "bookmarked": "已添加书签。",
+      "bookmarkFailed": "目前无法为该项目添加书签。"
     },
     "speechErrors": {
       "permissionBlocked": "麦克风或语音识别权限被阻止。请在设置中允许此应用使用麦克风后再试。",
@@ -1062,7 +1085,36 @@
         "goal": "回顾错误并总结所学到的知识。",
         "task": "总结一件你学到的事情和一件仍然不清楚的事情。"
       }
-    }
+    },
+    "savedFromClassReason": "从课堂上保存以供复习。",
+    "savedForReview": "已保存以供审核。",
+    "saveForReviewFailed": "目前无法保存该项目。",
+    "wrapUpKicker": "下一步",
+    "wrapUpTitle": "让课程保持活力",
+    "wrapUpBody": "回顾已保存的项目，在对话中使用它们，或者在课程还记忆犹新时凭记忆写下它们。",
+    "wrapUpReview": "审查",
+    "wrapUpConversation": "对话",
+    "wrapUpWriting": "写作",
+    "saveForReview": "保存以供审核",
+    "fallback": {
+      "thisItem": "这个项目",
+      "shortAnswer": "使用本课程项目尝试一个简短的答案。",
+      "practiceLead": "让我们练习一下{{title}}。",
+      "continue": "让我们继续本课的下一部分。"
+    },
+    "examplePrefix": "例子：",
+    "bookmarkedReason": "从课堂上添加书签。",
+    "itemsCompleted": "{{count}} 项目已完成",
+    "lessonItemsTotal": "{{count}} 课程项目",
+    "savedExampleReason": "保存课堂示例以供以后练习。",
+    "exampleSaved": "保存示例以供审核。",
+    "savedTutorReplyReason": "从导师的回复中保存下来以供以后练习。",
+    "tutorReplySaved": "导师回复已保存以供审核。",
+    "playingSelectedItem": "播放选定的项目。",
+    "saveReply": "保存回复",
+    "saveExample": "保存示例",
+    "practiceEverywhere": "到处练习这个",
+    "selfTestReason": "从课堂上保存以供快速自检。"
   },
   "exercise": {
     "kicker": "锻炼",
@@ -1073,7 +1125,8 @@
     "flashcardsTitle": "抽认卡",
     "flashcardsDescMobile": "复习单词和短语。",
     "writingTitle": "写作",
-    "writingDescMobile": "描画、抄写、聆听并保留书写笔记本。"
+    "writingDescMobile": "描画、抄写、聆听并保留书写笔记本。",
+    "reviewDescMobile": "返回已保存的项目以及今天到期的项目。"
   },
   "conversation": {
     "kicker": "会话练习",
@@ -1113,7 +1166,23 @@
       "planRefreshed": "您的计划设置已刷新。",
       "messageNotResent": "您的消息没有再次发送。",
       "connectionIssue": "连接问题。 稍后再试一次。"
-    }
+    },
+    "savedReplyReason": "从对话练习中保存下来。",
+    "savedReply": "回复已保存以供审核。",
+    "saveReplyFailed": "目前无法保存此回复。",
+    "savedRoleplayReason": "保存完成的角色扮演以供以后练习。",
+    "roleplaySaved": "角色扮演已保存以供审核。",
+    "saveRoleplayFailed": "目前无法保存此角色扮演。",
+    "recapTitle": "角色扮演完成",
+    "saveRoleplay": "保存角色扮演",
+    "saveReply": "节省",
+    "easier": "更轻松",
+    "harder": "更难",
+    "recapWentWell": "什么进展顺利",
+    "recapUsefulPhrases": "有用的短语",
+    "recapReview": "回顾下一个",
+    "recapReviewFallback": "保存一个短语并在另一种练习模式中重复使用它。",
+    "practiceLabel": "会话练习"
   },
   "context": {
     "backToProfile": "返回个人资料",
@@ -1185,7 +1254,8 @@
       "conversationNative": "从你的对话练习来看",
       "conversationHistory": "对话历史记录",
       "personalized": "个性化",
-      "personalNotebook": "个人笔记本"
+      "personalNotebook": "个人笔记本",
+      "savedReview": "已保存的评论项目"
     },
     "modes": {
       "trace": "痕迹",
@@ -1232,7 +1302,9 @@
       "shape": "形状匹配",
       "spacing": "间距清晰",
       "memory": "从记忆中"
-    }
+    },
+    "savedReason": "省去了另一遍的写作练习。",
+    "selfTestReason": "免去写作练习以进行快速自测。"
   },
   "certificates": {
     "kicker": "证书",
@@ -1265,5 +1337,140 @@
     "signIn": "登入",
     "issuedSuccess": "颁发证书。",
     "issueFailed": "无法颁发证书。"
+  },
+  "learningHub": {
+    "continueLearning": "继续学习",
+    "pairSetupSaved": "学习设置已保存。",
+    "nextBestAction": "下一个最佳行动",
+    "reviewDue": "审查到期",
+    "reviewNow": "立即查看",
+    "wordOfDay": "当天的单词或短语",
+    "noSpotlightYet": "保存一些有用的东西以开始",
+    "pairSetupTitle": "设置该语言对",
+    "pairSetupBody": "告诉我们您的水平和目标一次，以便推荐适合该目标语言的建议。",
+    "level": "等级",
+    "goal": "目标",
+    "pace": "步伐",
+    "dailyPlanTitle": "今天的计划",
+    "weeklySummaryTitle": "本星期",
+    "points": "积分",
+    "activeDays": "活跃天数",
+    "sessions": "会议",
+    "recentStudyTitle": "最近的研究",
+    "savedAfterQuizMiss": "错过测验答案后保存。",
+    "askTutorPrompt": "帮我练习“{{text}}”。",
+    "savedForPractice": "保存下来供以后练习",
+    "askTutor": "询问导师",
+    "kicker": "审查",
+    "title": "保持有用的学习成果",
+    "subtitle": "查看需要另一遍的内容，返回到已保存的项目，然后从一个地方继续。",
+    "dueToday": "今天到期",
+    "queueTitle": "今天的审核队列",
+    "queueEmptyBody": "保存单词、短语、更正或角色扮演，有用时它们会返回此处。",
+    "weakAreasTitle": "近期薄弱环节",
+    "practiceArea": "练习区",
+    "weakAreasEmpty": "尚未发现薄弱环节。",
+    "abilityTitle": "现实世界能力进步",
+    "abilityEmpty": "当您练习时，活动进度将显示在此处。",
+    "searchLabel": "搜索你的学习内容",
+    "searchPlaceholder": "搜索已保存的项目或课程",
+    "savedLibraryTitle": "已保存的学习库",
+    "savedEmptyBody": "保存课堂、抽认卡、写作或对话中的有用单词，以构建您自己的学习架。",
+    "savedBanksTitle": "保存的银行",
+    "correctionsBank": "更正",
+    "roleplaysBank": "角色扮演",
+    "bookmarksBank": "书签",
+    "openSource": "开源",
+    "spotlightHint": "您保存的项目将成为每日焦点。",
+    "pairSetupSummary": "学习设置",
+    "pairSetupEdit": "编辑",
+    "pairSetupUpdate": "更新此语言对",
+    "reviewBeforeSleep": "现在进行简短的回顾将使明天变得更加轻松。",
+    "open": "打开",
+    "bookmark": "书签",
+    "bookmarked": "已添加书签。",
+    "bookmarkFailed": "目前无法为该项目添加书签。",
+    "speakingTurns": "轮流说话",
+    "newSavedItems": "新保存的项目",
+    "completedLessons": "已完成课程",
+    "certificates": "证书",
+    "guidanceTitle": "指导",
+    "firstThreeDays": "前三天",
+    "dayNumber": "日{{day}}",
+    "goalPathTitle": "目标路径",
+    "placementTitle": "放置",
+    "recentWordsTitle": "最近的话",
+    "recentWordsEmpty": "课堂上和对话中的新单词将聚集在这里。",
+    "milestonesTitle": "里程碑",
+    "savedItems": "已保存的项目",
+    "voiceHistoryTitle": "发声练习史",
+    "voiceHistoryEmpty": "对话练习后，轮流会出现在这里。",
+    "askWeakAreaPrompt": "帮我练习{{area}}。",
+    "evidenceCount": "{{count}} 证据",
+    "askAbilityPrompt": "帮我练习{{area}}。",
+    "practiceWriting": "写",
+    "practiceFlashcard": "抽认卡",
+    "whyWeakArea": "您看到这一点是因为该区域仍然需要加固。",
+    "reviewBeforeSleepTitle": "睡前复习",
+    "savedItem": "已保存",
+    "weakArea": "虚弱的",
+    "reviewBeforeSleepEmpty": "今晚没有什么紧急的事情在等待。",
+    "miniSpeakingTitle": "迷你口语练习",
+    "miniSpeakingReason": "从保存的短语或更正中进行简短的口语练习。",
+    "practiceSpeaking": "说话",
+    "miniSpeakingEmpty": "更正和保存的短语将在这里成为快速口语练习。",
+    "correctionsEmpty": "保存的更正将收集在此处以便快速重试。",
+    "roleplaysEmpty": "当您想重复使用已保存的角色扮演时，它们将出现在此处。",
+    "startLevelCheck": "启动电平检查",
+    "levelCheckUnavailable": "该语言对的级别检查尚未准备好。",
+    "levelCheckLoadFailed": "目前无法加载级别检查。",
+    "levelCheckTitle": "短级别检查",
+    "levelCheckSubtitle": "回答一些快速问题，以便应用程序可以选择更好的起点。",
+    "levelCheckResult": "建议的起始级别",
+    "levelCheckSaved": "已为此语言对保存此起点。",
+    "returnHome": "回家",
+    "questionCount": "{{total}} 的问题{{current}}",
+    "practiceAgainPrompt": "帮我再练习说“{{text}}”。",
+    "replayReply": "重播回复",
+    "practiceAgain": "再练习一下",
+    "practiceEverywhere": "在其他地方练习这个",
+    "practicePronunciation": "听",
+    "youSaid": "你说",
+    "targetSpeech": "目标演讲",
+    "replayTargetSpeech": "听到目标语音",
+    "practiceQuiz": "自检",
+    "useRoleplayAgain": "再次使用",
+    "offlinePackInUse": "连接较弱时显示您最近的包。",
+    "quickQuizKicker": "自检",
+    "quickQuizTitle": "快速自检",
+    "quickQuizNoAnswer": "回忆一下含义，然后诚实地给自己打分。",
+    "revealAnswer": "揭晓答案",
+    "studyHistoryTitle": "学习历史",
+    "pointsCount": "{{count}} 积分",
+    "studyHistoryEmpty": "当你练习时，你的学习时间将聚集在这里。",
+    "listen": "听",
+    "goals": {
+      "travel": "旅行",
+      "work": "工作",
+      "school": "学校",
+      "dailyLife": "日常生活",
+      "conversation": "对话",
+      "family": "家庭",
+      "religious": "宗教场所",
+      "health": "健康",
+      "culture": "文化",
+      "exam": "考试",
+      "other": "其他"
+    },
+    "savedBankEmptyBody": "您为此目的保存的项目将聚集在这里。",
+    "recentMistakesTitle": "最近的错误",
+    "recentMistakesBody": "这些是最近错过的项目，值得在修正仍然新鲜的情况下重试。",
+    "recentMistakesEmptyBody": "错过的测验项目将显示在此处，以便您可以快速重试。",
+    "firstThreeDayReviewTitle": "回顾一下你所遇到的事情",
+    "firstThreeDaySpeakTitle": "大声使用它",
+    "firstThreeDayLearnTitle": "开始一节指导课",
+    "firstThreeDayReviewBody": "返回到昨天看到的内容，以便第一个项目开始粘住。",
+    "firstThreeDaySpeakBody": "使用简短的说话轮流，以便语言尽早离开页面。",
+    "firstThreeDayLearnBody": "从一节小型指导课开始，这样两人就有一个明确的起点。"
   }
 }

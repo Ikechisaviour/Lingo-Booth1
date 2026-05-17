@@ -7,6 +7,7 @@ import { ttsService } from '../services/api';
 import speechService from '../services/speechService';
 import { useSettingsStore } from '../stores/settingsStore';
 import { useAppColors, type AppColors } from '../config/theme';
+import { formatVoiceOptions } from '../utils/voiceDisplay';
 
 const SAMPLE_PHRASES: Record<string, string> = {
   ko: '안녕하세요. 만나서 반갑습니다.',
@@ -59,13 +60,18 @@ const VoicePickerModal: React.FC<Props> = ({
 }) => {
   const colors = useAppColors();
   const styles = createStyles(colors);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [voices, setVoices] = useState<Voice[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [previewing, setPreviewing] = useState('');
   const setVoice = useSettingsStore((state) => state.setVoice);
   const phrase = useMemo(() => samplePhraseFor(targetLangCode), [targetLangCode]);
+  const displayVoices = useMemo(() => formatVoiceOptions(voices, {
+    languageCode: targetLangCode,
+    t,
+    uiLanguage: i18n.resolvedLanguage || i18n.language,
+  }), [voices, targetLangCode, t, i18n.resolvedLanguage, i18n.language]);
 
   useEffect(() => {
     if (!visible) return;
@@ -95,7 +101,7 @@ const VoicePickerModal: React.FC<Props> = ({
         setVoices(filtered);
       })
       .catch(() => {
-        if (!cancelled) setError('Could not load voice options. The default voice will be used.');
+        if (!cancelled) setError(t('voicePicker.loadError', 'Could not load voice options. The default voice will be used.'));
       })
       .finally(() => {
         if (!cancelled) setLoading(false);
@@ -104,7 +110,7 @@ const VoicePickerModal: React.FC<Props> = ({
       cancelled = true;
       speechService.cancel().catch(() => {});
     };
-  }, [visible, ttsLocale]);
+  }, [visible, t, ttsLocale]);
 
   const preview = async (voice: Voice) => {
     setPreviewing(voice.name);
@@ -147,11 +153,11 @@ const VoicePickerModal: React.FC<Props> = ({
           {!!error && <Text style={styles.error}>{error}</Text>}
 
           <ScrollView style={styles.list}>
-            {voices.map((voice) => (
-              <View key={voice.name} style={styles.row}>
+            {displayVoices.map(({ voice, name, display }) => (
+              <View key={name} style={styles.row}>
                 <View style={styles.info}>
-                  <Text style={styles.voiceName}>{voice.displayName}</Text>
-                  <Text style={styles.voiceMeta}>{voice.lang} · {voice.gender || t('voicePicker.genderUnspecified', 'unspecified')}</Text>
+                  <Text style={styles.voiceName}>{display.primary}</Text>
+                  <Text style={styles.voiceMeta}>{display.secondary}</Text>
                 </View>
                 <View style={styles.actions}>
                   <Button

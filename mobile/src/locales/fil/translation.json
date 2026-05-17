@@ -20,7 +20,10 @@
     "done": "Tapos",
     "clearAll": "Burahin lahat",
     "sending": "Ipinapadala...",
-    "saving": "Nagse-save..."
+    "saving": "Nagse-save...",
+    "search": "Maghanap",
+    "notSet": "Hindi nakatakda",
+    "all": "Lahat"
   },
   "languages": {
     "en": "Ingles",
@@ -121,7 +124,8 @@
     "writing": "Pagsusulat",
     "conversation": "Pag-uusap",
     "plans": "Mga plano",
-    "institution": "Institusyon"
+    "institution": "Institusyon",
+    "review": "Balik-aral"
   },
   "guestPrompt": {
     "title": "Mahusay ang ginagawa mo!",
@@ -427,7 +431,12 @@
     "topic": "Paksa (opsyonal)",
     "save": "I-save",
     "categoryPlaceholder": "hal. mga numero, pagbati",
-    "topicPlaceholder": "hal. araw ng linggo, 1-10"
+    "topicPlaceholder": "hal. araw ng linggo, 1-10",
+    "savedFromFlashcardReason": "Na-save mula sa mga flashcard para sa isa pang pass.",
+    "savedForReview": "Na-save para sa pagsusuri.",
+    "saveForReviewFailed": "Hindi ma-save ang card na ito sa ngayon.",
+    "bookmarkedReason": "Na-bookmark mula sa mga flashcard.",
+    "selfTestReason": "Na-save mula sa mga flashcard para sa isang mabilis na self-test."
   },
   "progress": {
     "title": "Ang Iyong Progreso",
@@ -851,13 +860,13 @@
     "priceAnnual": "{{amount}}/taon",
     "priceMonthly": "{{amount}}/buwan",
     "planNames": {
-      "free": "Libre",
-      "plus": "Dagdag pa",
+      "free": "Free",
+      "plus": "Plus",
       "pro": "Pro",
       "ultra": "Ultra",
-      "institution_basic": "Pangunahing Institusyon",
-      "institution_pro": "Institusyon Pro",
-      "institution_enterprise": "Institusyon Enterprise"
+      "institution_basic": "Institution Basic",
+      "institution_pro": "Institution Pro",
+      "institution_enterprise": "Institution Enterprise"
     },
     "planTaglines": {
       "free": "Subukan ang learning loop na may mga pang-araw-araw na limitasyon.",
@@ -870,7 +879,8 @@
     },
     "discountCode": "Discount code",
     "discountPlaceholder": "Opsyonal na code",
-    "discountUnavailable": "Hindi available ang discount code na iyon para sa planong ito."
+    "discountUnavailable": "Hindi available ang discount code na iyon para sa planong ito.",
+    "automaticDiscountApplied": "Awtomatikong {{discount}} diskwento ang nailapat"
   },
   "billing": {
     "kicker": "Pagsingil",
@@ -968,7 +978,10 @@
       "past_due": "Lampas na sa takdang panahon",
       "cancelled": "Kinansela",
       "suspended": "Nasuspinde"
-    }
+    },
+    "snapshotsKicker": "Mga snapshot ng mag-aaral",
+    "needsHelpTitle": "Kailangan ng atensyon",
+    "noNeedsHelpLearners": "Walang mga mag-aaral sa kasalukuyan ang nangangailangan ng karagdagang atensyon."
   },
   "errorBoundary": {
     "title": "Nagkaproblema",
@@ -987,7 +1000,15 @@
     "playing": "Nagpe-play…",
     "listen": "Makinig ka",
     "use": "Gamitin",
-    "useDefault": "Gamitin ang default na boses sa ngayon"
+    "useDefault": "Gamitin ang default na boses sa ngayon",
+    "gender": {
+      "male": "lalaki",
+      "female": "babae"
+    },
+    "friendlyVoiceLabelGendered": "Boses na {{language}} {{gender}} {{number}}{{region}}",
+    "friendlyVoiceLabelNeutral": "Boses na {{language}} {{number}}{{region}}",
+    "voiceRegionSuffix": "· {{region}}",
+    "loadError": "Hindi ma-load ang mga opsyon ng boses. Gagamitin ang default na boses."
   },
   "classList": {
     "kicker": "Klase",
@@ -1071,7 +1092,9 @@
       "listeningPrefix": "Nakikinig",
       "speechCaptured": "Nakuha ang boses. I-edit kung kailangan, pagkatapos ipadala.",
       "noSpeechCaptured": "Walang boses na nakuha. Subukan muli.",
-      "voiceUpdated": "Na-update ang boses. Pindutin ang isang linya para marinig."
+      "voiceUpdated": "Na-update ang boses. Pindutin ang isang linya para marinig.",
+      "bookmarked": "Na-bookmark.",
+      "bookmarkFailed": "Hindi ma-bookmark ang item na ito sa ngayon."
     },
     "speechErrors": {
       "permissionBlocked": "Naka-block ang pahintulot sa mikropono o speech recognition. Payagan ang mikropono sa settings at subukan muli.",
@@ -1122,7 +1145,36 @@
         "goal": "Suriin ang mga pagkakamali at ibuod ang iyong natutunan.",
         "task": "Ibuod ang isang bagay na iyong natutunan at isang bagay na hindi pa rin malinaw."
       }
-    }
+    },
+    "savedFromClassReason": "Na-save mula sa klase para sa pagsusuri.",
+    "savedForReview": "Na-save para sa pagsusuri.",
+    "saveForReviewFailed": "Hindi ma-save ang item na ito sa ngayon.",
+    "wrapUpKicker": "Susunod na hakbang",
+    "wrapUpTitle": "Panatilihing buhay ang aralin",
+    "wrapUpBody": "Suriin ang mga na-save na item, gamitin ang mga ito sa pag-uusap, o isulat ang mga ito mula sa memorya habang sariwa pa ang aralin.",
+    "wrapUpReview": "Balik-aral",
+    "wrapUpConversation": "Pag-uusap",
+    "wrapUpWriting": "Pagsusulat",
+    "saveForReview": "I-save para sa pagsusuri",
+    "fallback": {
+      "thisItem": "ang item na ito",
+      "shortAnswer": "Subukan ang isang maikling sagot gamit ang aytem ng aralin na ito.",
+      "practiceLead": "Magsanay tayo {{title}}.",
+      "continue": "Ipagpatuloy natin ang susunod na bahagi ng aralin."
+    },
+    "examplePrefix": "Halimbawa:",
+    "bookmarkedReason": "Na-bookmark mula sa klase.",
+    "itemsCompleted": "Nakumpleto ang {{count}} item",
+    "lessonItemsTotal": "{{count}} aytem ng aralin",
+    "savedExampleReason": "Naka-save na halimbawa ng klase para sa pagsasanay sa ibang pagkakataon.",
+    "exampleSaved": "Na-save ang halimbawa para sa pagsusuri.",
+    "savedTutorReplyReason": "Na-save mula sa tugon ng tutor para sa pagsasanay sa ibang pagkakataon.",
+    "tutorReplySaved": "Na-save ang tugon ng tutor para sa pagsusuri.",
+    "playingSelectedItem": "Nagpe-play ng napiling item.",
+    "saveReply": "I-save ang tugon",
+    "saveExample": "I-save ang halimbawa",
+    "practiceEverywhere": "Sanayin ito kahit saan",
+    "selfTestReason": "Na-save mula sa klase para sa isang mabilis na self-test."
   },
   "exercise": {
     "kicker": "Mag-ehersisyo",
@@ -1133,7 +1185,8 @@
     "flashcardsTitle": "Mga flashcard",
     "flashcardsDescMobile": "Suriin ang mga salita at parirala.",
     "writingTitle": "Pagsusulat",
-    "writingDescMobile": "Sundan, kopyahin, pakinggan, at panatilihin ang isang writing notebook."
+    "writingDescMobile": "Sundan, kopyahin, pakinggan, at panatilihin ang isang writing notebook.",
+    "reviewDescMobile": "Bumalik sa mga na-save na item at kung ano ang dapat bayaran ngayon."
   },
   "conversation": {
     "kicker": "Pagsasanay sa Pag-uusap",
@@ -1173,7 +1226,23 @@
       "planRefreshed": "Na-refresh ang mga setting ng iyong plano.",
       "messageNotResent": "Ang iyong mensahe ay hindi naipadala muli.",
       "connectionIssue": "Isyu sa koneksyon. Subukan muli sa isang sandali."
-    }
+    },
+    "savedReplyReason": "Na-save mula sa pagsasanay sa pag-uusap.",
+    "savedReply": "Na-save ang tugon para sa pagsusuri.",
+    "saveReplyFailed": "Hindi ma-save ang tugon na ito sa ngayon.",
+    "savedRoleplayReason": "Nai-save ang natapos na roleplay para sa pagsasanay sa ibang pagkakataon.",
+    "roleplaySaved": "Na-save ang Roleplay para sa pagsusuri.",
+    "saveRoleplayFailed": "Hindi ma-save ang roleplay na ito sa ngayon.",
+    "recapTitle": "Tapos na ang roleplay",
+    "saveRoleplay": "I-save ang roleplay",
+    "saveReply": "I-save",
+    "easier": "Mas madali",
+    "harder": "Mas mahirap",
+    "recapWentWell": "Ano ang naging maayos",
+    "recapUsefulPhrases": "Mga kapaki-pakinabang na parirala",
+    "recapReview": "Susunod na suriin",
+    "recapReviewFallback": "I-save ang isang parirala at muling gamitin ito sa ibang practice mode.",
+    "practiceLabel": "Pagsasanay sa pag-uusap"
   },
   "context": {
     "backToProfile": "Bumalik sa Profile",
@@ -1245,7 +1314,8 @@
       "conversationNative": "Mula sa iyong pagsasanay sa pag-uusap",
       "conversationHistory": "Kasaysayan ng pag-uusap",
       "personalized": "Personalized",
-      "personalNotebook": "Personal na kuwaderno"
+      "personalNotebook": "Personal na kuwaderno",
+      "savedReview": "Naka-save na item sa pagsusuri"
     },
     "modes": {
       "trace": "Bakas",
@@ -1292,7 +1362,9 @@
       "shape": "Mga tugma ng hugis",
       "spacing": "Malinaw ang espasyo",
       "memory": "Mula sa alaala"
-    }
+    },
+    "savedReason": "Na-save mula sa pagsasanay sa pagsulat para sa isa pang pass.",
+    "selfTestReason": "Na-save mula sa pagsasanay sa pagsulat para sa isang mabilis na pagsubok sa sarili."
   },
   "certificates": {
     "kicker": "Sertipiko",
@@ -1325,5 +1397,140 @@
     "signIn": "Mag-sign in",
     "issuedSuccess": "Inisyu ang sertipiko.",
     "issueFailed": "Hindi makapagbigay ng sertipiko."
+  },
+  "learningHub": {
+    "continueLearning": "Ipagpatuloy ang pag-aaral",
+    "pairSetupSaved": "Na-save ang pag-setup ng pag-aaral.",
+    "nextBestAction": "Susunod na pinakamahusay na aksyon",
+    "reviewDue": "Nakatakdang suriin",
+    "reviewNow": "Suriin ngayon",
+    "wordOfDay": "Salita o parirala ng araw",
+    "noSpotlightYet": "Mag-save ng isang bagay na kapaki-pakinabang upang magsimula",
+    "pairSetupTitle": "I-set up ang pares ng wikang ito",
+    "pairSetupBody": "Sabihin sa amin ang iyong antas at layunin nang isang beses upang ang mga rekomendasyon ay magkasya sa target na wikang ito.",
+    "level": "Antas",
+    "goal": "Layunin",
+    "pace": "Pace",
+    "dailyPlanTitle": "Ang plano ngayon",
+    "weeklySummaryTitle": "Ngayong linggo",
+    "points": "Mga puntos",
+    "activeDays": "Mga aktibong araw",
+    "sessions": "Mga session",
+    "recentStudyTitle": "Kamakailang pag-aaral",
+    "savedAfterQuizMiss": "Na-save pagkatapos ng napalampas na sagot sa pagsusulit.",
+    "askTutorPrompt": "Tulungan akong magsanay ng \"{{text}}\".",
+    "savedForPractice": "Nai-save para sa pagsasanay mamaya",
+    "askTutor": "Tanong sa tutor",
+    "kicker": "Balik-aral",
+    "title": "Panatilihing malapit ang kapaki-pakinabang na pag-aaral",
+    "subtitle": "Suriin kung ano ang nangangailangan ng isa pang pass, bumalik sa mga naka-save na item, at magpatuloy mula sa isang lugar.",
+    "dueToday": "nakatakda ngayong araw",
+    "queueTitle": "Pila ng review ngayong araw",
+    "queueEmptyBody": "I-save ang mga salita, parirala, pagwawasto, o roleplay at babalik ang mga ito dito kapag kapaki-pakinabang.",
+    "weakAreasTitle": "Kamakailang mahihinang lugar",
+    "practiceArea": "Lugar ng pagsasanay",
+    "weakAreasEmpty": "Wala pang natukoy na mahihinang lugar.",
+    "abilityTitle": "Pag-unlad ng kakayahan sa totoong mundo",
+    "abilityEmpty": "Lalabas dito ang pag-unlad ng aktibidad habang nagsasanay ka.",
+    "searchLabel": "Hanapin ang iyong pag-aaral",
+    "searchPlaceholder": "Maghanap ng mga naka-save na item o mga aralin sa klase",
+    "savedLibraryTitle": "Naka-save na library ng pag-aaral",
+    "savedEmptyBody": "Mag-save ng mga kapaki-pakinabang na salita mula sa klase, mga flashcard, pagsusulat, o pag-uusap para bumuo ng sarili mong study shelf.",
+    "savedBanksTitle": "Naka-save na mga bangko",
+    "correctionsBank": "Mga pagwawasto",
+    "roleplaysBank": "Mga Roleplay",
+    "bookmarksBank": "Mga bookmark",
+    "openSource": "Open source",
+    "spotlightHint": "Ang iyong mga na-save na item ay nagiging pang-araw-araw na mga spotlight.",
+    "pairSetupSummary": "Pag-setup ng pag-aaral",
+    "pairSetupEdit": "I-edit",
+    "pairSetupUpdate": "I-update ang pares ng wikang ito",
+    "reviewBeforeSleep": "Ang isang maikling pagsusuri ngayon ay magiging mas magaan bukas.",
+    "open": "Bukas",
+    "bookmark": "Bookmark",
+    "bookmarked": "Na-bookmark.",
+    "bookmarkFailed": "Hindi ma-bookmark ang item na ito sa ngayon.",
+    "speakingTurns": "Paikot-ikot sa pagsasalita",
+    "newSavedItems": "Mga bagong na-save na item",
+    "completedLessons": "Nakumpleto ang mga aralin",
+    "certificates": "Mga sertipiko",
+    "guidanceTitle": "Patnubay",
+    "firstThreeDays": "Unang tatlong araw",
+    "dayNumber": "Araw {{day}}",
+    "goalPathTitle": "Landas ng layunin",
+    "placementTitle": "Paglalagay",
+    "recentWordsTitle": "Mga kamakailang salita",
+    "recentWordsEmpty": "Ang mga bagong salita mula sa klase at pag-uusap ay mag-iipon dito.",
+    "milestonesTitle": "Milestones",
+    "savedItems": "Mga naka-save na item",
+    "voiceHistoryTitle": "Kasaysayan ng pagsasanay sa boses",
+    "voiceHistoryEmpty": "Lalabas dito ang mga liko sa pagsasalita pagkatapos ng pagsasanay sa pag-uusap.",
+    "askWeakAreaPrompt": "Tulungan akong magsanay {{area}}.",
+    "evidenceCount": "{{count}} piraso ng ebidensya",
+    "askAbilityPrompt": "Tulungan akong magsanay {{area}}.",
+    "practiceWriting": "Sumulat",
+    "practiceFlashcard": "Flashcard",
+    "whyWeakArea": "Nakikita mo ito dahil kailangan pa ng reinforcement ang lugar na ito.",
+    "reviewBeforeSleepTitle": "Suriin bago matulog",
+    "savedItem": "Nai-save",
+    "weakArea": "Mahina",
+    "reviewBeforeSleepEmpty": "Walang apurahang naghihintay ngayong gabi.",
+    "miniSpeakingTitle": "Mini speaking drills",
+    "miniSpeakingReason": "Maikling pagsasanay sa pagsasalita mula sa isang naka-save na parirala o pagwawasto.",
+    "practiceSpeaking": "Magsalita",
+    "miniSpeakingEmpty": "Ang mga pagwawasto at naka-save na parirala ay magiging mabilis na pagsasanay sa pagsasalita dito.",
+    "correctionsEmpty": "Kokolektahin dito ang mga naka-save na pagwawasto para sa mabilisang muling pagsubok.",
+    "roleplaysEmpty": "Lalabas dito ang mga naka-save na roleplay kapag gusto mong gamitin muli ang mga ito.",
+    "startLevelCheck": "Simulan ang check level",
+    "levelCheckUnavailable": "Ang pagsusuri sa antas ay hindi pa handa para sa pares ng wikang ito.",
+    "levelCheckLoadFailed": "Hindi ma-load ang level check sa ngayon.",
+    "levelCheckTitle": "Maikling level check",
+    "levelCheckSubtitle": "Sagutin ang ilang mabilis na item para makapili ang app ng mas magandang panimulang punto.",
+    "levelCheckResult": "Iminungkahing panimulang antas",
+    "levelCheckSaved": "Ang panimulang puntong ito ay na-save para sa pares ng wikang ito.",
+    "returnHome": "Bumalik sa bahay",
+    "questionCount": "Tanong {{current}} ng {{total}}",
+    "practiceAgainPrompt": "Tulungan akong magsanay muli ng \"{{text}}\".",
+    "replayReply": "I-replay ang tugon",
+    "practiceAgain": "Practice ulit",
+    "practiceEverywhere": "Sanayin ito sa ibang lugar",
+    "practicePronunciation": "Makinig ka",
+    "youSaid": "sabi mo",
+    "targetSpeech": "Target na pananalita",
+    "replayTargetSpeech": "Pakinggan ang target na pananalita",
+    "practiceQuiz": "Pagsusulit sa sarili",
+    "useRoleplayAgain": "Gamitin muli",
+    "offlinePackInUse": "Ipinapakita ang iyong kamakailang pack habang mahina ang koneksyon.",
+    "quickQuizKicker": "Pagsusulit sa sarili",
+    "quickQuizTitle": "Mabilis na pagsusuri sa sarili",
+    "quickQuizNoAnswer": "Alalahanin ang kahulugan, pagkatapos ay markahan ang iyong sarili ng matapat.",
+    "revealAnswer": "Ibunyag ang sagot",
+    "studyHistoryTitle": "Pag-aralan ang kasaysayan",
+    "pointsCount": "{{count}} puntos",
+    "studyHistoryEmpty": "Ang iyong mga araw ng pag-aaral ay magtitipon dito habang ikaw ay nagsasanay.",
+    "listen": "Makinig ka",
+    "goals": {
+      "travel": "Paglalakbay",
+      "work": "Trabaho",
+      "school": "Paaralan",
+      "dailyLife": "Araw-araw na buhay",
+      "conversation": "Pag-uusap",
+      "family": "Pamilya",
+      "religious": "Relihiyosong setting",
+      "health": "Kalusugan",
+      "culture": "Kultura",
+      "exam": "Pagsusulit",
+      "other": "Iba pa"
+    },
+    "savedBankEmptyBody": "Ang mga item na ise-save mo para sa layuning ito ay magtitipon dito.",
+    "recentMistakesTitle": "Mga kamakailang pagkakamali",
+    "recentMistakesBody": "Ito ang mga kamakailang napalampas na item na dapat subukang muli habang sariwa pa ang pagwawasto.",
+    "recentMistakesEmptyBody": "Lalabas dito ang mga napalampas na item sa pagsusulit para masubukan mong muli ang mga ito nang mabilis.",
+    "firstThreeDayReviewTitle": "Suriin kung ano ang iyong nakilala",
+    "firstThreeDaySpeakTitle": "Gamitin ito nang malakas",
+    "firstThreeDayLearnTitle": "Magsimula ng isang gabay na aralin",
+    "firstThreeDayReviewBody": "Bumalik ng isang beses sa nakita mo kahapon para magsimulang dumikit ang mga unang item.",
+    "firstThreeDaySpeakBody": "Gumamit ng maikling pagsasalita upang ang wika ay umalis nang maaga sa pahina.",
+    "firstThreeDayLearnBody": "Magsimula sa isang maliit na may gabay na aralin upang ang pares ay may malinaw na panimulang punto."
   }
 }

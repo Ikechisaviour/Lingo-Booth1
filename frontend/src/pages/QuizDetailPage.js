@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { quizService, progressService, userService, guestXPHelper } from '../services/api';
+import { learningHubService, quizService, progressService, userService, guestXPHelper } from '../services/api';
 import guestActivityTracker from '../services/guestActivityTracker';
 import speechService from '../services/speechService';
 import { getTargetLangCode, getNativeLangCode, getTargetLangName, getNativeLangName } from '../config/languages';
@@ -360,9 +360,6 @@ function QuizDetailPage() {
     setShowExplanation(false);
   };
 
-  // XP points per difficulty level
-  const xpPointsMap = { beginner: 2, intermediate: 3, advanced: 4, sentences: 5 };
-
   const handleAnswerSelect = (answer) => {
     setSelectedAnswer(answer);
     setQuizAttempted(true);
@@ -374,10 +371,13 @@ function QuizDetailPage() {
     setQuizTotal(prev => prev + 1);
     if (correct) {
       setQuizCorrect(prev => prev + 1);
-      // Award XP - server checks peek cooldown (24h) and repeat-answer
       if (userId && lesson?.difficulty) {
-        const points = xpPointsMap[lesson.difficulty] || 2;
-        userService.awardXP(userId, { lessonId: id, contentIndex: currentIndex, basePoints: points }).catch(() => {});
+        userService.recordLearningEvent(userId, {
+          eventType: 'quiz_correct',
+          lessonId: id,
+          contentIndex: currentIndex,
+          difficulty: lesson.difficulty,
+        }).catch(() => {});
       } else if (!userId) {
         guestXPHelper.add(1);
       }
@@ -385,6 +385,17 @@ function QuizDetailPage() {
       // Wrong answer triggers same 24-hour cooldown as translation peek
       if (userId && id) {
         userService.recordPeek(userId, { lessonId: id, contentIndex: currentIndex }).catch(() => {});
+        learningHubService.saveItem({
+          itemType: 'correction',
+          targetText: content.targetText,
+          nativeText: content.nativeText,
+          romanization: content.learnerPronunciation || content.officialPronunciation || content.romanization || '',
+          sourceType: 'quiz',
+          sourceRef: id,
+          sourceLabel: lesson?.title || '',
+          reason: t('learningHub.savedAfterQuizMiss', 'Saved after a missed quiz answer.'),
+          metadata: { route: `/quiz/${id}`, contentIndex: currentIndex },
+        }).catch(() => {});
       }
     }
 
@@ -401,6 +412,29 @@ function QuizDetailPage() {
     setSelectedAnswer(null);
     setQuizAttempted(false);
     setShowExplanation(false);
+  };
+
+  const openPracticeSurface = (surface) => {
+    if (!content?.targetText) return;
+    if (surface === 'conversation') {
+      const prompt = t('learningHub.askTutorPrompt', {
+        text: content.targetText,
+        defaultValue: 'Help me practice "{{text}}".',
+      });
+      navigate(`/conversation?prompt=${encodeURIComponent(prompt)}`);
+      return;
+    }
+    const params = new URLSearchParams({
+      savedText: content.targetText || '',
+      nativeText: content.nativeText || '',
+    });
+    if (surface === 'writing') {
+      navigate(`/writing?${params.toString()}`);
+      return;
+    }
+    if (surface === 'flashcard') {
+      navigate(`/flashcards?${params.toString()}`);
+    }
   };
 
   const handleSpeak = (text) => {
@@ -783,6 +817,18 @@ function QuizDetailPage() {
                               </button>
                             </div>
                           )}
+                          <div className="quiz-practice-actions">
+                            <span>{t('learningHub.practiceEverywhere', 'Practice this elsewhere')}</span>
+                            <button type="button" onClick={() => openPracticeSurface('conversation')}>
+                              {t('learningHub.askTutor', 'Ask tutor')}
+                            </button>
+                            <button type="button" onClick={() => openPracticeSurface('writing')}>
+                              {t('learningHub.practiceWriting', 'Write')}
+                            </button>
+                            <button type="button" onClick={() => openPracticeSurface('flashcard')}>
+                              {t('learningHub.practiceFlashcard', 'Flashcard')}
+                            </button>
+                          </div>
                         </div>
                       )}
                     </>

@@ -20,7 +20,10 @@
     "done": "Pronto",
     "clearAll": "Limpar tudo",
     "sending": "Enviando...",
-    "saving": "Salvando..."
+    "saving": "Salvando...",
+    "search": "Procurar",
+    "notSet": "Não definido",
+    "all": "Todos"
   },
   "languages": {
     "en": "Inglês",
@@ -121,7 +124,8 @@
     "writing": "Escrita",
     "conversation": "Conversa",
     "plans": "Planas",
-    "institution": "Instituição"
+    "institution": "Instituição",
+    "review": "Análise"
   },
   "guestPrompt": {
     "title": "Você está indo muito bem!",
@@ -427,7 +431,12 @@
     "topic": "Tópico (opcional)",
     "save": "Salvar",
     "categoryPlaceholder": "por exemplo números, saudações",
-    "topicPlaceholder": "por exemplo dias da semana, 1-10"
+    "topicPlaceholder": "por exemplo dias da semana, 1-10",
+    "savedFromFlashcardReason": "Salvo de flashcards para outra passagem.",
+    "savedForReview": "Salvo para revisão.",
+    "saveForReviewFailed": "Não foi possível salvar este cartão no momento.",
+    "bookmarkedReason": "Marcado em flashcards.",
+    "selfTestReason": "Salvo em flashcards para um autoteste rápido."
   },
   "progress": {
     "title": "Seu progresso",
@@ -791,13 +800,13 @@
     "priceAnnual": "{{amount}}/ano",
     "priceMonthly": "{{amount}}/mês",
     "planNames": {
-      "free": "Livre",
-      "plus": "Mais",
-      "pro": "Pró",
+      "free": "Free",
+      "plus": "Plus",
+      "pro": "Pro",
       "ultra": "Ultra",
-      "institution_basic": "Instituição Básica",
-      "institution_pro": "Instituição Profissional",
-      "institution_enterprise": "Instituição Empresarial"
+      "institution_basic": "Institution Basic",
+      "institution_pro": "Institution Pro",
+      "institution_enterprise": "Institution Enterprise"
     },
     "planTaglines": {
       "free": "Experimente o ciclo de aprendizagem com limites diários.",
@@ -810,7 +819,8 @@
     },
     "discountCode": "Código de desconto",
     "discountPlaceholder": "Código opcional",
-    "discountUnavailable": "Esse código de desconto não está disponível para este plano."
+    "discountUnavailable": "Esse código de desconto não está disponível para este plano.",
+    "automaticDiscountApplied": "Desconto automático de {{discount}} aplicado"
   },
   "billing": {
     "kicker": "Cobrança",
@@ -908,7 +918,10 @@
       "past_due": "Vencido",
       "cancelled": "Cancelada",
       "suspended": "Suspensa"
-    }
+    },
+    "snapshotsKicker": "Instantâneos do aluno",
+    "needsHelpTitle": "Precisa de atenção",
+    "noNeedsHelpLearners": "Atualmente, nenhum aluno precisa de atenção extra."
   },
   "errorBoundary": {
     "title": "Algo deu errado",
@@ -927,7 +940,15 @@
     "playing": "Jogando…",
     "listen": "Ouvir",
     "use": "Usar",
-    "useDefault": "Use a voz padrão por enquanto"
+    "useDefault": "Use a voz padrão por enquanto",
+    "gender": {
+      "male": "masculina",
+      "female": "feminina"
+    },
+    "friendlyVoiceLabelGendered": "Voz {{gender}} de {{language}} {{number}}{{region}}",
+    "friendlyVoiceLabelNeutral": "Voz de {{language}} {{number}}{{region}}",
+    "voiceRegionSuffix": "· {{region}}",
+    "loadError": "Não foi possível carregar as opções de voz. A voz padrão será usada."
   },
   "classList": {
     "kicker": "Aula",
@@ -1011,7 +1032,9 @@
       "listeningPrefix": "Ouvindo",
       "speechCaptured": "Voz capturada. Edite se necess?rio e envie.",
       "noSpeechCaptured": "Nenhuma voz capturada. Tente novamente.",
-      "voiceUpdated": "Voz atualizada. Toque em uma frase para ouvir."
+      "voiceUpdated": "Voz atualizada. Toque em uma frase para ouvir.",
+      "bookmarked": "Marcado como favorito.",
+      "bookmarkFailed": "Não foi possível adicionar este item aos favoritos no momento."
     },
     "speechErrors": {
       "permissionBlocked": "A permiss?o do microfone ou reconhecimento de voz est? bloqueada. Permita o microfone nas configura??es e tente novamente.",
@@ -1062,7 +1085,36 @@
         "goal": "Revise os erros e resuma o que você aprendeu.",
         "task": "Resuma algo que você aprendeu e algo que ainda não está claro."
       }
-    }
+    },
+    "savedFromClassReason": "Salvo da aula para revisão.",
+    "savedForReview": "Salvo para revisão.",
+    "saveForReviewFailed": "Não foi possível salvar este item agora.",
+    "wrapUpKicker": "Próxima etapa",
+    "wrapUpTitle": "Mantenha a lição viva",
+    "wrapUpBody": "Revise os itens salvos, use-os em uma conversa ou escreva-os de memória enquanto a lição ainda está recente.",
+    "wrapUpReview": "Análise",
+    "wrapUpConversation": "Conversa",
+    "wrapUpWriting": "Escrita",
+    "saveForReview": "Salvar para revisão",
+    "fallback": {
+      "thisItem": "este item",
+      "shortAnswer": "Tente uma resposta curta usando este item da lição.",
+      "practiceLead": "Vamos praticar {{title}}.",
+      "continue": "Continuemos com a próxima parte da lição."
+    },
+    "examplePrefix": "Exemplo:",
+    "bookmarkedReason": "Marcado da aula.",
+    "itemsCompleted": "{{count}} itens concluídos",
+    "lessonItemsTotal": "{{count}} itens de lição",
+    "savedExampleReason": "Exemplo de aula salvo para prática posterior.",
+    "exampleSaved": "Exemplo salvo para revisão.",
+    "savedTutorReplyReason": "Salvo de uma resposta do tutor para prática posterior.",
+    "tutorReplySaved": "Resposta do tutor salva para revisão.",
+    "playingSelectedItem": "Reproduzindo o item selecionado.",
+    "saveReply": "Salvar resposta",
+    "saveExample": "Salvar exemplo",
+    "practiceEverywhere": "Pratique isso em qualquer lugar",
+    "selfTestReason": "Salvo da aula para um autoteste rápido."
   },
   "exercise": {
     "kicker": "Exercício",
@@ -1073,7 +1125,8 @@
     "flashcardsTitle": "Cartões Flash",
     "flashcardsDescMobile": "Revise palavras e frases.",
     "writingTitle": "Escrita",
-    "writingDescMobile": "Rastreie, copie, ouça e mantenha um caderno de anotações."
+    "writingDescMobile": "Rastreie, copie, ouça e mantenha um caderno de anotações.",
+    "reviewDescMobile": "Retorne aos itens salvos e ao vencimento hoje."
   },
   "conversation": {
     "kicker": "Prática de Conversação",
@@ -1113,7 +1166,23 @@
       "planRefreshed": "As configurações do seu plano foram atualizadas.",
       "messageNotResent": "Sua mensagem não foi enviada novamente.",
       "connectionIssue": "Problema de conexão. Tente novamente em alguns instantes."
-    }
+    },
+    "savedReplyReason": "Salvo da prática de conversação.",
+    "savedReply": "Resposta salva para revisão.",
+    "saveReplyFailed": "Não foi possível salvar esta resposta agora.",
+    "savedRoleplayReason": "Roleplay concluído salvo para prática posterior.",
+    "roleplaySaved": "Roleplay salvo para revisão.",
+    "saveRoleplayFailed": "Não foi possível salvar este roleplay agora.",
+    "recapTitle": "Interpretação completa",
+    "saveRoleplay": "Salvar roleplay",
+    "saveReply": "Salvar",
+    "easier": "Mais fácil",
+    "harder": "Mais difícil",
+    "recapWentWell": "O que correu bem",
+    "recapUsefulPhrases": "Frases úteis",
+    "recapReview": "Revise a seguir",
+    "recapReviewFallback": "Salve uma frase e reutilize-a em outro modo de prática.",
+    "practiceLabel": "Prática de conversação"
   },
   "context": {
     "backToProfile": "Voltar ao perfil",
@@ -1185,7 +1254,8 @@
       "conversationNative": "Da sua prática de conversação",
       "conversationHistory": "Histórico de conversas",
       "personalized": "Personalizada",
-      "personalNotebook": "Caderno pessoal"
+      "personalNotebook": "Caderno pessoal",
+      "savedReview": "Item de revisão salvo"
     },
     "modes": {
       "trace": "Rastreamento",
@@ -1232,7 +1302,9 @@
       "shape": "Correspondências de formas",
       "spacing": "O espaçamento é claro",
       "memory": "Da memória"
-    }
+    },
+    "savedReason": "Salvo da prática de escrita para outra passagem.",
+    "selfTestReason": "Salvo da prática de redação para um rápido autoteste."
   },
   "certificates": {
     "kicker": "Certificado",
@@ -1265,5 +1337,140 @@
     "signIn": "Entrar",
     "issuedSuccess": "Certificado emitido.",
     "issueFailed": "Não foi possível emitir o certificado."
+  },
+  "learningHub": {
+    "continueLearning": "Continuar aprendendo",
+    "pairSetupSaved": "Configuração de aprendizagem salva.",
+    "nextBestAction": "Próxima melhor ação",
+    "reviewDue": "Revisão vencida",
+    "reviewNow": "Revise agora",
+    "wordOfDay": "Palavra ou frase do dia",
+    "noSpotlightYet": "Salve algo útil para começar",
+    "pairSetupTitle": "Configure este par de idiomas",
+    "pairSetupBody": "Informe-nos seu nível e objetivo uma vez para que as recomendações se ajustem ao idioma alvo.",
+    "level": "Nível",
+    "goal": "Meta",
+    "pace": "Ritmo",
+    "dailyPlanTitle": "O plano de hoje",
+    "weeklySummaryTitle": "Essa semana",
+    "points": "Pontos",
+    "activeDays": "Dias ativos",
+    "sessions": "Sessões",
+    "recentStudyTitle": "Estudo recente",
+    "savedAfterQuizMiss": "Salvo após uma resposta perdida do questionário.",
+    "askTutorPrompt": "Ajude-me a praticar \"{{text}}\".",
+    "savedForPractice": "Salvo para praticar mais tarde",
+    "askTutor": "Pergunte ao tutor",
+    "kicker": "Análise",
+    "title": "Mantenha o aprendizado útil por perto",
+    "subtitle": "Revise o que precisa de outra passagem, retorne aos itens salvos e continue de um lugar.",
+    "dueToday": "vencimento hoje",
+    "queueTitle": "Fila de revisão de hoje",
+    "queueEmptyBody": "Salve palavras, frases, correções ou dramatizações e elas retornarão aqui quando forem úteis.",
+    "weakAreasTitle": "Áreas fracas recentes",
+    "practiceArea": "Área de prática",
+    "weakAreasEmpty": "Nenhuma área fraca foi identificada ainda.",
+    "abilityTitle": "Progresso de habilidade no mundo real",
+    "abilityEmpty": "O progresso da atividade aparecerá aqui conforme você pratica.",
+    "searchLabel": "Pesquise seu aprendizado",
+    "searchPlaceholder": "Pesquise itens salvos ou aulas",
+    "savedLibraryTitle": "Biblioteca de estudos salva",
+    "savedEmptyBody": "Salve palavras úteis da aula, cartões, textos ou conversas para construir sua própria estante de estudo.",
+    "savedBanksTitle": "Bancos salvos",
+    "correctionsBank": "Correções",
+    "roleplaysBank": "Roleplays",
+    "bookmarksBank": "Favoritas",
+    "openSource": "Código aberto",
+    "spotlightHint": "Seus itens salvos tornam-se destaques diários.",
+    "pairSetupSummary": "Configuração de aprendizagem",
+    "pairSetupEdit": "Editar",
+    "pairSetupUpdate": "Atualizar este par de idiomas",
+    "reviewBeforeSleep": "Uma breve revisão agora deixará o amanhã mais leve.",
+    "open": "Abrir",
+    "bookmark": "Marcador",
+    "bookmarked": "Marcado como favorito.",
+    "bookmarkFailed": "Não foi possível adicionar este item aos favoritos no momento.",
+    "speakingTurns": "Turnos de fala",
+    "newSavedItems": "Novos itens salvos",
+    "completedLessons": "Lições concluídas",
+    "certificates": "Certificados",
+    "guidanceTitle": "Orientação",
+    "firstThreeDays": "Primeiros três dias",
+    "dayNumber": "Dia {{day}}",
+    "goalPathTitle": "Caminho da meta",
+    "placementTitle": "Colocação",
+    "recentWordsTitle": "Palavras recentes",
+    "recentWordsEmpty": "Novas palavras da aula e da conversa serão reunidas aqui.",
+    "milestonesTitle": "Conquistas",
+    "savedItems": "Itens salvos",
+    "voiceHistoryTitle": "Histórico de prática de voz",
+    "voiceHistoryEmpty": "Os turnos de fala aparecerão aqui após o treino de conversação.",
+    "askWeakAreaPrompt": "Ajude-me a praticar {{area}}.",
+    "evidenceCount": "{{count}} evidências",
+    "askAbilityPrompt": "Ajude-me a praticar {{area}}.",
+    "practiceWriting": "Escrever",
+    "practiceFlashcard": "Cartão Flash",
+    "whyWeakArea": "Vocês estão vendo isso porque essa área ainda precisa de reforço.",
+    "reviewBeforeSleepTitle": "Revise antes de dormir",
+    "savedItem": "Salvo",
+    "weakArea": "Fraca",
+    "reviewBeforeSleepEmpty": "Nada urgente está esperando esta noite.",
+    "miniSpeakingTitle": "Mini exercícios de fala",
+    "miniSpeakingReason": "Breve prática de conversação a partir de uma frase salva ou correção.",
+    "practiceSpeaking": "Falar",
+    "miniSpeakingEmpty": "Correções e frases salvas se tornarão exercícios rápidos de fala aqui.",
+    "correctionsEmpty": "As correções salvas serão coletadas aqui para uma nova tentativa rápida.",
+    "roleplaysEmpty": "Roleplays salvos aparecerão aqui quando você quiser reutilizá-los.",
+    "startLevelCheck": "Verificação de nível inicial",
+    "levelCheckUnavailable": "A verificação de nível ainda não está pronta para este par de idiomas.",
+    "levelCheckLoadFailed": "A verificação de nível não pôde ser carregada agora.",
+    "levelCheckTitle": "Verificação de nível curta",
+    "levelCheckSubtitle": "Responda alguns itens rápidos para que o aplicativo possa escolher um ponto de partida melhor.",
+    "levelCheckResult": "Nível inicial sugerido",
+    "levelCheckSaved": "Este ponto de partida foi salvo para este par de idiomas.",
+    "returnHome": "Voltar para casa",
+    "questionCount": "Pergunta {{current}} de {{total}}",
+    "practiceAgainPrompt": "Ajude-me a praticar dizendo \"{{text}}\" novamente.",
+    "replayReply": "Repetir resposta",
+    "practiceAgain": "Pratique novamente",
+    "practiceEverywhere": "Pratique isso em outro lugar",
+    "practicePronunciation": "Ouvir",
+    "youSaid": "Você disse",
+    "targetSpeech": "Discurso alvo",
+    "replayTargetSpeech": "Ouça o discurso alvo",
+    "practiceQuiz": "Autoteste",
+    "useRoleplayAgain": "Usar novamente",
+    "offlinePackInUse": "Mostrando seu pacote recente enquanto a conexão está fraca.",
+    "quickQuizKicker": "Autoteste",
+    "quickQuizTitle": "Autoteste rápido",
+    "quickQuizNoAnswer": "Lembre-se do significado e avalie-se honestamente.",
+    "revealAnswer": "Revelar resposta",
+    "studyHistoryTitle": "História do estudo",
+    "pointsCount": "{{count}} pontos",
+    "studyHistoryEmpty": "Seus dias de estudo serão reunidos aqui enquanto você pratica.",
+    "listen": "Ouvir",
+    "goals": {
+      "travel": "Viagem",
+      "work": "Trabalhar",
+      "school": "Escola",
+      "dailyLife": "Vida diária",
+      "conversation": "Conversa",
+      "family": "Família",
+      "religious": "Ambiente religioso",
+      "health": "Saúde",
+      "culture": "Cultura",
+      "exam": "Exame",
+      "other": "Outra"
+    },
+    "savedBankEmptyBody": "Os itens que você salvar para esse propósito serão reunidos aqui.",
+    "recentMistakesTitle": "Erros recentes",
+    "recentMistakesBody": "Esses são itens perdidos recentemente que valem a pena tentar novamente enquanto a correção ainda está recente.",
+    "recentMistakesEmptyBody": "Os itens perdidos do questionário aparecerão aqui para que você possa repeti-los rapidamente.",
+    "firstThreeDayReviewTitle": "Revise o que você conheceu",
+    "firstThreeDaySpeakTitle": "Use em voz alta",
+    "firstThreeDayLearnTitle": "Comece uma aula guiada",
+    "firstThreeDayReviewBody": "Volte uma vez ao que você viu ontem para que os primeiros itens comecem a aderir.",
+    "firstThreeDaySpeakBody": "Use um breve turno de fala para que o idioma saia da página mais cedo.",
+    "firstThreeDayLearnBody": "Comece com uma pequena lição guiada para que a dupla tenha um ponto de partida claro."
   }
 }

@@ -5,7 +5,8 @@ import Svg, { Path } from 'react-native-svg';
 import { Button, Text, TextInput } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
-import { classLessonService, practiceContextService } from '../../services/api';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { classLessonService, learningHubService, practiceContextService, userService } from '../../services/api';
 import speechService from '../../services/speechService';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
@@ -264,8 +265,10 @@ const WritingPracticeScreen: React.FC = () => {
   const colors = useAppColors();
   const styles = useMemo(() => createStyles(colors), [colors]);
   const { t } = useTranslation();
+  const navigation = useNavigation<any>();
+  const route = useRoute<any>();
   const { nativeLanguage, targetLanguage } = useSettingsStore();
-  const { userRole, subscriptionTier, aiEntitlements } = useAuthStore();
+  const { userId, userRole, subscriptionTier, aiEntitlements } = useAuthStore();
   const canLoadContext = Boolean(
     userRole === 'admin'
     || aiEntitlements?.canUsePracticeContext
@@ -282,6 +285,8 @@ const WritingPracticeScreen: React.FC = () => {
   const [customNative, setCustomNative] = useState('');
   const [review, setReview] = useState({ shape: false, spacing: false, memory: false });
   const [answerVisible, setAnswerVisible] = useState(false);
+  const seededTarget = compact(route.params?.savedText, 180);
+  const seededNative = compact(route.params?.nativeText, 180);
 
   useEffect(() => {
     let cancelled = false;
@@ -333,7 +338,22 @@ const WritingPracticeScreen: React.FC = () => {
         });
       } catch {}
 
-      const next = uniqueItems([...personal, ...contexts, ...lessons, ...conversations]).slice(0, 180);
+      const seededItem = seededTarget
+        ? makeItem({
+          target: seededTarget,
+          native: seededNative,
+          source: 'personal',
+          sourceLabel: t('writing.sourceLabels.savedReview', 'Saved review item'),
+          type: 'phrase',
+        })
+        : null;
+      const next = uniqueItems([
+        ...(seededItem ? [seededItem] : []),
+        ...personal,
+        ...contexts,
+        ...lessons,
+        ...conversations,
+      ]).slice(0, 180);
       if (cancelled) return;
       setItems(next);
       setSelectedId((current) => current || next[0]?.id || '');
@@ -345,7 +365,7 @@ const WritingPracticeScreen: React.FC = () => {
     return () => {
       cancelled = true;
     };
-  }, [canLoadContext, nativeLanguage, targetLanguage, t]);
+  }, [canLoadContext, nativeLanguage, seededNative, seededTarget, targetLanguage, t]);
 
   const filteredItems = useMemo(() => (
     sourceFilter === 'all' ? items : items.filter((item) => item.source === sourceFilter)
@@ -422,7 +442,71 @@ const WritingPracticeScreen: React.FC = () => {
     setStatus(result === 'complete'
       ? t('writing.status.savedComplete', 'Saved as complete.')
       : t('writing.status.savedReview', 'Saved for review.'));
-    if (result === 'complete') selectNext();
+    if (result === 'complete') {
+      if (userId) {
+        userService.recordLearningEvent(userId, {
+          eventType: 'writing_complete',
+          itemId: selectedItem.id,
+          writingMode: mode,
+          fromMemory: review.memory,
+          source: selectedItem.source,
+        }).catch(() => {});
+      }
+      selectNext();
+    } else if (userId) {
+      learningHubService.saveItem({
+        itemType: selectedItem.type === 'word' ? 'word' : 'phrase',
+        targetText: selectedItem.target,
+        nativeText: selectedItem.native,
+        romanization: selectedItem.romanization,
+        sourceType: 'writing',
+        sourceRef: selectedItem.id,
+        sourceLabel: selectedItem.sourceLabel,
+        reason: t('writing.savedReason', 'Saved from writing practice for another pass.'),
+        metadata: { route: '/writing', writingMode: mode },
+      }).catch(() => {});
+    }
+  };
+
+  const askTutorAboutSelected = () => {
+    if (!selectedItem?.target) return;
+    navigation.navigate('Conversation', {
+      starter: t('learningHub.askTutorPrompt', {
+        text: selectedItem.target,
+        defaultValue: 'Help me practice "{{text}}".',
+      }),
+    });
+  };
+
+  const openFlashcardForSelected = () => {
+    if (!selectedItem?.target) return;
+    navigation.navigate('Exercise', {
+      screen: 'Flashcards',
+      params: {
+        savedText: selectedItem.target || '',
+        nativeText: selectedItem.native || '',
+      },
+    });
+  };
+
+  const selfTestSelected = async () => {
+    if (!userId || !selectedItem?.target) return;
+    try {
+      const response = await learningHubService.saveItem({
+        itemType: selectedItem.type === 'word' ? 'word' : 'phrase',
+        targetText: selectedItem.target,
+        nativeText: selectedItem.native,
+        romanization: selectedItem.romanization,
+        sourceType: 'writing',
+        sourceRef: selectedItem.id,
+        sourceLabel: selectedItem.sourceLabel,
+        reason: t('writing.selfTestReason', 'Saved from writing practice for a quick self-test.'),
+        metadata: { route: '/writing', writingMode: mode },
+      });
+      navigation.navigate('Review', { quickQuizItem: response.data });
+    } catch {
+      setStatus(t('writing.status.savedReview', 'Saved for review.'));
+    }
   };
 
   const instruction = (() => {
@@ -577,6 +661,9 @@ const WritingPracticeScreen: React.FC = () => {
 
         <View style={styles.buttonRow}>
           <Button mode="outlined" onPress={() => saveAttempt('needs-practice')} disabled={!selectedItem} style={styles.flexButton}>{t('writing.saveForReview', 'Save for review')}</Button>
+          <Button mode="outlined" onPress={askTutorAboutSelected} disabled={!selectedItem} style={styles.flexButton}>{t('learningHub.askTutor', 'Ask tutor')}</Button>
+          <Button mode="outlined" onPress={openFlashcardForSelected} disabled={!selectedItem} style={styles.flexButton}>{t('learningHub.practiceFlashcard', 'Flashcard')}</Button>
+          <Button mode="outlined" onPress={selfTestSelected} disabled={!selectedItem} style={styles.flexButton}>{t('learningHub.practiceQuiz', 'Self-test')}</Button>
           <Button mode="contained" onPress={() => saveAttempt('complete')} disabled={!selectedItem} style={styles.flexButton}>{t('writing.complete', 'Complete')}</Button>
         </View>
         <Text style={styles.status}>{status}</Text>

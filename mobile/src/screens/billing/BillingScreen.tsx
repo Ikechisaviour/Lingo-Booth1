@@ -12,9 +12,22 @@ type Plan = {
   tagline?: string;
   monthlyPriceCents?: number | null;
   annualPriceCents?: number | null;
+  monthlyPriceCentsBeforeDiscount?: number | null;
+  annualPriceCentsBeforeDiscount?: number | null;
+  discountedMonthlyPriceCents?: number | null;
+  discountedAnnualPriceCents?: number | null;
+  automaticDiscountMonthly?: DiscountSummary | null;
+  automaticDiscountAnnual?: DiscountSummary | null;
   seatPriceMonthlyCents?: number | null;
   minimumSeats?: number;
   features?: string[];
+};
+
+type DiscountSummary = {
+  discountType?: 'percent' | 'fixed';
+  percentOff?: number | null;
+  amountOffCents?: number | null;
+  description?: string;
 };
 
 const planNameKey = (plan: Plan) => `pricing.planNames.${plan.id}`;
@@ -31,6 +44,25 @@ const formatPrice = (
   return cadence === 'annual'
     ? t('pricing.priceAnnual', { amount, defaultValue: '{{amount}}/yr' })
     : t('pricing.priceMonthly', { amount, defaultValue: '{{amount}}/mo' });
+};
+
+const formatAmount = (cents: number | null | undefined) => {
+  if (cents == null) return '';
+  return `$${(cents / 100).toFixed(cents % 100 === 0 ? 0 : 2)}`;
+};
+
+const discountLabel = (
+  discount: DiscountSummary | null | undefined,
+  t: (key: string, options?: any) => string,
+) => {
+  if (!discount) return '';
+  if (discount.discountType === 'percent' && discount.percentOff) {
+    return `${discount.percentOff}%`;
+  }
+  if (discount.discountType === 'fixed' && discount.amountOffCents) {
+    return formatAmount(discount.amountOffCents);
+  }
+  return discount.description || '';
 };
 
 const BillingScreen: React.FC = () => {
@@ -124,6 +156,14 @@ const BillingScreen: React.FC = () => {
       ) : plans.individual.map((plan) => {
         const name = t(planNameKey(plan), plan.name);
         const tagline = t(planTaglineKey(plan), plan.tagline || '');
+        const discount = interval === 'annual' ? plan.automaticDiscountAnnual : plan.automaticDiscountMonthly;
+        const currentPriceCents = interval === 'annual'
+          ? plan.discountedAnnualPriceCents ?? plan.annualPriceCents
+          : plan.discountedMonthlyPriceCents ?? plan.monthlyPriceCents;
+        const originalPriceCents = interval === 'annual'
+          ? plan.annualPriceCentsBeforeDiscount ?? plan.annualPriceCents
+          : plan.monthlyPriceCentsBeforeDiscount ?? plan.monthlyPriceCents;
+        const hasAutomaticDiscount = !!discount && originalPriceCents != null && currentPriceCents != null && currentPriceCents < originalPriceCents;
         return (
         <Card key={plan.id} style={[styles.card, plan.id === 'pro' && styles.highlighted]}>
           <Card.Content style={styles.cardContent}>
@@ -132,9 +172,21 @@ const BillingScreen: React.FC = () => {
                 <Text style={styles.planName}>{name}</Text>
                 {!!tagline && <Text style={styles.muted}>{tagline}</Text>}
               </View>
-              <Text style={styles.price}>
-                {formatPrice(interval === 'annual' ? plan.annualPriceCents : plan.monthlyPriceCents, interval, t)}
-              </Text>
+              <View style={styles.priceWrap}>
+                {hasAutomaticDiscount && (
+                  <Text style={styles.originalPrice}>
+                    {formatPrice(originalPriceCents, interval, t)}
+                  </Text>
+                )}
+                <Text style={styles.price}>
+                  {formatPrice(currentPriceCents, interval, t)}
+                </Text>
+                {hasAutomaticDiscount && (
+                  <Text style={styles.discountBadge}>
+                    {t('pricing.automaticDiscountApplied', { discount: discountLabel(discount, t) })}
+                  </Text>
+                )}
+              </View>
             </View>
             {(plan.features || []).slice(0, 5).map((feature) => (
               <Text key={feature} style={styles.feature}>- {t(`pricing.features.${feature}`, feature)}</Text>
@@ -228,6 +280,24 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
     color: colors.primary,
     fontSize: 20,
     fontWeight: '900',
+  },
+  priceWrap: {
+    alignItems: 'flex-end',
+    flexShrink: 0,
+    maxWidth: 150,
+  },
+  originalPrice: {
+    color: colors.textSecondary,
+    fontSize: 13,
+    textDecorationLine: 'line-through',
+    marginBottom: 2,
+  },
+  discountBadge: {
+    color: colors.primary,
+    fontSize: 11,
+    fontWeight: '800',
+    textAlign: 'right',
+    marginTop: 2,
   },
   muted: {
     color: colors.textSecondary,

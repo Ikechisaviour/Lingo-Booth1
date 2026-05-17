@@ -10,7 +10,7 @@ import LANGUAGES, { getLanguageDisplayName, Language } from '../../config/langua
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
-import { userService } from '../../services/api';
+import { classLessonService, userService } from '../../services/api';
 import { colors } from '../../config/theme';
 
 type NavProp = NativeStackNavigationProp<AuthStackParamList, 'LanguageSelect'>;
@@ -59,6 +59,10 @@ const LanguageSelectScreen: React.FC = () => {
     if (!canContinue) return;
     setLanguages(nativeLang, targetLang);
     i18n.changeLanguage(nativeLang);
+    classLessonService.preparePair({
+      nativeLang,
+      targetLang,
+    }).catch(() => {});
 
     if (mode === 'guest') {
       enterGuestMode();

@@ -11,12 +11,12 @@ import {
 import { Text, Button, IconButton, ProgressBar, Chip } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import { useRoute, useNavigation, RouteProp } from '@react-navigation/native';
-import { quizService, progressService, userService } from '../../services/api';
+import { learningHubService, quizService, progressService, userService } from '../../services/api';
 import speechService from '../../services/speechService';
 import guestActivityTracker from '../../services/guestActivityTracker';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
-import { getLangName } from '../../config/languages';
+import LANGUAGES, { getLangName } from '../../config/languages';
 import PronunciationGuide from '../../components/PronunciationGuide';
 import { useAppColors, type AppColors } from '../../config/theme';
 
@@ -29,14 +29,13 @@ type RouteParams = {
   };
 };
 
-const xpPointsMap: Record<string, number> = { beginner: 2, intermediate: 3, advanced: 4, sentences: 5 };
-
 const QuizDetailScreen: React.FC = () => {
   const { t } = useTranslation();
   const route = useRoute<RouteProp<RouteParams, 'QuizDetail'>>();
   const navigation = useNavigation<any>();
   const { userId, isGuest, addGuestXP } = useAuthStore();
   const { targetLanguage, nativeLanguage } = useSettingsStore();
+  const targetLocale = LANGUAGES[targetLanguage]?.ttsLocale || 'en-US';
   const colors = useAppColors();
   const { height: winHeight, width: winWidth } = useWindowDimensions();
   const isCompact = winHeight < 450 || winWidth < 380;
@@ -120,9 +119,9 @@ const QuizDetailScreen: React.FC = () => {
     if (!lesson?.content?.[currentIndex]?.targetText) return;
     if (studyMode === 'reading') return;
     const text = lesson.content[currentIndex].targetText;
-    speechService.speakRepeat(text, 2, { lang: 'ko-KR' });
+    speechService.speakRepeat(text, 2, { lang: targetLocale });
     return () => { speechService.cancel(); };
-  }, [lesson, currentIndex, studyMode]);
+  }, [lesson, currentIndex, studyMode, targetLocale]);
 
   // Cancel audio when navigating away from this screen
   useEffect(() => {
@@ -191,7 +190,7 @@ const QuizDetailScreen: React.FC = () => {
       setIsSpeaking(false);
     } else {
       setIsSpeaking(true);
-      speechService.speak(text, { lang: 'ko-KR' });
+      speechService.speak(text, { lang: targetLocale });
       setTimeout(() => setIsSpeaking(false), 3000);
     }
   };
@@ -226,8 +225,12 @@ const QuizDetailScreen: React.FC = () => {
     if (correct) {
       setQuizCorrect((prev) => prev + 1);
       if (userId && lesson?.difficulty) {
-        const points = xpPointsMap[lesson.difficulty] || 2;
-        userService.awardXP(userId, { lessonId: quizId, contentIndex: currentIndex, basePoints: points }).catch(() => {});
+        userService.recordLearningEvent(userId, {
+          eventType: 'quiz_correct',
+          lessonId: quizId,
+          contentIndex: currentIndex,
+          difficulty: lesson.difficulty,
+        }).catch(() => {});
       } else if (isGuest) {
         addGuestXP(1);
       }
@@ -235,7 +238,40 @@ const QuizDetailScreen: React.FC = () => {
       if (stepPosition < orderMap.length - 1) {
         autoAdvanceRef.current = setTimeout(handleNext, 2000);
       }
+    } else if (userId && quizId) {
+      userService.recordPeek(userId, { lessonId: quizId, contentIndex: currentIndex }).catch(() => {});
+      learningHubService.saveItem({
+        itemType: 'correction',
+        targetText: content.targetText,
+        nativeText: content.nativeText,
+        romanization: content.learnerPronunciation || content.officialPronunciation || content.romanization || '',
+        sourceType: 'quiz',
+        sourceRef: quizId,
+        sourceLabel: lesson?.title || '',
+        reason: t('learningHub.savedAfterQuizMiss', 'Saved after a missed quiz answer.'),
+        metadata: { route: `/quiz/${quizId}`, contentIndex: currentIndex },
+      }).catch(() => {});
     }
+  };
+
+  const openPracticeSurface = (surface: 'conversation' | 'writing' | 'flashcard') => {
+    if (!content?.targetText) return;
+    if (surface === 'conversation') {
+      navigation.navigate('Conversation', {
+        starter: t('learningHub.askTutorPrompt', {
+          text: content.targetText,
+          defaultValue: 'Help me practice "{{text}}".',
+        }),
+      });
+      return;
+    }
+    navigation.navigate('Exercise', {
+      screen: surface === 'writing' ? 'Writing' : 'Flashcards',
+      params: {
+        savedText: content.targetText || '',
+        nativeText: content.nativeText || '',
+      },
+    });
   };
 
   const calculateScore = (completed = false) => {
@@ -515,6 +551,18 @@ const QuizDetailScreen: React.FC = () => {
                         {t('lessonDetail.tryAgain', 'Try Again')}
                       </Button>
                     )}
+                    <Text style={styles.quizPracticeLabel}>{t('learningHub.practiceEverywhere', 'Practice this elsewhere')}</Text>
+                    <View style={styles.quizPracticeActions}>
+                      <Button mode="outlined" compact onPress={() => openPracticeSurface('conversation')}>
+                        {t('learningHub.askTutor', 'Ask tutor')}
+                      </Button>
+                      <Button mode="outlined" compact onPress={() => openPracticeSurface('writing')}>
+                        {t('learningHub.practiceWriting', 'Write')}
+                      </Button>
+                      <Button mode="outlined" compact onPress={() => openPracticeSurface('flashcard')}>
+                        {t('learningHub.practiceFlashcard', 'Flashcard')}
+                      </Button>
+                    </View>
                   </View>
                 )}
               </View>
@@ -666,6 +714,8 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
   quizOptionText: { fontSize: 15, color: colors.textPrimary },
   quizResult: { alignItems: 'center', marginTop: 8 },
   quizResultText: { fontSize: 18, fontWeight: '700' },
+  quizPracticeLabel: { color: colors.textMuted, fontSize: 12, fontWeight: '700', marginTop: 10 },
+  quizPracticeActions: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: 8, marginTop: 8 },
 
   pendingContainer: { alignItems: 'center', padding: 20, gap: 10 },
   pendingText: { fontSize: 14, color: colors.textMuted, textAlign: 'center' },

@@ -20,7 +20,10 @@
     "done": "完了",
     "clearAll": "全て解除",
     "sending": "送信中...",
-    "saving": "保存中..."
+    "saving": "保存中...",
+    "search": "検索",
+    "notSet": "未設定",
+    "all": "全て"
   },
   "languages": {
     "en": "英語",
@@ -121,7 +124,8 @@
     "writing": "書き込み",
     "conversation": "会話",
     "plans": "予定",
-    "institution": "機関"
+    "institution": "機関",
+    "review": "レビュー"
   },
   "guestPrompt": {
     "title": "素晴らしい調子です！",
@@ -427,7 +431,12 @@
     "topic": "トピック（任意）",
     "save": "保存",
     "categoryPlaceholder": "例えば 数字、挨拶",
-    "topicPlaceholder": "例えば 曜日、1 ～ 10"
+    "topicPlaceholder": "例えば 曜日、1 ～ 10",
+    "savedFromFlashcardReason": "別のパスのためにフラッシュカードから保存されました。",
+    "savedForReview": "レビュー用に保存しました。",
+    "saveForReviewFailed": "現在このカードを保存できませんでした。",
+    "bookmarkedReason": "フラッシュカードからブックマークしました。",
+    "selfTestReason": "簡単なセルフテストのためにフラッシュカードから保存されています。"
   },
   "progress": {
     "title": "あなたの進捗",
@@ -791,13 +800,13 @@
     "priceAnnual": "{{amount}}/年",
     "priceMonthly": "{{amount}}/月",
     "planNames": {
-      "free": "無料",
+      "free": "フリー",
       "plus": "プラス",
       "pro": "プロ",
       "ultra": "ウルトラ",
-      "institution_basic": "機関の基本",
-      "institution_pro": "インスティテュートプロ",
-      "institution_enterprise": "機関・企業"
+      "institution_basic": "インスティテューション ベーシック",
+      "institution_pro": "インスティテューション プロ",
+      "institution_enterprise": "インスティテューション エンタープライズ"
     },
     "planTaglines": {
       "free": "1 日あたりの制限を設けた学習ループを試してください。",
@@ -810,7 +819,8 @@
     },
     "discountCode": "割引コード",
     "discountPlaceholder": "オプションコード",
-    "discountUnavailable": "このプランではその割引コードは利用できません。"
+    "discountUnavailable": "このプランではその割引コードは利用できません。",
+    "automaticDiscountApplied": "{{discount}} の自動割引が適用されました"
   },
   "billing": {
     "kicker": "請求する",
@@ -908,7 +918,10 @@
       "past_due": "期限を過ぎた",
       "cancelled": "キャンセル",
       "suspended": "一時停止中"
-    }
+    },
+    "snapshotsKicker": "学習者のスナップショット",
+    "needsHelpTitle": "注意が必要です",
+    "noNeedsHelpLearners": "現在、特別な注意を必要とする学習者はいません。"
   },
   "errorBoundary": {
     "title": "何か問題が発生しました",
@@ -927,7 +940,15 @@
     "playing": "遊んでいます…",
     "listen": "聞く",
     "use": "使用",
-    "useDefault": "現時点ではデフォルトの音声を使用します"
+    "useDefault": "現時点ではデフォルトの音声を使用します",
+    "gender": {
+      "male": "男性",
+      "female": "女性"
+    },
+    "friendlyVoiceLabelGendered": "{{language}}の{{gender}}音声 {{number}}{{region}}",
+    "friendlyVoiceLabelNeutral": "{{language}}の音声 {{number}}{{region}}",
+    "voiceRegionSuffix": "· {{region}}",
+    "loadError": "音声オプションを読み込めませんでした。既定の音声を使用します。"
   },
   "classList": {
     "kicker": "クラス",
@@ -1011,7 +1032,9 @@
       "listeningPrefix": "聞き取り中",
       "speechCaptured": "音声を入力しました。必要なら編集して送信してください。",
       "noSpeechCaptured": "音声が入力されませんでした。もう一度お試しください。",
-      "voiceUpdated": "音声を更新しました。文を押すと聞けます。"
+      "voiceUpdated": "音声を更新しました。文を押すと聞けます。",
+      "bookmarked": "ブックマークしました。",
+      "bookmarkFailed": "現在、このアイテムをブックマークできませんでした。"
     },
     "speechErrors": {
       "permissionBlocked": "マイクまたは音声認識の権限がブロックされています。設定でこのアプリのマイクを許可してから再試行してください。",
@@ -1062,7 +1085,36 @@
         "goal": "間違いを見直し、学んだことを要約します。",
         "task": "学んだこととまだ不明な点を 1 つまとめます。"
       }
-    }
+    },
+    "savedFromClassReason": "復習のためにクラスから保存されました。",
+    "savedForReview": "レビュー用に保存しました。",
+    "saveForReviewFailed": "現在このアイテムを保存できませんでした。",
+    "wrapUpKicker": "次のステップ",
+    "wrapUpTitle": "レッスンを生かし続ける",
+    "wrapUpBody": "レッスンがまだ新鮮なうちに、保存した項目を確認したり、会話で使用したり、記憶に基づいて書いたりできます。",
+    "wrapUpReview": "レビュー",
+    "wrapUpConversation": "会話",
+    "wrapUpWriting": "書き込み",
+    "saveForReview": "レビュー用に保存する",
+    "fallback": {
+      "thisItem": "このアイテム",
+      "shortAnswer": "このレッスン項目を使用して、短い回答を 1 つ試してください。",
+      "practiceLead": "{{title}}を練習しましょう。",
+      "continue": "レッスンの次の部分に進みましょう。"
+    },
+    "examplePrefix": "例：",
+    "bookmarkedReason": "クラスからブックマークされました。",
+    "itemsCompleted": "{{count}} アイテムが完了しました",
+    "lessonItemsTotal": "{{count}}レッスンアイテム",
+    "savedExampleReason": "後の練習用にクラスの例を保存しました。",
+    "exampleSaved": "例はレビュー用に保存されました。",
+    "savedTutorReplyReason": "後で練習するために講師の返信から保存されました。",
+    "tutorReplySaved": "先生の返信はレビュー用に保存されました。",
+    "playingSelectedItem": "選択した項目を再生しています。",
+    "saveReply": "返信を保存する",
+    "saveExample": "保存例",
+    "practiceEverywhere": "どこでもこれを実践してください",
+    "selfTestReason": "簡単なセルフテストのためにクラスから保存されました。"
   },
   "exercise": {
     "kicker": "エクササイズ",
@@ -1073,7 +1125,8 @@
     "flashcardsTitle": "フラッシュカード",
     "flashcardsDescMobile": "単語やフレーズを復習します。",
     "writingTitle": "書き込み",
-    "writingDescMobile": "トレースし、コピーし、聞き、メモ帳に書きます。"
+    "writingDescMobile": "トレースし、コピーし、聞き、メモ帳に書きます。",
+    "reviewDescMobile": "保存したアイテムと今日期限のアイテムに戻ります。"
   },
   "conversation": {
     "kicker": "会話練習",
@@ -1113,7 +1166,23 @@
       "planRefreshed": "プラン設定が更新されました。",
       "messageNotResent": "メッセージは再度送信されませんでした。",
       "connectionIssue": "接続の問題。 しばらくしてからもう一度試してください。"
-    }
+    },
+    "savedReplyReason": "会話の練習から救われました。",
+    "savedReply": "返信はレビュー用に保存されました。",
+    "saveReplyFailed": "現在この返信を保存できませんでした。",
+    "savedRoleplayReason": "完了したロールプレイは、後の練習のために保存されます。",
+    "roleplaySaved": "ロールプレイはレビュー用に保存されました。",
+    "saveRoleplayFailed": "現在、このロールプレイを保存できませんでした。",
+    "recapTitle": "ロールプレイ完了",
+    "saveRoleplay": "ロールプレイを保存する",
+    "saveReply": "保存",
+    "easier": "より簡単に",
+    "harder": "もっと強く",
+    "recapWentWell": "何がうまくいったのか",
+    "recapUsefulPhrases": "便利なフレーズ",
+    "recapReview": "次にレビューします",
+    "recapReviewFallback": "1 つのフレーズを保存し、別の練習モードで再利用します。",
+    "practiceLabel": "会話練習"
   },
   "context": {
     "backToProfile": "プロフィールに戻る",
@@ -1185,7 +1254,8 @@
       "conversationNative": "会話練習から",
       "conversationHistory": "会話履歴",
       "personalized": "パーソナライズされた",
-      "personalNotebook": "個人的なノート"
+      "personalNotebook": "個人的なノート",
+      "savedReview": "保存されたレビュー項目"
     },
     "modes": {
       "trace": "トレース",
@@ -1232,7 +1302,9 @@
       "shape": "形状が一致する",
       "spacing": "間隔がはっきりしている",
       "memory": "記憶から"
-    }
+    },
+    "savedReason": "別の合格のために書く練習から救われました。",
+    "selfTestReason": "簡単な自己テストのためのライティング練習から保存されました。"
   },
   "certificates": {
     "kicker": "証明書",
@@ -1265,5 +1337,140 @@
     "signIn": "サインイン",
     "issuedSuccess": "証明書が発行されました。",
     "issueFailed": "証明書を発行できませんでした。"
+  },
+  "learningHub": {
+    "continueLearning": "学び続ける",
+    "pairSetupSaved": "学習設定が保存されました。",
+    "nextBestAction": "次に最善のアクション",
+    "reviewDue": "レビュー期限",
+    "reviewNow": "今すぐレビューする",
+    "wordOfDay": "今日の言葉やフレーズ",
+    "noSpotlightYet": "始めるのに役立つものを保存してください",
+    "pairSetupTitle": "この言語ペアを設定します",
+    "pairSetupBody": "推奨事項がこのターゲット言語に適合するように、あなたのレベルと目標を一度お知らせください。",
+    "level": "レベル",
+    "goal": "ゴール",
+    "pace": "ペース",
+    "dailyPlanTitle": "今日の予定",
+    "weeklySummaryTitle": "今週",
+    "points": "ポイント",
+    "activeDays": "活動的な日",
+    "sessions": "セッション",
+    "recentStudyTitle": "最近の研究",
+    "savedAfterQuizMiss": "クイズの答えを間違えた後に保存されました。",
+    "askTutorPrompt": "「{{text}}」の練習を手伝ってください。",
+    "savedForPractice": "後の練習用に保存",
+    "askTutor": "家庭教師に質問する",
+    "kicker": "レビュー",
+    "title": "有益な学習を身近に保つ",
+    "subtitle": "もう一度パスが必要なものを確認し、保存したアイテムに戻り、同じ場所から続行します。",
+    "dueToday": "今日が期限",
+    "queueTitle": "今日のレビューキュー",
+    "queueEmptyBody": "単語、フレーズ、修正、またはロールプレイを保存すると、役立つときにここに戻ってきます。",
+    "weakAreasTitle": "最近の苦手分野",
+    "practiceArea": "練習場",
+    "weakAreasEmpty": "弱点領域はまだ特定されていません。",
+    "abilityTitle": "現実世界の能力の進歩",
+    "abilityEmpty": "練習すると、アクティビティの進行状況がここに表示されます。",
+    "searchLabel": "学習内容を検索する",
+    "searchPlaceholder": "保存したアイテムやクラスのレッスンを検索する",
+    "savedLibraryTitle": "保存された学習ライブラリ",
+    "savedEmptyBody": "授業、フラッシュカード、書き込み、会話から役立つ単語を保存して、独自の学習棚を構築します。",
+    "savedBanksTitle": "保存されたバンク",
+    "correctionsBank": "訂正",
+    "roleplaysBank": "ロールプレイ",
+    "bookmarksBank": "ブックマーク",
+    "openSource": "オープンソース",
+    "spotlightHint": "保存したアイテムが毎日のスポットライトになります。",
+    "pairSetupSummary": "学習セットアップ",
+    "pairSetupEdit": "編集",
+    "pairSetupUpdate": "この言語ペアを更新します",
+    "reviewBeforeSleep": "今すぐ簡単にレビューしておくと、明日が明るくなります。",
+    "open": "開ける",
+    "bookmark": "ブックマーク",
+    "bookmarked": "ブックマークしました。",
+    "bookmarkFailed": "現在、このアイテムをブックマークできませんでした。",
+    "speakingTurns": "話す順番",
+    "newSavedItems": "新しく保存されたアイテム",
+    "completedLessons": "完了したレッスン",
+    "certificates": "証明書",
+    "guidanceTitle": "ガイダンス",
+    "firstThreeDays": "最初の３日間",
+    "dayNumber": "日 {{day}}",
+    "goalPathTitle": "ゴールパス",
+    "placementTitle": "配置",
+    "recentWordsTitle": "最近の言葉",
+    "recentWordsEmpty": "授業や会話から生まれた新しい言葉がここに集まります。",
+    "milestonesTitle": "マイルストーン",
+    "savedItems": "保存されたアイテム",
+    "voiceHistoryTitle": "発声練習歴",
+    "voiceHistoryEmpty": "会話練習後にスピーキングターンがここで出てきます。",
+    "askWeakAreaPrompt": "{{area}}の練習を手伝ってください。",
+    "evidenceCount": "{{count}} 証拠の一部",
+    "askAbilityPrompt": "{{area}}の練習を手伝ってください。",
+    "practiceWriting": "書く",
+    "practiceFlashcard": "フラッシュカード",
+    "whyWeakArea": "この領域はまだ補強が必要なため、これが表示されています。",
+    "reviewBeforeSleepTitle": "寝る前に復習する",
+    "savedItem": "保存されました",
+    "weakArea": "弱い",
+    "reviewBeforeSleepEmpty": "今夜は緊急なことは何もありません。",
+    "miniSpeakingTitle": "ミニスピーキングドリル",
+    "miniSpeakingReason": "保存したフレーズや修正から短いスピーキング練習を行います。",
+    "practiceSpeaking": "話す",
+    "miniSpeakingEmpty": "修正と保存されたフレーズは、ここで簡単なスピーキング ドリルになります。",
+    "correctionsEmpty": "保存された修正は、すぐに再試行できるようにここに収集されます。",
+    "roleplaysEmpty": "保存したロールプレイは、再利用するときにここに表示されます。",
+    "startLevelCheck": "スタートレベルチェック",
+    "levelCheckUnavailable": "この言語ペアではレベル チェックがまだ準備されていません。",
+    "levelCheckLoadFailed": "現在レベルチェックをロードできませんでした。",
+    "levelCheckTitle": "簡単なレベルチェック",
+    "levelCheckSubtitle": "アプリがより適切な開始点を選択できるように、いくつかの簡単な項目に答えてください。",
+    "levelCheckResult": "推奨される開始レベル",
+    "levelCheckSaved": "この開始点は、この言語ペア用に保存されています。",
+    "returnHome": "家に帰る",
+    "questionCount": "質問 {{current}} / {{total}}",
+    "practiceAgainPrompt": "もう一度「{{text}}」と言う練習を手伝ってください。",
+    "replayReply": "返信を再生する",
+    "practiceAgain": "もう一度練習してください",
+    "practiceEverywhere": "これを他の場所で練習してください",
+    "practicePronunciation": "聞く",
+    "youSaid": "あなたが言った",
+    "targetSpeech": "ターゲットスピーチ",
+    "replayTargetSpeech": "ターゲットの音声を聞く",
+    "practiceQuiz": "セルフテスト",
+    "useRoleplayAgain": "再度使用する",
+    "offlinePackInUse": "接続が弱いときに最近のパックを表示します。",
+    "quickQuizKicker": "セルフテスト",
+    "quickQuizTitle": "簡単なセルフテスト",
+    "quickQuizNoAnswer": "意味を思い出して、正直に自分を採点してください。",
+    "revealAnswer": "答えを明らかにする",
+    "studyHistoryTitle": "学習歴",
+    "pointsCount": "{{count}}ポイント",
+    "studyHistoryEmpty": "練習を重ねるうちに、勉強の日々がここに集まります。",
+    "listen": "聞く",
+    "goals": {
+      "travel": "旅行",
+      "work": "仕事",
+      "school": "学校",
+      "dailyLife": "日常生活",
+      "conversation": "会話",
+      "family": "家族",
+      "religious": "宗教的な背景",
+      "health": "健康",
+      "culture": "文化",
+      "exam": "テスト",
+      "other": "他の"
+    },
+    "savedBankEmptyBody": "この目的で保存したアイテムがここに集まります。",
+    "recentMistakesTitle": "最近の間違い",
+    "recentMistakesBody": "これらは、修正がまだ新しいうちに再試行する価値のある、最近見逃した項目です。",
+    "recentMistakesEmptyBody": "見逃したクイズ項目はここに表示されるので、すぐに再試行できます。",
+    "firstThreeDayReviewTitle": "出会ったことを振り返る",
+    "firstThreeDaySpeakTitle": "大声で使用してください",
+    "firstThreeDayLearnTitle": "ガイド付きレッスンを 1 つ開始する",
+    "firstThreeDayReviewBody": "昨日見たものに一度戻ると、最初のアイテムが定着し始めます。",
+    "firstThreeDaySpeakBody": "言語がページから早く離れるように、話す順番を短くします。",
+    "firstThreeDayLearnBody": "ペアが明確な出発点を持てるように、1 つの小さなガイド付きレッスンから始めます。"
   }
 }

@@ -20,7 +20,10 @@
     "done": "Tamam",
     "clearAll": "Hepsini temizle",
     "sending": "Gönderiliyor...",
-    "saving": "Kaydediliyor..."
+    "saving": "Kaydediliyor...",
+    "search": "Aramak",
+    "notSet": "Ayarlanmadı",
+    "all": "Tüm"
   },
   "languages": {
     "en": "İngilizce",
@@ -121,7 +124,8 @@
     "writing": "Yazma",
     "conversation": "Konuşma",
     "plans": "Planlar",
-    "institution": "Kurum"
+    "institution": "Kurum",
+    "review": "Gözden geçirmek"
   },
   "guestPrompt": {
     "title": "Harika gidiyorsun!",
@@ -427,7 +431,12 @@
     "topic": "Konu (isteğe bağlı)",
     "save": "Kaydet",
     "categoryPlaceholder": "örneğin sayılar, selamlar",
-    "topicPlaceholder": "örneğin haftanın günleri, 1-10"
+    "topicPlaceholder": "örneğin haftanın günleri, 1-10",
+    "savedFromFlashcardReason": "Bilgi kartlarından başka bir geçiş için kaydedildi.",
+    "savedForReview": "İncelenmek üzere kaydedildi.",
+    "saveForReviewFailed": "Bu kart şu anda kaydedilemedi.",
+    "bookmarkedReason": "Bilgi kartlarından yer imlerine eklendi.",
+    "selfTestReason": "Hızlı bir kendi kendine test için bilgi kartlarından kaydedildi."
   },
   "progress": {
     "title": "İlerlemeniz Raporu",
@@ -791,13 +800,13 @@
     "priceAnnual": "{{amount}}/yıl",
     "priceMonthly": "{{amount}}/ay",
     "planNames": {
-      "free": "Özgür",
-      "plus": "Artı",
-      "pro": "Profesyonel",
+      "free": "Free",
+      "plus": "Plus",
+      "pro": "Pro",
       "ultra": "Ultra",
-      "institution_basic": "Kurum Temeli",
-      "institution_pro": "Kurum Profesyoneli",
-      "institution_enterprise": "Kurum İşletmesi"
+      "institution_basic": "Institution Basic",
+      "institution_pro": "Institution Pro",
+      "institution_enterprise": "Institution Enterprise"
     },
     "planTaglines": {
       "free": "Günlük limitlerle öğrenme döngüsünü deneyin.",
@@ -810,7 +819,8 @@
     },
     "discountCode": "İndirim kodu",
     "discountPlaceholder": "İsteğe bağlı kod",
-    "discountUnavailable": "Bu indirim kodu bu planda mevcut değil."
+    "discountUnavailable": "Bu indirim kodu bu planda mevcut değil.",
+    "automaticDiscountApplied": "Otomatik {{discount}} indirim uygulandı"
   },
   "billing": {
     "kicker": "Faturalandırma",
@@ -908,7 +918,10 @@
       "past_due": "Vadesi geçmiş",
       "cancelled": "İptal edildi",
       "suspended": "Askıya alınmış"
-    }
+    },
+    "snapshotsKicker": "Öğrenci anlık görüntüleri",
+    "needsHelpTitle": "Dikkat edilmesi gerekiyor",
+    "noNeedsHelpLearners": "Şu anda hiçbir öğrencinin ekstra ilgiye ihtiyacı yok."
   },
   "errorBoundary": {
     "title": "Bir şeyler ters gitti",
@@ -927,7 +940,15 @@
     "playing": "Oynanıyor…",
     "listen": "Dinlemek",
     "use": "Kullanmak",
-    "useDefault": "Şimdilik varsayılan sesi kullan"
+    "useDefault": "Şimdilik varsayılan sesi kullan",
+    "gender": {
+      "male": "erkek",
+      "female": "kadın"
+    },
+    "friendlyVoiceLabelGendered": "{{language}} {{gender}} sesi {{number}}{{region}}",
+    "friendlyVoiceLabelNeutral": "{{language}} sesi {{number}}{{region}}",
+    "voiceRegionSuffix": "· {{region}}",
+    "loadError": "Ses seçenekleri yüklenemedi. Varsayılan ses kullanılacak."
   },
   "classList": {
     "kicker": "Sınıf",
@@ -1011,7 +1032,9 @@
       "listeningPrefix": "Dinleniyor",
       "speechCaptured": "Ses alındı. Gerekirse düzenleyin, sonra gönderin.",
       "noSpeechCaptured": "Ses alınmadı. Tekrar deneyin.",
-      "voiceUpdated": "Ses güncellendi. Dinlemek için bir satıra dokunun."
+      "voiceUpdated": "Ses güncellendi. Dinlemek için bir satıra dokunun.",
+      "bookmarked": "Favorilere eklendi.",
+      "bookmarkFailed": "Bu öğe şu anda favorilere eklenemiyor."
     },
     "speechErrors": {
       "permissionBlocked": "Mikrofon veya konuşma tanıma izni engellendi. Ayarlardan mikrofona izin verin ve tekrar deneyin.",
@@ -1062,7 +1085,36 @@
         "goal": "Hataları gözden geçirin ve öğrendiklerinizi özetleyin.",
         "task": "Öğrendiğiniz bir şeyi ve hala belirsiz olan bir şeyi özetleyin."
       }
-    }
+    },
+    "savedFromClassReason": "İncelenmek üzere sınıftan kaydedildi.",
+    "savedForReview": "İncelenmek üzere kaydedildi.",
+    "saveForReviewFailed": "Bu öğe şu anda kaydedilemedi.",
+    "wrapUpKicker": "Sonraki adım",
+    "wrapUpTitle": "Dersi canlı tut",
+    "wrapUpBody": "Kaydedilen öğeleri inceleyin, bunları sohbette kullanın veya ders henüz tazeyken hafızanızdan yazın.",
+    "wrapUpReview": "Gözden geçirmek",
+    "wrapUpConversation": "Konuşma",
+    "wrapUpWriting": "Yazma",
+    "saveForReview": "İnceleme için kaydet",
+    "fallback": {
+      "thisItem": "bu öğe",
+      "shortAnswer": "Bu ders öğesini kullanarak kısa bir yanıt deneyin.",
+      "practiceLead": "Hadi pratik yapalım {{title}}.",
+      "continue": "Dersin bir sonraki kısmıyla devam edelim."
+    },
+    "examplePrefix": "Örnek:",
+    "bookmarkedReason": "Sınıftan yer imlerine eklendi.",
+    "itemsCompleted": "{{count}} tamamlanan öğeler",
+    "lessonItemsTotal": "{{count}} ders öğeleri",
+    "savedExampleReason": "Daha sonraki uygulamalar için kayıtlı sınıf örneği.",
+    "exampleSaved": "Örnek incelenmek üzere kaydedildi.",
+    "savedTutorReplyReason": "Daha sonra pratik yapmak üzere öğretmenin yanıtından kaydedildi.",
+    "tutorReplySaved": "Öğretmenin yanıtı incelenmek üzere kaydedildi.",
+    "playingSelectedItem": "Seçilen öğe oynatılıyor.",
+    "saveReply": "Yanıtı kaydet",
+    "saveExample": "Örneği kaydet",
+    "practiceEverywhere": "Bunu her yerde uygulayın",
+    "selfTestReason": "Hızlı bir kendi kendine test için sınıftan kaydedildi."
   },
   "exercise": {
     "kicker": "Egzersiz yapmak",
@@ -1073,7 +1125,8 @@
     "flashcardsTitle": "Bilgi Kartları",
     "flashcardsDescMobile": "Kelimeleri ve cümleleri gözden geçirin.",
     "writingTitle": "Yazma",
-    "writingDescMobile": "Bir not defterinin izini sürün, kopyalayın, dinleyin ve saklayın."
+    "writingDescMobile": "Bir not defterinin izini sürün, kopyalayın, dinleyin ve saklayın.",
+    "reviewDescMobile": "Kaydedilen öğelere ve bugün teslim edilmesi gereken öğelere geri dönün."
   },
   "conversation": {
     "kicker": "Konuşma Alıştırması",
@@ -1113,7 +1166,23 @@
       "planRefreshed": "Plan ayarlarınız yenilendi.",
       "messageNotResent": "Mesajınız tekrar gönderilmedi.",
       "connectionIssue": "Bağlantı sorunu. Birazdan tekrar deneyin."
-    }
+    },
+    "savedReplyReason": "Konuşma uygulamasından kurtarıldı.",
+    "savedReply": "Yanıt incelenmek üzere kaydedildi.",
+    "saveReplyFailed": "Bu yanıt şu anda kaydedilemedi.",
+    "savedRoleplayReason": "Tamamlanan rol oyunu daha sonraki pratik için kaydedildi.",
+    "roleplaySaved": "Rol oyunu incelenmek üzere kaydedildi.",
+    "saveRoleplayFailed": "Bu rol oyunu şu anda kaydedilemedi.",
+    "recapTitle": "Rol oyunu tamamlandı",
+    "saveRoleplay": "Rol oyununu kaydet",
+    "saveReply": "Kaydetmek",
+    "easier": "Daha kolay",
+    "harder": "Daha güçlü",
+    "recapWentWell": "Neler iyi gitti",
+    "recapUsefulPhrases": "Yararlı ifadeler",
+    "recapReview": "Sonrakini incele",
+    "recapReviewFallback": "Bir cümleyi kaydedin ve başka bir pratik modunda yeniden kullanın.",
+    "practiceLabel": "Konuşma pratiği"
   },
   "context": {
     "backToProfile": "Profile Geri Dön",
@@ -1185,7 +1254,8 @@
       "conversationNative": "Konuşma pratiğinizden",
       "conversationHistory": "Konuşma geçmişi",
       "personalized": "Kişiselleştirilmiş",
-      "personalNotebook": "Kişisel not defteri"
+      "personalNotebook": "Kişisel not defteri",
+      "savedReview": "İnceleme öğesi kaydedildi"
     },
     "modes": {
       "trace": "İz",
@@ -1232,7 +1302,9 @@
       "shape": "Şekil eşleşmeleri",
       "spacing": "Aralık açıktır",
       "memory": "Bellekten"
-    }
+    },
+    "savedReason": "Başka bir geçiş için yazma alıştırmasından kurtarıldım.",
+    "selfTestReason": "Hızlı bir kendi kendine test için yazma alıştırmasından kurtarıldı."
   },
   "certificates": {
     "kicker": "Sertifika",
@@ -1265,5 +1337,140 @@
     "signIn": "Oturum aç",
     "issuedSuccess": "Sertifika verildi.",
     "issueFailed": "Sertifika verilemedi."
+  },
+  "learningHub": {
+    "continueLearning": "Öğrenmeye devam et",
+    "pairSetupSaved": "Öğrenme kurulumu kaydedildi.",
+    "nextBestAction": "Sonraki en iyi eylem",
+    "reviewDue": "İnceleme zamanı geldi",
+    "reviewNow": "Şimdi incele",
+    "wordOfDay": "Günün kelimesi veya cümlesi",
+    "noSpotlightYet": "Başlamak için yararlı bir şeyler kaydedin",
+    "pairSetupTitle": "Bu dil çiftini ayarla",
+    "pairSetupBody": "Önerilerin bu hedef dile uyması için bize seviyenizi ve hedefinizi bir kez söyleyin.",
+    "level": "Seviye",
+    "goal": "Amaç",
+    "pace": "Adımlamak",
+    "dailyPlanTitle": "Bugünkü plan",
+    "weeklySummaryTitle": "Bu hafta",
+    "points": "Puanlar",
+    "activeDays": "Aktif günler",
+    "sessions": "Oturumlar",
+    "recentStudyTitle": "Son çalışma",
+    "savedAfterQuizMiss": "Kaçırılan bir sınav yanıtından sonra kaydedildi.",
+    "askTutorPrompt": "\"{{text}}\" alıştırması yapmama yardım et.",
+    "savedForPractice": "Daha sonraki pratik için kaydedildi",
+    "askTutor": "Öğretmene sor",
+    "kicker": "Gözden geçirmek",
+    "title": "Yararlı öğrenmeyi yakın tutun",
+    "subtitle": "Neyin başka bir geçiş gerektirdiğini gözden geçirin, kayıtlı öğelere dönün ve tek yerden devam edin.",
+    "dueToday": "bugün vadesi dolacak",
+    "queueTitle": "Bugünün inceleme kuyruğu",
+    "queueEmptyBody": "Kelimeleri, cümleleri, düzeltmeleri veya rol oyunlarını kaydedin; yararlı olduklarında buraya geri döneceklerdir.",
+    "weakAreasTitle": "Son zayıf alanlar",
+    "practiceArea": "Uygulama alanı",
+    "weakAreasEmpty": "Henüz zayıf alanlar tespit edilmedi.",
+    "abilityTitle": "Gerçek dünyadaki yetenek ilerlemesi",
+    "abilityEmpty": "Siz pratik yaptıkça aktivite ilerlemesi burada görünecektir.",
+    "searchLabel": "Öğreniminizi arayın",
+    "searchPlaceholder": "Kaydedilen öğeleri veya sınıf derslerini arayın",
+    "savedLibraryTitle": "Kaydedilen çalışma kitaplığı",
+    "savedEmptyBody": "Kendi çalışma rafınızı oluşturmak için sınıftan, bilgi kartlarından, yazılardan veya konuşmalardan faydalı kelimeleri kaydedin.",
+    "savedBanksTitle": "Kayıtlı bankalar",
+    "correctionsBank": "Düzeltmeler",
+    "roleplaysBank": "Rol oyunları",
+    "bookmarksBank": "Yer imleri",
+    "openSource": "Açık kaynak",
+    "spotlightHint": "Kaydedilen öğeleriniz günlük ilgi odağı haline gelir.",
+    "pairSetupSummary": "Öğrenme kurulumu",
+    "pairSetupEdit": "Düzenlemek",
+    "pairSetupUpdate": "Bu dil çiftini güncelleyin",
+    "reviewBeforeSleep": "Şimdi kısa bir inceleme yarını daha hafif bırakacaktır.",
+    "open": "Açık",
+    "bookmark": "Yer imi",
+    "bookmarked": "Favorilere eklendi.",
+    "bookmarkFailed": "Bu öğe şu anda favorilere eklenemiyor.",
+    "speakingTurns": "Konuşma dönüşleri",
+    "newSavedItems": "Yeni kaydedilen öğeler",
+    "completedLessons": "Tamamlanan dersler",
+    "certificates": "Sertifikalar",
+    "guidanceTitle": "Rehberlik",
+    "firstThreeDays": "İlk üç gün",
+    "dayNumber": "Gün {{day}}",
+    "goalPathTitle": "Hedef yolu",
+    "placementTitle": "Atama",
+    "recentWordsTitle": "Son kelimeler",
+    "recentWordsEmpty": "Dersten ve sohbetten yeni kelimeler burada toplanacak.",
+    "milestonesTitle": "Kilometre Taşları",
+    "savedItems": "Kayıtlı öğeler",
+    "voiceHistoryTitle": "Ses alıştırma geçmişi",
+    "voiceHistoryEmpty": "Konuşma alıştırmaları sonrasında konuşma sıraları burada gösterilecektir.",
+    "askWeakAreaPrompt": "{{area}} pratik yapmama yardım et.",
+    "evidenceCount": "{{count}} delil parçaları",
+    "askAbilityPrompt": "{{area}} pratik yapmama yardım et.",
+    "practiceWriting": "Yazmak",
+    "practiceFlashcard": "Bilgi Kartı",
+    "whyWeakArea": "Bunu görüyorsunuz çünkü bu alanın hala takviyeye ihtiyacı var.",
+    "reviewBeforeSleepTitle": "Uyumadan önce gözden geçirin",
+    "savedItem": "Kaydedildi",
+    "weakArea": "Zayıf",
+    "reviewBeforeSleepEmpty": "Bu gece bekleyen acil bir şey yok.",
+    "miniSpeakingTitle": "Mini konuşma alıştırmaları",
+    "miniSpeakingReason": "Kaydedilmiş bir ifadeden veya düzeltmeden kısa konuşma pratiği.",
+    "practiceSpeaking": "Konuşmak",
+    "miniSpeakingEmpty": "Düzeltmeler ve kaydedilen ifadeler burada hızlı konuşma alıştırmalarına dönüşecek.",
+    "correctionsEmpty": "Hızlı yeniden deneme için kaydedilen düzeltmeler burada toplanacak.",
+    "roleplaysEmpty": "Kaydedilen rol oyunları, yeniden kullanmak istediğinizde burada görünecektir.",
+    "startLevelCheck": "Seviye kontrolünü başlat",
+    "levelCheckUnavailable": "Bu dil çifti için henüz seviye kontrolü hazır değil.",
+    "levelCheckLoadFailed": "Seviye kontrolü şu anda yüklenemiyor.",
+    "levelCheckTitle": "Kısa seviye kontrolü",
+    "levelCheckSubtitle": "Uygulamanın daha iyi bir başlangıç ​​noktası seçebilmesi için birkaç kısa soruyu yanıtlayın.",
+    "levelCheckResult": "Önerilen başlangıç ​​seviyesi",
+    "levelCheckSaved": "Bu başlangıç ​​noktası bu dil çifti için kaydedildi.",
+    "returnHome": "Eve dön",
+    "questionCount": "Soru {{current}} / {{total}}",
+    "practiceAgainPrompt": "Tekrar \"{{text}}\" diyerek pratik yapmama yardım et.",
+    "replayReply": "Yanıtı tekrar oynat",
+    "practiceAgain": "Tekrar pratik yapın",
+    "practiceEverywhere": "Bunu başka yerde uygulayın",
+    "practicePronunciation": "Dinlemek",
+    "youSaid": "Dedin",
+    "targetSpeech": "Hedef konuşma",
+    "replayTargetSpeech": "Hedef konuşmayı duyun",
+    "practiceQuiz": "Kendi kendine test",
+    "useRoleplayAgain": "Tekrar kullan",
+    "offlinePackInUse": "Bağlantı zayıfken en son paketiniz gösteriliyor.",
+    "quickQuizKicker": "Kendi kendine test",
+    "quickQuizTitle": "Hızlı kendi kendine test",
+    "quickQuizNoAnswer": "Anlamını hatırlayın ve ardından kendinizi dürüstçe derecelendirin.",
+    "revealAnswer": "Cevabı göster",
+    "studyHistoryTitle": "Çalışma geçmişi",
+    "pointsCount": "{{count}} puan",
+    "studyHistoryEmpty": "Siz pratik yaptıkça çalışma günleriniz burada toplanacak.",
+    "listen": "Dinlemek",
+    "goals": {
+      "travel": "Seyahat",
+      "work": "İş",
+      "school": "Okul",
+      "dailyLife": "Günlük yaşam",
+      "conversation": "Konuşma",
+      "family": "Aile",
+      "religious": "Dini ortam",
+      "health": "Sağlık",
+      "culture": "Kültür",
+      "exam": "Sınav",
+      "other": "Diğer"
+    },
+    "savedBankEmptyBody": "Bu amaçla kaydettiğiniz öğeler burada toplanacak.",
+    "recentMistakesTitle": "Son hatalar",
+    "recentMistakesBody": "Bunlar, düzeltme hala tazeyken yeniden denemeye değer, yakın zamanda kaçırılan öğelerdir.",
+    "recentMistakesEmptyBody": "Kaçırdığınız sınav öğeleri burada görünecek, böylece hızlı bir şekilde yeniden deneyebilirsiniz.",
+    "firstThreeDayReviewTitle": "Neyle tanıştığınızı gözden geçirin",
+    "firstThreeDaySpeakTitle": "Yüksek sesle kullan",
+    "firstThreeDayLearnTitle": "Rehberli bir derse başlayın",
+    "firstThreeDayReviewBody": "Dün gördüklerinize bir kez geri dönün, böylece ilk öğeler yapışmaya başlar.",
+    "firstThreeDaySpeakBody": "Dilin sayfadan erken çıkması için kısa bir konuşma sırası kullanın.",
+    "firstThreeDayLearnBody": "Çiftin net bir başlangıç ​​noktasına sahip olması için küçük, rehberli bir dersle başlayın."
   }
 }

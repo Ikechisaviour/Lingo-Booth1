@@ -1,5 +1,10 @@
+const crypto = require('crypto');
 const translate = require('google-translate-api-x');
 const Translation = require('../models/Translation');
+
+// Bump this whenever the overlay policy changes in a way that should invalidate
+// old cache rows even if the authored lesson text itself did not change.
+const TRANSLATION_POLICY_VERSION = 2;
 
 // Languages that use non-Latin scripts and benefit from romanization
 const ROMANIZATION_LANGS = new Set([
@@ -102,9 +107,10 @@ async function batchNativePhonetic(romanizations, fromLang, nativeLang) {
  * native-side fields + romanization. Uses cached Translation doc if available;
  * otherwise translates via Google Translate and caches the result.
  *
- * IMPORTANT: Native translation is done directly from targetLang → nativeLang
- * (not through English). This preserves cultural meaning and avoids the
- * telephone-game effect of translating through an intermediary language.
+ * IMPORTANT: learner-facing explanation text is translated from the canonical
+ * English explanation layer into the learner's native language. Target-layer
+ * study text stays separate and is never reused as the source for learner
+ * glosses.
  *
  * Returns null only if nativeLang is 'en' AND no romanization is needed.
  */
@@ -198,6 +204,34 @@ async function batchTranslateBySource(texts, mapping, defaultFromLang, toLang) {
   return results;
 }
 
+function translationSourceFingerprint(lesson) {
+  const source = {
+    translationPolicyVersion: TRANSLATION_POLICY_VERSION,
+    title: lesson?.title || '',
+    activities: Array.isArray(lesson?.activities) ? lesson.activities : [],
+    expressionPractice: Array.isArray(lesson?.expressionPractice) ? lesson.expressionPractice : [],
+    content: Array.isArray(lesson?.content)
+      ? lesson.content.map((item) => ({
+        targetText: item?.targetText || item?.korean || '',
+        exampleTarget: item?.exampleTarget || item?.example || '',
+        nativeText: item?.nativeText || item?.english || '',
+        exampleNative: item?.exampleNative || item?.exampleEnglish || '',
+        breakdown: Array.isArray(item?.breakdown)
+          ? item.breakdown.map((part) => ({
+            target: part?.target || part?.korean || '',
+            native: part?.native || part?.english || '',
+          }))
+          : [],
+      }))
+      : [],
+  };
+
+  return crypto
+    .createHash('sha1')
+    .update(JSON.stringify(source))
+    .digest('hex');
+}
+
 async function getOrCreateTranslation(lesson, nativeLang, targetLang) {
   const needsNativeTranslation = nativeLang && nativeLang !== 'en';
   const needsRomanization = ROMANIZATION_LANGS.has(targetLang);
@@ -207,11 +241,14 @@ async function getOrCreateTranslation(lesson, nativeLang, targetLang) {
   if (!needsNativeTranslation && !needsRomanization) return null;
 
   const lessonId = lesson._id;
+  const sourceFingerprint = translationSourceFingerprint(lesson);
 
   // Check cache — backfill any newly-added fields (title, activities,
   // expressionPractice) for translation rows that pre-date them.
   const cached = await Translation.findOne({ lessonId, lang: cacheKey });
-  if (cached) {
+  if (cached && cached.sourceFingerprint !== sourceFingerprint) {
+    await Translation.deleteOne({ _id: cached._id });
+  } else if (cached) {
     if (needsNativeTranslation) {
       const updates = {};
 
@@ -252,7 +289,9 @@ async function getOrCreateTranslation(lesson, nativeLang, targetLang) {
     return cached;
   }
 
-  // Collect target-language texts for direct target → native translation
+  // Collect learner-facing explanation text from the canonical English layer.
+  // Target-language strings stay in the target layer and are never used as the
+  // source of native-side explanations.
   const targetTexts = [];
   const targetMapping = [];
 
@@ -260,10 +299,10 @@ async function getOrCreateTranslation(lesson, nativeLang, targetLang) {
     for (let i = 0; i < lesson.content.length; i++) {
       const item = lesson.content[i];
 
-      // Translate targetText directly to nativeLang
-      const tt = item.targetText || item.korean || '';
+      // Native-side item explanations are canonical English seed text.
+      const tt = item.nativeText || item.english || '';
       if (tt.trim()) {
-        targetMapping.push({ itemIndex: i, field: 'nativeText', fromLang: targetLang });
+        targetMapping.push({ itemIndex: i, field: 'nativeText', fromLang: 'en' });
         targetTexts.push(tt);
       }
 
@@ -315,7 +354,7 @@ async function getOrCreateTranslation(lesson, nativeLang, targetLang) {
   }
 
   // Run batch operations in parallel
-  // Native translation: targetLang → nativeLang (direct, no English intermediary)
+  // Native explanations: canonical English → nativeLang
   // Romanization: targetLang → English (to extract pronunciation)
   // Title translation: English → nativeLang
   // Activities + expressionPractice translation: English → nativeLang (the
@@ -339,7 +378,7 @@ async function getOrCreateTranslation(lesson, nativeLang, targetLang) {
     return itemsMap[idx];
   };
 
-  // Apply native translations (from target → native directly)
+  // Apply learner-facing explanation translations.
   for (let k = 0; k < targetMapping.length; k++) {
     const m = targetMapping[k];
     const entry = ensureItem(m.itemIndex);
@@ -377,6 +416,7 @@ async function getOrCreateTranslation(lesson, nativeLang, targetLang) {
     const doc = await Translation.create({
       lessonId,
       lang: cacheKey,
+      sourceFingerprint,
       title: translatedTitle,
       items,
       activities: activitiesArr,
@@ -483,6 +523,8 @@ module.exports = {
   batchTranslateRaw,
   batchRomanize,
   batchNativePhonetic,
+  TRANSLATION_POLICY_VERSION,
+  translationSourceFingerprint,
   getOrCreateTranslation,
   applyTranslation,
   translateActivitiesArray,

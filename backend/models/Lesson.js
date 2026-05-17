@@ -125,6 +125,7 @@ const lessonSchema = new mongoose.Schema({
 
 // Index for efficient language-filtered queries
 lessonSchema.index({ targetLang: 1, category: 1, difficulty: 1 });
+lessonSchema.index({ track: 1, targetLang: 1 });
 
 // Virtual getters: resolve generic fields, falling back to legacy fields
 lessonSchema.set('toJSON', { virtuals: false, transform: function(doc, ret) {

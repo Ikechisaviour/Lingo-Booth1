@@ -11,6 +11,33 @@ const api = axios.create({
   timeout: 15000,
 });
 
+const getCache = new Map<string, { expiresAt: number; promise: Promise<any> }>();
+
+const stableSerialize = (value: any): string => {
+  if (!value || typeof value !== 'object') return JSON.stringify(value ?? null);
+  if (Array.isArray(value)) return `[${value.map(stableSerialize).join(',')}]`;
+  return `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${stableSerialize(value[key])}`).join(',')}}`;
+};
+
+const cachedGet = (url: string, config: any = {}, ttlMs = 10000) => {
+  const key = `${url}|${stableSerialize(config.params || {})}`;
+  const now = Date.now();
+  const cached = getCache.get(key);
+  if (cached && cached.expiresAt > now) return cached.promise;
+  const promise = api.get(url, config).catch((error) => {
+    getCache.delete(key);
+    throw error;
+  });
+  getCache.set(key, { expiresAt: now + ttlMs, promise });
+  return promise;
+};
+
+const invalidateCachedGets = (predicate: (key: string) => boolean) => {
+  Array.from(getCache.keys()).forEach((key) => {
+    if (predicate(key)) getCache.delete(key);
+  });
+};
+
 const currentLanguageParams = () => {
   const { targetLanguage, nativeLanguage } = useSettingsStore.getState();
   return {
@@ -182,12 +209,37 @@ export const classLessonService = {
     const { targetLang, nativeLang } = currentLanguageParams();
     return api.get('/class-lessons', { params: { targetLang, nativeLang } });
   },
+  getClassLessonSummaries: () => {
+    const { targetLang, nativeLang } = currentLanguageParams();
+    return cachedGet('/class-lessons', { params: { targetLang, nativeLang, view: 'summary' } }, 60000);
+  },
   getClassLesson: (classLessonId: string) => {
     const { targetLang, nativeLang } = currentLanguageParams();
     return api.get(`/class-lessons/${classLessonId}`, {
       params: { targetLang, nativeLang },
       timeout: 30000,
     });
+  },
+  getClassLessonBootstrap: (classLessonId: string, { center = 0, windowSize = 8 } = {}) => {
+    const { targetLang, nativeLang } = currentLanguageParams();
+    return cachedGet(`/class-lessons/${classLessonId}/bootstrap`, {
+      params: { targetLang, nativeLang, center, windowSize },
+      timeout: 30000,
+    }, 5000);
+  },
+  getClassLessonItems: (classLessonId: string, { center = 0, windowSize = 8 } = {}) => {
+    const { targetLang, nativeLang } = currentLanguageParams();
+    return cachedGet(`/class-lessons/${classLessonId}/items`, {
+      params: { targetLang, nativeLang, center, windowSize },
+      timeout: 30000,
+    }, 30000);
+  },
+  preparePair: ({ targetLang, nativeLang }: { targetLang?: string; nativeLang?: string } = {}) => {
+    const stored = currentLanguageParams();
+    return api.post('/class-lessons/prepare-pair', {
+      targetLang: targetLang || stored.targetLang,
+      nativeLang: nativeLang || stored.nativeLang,
+    }, { expectedStatuses: [202] } as any);
   },
   getProgress: (classLessonId: string) => {
     const { targetLang, nativeLang } = currentLanguageParams();
@@ -200,11 +252,70 @@ export const classLessonService = {
       targetLanguage,
       nativeLanguage,
       source: 'mobile',
+    }).then((response) => {
+      invalidateCachedGets((key) => (
+        key.includes(`/class-lessons/${classLessonId}/bootstrap`)
+        || key.includes('/learning-hub/overview')
+      ));
+      return response;
+    });
+  },
+};
+
+export const learningHubService = {
+  getOverview: () => {
+    const { targetLang, nativeLang } = currentLanguageParams();
+    return cachedGet('/learning-hub/overview', { params: { targetLang, nativeLang } }, 10000);
+  },
+  getSavedItems: () => {
+    const { targetLang, nativeLang } = currentLanguageParams();
+    return api.get('/learning-hub/saved-items', { params: { targetLang, nativeLang } });
+  },
+  saveItem: (payload: Record<string, any>) => {
+    const { targetLang: targetLanguage, nativeLang: nativeLanguage } = currentLanguageParams();
+    return api.post('/learning-hub/saved-items', {
+      ...payload,
+      targetLanguage,
+      nativeLanguage,
+    }).then((response) => {
+      invalidateCachedGets((key) => key.includes('/learning-hub/overview'));
+      return response;
+    });
+  },
+  reviewItem: (itemId: string, result: 'again' | 'hard' | 'good' | 'easy') =>
+    api.put(`/learning-hub/saved-items/${itemId}/review`, { result }).then((response) => {
+      invalidateCachedGets((key) => key.includes('/learning-hub/overview'));
+      return response;
+    }),
+  deleteItem: (itemId: string) =>
+    api.delete(`/learning-hub/saved-items/${itemId}`).then((response) => {
+      invalidateCachedGets((key) => key.includes('/learning-hub/overview'));
+      return response;
+    }),
+  search: (query: string) => {
+    const { targetLang, nativeLang } = currentLanguageParams();
+    return api.get('/learning-hub/search', { params: { targetLang, nativeLang, q: query } });
+  },
+  getPairProfile: () => {
+    const { targetLang, nativeLang } = currentLanguageParams();
+    return api.get('/learning-hub/pair-profile', { params: { targetLang, nativeLang } });
+  },
+  savePairProfile: (payload: Record<string, any>) => {
+    const { targetLang: targetLanguage, nativeLang: nativeLanguage } = currentLanguageParams();
+    return api.put('/learning-hub/pair-profile', {
+      ...payload,
+      targetLanguage,
+      nativeLanguage,
+    }).then((response) => {
+      invalidateCachedGets((key) => key.includes('/learning-hub/overview'));
+      return response;
     });
   },
 };
 
 export const certificateService = {
+  list: () =>
+    api.get('/certificates'),
   getClassLessonStatus: (classLessonId: string) => {
     const { targetLang, nativeLang } = currentLanguageParams();
     return api.get(`/certificates/class-lessons/${classLessonId}/status`, {
@@ -286,42 +397,102 @@ export const flashcardService = {
 
 export const progressService = {
   getProgress: (userId: string) =>
-    api.get(`/progress/user/${userId}`),
+    api.get(`/progress/user/${userId}`, { params: currentLanguageParams() }),
   getSummary: (userId: string) =>
-    api.get(`/progress/summary/${userId}`),
-  recordProgress: (progressData: object) =>
-    api.post('/progress', progressData),
+    api.get(`/progress/summary/${userId}`, { params: currentLanguageParams() }),
+  recordProgress: (progressData: object) => {
+    const { targetLang: targetLanguage, nativeLang: nativeLanguage } = currentLanguageParams();
+    return api.post('/progress', {
+      ...progressData,
+      targetLanguage,
+      nativeLanguage,
+    }).then((response) => {
+      invalidateCachedGets((key) => key.includes('/learning-hub/overview'));
+      return response;
+    });
+  },
 };
 
 export const userService = {
   getProfile: (userId: string) =>
-    api.get(`/users/${userId}`),
+    cachedGet(`/users/${userId}`, {}, 10000),
   updateProfile: (userId: string, data: object) =>
-    api.put(`/users/${userId}`, data),
+    api.put(`/users/${userId}`, data).then((response) => {
+      invalidateCachedGets((key) => key.includes(`/users/${userId}`));
+      return response;
+    }),
   changePassword: (userId: string, data: object) =>
     api.put(`/users/${userId}/password`, data),
   deleteAccount: (userId: string) =>
     api.delete(`/users/${userId}`),
   saveActivityState: (userId: string, data: object) =>
-    api.put(`/users/${userId}/activity-state`, data),
+    api.put(`/users/${userId}/activity-state`, data).then((response) => {
+      invalidateCachedGets((key) => key.includes(`/users/${userId}/activity-state`));
+      return response;
+    }),
   getActivityState: (userId: string) =>
-    api.get(`/users/${userId}/activity-state`),
+    cachedGet(`/users/${userId}/activity-state`, {}, 5000),
   addXP: (userId: string, points: number) =>
-    api.post(`/users/${userId}/xp`, { points }),
-  awardXP: (userId: string, data: object) =>
-    api.post(`/users/${userId}/award-xp`, data),
+    api.post(`/users/${userId}/xp`, { points }).then((response) => {
+      invalidateCachedGets((key) => (
+        key.includes(`/users/${userId}/xp-stats`)
+        || key.includes(`/users/${userId}/gamification-stats`)
+      ));
+      return response;
+    }),
+  awardXP: (userId: string, data: object) => {
+    const { targetLang: targetLanguage, nativeLang: nativeLanguage } = currentLanguageParams();
+    return api.post(`/users/${userId}/award-xp`, {
+      ...data,
+      targetLanguage,
+      nativeLanguage,
+    }).then((response) => {
+      invalidateCachedGets((key) => (
+        key.includes(`/users/${userId}/xp-stats`)
+        || key.includes(`/users/${userId}/gamification-stats`)
+      ));
+      return response;
+    });
+  },
+  recordLearningEvent: (userId: string, data: object) => {
+    const { targetLang, nativeLang } = currentLanguageParams();
+    return api.post(`/users/${userId}/learning-events`, {
+      ...data,
+      targetLanguage: targetLang,
+      nativeLanguage: nativeLang,
+    }).then((response) => {
+      invalidateCachedGets((key) => (
+        key.includes(`/users/${userId}/xp-stats`)
+        || key.includes(`/users/${userId}/gamification-stats`)
+        || key.includes('/learning-hub/overview')
+      ));
+      return response;
+    });
+  },
   recordPeek: (userId: string, data: object) =>
     api.post(`/users/${userId}/peek`, data),
   resetXP: (userId: string) =>
-    api.post(`/users/${userId}/reset-xp`),
+    api.post(`/users/${userId}/reset-xp`).then((response) => {
+      invalidateCachedGets((key) => (
+        key.includes(`/users/${userId}/xp-stats`)
+        || key.includes(`/users/${userId}/gamification-stats`)
+      ));
+      return response;
+    }),
   getXpStats: (userId: string) =>
-    api.get(`/users/${userId}/xp-stats`),
+    cachedGet(`/users/${userId}/xp-stats`, {}, 10000),
   toggleXpDecay: (userId: string, enabled: boolean) =>
     api.put(`/users/${userId}/xp-decay-mode`, { enabled }),
   getGamificationStats: (userId: string) =>
-    api.get(`/users/${userId}/gamification-stats`),
+    cachedGet(`/users/${userId}/gamification-stats`, {}, 10000),
   claimQuestReward: (userId: string, questId: string) =>
-    api.post(`/users/${userId}/claim-quest-reward`, { questId }),
+    api.post(`/users/${userId}/claim-quest-reward`, { questId }).then((response) => {
+      invalidateCachedGets((key) => (
+        key.includes(`/users/${userId}/xp-stats`)
+        || key.includes(`/users/${userId}/gamification-stats`)
+      ));
+      return response;
+    }),
   getLeaderboard: (userId: string) =>
     api.get(`/users/${userId}/leaderboard`),
 };
@@ -368,7 +539,7 @@ export const adminService = {
 
 export const aiService = {
   getEntitlements: () =>
-    api.get('/ai/entitlements'),
+    cachedGet('/ai/entitlements', {}, 10000),
   sendConversationTurn: (data: object) =>
     api.post('/ai/conversation', data, { timeout: 60000 }),
 };

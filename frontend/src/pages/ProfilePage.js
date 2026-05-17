@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { userService, progressService } from '../services/api';
+import { certificateService, classLessonService, learningHubService, userService, progressService } from '../services/api';
 import speechService from '../services/speechService';
 import LANGUAGES, {
   getNativeLangCode,
@@ -10,6 +10,7 @@ import LANGUAGES, {
   getTargetLangCode,
 } from '../config/languages';
 import { normalizeLanguageCode } from '../utils/languagePairPolicy';
+import { formatVoiceOptions } from '../utils/voiceDisplay';
 import './ProfilePage.css';
 
 function isProOrUltraTier(tier) {
@@ -33,6 +34,8 @@ function ProfilePage({ onLogout }) {
   );
   const [user, setUser] = useState(null);
   const [progress, setProgress] = useState(null);
+  const [learningHub, setLearningHub] = useState(null);
+  const [certificates, setCertificates] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const location = useLocation();
@@ -80,12 +83,16 @@ function ProfilePage({ onLogout }) {
   const fetchUserData = async () => {
     try {
       setLoading(true);
-      const [userResponse, progressResponse] = await Promise.all([
+      const [userResponse, progressResponse, learningHubResponse, certificateResponse] = await Promise.all([
         userService.getProfile(userId),
         progressService.getSummary(userId),
+        learningHubService.getOverview().catch(() => ({ data: null })),
+        certificateService.list().catch(() => ({ data: [] })),
       ]);
       setUser(userResponse.data);
       setProgress(progressResponse.data);
+      setLearningHub(learningHubResponse.data);
+      setCertificates(certificateResponse.data?.certificates || []);
       setEditData({ username: userResponse.data.username });
       const effectiveTier = userResponse.data.role === 'admin'
         ? 'pro'
@@ -205,7 +212,13 @@ function ProfilePage({ onLogout }) {
     languageName,
     voices,
     selectedVoice,
-  }) => (
+  }) => {
+    const displayVoices = formatVoiceOptions(voices, {
+      languageCode,
+      t,
+      uiLanguage: i18n.resolvedLanguage || i18n.language,
+    });
+    return (
     <div className="voice-language-group">
       <div className="voice-language-header">
         <h3>{title}</h3>
@@ -227,15 +240,15 @@ function ProfilePage({ onLogout }) {
             </div>
             {!selectedVoice && <span className="voice-check">&#10003;</span>}
           </div>
-          {voices.map((voice) => (
+          {displayVoices.map(({ name, display }) => (
             <div
-              key={voice.name}
-              className={`voice-option ${selectedVoice === voice.name ? 'voice-option-selected' : ''}`}
-              onClick={() => handleVoiceChange(languageCode, voice.name)}
+              key={name}
+              className={`voice-option ${selectedVoice === name ? 'voice-option-selected' : ''}`}
+              onClick={() => handleVoiceChange(languageCode, name)}
             >
               <div className="voice-option-info">
-                <span className="voice-option-name">{voice.displayName || voice.name}</span>
-                <span className="voice-option-lang">{voice.lang}{voice.gender ? ` · ${voice.gender}` : ''}</span>
+                <span className="voice-option-name">{display.primary}</span>
+                <span className="voice-option-lang">{display.secondary}</span>
               </div>
               <button
                 className="voice-preview-btn"
@@ -243,19 +256,20 @@ function ProfilePage({ onLogout }) {
                   e.stopPropagation();
                   speechService.speak(LANGUAGES[languageCode]?.hello || 'Hello', {
                     lang: LANGUAGES[languageCode]?.ttsLocale,
-                    voice: voice.name,
+                    voice: name,
                   });
                 }}
               >
                 {t('profilePage.preview')}
               </button>
-              {selectedVoice === voice.name && <span className="voice-check">&#10003;</span>}
+              {selectedVoice === name && <span className="voice-check">&#10003;</span>}
             </div>
           ))}
         </div>
       )}
     </div>
-  );
+    );
+  };
 
   const handleModeToggle = async (enable) => {
     try {
@@ -314,6 +328,27 @@ function ProfilePage({ onLogout }) {
     || user?.aiEntitlements?.canUsePracticeContext
     || isProOrUltraTier(personalizationTier),
   );
+  const voicePracticeHistory = (learningHub?.recentEvents || [])
+    .filter((event) => (
+      ['conversation_turn', 'speaking_practice_complete'].includes(event.eventType)
+      && event.metadata?.transcript
+      && ['spoken', 'hands_free'].includes(event.metadata?.mode || '')
+    ))
+    .slice(0, 6);
+  const replayTargetSpeech = (event) => {
+    const targetSpeech = event?.metadata?.targetText || event?.metadata?.transcript;
+    if (!targetSpeech) return;
+    speechService.speak(targetSpeech, { lang: LANGUAGES[getTargetLangCode()]?.ttsLocale });
+  };
+  const practiceVoiceTurnAgain = (event) => {
+    const transcript = event?.metadata?.transcript;
+    if (!transcript) return;
+    const prompt = t('learningHub.practiceAgainPrompt', {
+      text: transcript,
+      defaultValue: 'Help me practice saying "{{text}}" again.',
+    });
+    navigate(`/conversation?prompt=${encodeURIComponent(prompt)}`);
+  };
 
   return (
     <div className="profile-container">
@@ -481,6 +516,64 @@ function ProfilePage({ onLogout }) {
                   </div>
                 </div>
               </div>
+
+              <div className="card profile-gallery-card">
+                <h2>{t('learningHub.milestonesTitle', 'Milestones')}</h2>
+                <div className="profile-gallery-grid">
+                  <div>
+                    <strong>{learningHub?.milestones?.completedClassLessons || 0}</strong>
+                    <span>{t('learningHub.completedLessons', 'Completed lessons')}</span>
+                  </div>
+                  <div>
+                    <strong>{learningHub?.milestones?.savedItems || 0}</strong>
+                    <span>{t('learningHub.savedItems', 'Saved items')}</span>
+                  </div>
+                  <div>
+                    <strong>{certificates.length}</strong>
+                    <span>{t('learningHub.certificates', 'Certificates')}</span>
+                  </div>
+                </div>
+                {certificates.length > 0 && (
+                  <div className="profile-certificate-list">
+                    {certificates.slice(0, 4).map((certificate) => (
+                      <button
+                        type="button"
+                        key={certificate._id}
+                        onClick={() => navigate(`/certificates/verify/${certificate.certificateId}`)}
+                      >
+                        <strong>{certificate.classLessonTitle || t('certificates.issuedTitle')}</strong>
+                        <span>{certificate.issuedAt ? formatDate(certificate.issuedAt) : ''}</span>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className="card profile-voice-history-card">
+                <h2>{t('learningHub.voiceHistoryTitle', 'Voice practice history')}</h2>
+                {voicePracticeHistory.length ? (
+                  <div className="profile-voice-history-list">
+                    {voicePracticeHistory.map((event) => (
+                      <div key={event._id}>
+                        <small>{t('learningHub.youSaid', 'You said')}</small>
+                        <strong>{event.metadata.transcript}</strong>
+                        <small>{t('learningHub.targetSpeech', 'Target speech')}</small>
+                        <span>{event.metadata.targetText || event.metadata.transcript}</span>
+                        <div className="profile-voice-history-actions">
+                          <button type="button" onClick={() => replayTargetSpeech(event)}>
+                            {t('learningHub.replayTargetSpeech', 'Hear target speech')}
+                          </button>
+                          <button type="button" onClick={() => practiceVoiceTurnAgain(event)}>
+                            {t('learningHub.practiceAgain', 'Practice again')}
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="card-description">{t('learningHub.voiceHistoryEmpty', 'Speaking turns will appear here after conversation practice.')}</p>
+                )}
+              </div>
             </div>
           )}
 
@@ -549,6 +642,10 @@ function ProfilePage({ onLogout }) {
                         try {
                           await userService.updateProfile(userId, { nativeLanguage: val });
                         } catch (_) {}
+                        classLessonService.preparePair({
+                          nativeLang: val,
+                          targetLang: getTargetLangCode(),
+                        }).catch(() => {});
                         window.location.reload();
                       }}
                     >
@@ -568,6 +665,10 @@ function ProfilePage({ onLogout }) {
                         try {
                           await userService.updateProfile(userId, { targetLanguage: val });
                         } catch (_) {}
+                        classLessonService.preparePair({
+                          nativeLang: getNativeLangCode(),
+                          targetLang: val,
+                        }).catch(() => {});
                         window.location.reload();
                       }}
                     >

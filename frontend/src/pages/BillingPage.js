@@ -6,7 +6,7 @@ import { billingService } from '../services/api';
 import './BillingPage.css';
 
 function BillingPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [account, setAccount] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -37,6 +37,13 @@ function BillingPage() {
     () => memberships.find((membership) => ['active', 'trialing'].includes(String(membership.organizationId?.status || membership.status || '').toLowerCase())),
     [memberships],
   );
+  const locale = i18n.resolvedLanguage || i18n.language || undefined;
+  const formatBillingDate = (value) => {
+    if (!value) return t('billing.noRenewalDate');
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return t('billing.noRenewalDate');
+    return date.toLocaleDateString(locale);
+  };
 
   const handlePortal = async () => {
     setNotice('');
@@ -89,7 +96,7 @@ function BillingPage() {
           <FiCreditCard />
           <div>
             <span>{t('billing.personalBilling')}</span>
-            <strong>{summary.personalSubscription?.status || t('billing.noPaidSubscription')}</strong>
+            <strong>{summary.personalSubscription?.status ? t(`adminBilling.statuses.${summary.personalSubscription.status}`, summary.personalSubscription.status) : t('billing.noPaidSubscription')}</strong>
             <p>{summary.personalSubscription?.cancelAtPeriodEnd ? t('billing.cancelsAtPeriodEnd') : t('billing.personalBillingHint')}</p>
           </div>
         </article>
@@ -126,10 +133,10 @@ function BillingPage() {
           <div className="billing-history-list">
             {subscriptions.map((subscription) => (
               <div key={subscription._id || subscription.providerSubscriptionId} className="billing-history-row">
-                <strong>{subscription.planId}</strong>
-                <span>{subscription.status}</span>
-                <span>{subscription.source}</span>
-                <small>{subscription.currentPeriodEnd ? new Date(subscription.currentPeriodEnd).toLocaleDateString() : t('billing.noRenewalDate')}</small>
+                <strong>{t(`pricing.planNames.${subscription.planId}`, subscription.planId)}</strong>
+                <span>{t(`adminBilling.statuses.${subscription.status}`, subscription.status)}</span>
+                <span>{t(`billing.sources.${subscription.source}`, subscription.source)}</span>
+                <small>{formatBillingDate(subscription.currentPeriodEnd)}</small>
               </div>
             ))}
           </div>

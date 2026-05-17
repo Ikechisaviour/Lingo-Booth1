@@ -20,7 +20,10 @@
     "done": "हो गया",
     "clearAll": "सब हटाएं",
     "sending": "भेजा जा रहा है...",
-    "saving": "सहेजा जा रहा है..."
+    "saving": "सहेजा जा रहा है...",
+    "search": "खोज",
+    "notSet": "सेट नहीं",
+    "all": "सभी"
   },
   "languages": {
     "en": "अंग्रेज़ी",
@@ -121,7 +124,8 @@
     "writing": "लिखना",
     "conversation": "बातचीत",
     "plans": "योजनाओं",
-    "institution": "संस्था"
+    "institution": "संस्था",
+    "review": "समीक्षा"
   },
   "guestPrompt": {
     "title": "आप बहुत अच्छा कर रहे हैं!",
@@ -427,7 +431,12 @@
     "topic": "विषय (वैकल्पिक)",
     "save": "सेव करें",
     "categoryPlaceholder": "जैसे संख्याएँ, शुभकामनाएँ",
-    "topicPlaceholder": "जैसे सप्ताह के दिन, 1-10"
+    "topicPlaceholder": "जैसे सप्ताह के दिन, 1-10",
+    "savedFromFlashcardReason": "दूसरे पास के लिए फ़्लैशकार्ड से सहेजा गया।",
+    "savedForReview": "समीक्षा हेतु सहेजा गया.",
+    "saveForReviewFailed": "अभी यह कार्ड सहेजा नहीं जा सका.",
+    "bookmarkedReason": "फ़्लैशकार्ड से बुकमार्क किया गया.",
+    "selfTestReason": "त्वरित स्व-परीक्षण के लिए फ़्लैशकार्ड से सहेजा गया।"
   },
   "progress": {
     "title": "आपकी प्रगति",
@@ -791,13 +800,13 @@
     "priceAnnual": "{{amount}}/वर्ष",
     "priceMonthly": "{{amount}}/माह",
     "planNames": {
-      "free": "मुक्त",
+      "free": "फ्री",
       "plus": "प्लस",
       "pro": "प्रो",
-      "ultra": "अत्यंत",
-      "institution_basic": "इंस्टीट्यूशन बेसिक",
-      "institution_pro": "संस्था प्रो",
-      "institution_enterprise": "संस्था उद्यम"
+      "ultra": "अल्ट्रा",
+      "institution_basic": "इंस्टिट्यूशन बेसिक",
+      "institution_pro": "इंस्टिट्यूशन प्रो",
+      "institution_enterprise": "इंस्टिट्यूशन एंटरप्राइज"
     },
     "planTaglines": {
       "free": "दैनिक सीमाओं के साथ सीखने का चक्र आज़माएँ।",
@@ -810,7 +819,8 @@
     },
     "discountCode": "डिस्काउंट कोड",
     "discountPlaceholder": "वैकल्पिक कोड",
-    "discountUnavailable": "वह डिस्काउंट कोड इस योजना के लिए उपलब्ध नहीं है।"
+    "discountUnavailable": "वह डिस्काउंट कोड इस योजना के लिए उपलब्ध नहीं है।",
+    "automaticDiscountApplied": "{{discount}} की स्वचालित छूट लागू"
   },
   "billing": {
     "kicker": "बिलिंग",
@@ -908,7 +918,10 @@
       "past_due": "पिछला बकाया",
       "cancelled": "रद्द कर दिया गया",
       "suspended": "निलंबित"
-    }
+    },
+    "snapshotsKicker": "शिक्षार्थी स्नैपशॉट",
+    "needsHelpTitle": "ध्यान देने की जरूरत है",
+    "noNeedsHelpLearners": "वर्तमान में किसी भी शिक्षार्थी को अतिरिक्त ध्यान देने की आवश्यकता नहीं है।"
   },
   "errorBoundary": {
     "title": "कुछ गलत हो गया",
@@ -927,7 +940,15 @@
     "playing": "खेलना…",
     "listen": "सुनना",
     "use": "उपयोग",
-    "useDefault": "अभी के लिए डिफ़ॉल्ट आवाज का उपयोग करें"
+    "useDefault": "अभी के लिए डिफ़ॉल्ट आवाज का उपयोग करें",
+    "gender": {
+      "male": "पुरुष",
+      "female": "महिला"
+    },
+    "friendlyVoiceLabelGendered": "{{language}} {{gender}} आवाज़ {{number}}{{region}}",
+    "friendlyVoiceLabelNeutral": "{{language}} आवाज़ {{number}}{{region}}",
+    "voiceRegionSuffix": "· {{region}}",
+    "loadError": "आवाज़ विकल्प लोड नहीं हो सके। डिफ़ॉल्ट आवाज़ का उपयोग होगा।"
   },
   "classList": {
     "kicker": "कक्षा",
@@ -1011,7 +1032,9 @@
       "listeningPrefix": "सुन रहा है",
       "speechCaptured": "आवाज़ कैप्चर हुई। जरूरत हो तो संपादित करें, फिर भेजें।",
       "noSpeechCaptured": "कोई आवाज़ कैप्चर नहीं हुई। फिर कोशिश करें।",
-      "voiceUpdated": "आवाज़ अपडेट हुई। सुनने के लिए पंक्ति दबाएँ।"
+      "voiceUpdated": "आवाज़ अपडेट हुई। सुनने के लिए पंक्ति दबाएँ।",
+      "bookmarked": "बुकमार्क किया गया.",
+      "bookmarkFailed": "अभी इस आइटम को बुकमार्क नहीं किया जा सका."
     },
     "speechErrors": {
       "permissionBlocked": "माइक्रोफ़ोन या स्पीच रिकग्निशन अनुमति बंद है। सेटिंग में अनुमति दें और फिर कोशिश करें।",
@@ -1062,7 +1085,36 @@
         "goal": "गलतियों की समीक्षा करें और जो आपने सीखा उसे संक्षेप में बताएं।",
         "task": "आपने जो एक चीज़ सीखी है और एक चीज़ जो अभी भी अस्पष्ट है उसका सारांश प्रस्तुत करें।"
       }
-    }
+    },
+    "savedFromClassReason": "समीक्षा के लिए कक्षा से सहेजा गया।",
+    "savedForReview": "समीक्षा हेतु सहेजा गया.",
+    "saveForReviewFailed": "इस आइटम को अभी सहेजा नहीं जा सका.",
+    "wrapUpKicker": "अगला कदम",
+    "wrapUpTitle": "पाठ को जीवित रखें",
+    "wrapUpBody": "सहेजे गए आइटम की समीक्षा करें, उन्हें बातचीत में उपयोग करें, या जब पाठ अभी भी ताज़ा हो तो उन्हें स्मृति से लिखें।",
+    "wrapUpReview": "समीक्षा",
+    "wrapUpConversation": "बातचीत",
+    "wrapUpWriting": "लिखना",
+    "saveForReview": "समीक्षा के लिए सहेजें",
+    "fallback": {
+      "thisItem": "यह आइटम",
+      "shortAnswer": "इस पाठ आइटम का उपयोग करके एक संक्षिप्त उत्तर देने का प्रयास करें।",
+      "practiceLead": "आइए {{title}} का अभ्यास करें।",
+      "continue": "आइए पाठ के अगले भाग को जारी रखें।"
+    },
+    "examplePrefix": "उदाहरण:",
+    "bookmarkedReason": "कक्षा से बुकमार्क किया गया.",
+    "itemsCompleted": "{{count}} आइटम पूर्ण",
+    "lessonItemsTotal": "{{count}} पाठ आइटम",
+    "savedExampleReason": "बाद के अभ्यास के लिए कक्षा का उदाहरण सहेजा गया।",
+    "exampleSaved": "उदाहरण समीक्षा के लिए सहेजा गया.",
+    "savedTutorReplyReason": "बाद के अभ्यास के लिए शिक्षक के उत्तर से बचाया गया।",
+    "tutorReplySaved": "शिक्षक का उत्तर समीक्षा के लिए सहेजा गया।",
+    "playingSelectedItem": "चयनित आइटम चलाया जा रहा है.",
+    "saveReply": "उत्तर सहेजें",
+    "saveExample": "उदाहरण सहेजें",
+    "practiceEverywhere": "इसका अभ्यास हर जगह करें",
+    "selfTestReason": "त्वरित आत्म-परीक्षण के लिए कक्षा से बचाया गया।"
   },
   "exercise": {
     "kicker": "व्यायाम",
@@ -1073,7 +1125,8 @@
     "flashcardsTitle": "फ़्लैशकार्ड",
     "flashcardsDescMobile": "शब्दों और वाक्यांशों की समीक्षा करें.",
     "writingTitle": "लिखना",
-    "writingDescMobile": "ट्रेस करें, कॉपी करें, सुनें और एक लेखन नोटबुक रखें।"
+    "writingDescMobile": "ट्रेस करें, कॉपी करें, सुनें और एक लेखन नोटबुक रखें।",
+    "reviewDescMobile": "सहेजे गए आइटम और आज जो बकाया है उस पर वापस लौटें।"
   },
   "conversation": {
     "kicker": "बातचीत अभ्यास",
@@ -1113,7 +1166,23 @@
       "planRefreshed": "आपकी योजना सेटिंग ताज़ा कर दी गईं.",
       "messageNotResent": "आपका संदेश दोबारा नहीं भेजा गया.",
       "connectionIssue": "कनेक्शन समस्या. थोड़ी देर में पुनः प्रयास करें."
-    }
+    },
+    "savedReplyReason": "वार्तालाप अभ्यास से बचा।",
+    "savedReply": "उत्तर समीक्षा के लिए सहेजा गया.",
+    "saveReplyFailed": "इस उत्तर को अभी सहेजा नहीं जा सका.",
+    "savedRoleplayReason": "पूर्ण रोलप्ले को बाद के अभ्यास के लिए सहेजा गया।",
+    "roleplaySaved": "रोलप्ले समीक्षा के लिए सहेजा गया।",
+    "saveRoleplayFailed": "अभी इस रोलप्ले को सहेजा नहीं जा सका.",
+    "recapTitle": "रोलप्ले पूरा हुआ",
+    "saveRoleplay": "रोलप्ले सहेजें",
+    "saveReply": "बचाना",
+    "easier": "आसान",
+    "harder": "और जोर से",
+    "recapWentWell": "क्या ठीक रहा",
+    "recapUsefulPhrases": "उपयोगी वाक्यांश",
+    "recapReview": "आगे समीक्षा करें",
+    "recapReviewFallback": "एक वाक्यांश सहेजें और इसे दूसरे अभ्यास मोड में पुन: उपयोग करें।",
+    "practiceLabel": "बातचीत अभ्यास"
   },
   "context": {
     "backToProfile": "प्रोफ़ाइल पर वापस जाएँ",
@@ -1185,7 +1254,8 @@
       "conversationNative": "आपके वार्तालाप अभ्यास से",
       "conversationHistory": "बातचीत का इतिहास",
       "personalized": "निजीकृत",
-      "personalNotebook": "व्यक्तिगत नोटबुक"
+      "personalNotebook": "व्यक्तिगत नोटबुक",
+      "savedReview": "समीक्षा आइटम सहेजा गया"
     },
     "modes": {
       "trace": "पता लगाना",
@@ -1232,7 +1302,9 @@
       "shape": "आकार मेल खाता है",
       "spacing": "अंतर स्पष्ट है",
       "memory": "स्मृति से"
-    }
+    },
+    "savedReason": "दूसरे पास के लिए लेखन अभ्यास से बचाया गया।",
+    "selfTestReason": "त्वरित आत्म-परीक्षण के लिए लेखन अभ्यास से बचाया गया।"
   },
   "certificates": {
     "kicker": "प्रमाणपत्र",
@@ -1265,5 +1337,140 @@
     "signIn": "दाखिल करना",
     "issuedSuccess": "प्रमाणपत्र जारी किया गया।",
     "issueFailed": "प्रमाणपत्र जारी नहीं हो सका."
+  },
+  "learningHub": {
+    "continueLearning": "सीखना जारी रखें",
+    "pairSetupSaved": "सीखने का सेटअप सहेजा गया.",
+    "nextBestAction": "अगली सर्वोत्तम कार्रवाई",
+    "reviewDue": "समीक्षा देय है",
+    "reviewNow": "अभी समीक्षा करें",
+    "wordOfDay": "दिन का शब्द या वाक्यांश",
+    "noSpotlightYet": "आरंभ करने के लिए कुछ उपयोगी सहेजें",
+    "pairSetupTitle": "इस भाषा युग्म को स्थापित करें",
+    "pairSetupBody": "एक बार हमें अपना स्तर और लक्ष्य बताएं ताकि अनुशंसाएं इस लक्ष्य भाषा में फिट बैठ सकें।",
+    "level": "स्तर",
+    "goal": "लक्ष्य",
+    "pace": "गति",
+    "dailyPlanTitle": "आज की योजना",
+    "weeklySummaryTitle": "इस सप्ताह",
+    "points": "अंक",
+    "activeDays": "सक्रिय दिन",
+    "sessions": "सत्र",
+    "recentStudyTitle": "आधुनिक अध्ययन",
+    "savedAfterQuizMiss": "प्रश्नोत्तरी का उत्तर चूक जाने के बाद सहेजा गया।",
+    "askTutorPrompt": "\"{{text}}\" का अभ्यास करने में मेरी सहायता करें।",
+    "savedForPractice": "बाद के अभ्यास के लिए सहेजा गया",
+    "askTutor": "ट्यूटर से पूछो",
+    "kicker": "समीक्षा",
+    "title": "उपयोगी सीख को पास रखें",
+    "subtitle": "समीक्षा करें कि दूसरे पास की क्या आवश्यकता है, सहेजे गए आइटम पर वापस लौटें, और एक स्थान से जारी रखें।",
+    "dueToday": "आज देय",
+    "queueTitle": "आज की समीक्षा कतार",
+    "queueEmptyBody": "शब्द, वाक्यांश, सुधार या रोलप्ले सहेजें और उपयोगी होने पर वे यहां वापस आ जाएंगे।",
+    "weakAreasTitle": "हाल के कमजोर क्षेत्र",
+    "practiceArea": "अभ्यास क्षेत्र",
+    "weakAreasEmpty": "अभी तक किसी भी कमजोर क्षेत्र की पहचान नहीं की गई है।",
+    "abilityTitle": "वास्तविक दुनिया की क्षमता में प्रगति",
+    "abilityEmpty": "जैसे ही आप अभ्यास करेंगे गतिविधि प्रगति यहां दिखाई देगी।",
+    "searchLabel": "अपनी शिक्षा खोजें",
+    "searchPlaceholder": "सहेजे गए आइटम या कक्षा पाठ खोजें",
+    "savedLibraryTitle": "सहेजी गई अध्ययन लाइब्रेरी",
+    "savedEmptyBody": "अपना खुद का अध्ययन शेल्फ बनाने के लिए कक्षा, फ्लैशकार्ड, लेखन या बातचीत से उपयोगी शब्दों को सहेजें।",
+    "savedBanksTitle": "बचाए गए बैंक",
+    "correctionsBank": "सुधार",
+    "roleplaysBank": "भूमिका नाटक",
+    "bookmarksBank": "बुकमार्क",
+    "openSource": "खुला स्त्रोत",
+    "spotlightHint": "आपके सहेजे गए आइटम दैनिक सुर्खियाँ बन जाते हैं।",
+    "pairSetupSummary": "सीखने की व्यवस्था",
+    "pairSetupEdit": "संपादन करना",
+    "pairSetupUpdate": "इस भाषा युग्म को अद्यतन करें",
+    "reviewBeforeSleep": "अब एक संक्षिप्त समीक्षा कल को हल्का कर देगी।",
+    "open": "खुला",
+    "bookmark": "बुकमार्क",
+    "bookmarked": "बुकमार्क किया गया.",
+    "bookmarkFailed": "अभी इस आइटम को बुकमार्क नहीं किया जा सका.",
+    "speakingTurns": "बोलने का क्रम बदल जाता है",
+    "newSavedItems": "नए सहेजे गए आइटम",
+    "completedLessons": "पूरा पाठ",
+    "certificates": "प्रमाण पत्र",
+    "guidanceTitle": "मार्गदर्शन",
+    "firstThreeDays": "पहले तीन दिन",
+    "dayNumber": "दिन {{day}}",
+    "goalPathTitle": "लक्ष्य पथ",
+    "placementTitle": "प्लेसमेंट",
+    "recentWordsTitle": "हाल के शब्द",
+    "recentWordsEmpty": "कक्षा और बातचीत से नए शब्द यहां एकत्रित होंगे।",
+    "milestonesTitle": "मील के पत्थर",
+    "savedItems": "सहेजे गए आइटम",
+    "voiceHistoryTitle": "आवाज अभ्यास इतिहास",
+    "voiceHistoryEmpty": "बातचीत के अभ्यास के बाद बोलने के मोड़ यहां दिखाई देंगे।",
+    "askWeakAreaPrompt": "{{area}} का अभ्यास करने में मेरी सहायता करें।",
+    "evidenceCount": "{{count}} साक्ष्य के टुकड़े",
+    "askAbilityPrompt": "{{area}} का अभ्यास करने में मेरी सहायता करें।",
+    "practiceWriting": "लिखना",
+    "practiceFlashcard": "फ़्लैश कार्ड",
+    "whyWeakArea": "आप यह देख रहे हैं क्योंकि इस क्षेत्र को अभी भी सुदृढीकरण की आवश्यकता है।",
+    "reviewBeforeSleepTitle": "सोने से पहले समीक्षा करें",
+    "savedItem": "सहेजा गया",
+    "weakArea": "कमज़ोर",
+    "reviewBeforeSleepEmpty": "आज रात किसी भी जरूरी चीज़ का इंतज़ार नहीं हो रहा है।",
+    "miniSpeakingTitle": "मिनी बोलने का अभ्यास",
+    "miniSpeakingReason": "किसी सहेजे गए वाक्यांश या सुधार से संक्षिप्त बोलने का अभ्यास।",
+    "practiceSpeaking": "बोलना",
+    "miniSpeakingEmpty": "सुधार और सहेजे गए वाक्यांश यहां त्वरित बोलने का अभ्यास बन जाएंगे।",
+    "correctionsEmpty": "त्वरित पुनः प्रयास के लिए सहेजे गए सुधार यहां एकत्र किए जाएंगे।",
+    "roleplaysEmpty": "जब आप उनका पुन: उपयोग करना चाहेंगे तो सहेजे गए रोलप्ले यहां दिखाई देंगे।",
+    "startLevelCheck": "प्रारंभ स्तर की जाँच करें",
+    "levelCheckUnavailable": "इस भाषा युग्म के लिए अभी तक एक स्तर की जाँच तैयार नहीं है।",
+    "levelCheckLoadFailed": "लेवल जांच अभी लोड नहीं हो सकी.",
+    "levelCheckTitle": "लघु स्तरीय जांच",
+    "levelCheckSubtitle": "कुछ त्वरित प्रश्नों के उत्तर दें ताकि ऐप बेहतर शुरुआती बिंदु चुन सके।",
+    "levelCheckResult": "सुझाया गया आरंभिक स्तर",
+    "levelCheckSaved": "इस भाषा युग्म के लिए यह आरंभिक बिंदु सहेजा गया है.",
+    "returnHome": "घर लौटना",
+    "questionCount": "प्रश्न {{current}} का {{total}}",
+    "practiceAgainPrompt": "मुझे फिर से \"{{text}}\" कहने का अभ्यास करने में मदद करें।",
+    "replayReply": "उत्तर पुनः चलाएँ",
+    "practiceAgain": "पुनः अभ्यास करें",
+    "practiceEverywhere": "इसका अभ्यास अन्यत्र करें",
+    "practicePronunciation": "सुनना",
+    "youSaid": "आपने कहा",
+    "targetSpeech": "लक्ष्य भाषण",
+    "replayTargetSpeech": "लक्षित भाषण सुनें",
+    "practiceQuiz": "आत्म परीक्षण",
+    "useRoleplayAgain": "पुनः प्रयोग करें",
+    "offlinePackInUse": "कनेक्शन कमजोर होने पर आपका हालिया पैक दिखाया जा रहा है।",
+    "quickQuizKicker": "आत्म परीक्षण",
+    "quickQuizTitle": "त्वरित आत्म-परीक्षण",
+    "quickQuizNoAnswer": "अर्थ याद करें, फिर खुद को ईमानदारी से ग्रेड दें।",
+    "revealAnswer": "उत्तर प्रकट करें",
+    "studyHistoryTitle": "इतिहास का अध्ययन करें",
+    "pointsCount": "{{count}} अंक",
+    "studyHistoryEmpty": "जैसे-जैसे आप अभ्यास करेंगे, आपके अध्ययन के दिन यहीं एकत्रित हो जाएंगे।",
+    "listen": "सुनना",
+    "goals": {
+      "travel": "यात्रा",
+      "work": "काम",
+      "school": "विद्यालय",
+      "dailyLife": "दैनिक जीवन",
+      "conversation": "बातचीत",
+      "family": "परिवार",
+      "religious": "धार्मिक सेटिंग",
+      "health": "स्वास्थ्य",
+      "culture": "संस्कृति",
+      "exam": "परीक्षा",
+      "other": "अन्य"
+    },
+    "savedBankEmptyBody": "इस उद्देश्य के लिए आपके द्वारा सहेजे गए आइटम यहां एकत्रित होंगे।",
+    "recentMistakesTitle": "हाल की गलतियाँ",
+    "recentMistakesBody": "ये हाल ही में छूटे हुए आइटम हैं जो पुनः प्रयास करने लायक हैं जबकि सुधार अभी भी ताज़ा है।",
+    "recentMistakesEmptyBody": "छूटे हुए प्रश्नोत्तरी आइटम यहां दिखाई देंगे ताकि आप उन्हें शीघ्रता से पुनः प्रयास कर सकें।",
+    "firstThreeDayReviewTitle": "समीक्षा करें कि आप क्या मिले",
+    "firstThreeDaySpeakTitle": "इसे ज़ोर से प्रयोग करें",
+    "firstThreeDayLearnTitle": "एक निर्देशित पाठ प्रारंभ करें",
+    "firstThreeDayReviewBody": "आपने कल जो देखा उस पर एक बार लौटें ताकि पहली चीजें चिपकनी शुरू हो जाएं।",
+    "firstThreeDaySpeakBody": "बोलने की छोटी बारी का उपयोग करें ताकि भाषा पृष्ठ को जल्दी छोड़ दे।",
+    "firstThreeDayLearnBody": "एक छोटे निर्देशित पाठ से शुरुआत करें ताकि जोड़ी के पास एक स्पष्ट प्रारंभिक बिंदु हो।"
   }
 }

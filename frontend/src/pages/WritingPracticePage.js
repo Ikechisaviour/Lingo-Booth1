@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { classLessonService, practiceContextService } from '../services/api';
+import { classLessonService, learningHubService, practiceContextService, userService } from '../services/api';
 import LANGUAGES, { getNativeLangCode, getTargetLangCode, getTargetLangName } from '../config/languages';
 import speechService from '../services/speechService';
 import { looksLikeRawEnglishForNative, strokeGuideFamilyForLanguage } from '../utils/languagePairPolicy';
@@ -312,6 +313,9 @@ function DrawingPad({ ghostText, showGhost, resetKey, onStrokeCount }) {
 
 function WritingPracticePage() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const userId = localStorage.getItem('userId');
   const targetLanguage = getTargetLangCode();
   const nativeLanguage = getNativeLangCode();
   const targetName = getTargetLangName();
@@ -324,6 +328,8 @@ function WritingPracticePage() {
   const [review, setReview] = useState({ shape: false, spacing: false, memory: false });
   const [customTarget, setCustomTarget] = useState('');
   const [customNative, setCustomNative] = useState('');
+  const seededTarget = compact(searchParams.get('savedText'), 180);
+  const seededNative = compact(searchParams.get('nativeText'), 180);
 
   useEffect(() => {
     let cancelled = false;
@@ -346,7 +352,17 @@ function WritingPracticePage() {
         } catch (_) {}
       }
 
+      const seededItem = seededTarget
+        ? notebookItem({
+          target: seededTarget,
+          native: seededNative,
+          source: 'personal',
+          sourceLabel: t('writing.sourceLabels.savedReview', 'Saved review item'),
+          type: 'sentence',
+        })
+        : null;
       const nextItems = uniqueItems([
+        ...(seededItem ? [seededItem] : []),
         ...personalItems,
         ...contextItems,
         ...lessonItems,
@@ -364,7 +380,7 @@ function WritingPracticePage() {
     return () => {
       cancelled = true;
     };
-  }, [nativeLanguage, targetLanguage, t]);
+  }, [nativeLanguage, seededNative, seededTarget, targetLanguage, t]);
 
   const filteredItems = useMemo(() => (
     sourceFilter === 'all' ? items : items.filter((item) => item.source === sourceFilter)
@@ -408,7 +424,7 @@ function WritingPracticePage() {
     }
   };
 
-  const saveAttempt = (result) => {
+  const saveAttempt = async (result) => {
     if (!selectedItem) return;
     const attempts = loadJsonArray(ATTEMPT_KEY);
     const next = [{
@@ -425,7 +441,30 @@ function WritingPracticePage() {
     setStatus(result === 'complete'
       ? t('writing.status.savedComplete', 'Saved as complete. Moving to the next item.')
       : t('writing.status.savedReview', 'Saved for more practice.'));
-    if (result === 'complete') selectNext();
+    if (result === 'complete') {
+      if (userId) {
+        userService.recordLearningEvent(userId, {
+          eventType: 'writing_complete',
+          itemId: selectedItem.id,
+          writingMode: mode,
+          fromMemory: review.memory,
+          source: selectedItem.source,
+        }).catch(() => {});
+      }
+      selectNext();
+    } else if (userId) {
+      learningHubService.saveItem({
+        itemType: selectedItem.type === 'word' ? 'word' : 'phrase',
+        targetText: selectedItem.target,
+        nativeText: selectedItem.native,
+        romanization: selectedItem.romanization,
+        sourceType: 'writing',
+        sourceRef: selectedItem.id,
+        sourceLabel: selectedItem.sourceLabel,
+        reason: t('writing.savedReason', 'Saved from writing practice for another pass.'),
+        metadata: { route: '/writing', writingMode: mode },
+      }).catch(() => {});
+    }
   };
 
   const addPersonalItem = () => {
@@ -447,6 +486,42 @@ function WritingPracticePage() {
     setCustomTarget('');
     setCustomNative('');
     setStatus(t('writing.status.addedNotebook', 'Added to your writing notebook.'));
+  };
+
+  const askTutorAboutSelected = () => {
+    if (!selectedItem?.target) return;
+    const prompt = t('learningHub.askTutorPrompt', {
+      text: selectedItem.target,
+      defaultValue: 'Help me practice "{{text}}".',
+    });
+    navigate(`/conversation?prompt=${encodeURIComponent(prompt)}`);
+  };
+
+  const openFlashcardForSelected = () => {
+    if (!selectedItem?.target) return;
+    const params = new URLSearchParams({
+      savedText: selectedItem.target || '',
+      nativeText: selectedItem.native || '',
+    });
+    navigate(`/flashcards?${params.toString()}`);
+  };
+
+  const selfTestSelected = async () => {
+    if (!userId || !selectedItem?.target) return;
+    try {
+      const response = await learningHubService.saveItem({
+        itemType: selectedItem.type === 'word' ? 'word' : 'phrase',
+        targetText: selectedItem.target,
+        nativeText: selectedItem.native,
+        romanization: selectedItem.romanization,
+        sourceType: 'writing',
+        sourceRef: selectedItem.id,
+        sourceLabel: selectedItem.sourceLabel,
+        reason: t('writing.selfTestReason', 'Saved from writing practice for a quick self-test.'),
+        metadata: { route: '/writing', writingMode: mode },
+      });
+      navigate('/review', { state: { quickQuizItem: response.data } });
+    } catch (_) {}
   };
 
   const instructionText = () => {
@@ -593,6 +668,15 @@ function WritingPracticePage() {
             </div>
 
             <div className="writing-actions">
+              <button type="button" onClick={askTutorAboutSelected} disabled={!selectedItem}>
+                {t('learningHub.askTutor', 'Ask tutor')}
+              </button>
+              <button type="button" onClick={openFlashcardForSelected} disabled={!selectedItem}>
+                {t('learningHub.practiceFlashcard', 'Flashcard')}
+              </button>
+              <button type="button" onClick={selfTestSelected} disabled={!selectedItem}>
+                {t('learningHub.practiceQuiz', 'Self-test')}
+              </button>
               <button type="button" onClick={() => saveAttempt('needs-practice')} disabled={!selectedItem}>{t('writing.saveForReview', 'Save for review')}</button>
               <button type="button" className="writing-primary" onClick={() => saveAttempt('complete')} disabled={!selectedItem}>
                 {t('writing.markCompleteNext', 'Mark complete and next')}

@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { FiMic, FiRefreshCw, FiSend, FiShield, FiVolume2, FiVolumeX, FiWifiOff } from 'react-icons/fi';
-import { aiService, practiceContextService } from '../services/api';
+import { FiBookmark, FiMic, FiRefreshCw, FiSend, FiShield, FiVolume2, FiVolumeX, FiWifiOff } from 'react-icons/fi';
+import { aiService, learningHubService, practiceContextService, userService } from '../services/api';
 import speechService from '../services/speechService';
 import LANGUAGES, { getLanguageDisplayName } from '../config/languages';
 import {
@@ -779,12 +779,17 @@ const SLOWER_COMMANDS = new Set([
 const LOCALIZED_STOP_COMMANDS = new Set(CONVERSATION_STOP_COMMANDS.map(normalizeVoiceCommand));
 const LOCALIZED_REPEAT_COMMANDS = new Set(CONVERSATION_REPEAT_COMMANDS.map(normalizeVoiceCommand));
 const LOCALIZED_SLOWER_COMMANDS = new Set(CONVERSATION_SLOWER_COMMANDS.map(normalizeVoiceCommand));
+const scenarioIds = new Set(SCENARIOS.map((item) => item.id));
 
 function ConversationPage() {
   const { t } = useTranslation();
   const [searchParams] = useSearchParams();
+  const userId = localStorage.getItem('userId');
   const lessonId = searchParams.get('lessonId') || '';
-  const [scenarioId, setScenarioId] = useState(SCENARIOS[0].id);
+  const requestedScenarioId = searchParams.get('scenario') || '';
+  const [scenarioId, setScenarioId] = useState(() => (
+    scenarioIds.has(requestedScenarioId) ? requestedScenarioId : SCENARIOS[0].id
+  ));
   const [supportLevel, setSupportLevel] = useState(SUPPORT_LEVELS[0].id);
   const [turn, setTurn] = useState('');
   const [history, setHistory] = useState([]);
@@ -800,11 +805,13 @@ function ConversationPage() {
   const [customRoleplay, setCustomRoleplay] = useState({});
   const [contextRecommendations, setContextRecommendations] = useState(null);
   const [countdownNow, setCountdownNow] = useState(Date.now());
+  const [roleplayRecap, setRoleplayRecap] = useState(null);
   const threadRef = useRef(null);
   const recognitionRef = useRef(null);
   const handsFreeRef = useRef(false);
   const restartTimerRef = useRef(null);
   const lastAssistantRef = useRef(null);
+  const pendingSpeechTurnRef = useRef(false);
 
   const isCustomScenario = scenarioId === CUSTOM_SCENARIO_ID;
   const customIsReady = isCustomScenario && completeCustomRoleplay(customRoleplay);
@@ -812,11 +819,23 @@ function ConversationPage() {
     () => SUPPORT_LEVELS.find(item => item.id === supportLevel) || SUPPORT_LEVELS[0],
     [supportLevel],
   );
+  const supportIndex = SUPPORT_LEVELS.findIndex((item) => item.id === supportLevel);
+  const shiftSupportLevel = (direction) => {
+    const nextIndex = Math.max(0, Math.min(SUPPORT_LEVELS.length - 1, supportIndex + direction));
+    setSupportLevel(SUPPORT_LEVELS[nextIndex].id);
+  };
 
   const nativeLanguage = normalizeLanguageCode(localStorage.getItem('nativeLanguage')) || 'en';
   const targetLanguage = normalizeLanguageCode(localStorage.getItem('targetLanguage')) || 'ko';
   const conversationCopy = useMemo(() => conversationCopyFor(nativeLanguage), [nativeLanguage]);
   const statusCopy = conversationCopy.status;
+  const promptFromReview = searchParams.get('prompt') || '';
+
+  useEffect(() => {
+    if (promptFromReview && !turn) {
+      setTurn(promptFromReview);
+    }
+  }, [promptFromReview, turn]);
   const localizedScenario = useMemo(
     () => scenarioCopyFor(nativeLanguage, scenarioId),
     [nativeLanguage, scenarioId],
@@ -855,6 +874,11 @@ function ConversationPage() {
     if (storedTarget && storedTarget !== targetLanguage) localStorage.setItem('targetLanguage', targetLanguage);
   }, [nativeLanguage, targetLanguage]);
 
+  useEffect(() => {
+    if (!scenarioIds.has(requestedScenarioId) || requestedScenarioId === scenarioId) return;
+    setScenarioId(requestedScenarioId);
+  }, [requestedScenarioId, scenarioId]);
+
   const activeScenarioGoal = isCustomScenario
     ? (customRoleplay.goal || localizedScenario.goal)
     : localizedScenario.goal;
@@ -889,6 +913,23 @@ function ConversationPage() {
   }, [canUsePracticeContextFeature, contextRecommendations, conversationCopy]);
 
   useEffect(() => {
+    let savedRoleplay = null;
+    try {
+      savedRoleplay = JSON.parse(sessionStorage.getItem('lingoSavedRoleplay') || 'null');
+    } catch (_) {}
+    if (savedRoleplay?.scenarioId === scenarioId && completeCustomRoleplay(savedRoleplay.customRoleplay)) {
+      sessionStorage.removeItem('lingoSavedRoleplay');
+      const savedCustom = savedRoleplay.customRoleplay;
+      const nextRoleState = customRoleState(savedCustom);
+      saveMemory(scenarioId, nativeLanguage, targetLanguage, {
+        summary: '',
+        memory: {
+          customRoleplay: savedCustom,
+          roleState: nextRoleState,
+        },
+        history: [],
+      });
+    }
     const stored = loadMemory(scenarioId, nativeLanguage, targetLanguage);
     const storedCustom = customRoleplayFromMemory(stored.memory);
     let loadedHistory = loadHistory(scenarioId, nativeLanguage, targetLanguage);
@@ -1033,6 +1074,7 @@ function ConversationPage() {
     handsFreeRef.current = false;
     setHandsFreeActive(false);
     setListening(false);
+    pendingSpeechTurnRef.current = false;
     lastAssistantRef.current = null;
     setRoleState(null);
     if (scenarioId === CUSTOM_SCENARIO_ID) {
@@ -1185,8 +1227,9 @@ function ConversationPage() {
     setHistory(prev => [...prev.slice(-11), userTurn]);
 
     try {
+      const sessionId = aiSessionIdFor(scenarioId, nativeLanguage, targetLanguage, customRoleplay);
       const response = await aiService.sendConversationTurn({
-        sessionId: aiSessionIdFor(scenarioId, nativeLanguage, targetLanguage, customRoleplay),
+        sessionId,
         scenario: activeScenarioTitle,
         targetLanguage,
         nativeLanguage,
@@ -1244,6 +1287,44 @@ function ConversationPage() {
       });
       setStatus(statusCopy.partnerReplied);
       setStatusTone('success');
+      if (userId) {
+        const turnMode = autoContinue ? 'hands_free' : pendingSpeechTurnRef.current ? 'spoken' : 'typed';
+        userService.recordLearningEvent(userId, {
+          eventType: 'conversation_turn',
+          sessionId,
+          turnId: userTurn.id,
+          mode: turnMode,
+          source: scenarioId,
+          transcript: text,
+          partnerReply: assistantTurn.content,
+          targetText: text,
+        }).catch(() => {});
+        if (stored.memory?.roleplayComplete !== true && data.memory?.roleplayComplete === true) {
+          const recentAssistantMessages = [
+            ...history.filter((message) => message.role === 'assistant' && !message.error),
+            assistantTurn,
+          ].slice(-3);
+          userService.recordLearningEvent(userId, {
+            eventType: 'roleplay_complete',
+            sessionId,
+            roleplayId: isCustomScenario ? (customRoleplay.id || 'custom') : scenarioId,
+            mode: autoContinue ? 'hands_free' : 'typed',
+          }).catch(() => {});
+          setRoleplayRecap({
+            title: activeScenarioTitle,
+            summary: data.summary || '',
+            reply: data.reply || '',
+            partner: uiLabels.activePartner,
+            goal: activeScenarioGoal,
+            usefulPhrases: recentAssistantMessages.map((message) => message.content).filter(Boolean),
+            coachingTips: [
+              ...history.map((message) => message.coachingTip).filter(Boolean),
+              assistantTurn.coachingTip,
+            ].filter(Boolean).slice(-3),
+          });
+        }
+      }
+      pendingSpeechTurnRef.current = false;
       if (speechEnabled || autoContinue) {
         if (autoContinue) {
           await speakMessage(assistantTurn);
@@ -1428,6 +1509,7 @@ function ConversationPage() {
       }
       const captured = finalTranscript.trim();
       if (captured) {
+        pendingSpeechTurnRef.current = true;
         setTurn(captured);
         if (autoContinue && handsFreeRef.current) {
           const handled = await handleHandsFreeCommand(captured);
@@ -1533,6 +1615,52 @@ function ConversationPage() {
     );
   };
 
+  const saveAssistantTurn = async (message) => {
+    if (!userId || !message?.content) return;
+    try {
+      await learningHubService.saveItem({
+        itemType: 'phrase',
+        targetText: message.content,
+        sourceType: 'conversation',
+        sourceLabel: activeScenarioTitle,
+        reason: t('conversation.savedReplyReason', 'Saved from conversation for later practice.'),
+        metadata: { scenarioId, route: '/conversation' },
+      });
+      setStatus(t('conversation.savedReply', 'Saved for review.'));
+      setStatusTone('success');
+    } catch (_) {
+      setStatus(t('conversation.saveReplyFailed', 'Could not save this reply right now.'));
+      setStatusTone('error');
+    }
+  };
+
+  const saveRoleplayRecap = async () => {
+    if (!userId || !roleplayRecap) return;
+    try {
+      await learningHubService.saveItem({
+        itemType: 'roleplay',
+        targetText: roleplayRecap.title,
+        nativeText: roleplayRecap.summary || roleplayRecap.goal,
+        sourceType: 'conversation',
+        sourceRef: scenarioId,
+        sourceLabel: roleplayRecap.partner,
+        reason: t('conversation.savedRoleplayReason', 'Completed roleplay saved for later practice.'),
+        metadata: {
+          scenarioId,
+          route: '/conversation',
+          summary: roleplayRecap.summary,
+          goal: roleplayRecap.goal,
+          customRoleplay: isCustomScenario ? customRoleplay : undefined,
+        },
+      });
+      setStatus(t('conversation.savedRoleplay', 'Roleplay saved.'));
+      setStatusTone('success');
+    } catch (_) {
+      setStatus(t('conversation.saveRoleplayFailed', 'Could not save this roleplay right now.'));
+      setStatusTone('error');
+    }
+  };
+
   return (
     <div className="conversation-page">
       <section className="conversation-shell" aria-label={t('conversation.practiceLabel', 'Conversation practice')}>
@@ -1595,6 +1723,14 @@ function ConversationPage() {
                   ))}
                 </select>
               </label>
+              <div className="conversation-support-buttons" aria-label={t('conversation.adjustSupport', 'Adjust support')}>
+                <button type="button" onClick={() => shiftSupportLevel(-1)} disabled={supportIndex <= 0}>
+                  {t('conversation.easier', 'Easier')}
+                </button>
+                <button type="button" onClick={() => shiftSupportLevel(1)} disabled={supportIndex >= SUPPORT_LEVELS.length - 1}>
+                  {t('conversation.harder', 'Harder')}
+                </button>
+              </div>
 
               <div className="conversation-brief">
                 <div>
@@ -1687,15 +1823,47 @@ function ConversationPage() {
                 </div>
               )}
 
+              {roleplayRecap && (
+                <section className="conversation-recap" aria-label={t('conversation.recapAria', 'Roleplay recap')}>
+                  <div>
+                    <strong>{t('conversation.recapTitle', 'Roleplay complete')}</strong>
+                    <span>{roleplayRecap.summary || roleplayRecap.goal}</span>
+                  </div>
+                  <div className="conversation-recap-grid">
+                    <div>
+                      <small>{t('conversation.recapWentWell', 'What went well')}</small>
+                      <span>{roleplayRecap.goal}</span>
+                    </div>
+                    <div>
+                      <small>{t('conversation.recapUsefulPhrases', 'Useful phrases')}</small>
+                      <span>{roleplayRecap.usefulPhrases?.[0] || roleplayRecap.reply}</span>
+                    </div>
+                    <div>
+                      <small>{t('conversation.recapReview', 'Review next')}</small>
+                      <span>{roleplayRecap.coachingTips?.[0] || t('conversation.recapReviewFallback', 'Save one phrase and reuse it in another practice mode.')}</span>
+                    </div>
+                  </div>
+                  <button type="button" onClick={saveRoleplayRecap}>
+                    <FiBookmark aria-hidden="true" />
+                    {t('conversation.saveRoleplay', 'Save roleplay')}
+                  </button>
+                </section>
+              )}
+
               {history.map((message) => (
                 <div key={message.id} className={`conversation-message ${message.role} ${message.error ? 'error' : ''}`}>
                   <div className="message-label">
                     <span>{message.role === 'user' ? uiLabels.activeLearner : uiLabels.activePartner}</span>
                     <span className="message-tools">
                       {message.role === 'assistant' && !message.error && (
-                        <button type="button" onClick={() => speakMessage(message)} title={t('conversation.playReply', 'Play reply')}>
-                          <FiVolume2 aria-hidden="true" />
-                        </button>
+                        <>
+                          <button type="button" onClick={() => saveAssistantTurn(message)} title={t('conversation.saveReply', 'Save reply')}>
+                            <FiBookmark aria-hidden="true" />
+                          </button>
+                          <button type="button" onClick={() => speakMessage(message)} title={t('conversation.playReply', 'Play reply')}>
+                            <FiVolume2 aria-hidden="true" />
+                          </button>
+                        </>
                       )}
                       {message.language && <small>{message.language}</small>}
                     </span>
@@ -1720,7 +1888,10 @@ function ConversationPage() {
             <div className="conversation-composer-main">
               <textarea
                 value={turn}
-                onChange={(event) => setTurn(event.target.value)}
+                onChange={(event) => {
+                  pendingSpeechTurnRef.current = false;
+                  setTurn(event.target.value);
+                }}
                 onKeyDown={(event) => {
                   if (event.key === 'Enter' && !event.shiftKey) {
                     event.preventDefault();

@@ -20,7 +20,10 @@
     "done": "تم",
     "clearAll": "مسح الكل",
     "sending": "جاري الإرسال...",
-    "saving": "توفير..."
+    "saving": "توفير...",
+    "search": "يبحث",
+    "notSet": "لم يتم ضبطه",
+    "all": "الجميع"
   },
   "languages": {
     "en": "الإنجليزية",
@@ -121,7 +124,8 @@
     "writing": "كتابة",
     "conversation": "محادثة",
     "plans": "الخطط",
-    "institution": "مؤسسة"
+    "institution": "مؤسسة",
+    "review": "مراجعة"
   },
   "guestPrompt": {
     "title": "أداؤك رائع!",
@@ -427,7 +431,12 @@
     "topic": "الموضوع (اختياري)",
     "save": "حفظ",
     "categoryPlaceholder": "على سبيل المثال الأرقام، تحياتي",
-    "topicPlaceholder": "على سبيل المثال أيام الأسبوع، 1-10"
+    "topicPlaceholder": "على سبيل المثال أيام الأسبوع، 1-10",
+    "savedFromFlashcardReason": "تم الحفظ من البطاقات التعليمية لتمرير آخر.",
+    "savedForReview": "تم الحفظ للمراجعة.",
+    "saveForReviewFailed": "تعذر حفظ هذه البطاقة الآن.",
+    "bookmarkedReason": "إشارة مرجعية من البطاقات التعليمية.",
+    "selfTestReason": "تم الحفظ من البطاقات التعليمية لإجراء اختبار ذاتي سريع."
   },
   "progress": {
     "title": "تقدمك",
@@ -791,13 +800,13 @@
     "priceAnnual": "{{amount}}/ سنة",
     "priceMonthly": "{{amount}}/شهر",
     "planNames": {
-      "free": "حر",
-      "plus": "زائد",
+      "free": "فري",
+      "plus": "بلس",
       "pro": "برو",
-      "ultra": "الترا",
-      "institution_basic": "المؤسسة الأساسية",
-      "institution_pro": "مؤسسة برو",
-      "institution_enterprise": "مؤسسة المؤسسة"
+      "ultra": "ألترا",
+      "institution_basic": "إنستيتيوشن بيسك",
+      "institution_pro": "إنستيتيوشن برو",
+      "institution_enterprise": "إنستيتيوشن إنتربرايز"
     },
     "planTaglines": {
       "free": "جرب حلقة التعلم ذات الحدود اليومية.",
@@ -810,7 +819,8 @@
     },
     "discountCode": "رمز الخصم",
     "discountPlaceholder": "رمز اختياري",
-    "discountUnavailable": "رمز الخصم هذا غير متوفر لهذه الخطة."
+    "discountUnavailable": "رمز الخصم هذا غير متوفر لهذه الخطة.",
+    "automaticDiscountApplied": "تم تطبيق خصم تلقائي {{discount}}"
   },
   "billing": {
     "kicker": "الفواتير",
@@ -908,7 +918,10 @@
       "past_due": "فات موعد استحقاقها",
       "cancelled": "تم الإلغاء",
       "suspended": "معلق"
-    }
+    },
+    "snapshotsKicker": "لقطات المتعلم",
+    "needsHelpTitle": "يحتاج إلى اهتمام",
+    "noNeedsHelpLearners": "لا يحتاج أي متعلم حاليًا إلى اهتمام إضافي."
   },
   "errorBoundary": {
     "title": "حدث خطأ ما",
@@ -927,7 +940,15 @@
     "playing": "جارٍ اللعب…",
     "listen": "يستمع",
     "use": "يستخدم",
-    "useDefault": "استخدم الصوت الافتراضي في الوقت الحالي"
+    "useDefault": "استخدم الصوت الافتراضي في الوقت الحالي",
+    "gender": {
+      "male": "ذكر",
+      "female": "أنثى"
+    },
+    "friendlyVoiceLabelGendered": "صوت {{language}} {{gender}} {{number}}{{region}}",
+    "friendlyVoiceLabelNeutral": "صوت {{language}} {{number}}{{region}}",
+    "voiceRegionSuffix": "· {{region}}",
+    "loadError": "تعذر تحميل خيارات الصوت. سيتم استخدام الصوت الافتراضي."
   },
   "classList": {
     "kicker": "فصل",
@@ -1011,7 +1032,9 @@
       "listeningPrefix": "جار الاستماع",
       "speechCaptured": "تم التقاط الصوت. عدله إذا لزم ثم أرسله.",
       "noSpeechCaptured": "لم يتم التقاط صوت. حاول مرة أخرى.",
-      "voiceUpdated": "تم تحديث الصوت. اضغط على سطر لسماعه."
+      "voiceUpdated": "تم تحديث الصوت. اضغط على سطر لسماعه.",
+      "bookmarked": "إشارة مرجعية.",
+      "bookmarkFailed": "تعذر وضع إشارة مرجعية على هذا العنصر الآن."
     },
     "speechErrors": {
       "permissionBlocked": "تم حظر إذن الميكروفون أو التعرف على الكلام. اسمح بالميكروفون من الإعدادات ثم حاول مرة أخرى.",
@@ -1062,7 +1085,36 @@
         "goal": "راجع الأخطاء ولخص ما تعلمته.",
         "task": "لخص شيئًا واحدًا تعلمته وشيئًا آخر لا يزال غير واضح."
       }
-    }
+    },
+    "savedFromClassReason": "تم الحفظ من الصف للمراجعة.",
+    "savedForReview": "تم الحفظ للمراجعة.",
+    "saveForReviewFailed": "تعذر حفظ هذا العنصر الآن.",
+    "wrapUpKicker": "الخطوة التالية",
+    "wrapUpTitle": "إبقاء الدرس على قيد الحياة",
+    "wrapUpBody": "قم بمراجعة العناصر المحفوظة أو استخدامها في المحادثة أو كتابتها من الذاكرة بينما لا يزال الدرس جديدًا.",
+    "wrapUpReview": "مراجعة",
+    "wrapUpConversation": "محادثة",
+    "wrapUpWriting": "كتابة",
+    "saveForReview": "حفظ للمراجعة",
+    "fallback": {
+      "thisItem": "هذا البند",
+      "shortAnswer": "جرب إجابة واحدة قصيرة باستخدام عنصر الدرس هذا.",
+      "practiceLead": "هيا نتدرب على {{title}}.",
+      "continue": "دعونا نواصل الجزء التالي من الدرس."
+    },
+    "examplePrefix": "مثال:",
+    "bookmarkedReason": "إشارة مرجعية من الصف.",
+    "itemsCompleted": "{{count}} العناصر المكتملة",
+    "lessonItemsTotal": "{{count}} عناصر الدرس",
+    "savedExampleReason": "مثال على الفصل المحفوظ للممارسة اللاحقة.",
+    "exampleSaved": "تم حفظ المثال للمراجعة.",
+    "savedTutorReplyReason": "تم الحفظ من رد المعلم للتدرب عليه لاحقًا.",
+    "tutorReplySaved": "تم حفظ رد المعلم للمراجعة.",
+    "playingSelectedItem": "تشغيل العنصر المحدد.",
+    "saveReply": "حفظ الرد",
+    "saveExample": "حفظ المثال",
+    "practiceEverywhere": "ممارسة هذا في كل مكان",
+    "selfTestReason": "تم الحفظ من الفصل لإجراء اختبار ذاتي سريع."
   },
   "exercise": {
     "kicker": "يمارس",
@@ -1073,7 +1125,8 @@
     "flashcardsTitle": "البطاقات التعليمية",
     "flashcardsDescMobile": "مراجعة الكلمات والعبارات.",
     "writingTitle": "كتابة",
-    "writingDescMobile": "تتبع، انسخ، استمع، واحتفظ بدفتر للكتابة."
+    "writingDescMobile": "تتبع، انسخ، استمع، واحتفظ بدفتر للكتابة.",
+    "reviewDescMobile": "العودة إلى العناصر المحفوظة وما هو مستحق اليوم."
   },
   "conversation": {
     "kicker": "ممارسة المحادثة",
@@ -1113,7 +1166,23 @@
       "planRefreshed": "تم تحديث إعدادات خطتك.",
       "messageNotResent": "لم يتم إرسال رسالتك مرة أخرى.",
       "connectionIssue": "مشكلة الاتصال. حاول مرة أخرى بعد قليل."
-    }
+    },
+    "savedReplyReason": "تم الحفظ من ممارسة المحادثة.",
+    "savedReply": "تم حفظ الرد للمراجعة.",
+    "saveReplyFailed": "لا يمكن حفظ هذا الرد الآن.",
+    "savedRoleplayReason": "تم حفظ لعب الأدوار المكتمل للتدرب عليه لاحقًا.",
+    "roleplaySaved": "تم حفظ لعب الأدوار للمراجعة.",
+    "saveRoleplayFailed": "تعذر حفظ لعب الأدوار هذا الآن.",
+    "recapTitle": "اكتمل لعب الأدوار",
+    "saveRoleplay": "حفظ لعب الأدوار",
+    "saveReply": "يحفظ",
+    "easier": "أسهل",
+    "harder": "أصعب",
+    "recapWentWell": "ما سار على ما يرام",
+    "recapUsefulPhrases": "عبارات مفيدة",
+    "recapReview": "مراجعة المقبل",
+    "recapReviewFallback": "احفظ عبارة واحدة وأعد استخدامها في وضع تدريبي آخر.",
+    "practiceLabel": "ممارسة المحادثة"
   },
   "context": {
     "backToProfile": "العودة إلى الملف الشخصي",
@@ -1185,7 +1254,8 @@
       "conversationNative": "من ممارسة المحادثة الخاصة بك",
       "conversationHistory": "تاريخ المحادثة",
       "personalized": "شخصية",
-      "personalNotebook": "دفتر شخصي"
+      "personalNotebook": "دفتر شخصي",
+      "savedReview": "عنصر المراجعة المحفوظ"
     },
     "modes": {
       "trace": "يتعقب",
@@ -1232,7 +1302,9 @@
       "shape": "مباريات الشكل",
       "spacing": "التباعد واضح",
       "memory": "من الذاكرة"
-    }
+    },
+    "savedReason": "تم الحفظ من ممارسة الكتابة لتمرير آخر.",
+    "selfTestReason": "تم الحفظ من ممارسة الكتابة لإجراء اختبار ذاتي سريع."
   },
   "certificates": {
     "kicker": "شهادة",
@@ -1265,5 +1337,140 @@
     "signIn": "تسجيل الدخول",
     "issuedSuccess": "صدرت الشهادة.",
     "issueFailed": "لا يمكن إصدار الشهادة."
+  },
+  "learningHub": {
+    "continueLearning": "مواصلة التعلم",
+    "pairSetupSaved": "تم حفظ إعداد التعلم.",
+    "nextBestAction": "التالي أفضل عمل",
+    "reviewDue": "المراجعة مستحقة",
+    "reviewNow": "قم بالمراجعة الآن",
+    "wordOfDay": "كلمة أو عبارة اليوم",
+    "noSpotlightYet": "احفظ شيئًا مفيدًا للبدء",
+    "pairSetupTitle": "قم بإعداد هذا الزوج اللغوي",
+    "pairSetupBody": "أخبرنا بمستواك وهدفك مرة واحدة حتى تناسب التوصيات هذه اللغة المستهدفة.",
+    "level": "مستوى",
+    "goal": "هدف",
+    "pace": "خطوة",
+    "dailyPlanTitle": "خطة اليوم",
+    "weeklySummaryTitle": "هذا الاسبوع",
+    "points": "نقاط",
+    "activeDays": "أيام نشطة",
+    "sessions": "الجلسات",
+    "recentStudyTitle": "دراسة حديثة",
+    "savedAfterQuizMiss": "تم الحفظ بعد إجابة الاختبار الفائتة.",
+    "askTutorPrompt": "ساعدني في التدرب على \"{{text}}\".",
+    "savedForPractice": "تم الحفظ للتدرب عليه لاحقًا",
+    "askTutor": "اسأل المعلم",
+    "kicker": "مراجعة",
+    "title": "حافظ على التعلم المفيد قريبًا",
+    "subtitle": "قم بمراجعة ما يحتاج إلى تصريح آخر، والعودة إلى العناصر المحفوظة، والمتابعة من مكان واحد.",
+    "dueToday": "المقرر اليوم",
+    "queueTitle": "قائمة انتظار المراجعة اليوم",
+    "queueEmptyBody": "احفظ الكلمات أو العبارات أو التصحيحات أو لعب الأدوار وستعود هنا عندما تكون مفيدة.",
+    "weakAreasTitle": "مناطق الضعف الأخيرة",
+    "practiceArea": "منطقة الممارسة",
+    "weakAreasEmpty": "ولم يتم تحديد أي مناطق ضعف حتى الآن.",
+    "abilityTitle": "تقدم القدرة في العالم الحقيقي",
+    "abilityEmpty": "سيظهر تقدم النشاط هنا أثناء ممارستك.",
+    "searchLabel": "بحث التعلم الخاص بك",
+    "searchPlaceholder": "ابحث في العناصر المحفوظة أو دروس الفصل",
+    "savedLibraryTitle": "مكتبة الدراسة المحفوظة",
+    "savedEmptyBody": "احفظ الكلمات المفيدة من الفصل الدراسي أو البطاقات التعليمية أو الكتابة أو المحادثة لإنشاء رف الدراسة الخاص بك.",
+    "savedBanksTitle": "البنوك المحفوظة",
+    "correctionsBank": "التصحيحات",
+    "roleplaysBank": "لعب الأدوار",
+    "bookmarksBank": "الإشارات المرجعية",
+    "openSource": "مفتوح المصدر",
+    "spotlightHint": "العناصر المحفوظة الخاصة بك تصبح الأضواء اليومية.",
+    "pairSetupSummary": "إعداد التعلم",
+    "pairSetupEdit": "يحرر",
+    "pairSetupUpdate": "قم بتحديث زوج اللغات هذا",
+    "reviewBeforeSleep": "مراجعة قصيرة الآن سوف تترك غدا أخف وزنا.",
+    "open": "يفتح",
+    "bookmark": "إشارة مرجعية",
+    "bookmarked": "إشارة مرجعية.",
+    "bookmarkFailed": "تعذر وضع إشارة مرجعية على هذا العنصر الآن.",
+    "speakingTurns": "يتحول التحدث",
+    "newSavedItems": "العناصر المحفوظة الجديدة",
+    "completedLessons": "الدروس المكتملة",
+    "certificates": "الشهادات",
+    "guidanceTitle": "إرشاد",
+    "firstThreeDays": "الأيام الثلاثة الأولى",
+    "dayNumber": "يوم {{day}}",
+    "goalPathTitle": "مسار الهدف",
+    "placementTitle": "التنسيب",
+    "recentWordsTitle": "الكلمات الأخيرة",
+    "recentWordsEmpty": "سيتم جمع كلمات جديدة من الفصل والمحادثة هنا.",
+    "milestonesTitle": "المعالم",
+    "savedItems": "العناصر المحفوظة",
+    "voiceHistoryTitle": "تاريخ ممارسة الصوت",
+    "voiceHistoryEmpty": "سوف تظهر دورات التحدث هنا بعد التدريب على المحادثة.",
+    "askWeakAreaPrompt": "ساعدني في ممارسة {{area}}.",
+    "evidenceCount": "{{count}} قطع من الأدلة",
+    "askAbilityPrompt": "ساعدني في ممارسة {{area}}.",
+    "practiceWriting": "يكتب",
+    "practiceFlashcard": "البطاقات التعليمية",
+    "whyWeakArea": "أنت ترى هذا لأن هذه المنطقة لا تزال بحاجة إلى التعزيز.",
+    "reviewBeforeSleepTitle": "المراجعة قبل النوم",
+    "savedItem": "أنقذ",
+    "weakArea": "ضعيف",
+    "reviewBeforeSleepEmpty": "لا شيء عاجل ينتظر الليلة.",
+    "miniSpeakingTitle": "تدريبات التحدث البسيطة",
+    "miniSpeakingReason": "ممارسة التحدث القصير من عبارة محفوظة أو تصحيح.",
+    "practiceSpeaking": "يتكلم",
+    "miniSpeakingEmpty": "ستصبح التصحيحات والعبارات المحفوظة تدريبات سريعة على التحدث هنا.",
+    "correctionsEmpty": "سيتم جمع التصحيحات المحفوظة هنا لإعادة المحاولة السريعة.",
+    "roleplaysEmpty": "ستظهر عمليات لعب الأدوار المحفوظة هنا عندما تريد إعادة استخدامها.",
+    "startLevelCheck": "بدء فحص المستوى",
+    "levelCheckUnavailable": "التحقق من المستوى ليس جاهزًا لهذا الزوج اللغوي بعد.",
+    "levelCheckLoadFailed": "تعذر تحميل فحص المستوى الآن.",
+    "levelCheckTitle": "فحص المستوى القصير",
+    "levelCheckSubtitle": "أجب عن بعض العناصر السريعة حتى يتمكن التطبيق من اختيار نقطة بداية أفضل.",
+    "levelCheckResult": "مستوى البداية المقترح",
+    "levelCheckSaved": "تم حفظ نقطة البداية لهذا الزوج اللغوي.",
+    "returnHome": "العودة إلى المنزل",
+    "questionCount": "سؤال {{current}} من {{total}}",
+    "practiceAgainPrompt": "ساعدني في التدرب على قول \"{{text}}\" مرة أخرى.",
+    "replayReply": "إعادة الرد",
+    "practiceAgain": "تدرب مرة أخرى",
+    "practiceEverywhere": "ممارسة هذا في مكان آخر",
+    "practicePronunciation": "يستمع",
+    "youSaid": "أنت قلت",
+    "targetSpeech": "الكلام المستهدف",
+    "replayTargetSpeech": "سماع الكلام المستهدف",
+    "practiceQuiz": "الاختبار الذاتي",
+    "useRoleplayAgain": "استخدم مرة أخرى",
+    "offlinePackInUse": "إظهار الحزمة الأخيرة الخاصة بك عندما يكون الاتصال ضعيفا.",
+    "quickQuizKicker": "الاختبار الذاتي",
+    "quickQuizTitle": "اختبار ذاتي سريع",
+    "quickQuizNoAnswer": "تذكر المعنى، ثم صنف نفسك بصدق.",
+    "revealAnswer": "كشف الجواب",
+    "studyHistoryTitle": "تاريخ الدراسة",
+    "pointsCount": "{{count}} نقطة",
+    "studyHistoryEmpty": "سوف تتجمع أيام دراستك هنا أثناء ممارستك.",
+    "listen": "يستمع",
+    "goals": {
+      "travel": "يسافر",
+      "work": "عمل",
+      "school": "مدرسة",
+      "dailyLife": "الحياة اليومية",
+      "conversation": "محادثة",
+      "family": "عائلة",
+      "religious": "الإعداد الديني",
+      "health": "صحة",
+      "culture": "ثقافة",
+      "exam": "امتحان",
+      "other": "آخر"
+    },
+    "savedBankEmptyBody": "سيتم جمع العناصر التي تحفظها لهذا الغرض هنا.",
+    "recentMistakesTitle": "الأخطاء الأخيرة",
+    "recentMistakesBody": "هذه هي العناصر المفقودة الأخيرة والتي تستحق إعادة المحاولة بينما لا يزال التصحيح جديدًا.",
+    "recentMistakesEmptyBody": "ستظهر عناصر الاختبار الفائتة هنا حتى تتمكن من إعادة تجربتها بسرعة.",
+    "firstThreeDayReviewTitle": "راجع ما التقيت به",
+    "firstThreeDaySpeakTitle": "استخدامه بصوت عال",
+    "firstThreeDayLearnTitle": "ابدأ درسًا موجهًا واحدًا",
+    "firstThreeDayReviewBody": "عد مرة واحدة إلى ما رأيته بالأمس حتى تبدأ العناصر الأولى في الالتصاق.",
+    "firstThreeDaySpeakBody": "استخدم منعطفًا قصيرًا في التحدث حتى تترك اللغة الصفحة مبكرًا.",
+    "firstThreeDayLearnBody": "ابدأ بدرس موجه صغير حتى يكون للزوجين نقطة بداية واضحة."
   }
 }

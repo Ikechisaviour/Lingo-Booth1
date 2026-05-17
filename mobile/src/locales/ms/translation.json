@@ -20,7 +20,10 @@
     "done": "Selesai",
     "clearAll": "Padam semua",
     "sending": "Menghantar...",
-    "saving": "Menyimpan..."
+    "saving": "Menyimpan...",
+    "search": "Cari",
+    "notSet": "Tidak ditetapkan",
+    "all": "Semua"
   },
   "languages": {
     "en": "Inggeris",
@@ -121,7 +124,8 @@
     "writing": "Menulis",
     "conversation": "Perbualan",
     "plans": "Rancangan",
-    "institution": "Institusi"
+    "institution": "Institusi",
+    "review": "Semakan"
   },
   "guestPrompt": {
     "title": "Anda hebat!",
@@ -427,7 +431,12 @@
     "topic": "Topik (pilihan)",
     "save": "Simpan",
     "categoryPlaceholder": "cth. nombor, salam",
-    "topicPlaceholder": "cth. hari dalam seminggu, 1-10"
+    "topicPlaceholder": "cth. hari dalam seminggu, 1-10",
+    "savedFromFlashcardReason": "Disimpan daripada kad imbas untuk pas lain.",
+    "savedForReview": "Disimpan untuk semakan.",
+    "saveForReviewFailed": "Tidak dapat menyimpan kad ini sekarang.",
+    "bookmarkedReason": "Ditandakan daripada kad imbas.",
+    "selfTestReason": "Disimpan daripada kad imbas untuk ujian kendiri yang pantas."
   },
   "progress": {
     "title": "Kemajuan Anda",
@@ -791,13 +800,13 @@
     "priceAnnual": "{{amount}}/thn",
     "priceMonthly": "{{amount}}/bln",
     "planNames": {
-      "free": "Percuma",
-      "plus": "Tambahan pula",
+      "free": "Free",
+      "plus": "Plus",
       "pro": "Pro",
       "ultra": "Ultra",
-      "institution_basic": "Asas Institusi",
-      "institution_pro": "Institusi Pro",
-      "institution_enterprise": "Perusahaan Institusi"
+      "institution_basic": "Institution Basic",
+      "institution_pro": "Institution Pro",
+      "institution_enterprise": "Institution Enterprise"
     },
     "planTaglines": {
       "free": "Cuba gelung pembelajaran dengan had harian.",
@@ -810,7 +819,8 @@
     },
     "discountCode": "Kod diskaun",
     "discountPlaceholder": "Kod pilihan",
-    "discountUnavailable": "Kod diskaun itu tidak tersedia untuk pelan ini."
+    "discountUnavailable": "Kod diskaun itu tidak tersedia untuk pelan ini.",
+    "automaticDiscountApplied": "Diskaun automatik {{discount}} digunakan"
   },
   "billing": {
     "kicker": "Pengebilan",
@@ -908,7 +918,10 @@
       "past_due": "Lewat tempoh masa",
       "cancelled": "Dibatalkan",
       "suspended": "Digantung"
-    }
+    },
+    "snapshotsKicker": "Gambar pelajar",
+    "needsHelpTitle": "Perlu perhatian",
+    "noNeedsHelpLearners": "Tiada pelajar pada masa ini memerlukan perhatian tambahan."
   },
   "errorBoundary": {
     "title": "Sesuatu telah berlaku",
@@ -927,7 +940,15 @@
     "playing": "bermain…",
     "listen": "Dengar",
     "use": "guna",
-    "useDefault": "Gunakan suara lalai buat masa ini"
+    "useDefault": "Gunakan suara lalai buat masa ini",
+    "gender": {
+      "male": "lelaki",
+      "female": "wanita"
+    },
+    "friendlyVoiceLabelGendered": "Suara {{language}} {{gender}} {{number}}{{region}}",
+    "friendlyVoiceLabelNeutral": "Suara {{language}} {{number}}{{region}}",
+    "voiceRegionSuffix": "· {{region}}",
+    "loadError": "Pilihan suara tidak dapat dimuat. Suara lalai akan digunakan."
   },
   "classList": {
     "kicker": "Kelas",
@@ -1011,7 +1032,9 @@
       "listeningPrefix": "Sedang mendengar",
       "speechCaptured": "Suara ditangkap. Edit jika perlu, kemudian hantar.",
       "noSpeechCaptured": "Tiada suara ditangkap. Cuba lagi.",
-      "voiceUpdated": "Suara dikemas kini. Ketik baris untuk mendengar."
+      "voiceUpdated": "Suara dikemas kini. Ketik baris untuk mendengar.",
+      "bookmarked": "Ditanda buku.",
+      "bookmarkFailed": "Tidak dapat menanda halaman item ini sekarang."
     },
     "speechErrors": {
       "permissionBlocked": "Kebenaran mikrofon atau pengecaman suara disekat. Benarkan mikrofon dalam tetapan dan cuba lagi.",
@@ -1062,7 +1085,36 @@
         "goal": "Semak kesilapan dan rumuskan apa yang anda pelajari.",
         "task": "Ringkaskan satu perkara yang anda pelajari dan satu perkara yang masih tidak jelas."
       }
-    }
+    },
+    "savedFromClassReason": "Disimpan daripada kelas untuk semakan.",
+    "savedForReview": "Disimpan untuk semakan.",
+    "saveForReviewFailed": "Tidak dapat menyimpan item ini sekarang.",
+    "wrapUpKicker": "Langkah seterusnya",
+    "wrapUpTitle": "Hidupkan pelajaran",
+    "wrapUpBody": "Semak item yang disimpan, gunakannya dalam perbualan atau tuliskannya daripada ingatan semasa pelajaran masih segar.",
+    "wrapUpReview": "Semakan",
+    "wrapUpConversation": "Perbualan",
+    "wrapUpWriting": "Menulis",
+    "saveForReview": "Simpan untuk semakan",
+    "fallback": {
+      "thisItem": "item ini",
+      "shortAnswer": "Cuba satu jawapan ringkas menggunakan item pelajaran ini.",
+      "practiceLead": "Jom amalkan {{title}}.",
+      "continue": "Mari kita teruskan dengan bahagian pelajaran seterusnya."
+    },
+    "examplePrefix": "Contoh:",
+    "bookmarkedReason": "Ditanda buku dari kelas.",
+    "itemsCompleted": "{{count}} item selesai",
+    "lessonItemsTotal": "{{count}} item pelajaran",
+    "savedExampleReason": "Contoh kelas disimpan untuk latihan kemudian.",
+    "exampleSaved": "Contoh disimpan untuk semakan.",
+    "savedTutorReplyReason": "Disimpan daripada balasan tutor untuk latihan kemudian.",
+    "tutorReplySaved": "Jawapan tutor disimpan untuk semakan.",
+    "playingSelectedItem": "Memainkan item yang dipilih.",
+    "saveReply": "Simpan balasan",
+    "saveExample": "Simpan contoh",
+    "practiceEverywhere": "Amalkan ini di mana-mana sahaja",
+    "selfTestReason": "Disimpan daripada kelas untuk ujian kendiri yang pantas."
   },
   "exercise": {
     "kicker": "Bersenam",
@@ -1073,7 +1125,8 @@
     "flashcardsTitle": "Kad imbas",
     "flashcardsDescMobile": "Semak perkataan dan frasa.",
     "writingTitle": "Menulis",
-    "writingDescMobile": "Surih, salin, dengar dan simpan buku nota penulisan."
+    "writingDescMobile": "Surih, salin, dengar dan simpan buku nota penulisan.",
+    "reviewDescMobile": "Kembali ke item yang disimpan dan apa yang perlu dibayar hari ini."
   },
   "conversation": {
     "kicker": "Amalan Perbualan",
@@ -1113,7 +1166,23 @@
       "planRefreshed": "Tetapan rancangan anda telah dimuat semula.",
       "messageNotResent": "Mesej anda tidak dihantar lagi.",
       "connectionIssue": "Isu sambungan. Cuba lagi sebentar lagi."
-    }
+    },
+    "savedReplyReason": "Disimpan daripada latihan perbualan.",
+    "savedReply": "Balasan disimpan untuk semakan.",
+    "saveReplyFailed": "Tidak dapat menyimpan balasan ini sekarang.",
+    "savedRoleplayReason": "Lakonan peranan yang lengkap disimpan untuk latihan kemudian.",
+    "roleplaySaved": "Roleplay disimpan untuk semakan.",
+    "saveRoleplayFailed": "Tidak dapat menyimpan lakonan ini sekarang.",
+    "recapTitle": "Main peranan selesai",
+    "saveRoleplay": "Simpan main peranan",
+    "saveReply": "Jimat",
+    "easier": "Lebih mudah",
+    "harder": "Lebih keras",
+    "recapWentWell": "Apa yang berjalan lancar",
+    "recapUsefulPhrases": "Frasa yang berguna",
+    "recapReview": "Semakan seterusnya",
+    "recapReviewFallback": "Simpan satu frasa dan gunakan semula dalam mod latihan yang lain.",
+    "practiceLabel": "Latihan perbualan"
   },
   "context": {
     "backToProfile": "Kembali ke Profil",
@@ -1185,7 +1254,8 @@
       "conversationNative": "Daripada latihan perbualan anda",
       "conversationHistory": "Sejarah perbualan",
       "personalized": "diperibadikan",
-      "personalNotebook": "Buku nota peribadi"
+      "personalNotebook": "Buku nota peribadi",
+      "savedReview": "Item ulasan yang disimpan"
     },
     "modes": {
       "trace": "Jejak",
@@ -1232,7 +1302,9 @@
       "shape": "Padanan bentuk",
       "spacing": "Jarak adalah jelas",
       "memory": "Dari ingatan"
-    }
+    },
+    "savedReason": "Disimpan daripada latihan menulis untuk pas yang lain.",
+    "selfTestReason": "Disimpan daripada latihan menulis untuk ujian kendiri yang cepat."
   },
   "certificates": {
     "kicker": "Sijil",
@@ -1265,5 +1337,140 @@
     "signIn": "Log masuk",
     "issuedSuccess": "Sijil dikeluarkan.",
     "issueFailed": "Tidak dapat mengeluarkan sijil."
+  },
+  "learningHub": {
+    "continueLearning": "Teruskan belajar",
+    "pairSetupSaved": "Persediaan pembelajaran disimpan.",
+    "nextBestAction": "Tindakan terbaik seterusnya",
+    "reviewDue": "Semakan perlu dibayar",
+    "reviewNow": "Semak sekarang",
+    "wordOfDay": "Perkataan atau frasa hari ini",
+    "noSpotlightYet": "Simpan sesuatu yang berguna untuk bermula",
+    "pairSetupTitle": "Sediakan pasangan bahasa ini",
+    "pairSetupBody": "Beritahu kami tahap dan matlamat anda sekali supaya pengesyoran sesuai dengan bahasa sasaran ini.",
+    "level": "Tahap",
+    "goal": "Matlamat",
+    "pace": "laju",
+    "dailyPlanTitle": "Rancangan hari ini",
+    "weeklySummaryTitle": "minggu ini",
+    "points": "mata",
+    "activeDays": "Hari-hari aktif",
+    "sessions": "Sesi",
+    "recentStudyTitle": "Kajian terbaru",
+    "savedAfterQuizMiss": "Disimpan selepas jawapan kuiz terlepas.",
+    "askTutorPrompt": "Bantu saya berlatih \"{{text}}\".",
+    "savedForPractice": "Disimpan untuk latihan nanti",
+    "askTutor": "Tanya tutor",
+    "kicker": "Semakan",
+    "title": "Teruskan pembelajaran yang berguna dekat",
+    "subtitle": "Semak apa yang memerlukan pas lain, kembali ke item yang disimpan dan teruskan dari satu tempat.",
+    "dueToday": "tarikh akhir hari ini",
+    "queueTitle": "Barisan semakan hari ini",
+    "queueEmptyBody": "Simpan perkataan, frasa, pembetulan atau lakonan dan ia akan kembali ke sini apabila berguna.",
+    "weakAreasTitle": "Kawasan lemah baru-baru ini",
+    "practiceArea": "Kawasan latihan",
+    "weakAreasEmpty": "Tiada kawasan lemah telah dikenal pasti.",
+    "abilityTitle": "Kemajuan keupayaan dunia sebenar",
+    "abilityEmpty": "Kemajuan aktiviti akan muncul di sini semasa anda berlatih.",
+    "searchLabel": "Cari pembelajaran anda",
+    "searchPlaceholder": "Cari item yang disimpan atau pelajaran kelas",
+    "savedLibraryTitle": "Perpustakaan kajian yang disimpan",
+    "savedEmptyBody": "Simpan perkataan berguna daripada kelas, kad imbas, penulisan atau perbualan untuk membina rak belajar anda sendiri.",
+    "savedBanksTitle": "Bank yang disimpan",
+    "correctionsBank": "Pembetulan",
+    "roleplaysBank": "Lakonan peranan",
+    "bookmarksBank": "Penanda buku",
+    "openSource": "Sumber terbuka",
+    "spotlightHint": "Item anda yang disimpan menjadi lampu sorot harian.",
+    "pairSetupSummary": "Persediaan pembelajaran",
+    "pairSetupEdit": "Sunting",
+    "pairSetupUpdate": "Kemas kini pasangan bahasa ini",
+    "reviewBeforeSleep": "Semakan ringkas sekarang akan menjadikan esok lebih ringan.",
+    "open": "Buka",
+    "bookmark": "Penanda buku",
+    "bookmarked": "Ditanda buku.",
+    "bookmarkFailed": "Tidak dapat menanda halaman item ini sekarang.",
+    "speakingTurns": "Bertutur bergilir-gilir",
+    "newSavedItems": "Item disimpan baharu",
+    "completedLessons": "Selesai pelajaran",
+    "certificates": "Sijil",
+    "guidanceTitle": "Bimbingan",
+    "firstThreeDays": "Tiga hari pertama",
+    "dayNumber": "Hari {{day}}",
+    "goalPathTitle": "Laluan matlamat",
+    "placementTitle": "Penempatan",
+    "recentWordsTitle": "Perkataan terkini",
+    "recentWordsEmpty": "Perkataan baharu dari kelas dan perbualan akan berkumpul di sini.",
+    "milestonesTitle": "Pencapaian",
+    "savedItems": "Item disimpan",
+    "voiceHistoryTitle": "Sejarah latihan suara",
+    "voiceHistoryEmpty": "Giliran bercakap akan muncul di sini selepas latihan perbualan.",
+    "askWeakAreaPrompt": "Bantu saya berlatih {{area}}.",
+    "evidenceCount": "{{count}} bukti",
+    "askAbilityPrompt": "Bantu saya berlatih {{area}}.",
+    "practiceWriting": "tulis",
+    "practiceFlashcard": "Flashcard",
+    "whyWeakArea": "Anda melihat ini kerana kawasan ini masih memerlukan pengukuhan.",
+    "reviewBeforeSleepTitle": "Review sebelum tidur",
+    "savedItem": "Disimpan",
+    "weakArea": "Lemah",
+    "reviewBeforeSleepEmpty": "Tiada apa yang mendesak menanti malam ini.",
+    "miniSpeakingTitle": "Latihan bertutur mini",
+    "miniSpeakingReason": "Latihan bercakap pendek daripada frasa atau pembetulan yang disimpan.",
+    "practiceSpeaking": "Cakap",
+    "miniSpeakingEmpty": "Pembetulan dan frasa yang disimpan akan menjadi latihan bercakap pantas di sini.",
+    "correctionsEmpty": "Pembetulan yang disimpan akan dikumpulkan di sini untuk mencuba semula dengan pantas.",
+    "roleplaysEmpty": "Lakon peranan yang disimpan akan dipaparkan di sini apabila anda mahu menggunakannya semula.",
+    "startLevelCheck": "Mulakan pemeriksaan tahap",
+    "levelCheckUnavailable": "Semakan tahap belum sedia untuk pasangan bahasa ini lagi.",
+    "levelCheckLoadFailed": "Semakan tahap tidak dapat dimuatkan sekarang.",
+    "levelCheckTitle": "Pemeriksaan tahap pendek",
+    "levelCheckSubtitle": "Jawab beberapa item pantas supaya apl boleh memilih titik permulaan yang lebih baik.",
+    "levelCheckResult": "Tahap permulaan yang dicadangkan",
+    "levelCheckSaved": "Titik permulaan ini telah disimpan untuk pasangan bahasa ini.",
+    "returnHome": "Balik rumah",
+    "questionCount": "Soalan {{current}} daripada {{total}}",
+    "practiceAgainPrompt": "Bantu saya berlatih menyebut \"{{text}}\" sekali lagi.",
+    "replayReply": "Balasan ulang tayang",
+    "practiceAgain": "Berlatih lagi",
+    "practiceEverywhere": "Amalkan ini di tempat lain",
+    "practicePronunciation": "Dengar",
+    "youSaid": "awak kata",
+    "targetSpeech": "Ucapan sasaran",
+    "replayTargetSpeech": "Dengar ucapan sasaran",
+    "practiceQuiz": "Ujian kendiri",
+    "useRoleplayAgain": "Guna semula",
+    "offlinePackInUse": "Menunjukkan pek terbaharu anda semasa sambungan lemah.",
+    "quickQuizKicker": "Ujian kendiri",
+    "quickQuizTitle": "Ujian kendiri pantas",
+    "quickQuizNoAnswer": "Ingat kembali maksudnya, kemudian nilaikan diri anda dengan jujur.",
+    "revealAnswer": "Mendedahkan jawapan",
+    "studyHistoryTitle": "Belajar sejarah",
+    "pointsCount": "{{count}} mata",
+    "studyHistoryEmpty": "Hari belajar anda akan berkumpul di sini semasa anda berlatih.",
+    "listen": "Dengar",
+    "goals": {
+      "travel": "Perjalanan",
+      "work": "Kerja",
+      "school": "Sekolah",
+      "dailyLife": "Kehidupan seharian",
+      "conversation": "Perbualan",
+      "family": "Keluarga",
+      "religious": "Latar agama",
+      "health": "Kesihatan",
+      "culture": "budaya",
+      "exam": "Peperiksaan",
+      "other": "Lain-lain"
+    },
+    "savedBankEmptyBody": "Item yang anda simpan untuk tujuan ini akan dikumpulkan di sini.",
+    "recentMistakesTitle": "Kesilapan baru-baru ini",
+    "recentMistakesBody": "Ini adalah item terlepas terbaru yang patut dicuba semula sementara pembetulan masih baru.",
+    "recentMistakesEmptyBody": "Item kuiz yang terlepas akan dipaparkan di sini supaya anda boleh mencuba semula dengan cepat.",
+    "firstThreeDayReviewTitle": "Semak apa yang anda temui",
+    "firstThreeDaySpeakTitle": "Gunakannya dengan kuat",
+    "firstThreeDayLearnTitle": "Mulakan satu pelajaran berpandu",
+    "firstThreeDayReviewBody": "Kembali sekali kepada apa yang anda lihat semalam supaya item pertama mula melekat.",
+    "firstThreeDaySpeakBody": "Gunakan giliran bercakap pendek supaya bahasa meninggalkan halaman lebih awal.",
+    "firstThreeDayLearnBody": "Mulakan dengan satu pelajaran kecil berpandu supaya pasangan itu mempunyai titik permulaan yang jelas."
   }
 }

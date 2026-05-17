@@ -1,0 +1,75 @@
+.placement-check-page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 28px 18px 48px;
+}
+
+.placement-check-header {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.placement-check-header button,
+.placement-check-card button {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-primary);
+  padding: 9px 14px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.placement-check-header p {
+  margin: 0 0 4px;
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.placement-check-header h1 {
+  margin: 0 0 6px;
+}
+
+.placement-check-header span {
+  color: var(--text-secondary);
+}
+
+.placement-check-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  border: 1px solid var(--border-light);
+  border-radius: 18px;
+  background: var(--surface);
+}
+
+.placement-check-card.result strong {
+  color: var(--primary);
+  font-size: 1.8rem;
+}
+
+.placement-progress {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--text-secondary);
+}
+
+.placement-check-card h2 {
+  margin: 0;
+}
+
+.placement-options {
+  display: grid;
+  gap: 10px;
+}
+
+.placement-options button {
+  border-radius: 12px;
+  text-align: left;
+}

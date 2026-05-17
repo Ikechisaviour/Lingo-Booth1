@@ -4,7 +4,15 @@
       "Bash(node -e ' *)",
       "Bash(node scripts/seedLevel1Foundation.js)",
       "Bash(git push *)",
-      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\Saviour ICT-CRC\\\\Desktop\\\\Personal Project\\\\Personal Projects2\\\\korean-learning-app\" -Directory)"
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\Saviour ICT-CRC\\\\Desktop\\\\Personal Project\\\\Personal Projects2\\\\korean-learning-app\" -Directory)",
+      "Write(backend/textbookLessons/**)",
+      "Bash(node *)",
+      "Bash(ls *)",
+      "Bash(wc *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "PowerShell(Get-ChildItem *)",
+      "PowerShell(Get-Content *)"
     ]
   }
 }

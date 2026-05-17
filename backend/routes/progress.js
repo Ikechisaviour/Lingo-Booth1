@@ -2,18 +2,31 @@ const express = require('express');
 const router = express.Router();
 const Progress = require('../models/Progress');
 const User = require('../models/User');
+const LearningEvent = require('../models/LearningEvent');
 const { getTodayUTC } = require('../utils/dateHelpers');
 const { verifyToken, isOwner } = require('../middleware/auth');
 const { checkInactivityPenalty } = require('../middleware/xpPenalty');
+const { ensureResetsApplied } = require('../utils/gamificationReset');
 
 // All progress routes require authentication
 router.use(verifyToken);
+
+async function lessonIdsForTarget(targetLang) {
+  if (!targetLang) return null;
+  const Lesson = require('../models/Lesson');
+  return Lesson.find({ targetLang: String(targetLang).toLowerCase() }).distinct('_id');
+}
+
+async function progressFilterForUser(userId, targetLang) {
+  const lessonIds = await lessonIdsForTarget(targetLang);
+  return lessonIds ? { userId, lessonId: { $in: lessonIds } } : { userId };
+}
 
 // Get progress for user (only own progress or admin)
 router.get('/user/:userId', isOwner('userId'), checkInactivityPenalty(), async (req, res) => {
   try {
     const { userId } = req.params;
-    const progress = await Progress.find({ userId });
+    const progress = await Progress.find(await progressFilterForUser(userId, req.query.targetLang));
     res.json(progress);
   } catch (error) {
     console.error('Get progress error:', error);
@@ -26,26 +39,28 @@ router.get('/summary/:userId', isOwner('userId'), checkInactivityPenalty(), asyn
   try {
     const { userId } = req.params;
 
-    // Get all progress records for the user
-    const allProgress = await Progress.find({ userId });
+    const progressFilter = await progressFilterForUser(userId, req.query.targetLang);
+
+    // Get all progress records for the active target language when provided.
+    const allProgress = await Progress.find(progressFilter);
 
     const struggling = await Progress.find({
-      userId,
+      ...progressFilter,
       masteryStatus: 'struggling',
     }).populate('lessonId', 'title category difficulty');
 
     const learning = await Progress.find({
-      userId,
+      ...progressFilter,
       masteryStatus: 'learning',
     }).populate('lessonId', 'title category difficulty');
 
     const comfortable = await Progress.find({
-      userId,
+      ...progressFilter,
       masteryStatus: 'comfortable',
     }).populate('lessonId', 'title category difficulty');
 
     const mastered = await Progress.find({
-      userId,
+      ...progressFilter,
       masteryStatus: 'mastered',
     }).populate('lessonId', 'title category difficulty');
 
@@ -60,6 +75,8 @@ router.get('/summary/:userId', isOwner('userId'), checkInactivityPenalty(), asyn
       };
     });
 
+    const user = await User.findById(userId).select('totalXP');
+
     res.json({
       struggling: struggling.length,
       learning: learning.length,
@@ -70,6 +87,7 @@ router.get('/summary/:userId', isOwner('userId'), checkInactivityPenalty(), asyn
       comfortableAreas: comfortable,
       masteredAreas: mastered,
       skillStats,
+      totalXP: user?.totalXP || 0,
     });
   } catch (error) {
     console.error('Get progress summary error:', error);
@@ -86,6 +104,8 @@ router.post('/', async (req, res) => {
       category,
       score,
       isCorrect,
+      targetLanguage,
+      nativeLanguage,
     } = req.body;
 
     const userId = req.userId;
@@ -124,13 +144,36 @@ router.post('/', async (req, res) => {
       { new: true, upsert: true }
     );
 
-    // Increment daily high-score lessons quest counter for Challenge Mode users
+    // Count a lesson once per day for Challenge Mode quests, even if the learner retries it.
     if (score >= 80 && userId) {
       const today = getTodayUTC();
-      await User.updateOne(
-        { _id: userId, xpDecayEnabled: true, questResetDate: today },
-        { $inc: { dailyHighScoreLessons: 1 } }
-      );
+      const user = await User.findById(userId);
+      if (user?.xpDecayEnabled) {
+        const changed = ensureResetsApplied(user);
+        let countedToday = false;
+        try {
+          await LearningEvent.create({
+            userId,
+            eventType: 'quiz_high_score',
+            dedupeKey: `daily:${today}:quiz-high-score:${lessonId}`,
+            dayKey: today,
+            pointsAwarded: 0,
+            metadata: {
+              lessonId,
+              score,
+              targetLanguage: String(targetLanguage || '').toLowerCase(),
+              nativeLanguage: String(nativeLanguage || '').toLowerCase(),
+            },
+          });
+          countedToday = true;
+        } catch (error) {
+          if (error.code !== 11000) throw error;
+        }
+        if (countedToday) {
+          user.dailyHighScoreLessons = (user.dailyHighScoreLessons || 0) + 1;
+        }
+        if (changed || countedToday) await user.save();
+      }
     }
 
     res.status(201).json(progress);

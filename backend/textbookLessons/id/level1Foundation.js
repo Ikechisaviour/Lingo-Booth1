@@ -1,0 +1,630 @@
+// Level 1 — Foundation: Indonesian Phonology, Spelling, and Word-Shape Intuition
+// First lesson on the Indonesian / Bahasa Indonesia / Foundation track. Pre-grammar,
+// pre-thematic-vocabulary. Covers the 5 vowels + schwa, consonants including ng
+// and ny, glottal-stop loans, light penultimate stress, the absence of tone and
+// final devoicing, and an introduction to the affix system that will shape every
+// later lesson.
+//
+// Content is authored with Latin-script Indonesian (target) + the same Latin
+// spelling as a "romanization" slot (Indonesian is natively written in Latin) +
+// English glosses (canonical source). The AI conversation tutor reads this
+// curriculum and delivers it to each learner in their preferred native language
+// at runtime — never assume a specific L1 in this file.
+//
+// Glosses follow the rich-gloss rule (AGENTS.md → "Gloss Richness"): every
+// nativeText, exampleNative, and breakdown.native carries register, usage
+// context, or contrast info — not a bare definition.
+
+const createContentItem = (
+  target,
+  romanization,
+  note,
+  type = 'word',
+  example = '',
+  exampleNote = '',
+  breakdown = null,
+  activityIds = [],
+) => ({
+  type,
+  activityIds,
+  targetText: target,
+  romanization,
+  nativeText: note,
+  pronunciation: romanization,
+  exampleTarget: example || target,
+  exampleNative: exampleNote || note,
+  korean: target,
+  english: note,
+  example: example || target,
+  exampleEnglish: exampleNote || note,
+  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.target, native: b.note, korean: b.target, english: b.note })) } : {}),
+});
+
+const ACT = {
+  intro: 'id-foundation-intro',
+  vowels: 'id-foundation-vowels',
+  schwa: 'id-foundation-schwa',
+  consonants: 'id-foundation-consonants',
+  digraphs: 'id-foundation-digraphs',
+  glottal: 'id-foundation-glottal',
+  stress: 'id-foundation-stress',
+  noTone: 'id-foundation-no-tone',
+  affixIntro: 'id-foundation-affix-intro',
+  rootShape: 'id-foundation-root-shape',
+  spelling: 'id-foundation-spelling',
+  reading: 'id-foundation-reading',
+};
+
+const activities = [
+  {
+    id: ACT.intro,
+    section: 'Why Phonology First',
+    title: 'Selamat datang — How Bahasa Indonesia sounds',
+    goals: [
+      'Understand that Indonesian is a non-tonal, Latin-script language whose spelling is remarkably consistent — once you learn the 26-letter sound system and a small handful of digraphs, you can read any new word aloud accurately on the first attempt.',
+      'See that the biggest leap for new learners is not pronunciation but morphology: Indonesian builds meaning by stacking prefixes (meN-, di-, ber-, ter-, peN-, ke-) and suffixes (-an, -kan, -i, -nya, -lah) onto a root, and the same root surfaces in many shapes.',
+      'Know that every Indonesian word has three layers: the root (akar kata), the optional affixes (imbuhan), and the optional reduplication (kata ulang) — getting these three layers under your ear is the single highest-leverage move at the foundation stage.',
+    ],
+    task: 'Read the four structural facts. By the end of this lesson you should be able to read an Indonesian sentence aloud with correct stress, recognize the schwa, identify the affixes attached to a root, and pronounce ng / ny as single units rather than two letters.',
+  },
+  {
+    id: ACT.vowels,
+    section: 'The 5 Vowels',
+    title: 'a i u e o — Pure cardinal vowels',
+    goals: [
+      'Pronounce the five "pure" Indonesian vowels a /a/, i /i/, u /u/, e /e/, o /o/ — each is short, tense, and without the diphthongal glide English speakers add (no "ay" for e, no "oh" for o).',
+      'Hear that vowel length is NOT phonemic in Indonesian: padi (rice) and pad (no native word) differ by consonant, not vowel length; this contrasts sharply with Arabic, Japanese, and Finnish loans students may know.',
+      'Notice that Indonesian vowels do not reduce in unstressed syllables the way English does — "Jakarta" stays /dʒaˈkarta/, NOT the schwa-laden /dʒəˈkɑːrtə/ of English.',
+    ],
+    task: 'Read each vowel paired with /b/ and /k/ (ba, bi, bu, be, bo, ka, ki, ku, ke, ko) without adding any glide — record yourself and compare.',
+  },
+  {
+    id: ACT.schwa,
+    section: 'The Hidden Sixth Vowel',
+    title: 'e — both /e/ and /ə/ schwa',
+    goals: [
+      'Recognize that the letter "e" represents TWO sounds in standard Indonesian: a full /e/ (as in sate "satay", soré "afternoon", lélé "catfish") AND a schwa /ə/ (as in empat "four", emas "gold", kerja "work"). Modern orthography does not mark the difference — learners must memorize each word.',
+      'Apply the rough rule of thumb: in native Malay roots, "e" in unstressed open syllables is usually schwa /ə/ (besar /bəˈsar/ "big", belajar /bəˈladʒar/ "study"); in loanwords and final syllables, "e" is more often full /e/ (kopi "coffee", soré "afternoon").',
+      'Hear that the schwa shortens the syllable significantly — "empat" /əmˈpat/ "four" is essentially mp-at with a tiny vowel onset, while a full-e word like "enak" /eˈnak/ "delicious" has a clear front vowel.',
+    ],
+    task: 'Listen to ten "e"-words and mark each as schwa or full e: empat, enak, kerja, soré, lélé, besar, kelas, méja, lebih, beda.',
+  },
+  {
+    id: ACT.consonants,
+    section: 'Consonants',
+    title: 'The 21 plain consonants',
+    goals: [
+      'Read the 21 plain Indonesian consonant letters b, c, d, f, g, h, j, k, l, m, n, p, q, r, s, t, v, w, x, y, z — most map to standard English values, with three notable shifts: c is /tʃ/ as in "cinta" /tʃinta/ "love", j is /dʒ/ as in "jalan" /dʒalan/ "street", and r is a tapped or trilled /r/ as in "merdeka" /merˈdeka/ "freedom".',
+      'Apply the no-final-devoicing rule: unlike German "Tag" /tak/ or Russian "хлеб" /xlep/, Indonesian preserves final voiced stops — "abad" /aˈbad/ "century" stays /-d/, not /-t/. This is important because many learners (especially Slavic and German speakers) automatically devoice and break the meaning contrast with /-t/ neighbors.',
+      'Notice the unaspirated stops: p, t, k in Indonesian are unaspirated like Romance and Slavic languages, not aspirated like English p/t/k at the start of stressed syllables. "Pagi" /pagi/ "morning" sounds closer to Spanish "papi" than to English "Patty".',
+    ],
+    task: 'Read fifteen common words paying close attention to c, j, r, and final voiced stops: cinta, jalan, merdeka, abad, kakek, hidup, sehat, sebab, mengajak, tujuh, sebab, satu, situ, kamus, sudut.',
+  },
+  {
+    id: ACT.digraphs,
+    section: 'Digraphs',
+    title: 'ng, ny, sy, kh — single sounds written with two letters',
+    goals: [
+      'Pronounce ng /ŋ/ as a SINGLE velar nasal phoneme, not /n/+/g/ — "uang" /uaŋ/ "money" rhymes with English "song", not "un-gah". When ng appears word-medially, NEVER split the digraph: "bunga" /buŋa/ "flower" is /bu-ŋa/, not /bun-ga/.',
+      'Pronounce ny /ɲ/ as a SINGLE palatal nasal, identical to Spanish ñ and French gn: "nyanyi" /ɲaɲi/ "to sing", "banyak" /baɲak/ "many". Pronouncing it as /n/+/y/ sounds like a heavy foreign accent.',
+      'Distinguish ng /ŋ/ from ngg /ŋg/: "anggur" /aŋˈgur/ "grape" HAS the /g/, while "angka" /aŋka/ "number" has only /ŋ/+/k/. The double-g spelling explicitly signals a separate /g/ release after the nasal.',
+      'Recognize sy /ʃ/ (loanword sh, e.g., syarat "condition", syukur "thanks") and kh /x/ (Arabic-loan velar fricative, e.g., akhir "end", khusus "special") — both common in Islamic vocabulary borrowed from Arabic.',
+    ],
+    task: 'Read fifteen words isolating each digraph: uang, bunga, dengan, mengapa, tangga, anggur, mungkin, nyanyi, banyak, hanya, nyamuk, syarat, syukur, akhir, khusus.',
+  },
+  {
+    id: ACT.glottal,
+    section: 'The Glottal Stop',
+    title: 'k at end of syllable and the unwritten ʔ',
+    goals: [
+      'Hear the glottal stop /ʔ/ that appears at the end of many Indonesian syllables — written as "k" word-finally (anak /aˈnaʔ/ "child", duduk /duˈduʔ/ "sit") or simply implied between identical vowels (saat /saʔat/ "moment", maaf /maˈʔaf/ "sorry").',
+      'Apply the rule that final "k" in native Indonesian roots is almost always a glottal stop /ʔ/, NOT a /k/ release. "Tidak" /tidaʔ/ "no" sounds like "tida" with a chest-tight stop, not "tee-dack". Many learners over-pronounce the /k/ and sound stiff.',
+      'Recognize that Arabic-loan glottals are sometimes written with an apostrophe in older spelling — "Jum\'at" (Friday) and "Qur\'an" mark the glottal explicitly. Modern spelling often drops the apostrophe (Jumat).',
+    ],
+    task: 'Read ten words with glottal stops: anak, duduk, masuk, kakak, adik, tidak, asik, baik, naik, maaf — making the final "k" a closure, not a release.',
+  },
+  {
+    id: ACT.stress,
+    section: 'Stress',
+    title: 'Light penultimate stress — almost predictable',
+    goals: [
+      'Apply the default Indonesian stress rule: stress falls on the penultimate (second-to-last) syllable in most multisyllabic words. "Selamat" /səˈlamat/ "safe/well", "Indonesia" /indoneˈsia/ (often /indoˈnesia/ in slow speech), "rumah" /ˈrumah/ "house", "makan" /ˈmakan/ "eat".',
+      'Notice the schwa-shift exception: if the penultimate syllable contains a schwa, stress moves to the FINAL syllable. "Pergi" /pərˈgi/ "go" stresses gi because per- is schwa; "kerja" /kərˈdʒa/ "work" stresses dʒa.',
+      'Understand that Indonesian stress is much weaker than English stress — it shapes rhythm more than loudness. Speakers from heavily stress-timed L1s (English, Russian, German) often over-emphasize the stressed syllable and under-pronounce the rest, producing a choppy, un-Indonesian rhythm.',
+    ],
+    task: 'Mark the stress on fifteen words: selamat, terima, kasih, rumah, makan, minum, pergi, kerja, belajar, dengan, untuk, karena, sekarang, kemarin, besok.',
+  },
+  {
+    id: ACT.noTone,
+    section: 'No Tone, No Conjugation',
+    title: 'What Indonesian does NOT have',
+    goals: [
+      'Confirm that Indonesian has NO lexical tone — unlike Mandarin, Thai, Vietnamese, or Yoruba, the same syllable said at any pitch keeps the same meaning. Pitch carries question/statement intonation only.',
+      'Confirm that Indonesian verbs do NOT conjugate for tense, person, number, or gender. "Saya makan" (I eat), "Kami makan" (we eat), "Dia makan" (he/she eats), "Saya makan kemarin" (I ate yesterday) — all use the bare form "makan". Time is expressed lexically with words like kemarin (yesterday), sekarang (now), besok (tomorrow) and with aspect particles (sudah/sedang/akan/belum).',
+      'Confirm that Indonesian nouns do NOT mark plural with -s/-es. Plurality is shown by context, by reduplication (anak-anak "children"), or by a quantifier (banyak anak "many children", dua orang "two people"). The bare "anak" can mean "a child" or "children" depending on context.',
+    ],
+    task: 'Translate three English sentences in past, present, and future and notice that the Indonesian verb form is identical: I eat now / I ate yesterday / I will eat tomorrow → Saya makan sekarang / Saya makan kemarin / Saya akan makan besok.',
+  },
+  {
+    id: ACT.affixIntro,
+    section: 'Affixes — A Preview',
+    title: 'meN-, di-, ber-, ter-, -an, -kan, -i, -nya',
+    goals: [
+      'Recognize the eight most productive Indonesian affixes by sight and rough function: meN- (active transitive verb), di- (passive verb), ber- (stative/reciprocal verb), ter- (accidental or superlative), peN- (agent noun), -an (result/place/abstract noun), -kan / -i (transitivizing suffixes), -nya (definite or possessive enclitic).',
+      'See that the same root takes many shapes: from "ajar" (teach-root), you get belajar (study, ber- + ajar), mengajar (to teach, meN- + ajar), diajar (be taught, di- + ajar), pengajar (teacher, peN- + ajar), pelajar (pupil, peN- + ajar with sandhi), pelajaran (lesson, peN-…-an), pengajaran (teaching, peN- + -an), ajaran (a teaching/doctrine, -an alone).',
+      'Understand that meN- (and peN-) trigger nasal sandhi: meN- + tulis "write" → menulis (m+t → men- drops t), meN- + pikir "think" → memikir, meN- + kasih "give" → mengasih. This sandhi is one of the most distinctive sound patterns in spoken Indonesian and must become automatic.',
+    ],
+    task: 'Take the root "tulis" (write) and produce six derived forms: menulis (to write actively), ditulis (to be written), tertulis (written, accidentally/already written), penulis (writer/author), tulisan (a piece of writing), penulisan (the act of writing).',
+  },
+  {
+    id: ACT.rootShape,
+    section: 'Root Shape',
+    title: 'Two-syllable roots dominate',
+    goals: [
+      'Confirm that the vast majority of native Indonesian / Malay roots are bisyllabic with the shape CVC.CV(C) — makan (eat), minum (drink), rumah (house), jalan (road/walk), tanya (ask), tahu (know). Once you internalize this template, recognizing roots underneath layered affixes becomes much easier.',
+      'See that affixes add syllables, so a bisyllabic root often surfaces as a five-syllable derived word: ajar (2 syl) → pelajaran (4 syl) → mempelajari (5 syl). Native speakers parse these effortlessly because the bisyllabic root anchors recognition.',
+      'Recognize reduplication as the third layer — anak (child) → anak-anak (children), baik (good) → baik-baik (well/cautiously), sayur (vegetable) → sayur-sayuran (various vegetables). Reduplication is fully productive and adds plural, variety, intensity, or "doing the action lightly" meaning.',
+    ],
+    task: 'Identify the bare root in five derived words: pelajaran → ajar, mempelajari → ajar, pembangunan → bangun, pemerintahan → perintah, kebersihan → bersih.',
+  },
+  {
+    id: ACT.spelling,
+    section: 'Spelling',
+    title: 'EYD — the standardized spelling system',
+    goals: [
+      'Recognize that modern Indonesian spelling is regulated by EYD (Ejaan yang Disempurnakan, "Improved Spelling", 1972, revised as EYD V in 2022). EYD made spelling almost perfectly phonemic — once you know the 26 letters + 4 digraphs (ng, ny, sy, kh), you can pronounce any new word.',
+      'Know the older spelling forms you may still encounter: oe = u (Soeharto = Suharto), tj = c (tjinta = cinta), dj = j (Djakarta = Jakarta), j = y (saja = saya for "always", though saya "I" is unchanged). Old spelling appears on monuments, in surnames, and in pre-1972 publications.',
+      'Understand that consonant doubling (mm, nn, tt) is rare in native words and usually signals a loan or a morpheme boundary: pemmasalahan → permasalahan (problem), pembelajaran (learning) keeps the morpheme boundary visible. Geminate spelling is conservative.',
+    ],
+    task: 'Modernize five old-spelling words: Soeharto → Suharto, Djakarta → Jakarta, tjinta → cinta, oentoek → untuk, dj → j (Djoko → Joko).',
+  },
+  {
+    id: ACT.reading,
+    section: 'Reading Practice',
+    title: 'Read a paragraph aloud — UI orientation',
+    goals: [
+      'Read a 6-sentence paragraph about an orientation day at Universitas Indonesia (UI) in Depok with correct stress, vowel quality (full vs schwa "e"), and digraph treatment (ng, ny). Aim for a smooth, light rhythm rather than choppy syllable-by-syllable reading.',
+      'Recognize the affixes used in the paragraph (mengikuti, belajar, mahasiswa, pembelajaran) and identify the root under each.',
+    ],
+    task: 'Read the paragraph below aloud once, then circle every "e" that is a schwa, mark the penultimate stress in each multisyllabic word, and identify five affixed forms with their roots.',
+  },
+];
+
+const lesson = {
+  title: 'Level 1 · Foundation: Bahasa Indonesia — Phonology, Spelling, and Word Shape',
+  category: 'foundation',
+  difficulty: 'beginner',
+  targetLang: 'id',
+  nativeLang: 'en',
+  track: 'textbook',
+  lessonType: 'foundation',
+  activities,
+  expressionPractice: [
+    { id: 'reading-aloud', label: 'Reading aloud', goal: 'Read a multi-sentence Indonesian text aloud with correct penultimate stress, schwa vs full-e distinction, and ng/ny as single phonemes.' },
+    { id: 'spotting-affixes', label: 'Spotting affixes', goal: 'Identify the root under any affixed word (mengajar → ajar, pembangunan → bangun, kebersihan → bersih) on first reading.' },
+    { id: 'spotting-reduplication', label: 'Spotting reduplication', goal: 'Recognize reduplicated forms (anak-anak, baik-baik, sayur-sayuran) and identify whether the meaning is plural, intensifier, or variety.' },
+  ],
+  relatedPools: ['topic-language', 'topic-orientation'],
+  content: [
+    // Activity 1 — Orientation
+    createContentItem(
+      'Selamat datang',
+      'sə-la-mat da-tang',
+      'The standard welcome greeting used at airports, classrooms, ceremonies, and the front of every Indonesian textbook. Selamat is the all-purpose "safe/well" particle borrowed from Arabic salām; datang means "come/arrive". The combined phrase functions exactly like English "welcome" but is more visibly compositional — Indonesian learners often start by analyzing it.',
+      'word',
+      'Selamat datang di Universitas Indonesia.',
+      'Welcome to the University of Indonesia — the formal banner that greets every new student at UI Depok during the August orientation week.',
+      null,
+      [ACT.intro],
+    ),
+    createContentItem(
+      'Tiga lapisan kata',
+      'ti-ga la-pi-san ka-ta',
+      'Three layers of Indonesian word-building: the root (akar kata), the affixes (imbuhan), and the reduplication (kata ulang). Internalizing these three layers is the single highest-leverage move at the foundation stage — every later lesson assumes you can decompose a word into root + affix + (optional) reduplication on sight.',
+      'word',
+      'ajar → mengajar → pengajar-pengajar',
+      'Root ajar (teach) + meN- prefix → mengajar (to teach actively) + peN- prefix + reduplication → pengajar-pengajar (multiple teachers). All three layers in one chain.',
+      [
+        { target: 'Layer 1: akar kata (root)', note: 'the unaffixed bisyllabic core that carries the basic meaning — ajar, makan, jalan, rumah' },
+        { target: 'Layer 2: imbuhan (affixes)', note: 'prefixes (meN-, di-, ber-, ter-, peN-, ke-), suffixes (-an, -kan, -i), and circumfixes (ke-…-an, peN-…-an)' },
+        { target: 'Layer 3: kata ulang (reduplication)', note: 'full repetition for plural or variety, partial repetition for emphasis, with optional vowel change for color (warna-warni)' },
+      ],
+      [ACT.intro],
+    ),
+
+    // Activity 2 — Vowels
+    createContentItem('a', 'a', 'The cardinal low central vowel /a/, identical to Spanish "casa" and Italian "ama". Always short, tense, and undiphthongized — never the English "uh" of "sofa" or the English "ah" of "father" (which is slightly back). Appears in every position: anak (child), apa (what), ada (exist).', 'word', 'apa /a-pa/', '"What" — the most common question word; both syllables are clean /a/ with no English schwa creep.', null, [ACT.vowels]),
+    createContentItem('i', 'i', 'The cardinal high front vowel /i/, identical to Spanish "sí" and Italian "vi". Always short and tense — never the lax /ɪ/ of English "bit". When followed by a consonant cluster, stays clean: ini /i-ni/ "this", itu /i-tu/ "that", ikan /i-kan/ "fish".', 'word', 'ini /i-ni/', '"This" — paired with itu (that) forms the basic deictic system; both syllables /i/ are tense, never English /ɪ/.', null, [ACT.vowels]),
+    createContentItem('u', 'u', 'The cardinal high back rounded vowel /u/, identical to Spanish "tú" and Italian "tu". Always short and tense — never the lax /ʊ/ of English "put". Appears in untuk (for), uang (money), umur (age).', 'word', 'untuk /un-tuk/', '"For" — extremely high-frequency preposition; both u\'s are tense, and final k is glottal /ʔ/.', null, [ACT.vowels]),
+    createContentItem('e (full)', 'e', 'The mid-front vowel /e/, similar to Spanish "qué" and French "été" — NOT diphthongized to English "ay". Appears in soré (afternoon), sate (satay), lélé (catfish). In modern writing, this full /e/ is unmarked, indistinguishable on paper from schwa /ə/ — learners memorize each word.', 'word', 'soré /so-re/', '"Afternoon" — both syllables clean; the second e is a tense /e/, NOT a schwa or a diphthong.', null, [ACT.vowels]),
+    createContentItem('o', 'o', 'The mid-back rounded vowel /o/, similar to Spanish "no" — NOT diphthongized to English "oh". Appears in orang (person), kopi (coffee), toko (shop). Speakers from English L1 backgrounds must consciously suppress the off-glide.', 'word', 'orang /o-rang/', '"Person" — the unmarked classifier-noun for humans; both syllables clean, final ng a single /ŋ/.', null, [ACT.vowels]),
+
+    // Activity 3 — Schwa
+    createContentItem(
+      'e (schwa)',
+      'ə',
+      'The unmarked sixth vowel: a short, central /ə/ that appears in many native Indonesian words, especially in unstressed open syllables. Modern orthography does NOT distinguish schwa /ə/ from full /e/ — learners must memorize. Native speakers parse the difference automatically because the schwa is so brief that words containing it sound nearly consonantal in their schwa syllable.',
+      'word',
+      'empat /əm-pat/',
+      '"Four" — the e is a tiny schwa, not a full vowel; the word almost sounds like /mpat/ with a vowel onset.',
+      [
+        { target: 'empat /əm-pat/', note: '"four" — schwa in the first syllable' },
+        { target: 'emas /ə-mas/', note: '"gold" — schwa in the first syllable' },
+        { target: 'kerja /kər-dʒa/', note: '"work" — schwa in the first syllable, stress on the second' },
+      ],
+      [ACT.schwa],
+    ),
+    createContentItem(
+      'kerja vs kerja-an',
+      'kər-dʒa vs kər-dʒa-an',
+      'Even when an affix attaches, the schwa stays a schwa: kerja /kərdʒa/ "work" → pekerjaan /pəkərˈdʒaʔan/ "job", with TWO schwas (pe- and -er-) and full /a/ in the suffix. This is the rhythmic signature of affixed Indonesian — multiple weak schwas followed by a strong full-vowel syllable.',
+      'word',
+      'pekerjaan /pə-kər-dʒa-ʔan/',
+      '"Job, occupation" — the schwa-schwa-full-vowel rhythm is characteristic; non-natives often over-stress the e\'s and lose the natural lightness.',
+      null,
+      [ACT.schwa],
+    ),
+    createContentItem(
+      'belajar vs beli',
+      'bə-la-dʒar vs bə-li',
+      'The same "be-" prefix is a schwa /bə/ both in belajar (study) and beli (buy), but the words have completely different roots — belajar = ber- + ajar (with sandhi b+a → bel), beli is a single root (no affix). Schwa schwa appears in both prefixed and unprefixed words; the spelling doesn\'t tell you which is which.',
+      'word',
+      'Saya belajar dan beli buku.',
+      '"I study and buy a book" — both verbs start with the schwa /bə/ but only the first is morphologically prefixed; native speakers don\'t care about the analysis, they just hear the rhythm.',
+      [
+        { target: 'belajar = ber- + ajar', note: 'morphologically complex: prefix + root' },
+        { target: 'beli = beli', note: 'morphologically simple: a single root' },
+      ],
+      [ACT.schwa],
+    ),
+
+    // Activity 4 — Consonants
+    createContentItem('c', 'tʃ', 'The Indonesian letter c is pronounced /tʃ/, identical to English "ch" in "chair". Common in cinta (love), cuci (wash), cara (way). Never pronounce as /k/ (English "cat") or /s/ (English "city").', 'word', 'cinta /tʃin-ta/', '"Love" — the c is /tʃ/, the i is tense /i/, the final a is short and clean.', null, [ACT.consonants]),
+    createContentItem('j', 'dʒ', 'The Indonesian letter j is pronounced /dʒ/, identical to English "j" in "jam". Common in jalan (street/walk), Jakarta, jadi (so/become). Never pronounce as French /ʒ/ ("je") or Spanish /x/.', 'word', 'jalan /dʒa-lan/', '"Road / to walk" — both syllables clean, no diphthong on the a.', null, [ACT.consonants]),
+    createContentItem('r', 'r (tap or trill)', 'The Indonesian r is a tapped /ɾ/ or trilled /r/, like Spanish, Italian, or Russian r. NOT the English approximant /ɹ/ — using English r marks a speaker as foreign immediately. Common in rumah (house), merdeka (freedom), kabar (news).', 'word', 'merdeka /mər-de-ka/', '"Freedom / independent" — the central word of Indonesian nationalism; the r is trilled in formal speech and tapped in casual speech.', null, [ACT.consonants]),
+    createContentItem('h', 'h', 'The letter h is pronounced /h/, similar to English "h" in "hat", but Indonesian /h/ is often softer or even silent in casual speech, especially between vowels: tahu /taʔu/ or /tau/ "know", paham /paham/ or /pam/ "understand". In word-initial position, /h/ is clearer.', 'word', 'hari ini', '"Today" — literally "day this"; /h/ pronounced clearly word-initially; the second word begins with /i/.', null, [ACT.consonants]),
+    createContentItem('No final devoicing', 'ɑˈbɑd', 'Unlike German "Tag" /tak/ or Russian "хлеб" /xlep/, Indonesian preserves final voiced stops. "Abad" /aˈbad/ stays /-d/, NOT /-t/. Many learners from German/Russian/Polish/Turkish backgrounds devoice automatically and produce non-native pronunciations.', 'word', 'abad /a-bad/', '"Century" — the final d stays voiced; saying /abat/ would sound foreign.', null, [ACT.consonants]),
+    createContentItem('Unaspirated p t k', 'p, t, k', 'Indonesian p, t, k are unaspirated at the start of stressed syllables — like Romance and Slavic languages, NOT like English. "Pagi" /pagi/ "morning" sounds like Spanish "papi", not English "Patty". Learners from English/Hindi/Korean backgrounds add aspiration and sound stiff.', 'word', 'pagi /pa-gi/', '"Morning" — the p is unaspirated, no puff of air.', null, [ACT.consonants]),
+
+    // Activity 5 — Digraphs
+    createContentItem(
+      'ng',
+      'ŋ',
+      'A SINGLE velar nasal phoneme /ŋ/, identical to English "ng" in "sing" or German "lang". Never split into /n/+/g/. Common in uang (money), bunga (flower), dengan (with), mengapa (why). Word-initially, /ŋ/ also occurs: nganga (gape), but this is much rarer.',
+      'word',
+      'uang /uaŋ/',
+      '"Money" — two syllables ua-ng, the final ng is one sound /ŋ/, NEVER /un-gah/.',
+      [
+        { target: 'uang /uaŋ/', note: '"money" — ng word-final' },
+        { target: 'bunga /bu-ŋa/', note: '"flower" — ng word-medial, syllable break is /bu-ŋa/ not /bun-ga/' },
+        { target: 'dengan /də-ŋan/', note: '"with" — schwa + ng + an, very high frequency preposition' },
+      ],
+      [ACT.digraphs],
+    ),
+    createContentItem(
+      'ngg',
+      'ŋg',
+      'The double-g digraph signals /ŋ/+/g/ — a velar nasal followed by a real /g/ release. "Anggur" /aŋˈgur/ "grape" has a clear /g/; "tangga" /taŋˈga/ "stairs" also. Compare "angka" /aŋka/ "number" which has only /ŋ/+/k/ (no /g/).',
+      'word',
+      'tangga /taŋ-ga/',
+      '"Stairs / steps" — both /ŋ/ and /g/ pronounced.',
+      [
+        { target: 'anggur /aŋ-gur/', note: '"grape" — has /g/' },
+        { target: 'angka /aŋ-ka/', note: '"number" — no /g/, just /ŋ/+/k/' },
+        { target: 'tunggu /tuŋ-gu/', note: '"wait" — has /g/' },
+      ],
+      [ACT.digraphs],
+    ),
+    createContentItem(
+      'ny',
+      'ɲ',
+      'A SINGLE palatal nasal phoneme /ɲ/, identical to Spanish ñ, French gn, Italian gn, and Catalan ny. Never split into /n/+/y/. Common in nyanyi (sing), banyak (many), hanya (only), nyamuk (mosquito).',
+      'word',
+      'banyak /ba-ɲak/',
+      '"Many / a lot" — the most common quantifier; ny is one sound /ɲ/.',
+      [
+        { target: 'nyanyi /ɲa-ɲi/', note: '"to sing" — both syllables start with /ɲ/' },
+        { target: 'hanya /ha-ɲa/', note: '"only" — emphatic restrictive particle' },
+        { target: 'nyamuk /ɲa-muʔ/', note: '"mosquito" — final k is glottal stop' },
+      ],
+      [ACT.digraphs],
+    ),
+    createContentItem(
+      'sy',
+      'ʃ',
+      'A palato-alveolar fricative /ʃ/, identical to English "sh" in "ship" and German "sch". Appears mostly in Arabic loanwords related to Islam and formal vocabulary: syarat (condition), syukur (gratitude), syair (poem), syaikh (sheikh).',
+      'word',
+      'syukur /ʃu-kur/',
+      '"Gratitude / thank goodness" — Arabic-loan word used both religiously (Alhamdulillah, syukur) and in everyday relief expressions.',
+      null,
+      [ACT.digraphs],
+    ),
+    createContentItem(
+      'kh',
+      'x',
+      'A velar fricative /x/, identical to German "Bach" and Spanish "jota". Appears in Arabic-loan vocabulary: akhir (end), khusus (special), khawatir (worried), akhlak (morals). In casual Indonesian, kh often relaxes to /k/ — "akhir" /akir/.',
+      'word',
+      'akhir /a-xir/',
+      '"End" — formal /a-xir/, casual /a-kir/; both are acceptable in everyday speech.',
+      null,
+      [ACT.digraphs],
+    ),
+
+    // Activity 6 — Glottal stop
+    createContentItem(
+      'Final k = glottal stop',
+      'ʔ',
+      'In native Indonesian roots, word-final "k" is pronounced as a glottal stop /ʔ/, NOT as a released /k/. "Anak" /aˈnaʔ/ "child", "duduk" /duˈduʔ/ "sit", "tidak" /tiˈdaʔ/ "no". Loanwords sometimes keep the /k/ release: politik /poˈlitik/.',
+      'word',
+      'anak /a-naʔ/',
+      '"Child" — the final k is a closure in the throat, not a release; saying /anak/ with /k/ sounds foreign.',
+      [
+        { target: 'duduk /du-duʔ/', note: '"sit" — final k = glottal' },
+        { target: 'tidak /ti-daʔ/', note: '"no, not" — final k = glottal; very high frequency' },
+        { target: 'masuk /ma-suʔ/', note: '"enter / come in" — final k = glottal' },
+      ],
+      [ACT.glottal],
+    ),
+    createContentItem(
+      'Glottal between vowels',
+      'maʔaf',
+      'When two identical or adjacent vowels meet across a syllable boundary, Indonesian often inserts a glottal stop. "Maaf" /maˈʔaf/ "sorry", "saat" /saʔat/ "moment", "doa" /doʔa/ "prayer". Some older spellings show this with an apostrophe (ma\'af, sa\'at, do\'a).',
+      'word',
+      'maaf /maʔaf/',
+      '"Sorry / forgiveness" — Arabic-loan ma\'fū with an audible glottal between the two a\'s.',
+      null,
+      [ACT.glottal],
+    ),
+
+    // Activity 7 — Stress
+    createContentItem(
+      'Stres pada suku kedua dari belakang',
+      'stres pa-da su-ku kə-dua da-ri bə-la-kang',
+      'The default Indonesian stress rule: stress falls on the PENULTIMATE syllable (second from the end). selamat /səˈlamat/, makan /ˈmakan/, rumah /ˈrumah/, pelajaran /pəlaˈdʒaran/. Stress is light — more rhythmic than loud.',
+      'word',
+      'se-LA-mat, ma-KAN, ru-MAH, pe-la-JA-ran',
+      'Capital marks penultimate stress; notice that Indonesian stress is much weaker than English stress — it shapes rhythm rather than volume.',
+      null,
+      [ACT.stress],
+    ),
+    createContentItem(
+      'Schwa exception',
+      'sə-ə-shift',
+      'If the penultimate syllable contains a schwa /ə/, stress moves to the FINAL syllable. "Pergi" /pərˈgi/ "go" (not /ˈpərgi/), "kerja" /kərˈdʒa/ "work", "perlu" /pərˈlu/ "need". The schwa is too weak to carry stress, so stress slides one syllable right.',
+      'word',
+      'per-GI, ker-JA, per-LU',
+      'Penultimate schwa shifts stress to the final syllable; this is one of the most consistent rules in Indonesian phonology.',
+      null,
+      [ACT.stress],
+    ),
+    createContentItem(
+      'Light stress timing',
+      'sy-LL bal-Ic',
+      'Indonesian is SYLLABLE-TIMED, not stress-timed. Every syllable gets roughly equal duration. Compare English "intercontinental" (in-ter-con-ti-NEN-tal, with heavy reduction) vs Indonesian "internasional" (in-ter-na-si-O-nal, all syllables roughly equal). This makes Indonesian sound smooth and even to English ears.',
+      'word',
+      'in-ter-na-si-O-nal',
+      'Roughly equal duration on every syllable; penultimate stress is the only mild emphasis.',
+      null,
+      [ACT.stress],
+    ),
+
+    // Activity 8 — No tone, no conjugation
+    createContentItem(
+      'Tidak ada nada',
+      'ti-daʔ a-da na-da',
+      '"No tones" — Indonesian is non-tonal. The same syllable said with any pitch keeps the same meaning. Compare Mandarin "ma" (mā mother / má hemp / mǎ horse / mà scold). In Indonesian, "mata" is always "eye" regardless of pitch; pitch only marks question vs statement vs emphasis.',
+      'word',
+      'mata? / mata. / mata!',
+      'Rising → question, falling → statement, sharp → emphasis. All three are the same word "eye".',
+      null,
+      [ACT.noTone],
+    ),
+    createContentItem(
+      'Tidak ada konjugasi',
+      'ti-daʔ a-da kon-ju-ga-si',
+      '"No conjugation" — Indonesian verbs do not change form for tense, person, number, or gender. "Saya makan" (I eat / ate / will eat / am eating). Time is shown lexically with adverbs (kemarin yesterday, sekarang now, besok tomorrow) and aspect particles (sudah already, sedang now, akan will, belum not yet).',
+      'sentence',
+      'Saya makan kemarin / sekarang / besok.',
+      'I ate yesterday / I eat now / I will eat tomorrow — the verb form is identical in all three tenses.',
+      [
+        { target: 'kemarin', note: '"yesterday" — places the bare verb in past time' },
+        { target: 'sekarang', note: '"now" — places the bare verb in present time' },
+        { target: 'besok', note: '"tomorrow" — places the bare verb in future time' },
+      ],
+      [ACT.noTone],
+    ),
+    createContentItem(
+      'Plural by reduplication',
+      'a-naʔ-a-naʔ',
+      'Indonesian does not mark plural with -s/-es. Plurality is shown by context, by quantifier, or by reduplication: anak (child) → anak-anak (children), buku (book) → buku-buku (books). The bare noun is ambiguous between singular and plural; reduplication makes plural explicit.',
+      'word',
+      'anak-anak bermain di taman',
+      '"The children play in the park" — anak-anak is explicitly plural; bare anak would be ambiguous.',
+      null,
+      [ACT.noTone],
+    ),
+
+    // Activity 9 — Affix intro
+    createContentItem(
+      'meN-',
+      'mə(N)-',
+      'The most productive Indonesian prefix, marking active transitive verbs. The N (capital N) stands for a nasal whose actual sound depends on the following consonant: meN- + tulis → menulis, meN- + pikir → memikir, meN- + cari → mencari, meN- + kasih → mengasih, meN- + sapu → menyapu. This nasal sandhi is the most distinctive feature of Indonesian morphology.',
+      'word',
+      'meN- + tulis → menulis (to write)',
+      'The N takes the place of articulation of the following consonant; the consonant itself is often dropped (t, k, s, p drop; b, d, g, j stay).',
+      [
+        { target: 'meN- + t → men- (t drops)', note: 'tulis → menulis "to write"' },
+        { target: 'meN- + k → meng- (k drops)', note: 'kirim → mengirim "to send"' },
+        { target: 'meN- + p → mem- (p drops)', note: 'pukul → memukul "to hit"' },
+        { target: 'meN- + s → meny- (s drops)', note: 'sapu → menyapu "to sweep"' },
+        { target: 'meN- + b → mem- (b stays)', note: 'beli → membeli "to buy"' },
+        { target: 'meN- + d → men- (d stays)', note: 'dengar → mendengar "to hear"' },
+        { target: 'meN- + vowel → meng-', note: 'ajar → mengajar "to teach"' },
+      ],
+      [ACT.affixIntro],
+    ),
+    createContentItem(
+      'di-',
+      'di-',
+      'The passive-voice prefix, marking object-focused / passive verbs. No nasal sandhi: di- + tulis → ditulis (written), di- + makan → dimakan (eaten), di- + beli → dibeli (bought). Indonesian uses di- much more than English uses passive — many neutral statements about completed actions use di- as the default.',
+      'word',
+      'Surat itu ditulis oleh Sari.',
+      '"That letter was written by Sari" — oleh "by" marks the agent; passive di- is the standard way to focus on the object/result.',
+      null,
+      [ACT.affixIntro],
+    ),
+    createContentItem(
+      'ber-',
+      'bər-',
+      'A stative or reciprocal verb prefix; often translates as "have a/the X" or "do X-ing intransitively". berbicara (to speak / be speaking), bermain (to play), berjalan (to walk), berdua (to be two together), berkata (to say). Unlike meN-, ber- verbs are intransitive and do not take a direct object.',
+      'word',
+      'Saya berjalan ke kampus.',
+      '"I walk to campus" — berjalan is intransitive (ke "to" is a preposition, not an object); ber- is the marker.',
+      null,
+      [ACT.affixIntro],
+    ),
+    createContentItem(
+      'ter-',
+      'tər-',
+      'A prefix with two main meanings: (1) accidental / unintentional ("happened to", "got"): terjatuh (fell accidentally), terbawa (got carried), tersesat (got lost); (2) superlative ("most"): terbaik (best), tertinggi (highest), terbesar (largest). Context disambiguates.',
+      'word',
+      'Saya terjatuh di jalan.',
+      '"I fell down on the road" (accidentally) — vs sengaja jatuh "fell on purpose".',
+      [
+        { target: 'terjatuh', note: 'accidental: "fell accidentally"' },
+        { target: 'terbaik', note: 'superlative: "best"' },
+        { target: 'tersesat', note: 'accidental: "got lost"' },
+        { target: 'terbesar', note: 'superlative: "largest"' },
+      ],
+      [ACT.affixIntro],
+    ),
+    createContentItem(
+      'peN-…-an',
+      'pə(N)-…-an',
+      'A circumfix forming nominalizations: an abstract noun or process derived from a verb root. peN- triggers the same nasal sandhi as meN-. pendidikan (education, didik root), pembangunan (development, bangun root), pengajaran (teaching, ajar root), perkembangan (development, kembang root). High-frequency in formal and academic Indonesian.',
+      'word',
+      'pendidikan tinggi di Indonesia',
+      '"Higher education in Indonesia" — pendidikan is the circumfix form of didik "educate".',
+      null,
+      [ACT.affixIntro],
+    ),
+    createContentItem(
+      '-nya',
+      '-ɲa',
+      'A versatile enclitic with three main functions: (1) definite marker ("the"): buku → bukunya "the book"; (2) third-person possessive ("his/her/its"): rumah → rumahnya "his house"; (3) nominalizer ("the X-ness, the X-ing"): adanya "the existence". Extremely high-frequency.',
+      'word',
+      'Bukunya bagus.',
+      '"The book is good" / "Her book is good" — bukunya is ambiguous between definite and possessive; context disambiguates.',
+      null,
+      [ACT.affixIntro],
+    ),
+
+    // Activity 10 — Root shape
+    createContentItem(
+      'Akar dua suku kata',
+      'a-kar du-a su-ku ka-ta',
+      'Two-syllable root template — the vast majority of native Indonesian / Malay roots are CV(C).CV(C). makan (eat), minum (drink), rumah (house), jalan (road), tanya (ask), tahu (know), sudah (already), masih (still), pergi (go), datang (come). Once you can spot a two-syllable root through layers of affixes, decoding new vocabulary becomes much faster.',
+      'word',
+      'makan, minum, rumah, jalan, tanya',
+      'Five canonical bisyllabic roots; over 80% of native vocabulary fits this template.',
+      null,
+      [ACT.rootShape],
+    ),
+    createContentItem(
+      'ajar → pelajaran',
+      'a-jar → pə-la-dʒa-ran',
+      'The root "ajar" (teach) takes many derived forms; "pelajaran" (lesson) is a four-syllable circumfix derivative with TWO affixes (peN- and -an) and one sandhi adjustment (peN- + ajar → pelajar with l).',
+      'word',
+      'Pelajaran hari ini menarik.',
+      '"Today\'s lesson is interesting" — pelajaran is the most common form a learner first encounters.',
+      [
+        { target: 'ajar (root)', note: '"teach" — the bisyllabic core' },
+        { target: 'belajar = ber- + ajar', note: '"study, learn" — the prefix with sandhi makes "bel-"' },
+        { target: 'mengajar = meN- + ajar', note: '"to teach" actively' },
+        { target: 'pengajar = peN- + ajar', note: '"teacher, instructor"' },
+        { target: 'pelajaran = peN- + ajar + -an', note: '"lesson" — with sandhi and suffix' },
+      ],
+      [ACT.rootShape],
+    ),
+    createContentItem(
+      'Reduplikasi',
+      'rə-du-pli-ka-si',
+      'Reduplication — full repetition (anak-anak children, buku-buku books), partial repetition (lelaki man, from laki), or rhyming repetition (warna-warni colorful, sayur-mayur various greens). Reduplication adds plurality, variety, intensity, or "doing X lightly" meaning, depending on the word class.',
+      'word',
+      'anak-anak, baik-baik, sayur-sayuran',
+      'Three reduplication types: full plural, intensifier, and variety (-an added).',
+      [
+        { target: 'anak-anak', note: 'plural: "children"' },
+        { target: 'baik-baik', note: 'intensifier: "well, carefully"' },
+        { target: 'sayur-sayuran', note: 'variety (with -an): "various vegetables"' },
+        { target: 'warna-warni', note: 'rhyming (with vowel change): "colorful"' },
+        { target: 'jalan-jalan', note: 'doing X for fun/leisure: "go for a stroll, take a trip"' },
+      ],
+      [ACT.rootShape],
+    ),
+
+    // Activity 11 — Spelling
+    createContentItem(
+      'EYD — Ejaan yang Disempurnakan',
+      'e-ja-an yang di-səm-pur-na-kan',
+      'EYD = "Improved Spelling System", introduced in 1972 and revised most recently as EYD V (2022). The reform replaced Dutch-influenced spellings (oe, dj, tj, j-for-y) with phonemic Latin spellings (u, j, c, y), making Indonesian spelling almost perfectly predictable from pronunciation.',
+      'word',
+      'Old: Soeharto, Djakarta, tjinta → New: Suharto, Jakarta, cinta',
+      'Three landmark renamings: the second president, the capital, and "love" — all written in old Dutch-influenced spelling pre-1972.',
+      [
+        { target: 'oe → u', note: 'Soeharto → Suharto' },
+        { target: 'dj → j', note: 'Djakarta → Jakarta' },
+        { target: 'tj → c', note: 'tjinta → cinta' },
+        { target: 'j → y', note: 'saja (in old spelling, meaning "you") → saya (in new spelling, meaning "I"); contextual' },
+        { target: 'ch → kh', note: 'tachta → takhta "throne"' },
+      ],
+      [ACT.spelling],
+    ),
+    createContentItem(
+      'Old surnames keep old spelling',
+      'so-e-har-to',
+      'Even after the 1972 reform, many Indonesians (especially older generations) keep their original Dutch-influenced surname spelling: Soekarno (1st president), Soeharto (2nd president), Djojohadikusumo (politician). Newer generations use the modern spelling for new names.',
+      'word',
+      'Soekarno, Soeharto, Djojohadikusumo',
+      'Three historical surnames preserved in old EYD spelling; the underlying pronunciation is the same.',
+      null,
+      [ACT.spelling],
+    ),
+
+    // Activity 12 — Reading
+    createContentItem(
+      'Hari pertama di UI',
+      'ha-ri pər-ta-ma di u-i',
+      'A six-sentence reading paragraph about a first day at Universitas Indonesia (UI) in Depok — the flagship state university on the outskirts of Jakarta. Read it aloud applying everything from this lesson: penultimate stress, schwa vs full e, ng/ny as single phonemes, glottal final k, no aspiration on p/t/k.',
+      'sentence',
+      'Selamat datang di Universitas Indonesia. Hari ini adalah hari pertama saya sebagai mahasiswa baru. Kampus UI berada di Depok, Jawa Barat. Saya akan belajar bahasa Indonesia dan ilmu komputer. Pengajar saya bernama Pak Budi; beliau sudah mengajar di UI selama dua puluh tahun. Saya merasa sangat bersyukur bisa mengikuti pendidikan tinggi di sini.',
+      '"Welcome to the University of Indonesia. Today is my first day as a new student. The UI campus is in Depok, West Java. I will study Indonesian and computer science. My instructor is named Pak Budi; he has been teaching at UI for twenty years. I feel very grateful to be able to pursue higher education here."',
+      [
+        { target: 'mahasiswa baru', note: '"new university student" — mahasiswa is a compound of maha- "great" + siswa "pupil"' },
+        { target: 'Depok, Jawa Barat', note: 'the city of Depok in West Java province — the home of UI\'s main campus, about 25 km south of central Jakarta' },
+        { target: 'Pak Budi', note: 'Pak = abbreviated Bapak, "Mr." used for adult men; Budi is a very common given name' },
+        { target: 'sudah mengajar selama dua puluh tahun', note: '"has been teaching for twenty years" — sudah marks completed/ongoing-from-past aspect; selama "for the duration of" + time phrase' },
+        { target: 'pendidikan tinggi', note: '"higher education" — pendidikan = peN-…-an circumfix on didik "educate"; tinggi "high" is a postnominal adjective' },
+      ],
+      [ACT.reading],
+    ),
+    createContentItem(
+      'Pertanyaan pemahaman',
+      'pər-ta-ɲa-an pə-ma-ha-man',
+      'Five comprehension questions matching the paragraph. Answer each in a short Indonesian sentence; full sentences are preferred over one-word answers in academic Indonesian.',
+      'sentence',
+      '1) Di mana kampus UI? 2) Apa yang dipelajari oleh narator? 3) Siapa nama pengajarnya? 4) Sudah berapa lama Pak Budi mengajar? 5) Bagaimana perasaan narator?',
+      'Five question words appear: di mana (where), apa (what), siapa (who), sudah berapa lama (for how long), bagaimana (how).',
+      [
+        { target: 'A1: Kampus UI di Depok, Jawa Barat.', note: 'di mana → di + place; minimal complete answer' },
+        { target: 'A2: Bahasa Indonesia dan ilmu komputer.', note: 'object focus; the passive question "dipelajari" yields a direct-object answer' },
+        { target: 'A3: Pak Budi.', note: 'one-word answer is acceptable for siapa "who"' },
+        { target: 'A4: Dua puluh tahun.', note: 'one-phrase answer for duration' },
+        { target: 'A5: Sangat bersyukur.', note: 'adjective phrase; bersyukur "grateful" is the ber- + Arabic-loan root syukur form' },
+      ],
+      [ACT.reading],
+    ),
+  ],
+};
+
+module.exports = lesson;

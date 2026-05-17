@@ -9,11 +9,11 @@ const roleOptions = ['learner', 'teacher', 'admin', 'owner'];
 const statusOptions = ['active', 'invited', 'removed'];
 const organizationTypes = ['school', 'company', 'church', 'language_center', 'nonprofit', 'government', 'other'];
 
-function formatDate(value, fallback) {
+function formatDate(value, fallback, locale) {
   if (!value) return fallback;
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return fallback;
-  return date.toLocaleDateString();
+  return date.toLocaleDateString(locale || undefined);
 }
 
 function asPercent(value, fallback) {
@@ -21,7 +21,7 @@ function asPercent(value, fallback) {
 }
 
 function InstitutionDashboard() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -40,6 +40,8 @@ function InstitutionDashboard() {
     () => members.filter((member) => member.role === 'learner' && member.status === 'active'),
     [members],
   );
+  const locale = i18n.resolvedLanguage || i18n.language || undefined;
+  const localizedDate = (value, fallback) => formatDate(value, fallback, locale);
 
   const loadDashboard = async (organizationId = selectedOrganizationId) => {
     setLoading(true);
@@ -291,7 +293,7 @@ function InstitutionDashboard() {
                   <strong>{asPercent(member.learnerSummary.averageScore, t('institution.noScore'))}</strong>
                   <small>{t('institution.completedItemsShort', { count: member.learnerSummary.completedClassItems })}</small>
                 </span>
-                <span>{formatDate(member.user?.lastActive || member.learnerSummary.lastStudiedAt, t('profilePage.unknown'))}</span>
+                <span>{localizedDate(member.user?.lastActive || member.learnerSummary.lastStudiedAt, t('profilePage.unknown'))}</span>
               </div>
             ))}
           </div>
@@ -347,7 +349,7 @@ function InstitutionDashboard() {
               <div><span>{t('billing.currentPlan')}</span><strong>{t(`pricing.planNames.${organization.planId}`, organization.planId)}</strong></div>
               <div><span>{t('institution.status')}</span><strong>{t(`institution.orgStatuses.${organization.status}`, organization.status)}</strong></div>
               <div><span>{t('billing.sources.institution')}</span><strong>{organization.effectiveTier?.toUpperCase()}</strong></div>
-              <div><span>{t('billing.noRenewalDate')}</span><strong>{formatDate(organization.expiresAt, t('billing.noRenewalDate'))}</strong></div>
+              <div><span>{t('billing.noRenewalDate')}</span><strong>{localizedDate(organization.expiresAt, t('billing.noRenewalDate'))}</strong></div>
             </div>
             <button type="button" className="institution-secondary full" onClick={() => navigate('/pricing')}>
               {t('billing.viewPlans')}
@@ -366,7 +368,27 @@ function InstitutionDashboard() {
               {(dashboard.recentLearners || []).map((member) => (
                 <div key={member._id}>
                   <strong>{member.user?.username || member.email}</strong>
-                  <span>{formatDate(member.user?.lastActive || member.learnerSummary.lastStudiedAt, t('profilePage.unknown'))}</span>
+                  <span>{localizedDate(member.user?.lastActive || member.learnerSummary.lastStudiedAt, t('profilePage.unknown'))}</span>
+                </div>
+              ))}
+            </div>
+          </article>
+
+          <article className="institution-panel">
+            <div className="institution-panel-head">
+              <div>
+                <p className="institution-kicker">{t('institution.snapshotsKicker', 'Learner snapshots')}</p>
+                <h2>{t('institution.needsHelpTitle', 'Needs attention')}</h2>
+              </div>
+            </div>
+            <div className="institution-recent-list">
+              {(dashboard.needsHelpLearners || []).length === 0 && <p>{t('institution.noNeedsHelpLearners', 'No learners currently need extra attention.')}</p>}
+              {(dashboard.needsHelpLearners || []).map((member) => (
+                <div key={`needs-${member._id}`}>
+                  <strong>{member.user?.username || member.email}</strong>
+                  <span>
+                    {(member.learnerSnapshot?.reasons || []).map((reason) => t(`institution.snapshotReasons.${reason}`, reason)).join(' · ')}
+                  </span>
                 </div>
               ))}
             </div>

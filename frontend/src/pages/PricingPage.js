@@ -14,9 +14,26 @@ const money = (cents, cadence, t) => {
     : t('pricing.priceMonthly', { amount, defaultValue: '{{amount}}/mo' });
 };
 
+const moneyAmount = (cents) => {
+  if (cents == null) return '';
+  return `$${(cents / 100).toFixed(cents % 100 === 0 ? 0 : 2)}`;
+};
+
 const featureKey = (feature) => `pricing.features.${feature}`;
 const planNameKey = (plan) => `pricing.planNames.${plan.id}`;
 const planTaglineKey = (plan) => `pricing.planTaglines.${plan.id}`;
+
+const automaticDiscountFor = (plan, interval) => (
+  interval === 'annual'
+    ? plan.automaticDiscountAnnual
+    : plan.automaticDiscountMonthly
+);
+
+const discountedPriceFor = (plan, interval) => (
+  interval === 'annual'
+    ? plan.discountedAnnualPriceCents
+    : plan.discountedMonthlyPriceCents
+);
 
 function PricingPage() {
   const { t } = useTranslation();
@@ -160,7 +177,12 @@ function PricingPage() {
         {(plans.individual || []).map((plan) => {
           const name = t(planNameKey(plan), plan.name);
           const tagline = t(planTaglineKey(plan), plan.tagline);
-          const price = money(interval === 'annual' ? plan.annualPriceCents : plan.monthlyPriceCents, interval, t);
+          const originalPriceCents = interval === 'annual' ? plan.annualPriceCents : plan.monthlyPriceCents;
+          const automaticDiscount = automaticDiscountFor(plan, interval);
+          const discountedPriceCents = discountedPriceFor(plan, interval);
+          const hasAutomaticDiscount = automaticDiscount && discountedPriceCents != null && discountedPriceCents < originalPriceCents;
+          const price = money(hasAutomaticDiscount ? discountedPriceCents : originalPriceCents, interval, t);
+          const originalPrice = hasAutomaticDiscount ? money(originalPriceCents, interval, t) : null;
           const isHighlighted = plan.id === 'pro';
           return (
             <article key={plan.id} className={`pricing-card ${isHighlighted ? 'highlighted' : ''}`}>
@@ -170,7 +192,17 @@ function PricingPage() {
                 <span>{tagline}</span>
               </div>
               <div className="pricing-price">
+                {hasAutomaticDiscount && <span className="pricing-original-price">{originalPrice}</span>}
                 <strong>{price}</strong>
+                {hasAutomaticDiscount && (
+                  <span className="pricing-auto-discount">
+                    {t('pricing.automaticDiscountApplied', {
+                      discount: automaticDiscount.discountType === 'percent'
+                        ? `${automaticDiscount.percentOff}%`
+                        : moneyAmount(automaticDiscount.amountOffCents),
+                    })}
+                  </span>
+                )}
               </div>
               <ul className="pricing-features">
                 {(plan.features || []).map((feature) => (

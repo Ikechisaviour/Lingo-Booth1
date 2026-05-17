@@ -41,6 +41,7 @@ const ORG_MANAGER_ROLES = ['owner', 'admin'];
 const ORG_OVERSIGHT_ROLES = ['owner', 'admin', 'teacher'];
 const DISCOUNT_TYPES = ['percent', 'fixed'];
 const DISCOUNT_AUDIENCES = ['all', 'individual', 'institution'];
+const DISCOUNT_APPLICATION_MODES = ['code', 'automatic'];
 
 function cleanText(value, maxLength) {
   return String(value || '').trim().slice(0, maxLength);
@@ -97,11 +98,21 @@ async function planOverridesById() {
   return new Map(overrides.map((override) => [override.planId, override]));
 }
 
+async function activeAutomaticDiscounts() {
+  return DiscountCode.find({
+    active: true,
+    applicationMode: 'automatic',
+  }).sort({ createdAt: -1 }).lean();
+}
+
 async function publicPlansWithOverrides() {
-  const overrides = await planOverridesById();
+  const [overrides, automaticDiscounts] = await Promise.all([
+    planOverridesById(),
+    activeAutomaticDiscounts(),
+  ]);
   return {
-    individual: INDIVIDUAL_PLANS.map((plan) => publicPlan(applyPlanOverride(plan, overrides.get(plan.id)))),
-    institutional: INSTITUTIONAL_PLANS.map((plan) => publicPlan(applyPlanOverride(plan, overrides.get(plan.id)))),
+    individual: INDIVIDUAL_PLANS.map((plan) => publicPlanWithAutomaticDiscounts(applyPlanOverride(plan, overrides.get(plan.id)), automaticDiscounts)),
+    institutional: INSTITUTIONAL_PLANS.map((plan) => publicPlanWithAutomaticDiscounts(applyPlanOverride(plan, overrides.get(plan.id)), automaticDiscounts)),
   };
 }
 
@@ -135,7 +146,10 @@ function discountIsAvailable(discount, plan) {
 async function validateDiscountForPlan(code, plan) {
   const normalizedCode = discountCodeValue(code);
   if (!normalizedCode) return null;
-  const discount = await DiscountCode.findOne({ code: normalizedCode }).lean();
+  const discount = await DiscountCode.findOne({
+    code: normalizedCode,
+    applicationMode: { $ne: 'automatic' },
+  }).lean();
   if (!discount || !discountIsAvailable(discount, plan)) return null;
   return discount;
 }
@@ -149,11 +163,38 @@ function discountedAmountCents(amountCents, discount) {
   return Math.max(amountCents - Math.round(Number(discount.amountOffCents || 0)), 0);
 }
 
+function discountSavingsCents(amountCents, discount) {
+  if (!discount || !Number.isFinite(amountCents)) return 0;
+  return Math.max(amountCents - discountedAmountCents(amountCents, discount), 0);
+}
+
+function bestAutomaticDiscountForPlan(discounts, plan, interval = 'monthly') {
+  const amountCents = priceCentsFor(plan, interval);
+  if (!Number.isFinite(amountCents) || amountCents <= 0) return null;
+  const eligible = (discounts || [])
+    .filter((discount) => discount?.applicationMode === 'automatic' && discountIsAvailable(discount, plan))
+    .map((discount) => ({
+      discount,
+      savings: discountSavingsCents(amountCents, discount),
+      createdAt: discount.createdAt ? new Date(discount.createdAt).getTime() : 0,
+    }))
+    .filter((entry) => entry.savings > 0)
+    .sort((a, b) => (b.savings - a.savings) || (b.createdAt - a.createdAt));
+  return eligible[0]?.discount || null;
+}
+
+async function validateAutomaticDiscountForPlan(plan, interval = 'monthly') {
+  const discounts = await activeAutomaticDiscounts();
+  return bestAutomaticDiscountForPlan(discounts, plan, interval);
+}
+
 function publicDiscount(discount) {
   if (!discount) return null;
   return {
     _id: discount._id,
     code: discount.code,
+    applicationMode: discount.applicationMode || 'code',
+    requiresCode: (discount.applicationMode || 'code') !== 'automatic',
     active: !!discount.active,
     description: discount.description || '',
     discountType: discount.discountType,
@@ -172,6 +213,35 @@ function publicDiscount(discount) {
     createdAt: discount.createdAt,
     updatedAt: discount.updatedAt,
   };
+}
+
+function publicAutomaticDiscount(discount) {
+  const value = publicDiscount(discount);
+  if (!value) return null;
+  return {
+    ...value,
+    code: null,
+  };
+}
+
+function publicPlanWithAutomaticDiscounts(plan, automaticDiscounts = []) {
+  const value = publicPlan(plan);
+  const monthlyDiscount = bestAutomaticDiscountForPlan(automaticDiscounts, plan, 'monthly');
+  const annualDiscount = bestAutomaticDiscountForPlan(automaticDiscounts, plan, 'annual');
+
+  if (monthlyDiscount) {
+    value.automaticDiscountMonthly = publicAutomaticDiscount(monthlyDiscount);
+    value.monthlyPriceCentsBeforeDiscount = value.monthlyPriceCents;
+    value.discountedMonthlyPriceCents = discountedAmountCents(value.monthlyPriceCents, monthlyDiscount);
+  }
+
+  if (annualDiscount) {
+    value.automaticDiscountAnnual = publicAutomaticDiscount(annualDiscount);
+    value.annualPriceCentsBeforeDiscount = value.annualPriceCents;
+    value.discountedAnnualPriceCents = discountedAmountCents(value.annualPriceCents, annualDiscount);
+  }
+
+  return value;
 }
 
 function frontendUrl(pathname) {
@@ -433,6 +503,8 @@ async function createStripeCheckoutSession({ user, plan, interval, successUrl, c
   body.set('metadata[tier]', plan.tier);
   body.set('metadata[interval]', interval);
   if (discount?.code) body.set('metadata[discountCode]', discount.code);
+  if (discount?._id) body.set('metadata[discountId]', String(discount._id));
+  if (discount?.applicationMode) body.set('metadata[discountApplicationMode]', discount.applicationMode);
 
   const response = await fetch('https://api.stripe.com/v1/checkout/sessions', {
     method: 'POST',
@@ -495,7 +567,12 @@ async function handleStripeEvent(event) {
       lastProviderPayload: object,
     });
     await applySubscriptionRecordToUser(userId, record);
-    if (metadata.discountCode) {
+    if (metadata.discountId && mongoose.isValidObjectId(metadata.discountId)) {
+      await DiscountCode.updateOne(
+        { _id: metadata.discountId },
+        { $inc: { redemptions: 1 } },
+      );
+    } else if (metadata.discountCode) {
       await DiscountCode.updateOne(
         { code: discountCodeValue(metadata.discountCode) },
         { $inc: { redemptions: 1 } },
@@ -657,15 +734,19 @@ router.post('/checkout-session', async (req, res) => {
     if (!plan || plan.id === 'free') {
       return res.status(400).json({ message: 'Choose a paid individual plan' });
     }
-    const discount = await validateDiscountForPlan(discountCode, plan);
-    if (discountCode && !discount) {
+    const checkoutInterval = interval === 'annual' ? 'annual' : 'monthly';
+    const requestedDiscountCode = discountCodeValue(discountCode);
+    const discount = requestedDiscountCode
+      ? await validateDiscountForPlan(requestedDiscountCode, plan)
+      : await validateAutomaticDiscountForPlan(plan, checkoutInterval);
+    if (requestedDiscountCode && !discount) {
       return res.status(400).json({ message: 'Discount code is not available' });
     }
 
     const session = await createStripeCheckoutSession({
       user: req.user,
       plan,
-      interval: interval === 'annual' ? 'annual' : 'monthly',
+      interval: checkoutInterval,
       successUrl,
       cancelUrl,
       discount,
@@ -678,7 +759,13 @@ router.post('/checkout-session', async (req, res) => {
         status: 'setup_required',
         userId: req.userId,
         message: `Missing setup for ${plan.id}`,
-        payload: { planId: plan.id, interval, discountCode: discount?.code || '', missing: session.missing },
+        payload: {
+          planId: plan.id,
+          interval: checkoutInterval,
+          discountCode: discount?.applicationMode === 'automatic' ? '' : discount?.code || '',
+          automaticDiscountId: discount?.applicationMode === 'automatic' ? String(discount._id) : '',
+          missing: session.missing,
+        },
       });
       return setupMissingResponse(
         res,
@@ -692,7 +779,13 @@ router.post('/checkout-session', async (req, res) => {
       type: 'checkout.session.created',
       status: 'processed',
       userId: req.userId,
-      payload: { id: session.id, planId: plan.id, interval, discountCode: discount?.code || '' },
+      payload: {
+        id: session.id,
+        planId: plan.id,
+        interval: checkoutInterval,
+        discountCode: discount?.applicationMode === 'automatic' ? '' : discount?.code || '',
+        automaticDiscountId: discount?.applicationMode === 'automatic' ? String(discount._id) : '',
+      },
     });
 
     res.json({ checkoutUrl: session.url, sessionId: session.id });
@@ -873,6 +966,30 @@ router.get('/institution/dashboard', async (req, res) => {
     const learnerAverage = learners
       .map((member) => member.learnerSummary.averageScore)
       .filter((score) => Number.isFinite(score));
+    const staleCutoff = Date.now() - (7 * 24 * 60 * 60 * 1000);
+    const needsHelpLearners = learners
+      .map((member) => {
+        const summary = member.learnerSummary || {};
+        const lastStudy = summary.lastStudiedAt || member.user?.lastActive || null;
+        const reasons = [];
+        if (Number.isFinite(summary.averageScore) && summary.averageScore < 70) reasons.push('low_score');
+        if ((summary.struggling || 0) > 0) reasons.push('struggling_items');
+        if (!lastStudy || new Date(lastStudy).getTime() < staleCutoff) reasons.push('inactive');
+        return {
+          ...member,
+          learnerSnapshot: {
+            reasons,
+            lastStudy,
+          },
+        };
+      })
+      .filter((member) => member.learnerSnapshot.reasons.length > 0)
+      .sort((a, b) => (
+        (b.learnerSnapshot.reasons.length - a.learnerSnapshot.reasons.length)
+        || ((a.learnerSummary.averageScore ?? 101) - (b.learnerSummary.averageScore ?? 101))
+        || (new Date(a.learnerSnapshot.lastStudy || 0) - new Date(b.learnerSnapshot.lastStudy || 0))
+      ))
+      .slice(0, 8);
 
     res.json({
       organizations: availableMemberships.map((membership) => ({
@@ -916,6 +1033,7 @@ router.get('/institution/dashboard', async (req, res) => {
         .filter((member) => member.user)
         .sort((a, b) => new Date(b.user.lastActive || 0) - new Date(a.user.lastActive || 0))
         .slice(0, 8),
+      needsHelpLearners,
       subscriptions,
     });
   } catch (error) {
@@ -1152,8 +1270,10 @@ router.put('/admin/plan-overrides/:planId', async (req, res) => {
 
 function discountPayload(body, userId, isCreate = false) {
   const type = DISCOUNT_TYPES.includes(body.discountType) ? body.discountType : 'percent';
+  const applicationMode = DISCOUNT_APPLICATION_MODES.includes(body.applicationMode) ? body.applicationMode : 'code';
   const payload = {
     active: body.active !== false,
+    applicationMode,
     description: cleanLine(body.description, 220),
     discountType: type,
     percentOff: type === 'percent' ? cleanPositiveInt(body.percentOff, 1) : null,
@@ -1172,7 +1292,10 @@ function discountPayload(body, userId, isCreate = false) {
     updatedBy: userId,
   };
   if (isCreate) {
-    payload.code = discountCodeValue(body.code);
+    const providedCode = discountCodeValue(body.code);
+    payload.code = applicationMode === 'automatic'
+      ? providedCode || `AUTO-${Date.now().toString(36)}-${crypto.randomBytes(3).toString('hex')}`.toUpperCase()
+      : providedCode;
     payload.createdBy = userId;
     payload.redemptions = 0;
   }
@@ -1183,7 +1306,9 @@ function discountPayload(body, userId, isCreate = false) {
 router.post('/admin/discounts', async (req, res) => {
   try {
     const payload = discountPayload(req.body || {}, req.userId, true);
-    if (!payload.code) return res.status(400).json({ message: 'Discount code is required' });
+    if (payload.applicationMode !== 'automatic' && !payload.code) {
+      return res.status(400).json({ message: 'Discount code is required' });
+    }
     const discount = await DiscountCode.create(payload);
     await BillingEvent.create({
       provider: 'manual',
