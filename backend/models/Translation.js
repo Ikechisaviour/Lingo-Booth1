@@ -20,6 +20,11 @@ const translationSchema = new mongoose.Schema(
       trim: true,
       lowercase: true,
     },
+    sourceFingerprint: {
+      type: String,
+      default: '',
+      trim: true,
+    },
     title: { type: String, default: '' },
     // Per-content-item translations (1:1 with lesson.content by index).
     items: [

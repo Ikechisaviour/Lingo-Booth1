@@ -16,7 +16,7 @@ import {
 import { Text, Button, TextInput, Card, Divider, SegmentedButtons, Switch } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
-import { userService, progressService, ttsService } from '../../services/api';
+import { certificateService, classLessonService, learningHubService, userService, progressService, ttsService } from '../../services/api';
 import speechService from '../../services/speechService';
 import {
   getPracticeNotificationStatus,
@@ -30,6 +30,7 @@ import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useAppColors, type AppColors } from '../../config/theme';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { normalizeLanguageCode } from '../../utils/languagePairPolicy';
+import { formatVoiceOptions } from '../../utils/voiceDisplay';
 
 function isProOrUltraTier(tier?: string | null) {
   return ['pro', 'ultra'].includes(String(tier || '').toLowerCase());
@@ -57,6 +58,8 @@ const ProfileScreen: React.FC = () => {
 
   const [user, setUser] = useState<any>(null);
   const [progress, setProgress] = useState<any>(null);
+  const [learningHub, setLearningHub] = useState<any>(null);
+  const [certificates, setCertificates] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState('');
@@ -88,6 +91,11 @@ const ProfileScreen: React.FC = () => {
   const styles = useMemo(() => createStyles(colors, isCompact), [colors, isCompact]);
   const voiceLanguageCode = voiceLanguage === 'native' ? nativeLanguage : targetLanguage;
   const selectedVoice = preferredVoices?.[voiceLanguageCode] || (voiceLanguage === 'target' ? preferredVoice : null);
+  const displayVoices = useMemo(() => formatVoiceOptions(voices, {
+    languageCode: voiceLanguageCode,
+    t,
+    uiLanguage: i18n.resolvedLanguage || i18n.language,
+  }), [voices, voiceLanguageCode, t, i18n.resolvedLanguage, i18n.language]);
   const languageLabel = (code?: string) => {
     const normalized = normalizeLanguageCode(code);
     const localizedName = t(`languages.${normalized}`, LANGUAGES[normalized]?.name || t('profilePage.selectLanguage', 'Select language'));
@@ -118,12 +126,16 @@ const ProfileScreen: React.FC = () => {
     if (!userId) return;
     try {
       setLoading(true);
-      const [userRes, progRes] = await Promise.all([
+      const [userRes, progRes, hubRes, certRes] = await Promise.all([
         userService.getProfile(userId),
         progressService.getSummary(userId),
+        learningHubService.getOverview().catch(() => ({ data: null })),
+        certificateService.list().catch(() => ({ data: { certificates: [] } })),
       ]);
       setUser(userRes.data);
       setProgress(progRes.data);
+      setLearningHub(hubRes.data);
+      setCertificates(certRes.data?.certificates || []);
       setEditUsername(userRes.data.username);
       if (userRes.data.preferredVoices && typeof userRes.data.preferredVoices === 'object') {
         setVoiceMap(userRes.data.preferredVoices);
@@ -337,6 +349,29 @@ const ProfileScreen: React.FC = () => {
     try { await GoogleSignin.signOut(); } catch {}
     logout();
   };
+  const voicePracticeHistory = (learningHub?.recentEvents || [])
+    .filter((event: any) => (
+      ['conversation_turn', 'speaking_practice_complete'].includes(event.eventType)
+      && event.metadata?.transcript
+      && ['spoken', 'hands_free'].includes(event.metadata?.mode || '')
+    ))
+    .slice(0, 6);
+  const replayTargetSpeech = (event: any) => {
+    const targetSpeech = event?.metadata?.targetText || event?.metadata?.transcript;
+    if (!targetSpeech) return;
+    const targetLocale = LANGUAGES[targetLanguage]?.ttsLocale || 'en-US';
+    speechService.speak(targetSpeech, { lang: targetLocale });
+  };
+  const practiceVoiceTurnAgain = (event: any) => {
+    const transcript = event?.metadata?.transcript;
+    if (!transcript) return;
+    navigation.navigate('Conversation', {
+      starter: t('learningHub.practiceAgainPrompt', {
+        text: transcript,
+        defaultValue: 'Help me practice saying "{{text}}" again.',
+      }),
+    });
+  };
 
   if (loading) {
     return (
@@ -470,6 +505,60 @@ const ProfileScreen: React.FC = () => {
             </View>
           </TouchableOpacity>
 
+          <Card style={styles.card}>
+            <Card.Content>
+              <Text variant="titleMedium" style={styles.cardTitle}>
+                {t('learningHub.milestonesTitle', 'Milestones')}
+              </Text>
+              <View style={styles.milestoneGrid}>
+                <View style={styles.milestoneItem}>
+                  <Text style={styles.milestoneValue}>{learningHub?.milestones?.completedClassLessons || 0}</Text>
+                  <Text style={styles.hintText}>{t('learningHub.completedLessons', 'Completed lessons')}</Text>
+                </View>
+                <View style={styles.milestoneItem}>
+                  <Text style={styles.milestoneValue}>{learningHub?.milestones?.savedItems || 0}</Text>
+                  <Text style={styles.hintText}>{t('learningHub.savedItems', 'Saved items')}</Text>
+                </View>
+                <View style={styles.milestoneItem}>
+                  <Text style={styles.milestoneValue}>{certificates.length}</Text>
+                  <Text style={styles.hintText}>{t('learningHub.certificates', 'Certificates')}</Text>
+                </View>
+              </View>
+              {certificates.slice(0, 4).map((certificate: any) => (
+                <View key={certificate.certificateId} style={styles.historyRow}>
+                  <Text style={styles.historyTitle}>{certificate.classLessonTitle || t('certificates.issuedTitle')}</Text>
+                  <Text style={styles.hintText}>{certificate.issuedAt ? new Date(certificate.issuedAt).toLocaleDateString() : ''}</Text>
+                </View>
+              ))}
+            </Card.Content>
+          </Card>
+
+          <Card style={styles.card}>
+            <Card.Content>
+              <Text variant="titleMedium" style={styles.cardTitle}>
+                {t('learningHub.voiceHistoryTitle', 'Voice practice history')}
+              </Text>
+              {voicePracticeHistory.length ? voicePracticeHistory.map((event: any) => (
+                <View key={event._id} style={styles.historyRow}>
+                  <Text style={styles.historyMeta}>{t('learningHub.youSaid', 'You said')}</Text>
+                  <Text style={styles.historyTitle}>{event.metadata.transcript}</Text>
+                  <Text style={styles.historyMeta}>{t('learningHub.targetSpeech', 'Target speech')}</Text>
+                  <Text style={styles.hintText}>{event.metadata.targetText || event.metadata.transcript}</Text>
+                  <View style={styles.historyActions}>
+                    <Button mode="outlined" compact onPress={() => replayTargetSpeech(event)}>
+                      {t('learningHub.replayTargetSpeech', 'Hear target speech')}
+                    </Button>
+                    <Button mode="outlined" compact onPress={() => practiceVoiceTurnAgain(event)}>
+                      {t('learningHub.practiceAgain', 'Practice again')}
+                    </Button>
+                  </View>
+                </View>
+              )) : (
+                <Text style={styles.hintText}>{t('learningHub.voiceHistoryEmpty', 'Speaking turns will appear here after conversation practice.')}</Text>
+              )}
+            </Card.Content>
+          </Card>
+
           {userRole === 'admin' && (
             <Button
               mode="contained"
@@ -547,6 +636,10 @@ const ProfileScreen: React.FC = () => {
                           if (userId) {
                             try { await userService.updateProfile(userId, { nativeLanguage: code }); } catch {}
                           }
+                          classLessonService.preparePair({
+                            nativeLang: code,
+                            targetLang: targetLanguage,
+                          }).catch(() => {});
                         }}
                       >
                         <Text style={styles.dropdownItemText}>{languageOptionLabel(code)}</Text>
@@ -585,6 +678,10 @@ const ProfileScreen: React.FC = () => {
                           if (userId) {
                             try { await userService.updateProfile(userId, { targetLanguage: code }); } catch {}
                           }
+                          classLessonService.preparePair({
+                            nativeLang: nativeLanguage,
+                            targetLang: code,
+                          }).catch(() => {});
                           fetchVoices();
                         }}
                       >
@@ -644,8 +741,7 @@ const ProfileScreen: React.FC = () => {
                     {!selectedVoice && <Text style={styles.voiceCheck}>✓</Text>}
                   </TouchableOpacity>
 
-                  {voices.map((voice: any) => {
-                    const name = voice.ShortName || voice.Name || voice.name || String(voice);
+                  {displayVoices.map(({ name, display }) => {
                     const isSelected = selectedVoice === name;
                     const isPreviewing = previewingVoice === name;
                     return (
@@ -656,10 +752,8 @@ const ProfileScreen: React.FC = () => {
                         activeOpacity={0.7}
                       >
                         <View style={{ flex: 1 }}>
-                          <Text style={styles.voiceName}>{voice.FriendlyName || name}</Text>
-                          <Text style={styles.voiceMeta}>
-                            {voice.Gender || ''}{voice.Locale ? ` · ${voice.Locale}` : ''}
-                          </Text>
+                          <Text style={styles.voiceName}>{display.primary}</Text>
+                          <Text style={styles.voiceMeta}>{display.secondary}</Text>
                         </View>
                         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
                           <TouchableOpacity
@@ -920,6 +1014,13 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
   infoLabel: { fontSize: 14, color: colors.textSecondary },
   infoValue: { fontSize: 14, fontWeight: '600', color: colors.textPrimary },
   hintText: { fontSize: 12, color: colors.textMuted, marginTop: 8, fontStyle: 'italic' },
+  milestoneGrid: { flexDirection: 'row', gap: 8, marginTop: 12, marginBottom: 12 },
+  milestoneItem: { flex: 1, padding: 10, borderRadius: 10, backgroundColor: colors.background },
+  milestoneValue: { color: colors.textPrimary, fontSize: 20, fontWeight: '900' },
+  historyRow: { gap: 2, paddingVertical: 10, borderTopWidth: 1, borderTopColor: colors.border },
+  historyMeta: { color: colors.textMuted, fontSize: 12, fontWeight: '700' },
+  historyTitle: { color: colors.textPrimary, fontWeight: '800' },
+  historyActions: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 8 },
   settingSwitchRow: {
     flexDirection: 'row',
     alignItems: 'center',

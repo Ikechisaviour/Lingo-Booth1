@@ -45,6 +45,7 @@ This gate specifically protects against:
 - Pair-scoped detail pages must pass both `targetLang` and `nativeLang` when loading by ID. This includes quiz detail, class lesson detail, and any future lesson-like route. The backend must reject mismatched target-language IDs so stale links cannot show the previous language's content.
 - Shared list/catalog screens must not hardcode target-specific labels such as "Korean Basics", "Hangul", or "Workplace Korean". Use localized generic track copy plus the active target language name, or render the authored lesson title itself.
 - Audio should read the actual language text, not pronunciation guides, unless the user asks for pronunciation help.
+- Audio-only tutoring must still be understandable with the screen off: cue examples/dialogues before reading them, preserve the intended target/native order, and keep target/native voices distinct when speech is available.
 - **Every new user-facing string must use `t('namespace.key', 'English default')`** — never a bare JSX text, attribute, or expression. The pair audit (`npm run audit:i18n-leaks`) flags violations on both surfaces.
 - Strings rendered from arrays, constants, status helpers, scenario definitions, menu definitions, plan cards, or other dynamic objects are still user-facing. Put them in translation JSON or an explicit localized copy table, then add/update an audit so the JSX-only leak checker cannot miss them.
 - Normalize language codes before copy lookup on both web and mobile. `kr`, `cn`, `jp`, `zh-CN`, and similar legacy/browser aliases should never decide copy directly.
@@ -85,6 +86,10 @@ Run these checks when a change touches `backend/textbookLessons/**`, the `Lesson
   - Canonical explanation strings: `nativeText`, `exampleNative`, `breakdown[].native`, goals, tasks, labels, notes.
   - Learner overlay strings: runtime/cached translations per native language.
 - Do not embed English meanings inside target-language strings. Reject patterns like `mā 妈 (mother)`, `안녕하세요 (hello)`, `hola (hello)`, or `車 (car)` in `targetText`, `exampleTarget`, or `breakdown[].target`.
+- Do not store English scaffolding labels such as `Foundation goal`, `Writing prompt`, or `Question intonation` in learner-facing target slots for a non-English target language. If legacy data still contains one, the served payload must normalize it to real target-language material before it reaches web or mobile.
+- Do not treat every Latin-script target item in a non-Latin course as a leak. Chinese Pinyin and similar authored pronunciation material are legitimate target content; use the shared target-layer policy instead of a blanket script test.
+- Translate `nativeText` from the canonical English explanation layer only. Do not derive it by translating `targetText`; that destroys authored pedagogy and can turn a letter-name or support label into the wrong learner-language gloss.
+- Deterministic class tutor turns and client-side tutor fallbacks are user-facing copy too. They must be localized for every pair, and practice actions must always return an actual learner task instead of going silent on pairs that do not include English.
 - If a target-language example needs meaning support, the target field stays target-only and the explanation goes into `exampleNative` or `breakdown[].native`.
 - Tone tables, pronunciation tables, and other nested breakdowns are not exempt. The learner-facing explanation belongs in `breakdown[].native` and must be translated at serve time for non-English native languages; the target cell stays target-only.
 - Generation scripts must not clone one language's grammar/culture distinctions into every other language. Seed from language-neutral concepts and target-language authored data.

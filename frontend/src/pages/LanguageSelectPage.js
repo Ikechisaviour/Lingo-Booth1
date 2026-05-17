@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useSearchParams, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import LANGUAGES, { getLanguageDisplayName } from '../config/languages';
-import { userService } from '../services/api';
+import { classLessonService, userService } from '../services/api';
 import {
   applyPublicLanguage,
   getPublicLanguagePair,
@@ -70,6 +70,10 @@ function LanguageSelectPage({ setIsGuest, onLogout }) {
     localStorage.setItem('targetLanguage', canonicalTarget);
     setLandingLanguagePreference(canonicalNative);
     i18n.changeLanguage(canonicalNative);
+    classLessonService.preparePair({
+      nativeLang: canonicalNative,
+      targetLang: canonicalTarget,
+    }).catch(() => {});
 
     if (mode === 'guest') {
       localStorage.setItem('guestMode', 'true');

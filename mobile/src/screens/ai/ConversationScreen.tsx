@@ -12,7 +12,7 @@ import { useRoute } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import { Button, Card, Menu, SegmentedButtons, Text, TextInput } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { aiService, practiceContextService } from '../../services/api';
+import { aiService, learningHubService, practiceContextService, userService } from '../../services/api';
 import speechService from '../../services/speechService';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
@@ -48,6 +48,14 @@ type PracticeRecommendations = {
   hasContext?: boolean;
   roleplays?: PracticeRecommendation[];
   reviewDrills?: PracticeRecommendation[];
+};
+type RoleplayRecap = {
+  title: string;
+  partner: string;
+  goal: string;
+  summary: string;
+  usefulPhrases?: string[];
+  coachingTips?: string[];
 };
 
 const scenarios = [
@@ -750,12 +758,23 @@ const slowerCommands = new Set([
 const localizedStopCommands = new Set(CONVERSATION_STOP_COMMANDS.map(normalizeVoiceCommand));
 const localizedRepeatCommands = new Set(CONVERSATION_REPEAT_COMMANDS.map(normalizeVoiceCommand));
 const localizedSlowerCommands = new Set(CONVERSATION_SLOWER_COMMANDS.map(normalizeVoiceCommand));
+const scenarioIds = new Set(scenarios.map((item) => item.id));
 
 const ConversationScreen: React.FC = () => {
   const route = useRoute<any>();
   const { t } = useTranslation();
   const lessonId = typeof route.params?.lessonId === 'string' ? route.params.lessonId : '';
-  const starterParam = typeof route.params?.starter === 'string' ? route.params.starter : '';
+  const starterParam = typeof route.params?.starter === 'string'
+    ? route.params.starter
+    : typeof route.params?.prompt === 'string'
+      ? route.params.prompt
+      : '';
+  const incomingScenarioId = typeof route.params?.scenarioId === 'string' && scenarioIds.has(route.params.scenarioId)
+    ? route.params.scenarioId
+    : scenarios[0].id;
+  const incomingCustomRoleplay = route.params?.customRoleplay && typeof route.params.customRoleplay === 'object'
+    ? route.params.customRoleplay as CustomRoleplay
+    : null;
   const colors = useAppColors();
   const insets = useSafeAreaInsets();
   const styles = useMemo(() => createStyles(colors), [colors]);
@@ -765,10 +784,11 @@ const ConversationScreen: React.FC = () => {
   const heardSpeechRef = useRef(false);
   const restartTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastAssistantRef = useRef<Turn | null>(null);
+  const pendingSpeechTurnRef = useRef(false);
 
-  const { subscriptionTier, aiEntitlements, userRole } = useAuthStore();
+  const { userId, subscriptionTier, aiEntitlements, userRole } = useAuthStore();
   const { nativeLanguage, targetLanguage } = useSettingsStore();
-  const [scenarioId, setScenarioId] = useState(scenarios[0].id);
+  const [scenarioId, setScenarioId] = useState(incomingScenarioId);
   const [supportLevel, setSupportLevel] = useState(supportLevels[0].value);
   const [turn, setTurn] = useState('');
   const [history, setHistory] = useState<Turn[]>([]);
@@ -783,12 +803,19 @@ const ConversationScreen: React.FC = () => {
   const [scenarioMenuOpen, setScenarioMenuOpen] = useState(false);
   const [contextRecommendations, setContextRecommendations] = useState<PracticeRecommendations | null>(null);
   const [countdownNow, setCountdownNow] = useState(Date.now());
+  const [roleplayRecap, setRoleplayRecap] = useState<RoleplayRecap | null>(null);
 
   useEffect(() => {
     if (!lessonId) return;
     setHistory([]);
     setStatus('Class lesson ready.');
   }, [lessonId]);
+
+  useEffect(() => {
+    if (incomingScenarioId !== scenarioId) {
+      setScenarioId(incomingScenarioId);
+    }
+  }, [incomingScenarioId, scenarioId]);
 
   const scenario = useMemo(
     () => scenarios.find((item) => item.id === scenarioId) || scenarios[0],
@@ -800,6 +827,11 @@ const ConversationScreen: React.FC = () => {
     () => supportLevels.find((item) => item.value === supportLevel) || supportLevels[0],
     [supportLevel],
   );
+  const supportIndex = supportLevels.findIndex((item) => item.value === supportLevel);
+  const shiftSupportLevel = (direction: number) => {
+    const nextIndex = Math.max(0, Math.min(supportLevels.length - 1, supportIndex + direction));
+    setSupportLevel(supportLevels[nextIndex].value);
+  };
   const uiLabels = useMemo(
     () => displayLabelsFor(nativeLanguage, scenarioId, roleState),
     [nativeLanguage, scenarioId, roleState],
@@ -867,6 +899,9 @@ const ConversationScreen: React.FC = () => {
         const raw = await AsyncStorage.getItem(storageKeyFor(scenarioId, nativeLanguage, targetLanguage));
         const stored: StoredConversation = raw ? JSON.parse(raw) : {};
         const storedCustom = customRoleplayFromMemory(stored.memory);
+        const seededCustom = scenarioId === CUSTOM_SCENARIO_ID && completeCustomRoleplay(incomingCustomRoleplay || {})
+          ? incomingCustomRoleplay as CustomRoleplay
+          : storedCustom;
         let nextRoleState = roleStateForMemory(stored.memory);
         let loadedHistory: Turn[] = Array.isArray(stored.history)
           ? stored.history.slice(-12).map((item, index) => ({
@@ -876,16 +911,26 @@ const ConversationScreen: React.FC = () => {
           : [];
 
         if (scenarioId === CUSTOM_SCENARIO_ID) {
-          setCustomRoleplay(storedCustom);
-          nextRoleState = nextRoleState || customRoleState(storedCustom);
-          if (!completeCustomRoleplay(storedCustom) && loadedHistory.length === 0) {
+          setCustomRoleplay(seededCustom);
+          nextRoleState = customRoleState(seededCustom) || nextRoleState;
+          if (completeCustomRoleplay(seededCustom) && seededCustom !== storedCustom) {
+            await saveMemory({
+              summary: '',
+              memory: {
+                customRoleplay: seededCustom,
+                roleState: nextRoleState || undefined,
+              },
+              history: [],
+            });
+          }
+          if (!completeCustomRoleplay(seededCustom) && loadedHistory.length === 0) {
             const copy = customSetupCopy(nativeLanguage);
-            const nextStep = nextCustomSetupStep(storedCustom) || 'learnerRole';
+            const nextStep = nextCustomSetupStep(seededCustom) || 'learnerRole';
             const setupTurn = setupAssistantTurn(copy[nextStep], nativeLanguage || 'en');
             loadedHistory = [setupTurn];
             await saveMemory({
               summary: stored.summary || '',
-              memory: { ...(stored.memory || {}), customRoleplay: storedCustom },
+              memory: { ...(stored.memory || {}), customRoleplay: seededCustom },
               history: [{ role: setupTurn.role, content: setupTurn.content }],
             });
           }
@@ -895,18 +940,20 @@ const ConversationScreen: React.FC = () => {
 
         setRoleState(nextRoleState);
         setHistory(loadedHistory);
+        setRoleplayRecap(null);
         lastAssistantRef.current = [...loadedHistory].reverse().find((message) => message.role === 'assistant' && !message.error) || null;
       } catch {
         setCustomRoleplay({});
         setRoleState(null);
         setHistory([]);
+        setRoleplayRecap(null);
         lastAssistantRef.current = null;
       }
       setTurn('');
       setStatus(readyStatus);
     };
     load();
-  }, [scenarioId, nativeLanguage, targetLanguage, readyStatus]);
+  }, [incomingCustomRoleplay, scenarioId, nativeLanguage, targetLanguage, readyStatus]);
 
   useEffect(() => {
     if (!starterParam) return;
@@ -992,8 +1039,10 @@ const ConversationScreen: React.FC = () => {
     handsFreeRef.current = false;
     listeningAutoRef.current = false;
     heardSpeechRef.current = false;
+    pendingSpeechTurnRef.current = false;
     lastAssistantRef.current = null;
     setRoleState(null);
+    setRoleplayRecap(null);
     setListening(false);
     setHandsFreeActive(false);
     if (scenarioId === CUSTOM_SCENARIO_ID) {
@@ -1063,6 +1112,50 @@ const ConversationScreen: React.FC = () => {
   const quotaResetMessage = (usage = tokenUsage) => (
     quotaLimitCopy(tier, usage?.resetAt).status
   );
+
+  const saveAssistantTurn = async (message: Turn) => {
+    if (!userId || message.role !== 'assistant' || message.error) return;
+    try {
+      await learningHubService.saveItem({
+        itemType: 'phrase',
+        targetText: message.content,
+        nativeText: message.coachingTip || '',
+        sourceType: 'conversation',
+        sourceRef: scenarioId,
+        sourceLabel: activeScenarioTitle,
+        reason: t('conversation.savedReplyReason', 'Saved from conversation practice.'),
+        metadata: { route: '/conversation', scenarioId },
+      });
+      setStatus(t('conversation.savedReply', 'Reply saved for review.'));
+    } catch {
+      setStatus(t('conversation.saveReplyFailed', 'Could not save this reply right now.'));
+    }
+  };
+
+  const saveRoleplayRecap = async () => {
+    if (!userId || !roleplayRecap) return;
+    try {
+      await learningHubService.saveItem({
+        itemType: 'roleplay',
+        targetText: roleplayRecap.title,
+        nativeText: roleplayRecap.summary || roleplayRecap.goal,
+        sourceType: 'conversation',
+        sourceRef: scenarioId,
+        sourceLabel: roleplayRecap.partner,
+        reason: t('conversation.savedRoleplayReason', 'Completed roleplay saved for later practice.'),
+        metadata: {
+          route: '/conversation',
+          scenarioId,
+          summary: roleplayRecap.summary,
+          goal: roleplayRecap.goal,
+          customRoleplay: isCustomScenario ? customRoleplay : undefined,
+        },
+      });
+      setStatus(t('conversation.roleplaySaved', 'Roleplay saved for review.'));
+    } catch {
+      setStatus(t('conversation.saveRoleplayFailed', 'Could not save this roleplay right now.'));
+    }
+  };
 
   const stopHandsFree = () => {
     handsFreeRef.current = false;
@@ -1336,8 +1429,9 @@ const ConversationScreen: React.FC = () => {
     setHistory((prev) => [...prev.slice(-11), userTurn]);
 
     try {
+      const sessionId = aiSessionIdFor(scenarioId, nativeLanguage || 'en', targetLanguage || 'ko', customRoleplay);
       const response = await aiService.sendConversationTurn({
-        sessionId: aiSessionIdFor(scenarioId, nativeLanguage || 'en', targetLanguage || 'ko', customRoleplay),
+        sessionId,
         scenario: activeScenarioTitle,
         targetLanguage: targetLanguage || 'ko',
         nativeLanguage: nativeLanguage || 'en',
@@ -1393,6 +1487,45 @@ const ConversationScreen: React.FC = () => {
         return updated;
       });
       setStatus(t('conversation.status.partnerReplied', { defaultValue: 'Practice partner replied.' }));
+      const roleplayJustCompleted = stored.memory?.roleplayComplete !== true && data.memory?.roleplayComplete === true;
+      if (roleplayJustCompleted) {
+        const recentAssistantMessages = [
+          ...history.filter((message) => message.role === 'assistant' && !message.error),
+          assistantTurn,
+        ].slice(-3);
+        setRoleplayRecap({
+          title: activeScenarioTitle,
+          partner: uiLabels.activePartner,
+          goal: activeScenarioGoal,
+          summary: data.summary || '',
+          usefulPhrases: recentAssistantMessages.map((message) => message.content).filter(Boolean),
+          coachingTips: [
+            ...history.map((message) => message.coachingTip).filter(Boolean),
+            assistantTurn.coachingTip,
+          ].filter((tip): tip is string => Boolean(tip)).slice(-3),
+        });
+      }
+      if (userId) {
+        const turnMode = autoContinue ? 'hands_free' : pendingSpeechTurnRef.current ? 'spoken' : 'typed';
+        userService.recordLearningEvent(userId, {
+          eventType: 'conversation_turn',
+          sessionId,
+          turnId: userTurn.id,
+          mode: turnMode,
+          source: scenarioId,
+          transcript: text,
+          partnerReply: assistantTurn.content,
+          targetText: text,
+        }).catch(() => {});
+        if (roleplayJustCompleted) {
+          userService.recordLearningEvent(userId, {
+            eventType: 'roleplay_complete',
+            sessionId,
+            roleplayId: isCustomScenario ? (customRoleplay.id || 'custom') : scenarioId,
+            mode: autoContinue ? 'hands_free' : 'typed',
+          }).catch(() => {});
+        }
+      }
       if (speechEnabled || autoContinue) {
         if (autoContinue) {
           await speakMessage(assistantTurn);
@@ -1403,6 +1536,7 @@ const ConversationScreen: React.FC = () => {
       if (autoContinue && handsFreeRef.current) {
         scheduleHandsFreeListening();
       }
+      pendingSpeechTurnRef.current = false;
     } catch (error: any) {
       const planDenied = error.response?.status === 403;
       const quotaDenied = error.response?.status === 429;
@@ -1496,6 +1630,7 @@ const ConversationScreen: React.FC = () => {
     // Push-to-talk: leave the transcript in the input for review/edit before
     // sending. Misrecognitions shouldn't be auto-submitted to the AI.
     if (captured) {
+      pendingSpeechTurnRef.current = true;
       setTurn(captured);
       setStatus(handsFreeCopy(nativeLanguage).captured);
       return;
@@ -1587,6 +1722,14 @@ const ConversationScreen: React.FC = () => {
           buttons={supportLevels.map(({ value }) => ({ value, label: supportLabelFor(nativeLanguage, value) }))}
           style={styles.segmented}
         />
+        <View style={styles.supportAdjustRow}>
+          <Button mode="outlined" compact disabled={supportIndex <= 0} onPress={() => shiftSupportLevel(-1)}>
+            {t('conversation.easier', 'Easier')}
+          </Button>
+          <Button mode="outlined" compact disabled={supportIndex >= supportLevels.length - 1} onPress={() => shiftSupportLevel(1)}>
+            {t('conversation.harder', 'Harder')}
+          </Button>
+        </View>
         <View style={styles.brief}>
           <View style={styles.briefRow}>
             <View style={styles.briefColumn}>
@@ -1693,6 +1836,33 @@ const ConversationScreen: React.FC = () => {
               <Text style={styles.emptyText}>{t('conversation.partnerReady', { partner: uiLabels.activePartner, defaultValue: '{{partner}} is ready.' })}</Text>
             </View>
           )}
+          {roleplayRecap && (
+            <View style={styles.recapCard}>
+              <View style={styles.recapText}>
+                <Text style={styles.recapTitle}>{t('conversation.recapTitle', 'Roleplay complete')}</Text>
+                <Text style={styles.recapBody}>{roleplayRecap.summary || roleplayRecap.goal}</Text>
+                <View style={styles.recapGrid}>
+                  <View style={styles.recapMiniCard}>
+                    <Text style={styles.recapMiniLabel}>{t('conversation.recapWentWell', 'What went well')}</Text>
+                    <Text style={styles.recapBody}>{roleplayRecap.goal}</Text>
+                  </View>
+                  <View style={styles.recapMiniCard}>
+                    <Text style={styles.recapMiniLabel}>{t('conversation.recapUsefulPhrases', 'Useful phrases')}</Text>
+                    <Text style={styles.recapBody}>{roleplayRecap.usefulPhrases?.[0] || roleplayRecap.summary}</Text>
+                  </View>
+                  <View style={styles.recapMiniCard}>
+                    <Text style={styles.recapMiniLabel}>{t('conversation.recapReview', 'Review next')}</Text>
+                    <Text style={styles.recapBody}>{roleplayRecap.coachingTips?.[0] || t('conversation.recapReviewFallback', 'Save one phrase and reuse it in another practice mode.')}</Text>
+                  </View>
+                </View>
+              </View>
+              {!!userId && (
+                <Button mode="outlined" compact icon="bookmark-outline" onPress={saveRoleplayRecap}>
+                  {t('conversation.saveRoleplay', 'Save roleplay')}
+                </Button>
+              )}
+            </View>
+          )}
           {history.map((message) => (
             <Card
               key={message.id}
@@ -1707,6 +1877,17 @@ const ConversationScreen: React.FC = () => {
                 <View style={styles.messageHeader}>
                   <Text style={styles.messageLabel}>{message.role === 'user' ? uiLabels.activeLearner : uiLabels.activePartner}</Text>
                   <View style={styles.messageTools}>
+                    {!!userId && message.role === 'assistant' && !message.error && (
+                      <Button
+                        mode="text"
+                        compact
+                        icon="bookmark-outline"
+                        onPress={() => saveAssistantTurn(message)}
+                        labelStyle={styles.replayLabel}
+                      >
+                        {t('conversation.saveReply', 'Save')}
+                      </Button>
+                    )}
                     {message.role === 'assistant' && !message.error && (
                       <Button
                         mode="text"
@@ -1741,7 +1922,10 @@ const ConversationScreen: React.FC = () => {
         <TextInput
           mode="outlined"
           value={turn}
-          onChangeText={setTurn}
+          onChangeText={(value) => {
+            pendingSpeechTurnRef.current = false;
+            setTurn(value);
+          }}
           placeholder={canUseAI ? t('conversation.typeYourTurn', 'Type your turn...') : t('conversation.notAvailableTitle', 'Conversation Practice is not available on this plan.')}
           multiline
           disabled={!canUseAI || quotaExceeded}
@@ -1824,6 +2008,7 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
   },
   label: { color: colors.textSecondary, fontSize: 12, fontWeight: '800' },
   segmented: { marginBottom: 2 },
+  supportAdjustRow: { flexDirection: 'row', gap: 8, marginTop: 8 },
   brief: {
     marginTop: 10,
     padding: 12,
@@ -1921,6 +2106,21 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
   liveDotActive: { backgroundColor: colors.accentGreen, opacity: 1 },
   thread: { flex: 1, backgroundColor: '#f8fbff' },
   threadContent: { padding: 12, paddingBottom: 18 },
+  recapCard: {
+    gap: 10,
+    marginBottom: 12,
+    padding: 12,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: 'rgba(88, 204, 2, 0.28)',
+    backgroundColor: 'rgba(88, 204, 2, 0.08)',
+  },
+  recapText: { gap: 3 },
+  recapTitle: { color: colors.textPrimary, fontSize: 15, fontWeight: '900' },
+  recapBody: { color: colors.textSecondary, lineHeight: 20 },
+  recapGrid: { gap: 8, marginTop: 8 },
+  recapMiniCard: { gap: 2, padding: 10, borderRadius: 10, backgroundColor: colors.surface },
+  recapMiniLabel: { color: colors.textMuted, fontSize: 11, fontWeight: '800' },
   empty: { minHeight: 220, justifyContent: 'center', alignItems: 'center', gap: 6, paddingHorizontal: 20 },
   emptyTitle: { color: colors.textPrimary, fontWeight: '800', fontSize: 16, textAlign: 'center' },
   emptyText: { color: colors.textSecondary, textAlign: 'center', lineHeight: 20 },

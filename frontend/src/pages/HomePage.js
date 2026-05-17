@@ -1,9 +1,29 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation, Trans } from 'react-i18next';
-import { userService, quizService } from '../services/api';
+import { learningHubService, userService, quizService } from '../services/api';
 import { getTargetLangName, getTargetLangCode } from '../config/languages';
 import './HomePage.css';
+
+function pairGoalOptions(t) {
+  return [
+    { value: 'travel', label: t('learningHub.goals.travel', 'Travel') },
+    { value: 'work', label: t('learningHub.goals.work', 'Work') },
+    { value: 'school', label: t('learningHub.goals.school', 'School') },
+    { value: 'dailyLife', label: t('learningHub.goals.dailyLife', 'Daily life') },
+    { value: 'conversation', label: t('learningHub.goals.conversation', 'Conversation') },
+    { value: 'family', label: t('learningHub.goals.family', 'Family') },
+    { value: 'religious', label: t('learningHub.goals.religious', 'Religious setting') },
+    { value: 'health', label: t('learningHub.goals.health', 'Health') },
+    { value: 'culture', label: t('learningHub.goals.culture', 'Culture') },
+    { value: 'exam', label: t('learningHub.goals.exam', 'Exam') },
+    { value: 'other', label: t('learningHub.goals.other', 'Other') },
+  ];
+}
+
+function goalLabel(value, options, t) {
+  return options.find((option) => option.value === value)?.label || t('common.notSet', 'Not set');
+}
 
 function HomePage() {
   const { t } = useTranslation();
@@ -19,6 +39,13 @@ function HomePage() {
   const [leaderboard, setLeaderboard] = useState([]);
   const [claimingQuest, setClaimingQuest] = useState(null);
   const [lastActivity, setLastActivity] = useState(null);
+  const [learningHub, setLearningHub] = useState(null);
+  const [pairProfileForm, setPairProfileForm] = useState({ currentLevel: '', primaryGoal: '', pace: 'steady' });
+  const [savingPairProfile, setSavingPairProfile] = useState(false);
+  const [pairProfileNotice, setPairProfileNotice] = useState('');
+  const [editingPairProfile, setEditingPairProfile] = useState(false);
+  const [usingOfflinePack, setUsingOfflinePack] = useState(false);
+  const goalOptions = pairGoalOptions(t);
 
   const fetchXpStats = useCallback(async () => {
     if (!userId) return;
@@ -40,9 +67,37 @@ function HomePage() {
     }
   }, [userId]);
 
+  const learningHubCacheKey = () => `learningHubOverview:${localStorage.getItem('nativeLanguage') || ''}:${localStorage.getItem('targetLanguage') || ''}`;
+
+  const fetchLearningHub = useCallback(async () => {
+    if (!userId || isGuest) return;
+    try {
+      const res = await learningHubService.getOverview();
+      setLearningHub(res.data);
+      setUsingOfflinePack(false);
+      localStorage.setItem(learningHubCacheKey(), JSON.stringify(res.data));
+      if (res.data?.pairProfile) {
+        setPairProfileForm({
+          currentLevel: res.data.pairProfile.currentLevel || '',
+          primaryGoal: res.data.pairProfile.primaryGoal || '',
+          pace: res.data.pairProfile.pace || '',
+        });
+      }
+    } catch (_) {
+      try {
+        const cached = JSON.parse(localStorage.getItem(learningHubCacheKey()) || 'null');
+        if (cached) {
+          setLearningHub(cached);
+          setUsingOfflinePack(true);
+        }
+      } catch (_) {}
+    }
+  }, [isGuest, userId]);
+
   useEffect(() => {
     fetchXpStats();
     fetchGamification();
+    fetchLearningHub();
     if (userId) {
       userService.getActivityState(userId).then(res => {
         const state = res.data;
@@ -65,9 +120,10 @@ function HomePage() {
     const interval = setInterval(() => {
       fetchXpStats();
       fetchGamification();
+      fetchLearningHub();
     }, 60000);
     return () => clearInterval(interval);
-  }, [fetchXpStats, fetchGamification, userId]);
+  }, [fetchXpStats, fetchGamification, fetchLearningHub, userId]);
 
   const handleClaimQuest = async (questId) => {
     if (!userId || claimingQuest) return;
@@ -105,7 +161,7 @@ function HomePage() {
     return t('home.mAgo', { m: mins });
   };
 
-  const isReturningUser = userId && (lastActivity || xpStats);
+  const isReturningUser = userId && (learningHub?.nextAction || lastActivity || xpStats);
   const weekdayKeys = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
   const questTaskLabel = (quest) => {
@@ -128,12 +184,85 @@ function HomePage() {
   const leagueBadges = { bronze: '🥉', silver: '🥈', gold: '🥇', diamond: '💎' };
 
   const handleContinue = () => {
+    if (learningHub?.nextAction?.route) {
+      navigate(learningHub.nextAction.route);
+      return;
+    }
     if (!lastActivity) return;
     if (lastActivity.type === 'quiz') {
       navigate(`/quiz/${lastActivity.quizId}`);
     } else {
       navigate('/flashcards');
     }
+  };
+
+  const handleLearningAction = (action) => {
+    if (action?.route) {
+      navigate(action.route);
+      return;
+    }
+    handleContinue();
+  };
+
+  const handleSavePairProfile = async (event) => {
+    event.preventDefault();
+    if (!pairProfileForm.currentLevel || !pairProfileForm.primaryGoal) return;
+    setSavingPairProfile(true);
+    try {
+      await learningHubService.savePairProfile({
+        ...pairProfileForm,
+        pace: pairProfileForm.pace || 'steady',
+        completedAt: new Date().toISOString(),
+      });
+      setPairProfileNotice(t('learningHub.pairSetupSaved', 'Learning setup saved.'));
+      setEditingPairProfile(false);
+      await fetchLearningHub();
+    } finally {
+      setSavingPairProfile(false);
+    }
+  };
+
+  const nextActionLabel = learningHub?.nextAction
+    ? t(learningHub.nextAction.titleKey, {
+      count: learningHub.nextAction.count,
+      defaultValue: learningHub.nextAction.label || t('learningHub.continueLearning', 'Continue learning'),
+    })
+    : '';
+
+  const dueReviewCount = learningHub?.reviewQueue?.dueSavedItems?.length || 0;
+  const totalReviewCount = learningHub?.reviewQueue?.counts?.total || dueReviewCount;
+  const weeklySummary = learningHub?.weeklySummary || {};
+  const placement = learningHub?.placement || null;
+  const recentWords = learningHub?.recentWords || [];
+  const milestones = learningHub?.milestones || {};
+  const firstThreeDays = learningHub?.firstThreeDays || null;
+  const goalPath = learningHub?.goalPath || null;
+  const currentOnboardingStep = firstThreeDays?.steps?.find((step) => step.current) || firstThreeDays?.steps?.[0] || null;
+  const placementReasonText = (reasonKey) => {
+    const defaults = {
+      'learningHub.placementFromSetup': 'Based on the level you selected for this language pair.',
+      'learningHub.placementNeedsCheck': 'A short level check will help us place you more accurately.',
+      'learningHub.placementFromActivity': 'Suggested from your recent activity in this language pair.',
+    };
+    return t(reasonKey, defaults[reasonKey] || t('learningHub.placementFallback', 'We will refine this as you practice.'));
+  };
+  const onboardingStepTitle = (titleKey) => {
+    if (titleKey === 'learningHub.firstThreeDayReviewTitle') {
+      return t('learningHub.firstThreeDayReviewTitle', 'Review what you met');
+    }
+    if (titleKey === 'learningHub.firstThreeDaySpeakTitle') {
+      return t('learningHub.firstThreeDaySpeakTitle', 'Use it out loud');
+    }
+    return t('learningHub.firstThreeDayLearnTitle', 'Start one guided lesson');
+  };
+  const onboardingStepBody = (bodyKey) => {
+    if (bodyKey === 'learningHub.firstThreeDayReviewBody') {
+      return t('learningHub.firstThreeDayReviewBody', 'Return once to what you saw yesterday so the first items start to stick.');
+    }
+    if (bodyKey === 'learningHub.firstThreeDaySpeakBody') {
+      return t('learningHub.firstThreeDaySpeakBody', 'Use a short speaking turn so the language leaves the page early.');
+    }
+    return t('learningHub.firstThreeDayLearnBody', 'Begin with one small guided lesson so the pair has a clear starting point.');
   };
 
   const handleStartLearning = async () => {
@@ -175,16 +304,22 @@ function HomePage() {
                     {username ? t('home.welcomeBack', { username }) : t('home.welcomeBackNoName')}
                   </h1>
                   <p className="hero-subtitle">
-                    {lastActivity
-                      ? lastActivity.type === 'quiz'
-                        ? t('home.studyingLesson', { title: lastActivity.title })
-                        : t('home.studyingFlashcards')
-                      : t('home.readyForSession')}
+                    {learningHub?.nextAction
+                      ? nextActionLabel
+                      : lastActivity
+                        ? lastActivity.type === 'quiz'
+                          ? t('home.studyingLesson', { title: lastActivity.title })
+                          : t('home.studyingFlashcards')
+                        : t('home.readyForSession')}
                   </p>
-                  {lastActivity && (
+                  {(learningHub?.nextAction || lastActivity) && (
                     <div className="hero-actions">
                       <button className="btn btn-primary btn-lg" onClick={handleContinue}>
-                        {lastActivity.type === 'quiz' ? t('home.continueLesson') : t('home.continueFlashcards')} →
+                        {learningHub?.nextAction
+                          ? nextActionLabel
+                          : lastActivity.type === 'quiz'
+                            ? t('home.continueLesson')
+                            : t('home.continueFlashcards')} →
                       </button>
                     </div>
                   )}
@@ -236,6 +371,241 @@ function HomePage() {
               <span className="quick-action-arrow">→</span>
             </div>
           </section>
+
+          {!isGuest && learningHub && (
+            <section className="learning-hub-overview" aria-label={t('learningHub.homeOverviewAria', 'Learning overview')}>
+              <article className="learning-hub-card next">
+                <span>{t('learningHub.nextBestAction', 'Next best action')}</span>
+                <strong>{nextActionLabel}</strong>
+                <button type="button" onClick={() => navigate(learningHub.nextAction?.route || '/class')}>
+                  {t('learningHub.open', 'Open')}
+                </button>
+              </article>
+              <article className="learning-hub-card">
+                <span>{t('learningHub.reviewDue', 'Review due')}</span>
+                <strong>{totalReviewCount}</strong>
+                <button type="button" onClick={() => navigate('/review')}>
+                  {t('learningHub.reviewNow', 'Review now')}
+                </button>
+              </article>
+              <article className="learning-hub-card">
+                <span>{t('learningHub.wordOfDay', 'Word or phrase of the day')}</span>
+                <strong>{learningHub.dailySpotlight?.targetText || t('learningHub.noSpotlightYet', 'Save something useful to begin')}</strong>
+                <small>{learningHub.dailySpotlight?.nativeText || t('learningHub.spotlightHint', 'Your saved items become daily spotlights.')}</small>
+              </article>
+            </section>
+          )}
+
+          {!isGuest && learningHub && learningHub.pairProfile?.completedAt && !editingPairProfile && (
+            <section className="pair-profile-card pair-profile-summary" aria-label={t('learningHub.pairSetupSummary', 'Learning setup')}>
+              <div>
+                <strong>{t('learningHub.pairSetupSummary', 'Learning setup')}</strong>
+                <span>
+                  {t(`learningHub.levels.${pairProfileForm.currentLevel}`, pairProfileForm.currentLevel || t('common.notSet', 'Not set'))}
+                  {' · '}
+                  {goalLabel(pairProfileForm.primaryGoal, goalOptions, t)}
+                  {' · '}
+                  {t(`learningHub.paces.${pairProfileForm.pace}`, pairProfileForm.pace || t('common.notSet', 'Not set'))}
+                </span>
+              </div>
+              <button type="button" className="btn btn-outline btn-sm" onClick={() => setEditingPairProfile(true)}>
+                {t('learningHub.pairSetupEdit', 'Edit')}
+              </button>
+            </section>
+          )}
+
+          {!isGuest && learningHub && (!learningHub.pairProfile?.completedAt || editingPairProfile) && (
+            <section className="pair-profile-card" aria-label={t('learningHub.pairSetupTitle', 'Set up this language pair')}>
+              <div>
+                <strong>
+                  {learningHub.pairProfile?.completedAt
+                    ? t('learningHub.pairSetupUpdate', 'Update this language pair')
+                    : t('learningHub.pairSetupTitle', 'Set up this language pair')}
+                </strong>
+                <span>{t('learningHub.pairSetupBody', 'Tell us your level and goal once so recommendations fit this target language.')}</span>
+              </div>
+              <form onSubmit={handleSavePairProfile}>
+                <label>
+                  {t('learningHub.level', 'Level')}
+                  <select value={pairProfileForm.currentLevel} onChange={(event) => setPairProfileForm((current) => ({ ...current, currentLevel: event.target.value }))}>
+                    <option value="">{t('common.select', 'Select')}</option>
+                    {['new', 'beginner', 'intermediate', 'advanced', 'unsure'].map((value) => (
+                      <option key={value} value={value}>{t(`learningHub.levels.${value}`, value)}</option>
+                    ))}
+                  </select>
+                </label>
+                <label>
+                  {t('learningHub.goal', 'Goal')}
+                  <select value={pairProfileForm.primaryGoal} onChange={(event) => setPairProfileForm((current) => ({ ...current, primaryGoal: event.target.value }))}>
+                    <option value="">{t('common.select', 'Select')}</option>
+                    {goalOptions.map(({ value, label }) => (
+                      <option key={value} value={value}>{label}</option>
+                    ))}
+                  </select>
+                </label>
+                {learningHub.pairProfile?.completedAt && (
+                  <label>
+                    {t('learningHub.pace', 'Pace')}
+                    <select value={pairProfileForm.pace} onChange={(event) => setPairProfileForm((current) => ({ ...current, pace: event.target.value }))}>
+                      {['light', 'steady', 'intensive'].map((value) => (
+                        <option key={value} value={value}>{t(`learningHub.paces.${value}`, value)}</option>
+                      ))}
+                    </select>
+                  </label>
+                )}
+                <button type="submit" className="btn btn-primary" disabled={savingPairProfile}>
+                  {savingPairProfile ? t('common.saving') : t('common.save')}
+                </button>
+                {learningHub.pairProfile?.completedAt && (
+                  <button type="button" className="btn btn-outline" onClick={() => setEditingPairProfile(false)}>
+                    {t('common.cancel', 'Cancel')}
+                  </button>
+                )}
+              </form>
+              {pairProfileNotice && <small>{pairProfileNotice}</small>}
+            </section>
+          )}
+
+          {!isGuest && learningHub && (
+            <section className="learning-plan-grid">
+              <article className="learning-plan-card">
+                <h2>{t('learningHub.dailyPlanTitle', 'Today\'s plan')}</h2>
+                {(learningHub.dailyPlan || []).map((action, index) => (
+                  <button type="button" key={`${action.type}-${index}`} onClick={() => navigate(action.route)}>
+                    <strong>{t(action.titleKey, { count: action.count, defaultValue: action.label || action.type })}</strong>
+                    {action.label && <span>{action.label}</span>}
+                  </button>
+                ))}
+              </article>
+              <article className="learning-plan-card">
+                <h2>{t('learningHub.weeklySummaryTitle', 'This week')}</h2>
+                <div className="learning-summary-row">
+                  <span>{t('learningHub.points', 'Points')}</span>
+                  <strong>{weeklySummary.points || 0}</strong>
+                </div>
+                <div className="learning-summary-row">
+                  <span>{t('learningHub.activeDays', 'Active days')}</span>
+                  <strong>{weeklySummary.activeDays || 0}</strong>
+                </div>
+                <div className="learning-summary-row">
+                  <span>{t('learningHub.sessions', 'Sessions')}</span>
+                  <strong>{weeklySummary.sessions || 0}</strong>
+                </div>
+                <div className="learning-summary-row">
+                  <span>{t('learningHub.speakingTurns', 'Speaking turns')}</span>
+                  <strong>{weeklySummary.speakingTurns || 0}</strong>
+                </div>
+                <div className="learning-summary-row">
+                  <span>{t('learningHub.newSavedItems', 'New saved items')}</span>
+                  <strong>{weeklySummary.newSavedItems || 0}</strong>
+                </div>
+              </article>
+              <article className="learning-plan-card">
+                <h2>{t('learningHub.recentStudyTitle', 'Recent study')}</h2>
+                <div className="study-history-strip">
+                  {(learningHub.studyHistory || []).slice(-7).map((day) => (
+                    <span key={day.day} title={`${day.day}: ${day.events}`}>
+                      <strong>{day.events}</strong>
+                      <small>{day.day.slice(5)}</small>
+                    </span>
+                  ))}
+                </div>
+              </article>
+            </section>
+          )}
+
+          {!isGuest && learningHub && (
+            <section className="learning-insight-grid" aria-label={t('learningHub.insightsAria', 'Learning guidance')}>
+              {firstThreeDays && (
+                <article className="learning-insight-card onboarding">
+                  <span>{t('learningHub.firstThreeDays', 'First three days')}</span>
+                  <strong>{t('learningHub.dayNumber', { day: firstThreeDays.day, defaultValue: 'Day {{day}}' })}</strong>
+                  <p>{currentOnboardingStep ? onboardingStepBody(currentOnboardingStep.bodyKey) : t('learningHub.firstThreeDaysBody', 'Build one small win today before adding more choices.')}</p>
+                  <div className="learning-step-list">
+                    {(firstThreeDays.steps || []).map((step) => (
+                      <button
+                        type="button"
+                        key={step.day}
+                        className={`${step.completed ? 'done' : ''} ${step.current ? 'current' : ''}`}
+                        onClick={() => handleLearningAction(step.action)}
+                      >
+                        <small>{t('learningHub.dayNumber', { day: step.day, defaultValue: 'Day {{day}}' })}</small>
+                        <strong>{onboardingStepTitle(step.titleKey)}</strong>
+                      </button>
+                    ))}
+                  </div>
+                </article>
+              )}
+              {goalPath && (
+                <article className="learning-insight-card">
+                  <span>{t('learningHub.goalPathTitle', 'Goal path')}</span>
+                  <strong>{goalLabel(goalPath.goal, goalOptions, t)}</strong>
+                  <p>{t('learningHub.goalPathBody', 'Your plan is leaning toward the situations you said matter most.')}</p>
+                  <div className="learning-action-chips">
+                    {(goalPath.actions || []).map((action, index) => (
+                      <button type="button" key={`${action.type}-${index}`} onClick={() => handleLearningAction(action)}>
+                        {t(action.titleKey, { count: action.count, defaultValue: action.label || action.type })}
+                      </button>
+                    ))}
+                  </div>
+                </article>
+              )}
+              {placement && (
+                <article className="learning-insight-card">
+                  <span>{t('learningHub.placementTitle', 'Placement')}</span>
+                  <strong>{t(`learningHub.levels.${placement.level}`, placement.level)}</strong>
+                  <p>{placementReasonText(placement.reasonKey)}</p>
+                  {placement.status === 'needs_check' && (
+                    <button type="button" onClick={() => navigate('/level-check')}>
+                      {t('learningHub.startLevelCheck', 'Start level check')}
+                    </button>
+                  )}
+                </article>
+              )}
+              <article className="learning-insight-card">
+                <span>{t(usingOfflinePack ? 'learningHub.offlinePackInUseTitle' : 'learningHub.offlineReadyTitle', usingOfflinePack ? 'Recent pack in use' : 'Recent pack ready')}</span>
+                <strong>{t(usingOfflinePack ? 'learningHub.offlinePackInUseValue' : 'learningHub.offlineReadyValue', usingOfflinePack ? 'Offline' : 'Ready')}</strong>
+                <p>{t(
+                  usingOfflinePack ? 'learningHub.offlinePackInUseBody' : 'learningHub.offlineReadyBody',
+                  usingOfflinePack
+                    ? 'Showing recently prepared material until the connection comes back.'
+                    : 'Recent useful material is kept nearby for a weaker connection.',
+                )}</p>
+              </article>
+            </section>
+          )}
+
+          {!isGuest && learningHub && (
+            <section className="learning-shelf-grid" aria-label={t('learningHub.learningShelfAria', 'Learning shelf')}>
+              <article className="learning-plan-card">
+                <h2>{t('learningHub.recentWordsTitle', 'Recent words')}</h2>
+                {recentWords.length ? recentWords.slice(0, 5).map((item) => (
+                  <button type="button" key={`${item.targetText}-${item.occurredAt || ''}`} onClick={() => navigate('/review')}>
+                    <strong>{item.targetText}</strong>
+                    {item.nativeText && <span>{item.nativeText}</span>}
+                  </button>
+                )) : (
+                  <p>{t('learningHub.recentWordsEmpty', 'New words from class and conversation will gather here.')}</p>
+                )}
+              </article>
+              <article className="learning-plan-card">
+                <h2>{t('learningHub.milestonesTitle', 'Milestones')}</h2>
+                <div className="learning-summary-row">
+                  <span>{t('learningHub.completedLessons', 'Completed lessons')}</span>
+                  <strong>{milestones.completedClassLessons || 0}</strong>
+                </div>
+                <div className="learning-summary-row">
+                  <span>{t('learningHub.savedItems', 'Saved items')}</span>
+                  <strong>{milestones.savedItems || 0}</strong>
+                </div>
+                <div className="learning-summary-row">
+                  <span>{t('learningHub.certificates', 'Certificates')}</span>
+                  <strong>{milestones.certificates?.length || 0}</strong>
+                </div>
+                <button type="button" onClick={() => navigate('/profile')}>{t('learningHub.viewMilestones', 'View milestones')}</button>
+              </article>
+            </section>
+          )}
 
           <section className="home-contact-strip">
             <div>

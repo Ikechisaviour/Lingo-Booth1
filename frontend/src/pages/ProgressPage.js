@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { progressService } from '../services/api';
+import { learningHubService, progressService } from '../services/api';
 import './ProgressPage.css';
 
 function ProgressPage() {
@@ -10,6 +10,7 @@ function ProgressPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [selectedMastery, setSelectedMastery] = useState(null);
+  const [learningHub, setLearningHub] = useState(null);
 
   const userId = localStorage.getItem('userId');
 
@@ -21,8 +22,12 @@ function ProgressPage() {
   const fetchProgress = async () => {
     try {
       setLoading(true);
-      const response = await progressService.getSummary(userId);
+      const [response, overviewResponse] = await Promise.all([
+        progressService.getSummary(userId),
+        learningHubService.getOverview().catch(() => ({ data: null })),
+      ]);
       setProgress(response.data);
+      setLearningHub(overviewResponse.data);
       setError('');
     } catch (err) {
       setError(t('progress.failedToLoad'));
@@ -66,6 +71,7 @@ function ProgressPage() {
     { name: 'reading', label: t('progress.reading'), icon: '📖', color: '#58cc02' },
     { name: 'writing', label: t('progress.writing'), icon: '✍️', color: '#a560e8' },
   ];
+  const realWorldRows = Object.entries(learningHub?.realWorldProgress || {});
 
   return (
     <div className="progress-container">
@@ -96,7 +102,7 @@ function ProgressPage() {
             </div>
           </div>
           <div className="achievement-xp">
-            <span className="xp-amount">+{progress.mastered * 10}</span>
+            <span className="xp-amount">{progress.totalXP || 0}</span>
             <span className="xp-label">{t('progress.xpEarned')}</span>
           </div>
         </div>
@@ -185,6 +191,16 @@ function ProgressPage() {
                           {t('progress.review')}
                         </Link>
                       )}
+                      <Link
+                        to={`/conversation?prompt=${encodeURIComponent(t('learningHub.askWeakAreaPrompt', {
+                          area: area.lessonId?.title || formatCategory(area.category),
+                          defaultValue: 'Help me practice {{area}}.',
+                        }))}`}
+                        className="btn-review"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        {t('learningHub.askTutor', 'Ask tutor')}
+                      </Link>
                     </div>
                   ))}
                 </div>
@@ -258,6 +274,33 @@ function ProgressPage() {
                 </div>
               );
             })}
+          </div>
+        </div>
+
+        {/* Real-world ability progress */}
+        <div className="skills-section">
+          <h2>{t('learningHub.abilityTitle', 'Real-world ability progress')}</h2>
+          <div className="skills-grid">
+            {realWorldRows.map(([area, metric]) => (
+              <div key={area} className="skill-card real-world-card">
+                <div className="skill-header">
+                  <h3>{t(`learningHub.realWorldAreas.${area}`, area)}</h3>
+                </div>
+                <div className="real-world-score">
+                  <strong>{metric.score == null ? '—' : `${metric.score}%`}</strong>
+                  <span>{t('learningHub.evidenceCount', { count: metric.evidenceCount || 0, defaultValue: '{{count}} pieces of evidence' })}</span>
+                </div>
+                <Link
+                  to={`/conversation?prompt=${encodeURIComponent(t('learningHub.askAbilityPrompt', {
+                    area: t(`learningHub.realWorldAreas.${area}`, area),
+                    defaultValue: 'Help me practice {{area}}.',
+                  }))}`}
+                  className="btn-review"
+                >
+                  {t('learningHub.askTutor', 'Ask tutor')}
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
 

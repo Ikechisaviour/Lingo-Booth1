@@ -132,6 +132,11 @@ function collectGaps(source, target, force, prefix = []) {
     // key "languages" and should not be translated.
     if (nextPath[0] === 'languages') continue;
 
+    // Plan tier names are product names. They follow the sound/brand
+    // (Free, Plus, Pro, Ultra), not the dictionary meaning. The billing
+    // localization audit owns their exact per-locale spelling.
+    if (nextPath[0] === 'pricing' && nextPath[1] === 'planNames') continue;
+
     if (typeof value !== 'string') continue;
 
     const isMissing = currentValue === undefined || currentValue === null;

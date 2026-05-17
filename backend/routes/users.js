@@ -4,11 +4,13 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 const AnsweredQuestion = require('../models/AnsweredQuestion');
 const PeekCooldown = require('../models/PeekCooldown');
+const LearningEvent = require('../models/LearningEvent');
 const { verifyToken, isOwner } = require('../middleware/auth');
 const { checkInactivityPenalty } = require('../middleware/xpPenalty');
-const { getTodayUTC, getCurrentMondayUTC, getDayIndex } = require('../utils/dateHelpers');
+const { getCurrentMondayUTC } = require('../utils/dateHelpers');
 const { ensureResetsApplied } = require('../utils/gamificationReset');
 const { getAiEntitlements } = require('../utils/subscription');
+const { recordLearningEvent } = require('../utils/xpRewards');
 
 // All user routes require authentication + ownership check
 router.use(verifyToken);
@@ -197,6 +199,23 @@ router.post('/:userId/xp', isOwner('userId'), checkInactivityPenalty(), async (r
   }
 });
 
+// Record a real learning action and let the backend decide XP, dedupe, and caps.
+router.post('/:userId/learning-events', isOwner('userId'), checkInactivityPenalty(), async (req, res) => {
+  try {
+    const result = await recordLearningEvent(req.params.userId, req.body);
+    if (!result) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.json({ ...result, xpPenalty: req.xpPenalty || 0 });
+  } catch (error) {
+    if (error.message?.includes('required') || error.message?.includes('Unsupported learning event')) {
+      return res.status(400).json({ message: error.message });
+    }
+    console.error('Record learning event error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
 // Record translation peek - starts a 24-hour cooldown for XP on this question
 router.post('/:userId/peek', isOwner('userId'), async (req, res) => {
   try {
@@ -228,94 +247,32 @@ router.post('/:userId/award-xp', isOwner('userId'), checkInactivityPenalty(), as
       return res.status(400).json({ message: 'Valid positive basePoints value required' });
     }
 
-    // Build the query to check if this question was already answered
-    const query = { userId: req.params.userId };
     if (lessonId !== undefined && contentIndex !== undefined) {
-      query.lessonId = lessonId;
-      query.contentIndex = contentIndex;
-    } else if (flashcardId) {
-      query.flashcardId = flashcardId;
-    } else {
-      return res.status(400).json({ message: 'Must provide lessonId+contentIndex or flashcardId' });
-    }
-
-    // Check for active peek cooldown (lesson questions only)
-    if (lessonId !== undefined && contentIndex !== undefined) {
-      const cooldown = await PeekCooldown.findOne({
-        userId: req.params.userId,
+      const result = await recordLearningEvent(req.params.userId, {
+        eventType: 'quiz_correct',
         lessonId,
         contentIndex,
-        peekedAt: { $gte: new Date(Date.now() - 24 * 60 * 60 * 1000) },
+        difficulty: basePoints >= 5 ? 'sentences' : basePoints >= 4 ? 'advanced' : basePoints >= 3 ? 'intermediate' : 'beginner',
+        targetLanguage: req.body.targetLanguage,
+        nativeLanguage: req.body.nativeLanguage,
       });
-      if (cooldown) {
-        return res.json({ totalXP: null, xpAwarded: 0, cooldownActive: true });
-      }
+      return res.json({ ...result, xpPenalty: req.xpPenalty || 0 });
     }
 
-    // Check if already answered correctly before
-    const existing = await AnsweredQuestion.findOne(query);
-    const xpToAward = existing ? 1 : basePoints;
-
-    // Record as answered if first time
-    if (!existing) {
-      await AnsweredQuestion.create(query);
+    if (flashcardId) {
+      const result = await recordLearningEvent(req.params.userId, {
+        eventType: 'flashcard_recall',
+        flashcardId,
+        targetLanguage: req.body.targetLanguage,
+        nativeLanguage: req.body.nativeLanguage,
+      });
+      return res.json({ ...result, xpPenalty: req.xpPenalty || 0 });
     }
 
-    // Inactivity penalty is already applied by checkInactivityPenalty middleware
-    const xpPenalty = req.xpPenalty || 0;
-
-    // Award XP, reset idle timer and penalty counter, track gamification
-    const today = getTodayUTC();
-    const user = await User.findByIdAndUpdate(
-      req.params.userId,
-      {
-        $inc: { totalXP: xpToAward, dailyXpEarned: xpToAward, weeklyXP: xpToAward },
-        $set: { lastAnsweredAt: new Date(), penaltyIntervalsApplied: 0 },
-      },
-      { new: true }
-    ).select('totalXP currentStreak longestStreak lastStudyDate streakHistory streakWeekStart xpDecayEnabled');
-
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+    {
+      return res.status(400).json({ message: 'Must provide lessonId+contentIndex or flashcardId' });
     }
-
-    // Update streak if challenge mode is on and haven't studied today yet
-    if (user.xpDecayEnabled && user.lastStudyDate !== today) {
-      const yesterday = new Date();
-      yesterday.setUTCDate(yesterday.getUTCDate() - 1);
-      const yesterdayStr = yesterday.toISOString().split('T')[0];
-
-      if (user.lastStudyDate === yesterdayStr) {
-        user.currentStreak += 1;
-      } else if (user.lastStudyDate !== today) {
-        user.currentStreak = 1;
-      }
-      if (user.currentStreak > user.longestStreak) {
-        user.longestStreak = user.currentStreak;
-      }
-      user.lastStudyDate = today;
-
-      // Update streak history calendar
-      const dayIdx = getDayIndex(today);
-      if (Array.isArray(user.streakHistory) && dayIdx >= 0 && dayIdx < 7) {
-        user.streakHistory[dayIdx] = true;
-        user.markModified('streakHistory');
-      }
-      await user.save();
-    }
-
-    res.json({ totalXP: user.totalXP, xpAwarded: xpToAward, xpPenalty, alreadyAnswered: !!existing });
   } catch (error) {
-    // Handle duplicate key errors gracefully (race condition - two concurrent answers)
-    if (error.code === 11000) {
-      // Already recorded, award 1 point
-      const user = await User.findByIdAndUpdate(
-        req.params.userId,
-        { $inc: { totalXP: 1, dailyXpEarned: 1, weeklyXP: 1 } },
-        { new: true }
-      ).select('totalXP');
-      return res.json({ totalXP: user?.totalXP || 0, xpAwarded: 1, alreadyAnswered: true });
-    }
     console.error('Award XP error:', error);
     res.status(500).json({ message: 'Server error' });
   }
@@ -448,6 +405,7 @@ router.post('/:userId/reset-xp', isOwner('userId'), async (req, res) => {
     await AnsweredQuestion.deleteMany({ userId: req.params.userId });
     // Clear all peek cooldowns for this user
     await PeekCooldown.deleteMany({ userId: req.params.userId });
+    await LearningEvent.deleteMany({ userId: req.params.userId });
     // Reset totalXP to 0
     const user = await User.findByIdAndUpdate(
       req.params.userId,

@@ -514,6 +514,34 @@
   margin: 0;
 }
 
+.real-world-card {
+  display: flex;
+  min-height: 190px;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.real-world-card:hover {
+  border-color: var(--primary);
+}
+
+.real-world-score {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.real-world-score strong {
+  font-size: 1.7rem;
+  color: var(--text-primary);
+}
+
+.real-world-score span {
+  color: var(--text-muted);
+}
+
 /* Struggling Section */
 .struggling-section {
   margin-bottom: 28px;

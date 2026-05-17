@@ -20,7 +20,10 @@
     "done": "Done",
     "clearAll": "Clear All",
     "sending": "Sending...",
-    "saving": "Saving..."
+    "saving": "Saving...",
+    "search": "Search",
+    "notSet": "Not set",
+    "all": "All"
   },
   "languages": {
     "en": "English",
@@ -121,7 +124,8 @@
     "writing": "Writing",
     "conversation": "Conversation",
     "plans": "Plans",
-    "institution": "Institution"
+    "institution": "Institution",
+    "review": "Review"
   },
   "guestPrompt": {
     "title": "You're doing great!",
@@ -427,7 +431,12 @@
     "topic": "Topic (optional)",
     "save": "Save",
     "categoryPlaceholder": "e.g. numbers, greetings",
-    "topicPlaceholder": "e.g. days of the week, 1-10"
+    "topicPlaceholder": "e.g. days of the week, 1-10",
+    "savedFromFlashcardReason": "Saved from flashcards for another pass.",
+    "savedForReview": "Saved for review.",
+    "saveForReviewFailed": "Could not save this card right now.",
+    "bookmarkedReason": "Bookmarked from flashcards.",
+    "selfTestReason": "Saved from flashcards for a quick self-test."
   },
   "progress": {
     "title": "Your Progress",
@@ -810,7 +819,8 @@
     },
     "discountCode": "Discount code",
     "discountPlaceholder": "Optional code",
-    "discountUnavailable": "That discount code is not available for this plan."
+    "discountUnavailable": "That discount code is not available for this plan.",
+    "automaticDiscountApplied": "Automatic {{discount}} discount applied"
   },
   "billing": {
     "kicker": "Billing",
@@ -908,7 +918,10 @@
       "past_due": "Past due",
       "cancelled": "Cancelled",
       "suspended": "Suspended"
-    }
+    },
+    "snapshotsKicker": "Learner snapshots",
+    "needsHelpTitle": "Needs attention",
+    "noNeedsHelpLearners": "No learners currently need extra attention."
   },
   "errorBoundary": {
     "title": "Something went wrong",
@@ -927,7 +940,15 @@
     "playing": "Playing…",
     "listen": "Listen",
     "use": "Use",
-    "useDefault": "Use the default voice for now"
+    "useDefault": "Use the default voice for now",
+    "gender": {
+      "male": "male",
+      "female": "female"
+    },
+    "friendlyVoiceLabelGendered": "{{language}} {{gender}} voice {{number}}{{region}}",
+    "friendlyVoiceLabelNeutral": "{{language}} voice {{number}}{{region}}",
+    "voiceRegionSuffix": " · {{region}}",
+    "loadError": "Could not load voice options. The default voice will be used."
   },
   "classList": {
     "kicker": "Class",
@@ -1012,7 +1033,9 @@
       "listeningPrefix": "Listening",
       "speechCaptured": "Speech captured. Edit if needed, then press send.",
       "noSpeechCaptured": "No speech captured. Try again.",
-      "voiceUpdated": "Voice updated. Tap a line to hear it."
+      "voiceUpdated": "Voice updated. Tap a line to hear it.",
+      "bookmarked": "Bookmarked.",
+      "bookmarkFailed": "Could not bookmark this item right now."
     },
     "speechErrors": {
       "permissionBlocked": "Microphone or speech recognition permission is blocked. Open Settings, allow the mic for this app, then try again.",
@@ -1062,7 +1085,36 @@
         "goal": "Review mistakes and summarize what you learned.",
         "task": "Summarize one thing you learned and one thing that is still unclear."
       }
-    }
+    },
+    "savedFromClassReason": "Saved from class for review.",
+    "savedForReview": "Saved for review.",
+    "saveForReviewFailed": "Could not save this item right now.",
+    "wrapUpKicker": "Next step",
+    "wrapUpTitle": "Keep the lesson alive",
+    "wrapUpBody": "Review saved items, use them in conversation, or write them from memory while the lesson is still fresh.",
+    "wrapUpReview": "Review",
+    "wrapUpConversation": "Conversation",
+    "wrapUpWriting": "Writing",
+    "saveForReview": "Save for review",
+    "fallback": {
+      "thisItem": "this item",
+      "shortAnswer": "Try one short answer using this lesson item.",
+      "practiceLead": "Let's practice {{title}}.",
+      "continue": "Let us continue with the next part of the lesson."
+    },
+    "examplePrefix": "Example:",
+    "bookmarkedReason": "Bookmarked from class.",
+    "itemsCompleted": "{{count}} items completed",
+    "lessonItemsTotal": "{{count}} lesson items",
+    "savedExampleReason": "Saved class example for later practice.",
+    "exampleSaved": "Example saved for review.",
+    "savedTutorReplyReason": "Saved from a tutor reply for later practice.",
+    "tutorReplySaved": "Tutor reply saved for review.",
+    "playingSelectedItem": "Playing selected item.",
+    "saveReply": "Save reply",
+    "saveExample": "Save example",
+    "practiceEverywhere": "Practice this everywhere",
+    "selfTestReason": "Saved from class for a quick self-test."
   },
   "exercise": {
     "kicker": "Exercise",
@@ -1073,7 +1125,8 @@
     "flashcardsTitle": "Flashcards",
     "flashcardsDescMobile": "Review words and phrases.",
     "writingTitle": "Writing",
-    "writingDescMobile": "Trace, copy, listen, and keep a writing notebook."
+    "writingDescMobile": "Trace, copy, listen, and keep a writing notebook.",
+    "reviewDescMobile": "Return to saved items and what is due today."
   },
   "conversation": {
     "kicker": "Conversation Practice",
@@ -1113,7 +1166,23 @@
       "planRefreshed": "Your plan settings were refreshed.",
       "messageNotResent": "Your message was not sent again.",
       "connectionIssue": "Connection issue. Try again in a moment."
-    }
+    },
+    "savedReplyReason": "Saved from conversation practice.",
+    "savedReply": "Reply saved for review.",
+    "saveReplyFailed": "Could not save this reply right now.",
+    "savedRoleplayReason": "Completed roleplay saved for later practice.",
+    "roleplaySaved": "Roleplay saved for review.",
+    "saveRoleplayFailed": "Could not save this roleplay right now.",
+    "recapTitle": "Roleplay complete",
+    "saveRoleplay": "Save roleplay",
+    "saveReply": "Save",
+    "easier": "Easier",
+    "harder": "Harder",
+    "recapWentWell": "What went well",
+    "recapUsefulPhrases": "Useful phrases",
+    "recapReview": "Review next",
+    "recapReviewFallback": "Save one phrase and reuse it in another practice mode.",
+    "practiceLabel": "Conversation practice"
   },
   "context": {
     "backToProfile": "Back to Profile",
@@ -1166,7 +1235,8 @@
       "conversationNative": "From your conversation practice",
       "conversationHistory": "Conversation history",
       "personalized": "Personalized",
-      "personalNotebook": "Personal notebook"
+      "personalNotebook": "Personal notebook",
+      "savedReview": "Saved review item"
     },
     "modes": {
       "trace": "Trace",
@@ -1232,7 +1302,9 @@
       "shape": "Shape matches",
       "spacing": "Spacing is clear",
       "memory": "From memory"
-    }
+    },
+    "savedReason": "Saved from writing practice for another pass.",
+    "selfTestReason": "Saved from writing practice for a quick self-test."
   },
   "certificates": {
     "kicker": "Certificate",
@@ -1265,5 +1337,140 @@
     "signIn": "Sign in",
     "issuedSuccess": "Certificate issued.",
     "issueFailed": "Could not issue certificate."
+  },
+  "learningHub": {
+    "continueLearning": "Continue learning",
+    "pairSetupSaved": "Learning setup saved.",
+    "nextBestAction": "Next best action",
+    "reviewDue": "Review due",
+    "reviewNow": "Review now",
+    "wordOfDay": "Word or phrase of the day",
+    "noSpotlightYet": "Save something useful to begin",
+    "pairSetupTitle": "Set up this language pair",
+    "pairSetupBody": "Tell us your level and goal once so recommendations fit this target language.",
+    "level": "Level",
+    "goal": "Goal",
+    "pace": "Pace",
+    "dailyPlanTitle": "Today's plan",
+    "weeklySummaryTitle": "This week",
+    "points": "Points",
+    "activeDays": "Active days",
+    "sessions": "Sessions",
+    "recentStudyTitle": "Recent study",
+    "savedAfterQuizMiss": "Saved after a missed quiz answer.",
+    "askTutorPrompt": "Help me practice \"{{text}}\".",
+    "savedForPractice": "Saved for later practice",
+    "askTutor": "Ask tutor",
+    "kicker": "Review",
+    "title": "Keep useful learning close",
+    "subtitle": "Review what needs another pass, return to saved items, and continue from one place.",
+    "dueToday": "due today",
+    "queueTitle": "Today's review queue",
+    "queueEmptyBody": "Save words, phrases, corrections, or roleplays and they will return here when useful.",
+    "weakAreasTitle": "Recent weak areas",
+    "practiceArea": "Practice area",
+    "weakAreasEmpty": "No weak areas have been identified yet.",
+    "abilityTitle": "Real-world ability progress",
+    "abilityEmpty": "Activity progress will appear here as you practice.",
+    "searchLabel": "Search your learning",
+    "searchPlaceholder": "Search saved items or class lessons",
+    "savedLibraryTitle": "Saved study library",
+    "savedEmptyBody": "Save useful words from class, flashcards, writing, or conversation to build your own study shelf.",
+    "savedBanksTitle": "Saved banks",
+    "correctionsBank": "Corrections",
+    "roleplaysBank": "Roleplays",
+    "bookmarksBank": "Bookmarks",
+    "openSource": "Open source",
+    "spotlightHint": "Your saved items become daily spotlights.",
+    "pairSetupSummary": "Learning setup",
+    "pairSetupEdit": "Edit",
+    "pairSetupUpdate": "Update this language pair",
+    "reviewBeforeSleep": "A short review now will leave tomorrow lighter.",
+    "open": "Open",
+    "bookmark": "Bookmark",
+    "bookmarked": "Bookmarked.",
+    "bookmarkFailed": "Could not bookmark this item right now.",
+    "speakingTurns": "Speaking turns",
+    "newSavedItems": "New saved items",
+    "completedLessons": "Completed lessons",
+    "certificates": "Certificates",
+    "guidanceTitle": "Guidance",
+    "firstThreeDays": "First three days",
+    "dayNumber": "Day {{day}}",
+    "goalPathTitle": "Goal path",
+    "placementTitle": "Placement",
+    "recentWordsTitle": "Recent words",
+    "recentWordsEmpty": "New words from class and conversation will gather here.",
+    "milestonesTitle": "Milestones",
+    "savedItems": "Saved items",
+    "voiceHistoryTitle": "Voice practice history",
+    "voiceHistoryEmpty": "Speaking turns will appear here after conversation practice.",
+    "askWeakAreaPrompt": "Help me practice {{area}}.",
+    "evidenceCount": "{{count}} pieces of evidence",
+    "askAbilityPrompt": "Help me practice {{area}}.",
+    "practiceWriting": "Write",
+    "practiceFlashcard": "Flashcard",
+    "whyWeakArea": "You are seeing this because this area still needs reinforcement.",
+    "reviewBeforeSleepTitle": "Review before sleep",
+    "savedItem": "Saved",
+    "weakArea": "Weak",
+    "reviewBeforeSleepEmpty": "Nothing urgent is waiting tonight.",
+    "miniSpeakingTitle": "Mini speaking drills",
+    "miniSpeakingReason": "Short speaking practice from a saved phrase or correction.",
+    "practiceSpeaking": "Speak",
+    "miniSpeakingEmpty": "Corrections and saved phrases will become quick speaking drills here.",
+    "correctionsEmpty": "Saved corrections will collect here for quick retry.",
+    "roleplaysEmpty": "Saved roleplays will appear here when you want to reuse them.",
+    "startLevelCheck": "Start level check",
+    "levelCheckUnavailable": "A level check is not ready for this language pair yet.",
+    "levelCheckLoadFailed": "The level check could not load right now.",
+    "levelCheckTitle": "Short level check",
+    "levelCheckSubtitle": "Answer a few quick items so the app can choose a better starting point.",
+    "levelCheckResult": "Suggested starting level",
+    "levelCheckSaved": "This starting point has been saved for this language pair.",
+    "returnHome": "Return home",
+    "questionCount": "Question {{current}} of {{total}}",
+    "practiceAgainPrompt": "Help me practice saying \"{{text}}\" again.",
+    "replayReply": "Replay reply",
+    "practiceAgain": "Practice again",
+    "practiceEverywhere": "Practice this elsewhere",
+    "practicePronunciation": "Listen",
+    "youSaid": "You said",
+    "targetSpeech": "Target speech",
+    "replayTargetSpeech": "Hear target speech",
+    "practiceQuiz": "Self-test",
+    "useRoleplayAgain": "Use again",
+    "offlinePackInUse": "Showing your recent pack while the connection is weak.",
+    "quickQuizKicker": "Self-test",
+    "quickQuizTitle": "Quick self-test",
+    "quickQuizNoAnswer": "Recall the meaning, then grade yourself honestly.",
+    "revealAnswer": "Reveal answer",
+    "studyHistoryTitle": "Study history",
+    "pointsCount": "{{count}} points",
+    "studyHistoryEmpty": "Your study days will gather here as you practice.",
+    "listen": "Listen",
+    "goals": {
+      "travel": "Travel",
+      "work": "Work",
+      "school": "School",
+      "dailyLife": "Daily life",
+      "conversation": "Conversation",
+      "family": "Family",
+      "religious": "Religious setting",
+      "health": "Health",
+      "culture": "Culture",
+      "exam": "Exam",
+      "other": "Other"
+    },
+    "savedBankEmptyBody": "Items you save for this purpose will gather here.",
+    "recentMistakesTitle": "Recent mistakes",
+    "recentMistakesBody": "These are recent missed items worth retrying while the correction is still fresh.",
+    "recentMistakesEmptyBody": "Missed quiz items will appear here so you can retry them quickly.",
+    "firstThreeDayReviewTitle": "Review what you met",
+    "firstThreeDaySpeakTitle": "Use it out loud",
+    "firstThreeDayLearnTitle": "Start one guided lesson",
+    "firstThreeDayReviewBody": "Return once to what you saw yesterday so the first items start to stick.",
+    "firstThreeDaySpeakBody": "Use a short speaking turn so the language leaves the page early.",
+    "firstThreeDayLearnBody": "Begin with one small guided lesson so the pair has a clear starting point."
   }
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { Suspense, lazy, useState, useEffect, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { GoogleOAuthProvider } from '@react-oauth/google';
@@ -8,35 +8,37 @@ import guestActivityTracker from './services/guestActivityTracker';
 import Navbar from './components/Navbar';
 import EmailVerificationBanner from './components/EmailVerificationBanner';
 import LandingPage from './pages/LandingPage';
-import HomePage from './pages/HomePage';
-import ClassLessonsPage from './pages/ClassLessonsPage';
-import ClassLessonPage from './pages/ClassLessonPage';
-import ExercisePage from './pages/ExercisePage';
-import QuizPage from './pages/QuizPage';
-import FlashcardsPage from './pages/FlashcardsPage';
-import WritingPracticePage from './pages/WritingPracticePage';
-import ConversationPage from './pages/ConversationPage';
-import ContextPracticePage from './pages/ContextPracticePage';
-import ProgressPage from './pages/ProgressPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import LanguageSelectPage from './pages/LanguageSelectPage';
-import QuizDetailPage from './pages/QuizDetailPage';
-import ProfilePage from './pages/ProfilePage';
-import AdminDashboard from './pages/AdminDashboard';
-import AdminSpeakingDemo from './pages/AdminSpeakingDemo';
-import VerifyEmailPage from './pages/VerifyEmailPage';
-import ForgotPasswordPage from './pages/ForgotPasswordPage';
-import ResetPasswordPage from './pages/ResetPasswordPage';
-import ContactPage from './pages/ContactPage';
-import PricingPage from './pages/PricingPage';
-import BillingPage from './pages/BillingPage';
-import InstitutionDashboard from './pages/InstitutionDashboard';
-import CertificateVerifyPage from './pages/CertificateVerifyPage';
 import { getPreferredPublicLanguage, googleLocaleForPublicLanguage } from './utils/publicLanguage';
 import './App.css';
 
 const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID || '';
+const HomePage = lazy(() => import('./pages/HomePage'));
+const ClassLessonsPage = lazy(() => import('./pages/ClassLessonsPage'));
+const ClassLessonPage = lazy(() => import('./pages/ClassLessonPage'));
+const ExercisePage = lazy(() => import('./pages/ExercisePage'));
+const QuizPage = lazy(() => import('./pages/QuizPage'));
+const FlashcardsPage = lazy(() => import('./pages/FlashcardsPage'));
+const WritingPracticePage = lazy(() => import('./pages/WritingPracticePage'));
+const ReviewPage = lazy(() => import('./pages/ReviewPage'));
+const PlacementCheckPage = lazy(() => import('./pages/PlacementCheckPage'));
+const ConversationPage = lazy(() => import('./pages/ConversationPage'));
+const ContextPracticePage = lazy(() => import('./pages/ContextPracticePage'));
+const ProgressPage = lazy(() => import('./pages/ProgressPage'));
+const QuizDetailPage = lazy(() => import('./pages/QuizDetailPage'));
+const ProfilePage = lazy(() => import('./pages/ProfilePage'));
+const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
+const AdminSpeakingDemo = lazy(() => import('./pages/AdminSpeakingDemo'));
+const VerifyEmailPage = lazy(() => import('./pages/VerifyEmailPage'));
+const ForgotPasswordPage = lazy(() => import('./pages/ForgotPasswordPage'));
+const ResetPasswordPage = lazy(() => import('./pages/ResetPasswordPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const PricingPage = lazy(() => import('./pages/PricingPage'));
+const BillingPage = lazy(() => import('./pages/BillingPage'));
+const InstitutionDashboard = lazy(() => import('./pages/InstitutionDashboard'));
+const CertificateVerifyPage = lazy(() => import('./pages/CertificateVerifyPage'));
 
 // Listens for auth changes that should remove the current user from the app.
 function AuthSessionListener({ onSessionEnded }) {
@@ -131,6 +133,11 @@ function GlobalHomeLogo({ hidden }) {
       <img src="/images/logo.png" alt="" />
     </Link>
   );
+}
+
+function RouteLoadingFallback() {
+  const { t } = useTranslation();
+  return <div className="loading">{t('common.loading', 'Loading...')}</div>;
 }
 
 function App() {
@@ -361,6 +368,7 @@ function App() {
             onGuestExit={handleGuestExit}
           />
         )}
+        <Suspense fallback={<RouteLoadingFallback />}>
         <Routes>
           {/* Auth Routes */}
           <Route
@@ -481,6 +489,20 @@ function App() {
             }
           />
           <Route
+            path="/review"
+            element={
+              isAuthenticated ? <ReviewPage /> : (
+                isGuest ? <Navigate to="/" state={{ showSignupPrompt: true }} /> : <Navigate to="/login" />
+              )
+            }
+          />
+          <Route
+            path="/level-check"
+            element={
+              isAuthenticated ? <PlacementCheckPage /> : <Navigate to="/login" />
+            }
+          />
+          <Route
             path="/conversation"
             element={
               canAccessApp ? <ConversationPage /> : <Navigate to="/login" />
@@ -539,6 +561,7 @@ function App() {
             }
           />
         </Routes>
+        </Suspense>
         </div>
       </div>
     </Router>

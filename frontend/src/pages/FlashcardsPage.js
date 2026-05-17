@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { flashcardService, progressService, userService, guestXPHelper } from '../services/api';
+import { flashcardService, learningHubService, progressService, userService, guestXPHelper } from '../services/api';
 import speechService from '../services/speechService';
 import guestActivityTracker from '../services/guestActivityTracker';
 import LANGUAGES, {
@@ -67,12 +67,15 @@ function FlashcardsPage() {
   const originalOrderRef = useRef(null);
 
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const userId = localStorage.getItem('userId');
   const isGuest = localStorage.getItem('guestMode') === 'true';
   const saveTimerRef = useRef(null);
   const transitioningRef = useRef(false);
   const nativeLangCode = getNativeLangCode();
   const targetLangCode = getTargetLangCode();
+  const seededTarget = String(searchParams.get('savedText') || '').trim();
+  const seededNative = String(searchParams.get('nativeText') || '').trim();
 
   const saveActivityState = useCallback((index) => {
     if (!userId) return;
@@ -386,10 +389,21 @@ function FlashcardsPage() {
       const { cards, total, hasMore: more, seed: returnedSeed } = response.data;
       // Store the seed returned by backend (in case none was sent)
       if (returnedSeed && !seedOverride) setShuffleSeed(returnedSeed);
+      const seededCard = seededTarget ? {
+        _id: `review-seed-${seededTarget}`,
+        [getLangField(targetLangCode)]: seededTarget,
+        [getLangField(nativeLangCode)]: seededNative,
+        category: ['saved-review'],
+        masteryLevel: 3,
+        isDefault: false,
+        isReviewSeed: true,
+      } : null;
       if (append) {
         setFlashcards(prev => [...prev, ...cards]);
       } else {
-        setFlashcards(cards);
+        setFlashcards(seededCard
+          ? [seededCard, ...cards.filter((card) => card[getLangField(targetLangCode)] !== seededTarget)]
+          : cards);
         requestedPageRef.current = page;
         originalOrderRef.current = null;
       }
@@ -716,20 +730,20 @@ function FlashcardsPage() {
       const flashcard = activeFlashcards[currentIndex];
       if (flashcard.masteryLevel >= 5) return; // already maxed
 
-      const isDefaultCard = flashcard.isDefault === true;
-
       if (userId) {
         await flashcardService.updateFlashcard(flashcard._id, { isCorrect: true });
-        if (!isDefaultCard) {
-          await progressService.recordProgress({
-            userId,
-            skillType: 'reading',
-            category: normalizeCategory(flashcard.category)[0],
-            score: 80,
-            isCorrect: true,
-          });
-          userService.awardXP(userId, { flashcardId: flashcard._id, basePoints: 2 }).catch(() => {});
-        }
+        await progressService.recordProgress({
+          userId,
+          skillType: 'reading',
+          category: normalizeCategory(flashcard.category)[0],
+          score: 80,
+          isCorrect: true,
+        });
+        userService.recordLearningEvent(userId, {
+          eventType: 'flashcard_recall',
+          flashcardId: flashcard._id,
+          mode: autoPlay ? 'hands_free' : 'manual',
+        }).catch(() => {});
       } else if (isGuest) {
         guestXPHelper.add(1);
         guestActivityTracker.trackCard(true);
@@ -801,6 +815,76 @@ function FlashcardsPage() {
     } catch (err) {
       setError(t('flashcards.failedToDelete'));
     }
+  };
+
+  const saveCurrentForReview = async () => {
+    if (!userId || !current) return;
+    try {
+      await learningHubService.saveItem({
+        itemType: 'word',
+        targetText: displayTarget,
+        nativeText: displayNative,
+        romanization: current.officialPronunciation || current.romanization || current.pronunciation || '',
+        sourceType: 'flashcard',
+        sourceRef: current._id,
+        sourceLabel: normalizeCategory(current.category).join(', '),
+        reason: t('flashcards.savedReason', 'Saved from flashcards for later practice.'),
+        metadata: { route: '/flashcards' },
+      });
+    } catch (_) {}
+  };
+
+  const bookmarkCurrent = async () => {
+    if (!userId || !current) return;
+    try {
+      await learningHubService.saveItem({
+        itemType: 'bookmark',
+        targetText: displayTarget,
+        nativeText: displayNative,
+        romanization: current.officialPronunciation || current.romanization || current.pronunciation || '',
+        sourceType: 'flashcard',
+        sourceRef: current._id,
+        sourceLabel: normalizeCategory(current.category).join(', '),
+        reason: t('flashcards.bookmarkedReason', 'Bookmarked from flashcards.'),
+        metadata: { route: '/flashcards' },
+      });
+    } catch (_) {}
+  };
+
+  const askTutorAboutCurrent = () => {
+    if (!displayTarget) return;
+    const prompt = t('learningHub.askTutorPrompt', {
+      text: displayTarget,
+      defaultValue: 'Help me practice "{{text}}".',
+    });
+    navigate(`/conversation?prompt=${encodeURIComponent(prompt)}`);
+  };
+
+  const writeCurrent = () => {
+    if (!displayTarget) return;
+    const params = new URLSearchParams({
+      savedText: displayTarget,
+      nativeText: displayNative || '',
+    });
+    navigate(`/writing?${params.toString()}`);
+  };
+
+  const selfTestCurrent = async () => {
+    if (!userId || !current || !displayTarget) return;
+    try {
+      const response = await learningHubService.saveItem({
+        itemType: 'word',
+        targetText: displayTarget,
+        nativeText: displayNative,
+        romanization: current.officialPronunciation || current.romanization || current.pronunciation || '',
+        sourceType: 'flashcard',
+        sourceRef: current._id,
+        sourceLabel: normalizeCategory(current.category).join(', '),
+        reason: t('flashcards.selfTestReason', 'Saved from flashcards for a quick self-test.'),
+        metadata: { route: '/flashcards' },
+      });
+      navigate('/review', { state: { quickQuizItem: response.data } });
+    } catch (_) {}
   };
 
   const getMasteryStars = (level, animated = false) => {
@@ -1384,10 +1468,29 @@ function FlashcardsPage() {
               </div>
             </div>
 
-              {!isGuest && !current.isDefault && (
-                <button className="btn-delete-card" onClick={() => handleDelete(current._id)}>
-                  {t('common.delete')}
-                </button>
+              {!isGuest && (
+                <div className="flashcard-save-row">
+                  <button className="btn-save-card" onClick={saveCurrentForReview}>
+                    {t('flashcards.saveForReview', 'Save for review')}
+                  </button>
+                  <button className="btn-save-card" onClick={bookmarkCurrent}>
+                    {t('learningHub.bookmark', 'Bookmark')}
+                  </button>
+                  <button className="btn-save-card" onClick={askTutorAboutCurrent}>
+                    {t('learningHub.askTutor', 'Ask tutor')}
+                  </button>
+                  <button className="btn-save-card" onClick={writeCurrent}>
+                    {t('learningHub.practiceWriting', 'Write')}
+                  </button>
+                  <button className="btn-save-card" onClick={selfTestCurrent}>
+                    {t('learningHub.practiceQuiz', 'Self-test')}
+                  </button>
+                  {!current.isDefault && (
+                    <button className="btn-delete-card" onClick={() => handleDelete(current._id)}>
+                      {t('common.delete')}
+                    </button>
+                  )}
+                </div>
               )}
             </div>
 

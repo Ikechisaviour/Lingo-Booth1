@@ -6,14 +6,25 @@ const Course = require('../models/Course');
 const ClassLessonProgress = require('../models/ClassLessonProgress');
 const { verifyToken, optionalAuth, isAdmin } = require('../middleware/auth');
 const { getAiEntitlements } = require('../utils/subscription');
-const { getOrCreateTranslation, applyTranslation, batchTranslateRaw } = require('../utils/translationService');
+const {
+  getOrCreateTranslation,
+  applyTranslation,
+  batchTranslateRaw,
+  translationSourceFingerprint,
+} = require('../utils/translationService');
 const { normalizeLessonForLanguagePair } = require('../utils/languageConcepts');
 const { enrichLessonWithPronunciation } = require('../utils/pronunciationService');
+const {
+  NON_LATIN_TARGET_LANGS,
+  normalizeTargetLayerForDisplay,
+} = require('../utils/targetLayerPolicy');
 
 const VALID_CATEGORIES = ['daily-life', 'business', 'travel', 'greetings', 'food', 'shopping', 'healthcare', 'career'];
 const VALID_DIFFICULTIES = ['beginner', 'intermediate', 'advanced', 'sentences'];
 const VALID_TRACKS = ['textbook', 'practice'];
 const CLASS_LESSON_TRACK = 'textbook';
+const LOCALIZED_LESSON_CACHE_TTL_MS = 5 * 60 * 1000;
+const localizedLessonCache = new Map();
 
 function routeContentKind(req) {
   if (req.baseUrl.endsWith('/class-lessons')) return 'classLesson';
@@ -52,12 +63,6 @@ function normalizeLang(code, fallback = 'en') {
   const base = value.split(/[-_]/)[0];
   return aliases[base] || base || fallback;
 }
-
-const NON_LATIN_TARGET_LANGS = new Set([
-  'ko', 'zh', 'ja', 'hi', 'ar', 'he', 'ru', 'bn', 'ta',
-  'th', 'ka', 'am', 'my', 'km', 'lo', 'si', 'ne', 'ur',
-  'fa', 'ps', 'yi', 'gu', 'kn', 'ml', 'te', 'pa', 'uk', 'bg', 'el',
-]);
 
 function stripEnglishMeaningParentheticals(text, targetLang, nativeLang) {
   if (!text || nativeLang === 'en' || targetLang === 'en' || !NON_LATIN_TARGET_LANGS.has(targetLang)) {
@@ -219,6 +224,430 @@ async function addCourseOrderingMetadata(lessonsJson, targetLang) {
   return lessonsJson;
 }
 
+function classLessonStats(content = []) {
+  const items = Array.isArray(content) ? content : [];
+  return items.reduce((stats, item) => {
+    stats.total += 1;
+    if (item?.type === 'word') stats.vocabulary += 1;
+    if (item?.type === 'sentence') stats.grammar += 1;
+    if (item?.type === 'conversation') stats.dialogues += 1;
+    return stats;
+  }, {
+    total: 0,
+    vocabulary: 0,
+    grammar: 0,
+    dialogues: 0,
+  });
+}
+
+function classLessonSummary(lesson = {}) {
+  const stats = classLessonStats(lesson.content);
+  return {
+    _id: lesson._id,
+    title: lesson.title,
+    category: lesson.category,
+    difficulty: lesson.difficulty,
+    track: lesson.track,
+    lessonType: lesson.lessonType,
+    targetLang: lesson.targetLang,
+    nativeLang: lesson.nativeLang,
+    course: lesson.course,
+    stats,
+  };
+}
+
+function classLessonShell(lesson = {}) {
+  const stats = classLessonStats(lesson.content);
+  return {
+    ...lesson,
+    content: undefined,
+    contentTotal: stats.total,
+    contentStats: stats,
+    contentIndex: (Array.isArray(lesson.content) ? lesson.content : []).map((item, index) => ({
+      index,
+      type: item?.type || '',
+      activityIds: Array.isArray(item?.activityIds) ? item.activityIds : [],
+    })),
+  };
+}
+
+function clampWindowStart(center, total, limit) {
+  if (!total) return 0;
+  const safeLimit = Math.max(1, Math.min(limit, total));
+  const desired = Math.max(0, Math.floor(center) - Math.floor(safeLimit / 2));
+  return Math.min(desired, Math.max(0, total - safeLimit));
+}
+
+function classLessonWindow(lesson = {}, center = 0, limit = 8) {
+  const items = Array.isArray(lesson.content) ? lesson.content : [];
+  const total = items.length;
+  const safeLimit = Math.max(1, Math.min(Number(limit) || 8, 24));
+  const start = clampWindowStart(Number(center) || 0, total, safeLimit);
+  const end = Math.min(total, start + safeLimit);
+  return {
+    items: items.slice(start, end).map((item, offset) => ({
+      ...item,
+      index: start + offset,
+    })),
+    window: {
+      start,
+      end,
+      total,
+    },
+  };
+}
+
+async function localizeLessonForPair(lesson, contentKind, normalizedNativeLang) {
+  const sourceFingerprint = translationSourceFingerprint(lesson);
+  const cacheKey = `${lesson._id}:${contentKind}:${normalizedNativeLang}:${sourceFingerprint}`;
+  const cached = localizedLessonCache.get(cacheKey);
+  if (cached && cached.expiresAt > Date.now()) {
+    return cached.lessonObj;
+  }
+
+  const lessonObj = lesson.toJSON();
+  const targetLang = normalizeLang(lesson.targetLang || 'ko');
+
+  if (contentKind !== 'classLesson') {
+    normalizeLessonForLanguagePair(lessonObj, targetLang, normalizedNativeLang);
+  }
+
+  // Snapshot original English seed values before translation overlay so the
+  // live-fallback below can detect untranslated fields.
+  const isNonEnglishNative = normalizedNativeLang !== 'en';
+  const originalNativeTexts = isNonEnglishNative && lessonObj.content
+    ? lessonObj.content.map(c => c.nativeText || '')
+    : null;
+  const originalExampleNativeTexts = isNonEnglishNative && lessonObj.content
+    ? lessonObj.content.map(c => c.exampleNative || c.exampleEnglish || '')
+    : null;
+  const originalBreakdownNativeTexts = isNonEnglishNative && lessonObj.content
+    ? lessonObj.content.map(c => (
+      Array.isArray(c.breakdown)
+        ? c.breakdown.map(part => part?.native || part?.english || '')
+        : []
+    ))
+    : null;
+  const originalActivities = isNonEnglishNative && Array.isArray(lessonObj.activities)
+    ? lessonObj.activities.map(a => ({
+      section: a?.section || '',
+      title: a?.title || '',
+      task: a?.task || '',
+      goals: Array.isArray(a?.goals) ? a.goals.slice() : [],
+    }))
+    : null;
+  const originalExpressionPractice = isNonEnglishNative && Array.isArray(lessonObj.expressionPractice)
+    ? lessonObj.expressionPractice.map(ep => ({
+      label: ep?.label || '',
+      goal: ep?.goal || '',
+    }))
+    : null;
+
+  try {
+    const translationNativeLang = contentKind === 'classLesson' ? normalizedNativeLang : 'en';
+    const translation = await getOrCreateTranslation(lesson, translationNativeLang, targetLang);
+    applyTranslation(lessonObj, translation);
+  } catch (err) {
+    console.error('Translation/romanization overlay failed:', err.message);
+  }
+
+  if (originalNativeTexts && lessonObj.content) {
+    const missingIndices = [];
+    const missingTexts = [];
+    for (let i = 0; i < lessonObj.content.length; i++) {
+      const c = lessonObj.content[i];
+      if (c.nativeText && c.nativeText === originalNativeTexts[i]) {
+        missingIndices.push(i);
+        missingTexts.push(c.nativeText);
+      }
+    }
+    if (missingTexts.length > 0) {
+      try {
+        const results = await batchTranslateRaw(missingTexts, 'en', normalizedNativeLang);
+        for (let k = 0; k < results.length; k++) {
+          const translated = results[k]?.failed ? '' : results[k]?.text;
+          if (translated) {
+            lessonObj.content[missingIndices[k]].nativeText = translated;
+          } else {
+            lessonObj.content[missingIndices[k]].nativeText = '';
+            lessonObj.content[missingIndices[k]]._translationPending = true;
+          }
+        }
+      } catch (err) {
+        for (const idx of missingIndices) {
+          lessonObj.content[idx].nativeText = '';
+          lessonObj.content[idx]._translationPending = true;
+        }
+        console.error('Lesson nativeText translation failed:', err.message);
+      }
+    }
+  }
+
+  if (originalExampleNativeTexts && lessonObj.content) {
+    const missingIndices = [];
+    const missingTexts = [];
+    for (let i = 0; i < lessonObj.content.length; i++) {
+      const c = lessonObj.content[i];
+      const current = c.exampleNative || c.exampleEnglish || '';
+      const original = originalExampleNativeTexts[i];
+      if (current && original && current === original) {
+        missingIndices.push(i);
+        missingTexts.push(current);
+      }
+    }
+    if (missingTexts.length > 0) {
+      try {
+        const results = await batchTranslateRaw(missingTexts, 'en', normalizedNativeLang);
+        for (let k = 0; k < results.length; k++) {
+          const translated = results[k]?.failed ? '' : results[k]?.text;
+          const targetIndex = missingIndices[k];
+          if (translated) {
+            lessonObj.content[targetIndex].exampleNative = translated;
+            lessonObj.content[targetIndex].exampleEnglish = translated;
+          } else {
+            lessonObj.content[targetIndex].exampleNative = '';
+            lessonObj.content[targetIndex].exampleEnglish = '';
+            lessonObj.content[targetIndex]._translationPending = true;
+          }
+        }
+      } catch (err) {
+        for (const idx of missingIndices) {
+          lessonObj.content[idx].exampleNative = '';
+          lessonObj.content[idx].exampleEnglish = '';
+          lessonObj.content[idx]._translationPending = true;
+        }
+        console.error('Lesson exampleNative translation failed:', err.message);
+      }
+    }
+  }
+
+  if (originalBreakdownNativeTexts && lessonObj.content) {
+    const missing = [];
+    lessonObj.content.forEach((item, itemIndex) => {
+      if (!Array.isArray(item.breakdown)) return;
+      item.breakdown.forEach((part, partIndex) => {
+        const current = part?.native || part?.english || '';
+        const original = originalBreakdownNativeTexts[itemIndex]?.[partIndex] || '';
+        if (current && original && current === original) {
+          missing.push({ itemIndex, partIndex, text: current });
+        }
+      });
+    });
+
+    if (missing.length > 0) {
+      try {
+        const results = await batchTranslateRaw(missing.map(m => m.text), 'en', normalizedNativeLang);
+        for (let k = 0; k < results.length; k++) {
+          const m = missing[k];
+          const translated = results[k]?.failed ? '' : results[k]?.text;
+          const dst = lessonObj.content[m.itemIndex]?.breakdown?.[m.partIndex];
+          if (!dst) continue;
+          if (translated) {
+            dst.native = translated;
+            dst.english = translated;
+          } else {
+            dst.native = '';
+            dst.english = '';
+            dst._translationPending = true;
+            lessonObj.content[m.itemIndex]._translationPending = true;
+          }
+        }
+      } catch (err) {
+        for (const m of missing) {
+          const dst = lessonObj.content[m.itemIndex]?.breakdown?.[m.partIndex];
+          if (!dst) continue;
+          dst.native = '';
+          dst.english = '';
+          dst._translationPending = true;
+          lessonObj.content[m.itemIndex]._translationPending = true;
+        }
+        console.error('Lesson breakdown translation failed:', err.message);
+      }
+    }
+  }
+
+  if (originalActivities && Array.isArray(lessonObj.activities)) {
+    const missing = [];
+    lessonObj.activities.forEach((act, i) => {
+      const orig = originalActivities[i];
+      if (!orig || !act) return;
+      ['section', 'title', 'task'].forEach((field) => {
+        const value = act[field];
+        if (value && value === orig[field]) {
+          missing.push({ kind: 'activity', i, field, text: value });
+        }
+      });
+      if (Array.isArray(act.goals) && Array.isArray(orig.goals)) {
+        act.goals.forEach((g, gi) => {
+          if (g && g === orig.goals[gi]) {
+            missing.push({ kind: 'activity', i, field: 'goals', goalIndex: gi, text: g });
+          }
+        });
+      }
+    });
+    if (missing.length > 0) {
+      try {
+        const results = await batchTranslateRaw(missing.map(m => m.text), 'en', normalizedNativeLang);
+        for (let k = 0; k < results.length; k++) {
+          const m = missing[k];
+          const translated = results[k]?.failed ? '' : results[k]?.text;
+          const dst = lessonObj.activities[m.i];
+          if (!dst) continue;
+          if (m.field === 'goals') {
+            if (translated) dst.goals[m.goalIndex] = translated;
+            else { dst.goals[m.goalIndex] = ''; dst._translationPending = true; }
+          } else if (translated) {
+            dst[m.field] = translated;
+          } else {
+            dst[m.field] = '';
+            dst._translationPending = true;
+          }
+        }
+      } catch (err) {
+        for (const m of missing) {
+          const dst = lessonObj.activities[m.i];
+          if (!dst) continue;
+          if (m.field === 'goals') dst.goals[m.goalIndex] = '';
+          else dst[m.field] = '';
+          dst._translationPending = true;
+        }
+        console.error('Lesson activities translation failed:', err.message);
+      }
+    }
+  }
+
+  if (originalExpressionPractice && Array.isArray(lessonObj.expressionPractice)) {
+    const missing = [];
+    lessonObj.expressionPractice.forEach((ep, i) => {
+      const orig = originalExpressionPractice[i];
+      if (!orig || !ep) return;
+      ['label', 'goal'].forEach((field) => {
+        const value = ep[field];
+        if (value && value === orig[field]) {
+          missing.push({ i, field, text: value });
+        }
+      });
+    });
+    if (missing.length > 0) {
+      try {
+        const results = await batchTranslateRaw(missing.map(m => m.text), 'en', normalizedNativeLang);
+        for (let k = 0; k < results.length; k++) {
+          const m = missing[k];
+          const translated = results[k]?.failed ? '' : results[k]?.text;
+          const dst = lessonObj.expressionPractice[m.i];
+          if (!dst) continue;
+          if (translated) dst[m.field] = translated;
+          else { dst[m.field] = ''; dst._translationPending = true; }
+        }
+      } catch (err) {
+        for (const m of missing) {
+          const dst = lessonObj.expressionPractice[m.i];
+          if (!dst) continue;
+          dst[m.field] = '';
+          dst._translationPending = true;
+        }
+        console.error('Lesson expressionPractice translation failed:', err.message);
+      }
+    }
+  }
+
+  cleanTargetExamplesForNativeDisplay(lessonObj, targetLang, normalizedNativeLang);
+  normalizeTargetLayerForDisplay(lessonObj, targetLang);
+  await enrichLessonWithPronunciation(lessonObj, targetLang, normalizedNativeLang);
+  if (localizedLessonCache.size > 200) {
+    const now = Date.now();
+    for (const [key, value] of localizedLessonCache.entries()) {
+      if (value.expiresAt <= now) localizedLessonCache.delete(key);
+    }
+    if (localizedLessonCache.size > 200) {
+      const oldestKey = localizedLessonCache.keys().next().value;
+      if (oldestKey) localizedLessonCache.delete(oldestKey);
+    }
+  }
+  localizedLessonCache.set(cacheKey, {
+    expiresAt: Date.now() + LOCALIZED_LESSON_CACHE_TTL_MS,
+    lessonObj,
+  });
+  return lessonObj;
+}
+
+async function loadClassLessonProgress(req, classLessonId, nativeLanguage, targetLanguage) {
+  const canSync = canSyncClassProgress(req);
+  if (!canSync) return { canSync: false, progress: null };
+
+  const progress = await ClassLessonProgress.findOne({
+    userId: req.userId,
+    classLessonId,
+    nativeLanguage,
+    targetLanguage,
+  }).lean();
+
+  return { canSync: true, progress };
+}
+
+async function warmClassLessonPair(targetLang, nativeLang, userId = '') {
+  const normalizedTargetLang = normalizeLang(targetLang || 'ko');
+  const normalizedNativeLang = normalizeLang(nativeLang || 'en');
+  const lessons = await Lesson.find({
+    track: CLASS_LESSON_TRACK,
+    targetLang: normalizedTargetLang,
+  }).sort({
+    'course.level': 1,
+    'course.track': 1,
+    'course.position': 1,
+  });
+
+  if (!lessons.length) return;
+
+  if (normalizedNativeLang !== 'en') {
+    const Translation = require('../models/Translation');
+    try {
+      const cachedTitles = await Translation.find({
+        lessonId: { $in: lessons.map((lesson) => lesson._id) },
+        lang: normalizedNativeLang,
+        title: { $ne: '' },
+      }).select('lessonId title').lean();
+      const cachedTitleIds = new Set(cachedTitles.map((row) => String(row.lessonId)));
+      const uncached = lessons.filter((lesson) => lesson.title && !cachedTitleIds.has(String(lesson._id)));
+      const translatedTitles = await batchTranslateRaw(uncached.map((lesson) => lesson.title), 'en', normalizedNativeLang);
+      await Promise.all(uncached.map((lesson, index) => {
+        const translated = translatedTitles[index]?.failed ? '' : (translatedTitles[index]?.text || '');
+        if (!translated) return Promise.resolve();
+        return Translation.updateOne(
+          { lessonId: lesson._id, lang: normalizedNativeLang },
+          { $set: { lessonId: lesson._id, lang: normalizedNativeLang, title: translated } },
+          { upsert: true }
+        );
+      }));
+    } catch (error) {
+      console.error(`Warm class lesson titles failed [${normalizedNativeLang}->${normalizedTargetLang}]`, error.message || error);
+    }
+  }
+
+  let likelyLessons = lessons.slice(0, 3);
+  if (userId) {
+    const resumed = await ClassLessonProgress.findOne({
+      userId,
+      nativeLanguage: normalizedNativeLang,
+      targetLanguage: normalizedTargetLang,
+    }).sort({ lastStudiedAt: -1 }).select('classLessonId').lean();
+    const resumedLesson = resumed?.classLessonId
+      ? lessons.find((lesson) => String(lesson._id) === String(resumed.classLessonId))
+      : null;
+    if (resumedLesson && !likelyLessons.some((lesson) => String(lesson._id) === String(resumedLesson._id))) {
+      likelyLessons = [resumedLesson, ...likelyLessons].slice(0, 4);
+    }
+  }
+
+  await Promise.allSettled(likelyLessons.map(async (lesson) => {
+    try {
+      await localizeLessonForPair(lesson, 'classLesson', normalizedNativeLang);
+    } catch (error) {
+      console.error(`Warm class lesson pair failed [${normalizedNativeLang}->${normalizedTargetLang}]`, error.message || error);
+    }
+  }));
+}
+
 // Get class lessons or quizzes (public - guests and authenticated users).
 // Pass ?nativeLang=hi to get translated titles.
 // /api/class-lessons returns textbook class lessons; /api/quiz returns quiz content.
@@ -253,7 +682,12 @@ router.get('/', optionalAuth, async (req, res) => {
     const normalizedNativeLang = normalizeLang(nativeLang || req.user?.nativeLanguage || 'en');
     filter.targetLang = normalizedTargetLang;
 
-    const lessons = await Lesson.find(filter);
+    const summaryView = contentKind === 'classLesson' && req.query.view === 'summary';
+    const lessonQuery = Lesson.find(filter);
+    if (summaryView) {
+      lessonQuery.select('_id title category difficulty track lessonType targetLang nativeLang course content.type');
+    }
+    const lessons = await lessonQuery;
     const lessonsJson = lessons.map(l => l.toJSON());
 
     // Translate lesson titles for non-English native speakers
@@ -297,12 +731,119 @@ router.get('/', optionalAuth, async (req, res) => {
     }
 
     if (contentKind === 'classLesson') {
+      if (!summaryView) {
+        lessonsJson.forEach((lessonObj) => {
+          cleanTargetExamplesForNativeDisplay(lessonObj, normalizedTargetLang, normalizedNativeLang);
+          normalizeTargetLayerForDisplay(lessonObj, normalizedTargetLang);
+        });
+      }
       await addCourseOrderingMetadata(lessonsJson, normalizedTargetLang);
+    }
+
+    if (summaryView) {
+      return res.json(lessonsJson.map(classLessonSummary));
     }
 
     res.json(lessonsJson);
   } catch (error) {
     console.error('Get lessons error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Fire-and-forget pair warming: prepare the first likely class lessons after a
+// learner picks a language pair, so first entry into class feels immediate.
+router.post('/prepare-pair', optionalAuth, async (req, res) => {
+  try {
+    if (routeContentKind(req) !== 'classLesson') {
+      return res.status(404).json({ message: 'Class lesson pair preparation not found' });
+    }
+    const targetLang = normalizeLang(req.body?.targetLang || req.query.targetLang || req.user?.targetLanguage || 'ko');
+    const nativeLang = normalizeLang(req.body?.nativeLang || req.query.nativeLang || req.user?.nativeLanguage || 'en');
+    if (!targetLang || !nativeLang || targetLang === nativeLang) {
+      return res.status(400).json({ message: 'A distinct nativeLang and targetLang are required' });
+    }
+
+    setImmediate(() => {
+      warmClassLessonPair(targetLang, nativeLang, req.userId).catch((error) => {
+        console.error(`Prepare class lesson pair failed [${nativeLang}->${targetLang}]`, error.message || error);
+      });
+    });
+
+    res.status(202).json({ queued: true, targetLang, nativeLang });
+  } catch (error) {
+    console.error('Prepare class lesson pair error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Resume-aware initial payload. The shell contains stable lesson metadata plus
+// a compact item index; detailed content is only the nearby window needed first.
+router.get('/:id/bootstrap', optionalAuth, async (req, res) => {
+  try {
+    if (routeContentKind(req) !== 'classLesson') {
+      return res.status(404).json({ message: 'Class lesson bootstrap not found' });
+    }
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(404).json({ message: 'Class lesson not found' });
+    }
+
+    const lesson = await Lesson.findById(req.params.id);
+    if (!lesson || lesson.track !== CLASS_LESSON_TRACK) {
+      return res.status(404).json({ message: 'Class lesson not found' });
+    }
+
+    const nativeLanguage = normalizeLang(req.query.nativeLang, req.user?.nativeLanguage || 'en');
+    const targetLanguage = normalizeLang(req.query.targetLang, req.user?.targetLanguage || lesson.targetLang || 'ko');
+    if (normalizeLang(lesson.targetLang || 'ko') !== targetLanguage) {
+      return res.status(404).json({ message: 'Class lesson not found for this language pair' });
+    }
+
+    const progressPayload = await loadClassLessonProgress(req, req.params.id, nativeLanguage, targetLanguage);
+    const requestedCenter = sanitizeIndex(req.query.center, 0);
+    const progressCenter = sanitizeIndex(progressPayload.progress?.selectedIndex, requestedCenter);
+    const windowSize = Math.max(4, Math.min(24, sanitizeIndex(req.query.windowSize, 8) || 8));
+    const lessonObj = await localizeLessonForPair(lesson, 'classLesson', nativeLanguage);
+    const windowPayload = classLessonWindow(lessonObj, progressCenter, windowSize);
+
+    res.json({
+      lesson: classLessonShell(lessonObj),
+      ...windowPayload,
+      canSync: progressPayload.canSync,
+      progress: progressPayload.progress,
+    });
+  } catch (error) {
+    console.error('Get class lesson bootstrap error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+router.get('/:id/items', optionalAuth, async (req, res) => {
+  try {
+    if (routeContentKind(req) !== 'classLesson') {
+      return res.status(404).json({ message: 'Class lesson items not found' });
+    }
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(404).json({ message: 'Class lesson not found' });
+    }
+
+    const lesson = await Lesson.findById(req.params.id);
+    if (!lesson || lesson.track !== CLASS_LESSON_TRACK) {
+      return res.status(404).json({ message: 'Class lesson not found' });
+    }
+
+    const nativeLanguage = normalizeLang(req.query.nativeLang, req.user?.nativeLanguage || 'en');
+    const targetLanguage = normalizeLang(req.query.targetLang, req.user?.targetLanguage || lesson.targetLang || 'ko');
+    if (normalizeLang(lesson.targetLang || 'ko') !== targetLanguage) {
+      return res.status(404).json({ message: 'Class lesson not found for this language pair' });
+    }
+
+    const center = sanitizeIndex(req.query.center, 0);
+    const windowSize = Math.max(4, Math.min(24, sanitizeIndex(req.query.windowSize, 8) || 8));
+    const lessonObj = await localizeLessonForPair(lesson, 'classLesson', nativeLanguage);
+    res.json(classLessonWindow(lessonObj, center, windowSize));
+  } catch (error) {
+    console.error('Get class lesson items error:', error);
     res.status(500).json({ message: 'Server error' });
   }
 });
@@ -410,277 +951,13 @@ router.get('/:id', optionalAuth, async (req, res) => {
     }
 
     const { nativeLang, targetLang: requestedTargetLang } = req.query;
-    const lessonObj = lesson.toJSON();
     const targetLang = normalizeLang(lesson.targetLang || 'ko');
     const normalizedNativeLang = normalizeLang(nativeLang || req.user?.nativeLanguage || 'en');
     const normalizedRequestedTargetLang = requestedTargetLang ? normalizeLang(requestedTargetLang) : '';
     if (normalizedRequestedTargetLang && targetLang !== normalizedRequestedTargetLang) {
       return res.status(404).json({ message: `${notFoundLabel(req)} not found for this language pair` });
     }
-    if (contentKind !== 'classLesson') {
-      normalizeLessonForLanguagePair(lessonObj, targetLang, normalizedNativeLang);
-    }
-
-    // Snapshot original English seed values before translation overlay so the
-    // live-fallback below can detect untranslated fields (those still equal to
-    // the canonical English source).
-    const isNonEnglishNative = normalizedNativeLang !== 'en';
-    const originalNativeTexts = isNonEnglishNative && lessonObj.content
-      ? lessonObj.content.map(c => c.nativeText || '')
-      : null;
-    const originalExampleNativeTexts = isNonEnglishNative && lessonObj.content
-      ? lessonObj.content.map(c => c.exampleNative || c.exampleEnglish || '')
-      : null;
-    const originalBreakdownNativeTexts = isNonEnglishNative && lessonObj.content
-      ? lessonObj.content.map(c => (
-        Array.isArray(c.breakdown)
-          ? c.breakdown.map(part => part?.native || part?.english || '')
-          : []
-      ))
-      : null;
-    const originalActivities = isNonEnglishNative && Array.isArray(lessonObj.activities)
-      ? lessonObj.activities.map(a => ({
-        section: a?.section || '',
-        title: a?.title || '',
-        task: a?.task || '',
-        goals: Array.isArray(a?.goals) ? a.goals.slice() : [],
-      }))
-      : null;
-    const originalExpressionPractice = isNonEnglishNative && Array.isArray(lessonObj.expressionPractice)
-      ? lessonObj.expressionPractice.map(ep => ({
-        label: ep?.label || '',
-        goal: ep?.goal || '',
-      }))
-      : null;
-
-    // Translate native-side fields and/or generate romanization
-    try {
-      const translationNativeLang = contentKind === 'classLesson' ? normalizedNativeLang : 'en';
-      const translation = await getOrCreateTranslation(lesson, translationNativeLang, targetLang);
-      applyTranslation(lessonObj, translation);
-    } catch (err) {
-      console.error('Translation/romanization overlay failed:', err.message);
-    }
-
-    // If nativeLang !== 'en', translate any nativeText that wasn't changed by applyTranslation
-    // (still the English seed value). On failure, clear nativeText and mark as pending.
-    if (originalNativeTexts && lessonObj.content) {
-      const missingIndices = [];
-      const missingTexts = [];
-      for (let i = 0; i < lessonObj.content.length; i++) {
-        const c = lessonObj.content[i];
-        if (c.nativeText && c.nativeText === originalNativeTexts[i]) {
-          missingIndices.push(i);
-          missingTexts.push(c.nativeText);
-        }
-      }
-      if (missingTexts.length > 0) {
-        try {
-          const results = await batchTranslateRaw(missingTexts, 'en', normalizedNativeLang);
-          for (let k = 0; k < results.length; k++) {
-            const translated = results[k]?.failed ? '' : results[k]?.text;
-            if (translated) {
-              lessonObj.content[missingIndices[k]].nativeText = translated;
-            } else {
-              // Translation returned empty — mark pending, clear English
-              lessonObj.content[missingIndices[k]].nativeText = '';
-              lessonObj.content[missingIndices[k]]._translationPending = true;
-            }
-          }
-        } catch (err) {
-          // Translation API failed — mark all untranslated items as pending
-          for (const idx of missingIndices) {
-            lessonObj.content[idx].nativeText = '';
-            lessonObj.content[idx]._translationPending = true;
-          }
-          console.error('Lesson nativeText translation failed:', err.message);
-        }
-      }
-    }
-
-    // Live-fallback for exampleNative/exampleEnglish. Older translation rows
-    // may pre-date example-native support, and lesson seeds keep canonical
-    // native examples in English. Translate those from English so native
-    // learners do not see English explanations inside class content.
-    if (originalExampleNativeTexts && lessonObj.content) {
-      const missingIndices = [];
-      const missingTexts = [];
-      for (let i = 0; i < lessonObj.content.length; i++) {
-        const c = lessonObj.content[i];
-        const current = c.exampleNative || c.exampleEnglish || '';
-        const original = originalExampleNativeTexts[i];
-        if (current && original && current === original) {
-          missingIndices.push(i);
-          missingTexts.push(current);
-        }
-      }
-      if (missingTexts.length > 0) {
-        try {
-          const results = await batchTranslateRaw(missingTexts, 'en', normalizedNativeLang);
-          for (let k = 0; k < results.length; k++) {
-            const translated = results[k]?.failed ? '' : results[k]?.text;
-            const targetIndex = missingIndices[k];
-            if (translated) {
-              lessonObj.content[targetIndex].exampleNative = translated;
-              lessonObj.content[targetIndex].exampleEnglish = translated;
-            } else {
-              lessonObj.content[targetIndex].exampleNative = '';
-              lessonObj.content[targetIndex].exampleEnglish = '';
-              lessonObj.content[targetIndex]._translationPending = true;
-            }
-          }
-        } catch (err) {
-          for (const idx of missingIndices) {
-            lessonObj.content[idx].exampleNative = '';
-            lessonObj.content[idx].exampleEnglish = '';
-            lessonObj.content[idx]._translationPending = true;
-          }
-          console.error('Lesson exampleNative translation failed:', err.message);
-        }
-      }
-    }
-
-    // Live-fallback for breakdown notes. These are native-side explanations,
-    // not target-language content, so stale rows must not show raw English to
-    // a learner whose native language is not English.
-    if (originalBreakdownNativeTexts && lessonObj.content) {
-      const missing = [];
-      lessonObj.content.forEach((item, itemIndex) => {
-        if (!Array.isArray(item.breakdown)) return;
-        item.breakdown.forEach((part, partIndex) => {
-          const current = part?.native || part?.english || '';
-          const original = originalBreakdownNativeTexts[itemIndex]?.[partIndex] || '';
-          if (current && original && current === original) {
-            missing.push({ itemIndex, partIndex, text: current });
-          }
-        });
-      });
-
-      if (missing.length > 0) {
-        try {
-          const results = await batchTranslateRaw(missing.map(m => m.text), 'en', normalizedNativeLang);
-          for (let k = 0; k < results.length; k++) {
-            const m = missing[k];
-            const translated = results[k]?.failed ? '' : results[k]?.text;
-            const dst = lessonObj.content[m.itemIndex]?.breakdown?.[m.partIndex];
-            if (!dst) continue;
-            if (translated) {
-              dst.native = translated;
-              dst.english = translated;
-            } else {
-              dst.native = '';
-              dst.english = '';
-              dst._translationPending = true;
-              lessonObj.content[m.itemIndex]._translationPending = true;
-            }
-          }
-        } catch (err) {
-          for (const m of missing) {
-            const dst = lessonObj.content[m.itemIndex]?.breakdown?.[m.partIndex];
-            if (!dst) continue;
-            dst.native = '';
-            dst.english = '';
-            dst._translationPending = true;
-            lessonObj.content[m.itemIndex]._translationPending = true;
-          }
-          console.error('Lesson breakdown translation failed:', err.message);
-        }
-      }
-    }
-
-    // Live-fallback for activities[] scaffolding (section, title, task, goals).
-    // If the cache fill failed or pre-dated the activities field, any string
-    // still equal to the original English seed gets translated inline so a
-    // non-English learner never sees raw English on the agenda. Per AGENTS.md.
-    if (originalActivities && Array.isArray(lessonObj.activities)) {
-      const missing = [];
-      lessonObj.activities.forEach((act, i) => {
-        const orig = originalActivities[i];
-        if (!orig || !act) return;
-        ['section', 'title', 'task'].forEach((field) => {
-          const value = act[field];
-          if (value && value === orig[field]) {
-            missing.push({ kind: 'activity', i, field, text: value });
-          }
-        });
-        if (Array.isArray(act.goals) && Array.isArray(orig.goals)) {
-          act.goals.forEach((g, gi) => {
-            if (g && g === orig.goals[gi]) {
-              missing.push({ kind: 'activity', i, field: 'goals', goalIndex: gi, text: g });
-            }
-          });
-        }
-      });
-      if (missing.length > 0) {
-        try {
-          const results = await batchTranslateRaw(missing.map(m => m.text), 'en', normalizedNativeLang);
-          for (let k = 0; k < results.length; k++) {
-            const m = missing[k];
-            const translated = results[k]?.failed ? '' : results[k]?.text;
-            const dst = lessonObj.activities[m.i];
-            if (!dst) continue;
-            if (m.field === 'goals') {
-              if (translated) dst.goals[m.goalIndex] = translated;
-              else { dst.goals[m.goalIndex] = ''; dst._translationPending = true; }
-            } else if (translated) {
-              dst[m.field] = translated;
-            } else {
-              dst[m.field] = '';
-              dst._translationPending = true;
-            }
-          }
-        } catch (err) {
-          for (const m of missing) {
-            const dst = lessonObj.activities[m.i];
-            if (!dst) continue;
-            if (m.field === 'goals') dst.goals[m.goalIndex] = '';
-            else dst[m.field] = '';
-            dst._translationPending = true;
-          }
-          console.error('Lesson activities translation failed:', err.message);
-        }
-      }
-    }
-
-    // Live-fallback for expressionPractice[] (label + goal). Same pattern.
-    if (originalExpressionPractice && Array.isArray(lessonObj.expressionPractice)) {
-      const missing = [];
-      lessonObj.expressionPractice.forEach((ep, i) => {
-        const orig = originalExpressionPractice[i];
-        if (!orig || !ep) return;
-        ['label', 'goal'].forEach((field) => {
-          const value = ep[field];
-          if (value && value === orig[field]) {
-            missing.push({ i, field, text: value });
-          }
-        });
-      });
-      if (missing.length > 0) {
-        try {
-          const results = await batchTranslateRaw(missing.map(m => m.text), 'en', normalizedNativeLang);
-          for (let k = 0; k < results.length; k++) {
-            const m = missing[k];
-            const translated = results[k]?.failed ? '' : results[k]?.text;
-            const dst = lessonObj.expressionPractice[m.i];
-            if (!dst) continue;
-            if (translated) dst[m.field] = translated;
-            else { dst[m.field] = ''; dst._translationPending = true; }
-          }
-        } catch (err) {
-          for (const m of missing) {
-            const dst = lessonObj.expressionPractice[m.i];
-            if (!dst) continue;
-            dst[m.field] = '';
-            dst._translationPending = true;
-          }
-          console.error('Lesson expressionPractice translation failed:', err.message);
-        }
-      }
-    }
-
-    cleanTargetExamplesForNativeDisplay(lessonObj, targetLang, normalizedNativeLang);
-    await enrichLessonWithPronunciation(lessonObj, targetLang, normalizedNativeLang);
-
+    const lessonObj = await localizeLessonForPair(lesson, contentKind, normalizedNativeLang);
     res.json(lessonObj);
   } catch (error) {
     console.error('Get lesson error:', error);

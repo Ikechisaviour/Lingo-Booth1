@@ -70,6 +70,7 @@ function AdminDashboard() {
     notes: '',
   });
   const [discountForm, setDiscountForm] = useState({
+    applicationMode: 'code',
     code: '',
     active: true,
     description: '',
@@ -202,8 +203,30 @@ function AdminDashboard() {
   };
 
   const formatAdminPrice = (cents) => {
-    if (cents === undefined || cents === null) return 'Custom';
-    return `$${(Number(cents) / 100).toFixed(Number(cents) % 100 === 0 ? 0 : 2)}`;
+    if (cents === undefined || cents === null) return t('adminBilling.customPrice');
+    const value = Number(cents) / 100;
+    return new Intl.NumberFormat(i18n.resolvedLanguage || i18n.language || 'en', {
+      style: 'currency',
+      currency: 'USD',
+      maximumFractionDigits: Number(cents) % 100 === 0 ? 0 : 2,
+    }).format(value);
+  };
+
+  const adminPlanName = (planOrId) => {
+    const planId = typeof planOrId === 'string' ? planOrId : planOrId?.id;
+    const fallback = typeof planOrId === 'string' ? planOrId : planOrId?.name || planId;
+    return t(`pricing.planNames.${planId}`, fallback);
+  };
+
+  const adminAudienceLabel = (audience) => t(`adminBilling.audiences.${audience}`, audience);
+  const adminStatusLabel = (status) => t(`adminBilling.statuses.${status}`, status);
+  const adminOrgTypeLabel = (type) => t(`pricing.organizationTypes.${type}`, type);
+  const adminLeadStatusLabel = (status) => t(`adminBilling.leadStatuses.${status}`, status);
+  const formatAdminDate = (value) => {
+    if (!value) return t('profilePage.unknown');
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return t('profilePage.unknown');
+    return date.toLocaleDateString(i18n.resolvedLanguage || i18n.language || undefined);
   };
 
   useEffect(() => {
@@ -404,11 +427,11 @@ function AdminDashboard() {
         reason: '',
         expiresAt: '',
       });
-      showSuccess('Plan access updated');
+      showSuccess(t('adminBilling.planAccessUpdated'));
       fetchBillingAdmin();
       fetchData();
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to update plan access');
+      setError(err.response?.data?.message || t('adminBilling.planAccessUpdateFailed'));
     }
   };
 
@@ -427,10 +450,10 @@ function AdminDashboard() {
         billingEmail: '',
         notes: '',
       });
-      showSuccess('Organization created');
+      showSuccess(t('adminBilling.organizationCreated'));
       fetchBillingAdmin();
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to create organization');
+      setError(err.response?.data?.message || t('adminBilling.organizationCreateFailed'));
     }
   };
 
@@ -451,15 +474,16 @@ function AdminDashboard() {
         stripeAnnualPriceId: selectedPricingPlan.audience === 'individual' ? planOverrideForm.stripeAnnualPriceId : '',
         notes: planOverrideForm.notes,
       });
-      showSuccess('Plan pricing updated');
+      showSuccess(t('adminBilling.planPricingUpdated'));
       fetchBillingAdmin();
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to update plan pricing');
+      setError(err.response?.data?.message || t('adminBilling.planPricingUpdateFailed'));
     }
   };
 
   const resetDiscountForm = () => {
     setDiscountForm({
+      applicationMode: 'code',
       code: '',
       active: true,
       description: '',
@@ -490,10 +514,10 @@ function AdminDashboard() {
         maxRedemptions: discountForm.maxRedemptions || null,
       });
       resetDiscountForm();
-      showSuccess('Discount created');
+      showSuccess(t('adminBilling.discountCreated'));
       fetchBillingAdmin();
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to create discount');
+      setError(err.response?.data?.message || t('adminBilling.discountCreateFailed'));
     }
   };
 
@@ -505,20 +529,20 @@ function AdminDashboard() {
         startsAt: discount.startsAt || null,
         expiresAt: discount.expiresAt || null,
       });
-      showSuccess(discount.active ? 'Discount paused' : 'Discount enabled');
+      showSuccess(discount.active ? t('adminBilling.discountPaused') : t('adminBilling.discountEnabled'));
       fetchBillingAdmin();
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to update discount');
+      setError(err.response?.data?.message || t('adminBilling.discountUpdateFailed'));
     }
   };
 
   const updateLeadStatus = async (leadId, status) => {
     try {
       await billingService.updateInstitutionalLeadStatus(leadId, status);
-      showSuccess('Institution request updated');
+      showSuccess(t('adminBilling.institutionRequestUpdated'));
       fetchBillingAdmin();
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to update institution request');
+      setError(err.response?.data?.message || t('adminBilling.institutionRequestUpdateFailed'));
     }
   };
 
@@ -1452,11 +1476,11 @@ function AdminDashboard() {
             <div className="billing-admin-section">
               <div className="section-header-row">
                 <div>
-                  <h2>Subscriptions and institutions</h2>
-                  <p>Manage individual access, institutional leads, and organization seats.</p>
+                  <h2>{t('adminBilling.title')}</h2>
+                  <p>{t('adminBilling.subtitle')}</p>
                 </div>
                 <button className="btn btn-outline btn-sm" onClick={fetchBillingAdmin} disabled={billingLoading}>
-                  {billingLoading ? 'Loading...' : 'Refresh billing'}
+                  {billingLoading ? t('common.loading') : t('adminBilling.refresh')}
                 </button>
               </div>
 
@@ -1464,17 +1488,17 @@ function AdminDashboard() {
                 <div className="stat-card">
                   <span className="stat-emoji">$</span>
                   <span className="stat-number">{billingAdmin.counts.activeIndividual || 0}</span>
-                  <span className="stat-label">Active individual</span>
+                  <span className="stat-label">{t('adminBilling.activeIndividual')}</span>
                 </div>
                 <div className="stat-card">
                   <span className="stat-emoji">🏫</span>
                   <span className="stat-number">{billingAdmin.counts.activeInstitutional || 0}</span>
-                  <span className="stat-label">Active institutions</span>
+                  <span className="stat-label">{t('adminBilling.activeInstitutions')}</span>
                 </div>
                 <div className="stat-card">
                   <span className="stat-emoji">✉</span>
                   <span className="stat-number">{billingAdmin.counts.openInstitutionLeads || 0}</span>
-                  <span className="stat-label">Open requests</span>
+                  <span className="stat-label">{t('adminBilling.openRequests')}</span>
                 </div>
               </div>
 
@@ -1482,8 +1506,8 @@ function AdminDashboard() {
                 <form className="card billing-admin-form pricing-control-card" onSubmit={handlePlanOverrideSubmit}>
                   <div className="billing-card-title-row">
                     <div>
-                      <h3>Plan pricing</h3>
-                      <p>Override public plan prices without changing the codebase.</p>
+                      <h3>{t('adminBilling.planPricing')}</h3>
+                      <p>{t('adminBilling.planPricingHint')}</p>
                     </div>
                     <label className="billing-switch">
                       <input
@@ -1491,32 +1515,32 @@ function AdminDashboard() {
                         checked={planOverrideForm.active}
                         onChange={(event) => setPlanOverrideForm({ ...planOverrideForm, active: event.target.checked })}
                       />
-                      Active
+                      {t('admin.active')}
                     </label>
                   </div>
                   <label>
-                    Plan
+                    {t('adminBilling.plan')}
                     <select value={selectedPricingPlanId} onChange={(event) => setSelectedPricingPlanId(event.target.value)}>
                       {billingPlans.map((plan) => (
                         <option key={plan.id} value={plan.id}>
-                          {plan.name} ({plan.audience})
+                          {adminPlanName(plan)} ({adminAudienceLabel(plan.audience)})
                         </option>
                       ))}
                     </select>
                   </label>
                   {selectedPricingPlan && (
                     <div className="billing-price-summary">
-                      <span>Current public price</span>
+                      <span>{t('adminBilling.currentPublicPrice')}</span>
                       <strong>
                         {selectedPricingPlan.audience === 'institution'
-                          ? `${formatAdminPrice(selectedPricingPlan.seatPriceMonthlyCents)} / seat`
-                          : `${formatAdminPrice(selectedPricingPlan.monthlyPriceCents)} monthly`}
+                          ? t('adminBilling.pricePerSeat', { price: formatAdminPrice(selectedPricingPlan.seatPriceMonthlyCents) })
+                          : t('adminBilling.priceMonthly', { price: formatAdminPrice(selectedPricingPlan.monthlyPriceCents) })}
                       </strong>
                     </div>
                   )}
                   <div className="billing-admin-form-row">
                     <label>
-                      Display name
+                      {t('adminBilling.displayName')}
                       <input
                         value={planOverrideForm.name}
                         onChange={(event) => setPlanOverrideForm({ ...planOverrideForm, name: event.target.value })}
@@ -1524,7 +1548,7 @@ function AdminDashboard() {
                       />
                     </label>
                     <label>
-                      Short description
+                      {t('adminBilling.shortDescription')}
                       <input
                         value={planOverrideForm.tagline}
                         onChange={(event) => setPlanOverrideForm({ ...planOverrideForm, tagline: event.target.value })}
@@ -1537,7 +1561,7 @@ function AdminDashboard() {
                     <>
                       <div className="billing-admin-form-row">
                         <label>
-                          Monthly price
+                          {t('adminBilling.monthlyPrice')}
                           <input
                             type="number"
                             min="0"
@@ -1548,7 +1572,7 @@ function AdminDashboard() {
                           />
                         </label>
                         <label>
-                          Annual price
+                          {t('adminBilling.annualPrice')}
                           <input
                             type="number"
                             min="0"
@@ -1561,7 +1585,7 @@ function AdminDashboard() {
                       </div>
                       <div className="billing-admin-form-row">
                         <label>
-                          Stripe monthly price id
+                          {t('adminBilling.stripeMonthlyPriceId')}
                           <input
                             value={planOverrideForm.stripeMonthlyPriceId}
                             onChange={(event) => setPlanOverrideForm({ ...planOverrideForm, stripeMonthlyPriceId: event.target.value })}
@@ -1569,7 +1593,7 @@ function AdminDashboard() {
                           />
                         </label>
                         <label>
-                          Stripe annual price id
+                          {t('adminBilling.stripeAnnualPriceId')}
                           <input
                             value={planOverrideForm.stripeAnnualPriceId}
                             onChange={(event) => setPlanOverrideForm({ ...planOverrideForm, stripeAnnualPriceId: event.target.value })}
@@ -1581,7 +1605,7 @@ function AdminDashboard() {
                   ) : (
                     <div className="billing-admin-form-row">
                       <label>
-                        Monthly seat price
+                        {t('adminBilling.monthlySeatPrice')}
                         <input
                           type="number"
                           min="0"
@@ -1592,7 +1616,7 @@ function AdminDashboard() {
                         />
                       </label>
                       <label>
-                        Annual seat price
+                        {t('adminBilling.annualSeatPrice')}
                         <input
                           type="number"
                           min="0"
@@ -1603,7 +1627,7 @@ function AdminDashboard() {
                         />
                       </label>
                       <label>
-                        Minimum seats
+                        {t('adminBilling.minimumSeats')}
                         <input
                           type="number"
                           min="1"
@@ -1615,42 +1639,59 @@ function AdminDashboard() {
                     </div>
                   )}
                   <label>
-                    Internal notes
+                    {t('adminBilling.internalNotes')}
                     <textarea
                       value={planOverrideForm.notes}
                       onChange={(event) => setPlanOverrideForm({ ...planOverrideForm, notes: event.target.value })}
                     />
                   </label>
-                  <button className="btn btn-primary" type="submit" disabled={!selectedPricingPlan}>Save pricing</button>
+                  <button className="btn btn-primary" type="submit" disabled={!selectedPricingPlan}>{t('adminBilling.savePricing')}</button>
                 </form>
 
                 <form className="card billing-admin-form pricing-control-card" onSubmit={handleDiscountSubmit}>
-                  <h3>Discount codes</h3>
+                  <h3>{t('adminBilling.discounts')}</h3>
                   <div className="billing-admin-form-row">
                     <label>
-                      Code
+                      {t('adminBilling.applyMethod')}
+                      <select
+                        value={discountForm.applicationMode}
+                        onChange={(event) => setDiscountForm({ ...discountForm, applicationMode: event.target.value })}
+                      >
+                        <option value="code">{t('adminBilling.customerEntersCode')}</option>
+                        <option value="automatic">{t('adminBilling.automaticForEligibleUsers')}</option>
+                      </select>
+                    </label>
+                    <label>
+                      {t('adminBilling.code')}
                       <input
                         value={discountForm.code}
                         onChange={(event) => setDiscountForm({ ...discountForm, code: event.target.value.toUpperCase() })}
-                        placeholder="LAUNCH20"
-                        required
+                        placeholder={discountForm.applicationMode === 'automatic' ? t('adminBilling.optionalInternalLabel') : 'LAUNCH20'}
+                        required={discountForm.applicationMode !== 'automatic'}
                       />
                     </label>
+                  </div>
+                  {discountForm.applicationMode === 'automatic' && (
+                    <p className="billing-admin-hint">
+                      {t('adminBilling.automaticDiscountHint')}
+                    </p>
+                  )}
+                  <div className="billing-admin-form-row">
                     <label>
-                      Type
+                      {t('adminBilling.type')}
                       <select
                         value={discountForm.discountType}
                         onChange={(event) => setDiscountForm({ ...discountForm, discountType: event.target.value })}
                       >
-                        <option value="percent">Percent</option>
-                        <option value="fixed">Fixed amount</option>
+                        <option value="percent">{t('adminBilling.percent')}</option>
+                        <option value="fixed">{t('adminBilling.fixedAmount')}</option>
                       </select>
                     </label>
                   </div>
                   <div className="billing-admin-form-row">
                     {discountForm.discountType === 'percent' ? (
                       <label>
-                        Percent off
+                        {t('adminBilling.percentOff')}
                         <input
                           type="number"
                           min="1"
@@ -1661,7 +1702,7 @@ function AdminDashboard() {
                       </label>
                     ) : (
                       <label>
-                        Amount off
+                        {t('adminBilling.amountOff')}
                         <input
                           type="number"
                           min="0.01"
@@ -1672,26 +1713,26 @@ function AdminDashboard() {
                       </label>
                     )}
                     <label>
-                      Audience
+                      {t('adminBilling.audience')}
                       <select
                         value={discountForm.appliesToAudience}
                         onChange={(event) => setDiscountForm({ ...discountForm, appliesToAudience: event.target.value })}
                       >
-                        <option value="all">All</option>
-                        <option value="individual">Individual</option>
-                        <option value="institution">Institution</option>
+                        <option value="all">{adminAudienceLabel('all')}</option>
+                        <option value="individual">{adminAudienceLabel('individual')}</option>
+                        <option value="institution">{adminAudienceLabel('institution')}</option>
                       </select>
                     </label>
                   </div>
                   <label>
-                    Description
+                    {t('adminBilling.description')}
                     <input
                       value={discountForm.description}
                       onChange={(event) => setDiscountForm({ ...discountForm, description: event.target.value })}
                     />
                   </label>
                   <div className="discount-plan-picker">
-                    <span>Limit to plans</span>
+                    <span>{t('adminBilling.limitToPlans')}</span>
                     <div>
                       {billingPlans.map((plan) => (
                         <label key={plan.id}>
@@ -1705,14 +1746,14 @@ function AdminDashboard() {
                               setDiscountForm({ ...discountForm, appliesToPlanIds: nextPlans });
                             }}
                           />
-                          {plan.name}
+                          {adminPlanName(plan)}
                         </label>
                       ))}
                     </div>
                   </div>
                   <div className="billing-admin-form-row">
                     <label>
-                      Starts
+                      {t('adminBilling.starts')}
                       <input
                         type="date"
                         value={discountForm.startsAt}
@@ -1720,7 +1761,7 @@ function AdminDashboard() {
                       />
                     </label>
                     <label>
-                      Ends
+                      {t('adminBilling.ends')}
                       <input
                         type="date"
                         value={discountForm.expiresAt}
@@ -1728,7 +1769,7 @@ function AdminDashboard() {
                       />
                     </label>
                     <label>
-                      Usage limit
+                      {t('adminBilling.usageLimit')}
                       <input
                         type="number"
                         min="1"
@@ -1739,7 +1780,7 @@ function AdminDashboard() {
                   </div>
                   <div className="billing-admin-form-row">
                     <label>
-                      Stripe promotion code id
+                      {t('adminBilling.stripePromotionCodeId')}
                       <input
                         value={discountForm.stripePromotionCodeId}
                         onChange={(event) => setDiscountForm({ ...discountForm, stripePromotionCodeId: event.target.value })}
@@ -1747,7 +1788,7 @@ function AdminDashboard() {
                       />
                     </label>
                     <label>
-                      Stripe coupon id
+                      {t('adminBilling.stripeCouponId')}
                       <input
                         value={discountForm.stripeCouponId}
                         onChange={(event) => setDiscountForm({ ...discountForm, stripeCouponId: event.target.value })}
@@ -1755,38 +1796,47 @@ function AdminDashboard() {
                       />
                     </label>
                   </div>
-                  <button className="btn btn-primary" type="submit">Create discount</button>
+                  <button className="btn btn-primary" type="submit">
+                    {discountForm.applicationMode === 'automatic' ? t('adminBilling.createAutomaticDiscount') : t('adminBilling.createDiscountCode')}
+                  </button>
                 </form>
               </div>
 
               <div className="card discount-list-card">
                 <div className="billing-card-title-row">
                   <div>
-                    <h3>Active and recent discounts</h3>
-                    <p>Pause a code when a promotion ends, or keep it active until its expiry date.</p>
+                    <h3>{t('adminBilling.activeAndRecentDiscounts')}</h3>
+                    <p>{t('adminBilling.activeAndRecentDiscountsHint')}</p>
                   </div>
                 </div>
                 {billingAdmin.discounts.length === 0 ? (
-                  <p className="no-data">No discount codes yet.</p>
+                  <p className="no-data">{t('adminBilling.noDiscounts')}</p>
                 ) : (
                   <div className="discount-list">
                     {billingAdmin.discounts.slice(0, 10).map((discount) => (
                       <div key={discount._id} className={`discount-list-item ${discount.active ? 'active' : 'paused'}`}>
                         <div>
-                          <strong>{discount.code}</strong>
+                          <strong>
+                            {discount.applicationMode === 'automatic' ? t('adminBilling.automaticDiscount') : discount.code}
+                          </strong>
                           <span>
                             {discount.discountType === 'percent'
-                              ? `${discount.percentOff}% off`
-                              : `${formatAdminPrice(discount.amountOffCents)} off`}
-                            {' '}| {discount.appliesToAudience}
+                              ? t('adminBilling.percentOffValue', { percent: discount.percentOff })
+                              : t('adminBilling.amountOffValue', { amount: formatAdminPrice(discount.amountOffCents) })}
+                            {' '}| {adminAudienceLabel(discount.appliesToAudience)}
+                            {' '}| {discount.applicationMode === 'automatic' ? t('adminBilling.noCodeNeeded') : t('adminBilling.codeRequired')}
                           </span>
                           <small>
-                            {discount.appliesToPlanIds?.length ? discount.appliesToPlanIds.join(', ') : 'All plans'}
-                            {' '}| {discount.redemptions || 0}{discount.maxRedemptions ? `/${discount.maxRedemptions}` : ''} used
+                            {discount.applicationMode === 'automatic' ? (discount.description || t('adminBilling.appliedAutomatically')) : discount.code}
+                            {' '}| {discount.appliesToPlanIds?.length ? discount.appliesToPlanIds.map(adminPlanName).join(', ') : t('adminBilling.allPlans')}
+                            {' '}| {t('adminBilling.usedCount', {
+                              count: discount.redemptions || 0,
+                              limit: discount.maxRedemptions ? `/${discount.maxRedemptions}` : '',
+                            })}
                           </small>
                         </div>
                         <button type="button" className="btn btn-outline btn-sm" onClick={() => toggleDiscountActive(discount)}>
-                          {discount.active ? 'Pause' : 'Enable'}
+                          {discount.active ? t('adminBilling.pause') : t('adminBilling.enable')}
                         </button>
                       </div>
                     ))}
@@ -1796,9 +1846,9 @@ function AdminDashboard() {
 
               <div className="billing-admin-grid">
                 <form className="card billing-admin-form" onSubmit={handleManualPlanSubmit}>
-                  <h3>Assign individual access</h3>
+                  <h3>{t('adminBilling.assignIndividualAccess')}</h3>
                   <label>
-                    User email or id
+                    {t('adminBilling.userEmailOrId')}
                     <input
                       value={manualPlanForm.userIdOrEmail}
                       onChange={(event) => setManualPlanForm({ ...manualPlanForm, userIdOrEmail: event.target.value })}
@@ -1807,30 +1857,30 @@ function AdminDashboard() {
                   </label>
                   <div className="billing-admin-form-row">
                     <label>
-                      Plan
+                      {t('adminBilling.plan')}
                       <select
                         value={manualPlanForm.planId}
                         onChange={(event) => setManualPlanForm({ ...manualPlanForm, planId: event.target.value })}
                       >
-                        <option value="plus">Plus</option>
-                        <option value="pro">Pro</option>
-                        <option value="ultra">Ultra</option>
+                        <option value="plus">{adminPlanName('plus')}</option>
+                        <option value="pro">{adminPlanName('pro')}</option>
+                        <option value="ultra">{adminPlanName('ultra')}</option>
                       </select>
                     </label>
                     <label>
-                      Status
+                      {t('adminBilling.status')}
                       <select
                         value={manualPlanForm.status}
                         onChange={(event) => setManualPlanForm({ ...manualPlanForm, status: event.target.value })}
                       >
-                        <option value="active">Active</option>
-                        <option value="trialing">Trialing</option>
-                        <option value="cancelled">Cancelled</option>
+                        <option value="active">{adminStatusLabel('active')}</option>
+                        <option value="trialing">{adminStatusLabel('trialing')}</option>
+                        <option value="cancelled">{adminStatusLabel('cancelled')}</option>
                       </select>
                     </label>
                   </div>
                   <label>
-                    Ends at
+                    {t('adminBilling.endsAt')}
                     <input
                       type="date"
                       value={manualPlanForm.expiresAt}
@@ -1838,19 +1888,19 @@ function AdminDashboard() {
                     />
                   </label>
                   <label>
-                    Reason
+                    {t('adminBilling.reason')}
                     <textarea
                       value={manualPlanForm.reason}
                       onChange={(event) => setManualPlanForm({ ...manualPlanForm, reason: event.target.value })}
                     />
                   </label>
-                  <button className="btn btn-primary" type="submit">Update access</button>
+                  <button className="btn btn-primary" type="submit">{t('adminBilling.updateAccess')}</button>
                 </form>
 
                 <form className="card billing-admin-form" onSubmit={handleOrganizationSubmit}>
-                  <h3>Create institution</h3>
+                  <h3>{t('adminBilling.createInstitution')}</h3>
                   <label>
-                    Organization name
+                    {t('pricing.organizationName')}
                     <input
                       value={organizationForm.name}
                       onChange={(event) => setOrganizationForm({ ...organizationForm, name: event.target.value })}
@@ -1859,35 +1909,35 @@ function AdminDashboard() {
                   </label>
                   <div className="billing-admin-form-row">
                     <label>
-                      Type
+                      {t('adminBilling.type')}
                       <select
                         value={organizationForm.type}
                         onChange={(event) => setOrganizationForm({ ...organizationForm, type: event.target.value })}
                       >
-                        <option value="school">School</option>
-                        <option value="company">Company</option>
-                        <option value="church">Religious</option>
-                        <option value="language_center">Language center</option>
-                        <option value="nonprofit">Nonprofit</option>
-                        <option value="government">Government</option>
-                        <option value="other">Other</option>
+                        <option value="school">{adminOrgTypeLabel('school')}</option>
+                        <option value="company">{adminOrgTypeLabel('company')}</option>
+                        <option value="church">{adminOrgTypeLabel('church')}</option>
+                        <option value="language_center">{adminOrgTypeLabel('language_center')}</option>
+                        <option value="nonprofit">{adminOrgTypeLabel('nonprofit')}</option>
+                        <option value="government">{adminOrgTypeLabel('government')}</option>
+                        <option value="other">{adminOrgTypeLabel('other')}</option>
                       </select>
                     </label>
                     <label>
-                      Plan
+                      {t('adminBilling.plan')}
                       <select
                         value={organizationForm.planId}
                         onChange={(event) => setOrganizationForm({ ...organizationForm, planId: event.target.value })}
                       >
-                        <option value="institution_basic">Institution Basic</option>
-                        <option value="institution_pro">Institution Pro</option>
-                        <option value="institution_enterprise">Institution Enterprise</option>
+                        <option value="institution_basic">{adminPlanName('institution_basic')}</option>
+                        <option value="institution_pro">{adminPlanName('institution_pro')}</option>
+                        <option value="institution_enterprise">{adminPlanName('institution_enterprise')}</option>
                       </select>
                     </label>
                   </div>
                   <div className="billing-admin-form-row">
                     <label>
-                      Seats
+                      {t('adminBilling.seats')}
                       <input
                         type="number"
                         min="1"
@@ -1896,7 +1946,7 @@ function AdminDashboard() {
                       />
                     </label>
                     <label>
-                      Billing email
+                      {t('institution.billingEmail')}
                       <input
                         type="email"
                         value={organizationForm.billingEmail}
@@ -1905,21 +1955,21 @@ function AdminDashboard() {
                     </label>
                   </div>
                   <label>
-                    Notes
+                    {t('adminBilling.notes')}
                     <textarea
                       value={organizationForm.notes}
                       onChange={(event) => setOrganizationForm({ ...organizationForm, notes: event.target.value })}
                     />
                   </label>
-                  <button className="btn btn-primary" type="submit">Create institution</button>
+                  <button className="btn btn-primary" type="submit">{t('adminBilling.createInstitution')}</button>
                 </form>
               </div>
 
               <div className="billing-admin-panels">
                 <div className="card">
-                  <h3>Institution requests</h3>
+                  <h3>{t('adminBilling.institutionRequests')}</h3>
                   {billingAdmin.leads.length === 0 ? (
-                    <p className="no-data">No open institution requests.</p>
+                    <p className="no-data">{t('adminBilling.noOpenInstitutionRequests')}</p>
                   ) : (
                     <div className="billing-admin-list">
                       {billingAdmin.leads.map((lead) => (
@@ -1927,13 +1977,13 @@ function AdminDashboard() {
                           <div>
                             <strong>{lead.organizationName}</strong>
                             <span>{lead.contactName} · {lead.email}</span>
-                            <small>{lead.planId} · {lead.seatsRequested} seats · {formatDate(lead.createdAt)}</small>
+                            <small>{adminPlanName(lead.planId)} · {t('adminBilling.seatCount', { count: lead.seatsRequested })} · {formatAdminDate(lead.createdAt)}</small>
                             {lead.message && <p>{lead.message}</p>}
                           </div>
                           <div className="billing-admin-actions">
-                            <button type="button" className="btn btn-outline btn-sm" onClick={() => updateLeadStatus(lead._id, 'contacted')}>Contacted</button>
-                            <button type="button" className="btn btn-primary btn-sm" onClick={() => updateLeadStatus(lead._id, 'converted')}>Converted</button>
-                            <button type="button" className="btn btn-outline btn-sm" onClick={() => updateLeadStatus(lead._id, 'closed')}>Close</button>
+                            <button type="button" className="btn btn-outline btn-sm" onClick={() => updateLeadStatus(lead._id, 'contacted')}>{adminLeadStatusLabel('contacted')}</button>
+                            <button type="button" className="btn btn-primary btn-sm" onClick={() => updateLeadStatus(lead._id, 'converted')}>{adminLeadStatusLabel('converted')}</button>
+                            <button type="button" className="btn btn-outline btn-sm" onClick={() => updateLeadStatus(lead._id, 'closed')}>{adminLeadStatusLabel('closed')}</button>
                           </div>
                         </div>
                       ))}
@@ -1942,34 +1992,34 @@ function AdminDashboard() {
                 </div>
 
                 <div className="card">
-                  <h3>Recent subscriptions</h3>
+                  <h3>{t('adminBilling.recentSubscriptions')}</h3>
                   <div className="billing-admin-list compact">
                     {billingAdmin.subscriptions.slice(0, 12).map((subscription) => (
                       <div key={subscription._id} className="billing-admin-list-item">
                         <div>
-                          <strong>{subscription.planId}</strong>
+                          <strong>{adminPlanName(subscription.planId)}</strong>
                           <span>{subscription.ownerId?.email || subscription.ownerId?.name || subscription.ownerType}</span>
-                          <small>{subscription.status} · {subscription.source} · {formatDate(subscription.createdAt)}</small>
+                          <small>{adminStatusLabel(subscription.status)} · {t(`billing.sources.${subscription.source}`, subscription.source)} · {formatAdminDate(subscription.createdAt)}</small>
                         </div>
                       </div>
                     ))}
-                    {billingAdmin.subscriptions.length === 0 && <p className="no-data">No subscription records yet.</p>}
+                    {billingAdmin.subscriptions.length === 0 && <p className="no-data">{t('billing.noHistory')}</p>}
                   </div>
                 </div>
 
                 <div className="card">
-                  <h3>Organizations</h3>
+                  <h3>{t('adminBilling.organizations')}</h3>
                   <div className="billing-admin-list compact">
                     {billingAdmin.organizations.slice(0, 12).map((org) => (
                       <div key={org._id} className="billing-admin-list-item">
                         <div>
                           <strong>{org.name}</strong>
-                          <span>{org.planId} · {org.status}</span>
-                          <small>{org.seatsUsed || 0}/{org.seatsPurchased || 0} seats</small>
+                          <span>{adminPlanName(org.planId)} · {adminStatusLabel(org.status)}</span>
+                          <small>{t('adminBilling.seatsUsedCount', { used: org.seatsUsed || 0, purchased: org.seatsPurchased || 0 })}</small>
                         </div>
                       </div>
                     ))}
-                    {billingAdmin.organizations.length === 0 && <p className="no-data">No organizations yet.</p>}
+                    {billingAdmin.organizations.length === 0 && <p className="no-data">{t('adminBilling.noOrganizations')}</p>}
                   </div>
                 </div>
               </div>

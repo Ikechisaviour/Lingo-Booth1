@@ -20,7 +20,10 @@
     "done": "Klaar",
     "clearAll": "Alles wissen",
     "sending": "Verzenden...",
-    "saving": "Besparing..."
+    "saving": "Besparing...",
+    "search": "Zoekopdracht",
+    "notSet": "Niet ingesteld",
+    "all": "Alle"
   },
   "languages": {
     "en": "Engels",
@@ -121,7 +124,8 @@
     "writing": "Schrijven",
     "conversation": "Gesprek",
     "plans": "Plannen",
-    "institution": "Instelling"
+    "institution": "Instelling",
+    "review": "Beoordeling"
   },
   "guestPrompt": {
     "title": "Je doet het geweldig!",
@@ -427,7 +431,12 @@
     "topic": "Onderwerp (optioneel)",
     "save": "Opslaan",
     "categoryPlaceholder": "bijv. cijfers, groeten",
-    "topicPlaceholder": "bijv. dagen van de week, 1-10"
+    "topicPlaceholder": "bijv. dagen van de week, 1-10",
+    "savedFromFlashcardReason": "Opgeslagen van flashcards voor een nieuwe pas.",
+    "savedForReview": "Opgeslagen voor beoordeling.",
+    "saveForReviewFailed": "Kan deze kaart momenteel niet opslaan.",
+    "bookmarkedReason": "Bladwijzer gemaakt van flashcards.",
+    "selfTestReason": "Opgeslagen van flashcards voor een snelle zelftest."
   },
   "progress": {
     "title": "Je voortgang",
@@ -791,13 +800,13 @@
     "priceAnnual": "{{amount}}/jr",
     "priceMonthly": "{{amount}}/maand",
     "planNames": {
-      "free": "Vrij",
+      "free": "Free",
       "plus": "Plus",
       "pro": "Pro",
       "ultra": "Ultra",
-      "institution_basic": "Instelling Basis",
-      "institution_pro": "Instelling Pro",
-      "institution_enterprise": "Instelling Onderneming"
+      "institution_basic": "Institution Basic",
+      "institution_pro": "Institution Pro",
+      "institution_enterprise": "Institution Enterprise"
     },
     "planTaglines": {
       "free": "Probeer de leerlus met dagelijkse limieten.",
@@ -810,7 +819,8 @@
     },
     "discountCode": "Kortingscode",
     "discountPlaceholder": "Optionele code",
-    "discountUnavailable": "Die kortingscode is niet beschikbaar voor dit abonnement."
+    "discountUnavailable": "Die kortingscode is niet beschikbaar voor dit abonnement.",
+    "automaticDiscountApplied": "Automatische korting van {{discount}} toegepast"
   },
   "billing": {
     "kicker": "Facturering",
@@ -908,7 +918,10 @@
       "past_due": "Achterstallig",
       "cancelled": "Geannuleerd",
       "suspended": "Opgeschort"
-    }
+    },
+    "snapshotsKicker": "Momentopnamen van leerlingen",
+    "needsHelpTitle": "Heeft aandacht nodig",
+    "noNeedsHelpLearners": "Er zijn momenteel geen leerlingen die extra aandacht nodig hebben."
   },
   "errorBoundary": {
     "title": "Er is iets misgegaan",
@@ -927,7 +940,15 @@
     "playing": "Spelen…",
     "listen": "Luisteren",
     "use": "Gebruik",
-    "useDefault": "Gebruik voorlopig de standaardstem"
+    "useDefault": "Gebruik voorlopig de standaardstem",
+    "gender": {
+      "male": "mannelijk",
+      "female": "vrouwelijk"
+    },
+    "friendlyVoiceLabelGendered": "{{language}} stem {{number}} ({{gender}}){{region}}",
+    "friendlyVoiceLabelNeutral": "{{language}} stem {{number}}{{region}}",
+    "voiceRegionSuffix": "· {{region}}",
+    "loadError": "Kan de stemopties niet laden. De standaardstem wordt gebruikt."
   },
   "classList": {
     "kicker": "Klas",
@@ -1011,7 +1032,9 @@
       "listeningPrefix": "Aan het luisteren",
       "speechCaptured": "Spraak vastgelegd. Bewerk indien nodig en verstuur.",
       "noSpeechCaptured": "Geen spraak vastgelegd. Probeer opnieuw.",
-      "voiceUpdated": "Stem bijgewerkt. Tik op een regel om te luisteren."
+      "voiceUpdated": "Stem bijgewerkt. Tik op een regel om te luisteren.",
+      "bookmarked": "Gemarkeerd.",
+      "bookmarkFailed": "Kan momenteel geen bladwijzer voor dit item maken."
     },
     "speechErrors": {
       "permissionBlocked": "Toestemming voor microfoon of spraakherkenning is geblokkeerd. Sta de microfoon toe in de instellingen en probeer opnieuw.",
@@ -1062,7 +1085,36 @@
         "goal": "Bekijk de fouten en vat samen wat je hebt geleerd.",
         "task": "Vat één ding samen dat je hebt geleerd en één ding dat nog steeds onduidelijk is."
       }
-    }
+    },
+    "savedFromClassReason": "Opgeslagen uit de les ter beoordeling.",
+    "savedForReview": "Opgeslagen voor beoordeling.",
+    "saveForReviewFailed": "Kan dit item momenteel niet opslaan.",
+    "wrapUpKicker": "Volgende stap",
+    "wrapUpTitle": "Houd de les levend",
+    "wrapUpBody": "Bekijk opgeslagen items, gebruik ze in een gesprek of schrijf ze uit het geheugen terwijl de les nog vers is.",
+    "wrapUpReview": "Beoordeling",
+    "wrapUpConversation": "Gesprek",
+    "wrapUpWriting": "Schrijven",
+    "saveForReview": "Bewaar ter beoordeling",
+    "fallback": {
+      "thisItem": "dit artikel",
+      "shortAnswer": "Probeer een kort antwoord met behulp van dit lesitem.",
+      "practiceLead": "Laten we {{title}} oefenen.",
+      "continue": "Laten we doorgaan met het volgende deel van de les."
+    },
+    "examplePrefix": "Voorbeeld:",
+    "bookmarkedReason": "Gemarkeerd vanuit de klas.",
+    "itemsCompleted": "{{count}} items voltooid",
+    "lessonItemsTotal": "{{count}} lesitems",
+    "savedExampleReason": "Lesvoorbeeld opgeslagen voor later oefenen.",
+    "exampleSaved": "Voorbeeld opgeslagen ter beoordeling.",
+    "savedTutorReplyReason": "Bewaard uit het antwoord van een docent om later te oefenen.",
+    "tutorReplySaved": "Het antwoord van de docent is opgeslagen ter beoordeling.",
+    "playingSelectedItem": "Geselecteerd item afspelen.",
+    "saveReply": "Antwoord opslaan",
+    "saveExample": "Voorbeeld opslaan",
+    "practiceEverywhere": "Oefen dit overal",
+    "selfTestReason": "Opgeslagen uit de les voor een snelle zelftest."
   },
   "exercise": {
     "kicker": "Oefening",
@@ -1073,7 +1125,8 @@
     "flashcardsTitle": "Flitskaarten",
     "flashcardsDescMobile": "Controleer woorden en zinnen.",
     "writingTitle": "Schrijven",
-    "writingDescMobile": "Traceer, kopieer, luister en bewaar een notitieboekje."
+    "writingDescMobile": "Traceer, kopieer, luister en bewaar een notitieboekje.",
+    "reviewDescMobile": "Ga terug naar de opgeslagen items en wat er vandaag moet gebeuren."
   },
   "conversation": {
     "kicker": "Conversatieoefening",
@@ -1113,7 +1166,23 @@
       "planRefreshed": "Uw abonnementsinstellingen zijn vernieuwd.",
       "messageNotResent": "Uw bericht is niet opnieuw verzonden.",
       "connectionIssue": "Verbindingsprobleem. Probeer het zo nog eens."
-    }
+    },
+    "savedReplyReason": "Gered uit de gesprekspraktijk.",
+    "savedReply": "Antwoord opgeslagen ter beoordeling.",
+    "saveReplyFailed": "Kan dit antwoord nu niet opslaan.",
+    "savedRoleplayReason": "Voltooid rollenspel opgeslagen voor latere oefening.",
+    "roleplaySaved": "Rollenspel opgeslagen ter beoordeling.",
+    "saveRoleplayFailed": "Kan dit rollenspel momenteel niet opslaan.",
+    "recapTitle": "Rollenspel voltooid",
+    "saveRoleplay": "Bewaar rollenspel",
+    "saveReply": "Redden",
+    "easier": "Makkelijker",
+    "harder": "Moeilijker",
+    "recapWentWell": "Wat ging er goed",
+    "recapUsefulPhrases": "Nuttige zinnen",
+    "recapReview": "Beoordeel hierna",
+    "recapReviewFallback": "Bewaar één zin en hergebruik deze in een andere oefenmodus.",
+    "practiceLabel": "Conversatie praktijk"
   },
   "context": {
     "backToProfile": "Terug naar profiel",
@@ -1185,7 +1254,8 @@
       "conversationNative": "Vanuit je gesprekspraktijk",
       "conversationHistory": "Gespreksgeschiedenis",
       "personalized": "Gepersonaliseerd",
-      "personalNotebook": "Persoonlijk notitieboekje"
+      "personalNotebook": "Persoonlijk notitieboekje",
+      "savedReview": "Opgeslagen recensie-item"
     },
     "modes": {
       "trace": "Spoor",
@@ -1232,7 +1302,9 @@
       "shape": "Vorm komt overeen",
       "spacing": "De afstand is duidelijk",
       "memory": "Uit het geheugen"
-    }
+    },
+    "savedReason": "Gered van schrijfoefening voor nog een pasje.",
+    "selfTestReason": "Gered uit de schrijfoefening voor een snelle zelftest."
   },
   "certificates": {
     "kicker": "Certificaat",
@@ -1265,5 +1337,140 @@
     "signIn": "Log in",
     "issuedSuccess": "Certificaat afgegeven.",
     "issueFailed": "Kan certificaat niet uitgeven."
+  },
+  "learningHub": {
+    "continueLearning": "Ga door met leren",
+    "pairSetupSaved": "Leeropstelling opgeslagen.",
+    "nextBestAction": "Volgende beste actie",
+    "reviewDue": "Beoordeling gepland",
+    "reviewNow": "Beoordeel nu",
+    "wordOfDay": "Woord of zin van de dag",
+    "noSpotlightYet": "Bewaar iets nuttigs om te beginnen",
+    "pairSetupTitle": "Stel dit talenpaar in",
+    "pairSetupBody": "Vertel ons één keer uw niveau en doel, zodat aanbevelingen passen bij deze doeltaal.",
+    "level": "Niveau",
+    "goal": "Doel",
+    "pace": "Tempo",
+    "dailyPlanTitle": "Het plan van vandaag",
+    "weeklySummaryTitle": "Deze week",
+    "points": "Punten",
+    "activeDays": "Actieve dagen",
+    "sessions": "Sessies",
+    "recentStudyTitle": "Recente studie",
+    "savedAfterQuizMiss": "Opgeslagen na een gemist quizantwoord.",
+    "askTutorPrompt": "Help me \"{{text}}\" te oefenen.",
+    "savedForPractice": "Bewaard voor latere oefening",
+    "askTutor": "Vraag het aan de docent",
+    "kicker": "Beoordeling",
+    "title": "Houd nuttig leren dichtbij",
+    "subtitle": "Bekijk wat nog een pas nodig heeft, ga terug naar opgeslagen items en ga verder vanaf één plek.",
+    "dueToday": "vandaag verschuldigd",
+    "queueTitle": "De wachtrij voor beoordelingen van vandaag",
+    "queueEmptyBody": "Bewaar woorden, zinsneden, correcties of rollenspellen en ze komen hier terug als ze nuttig zijn.",
+    "weakAreasTitle": "Recente zwakke gebieden",
+    "practiceArea": "Oefenruimte",
+    "weakAreasEmpty": "Er zijn nog geen zwakke plekken geïdentificeerd.",
+    "abilityTitle": "Vooruitgang in vaardigheden in de echte wereld",
+    "abilityEmpty": "De voortgang van de activiteit wordt hier weergegeven terwijl u oefent.",
+    "searchLabel": "Zoek je leerproces",
+    "searchPlaceholder": "Zoek opgeslagen items of leslessen",
+    "savedLibraryTitle": "Opgeslagen studiebibliotheek",
+    "savedEmptyBody": "Bewaar nuttige woorden uit de les, flashcards, geschriften of gesprekken om uw eigen studieplank samen te stellen.",
+    "savedBanksTitle": "Opgeslagen banken",
+    "correctionsBank": "Correcties",
+    "roleplaysBank": "Rollenspellen",
+    "bookmarksBank": "Bladwijzers",
+    "openSource": "Open-source",
+    "spotlightHint": "Uw opgeslagen items worden dagelijkse spotlights.",
+    "pairSetupSummary": "Leeropstelling",
+    "pairSetupEdit": "Bewerking",
+    "pairSetupUpdate": "Update dit talenpaar",
+    "reviewBeforeSleep": "Een korte recensie nu zal morgen lichter vertrekken.",
+    "open": "Open",
+    "bookmark": "Bladwijzer",
+    "bookmarked": "Gemarkeerd.",
+    "bookmarkFailed": "Kan momenteel geen bladwijzer voor dit item maken.",
+    "speakingTurns": "Spreekbeurten",
+    "newSavedItems": "Nieuwe opgeslagen items",
+    "completedLessons": "Voltooide lessen",
+    "certificates": "Certificaten",
+    "guidanceTitle": "Begeleiding",
+    "firstThreeDays": "Eerste drie dagen",
+    "dayNumber": "Dag {{day}}",
+    "goalPathTitle": "Doel pad",
+    "placementTitle": "Plaatsing",
+    "recentWordsTitle": "Recente woorden",
+    "recentWordsEmpty": "Nieuwe woorden uit de les en gesprekken zullen hier samenkomen.",
+    "milestonesTitle": "Mijlpalen",
+    "savedItems": "Opgeslagen artikelen",
+    "voiceHistoryTitle": "Geschiedenis van stemoefeningen",
+    "voiceHistoryEmpty": "Na de gespreksoefening verschijnen hier spreekbeurten.",
+    "askWeakAreaPrompt": "Help me met oefenen {{area}}.",
+    "evidenceCount": "{{count}} bewijsstukken",
+    "askAbilityPrompt": "Help me met oefenen {{area}}.",
+    "practiceWriting": "Schrijven",
+    "practiceFlashcard": "Flitskaart",
+    "whyWeakArea": "Je ziet dit omdat dit gebied nog versterking nodig heeft.",
+    "reviewBeforeSleepTitle": "Beoordelen voor het slapen gaan",
+    "savedItem": "Opgeslagen",
+    "weakArea": "Zwak",
+    "reviewBeforeSleepEmpty": "Er wacht vanavond niets dringends.",
+    "miniSpeakingTitle": "Mini-spreekoefeningen",
+    "miniSpeakingReason": "Korte spreekoefening van een opgeslagen zin of correctie.",
+    "practiceSpeaking": "Spreken",
+    "miniSpeakingEmpty": "Correcties en opgeslagen zinnen worden hier snelle spreekoefeningen.",
+    "correctionsEmpty": "Opgeslagen correcties worden hier verzameld zodat u ze snel opnieuw kunt proberen.",
+    "roleplaysEmpty": "Opgeslagen rollenspellen verschijnen hier als je ze opnieuw wilt gebruiken.",
+    "startLevelCheck": "Niveaucontrole starten",
+    "levelCheckUnavailable": "Voor dit talenpaar is er nog geen niveaucheck klaar.",
+    "levelCheckLoadFailed": "De niveaucontrole kan momenteel niet worden geladen.",
+    "levelCheckTitle": "Korte niveaucheck",
+    "levelCheckSubtitle": "Beantwoord een paar snelle vragen, zodat de app een beter startpunt kan kiezen.",
+    "levelCheckResult": "Aanbevolen startniveau",
+    "levelCheckSaved": "Voor dit talenpaar is dit uitgangspunt opgeslagen.",
+    "returnHome": "Keer terug naar huis",
+    "questionCount": "Vraag {{current}} van {{total}}",
+    "practiceAgainPrompt": "Help me om opnieuw te oefenen met het zeggen van '{{text}}'.",
+    "replayReply": "Antwoord opnieuw afspelen",
+    "practiceAgain": "Oefen nog eens",
+    "practiceEverywhere": "Oefen dit elders",
+    "practicePronunciation": "Luisteren",
+    "youSaid": "Jij zei",
+    "targetSpeech": "Doel toespraak",
+    "replayTargetSpeech": "Hoor de doeltoespraak",
+    "practiceQuiz": "Zelftest",
+    "useRoleplayAgain": "Gebruik opnieuw",
+    "offlinePackInUse": "Uw recente pakket weergeven terwijl de verbinding zwak is.",
+    "quickQuizKicker": "Zelftest",
+    "quickQuizTitle": "Snelle zelftest",
+    "quickQuizNoAnswer": "Denk aan de betekenis en beoordeel uzelf vervolgens eerlijk.",
+    "revealAnswer": "Onthul antwoord",
+    "studyHistoryTitle": "Bestudeer geschiedenis",
+    "pointsCount": "{{count}} punten",
+    "studyHistoryEmpty": "Je studiedagen komen hier samen terwijl je oefent.",
+    "listen": "Luisteren",
+    "goals": {
+      "travel": "Reis",
+      "work": "Werk",
+      "school": "School",
+      "dailyLife": "Dagelijks leven",
+      "conversation": "Gesprek",
+      "family": "Familie",
+      "religious": "Religieuze omgeving",
+      "health": "Gezondheid",
+      "culture": "Cultuur",
+      "exam": "Examen",
+      "other": "Ander"
+    },
+    "savedBankEmptyBody": "Items die u voor dit doel opslaat, worden hier verzameld.",
+    "recentMistakesTitle": "Recente fouten",
+    "recentMistakesBody": "Dit zijn recente gemiste items die de moeite waard zijn om opnieuw te proberen, terwijl de correctie nog vers is.",
+    "recentMistakesEmptyBody": "Gemiste quizitems worden hier weergegeven, zodat u ze snel opnieuw kunt proberen.",
+    "firstThreeDayReviewTitle": "Bekijk wat je hebt ontmoet",
+    "firstThreeDaySpeakTitle": "Gebruik het hardop",
+    "firstThreeDayLearnTitle": "Start één begeleide les",
+    "firstThreeDayReviewBody": "Keer een keer terug naar wat je gisteren zag, zodat de eerste items blijven hangen.",
+    "firstThreeDaySpeakBody": "Gebruik een korte spreekbeurt, zodat de taal vroegtijdig de pagina verlaat.",
+    "firstThreeDayLearnBody": "Begin met één kleine begeleide les, zodat het tweetal een duidelijk startpunt heeft."
   }
 }

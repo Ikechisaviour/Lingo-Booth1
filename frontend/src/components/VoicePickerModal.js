@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import speechService from '../services/speechService';
+import { formatVoiceOptions } from '../utils/voiceDisplay';
 import './VoicePickerModal.css';
 
 const SAMPLE_PHRASES = {
@@ -40,12 +41,17 @@ function VoicePickerModal({
   onClose,
   onPicked,
 }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [voices, setVoices] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [previewingVoice, setPreviewingVoice] = useState('');
   const phrase = useMemo(() => samplePhraseFor(targetLangCode), [targetLangCode]);
+  const displayVoices = useMemo(() => formatVoiceOptions(voices, {
+    languageCode: targetLangCode,
+    t,
+    uiLanguage: i18n.resolvedLanguage || i18n.language,
+  }), [voices, targetLangCode, t, i18n.resolvedLanguage, i18n.language]);
 
   useEffect(() => {
     if (!open) return undefined;
@@ -68,7 +74,7 @@ function VoicePickerModal({
         setVoices(filtered);
       })
       .catch(() => {
-        if (!cancelled) setError('Could not load voice options. The default voice will be used.');
+        if (!cancelled) setError(t('voicePicker.loadError', 'Could not load voice options. The default voice will be used.'));
       })
       .finally(() => {
         if (!cancelled) setLoading(false);
@@ -77,7 +83,7 @@ function VoicePickerModal({
       cancelled = true;
       speechService.cancel();
     };
-  }, [open, ttsLocale]);
+  }, [open, t, ttsLocale]);
 
   const preview = (voice) => {
     setPreviewingVoice(voice.name);
@@ -110,11 +116,11 @@ function VoicePickerModal({
         {error && <p className="voice-picker-error">{error}</p>}
 
         <ul className="voice-picker-list">
-          {voices.map((voice) => (
-            <li key={voice.name}>
+          {displayVoices.map(({ voice, name, display }) => (
+            <li key={name}>
               <div className="voice-picker-info">
-                <strong>{voice.displayName || voice.name}</strong>
-                <span>{voice.lang} · {voice.gender || t('voicePicker.genderUnspecified', 'unspecified')}</span>
+                <strong>{display.primary}</strong>
+                <span>{display.secondary}</span>
               </div>
               <div className="voice-picker-actions">
                 <button

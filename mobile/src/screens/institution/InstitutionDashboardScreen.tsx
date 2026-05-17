@@ -330,6 +330,25 @@ const InstitutionDashboardScreen: React.FC = () => {
 
       <Card style={styles.card}>
         <Card.Content style={styles.cardContent}>
+          <Text style={styles.kicker}>{t('institution.snapshotsKicker', 'Learner snapshots')}</Text>
+          <Text style={styles.sectionTitle}>{t('institution.needsHelpTitle', 'Needs attention')}</Text>
+          {(dashboard.needsHelpLearners || []).length ? (
+            (dashboard.needsHelpLearners || []).map((member: any) => (
+              <View key={`needs-${member._id}`} style={styles.memberCard}>
+                <Text style={styles.memberName}>{member.user?.username || member.email}</Text>
+                <Text style={styles.memberProgress}>
+                  {(member.learnerSnapshot?.reasons || []).map((reason: string) => t(`institution.snapshotReasons.${reason}`, reason)).join(' · ')}
+                </Text>
+              </View>
+            ))
+          ) : (
+            <Text style={styles.muted}>{t('institution.noNeedsHelpLearners', 'No learners currently need extra attention.')}</Text>
+          )}
+        </Card.Content>
+      </Card>
+
+      <Card style={styles.card}>
+        <Card.Content style={styles.cardContent}>
           <Text style={styles.kicker}>{t('billing.kicker')}</Text>
           <Text style={styles.sectionTitle}>{t('institution.planTitle')}</Text>
           <View style={styles.detailRow}>

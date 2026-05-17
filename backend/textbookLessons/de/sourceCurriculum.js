@@ -1,0 +1,381 @@
+const item = (targetText, nativeText, exampleTarget, exampleNative, type = 'word') => ({
+  type,
+  targetText,
+  nativeText,
+  exampleTarget,
+  exampleNative,
+});
+
+const lesson = (title, category, lessonType, overview, task, content, difficulty = 'beginner') => ({
+  title,
+  category,
+  difficulty,
+  lessonType,
+  activities: [
+    { id: 'orientation', section: 'Orientation', title: 'What this lesson unlocks', goals: [overview], task },
+  ],
+  content,
+});
+
+module.exports = {
+  level1Foundation: lesson(
+    'Foundation: German Sounds, Articles, and Cases - Reading German Accurately',
+    'foundation',
+    'foundation',
+    'Read core German sounds, treat nouns with articles, and notice why case endings matter from the beginning.',
+    'Read a short beginner sentence aloud and identify the article, noun, and verb frame.',
+    [
+      item('ä / ö / ü', 'Umlauts are separate vowel qualities, not decorative dots. They can distinguish words and grammatical forms.', 'schon / schön', 'The vowel change separates “already” from “beautiful.”'),
+      item('der / die / das', 'German nouns are learned with grammatical gender because later articles, pronouns, and adjective endings depend on it.', 'der Tisch, die Lampe, das Buch', 'The article is part of useful noun knowledge.'),
+      item('ich sehe den Hund', 'Case marks sentence roles. Masculine accusative is especially visible because der becomes den.', 'Der Hund schläft. Ich sehe den Hund.', 'The same noun shifts article when its role changes.'),
+    ],
+  ),
+  level1Unit01Greetings: lesson(
+    'Level 1 · Unit 1: Guten Tag - Greetings and Self-Introduction',
+    'greetings',
+    'thematic',
+    'Greet people, introduce yourself, and choose between familiar and formal address.',
+    'Have a first-meeting exchange using one appropriate greeting and one self-introduction.',
+    [
+      item('Guten Tag', 'A safe polite greeting for first contact, shops, and daytime formal situations.', 'Guten Tag, ich heiße Lena.', 'The greeting fits a first meeting.'),
+      item('du / Sie', 'German distinguishes familiar du from formal Sie, and the verb changes with the choice.', 'Wie heißt du? / Wie heißen Sie?', 'The relationship is audible in the verb form.'),
+      item('Freut mich.', 'A natural compact response after introductions; longer textbook formulas exist, but this one is widely usable.', 'Freut mich, Sie kennenzulernen.', 'The longer form suits polite first contact.'),
+    ],
+  ),
+  level1Unit02Classroom: lesson(
+    'Level 1 · Unit 2: Was ist das? - Classroom Objects',
+    'classroom',
+    'thematic',
+    'Name classroom objects, ask what something is, and begin using nominative articles.',
+    'Identify three classroom objects and ask one clarification question.',
+    [
+      item('das Buch', 'Buch is neuter, so the article belongs with the noun when you learn it.', 'Das ist ein Buch.', 'The noun appears in a simple identification sentence.'),
+      item('Was ist das?', 'A compact question for identifying unknown things.', 'Was ist das? Das ist ein Stift.', 'The answer repeats the demonstrative frame.'),
+      item('ein / eine', 'Indefinite articles agree with grammatical gender: ein for masculine/neuter, eine for feminine in nominative.', 'Das ist ein Tisch. Das ist eine Tasche.', 'The article changes with the noun class.'),
+    ],
+  ),
+  level1Unit03Locations: lesson(
+    'Level 1 · Unit 3: Wo ist die Bibliothek? - Locations and Directions',
+    'travel',
+    'thematic',
+    'Ask where places are, describe location, and begin separating where from where-to.',
+    'Ask for one place and describe where another place is.',
+    [
+      item('wo / wohin', 'Wo asks location; wohin asks destination. German keeps the spatial distinction visible.', 'Wo ist die Bibliothek? Wohin gehst du?', 'One asks where something is, the other where someone is going.'),
+      item('in der Schule', 'With location, in takes dative in this phrase.', 'Ich bin in der Schule.', 'The sentence describes being inside a place.'),
+      item('neben / gegenüber', 'These prepositions help describe relative position precisely.', 'Die Bank ist gegenüber dem Bahnhof.', 'Gegenüber often pairs with dative.'),
+    ],
+  ),
+  level1Unit04DailyRoutines: lesson(
+    'Level 1 · Unit 4: Ich stehe früh auf - Daily Routines',
+    'daily-life',
+    'thematic',
+    'Describe daily routines, tell simple time, and use separable verbs in main clauses.',
+    'Describe a morning routine with one separable verb and one time phrase.',
+    [
+      item('aufstehen', 'A separable verb: the prefix moves to the end in a finite main clause.', 'Ich stehe um sieben Uhr auf.', 'The verb frame surrounds the time phrase.'),
+      item('früh / spät', 'Useful adverbs for routine timing and contrast.', 'Ich arbeite früh, aber mein Bruder arbeitet spät.', 'The contrast creates a useful personal answer.'),
+      item('um sieben Uhr', 'Um marks clock time for scheduled moments.', 'Ich frühstücke um acht Uhr.', 'The time phrase fits daily routine talk.'),
+    ],
+  ),
+  level1Unit05LifeInGermany: lesson(
+    'Level 1 · Unit 5: Wie ist das Leben in Deutschland? - Life in Germany',
+    'culture',
+    'thematic',
+    'Talk about daily life, use basic adjectives, and discuss small cultural observations without stereotypes.',
+    'Describe one aspect of daily life and compare it with one personal habit.',
+    [
+      item('pünktlich', 'Pünktlich means on time and is useful for discussing expectations, not for flattening a culture into one trait.', 'Der Zug ist pünktlich.', 'The adjective describes one concrete situation.'),
+      item('ruhig / lebhaft', 'A useful contrast for places, neighborhoods, and routines.', 'Mein Viertel ist ruhig, aber das Zentrum ist lebhaft.', 'The contrast gives a fuller description.'),
+      item('Wie ist ...?', 'A flexible question frame for asking what something is like.', 'Wie ist das Leben in deiner Stadt?', 'The question opens description rather than yes/no judgment.'),
+    ],
+  ),
+  level1Unit06DatesCalendar: lesson(
+    'Level 1 · Unit 6: Welches Datum ist heute? - Dates and the Calendar',
+    'daily-life',
+    'thematic',
+    'Say dates, weekdays, birthdays, and simple calendar plans.',
+    'Say today’s date and arrange one meeting day.',
+    [
+      item('Montag / Dienstag / Mittwoch', 'Weekdays are capitalized nouns in German and often appear with am.', 'Am Mittwoch habe ich Unterricht.', 'Am marks a day on which something happens.'),
+      item('der erste Mai', 'Ordinal numbers are used for dates and take endings with the article.', 'Heute ist der erste Mai.', 'The date is a noun phrase, not a bare number.'),
+      item('Wann hast du Geburtstag?', 'A natural birthday question using haben.', 'Ich habe am dritten Juni Geburtstag.', 'The answer uses am plus an ordinal date.'),
+    ],
+  ),
+  level1Unit07GoingPlaces: lesson(
+    'Level 1 · Unit 7: Wohin gehst du? - Going Places',
+    'travel',
+    'thematic',
+    'Say destinations and distinguish movement toward a place from location inside it.',
+    'Describe two destinations for today with the correct preposition and case.',
+    [
+      item('in die Schule', 'Direction into a place uses accusative after a two-way preposition.', 'Ich gehe in die Schule.', 'The sentence describes movement toward the school.'),
+      item('zum Bahnhof', 'Zu commonly marks movement toward people or destinations such as the station.', 'Ich gehe zum Bahnhof.', 'Zum contracts zu dem.'),
+      item('nach Hause', 'German uses nach Hause for going home and zu Hause for being at home.', 'Ich gehe nach Hause.', 'The distinction is lexicalized and worth learning whole.'),
+    ],
+  ),
+  level1Unit08Shopping: lesson(
+    'Level 1 · Unit 8: Wie viel kostet das? - Shopping',
+    'shopping',
+    'thematic',
+    'Ask prices, choose items, and use accusative noun phrases in a shop.',
+    'Complete one small purchase from question to decision.',
+    [
+      item('Wie viel kostet das?', 'A standard price question for one item.', 'Wie viel kostet der Pullover?', 'The noun can replace das when the item is known.'),
+      item('einen Kaffee', 'Masculine direct objects show accusative clearly: ein becomes einen.', 'Ich nehme einen Kaffee.', 'Ordering is a practical place to meet case.'),
+      item('Ich nehme das.', 'A natural way to say you will take the item after deciding.', 'Das ist gut. Ich nehme das.', 'The sentence closes the purchase naturally.'),
+    ],
+  ),
+  level1Unit09OrderingFood: lesson(
+    'Level 1 · Unit 9: Ich möchte bestellen - Ordering Food',
+    'food',
+    'thematic',
+    'Order food politely, ask for drinks, and use möchte as a service-friendly form.',
+    'Order one meal and one drink politely.',
+    [
+      item('ich möchte', 'Möchte expresses a polite wish and is safer than blunt wollen in restaurants.', 'Ich möchte eine Suppe.', 'The tone suits service interaction.'),
+      item('Was darf es sein?', 'A common service question meaning roughly “What may it be?”', 'Was darf es sein? Ich möchte Tee.', 'The phrase belongs to service German, not literal translation.'),
+      item('noch etwas?', 'A concise follow-up question for whether the customer wants anything else.', 'Möchten Sie noch etwas?', 'Formal Sie keeps the exchange polite.'),
+    ],
+  ),
+  level1Unit10WeatherPreferences: lesson(
+    'Level 1 · Unit 10: Heute ist es kalt - Weather and Preferences',
+    'daily-life',
+    'thematic',
+    'Describe weather and say what you like or prefer.',
+    'Comment on today’s weather and state one preference.',
+    [
+      item('Es ist kalt.', 'Weather sentences often use impersonal es in German.', 'Heute ist es sehr kalt.', 'The weather is described without naming an actor.'),
+      item('ich mag / ich lieber', 'Mag states liking; lieber expresses preference between options.', 'Ich mag Schnee, aber ich trinke lieber Tee.', 'The second form compares choices.'),
+      item('sonnig / bewölkt', 'Useful weather adjectives that help small talk become specific.', 'Morgen wird es sonnig.', 'The adjective works with future weather talk too.'),
+    ],
+  ),
+  level1Unit11Scheduling: lesson(
+    'Level 1 · Unit 11: Hast du am Samstag Zeit? - Invitations and Scheduling',
+    'daily-life',
+    'thematic',
+    'Invite someone, suggest a time, and accept or decline naturally.',
+    'Arrange one meeting through invitation, response, and time.',
+    [
+      item('Hast du Zeit?', 'A direct familiar invitation frame.', 'Hast du am Samstag Zeit?', 'The time phrase fits before the invitation target.'),
+      item('Wollen wir ...?', 'A collaborative suggestion frame meaning “Shall we ...?”', 'Wollen wir ins Kino gehen?', 'The infinitive sits at the end.'),
+      item('Das passt mir.', 'A natural way to say a time works for you.', 'Sechs Uhr passt mir gut.', 'The dative pronoun marks for whom it works.'),
+    ],
+  ),
+  level1Unit12PastActivities: lesson(
+    'Level 1 · Unit 12: Was hast du gestern gemacht? - Past Activities',
+    'daily-life',
+    'thematic',
+    'Talk about yesterday using the conversational perfect tense.',
+    'Give a short report about yesterday with two past actions.',
+    [
+      item('ich habe gelernt', 'Most conversational past verbs use haben plus a past participle.', 'Gestern habe ich Deutsch gelernt.', 'The participle closes the clause.'),
+      item('ich bin gegangen', 'Many movement verbs use sein as the auxiliary.', 'Ich bin nach Hause gegangen.', 'Auxiliary choice belongs with the verb.'),
+      item('Was hast du gemacht?', 'A common past-activity question in conversation.', 'Was hast du gestern gemacht?', 'The auxiliary appears early and the participle late.'),
+    ],
+  ),
+  level1Unit13Transportation: lesson(
+    'Level 1 · Unit 13: Ich fahre mit dem Zug - Transportation',
+    'travel',
+    'thematic',
+    'Say how you travel and how long a route takes.',
+    'Describe one commute with transport and duration.',
+    [
+      item('mit dem Zug', 'Mit governs dative, so der Zug becomes dem Zug.', 'Ich fahre mit dem Zug.', 'Transport phrases make dative visible early.'),
+      item('Wie lange dauert es?', 'A standard duration question.', 'Wie lange dauert die Fahrt?', 'The noun can replace impersonal es.'),
+      item('umsteigen', 'A useful separable verb for changing trains or buses.', 'Ich steige am Hauptbahnhof um.', 'The prefix moves to the clause end.'),
+    ],
+  ),
+  level1Unit14Ability: lesson(
+    'Level 1 · Unit 14: Ich kann ein wenig Deutsch - Ability',
+    'daily-life',
+    'thematic',
+    'Say what you can do and use modal verb sentence frames.',
+    'Describe one ability and one thing you cannot do yet.',
+    [
+      item('ich kann', 'Können expresses ability while the main verb moves to the infinitive at the end.', 'Ich kann gut kochen.', 'The modal carries tense; the main action waits at the end.'),
+      item('noch nicht', 'A useful phrase for “not yet,” kinder and more precise than a flat no.', 'Ich kann noch nicht gut schwimmen.', 'The phrase leaves room for progress.'),
+      item('Kannst du ...?', 'A direct familiar question about ability.', 'Kannst du Klavier spielen?', 'The infinitive closes the question.'),
+    ],
+  ),
+  level1Unit15PhoneMessages: lesson('Level 1 · Unit 15: Kann ich eine Nachricht hinterlassen? - Phone Calls and Messages', 'communication', 'thematic', 'Handle simple phone calls and leave a message politely.', 'Complete one phone exchange with a message.', [
+    item('am Apparat', 'A formal phone expression meaning the person is on the line.', 'Frau Berger am Apparat.', 'The phrase belongs to phone register.'),
+    item('eine Nachricht hinterlassen', 'Hinterlassen is separable in some forms but appears intact after a modal or infinitive frame.', 'Kann ich eine Nachricht hinterlassen?', 'The phrase is useful as a whole request.'),
+    item('Ich rufe zurück.', 'Zurückrufen is separable in the main clause.', 'Ich rufe später zurück.', 'The prefix closes the sentence.'),
+  ]),
+  level1Unit16ClubsLeisure: lesson('Level 1 · Unit 16: Was machst du in deiner Freizeit? - Clubs and Leisure', 'daily-life', 'thematic', 'Talk about hobbies, clubs, and frequency.', 'Describe two leisure activities with one frequency phrase.', [
+    item('in meiner Freizeit', 'A useful dative phrase for talking about free time.', 'In meiner Freizeit lese ich gern.', 'The fronted phrase keeps the verb second.'),
+    item('gern', 'Gern expresses liking an activity naturally with verbs.', 'Ich spiele gern Fußball.', 'German often prefers gern where English uses “like to.”'),
+    item('einmal pro Woche', 'A practical frequency phrase.', 'Ich gehe einmal pro Woche schwimmen.', 'The verb frame stays intact around the activity.'),
+  ]),
+  level1Unit17PostOffice: lesson('Level 1 · Unit 17: Ich möchte das verschicken - Post Office and Requests', 'services', 'thematic', 'Make practical requests and ask about sending items.', 'Send one parcel through a short service exchange.', [
+    item('verschicken', 'A useful verb for sending parcels or letters.', 'Ich möchte dieses Paket verschicken.', 'The polite wish frame keeps the request service-friendly.'),
+    item('Wie schwer ist das?', 'A common practical question about weight.', 'Wie schwer ist das Paket?', 'The noun can replace the demonstrative.'),
+    item('Könnten Sie ...?', 'Konjunktiv II softens formal requests.', 'Könnten Sie mir bitte helfen?', 'The grammar adds distance and politeness.'),
+  ]),
+  level1Unit18Health: lesson('Level 1 · Unit 18: Mir tut der Kopf weh - Health and the Body', 'health', 'thematic', 'Describe symptoms and ask for basic help.', 'Explain one symptom and one need.', [
+    item('Mir tut der Kopf weh.', 'German often describes pain with dative experiencer plus body part subject.', 'Mir tut der Rücken weh.', 'The person affected is marked differently from English.'),
+    item('Ich habe Fieber.', 'A common symptom frame with haben.', 'Ich habe seit gestern Fieber.', 'The time phrase adds useful detail.'),
+    item('Seit wann?', 'A concise doctor-style question asking since when.', 'Seit wann haben Sie Schmerzen?', 'Formal Sie suits medical settings.'),
+  ]),
+  level1Unit19CulturalHolidays: lesson('Level 1 · Unit 19: Was machst du an Weihnachten? - German Holidays', 'culture', 'thematic', 'Talk about holidays, traditions, and plans with cultural sensitivity.', 'Describe one holiday plan and one tradition.', [
+    item('an Weihnachten', 'German uses an with many holiday references.', 'An Weihnachten besuche ich meine Familie.', 'The phrase anchors a seasonal plan.'),
+    item('Feiertag', 'A public holiday; useful beyond any single celebration.', 'Morgen ist ein Feiertag.', 'The noun helps discuss calendars neutrally.'),
+    item('Plätzchen backen', 'A concrete seasonal activity rather than a vague cultural label.', 'Wir backen Plätzchen.', 'The verb phrase supports real-life holiday talk.'),
+  ]),
+  level1Unit20Suggestions: lesson('Level 1 · Unit 20: Sollen wir zusammen gehen? - Suggestions', 'daily-life', 'thematic', 'Make suggestions and respond with agreement or alternatives.', 'Make one suggestion and negotiate one adjustment.', [
+    item('Sollen wir ...?', 'A natural frame for proposing an action together.', 'Sollen wir morgen lernen?', 'The infinitive remains at the end.'),
+    item('Warum nicht?', 'A compact positive response meaning “Why not?”', 'Warum nicht? Das klingt gut.', 'The response sounds more natural than overexplaining.'),
+    item('lieber', 'Lieber helps propose a preferred alternative.', 'Ich würde lieber später gehen.', 'The word softens a change of plan.'),
+  ]),
+  level1Unit21HopesDreams: lesson('Level 1 · Unit 21: Ich möchte in Berlin arbeiten - Hopes and Dreams', 'daily-life', 'thematic', 'Talk about wishes, plans, and future goals politely.', 'Describe one goal and one reason for it.', [
+    item('ich möchte', 'A polite desire frame useful for hopes as well as service encounters.', 'Ich möchte später Ärztin werden.', 'The infinitive chain carries the goal.'),
+    item('werden', 'Werden can mean become and also supports future constructions.', 'Ich möchte Lehrerin werden.', 'The verb is central to life goals.'),
+    item('weil', 'Weil introduces reasons and sends the finite verb to the end.', 'Ich lerne Deutsch, weil ich in Berlin arbeiten möchte.', 'The reason clause changes word order.'),
+  ]),
+  level2Unit02HealthyLife: lesson('Level 2 · Unit 2: Gesund leben - Healthy Living', 'health', 'thematic', 'Discuss habits, advice, and balanced routines with more connected answers.', 'Give one piece of health advice and justify it.', [
+    item('sich ernähren', 'A reflexive verb for eating or maintaining a diet; health German often needs reflexive forms.', 'Ich ernähre mich ausgewogen.', 'The reflexive pronoun belongs with the verb.'),
+    item('man sollte', 'A useful general advice frame that avoids targeting one person too directly.', 'Man sollte genug schlafen.', 'The modal keeps the advice broad and tactful.'),
+    item('deshalb', 'A connector for consequence that keeps the finite verb second in the following clause.', 'Ich schlafe schlecht, deshalb trinke ich weniger Kaffee.', 'The connector changes discourse, not clause type.'),
+  ], 'intermediate'),
+  level2Unit03Sports: lesson('Level 2 · Unit 3: Sport und Bewegung - Sports', 'sports', 'thematic', 'Discuss sports, training, and comparisons with more precision.', 'Compare two sports and explain which suits you better.', [
+    item('trainieren', 'A useful verb for structured practice, not only competitive sport.', 'Ich trainiere dreimal pro Woche.', 'Frequency makes the statement informative.'),
+    item('besser als', 'Als marks comparison after comparative adjectives.', 'Schwimmen ist für mich besser als Laufen.', 'The comparison gives a personal judgment.'),
+    item('obwohl', 'Obwohl introduces concession and sends the finite verb to the end.', 'Obwohl ich müde bin, gehe ich zum Training.', 'The subordinate clause frames contrast.'),
+  ], 'intermediate'),
+  level2Unit04ModernRelationships: lesson('Level 2 · Unit 4: Beziehungen heute - Modern Relationships', 'relationships', 'thematic', 'Talk about friendships, expectations, and communication with tact.', 'Describe one quality of a good relationship and support it.', [
+    item('sich gut verstehen', 'A reflexive idiom meaning to get along well.', 'Wir verstehen uns gut.', 'The pronoun makes the idiom complete.'),
+    item('zuverlässig', 'A useful adjective for trust and relationships.', 'Eine gute Freundin ist zuverlässig.', 'The adjective describes character rather than mood.'),
+    item('jemandem zuhören', 'Zuhören takes dative because the listener attends to someone.', 'Ich höre meinem Freund zu.', 'The separable verb and dative case work together.'),
+  ], 'intermediate'),
+  level2Unit05ProverbsIdioms: lesson('Level 2 · Unit 5: Sprichwörter und Redewendungen - Proverbs and Idioms', 'culture', 'thematic', 'Understand figurative German and distinguish literal from idiomatic meaning.', 'Explain one idiom in plain German and use it in context.', [
+    item('Übung macht den Meister.', 'A proverb about improvement through practice; idioms often teach values as much as vocabulary.', 'Beim Deutschlernen gilt: Übung macht den Meister.', 'The proverb fits a learning context naturally.'),
+    item('Tomaten auf den Augen haben', 'An idiom meaning to overlook something obvious, not a literal statement about tomatoes.', 'Hast du Tomaten auf den Augen?', 'The image is playful and strongly idiomatic.'),
+    item('im übertragenen Sinn', 'A useful phrase for explaining figurative meaning.', 'Das ist im übertragenen Sinn gemeint.', 'The phrase helps discuss language itself.'),
+  ], 'intermediate'),
+  level2Unit06Performances: lesson('Level 2 · Unit 6: Auf der Bühne - Performances', 'culture', 'thematic', 'Discuss performances, impressions, and audience reactions.', 'Review one performance with one reason and one contrast.', [
+    item('beeindruckend', 'A precise adjective for something impressive without sounding childish.', 'Die Aufführung war beeindruckend.', 'The adjective suits reviews.'),
+    item('während', 'Während introduces simultaneous time and usually a subordinate clause.', 'Während die Sängerin auftrat, war es ganz still.', 'The event relation is built into the clause.'),
+    item('das Publikum', 'A collective noun for the audience.', 'Das Publikum applaudierte lange.', 'The word supports performance description.'),
+  ], 'intermediate'),
+  level2Unit07RightWrong: lesson('Level 2 · Unit 7: Richtig und falsch - Right and Wrong', 'society', 'thematic', 'Discuss rules, responsibility, and judgments carefully.', 'State one opinion about fairness and support it.', [
+    item('gerecht / ungerecht', 'A useful moral contrast for fairness, not merely factual correctness.', 'Die Entscheidung war ungerecht.', 'The adjective evaluates the decision.'),
+    item('meiner Meinung nach', 'A clear opinion frame that takes the sentence into a more formal register.', 'Meiner Meinung nach ist die Regel sinnvoll.', 'The fronted phrase keeps the verb second.'),
+    item('verantwortlich für', 'A phrase for responsibility that governs accusative after für.', 'Wer ist dafür verantwortlich?', 'The preposition shapes the case.'),
+  ], 'intermediate'),
+  level2Unit08IntriguingWorld: lesson('Level 2 · Unit 8: Eine faszinierende Welt - The Intriguing World', 'society', 'thematic', 'Describe discoveries, possibilities, and uncertainty.', 'Explain one surprising fact and one possible explanation.', [
+    item('faszinierend', 'A stronger adjective than merely interessant when something genuinely captures attention.', 'Das Thema ist faszinierend.', 'The adjective adds evaluative force.'),
+    item('es könnte sein, dass', 'A cautious frame for possibility with subordinate-clause word order.', 'Es könnte sein, dass Wasser dort existiert.', 'The speaker marks uncertainty honestly.'),
+    item('entdecken', 'A useful verb for discoveries in science and exploration.', 'Forscher haben eine neue Art entdeckt.', 'The perfect tense reports the event.'),
+  ], 'intermediate'),
+  level2Unit09PopCulture: lesson('Level 2 · Unit 9: Popkultur - Pop Culture', 'culture', 'thematic', 'Discuss media, trends, and personal taste with nuance.', 'Recommend one work and explain why it appeals to you.', [
+    item('empfehlen', 'A strong recommendation verb that takes an object and often a dative recipient.', 'Ich empfehle dir diese Serie.', 'The dative marks who receives the recommendation.'),
+    item('bekannt für', 'A compact phrase for what someone or something is known for.', 'Die Band ist für ihre Texte bekannt.', 'The phrase suits media talk.'),
+    item('nicht nur ..., sondern auch', 'A paired connector for adding a second strong point.', 'Der Film ist nicht nur spannend, sondern auch lustig.', 'The pairing creates balanced emphasis.'),
+  ], 'intermediate'),
+  level2Review01: lesson('Level 2 · Review 1: Alltag und Beziehungen - Review of Units 2-4', 'review', 'review', 'Recombine health, sports, and relationship language in one connected discussion.', 'Give a short self-profile that combines habits, sport, and relationships.', [
+    item('ausgewogen leben', 'A review anchor that combines routine and health language.', 'Ich versuche, ausgewogen zu leben.', 'Zu infinitive introduces a broader goal.'),
+    item('sich aufeinander verlassen', 'A relationship phrase that requires reciprocal meaning and a separable verb.', 'Gute Freunde können sich aufeinander verlassen.', 'The sentence combines modal and reflexive structure.'),
+    item('obwohl / deshalb', 'Review the difference between concession and consequence.', 'Obwohl ich wenig Zeit habe, trainiere ich; deshalb fühle ich mich besser.', 'The connectors organize two different relations.'),
+  ], 'intermediate'),
+  level2Review02: lesson('Level 2 · Review 2: Kultur und Bewertung - Review of Units 5-7', 'review', 'review', 'Recombine idioms, performance language, and ethical judgments.', 'Review a cultural event and make one evaluative claim.', [
+    item('im übertragenen Sinn', 'A review anchor for explaining idioms precisely.', 'Das ist im übertragenen Sinn gemeint.', 'The phrase prevents literal confusion.'),
+    item('beeindruckend, aber ungerecht', 'A useful review pairing that mixes aesthetic and ethical judgment.', 'Die Aufführung war beeindruckend, aber die Preise waren ungerecht.', 'The contrast joins two lesson domains.'),
+    item('meiner Meinung nach', 'A reusable opinion frame for more formal review talk.', 'Meiner Meinung nach war die Entscheidung richtig.', 'The frame keeps evaluation explicit.'),
+  ], 'intermediate'),
+  level2Review03: lesson('Level 2 · Review 3: Welt und Medien - Review of Units 8-9', 'review', 'review', 'Recombine possibility, discovery, recommendation, and media talk.', 'Present one cultural or scientific topic and recommend a resource about it.', [
+    item('es könnte sein, dass', 'A review frame for cautious claims.', 'Es könnte sein, dass der Trend lange bleibt.', 'The subordinate clause still ends with the verb.'),
+    item('bekannt für', 'A review phrase for describing public reputation.', 'Die Serie ist für ihre Figuren bekannt.', 'The phrase links culture and evaluation.'),
+    item('nicht nur ..., sondern auch', 'A review connector for layered claims.', 'Das Buch ist nicht nur informativ, sondern auch spannend.', 'The frame builds a fuller recommendation.'),
+  ], 'intermediate'),
+  level2AdultUnit01Greetings: lesson('Adult Unit 1: Guten Morgen zusammen - Workplace Greetings', 'workplace', 'workplace', 'Use workplace greetings and polite forms without sounding stiff.', 'Open and close one workplace exchange appropriately.', [
+    item('Guten Morgen zusammen', 'A natural greeting to a group at work.', 'Guten Morgen zusammen. Haben wir heute eine Besprechung?', 'The phrase fits a shared workplace setting.'),
+    item('Wie geht es Ihnen?', 'Formal Sie keeps professional distance when needed.', 'Wie geht es Ihnen heute?', 'The verb matches formal address.'),
+    item('Schönen Feierabend', 'A workplace closing wish for the end of the workday.', 'Schönen Feierabend und bis morgen.', 'The phrase is social glue after work.'),
+  ], 'intermediate'),
+  level2AdultUnit02WorkSchedule: lesson('Adult Unit 2: Schichten und Arbeitszeiten - Work Schedule', 'workplace', 'workplace', 'Discuss shifts, availability, and schedule changes.', 'Confirm one work schedule and request one adjustment.', [
+    item('die Frühschicht', 'A morning shift; work vocabulary needs compounds early.', 'Ich habe morgen Frühschicht.', 'The noun names the schedule precisely.'),
+    item('tauschen', 'A useful verb for swapping shifts.', 'Können wir die Schicht tauschen?', 'The request remains polite with können.'),
+    item('bis wann', 'A practical question for deadlines and availability.', 'Bis wann brauchen Sie die Antwort?', 'The formal question suits work.'),
+  ], 'intermediate'),
+  level2AdultUnit03Food: lesson('Adult Unit 3: Pause und Essen - Breaks and Meals', 'workplace', 'workplace', 'Talk about breaks, meals, and simple workplace arrangements.', 'Arrange one meal break with a colleague.', [
+    item('die Mittagspause', 'A common compound for lunch break.', 'Wann ist deine Mittagspause?', 'The noun fits scheduling talk.'),
+    item('etwas mitbringen', 'Mitbringen is separable and useful for shared meals.', 'Ich bringe etwas zu essen mit.', 'The prefix closes the clause.'),
+    item('in der Kantine', 'A dative location phrase for the cafeteria.', 'Wir essen in der Kantine.', 'The phrase describes location, not direction.'),
+  ], 'intermediate'),
+  level2AdultUnit04Commute: lesson('Adult Unit 4: Verspätung auf dem Weg - Commute and Delays', 'workplace', 'workplace', 'Explain delays and commute problems clearly.', 'Report one delay and say when you expect to arrive.', [
+    item('Verspätung haben', 'A common phrase for being delayed.', 'Der Zug hat zehn Minuten Verspätung.', 'The train, not the passenger, carries the delay phrase.'),
+    item('wegen des Verkehrs', 'Wegen often takes genitive in formal German.', 'Ich komme wegen des Verkehrs später.', 'The preposition shows case in a practical sentence.'),
+    item('voraussichtlich', 'A useful adverb for expected timing in formal updates.', 'Ich komme voraussichtlich um neun Uhr an.', 'The separable verb still closes the sentence.'),
+  ], 'intermediate'),
+  level2AdultUnit05Buying: lesson('Adult Unit 5: Bestellungen und Bestand - Buying and Stock', 'workplace', 'workplace', 'Discuss stock, orders, and shortages.', 'Report one stock issue and suggest a next step.', [
+    item('auf Lager', 'A fixed phrase meaning in stock.', 'Das Produkt ist nicht auf Lager.', 'The phrase is common in business talk.'),
+    item('nachbestellen', 'A separable verb for reordering stock.', 'Wir bestellen morgen nach.', 'The prefix moves to the end.'),
+    item('Lieferung', 'A useful noun for delivery and supply chains.', 'Die Lieferung kommt am Freitag.', 'The noun supports status updates.'),
+  ], 'intermediate'),
+  level2AdultUnit06DormLife: lesson('Adult Unit 6: Zusammen wohnen - Dorm Life', 'housing', 'workplace', 'Handle shared-space issues and polite requests.', 'Resolve one small shared-living problem politely.', [
+    item('die Küche sauber machen', 'A practical shared-space phrase.', 'Bitte mach die Küche sauber.', 'The phrase can become more polite with könntest du.'),
+    item('Könntest du ...?', 'Konjunktiv II softens a request to a peer.', 'Könntest du leiser sein?', 'The grammar reduces bluntness.'),
+    item('Rücksicht nehmen', 'An idiom meaning to be considerate.', 'Bitte nimm Rücksicht auf die anderen.', 'The separable-like phrase is socially important.'),
+  ], 'intermediate'),
+  level2AdultUnit07Safety: lesson('Adult Unit 7: Sicherheit am Arbeitsplatz - Safety', 'workplace', 'workplace', 'Understand safety instructions and report risks.', 'Explain one safety rule and one reason for it.', [
+    item('Schutzhandschuhe tragen', 'A common workplace safety instruction.', 'Sie müssen Schutzhandschuhe tragen.', 'The modal expresses obligation.'),
+    item('Vorsicht', 'A concise warning noun.', 'Vorsicht, der Boden ist nass.', 'The word suits immediate alerts.'),
+    item('melden', 'A useful verb for reporting problems.', 'Bitte melden Sie den Schaden sofort.', 'Formal imperative suits workplace rules.'),
+  ], 'intermediate'),
+  level2AdultUnit08Medical: lesson('Adult Unit 8: Beim Arzt - Medical Visit', 'health', 'workplace', 'Describe symptoms, duration, and restrictions clearly.', 'Explain one symptom history to a clinician.', [
+    item('seit drei Tagen', 'Seit with present tense describes duration continuing to now.', 'Ich habe seit drei Tagen Husten.', 'German does not need a special perfect form here.'),
+    item('allergisch gegen', 'A practical medical phrase that governs accusative after gegen.', 'Ich bin allergisch gegen Penicillin.', 'The phrase prevents vague explanations.'),
+    item('verschreiben', 'A verb for prescribing medicine.', 'Der Arzt hat mir Tabletten verschrieben.', 'The dative marks the recipient.'),
+  ], 'intermediate'),
+  level2AdultUnit09Weekend: lesson('Adult Unit 9: Pläne fürs Wochenende - Weekend Plans', 'daily-life', 'workplace', 'Discuss weekend plans, preferences, and likely outcomes.', 'Describe one weekend plan and one alternative.', [
+    item('vorhaben', 'A separable verb meaning to plan or intend.', 'Was hast du am Wochenende vor?', 'The prefix waits at the end.'),
+    item('falls', 'A conditional connector often used for practical alternatives.', 'Falls es regnet, bleibe ich zu Hause.', 'The subordinate clause sends the verb to the end.'),
+    item('sich erholen', 'A reflexive verb for recovering or resting.', 'Am Sonntag erhole ich mich.', 'The pronoun is part of the verb frame.'),
+  ], 'intermediate'),
+  level2AdultUnit10Rules: lesson('Adult Unit 10: Regeln und Verfahren - Rules and Procedures', 'workplace', 'workplace', 'Explain rules, permissions, and procedures clearly.', 'State one rule and one allowed exception.', [
+    item('dürfen', 'Dürfen expresses permission or prohibition when negated.', 'Hier darf man nicht rauchen.', 'The modal carries the rule.'),
+    item('ausfüllen', 'A separable verb for filling out forms.', 'Bitte füllen Sie dieses Formular aus.', 'Formal imperatives preserve the split prefix.'),
+    item('es ist erforderlich, dass', 'A formal frame for requirements with subordinate-clause order.', 'Es ist erforderlich, dass Sie den Ausweis zeigen.', 'The clause suits institutional language.'),
+  ], 'intermediate'),
+  level2AdultUnit11JobHunting: lesson('Adult Unit 11: Arbeit suchen - Job Hunting', 'workplace', 'workplace', 'Discuss applications, experience, and interview readiness.', 'Present one qualification and ask one application question.', [
+    item('sich bewerben um', 'A reflexive verb phrase for applying for a position.', 'Ich bewerbe mich um die Stelle.', 'The preposition completes the pattern.'),
+    item('Berufserfahrung', 'A key compound noun for work experience.', 'Ich habe drei Jahre Berufserfahrung.', 'The phrase supports interviews.'),
+    item('geeignet für', 'A phrase for suitability.', 'Ich bin für diese Stelle gut geeignet.', 'The adjective phrase fits self-presentation.'),
+  ], 'intermediate'),
+  level2AdultUnit12Housing: lesson('Adult Unit 12: Eine Wohnung suchen - Housing', 'housing', 'workplace', 'Discuss rent, rooms, and housing preferences.', 'Describe one ideal apartment and ask one viewing question.', [
+    item('die Miete', 'A core housing noun for rent.', 'Wie hoch ist die Miete?', 'The question asks amount naturally.'),
+    item('besichtigen', 'A verb for viewing a property.', 'Kann ich die Wohnung besichtigen?', 'The infinitive closes the modal question.'),
+    item('möbliert', 'A useful adjective meaning furnished.', 'Ist die Wohnung möbliert?', 'The adjective supports practical comparison.'),
+  ], 'intermediate'),
+  level3Cluster1Connectors: lesson('Level 3 · Cluster 1: Satzverbindungen - Connectors', 'grammar', 'grammar', 'Link arguments with coordinating, subordinating, and adverbial connectors accurately.', 'Build one paragraph using cause, contrast, and consequence.', [
+    item('aber / denn / sondern', 'Coordinating connectors preserve main-clause word order while expressing different relations.', 'Ich lerne, denn ich brauche Deutsch.', 'The finite verb remains second after the connector.'),
+    item('weil / obwohl', 'Subordinating connectors send the finite verb to the end.', 'Ich gehe, obwohl ich müde bin.', 'Clause type controls verb placement.'),
+    item('deshalb / trotzdem', 'Connector adverbs occupy the first position and force verb-second order after them.', 'Es regnet. Trotzdem gehe ich spazieren.', 'The adverb changes the discourse link and the clause frame.'),
+  ], 'advanced'),
+  level3Cluster2Tense: lesson('Level 3 · Cluster 2: Zeitformen und Aspekt - Tense and Aspect', 'grammar', 'grammar', 'Choose among present, perfect, simple past, and future according to meaning and register.', 'Narrate one event in conversation and summarize it in a more formal written style.', [
+    item('ich habe gearbeitet', 'The perfect tense dominates much spoken past narration.', 'Gestern habe ich lange gearbeitet.', 'Conversation favors this form.'),
+    item('ich arbeitete', 'The simple past is common in writing and especially with sein, haben, and werden.', 'Gestern war ich krank.', 'Register influences tense choice.'),
+    item('ich werde arbeiten', 'Werden plus infinitive can mark future, but German often uses present tense with a clear time phrase instead.', 'Morgen arbeite ich zu Hause.', 'Future meaning does not always require future morphology.'),
+  ], 'advanced'),
+  level3Cluster3Modality: lesson('Level 3 · Cluster 3: Modalität - Modality', 'grammar', 'grammar', 'Express obligation, probability, politeness, and hypothetical stance with precision.', 'Rephrase one direct sentence into obligation, probability, and polite request.', [
+    item('müssen / sollen', 'Müssen marks necessity; sollen often reports duty, instruction, or expectation from elsewhere.', 'Ich muss gehen. Ich soll den Bericht schicken.', 'The source of obligation matters.'),
+    item('dürfte', 'Konjunktiv II of dürfen can express probability in careful German.', 'Das dürfte stimmen.', 'The form marks a measured inference.'),
+    item('könnten Sie', 'A polite request frame that is softer than können Sie.', 'Könnten Sie mir helfen?', 'Mood changes interpersonal force.'),
+  ], 'advanced'),
+  level3Cluster4Resemblance: lesson('Level 3 · Cluster 4: Vergleich und Eindruck - Resemblance', 'grammar', 'grammar', 'Express resemblance, appearance, and hypothetical comparison accurately.', 'Compare two things and describe one uncertain impression.', [
+    item('wie / als', 'Wie marks equality; als marks inequality after comparatives.', 'Er ist so groß wie ich. Er ist größer als ich.', 'The comparison type chooses the connector.'),
+    item('es sieht so aus, als ob', 'A formal frame for appearance that leads into a subordinate clause.', 'Es sieht so aus, als ob es regnen würde.', 'The phrase separates observation from fact.'),
+    item('ähnlich wie', 'A useful resemblance phrase for comparing categories or situations.', 'Das klingt ähnlich wie im letzten Beispiel.', 'The phrase handles similarity without claiming identity.'),
+  ], 'advanced'),
+  level3Cluster5Modifiers: lesson('Level 3 · Cluster 5: Präzise Beschreibungen - Modifiers', 'grammar', 'grammar', 'Control adjective endings, relative clauses, and layered noun phrases.', 'Describe one person or object with an adjective phrase and a relative clause.', [
+    item('ein interessanter Artikel', 'Adjective endings encode article type, gender, number, and case.', 'Ich habe einen interessanten Artikel gelesen.', 'The ending changes in accusative masculine.'),
+    item('der Artikel, den ich gelesen habe', 'Relative pronouns agree with the noun but take case from their role inside the clause.', 'Das ist der Artikel, den ich gestern gelesen habe.', 'The pronoun is masculine accusative inside the relative clause.'),
+    item('besonders wichtig', 'Adverbial modifiers sharpen degree without changing adjective endings.', 'Das ist besonders wichtig.', 'The modifier adds force compactly.'),
+  ], 'advanced'),
+  level3Cluster6Register: lesson('Level 3 · Cluster 6: Register, Passiv und Stil - Register and Formal Style', 'grammar', 'grammar', 'Choose between familiar, formal, passive, and written styles according to context.', 'Rewrite one informal message into a formal workplace version.', [
+    item('du / Sie', 'Address choice changes pronoun, verb form, and social distance.', 'Kannst du kommen? / Können Sie kommen?', 'The grammar follows the relationship.'),
+    item('Das Formular wird geprüft.', 'Passive style foregrounds process and is common in institutional German.', 'Ihre Anfrage wird bearbeitet.', 'The actor can remain backgrounded.'),
+    item('Hiermit bestätige ich ...', 'Written formal German uses conventional frames that sound too stiff in ordinary speech but appropriate in documents.', 'Hiermit bestätige ich den Termin.', 'Register determines whether a phrase is elegant or odd.'),
+  ], 'advanced'),
+};

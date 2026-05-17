@@ -1,8 +1,8 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { FiVolume2 } from 'react-icons/fi';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { aiService, certificateService, classLessonService, practiceContextService } from '../services/api';
+import { aiService, certificateService, classLessonService, learningHubService, practiceContextService, userService } from '../services/api';
 import speechService from '../services/speechService';
 import LANGUAGES from '../config/languages';
 import {
@@ -239,32 +239,77 @@ function buildProgressRecord({
   };
 }
 
-function lessonActionFallback(item, activity, targetLanguage = 'ko', nativeLanguage = 'en') {
-  const targetLanguageCode = String(targetLanguage || '').toLowerCase();
-  const nativeLanguageCode = String(nativeLanguage || '').toLowerCase();
-  const pairHasEnglish = targetLanguageCode === 'en' || nativeLanguageCode === 'en';
+function activitySkills(activity = {}) {
+  const section = String(activity?.section || '').toLowerCase();
+  const skills = [];
+  if (section.includes('reading')) skills.push('reading');
+  if (section.includes('listening')) skills.push('listening');
+  if (section.includes('speaking')) skills.push('speaking');
+  if (section.includes('writing')) skills.push('writing');
+  if (section.includes('pronunciation')) skills.push('listening', 'speaking');
+  return Array.from(new Set(skills));
+}
+
+const CLASS_ITEM_WINDOW_SIZE = 8;
+
+function lessonContentFromShell(shell = {}, detailedItems = []) {
+  const content = Array.isArray(shell.contentIndex)
+    ? shell.contentIndex.map((item) => ({
+      type: item?.type || '',
+      activityIds: Array.isArray(item?.activityIds) ? item.activityIds : [],
+      _windowPlaceholder: true,
+    }))
+    : [];
+  return mergeDetailedItems({ ...shell, content }, detailedItems);
+}
+
+function mergeDetailedItems(lesson = {}, detailedItems = []) {
+  if (!lesson || !Array.isArray(lesson.content) || !Array.isArray(detailedItems) || detailedItems.length === 0) {
+    return lesson;
+  }
+  const content = [...lesson.content];
+  detailedItems.forEach((item) => {
+    if (!Number.isInteger(item?.index)) return;
+    const { index, ...detail } = item;
+    content[index] = {
+      ...(content[index] || {}),
+      ...detail,
+      _windowPlaceholder: false,
+    };
+  });
+  return { ...lesson, content };
+}
+
+function isDetailedLessonItem(item = {}) {
+  return !!item && item._windowPlaceholder !== true;
+}
+
+function lessonActionFallback(item, activity, targetLanguage = 'ko', nativeLanguage = 'en', t) {
   const target = itemTarget(item);
   const native = itemNative(item);
   const romanization = item?.romanization || item?.pronunciation || '';
   const exampleTarget = itemExampleTarget(item);
   const exampleNative = itemExampleNative(item);
-  const title = activity?.title || activity?.section || 'this item';
-  const task = activity?.task || 'Try one short answer using this lesson item.';
-  const lines = pairHasEnglish ? [`Let's practice ${title}.`] : [];
+  const title = activity?.title || activity?.section || t('classLesson.fallback.thisItem', 'this item');
+  const task = activity?.task || t('classLesson.fallback.shortAnswer', 'Try one short answer using this lesson item.');
+  const lines = [t('classLesson.fallback.practiceLead', {
+    title,
+    defaultValue: "Let's practice {{title}}.",
+  })];
   const targetLine = [target, romanization ? `(${romanization})` : ''].filter(Boolean).join(' ');
 
   if (targetLine && native) lines.push(`${targetLine} - ${native}`);
   else if (targetLine || native) lines.push(targetLine || native);
 
   if (exampleTarget && exampleNative) {
-    lines.push(pairHasEnglish ? `Example: ${exampleTarget} - ${exampleNative}` : `${exampleTarget} - ${exampleNative}`);
+    lines.push(`${t('classLesson.examplePrefix', 'Example:')} ${exampleTarget} - ${exampleNative}`);
   } else if (exampleTarget || exampleNative) {
-    lines.push(pairHasEnglish ? `Example: ${exampleTarget || exampleNative}` : (exampleTarget || exampleNative));
+    lines.push(`${t('classLesson.examplePrefix', 'Example:')} ${exampleTarget || exampleNative}`);
   }
 
-  if (pairHasEnglish) lines.push(task);
+  lines.push(task);
 
-  return lines.join('\n').trim() || 'Let us continue with the next part of the lesson.';
+  return lines.join('\n').trim() || t('classLesson.fallback.continue', 'Let us continue with the next part of the lesson.');
 }
 
 function activityPlanForLesson(lesson, t) {
@@ -430,6 +475,7 @@ function ClassLessonPage() {
   const threadRef = useRef(null);
   const recognitionRef = useRef(null);
   const tutorRequestInFlightRef = useRef(false);
+  const pendingWindowCentersRef = useRef(new Set());
   const [lesson, setLesson] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -470,6 +516,8 @@ function ClassLessonPage() {
   const [certificateStatus, setCertificateStatus] = useState(null);
   const [certificateLoading, setCertificateLoading] = useState(false);
   const [certificateIssuing, setCertificateIssuing] = useState(false);
+  const [itemWindowLoading, setItemWindowLoading] = useState(false);
+  const lessonIdLoaded = lesson?._id || '';
 
   const targetLanguage = getTargetLangCode();
   const nativeLanguage = getNativeLangCode();
@@ -506,10 +554,6 @@ function ClassLessonPage() {
       try {
         setLoading(true);
         setProgressLoaded(false);
-        const response = await classLessonService.getClassLesson(classLessonId);
-        if (cancelled) return;
-        setLesson(response.data);
-
         const applyProgress = (record) => {
           const progress = normalizeProgressRecord(record, nativeLanguage, t);
           setSelectedIndex(progress.selectedIndex);
@@ -518,26 +562,29 @@ function ClassLessonPage() {
           setSummary(progress.summary);
           setMemory(progress.memory);
           setTutorTurns(progress.tutorTurns);
+          return progress;
         };
 
+        let localProgress = normalizeProgressRecord({}, nativeLanguage, t);
         try {
           const stored = JSON.parse(localStorage.getItem(classStorageKey(classLessonId)) || '{}');
-          applyProgress(stored);
+          localProgress = applyProgress(stored);
         } catch {
           setTutorTurns([makeTutorSetupTurn(classSetupText(t), nativeLanguage)]);
         }
 
-        try {
-          const progressResponse = await classLessonService.getProgress(classLessonId);
-          if (cancelled) return;
-          if (progressResponse.data?.canSync && progressResponse.data?.progress) {
-            applyProgress(progressResponse.data.progress);
-            setProgressSyncState('synced');
-          } else {
-            setProgressSyncState(progressResponse.data?.canSync ? 'synced' : 'local');
-          }
-        } catch {
-          if (!cancelled) setProgressSyncState('local');
+        const response = await classLessonService.getClassLessonBootstrap(classLessonId, {
+          center: localProgress.selectedIndex,
+          windowSize: CLASS_ITEM_WINDOW_SIZE,
+        });
+        if (cancelled) return;
+        const payload = response.data || {};
+        setLesson(lessonContentFromShell(payload.lesson, payload.items));
+        if (payload.canSync && payload.progress) {
+          applyProgress(payload.progress);
+          setProgressSyncState('synced');
+        } else {
+          setProgressSyncState(payload.canSync ? 'synced' : 'local');
         }
       } catch (err) {
         if (!cancelled) setError(t('classLesson.loadError', 'Could not load this class lesson.'));
@@ -556,7 +603,7 @@ function ClassLessonPage() {
   }, [classLessonId, nativeLanguage, t]);
 
   useEffect(() => {
-    if (!lesson || !progressLoaded) return undefined;
+    if (!lessonIdLoaded || !progressLoaded) return undefined;
     const payload = buildProgressRecord({
       selectedIndex,
       selectedActivityIndex,
@@ -577,7 +624,7 @@ function ClassLessonPage() {
     }, 700);
 
     return () => clearTimeout(timer);
-  }, [classLessonId, completed, lesson, memory, progressLoaded, selectedActivityIndex, selectedIndex, summary, tutorTurns]);
+  }, [classLessonId, completed, lessonIdLoaded, memory, progressLoaded, selectedActivityIndex, selectedIndex, summary, tutorTurns]);
 
   useEffect(() => {
     setTutorTurns((prev) => (
@@ -634,7 +681,8 @@ function ClassLessonPage() {
   ), []);
 
   const items = useMemo(() => lesson?.content || [], [lesson]);
-  const selectedItem = items[selectedIndex] || {};
+  const selectedItem = useMemo(() => items[selectedIndex] || {}, [items, selectedIndex]);
+  const selectedItemReady = isDetailedLessonItem(selectedItem);
   const activityPlan = useMemo(() => activityPlanForLesson(lesson, t), [lesson, t]);
   const selectedActivity = activityPlan[selectedActivityIndex] || activityPlan[0];
   const displayActivityPlan = useMemo(() => activityPlan.map((activity) => ({
@@ -661,10 +709,57 @@ function ClassLessonPage() {
     ])).filter(Boolean).slice(0, 4);
   }, [canUsePracticeContextFeature, contextRecommendations, pendingContextPrompt]);
   const isAuthenticated = !!localStorage.getItem('token') && localStorage.getItem('guestMode') !== 'true';
+  const userId = localStorage.getItem('userId');
   const certificate = certificateStatus?.certificate || null;
   const certificateVerifyPath = certificate?.certificateId
     ? `/certificates/verify/${encodeURIComponent(certificate.certificateId)}`
     : '';
+
+  const loadLessonWindow = useCallback(async (center, { foreground = false } = {}) => {
+    if (!classLessonId || !lessonIdLoaded) return;
+    const safeCenter = Math.max(0, Math.min(Number(center) || 0, Math.max(items.length - 1, 0)));
+    if (pendingWindowCentersRef.current.has(safeCenter)) return;
+    pendingWindowCentersRef.current.add(safeCenter);
+    if (foreground) setItemWindowLoading(true);
+    try {
+      const response = await classLessonService.getClassLessonItems(classLessonId, {
+        center: safeCenter,
+        windowSize: CLASS_ITEM_WINDOW_SIZE,
+      });
+      setLesson((current) => mergeDetailedItems(current, response.data?.items || []));
+    } catch {
+      // Keep the current material visible. A later navigation or retry can request the same window again.
+    } finally {
+      pendingWindowCentersRef.current.delete(safeCenter);
+      if (foreground) setItemWindowLoading(false);
+    }
+  }, [classLessonId, items.length, lessonIdLoaded]);
+
+  useEffect(() => {
+    if (!lessonIdLoaded || items.length === 0) return;
+    if (!isDetailedLessonItem(items[selectedIndex])) {
+      loadLessonWindow(selectedIndex, { foreground: true });
+      return;
+    }
+
+    const nextCenter = Math.min(items.length - 1, selectedIndex + Math.floor(CLASS_ITEM_WINDOW_SIZE / 2));
+    if (nextCenter > selectedIndex && !isDetailedLessonItem(items[nextCenter])) {
+      loadLessonWindow(nextCenter);
+    }
+  }, [items, lessonIdLoaded, loadLessonWindow, selectedIndex]);
+
+  useEffect(() => {
+    if (!selectedItemReady) return;
+    const targetText = itemTarget(selectedItem);
+    if (targetText) {
+      speechService.prefetch(targetText, ttsLocaleFor(targetLanguage, targetLanguage)).catch(() => {});
+    }
+    const nextItem = items[selectedIndex + 1];
+    const nextText = isDetailedLessonItem(nextItem) ? itemTarget(nextItem) : '';
+    if (nextText) {
+      speechService.prefetch(nextText, ttsLocaleFor(targetLanguage, targetLanguage)).catch(() => {});
+    }
+  }, [items, selectedIndex, selectedItem, selectedItemReady, targetLanguage]);
 
   useEffect(() => {
     let cancelled = false;
@@ -842,6 +937,73 @@ function ClassLessonPage() {
     setStatus(t('classLesson.status.speechStopped', 'Speech stopped.'));
   };
 
+  const selectedPracticeParams = () => new URLSearchParams({
+    savedText: itemTarget(selectedItem),
+    nativeText: looksLikeRawEnglishForNative(itemNative(selectedItem), nativeLanguage) ? '' : itemNative(selectedItem),
+  });
+
+  const openSelectedPracticeSurface = (surface) => {
+    if (!selectedItemReady) return;
+    if (surface === 'conversation') {
+      const prompt = t('learningHub.askTutorPrompt', {
+        text: itemTarget(selectedItem),
+        defaultValue: 'Help me practice "{{text}}".',
+      });
+      navigate(`/conversation?prompt=${encodeURIComponent(prompt)}`);
+      return;
+    }
+    if (surface === 'writing') {
+      navigate(`/writing?${selectedPracticeParams().toString()}`);
+      return;
+    }
+    if (surface === 'flashcard') {
+      navigate(`/flashcards?${selectedPracticeParams().toString()}`);
+    }
+  };
+
+  const selfTestSelectedItem = async () => {
+    if (!userId || !selectedItemReady) {
+      setStatus(t('classLesson.status.signInToSave', 'Sign in to save study items across devices.'));
+      return;
+    }
+    try {
+      const response = await learningHubService.saveItem({
+        itemType: selectedItem.type === 'word' ? 'word' : 'phrase',
+        targetText: itemTarget(selectedItem),
+        nativeText: looksLikeRawEnglishForNative(itemNative(selectedItem), nativeLanguage) ? '' : itemNative(selectedItem),
+        romanization: selectedItem.officialPronunciation || selectedItem.romanization || selectedItem.pronunciation || '',
+        sourceType: 'class',
+        sourceRef: classLessonId,
+        sourceLabel: lesson?.title || '',
+        reason: t('classLesson.selfTestReason', 'Saved from class for a quick self-test.'),
+        metadata: {
+          route: `/class/${classLessonId}`,
+          itemIndex: selectedIndex,
+          activityId: selectedActivity?.id || '',
+        },
+      });
+      navigate('/review', { state: { quickQuizItem: response.data } });
+    } catch (_) {
+      setStatus(t('classLesson.status.saveFailed', 'Could not save this item right now.'));
+    }
+  };
+
+  const listenToSelectedItem = async () => {
+    if (!selectedItemReady || !itemTarget(selectedItem)) return;
+    try {
+      await speechService.cancel();
+      const lang = ttsLocaleFor(targetLanguage, targetLanguage);
+      await speechService.speakAsync(itemTarget(selectedItem), {
+        lang,
+        voice: resolveVoice(lang, ''),
+        rate: '-10%',
+      });
+      setStatus(t('classLesson.status.playingSelectedItem', 'Playing selected item.'));
+    } catch (_) {
+      setStatus(t('classLesson.status.audioInterrupted', 'Audio playback was interrupted.'));
+    }
+  };
+
   const sendTutorTurn = async (displayText, classActionOrText, options = {}) => {
     if (!lesson || tutorLoading || tutorRequestInFlightRef.current) return;
     tutorRequestInFlightRef.current = true;
@@ -893,7 +1055,7 @@ function ClassLessonPage() {
       const data = response.data || {};
       const rawReply = String(data.reply || '').trim();
       const reply = rawReply === FORMATTING_FALLBACK_REPLY
-        ? lessonActionFallback(selectedItem, selectedActivity, targetLanguage, nativeLanguage)
+        ? lessonActionFallback(selectedItem, selectedActivity, targetLanguage, nativeLanguage, t)
         : rawReply || 'Let us continue with the next part of the lesson.';
       const assistantTurn = makeTutorTurn('assistant', reply, {
         coachingTip: data.coachingTip || '',
@@ -961,6 +1123,7 @@ function ClassLessonPage() {
   };
 
   const teachSelected = () => {
+    if (!selectedItemReady) return;
     sendTutorTurn(
       `Teach ${selectedActivity?.section || 'activity'}: item ${selectedIndex + 1}`,
       buildClassAction('teach_selected_item', lesson, selectedItem, selectedIndex, selectedActivity),
@@ -968,6 +1131,7 @@ function ClassLessonPage() {
   };
 
   const practiceSelected = () => {
+    if (!selectedItemReady) return;
     sendTutorTurn(
       `Practice ${selectedActivity?.section || 'activity'}: item ${selectedIndex + 1}`,
       buildClassAction('practice_selected_item', lesson, selectedItem, selectedIndex, selectedActivity),
@@ -975,6 +1139,7 @@ function ClassLessonPage() {
   };
 
   const explainSelected = () => {
+    if (!selectedItemReady) return;
     sendTutorTurn(
       `Explain ${selectedActivity?.section || 'activity'}: item ${selectedIndex + 1}`,
       buildClassAction('explain_selected_item', lesson, selectedItem, selectedIndex, selectedActivity),
@@ -985,7 +1150,7 @@ function ClassLessonPage() {
   // Sends a class action with expressionPracticeId set; the AI tutor uses it
   // as a Speaking sub-mode focused on that one functional goal.
   const practiceExpression = (expressionPractice) => {
-    if (!expressionPractice) return;
+    if (!expressionPractice || !selectedItemReady) return;
     sendTutorTurn(
       `Practice expression: ${expressionPractice.label || expressionPractice.id}`,
       buildClassAction(
@@ -1000,7 +1165,42 @@ function ClassLessonPage() {
   };
 
   const markComplete = () => {
-    setCompleted((prev) => new Set([...prev, selectedIndex]));
+    const nextCompleted = new Set([...completed, selectedIndex]);
+    setCompleted(nextCompleted);
+    if (userId) {
+      userService.recordLearningEvent(userId, {
+        eventType: 'class_item_complete',
+        classLessonId,
+        itemIndex: selectedIndex,
+        activitySection: selectedActivity?.section || '',
+        activityTitle: selectedActivity?.title || '',
+        targetText: itemTarget(selectedItem),
+        nativeText: itemNative(selectedItem),
+        skills: activitySkills(selectedActivity),
+      }).catch(() => {});
+
+      if (
+        selectedActivity?.id
+        && activityItemIndices.length > 0
+        && activityItemIndices.every((index) => nextCompleted.has(index))
+      ) {
+        userService.recordLearningEvent(userId, {
+          eventType: 'class_activity_complete',
+          classLessonId,
+          activityId: selectedActivity.id,
+          activitySection: selectedActivity?.section || '',
+          activityTitle: selectedActivity?.title || '',
+          skills: activitySkills(selectedActivity),
+        }).catch(() => {});
+      }
+
+      if (items.length > 0 && nextCompleted.size >= items.length) {
+        userService.recordLearningEvent(userId, {
+          eventType: 'class_lesson_complete',
+          classLessonId,
+        }).catch(() => {});
+      }
+    }
     const nextPos = positionInActivity + 1;
     if (positionInActivity >= 0 && nextPos < activityItemIndices.length) {
       setSelectedIndex(activityItemIndices[nextPos]);
@@ -1010,11 +1210,140 @@ function ClassLessonPage() {
     }
   };
 
+  const saveSelectedForReview = async () => {
+    if (!userId || !selectedItemReady) {
+      setStatus(t('classLesson.status.signInToSave', 'Sign in to save study items across devices.'));
+      return;
+    }
+    try {
+      await learningHubService.saveItem({
+        itemType: selectedItem.type === 'word' ? 'word' : 'phrase',
+        targetText: itemTarget(selectedItem),
+        nativeText: itemNative(selectedItem),
+        romanization: selectedItem.officialPronunciation || selectedItem.romanization || selectedItem.pronunciation || '',
+        sourceType: 'class',
+        sourceRef: classLessonId,
+        sourceLabel: lesson?.title || '',
+        reason: t('classLesson.savedReason', 'Saved from class for later practice.'),
+        metadata: {
+          route: `/class/${classLessonId}`,
+          itemIndex: selectedIndex,
+          activityId: selectedActivity?.id || '',
+        },
+      });
+      setStatus(t('classLesson.status.savedForReview', 'Saved for review.'));
+    } catch (_) {
+      setStatus(t('classLesson.status.saveFailed', 'Could not save this item right now.'));
+    }
+  };
+
+  const saveSelectedExampleForReview = async () => {
+    if (!userId || !selectedItemReady || !itemExampleTarget(selectedItem)) {
+      setStatus(t('classLesson.status.signInToSave', 'Sign in to save study items across devices.'));
+      return;
+    }
+    try {
+      await learningHubService.saveItem({
+        itemType: 'sentence',
+        targetText: itemExampleTarget(selectedItem),
+        nativeText: looksLikeRawEnglishForNative(itemExampleNative(selectedItem), nativeLanguage) ? '' : itemExampleNative(selectedItem),
+        romanization: selectedItem.officialPronunciation || selectedItem.romanization || selectedItem.pronunciation || '',
+        sourceType: 'class',
+        sourceRef: classLessonId,
+        sourceLabel: lesson?.title || '',
+        reason: t('classLesson.savedExampleReason', 'Saved class example for later practice.'),
+        metadata: {
+          route: `/class/${classLessonId}`,
+          itemIndex: selectedIndex,
+          activityId: selectedActivity?.id || '',
+          kind: 'example',
+        },
+      });
+      setStatus(t('classLesson.status.exampleSaved', 'Example saved for review.'));
+    } catch (_) {
+      setStatus(t('classLesson.status.saveFailed', 'Could not save this item right now.'));
+    }
+  };
+
+  const studyTextsForTutorTurn = (message) => {
+    const parts = displayPartsForMessage(message, targetLanguage, nativeLanguage);
+    const targetText = parts
+      .filter((part) => languageRole(part, targetLanguage, nativeLanguage) === 'target' && !['meta', 'romanization'].includes(part.type))
+      .map((part) => String(part.text || '').trim())
+      .filter(Boolean)
+      .join('\n');
+    const nativeText = parts
+      .filter((part) => languageRole(part, targetLanguage, nativeLanguage) === 'native' && !['meta', 'romanization'].includes(part.type))
+      .map((part) => String(part.text || '').trim())
+      .filter(Boolean)
+      .join('\n');
+    return {
+      targetText: targetText || (message.language === targetLanguage ? String(message.content || '').trim() : ''),
+      nativeText,
+    };
+  };
+
+  const saveTutorTurnForReview = async (message) => {
+    const studyText = studyTextsForTutorTurn(message);
+    if (!userId || !studyText.targetText) {
+      setStatus(t('classLesson.status.signInToSave', 'Sign in to save study items across devices.'));
+      return;
+    }
+    try {
+      await learningHubService.saveItem({
+        itemType: 'phrase',
+        targetText: studyText.targetText,
+        nativeText: looksLikeRawEnglishForNative(studyText.nativeText, nativeLanguage) ? '' : studyText.nativeText,
+        sourceType: 'class',
+        sourceRef: classLessonId,
+        sourceLabel: lesson?.title || '',
+        reason: t('classLesson.savedTutorReplyReason', 'Saved from a tutor reply for later practice.'),
+        metadata: {
+          route: `/class/${classLessonId}`,
+          itemIndex: selectedIndex,
+          activityId: selectedActivity?.id || '',
+          kind: 'tutorReply',
+        },
+      });
+      setStatus(t('classLesson.status.tutorReplySaved', 'Tutor reply saved for review.'));
+    } catch (_) {
+      setStatus(t('classLesson.status.saveFailed', 'Could not save this item right now.'));
+    }
+  };
+
+  const bookmarkSelectedItem = async () => {
+    if (!userId || !selectedItemReady) {
+      setStatus(t('classLesson.status.signInToSave', 'Sign in to save study items across devices.'));
+      return;
+    }
+    try {
+      await learningHubService.saveItem({
+        itemType: 'bookmark',
+        targetText: itemTarget(selectedItem),
+        nativeText: itemNative(selectedItem),
+        romanization: selectedItem.officialPronunciation || selectedItem.romanization || selectedItem.pronunciation || '',
+        sourceType: 'class',
+        sourceRef: classLessonId,
+        sourceLabel: lesson?.title || '',
+        reason: t('classLesson.bookmarkedReason', 'Bookmarked from class.'),
+        metadata: {
+          route: `/class/${classLessonId}`,
+          itemIndex: selectedIndex,
+          activityId: selectedActivity?.id || '',
+        },
+      });
+      setStatus(t('classLesson.status.bookmarked', 'Bookmarked.'));
+    } catch (_) {
+      setStatus(t('classLesson.status.bookmarkFailed', 'Could not bookmark this item right now.'));
+    }
+  };
+
   const goToItem = (index, teach = false) => {
     const nextIndex = Math.max(0, Math.min(index, items.length - 1));
     setSelectedIndex(nextIndex);
     if (teach) {
       const nextItem = items[nextIndex];
+      if (!isDetailedLessonItem(nextItem)) return;
       sendTutorTurn(
         `Teach item ${nextIndex + 1}`,
         buildClassAction('teach_selected_item', lesson, nextItem, nextIndex, selectedActivity),
@@ -1264,6 +1593,25 @@ function ClassLessonPage() {
         </section>
       )}
 
+      {progressPercent >= 100 && (
+        <section className="class-wrap-up" aria-label={t('classLesson.wrapUpAria', 'Lesson wrap-up')}>
+          <div>
+            <p className="class-kicker">{t('classLesson.wrapUpKicker', 'Next step')}</p>
+            <h2>{t('classLesson.wrapUpTitle', 'Keep the lesson alive')}</h2>
+            <p>{t('classLesson.wrapUpBody', 'Review saved items, use them in conversation, or write them from memory while the lesson is still fresh.')}</p>
+            <div className="class-wrap-up-stats">
+              <span>{t('classLesson.itemsCompleted', { count: completed.size, defaultValue: '{{count}} items completed' })}</span>
+              <span>{t('classLesson.lessonItemsTotal', { count: items.length, defaultValue: '{{count}} lesson items' })}</span>
+            </div>
+          </div>
+          <div className="class-wrap-up-actions">
+            <button type="button" onClick={() => navigate('/review')}>{t('classLesson.wrapUpReview', 'Review')}</button>
+            <button type="button" onClick={() => navigate('/conversation')}>{t('classLesson.wrapUpConversation', 'Conversation')}</button>
+            <button type="button" onClick={() => navigate('/writing')}>{t('classLesson.wrapUpWriting', 'Writing')}</button>
+          </div>
+        </section>
+      )}
+
       <main className="class-lesson-shell">
         <aside className="class-agenda" aria-label={t('classLesson.agendaAriaLabel', 'Lesson agenda')}>
           <div className="class-agenda-summary">
@@ -1421,41 +1769,52 @@ function ClassLessonPage() {
                       total: items.length,
                       defaultValue: 'Item {{current}} of {{total}}',
                     })}
-                </span>
-              </div>
-              <h3>{itemTarget(selectedItem)}</h3>
-              <PronunciationGuide
-                item={selectedItem}
-                targetText={itemTarget(selectedItem)}
-                className="pronunciation-guide--inline"
-              />
-              <p className="class-meaning">
-                {looksLikeRawEnglishForNative(itemNative(selectedItem), nativeLanguage)
-                  ? t('classLesson.translationPending', 'Translation is being prepared for your language.')
-                  : (itemNative(selectedItem) || (selectedItem._translationPending ? t('classLesson.translationPending', 'Translation is being prepared for your language.') : ''))}
-              </p>
-
-              {(itemExampleTarget(selectedItem) || itemExampleNative(selectedItem)) && (
-                <div className="class-example">
-                  {itemExampleTarget(selectedItem) && <p><strong>{t('classLesson.examplePrefix', 'Example:')}</strong> {itemExampleTarget(selectedItem)}</p>}
-                  {itemExampleNative(selectedItem) && !looksLikeRawEnglishForNative(itemExampleNative(selectedItem), nativeLanguage) && <p>{itemExampleNative(selectedItem)}</p>}
+                  </span>
                 </div>
-              )}
+              {selectedItemReady ? (
+                <>
+                  <h3>{itemTarget(selectedItem)}</h3>
+                  <PronunciationGuide
+                    item={selectedItem}
+                    targetText={itemTarget(selectedItem)}
+                    className="pronunciation-guide--inline"
+                  />
+                  <p className="class-meaning">
+                    {looksLikeRawEnglishForNative(itemNative(selectedItem), nativeLanguage)
+                      ? t('classLesson.translationPending', 'Translation is being prepared for your language.')
+                      : (itemNative(selectedItem) || (selectedItem._translationPending ? t('classLesson.translationPending', 'Translation is being prepared for your language.') : ''))}
+                  </p>
 
-              {Array.isArray(selectedItem.breakdown) && selectedItem.breakdown.length > 0 && (
-                <div className="class-breakdown">
-                  <h3>{t('classLesson.breakdown', 'Breakdown')}</h3>
-                  {selectedItem.breakdown.map((part, index) => (
-                    <div key={`${part.target || part.korean}-${index}`} className="class-breakdown-row">
-                      <strong>{firstText(part.target, part.korean)}</strong>
-                      <span>
-                        {looksLikeRawEnglishForNative(firstText(part.native, part.english), nativeLanguage)
-                          ? t('classLesson.translationPending', 'Translation is being prepared for your language.')
-                          : firstText(part.native, part.english)}
-                      </span>
+                  {(itemExampleTarget(selectedItem) || itemExampleNative(selectedItem)) && (
+                    <div className="class-example">
+                      {itemExampleTarget(selectedItem) && <p><strong>{t('classLesson.examplePrefix', 'Example:')}</strong> {itemExampleTarget(selectedItem)}</p>}
+                      {itemExampleNative(selectedItem) && !looksLikeRawEnglishForNative(itemExampleNative(selectedItem), nativeLanguage) && <p>{itemExampleNative(selectedItem)}</p>}
+                      {itemExampleTarget(selectedItem) && (
+                        <button type="button" onClick={saveSelectedExampleForReview}>
+                          {t('classLesson.saveExample', 'Save example')}
+                        </button>
+                      )}
                     </div>
-                  ))}
-                </div>
+                  )}
+
+                  {Array.isArray(selectedItem.breakdown) && selectedItem.breakdown.length > 0 && (
+                    <div className="class-breakdown">
+                      <h3>{t('classLesson.breakdown', 'Breakdown')}</h3>
+                      {selectedItem.breakdown.map((part, index) => (
+                        <div key={`${part.target || part.korean}-${index}`} className="class-breakdown-row">
+                          <strong>{firstText(part.target, part.korean)}</strong>
+                          <span>
+                            {looksLikeRawEnglishForNative(firstText(part.native, part.english), nativeLanguage)
+                              ? t('classLesson.translationPending', 'Translation is being prepared for your language.')
+                              : firstText(part.native, part.english)}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </>
+              ) : (
+                <p className="class-meaning">{t('classLesson.loading', 'Loading class lesson...')}</p>
               )}
             </div>
           </div>
@@ -1494,21 +1853,31 @@ function ClassLessonPage() {
                 type="button"
                 className="class-action-primary"
                 onClick={teachSelected}
-                disabled={tutorLoading}
+                disabled={tutorLoading || !selectedItemReady}
               >
                 {t('classLesson.teachThis', 'Teach this')}
               </button>
             )}
-            <button type="button" className="class-action-secondary" onClick={practiceSelected} disabled={tutorLoading}>{t('classLesson.practice', 'Practice')}</button>
-            <button type="button" className="class-action-secondary" onClick={explainSelected} disabled={tutorLoading}>{t('classLesson.explain', 'Explain')}</button>
+            <button type="button" className="class-action-secondary" onClick={practiceSelected} disabled={tutorLoading || !selectedItemReady}>{t('classLesson.practice', 'Practice')}</button>
+            <button type="button" className="class-action-secondary" onClick={explainSelected} disabled={tutorLoading || !selectedItemReady}>{t('classLesson.explain', 'Explain')}</button>
+            <button type="button" className="class-action-secondary" onClick={saveSelectedForReview} disabled={!selectedItemReady}>{t('classLesson.saveForReview', 'Save for review')}</button>
+            <button type="button" className="class-action-secondary" onClick={bookmarkSelectedItem} disabled={!selectedItemReady}>{t('learningHub.bookmark', 'Bookmark')}</button>
             <button
               type="button"
               className="class-action-ghost"
               onClick={markComplete}
-              disabled={completed.has(selectedIndex)}
+              disabled={completed.has(selectedIndex) || !selectedItemReady || itemWindowLoading}
             >
               {completed.has(selectedIndex) ? t('classLesson.markedComplete', '✓ Marked complete') : t('classLesson.markComplete', 'Mark complete')}
             </button>
+          </div>
+          <div className="class-practice-links" aria-label={t('classLesson.practiceEverywhereAria', 'Practice this item elsewhere')}>
+            <span>{t('classLesson.practiceEverywhere', 'Practice this everywhere')}</span>
+            <button type="button" onClick={listenToSelectedItem} disabled={!selectedItemReady}>{t('learningHub.listen', 'Listen')}</button>
+            <button type="button" onClick={() => openSelectedPracticeSurface('conversation')} disabled={!selectedItemReady}>{t('conversation.practiceLabel', 'Conversation practice')}</button>
+            <button type="button" onClick={() => openSelectedPracticeSurface('writing')} disabled={!selectedItemReady}>{t('learningHub.practiceWriting', 'Write')}</button>
+            <button type="button" onClick={() => openSelectedPracticeSurface('flashcard')} disabled={!selectedItemReady}>{t('learningHub.practiceFlashcard', 'Flashcard')}</button>
+            <button type="button" onClick={selfTestSelectedItem} disabled={!selectedItemReady}>{t('learningHub.practiceQuiz', 'Self-test')}</button>
           </div>
         </section>
 
@@ -1588,13 +1957,24 @@ function ClassLessonPage() {
                 {renderTutorMessageBody(message)}
                 {message.coachingTip && <small>{message.coachingTip}</small>}
                 {message.role === 'assistant' && !message.error && (
-                  <button
-                    type="button"
-                    className="class-replay"
-                    onClick={() => speakTutorTurn(message)}
-                  >
-                    {t('classLesson.replay', 'Replay')}
-                  </button>
+                  <div className="class-message-actions">
+                    <button
+                      type="button"
+                      className="class-replay"
+                      onClick={() => speakTutorTurn(message)}
+                    >
+                      {t('classLesson.replay', 'Replay')}
+                    </button>
+                    {studyTextsForTutorTurn(message).targetText && (
+                      <button
+                        type="button"
+                        className="class-replay"
+                        onClick={() => saveTutorTurnForReview(message)}
+                      >
+                        {t('classLesson.saveReply', 'Save reply')}
+                      </button>
+                    )}
+                  </div>
                 )}
                 {message.role === 'assistant' && message.error && message.retryInstructionText && (
                   <button

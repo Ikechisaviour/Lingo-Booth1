@@ -169,11 +169,30 @@
 }
 
 .pricing-price {
+  display: grid;
+  gap: 4px;
   margin: 24px 0 18px;
 }
 
 .pricing-price strong {
   font-size: 2rem;
+}
+
+.pricing-original-price {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  font-weight: 800;
+  text-decoration: line-through;
+}
+
+.pricing-auto-discount {
+  width: fit-content;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 900;
 }
 
 .pricing-features {

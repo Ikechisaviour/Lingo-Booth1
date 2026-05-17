@@ -20,7 +20,10 @@
     "done": "Selesai",
     "clearAll": "Hapus semua",
     "sending": "Mengirim...",
-    "saving": "Penghematan..."
+    "saving": "Penghematan...",
+    "search": "Mencari",
+    "notSet": "Tidak disetel",
+    "all": "Semua"
   },
   "languages": {
     "en": "Inggris",
@@ -121,7 +124,8 @@
     "writing": "Menulis",
     "conversation": "Percakapan",
     "plans": "Rencana",
-    "institution": "Lembaga"
+    "institution": "Lembaga",
+    "review": "Tinjauan"
   },
   "guestPrompt": {
     "title": "Anda hebat!",
@@ -427,7 +431,12 @@
     "topic": "Topik (opsional)",
     "save": "Simpan",
     "categoryPlaceholder": "misalnya nomor, salam",
-    "topicPlaceholder": "misalnya hari dalam seminggu, 1-10"
+    "topicPlaceholder": "misalnya hari dalam seminggu, 1-10",
+    "savedFromFlashcardReason": "Disimpan dari kartu flash untuk pass lain.",
+    "savedForReview": "Disimpan untuk ditinjau.",
+    "saveForReviewFailed": "Tidak dapat menyimpan kartu ini sekarang.",
+    "bookmarkedReason": "Ditandai dari kartu flash.",
+    "selfTestReason": "Disimpan dari kartu flash untuk tes mandiri cepat."
   },
   "progress": {
     "title": "Kemajuan Anda",
@@ -791,13 +800,13 @@
     "priceAnnual": "{{amount}}/tahun",
     "priceMonthly": "{{amount}}/bln",
     "planNames": {
-      "free": "Bebas",
+      "free": "Free",
       "plus": "Plus",
       "pro": "Pro",
-      "ultra": "Sangat",
-      "institution_basic": "Dasar Institusi",
-      "institution_pro": "Institusi Pro",
-      "institution_enterprise": "Perusahaan Institusi"
+      "ultra": "Ultra",
+      "institution_basic": "Institution Basic",
+      "institution_pro": "Institution Pro",
+      "institution_enterprise": "Institution Enterprise"
     },
     "planTaglines": {
       "free": "Coba putaran pembelajaran dengan batas harian.",
@@ -810,7 +819,8 @@
     },
     "discountCode": "Kode diskon",
     "discountPlaceholder": "Kode opsional",
-    "discountUnavailable": "Kode diskon tersebut tidak tersedia untuk paket ini."
+    "discountUnavailable": "Kode diskon tersebut tidak tersedia untuk paket ini.",
+    "automaticDiscountApplied": "Diskon otomatis {{discount}} diterapkan"
   },
   "billing": {
     "kicker": "Penagihan",
@@ -908,7 +918,10 @@
       "past_due": "Lewat jatuh tempo",
       "cancelled": "Dibatalkan",
       "suspended": "Tergantung"
-    }
+    },
+    "snapshotsKicker": "Cuplikan peserta didik",
+    "needsHelpTitle": "Perlu perhatian",
+    "noNeedsHelpLearners": "Saat ini tidak ada pembelajar yang memerlukan perhatian ekstra."
   },
   "errorBoundary": {
     "title": "Ada yang tidak beres",
@@ -927,7 +940,15 @@
     "playing": "Bermain…",
     "listen": "Mendengarkan",
     "use": "Menggunakan",
-    "useDefault": "Gunakan suara default untuk saat ini"
+    "useDefault": "Gunakan suara default untuk saat ini",
+    "gender": {
+      "male": "pria",
+      "female": "wanita"
+    },
+    "friendlyVoiceLabelGendered": "Suara {{language}} {{gender}} {{number}}{{region}}",
+    "friendlyVoiceLabelNeutral": "Suara {{language}} {{number}}{{region}}",
+    "voiceRegionSuffix": "· {{region}}",
+    "loadError": "Opsi suara tidak dapat dimuat. Suara bawaan akan digunakan."
   },
   "classList": {
     "kicker": "Kelas",
@@ -1011,7 +1032,9 @@
       "listeningPrefix": "Mendengarkan",
       "speechCaptured": "Suara tertangkap. Edit jika perlu, lalu kirim.",
       "noSpeechCaptured": "Tidak ada suara yang tertangkap. Coba lagi.",
-      "voiceUpdated": "Suara diperbarui. Ketuk baris untuk mendengar."
+      "voiceUpdated": "Suara diperbarui. Ketuk baris untuk mendengar.",
+      "bookmarked": "Ditandai.",
+      "bookmarkFailed": "Tidak dapat menandai item ini sekarang."
     },
     "speechErrors": {
       "permissionBlocked": "Izin mikrofon atau pengenalan suara diblokir. Izinkan mikrofon di pengaturan lalu coba lagi.",
@@ -1062,7 +1085,36 @@
         "goal": "Tinjau kesalahan dan rangkum apa yang Anda pelajari.",
         "task": "Ringkaslah satu hal yang Anda pelajari dan satu hal yang masih belum jelas."
       }
-    }
+    },
+    "savedFromClassReason": "Disimpan dari kelas untuk ditinjau.",
+    "savedForReview": "Disimpan untuk ditinjau.",
+    "saveForReviewFailed": "Tidak dapat menyimpan item ini sekarang.",
+    "wrapUpKicker": "Langkah selanjutnya",
+    "wrapUpTitle": "Jaga agar pelajaran tetap hidup",
+    "wrapUpBody": "Tinjau kembali item yang disimpan, gunakan dalam percakapan, atau tuliskan dari ingatan selagi pelajaran masih baru.",
+    "wrapUpReview": "Tinjauan",
+    "wrapUpConversation": "Percakapan",
+    "wrapUpWriting": "Menulis",
+    "saveForReview": "Simpan untuk ditinjau",
+    "fallback": {
+      "thisItem": "barang ini",
+      "shortAnswer": "Cobalah satu jawaban singkat menggunakan item pelajaran ini.",
+      "practiceLead": "Ayo berlatih {{title}}.",
+      "continue": "Mari kita lanjutkan dengan bagian pelajaran berikutnya."
+    },
+    "examplePrefix": "Contoh:",
+    "bookmarkedReason": "Ditandai dari kelas.",
+    "itemsCompleted": "{{count}} item selesai",
+    "lessonItemsTotal": "{{count}} item pelajaran",
+    "savedExampleReason": "Contoh kelas disimpan untuk latihan nanti.",
+    "exampleSaved": "Contoh disimpan untuk ditinjau.",
+    "savedTutorReplyReason": "Disimpan dari balasan tutor untuk latihan nanti.",
+    "tutorReplySaved": "Balasan tutor disimpan untuk ditinjau.",
+    "playingSelectedItem": "Memutar item yang dipilih.",
+    "saveReply": "Simpan balasan",
+    "saveExample": "Simpan contoh",
+    "practiceEverywhere": "Praktekkan ini di mana saja",
+    "selfTestReason": "Disimpan dari kelas untuk tes mandiri cepat."
   },
   "exercise": {
     "kicker": "Latihan",
@@ -1073,7 +1125,8 @@
     "flashcardsTitle": "Kartu flash",
     "flashcardsDescMobile": "Tinjau kata dan frasa.",
     "writingTitle": "Menulis",
-    "writingDescMobile": "Lacak, salin, dengarkan, dan simpan buku catatan menulis."
+    "writingDescMobile": "Lacak, salin, dengarkan, dan simpan buku catatan menulis.",
+    "reviewDescMobile": "Kembali ke item yang disimpan dan batas waktunya hari ini."
   },
   "conversation": {
     "kicker": "Latihan Percakapan",
@@ -1113,7 +1166,23 @@
       "planRefreshed": "Setelan paket Anda telah disegarkan.",
       "messageNotResent": "Pesan Anda tidak terkirim lagi.",
       "connectionIssue": "Masalah koneksi. Coba lagi sebentar lagi."
-    }
+    },
+    "savedReplyReason": "Disimpan dari latihan percakapan.",
+    "savedReply": "Balasan disimpan untuk ditinjau.",
+    "saveReplyFailed": "Tidak dapat menyimpan balasan ini sekarang.",
+    "savedRoleplayReason": "Permainan peran yang telah selesai disimpan untuk latihan nanti.",
+    "roleplaySaved": "Permainan peran disimpan untuk ditinjau.",
+    "saveRoleplayFailed": "Tidak dapat menyimpan permainan peran ini sekarang.",
+    "recapTitle": "Permainan peran selesai",
+    "saveRoleplay": "Simpan permainan peran",
+    "saveReply": "Menyimpan",
+    "easier": "Lebih mudah",
+    "harder": "Lebih sulit",
+    "recapWentWell": "Apa yang berjalan dengan baik",
+    "recapUsefulPhrases": "Frase yang berguna",
+    "recapReview": "Tinjau selanjutnya",
+    "recapReviewFallback": "Simpan satu frasa dan gunakan kembali dalam mode latihan lainnya.",
+    "practiceLabel": "Latihan percakapan"
   },
   "context": {
     "backToProfile": "Kembali ke Profil",
@@ -1185,7 +1254,8 @@
       "conversationNative": "Dari latihan percakapan Anda",
       "conversationHistory": "Riwayat percakapan",
       "personalized": "Dipersonalisasi",
-      "personalNotebook": "Buku catatan pribadi"
+      "personalNotebook": "Buku catatan pribadi",
+      "savedReview": "Item ulasan tersimpan"
     },
     "modes": {
       "trace": "Jejak",
@@ -1232,7 +1302,9 @@
       "shape": "Bentuknya cocok",
       "spacing": "Jaraknya jelas",
       "memory": "Dari ingatan"
-    }
+    },
+    "savedReason": "Disimpan dari latihan menulis untuk izin lain.",
+    "selfTestReason": "Disimpan dari latihan menulis untuk tes mandiri cepat."
   },
   "certificates": {
     "kicker": "Sertifikat",
@@ -1265,5 +1337,140 @@
     "signIn": "Masuk",
     "issuedSuccess": "Sertifikat diterbitkan.",
     "issueFailed": "Tidak dapat menerbitkan sertifikat."
+  },
+  "learningHub": {
+    "continueLearning": "Lanjutkan belajar",
+    "pairSetupSaved": "Penyiapan pembelajaran disimpan.",
+    "nextBestAction": "Tindakan terbaik berikutnya",
+    "reviewDue": "Tinjauan jatuh tempo",
+    "reviewNow": "Tinjau sekarang",
+    "wordOfDay": "Kata atau frasa hari ini",
+    "noSpotlightYet": "Simpan sesuatu yang berguna untuk memulai",
+    "pairSetupTitle": "Siapkan pasangan bahasa ini",
+    "pairSetupBody": "Beri tahu kami level dan sasaran Anda satu kali agar rekomendasi sesuai dengan bahasa target ini.",
+    "level": "Tingkat",
+    "goal": "Sasaran",
+    "pace": "Laju",
+    "dailyPlanTitle": "Rencana hari ini",
+    "weeklySummaryTitle": "Minggu ini",
+    "points": "Poin",
+    "activeDays": "Hari-hari aktif",
+    "sessions": "Sesi",
+    "recentStudyTitle": "Studi terbaru",
+    "savedAfterQuizMiss": "Disimpan setelah jawaban kuis terlewat.",
+    "askTutorPrompt": "Bantu saya berlatih \"{{text}}\".",
+    "savedForPractice": "Disimpan untuk latihan nanti",
+    "askTutor": "Tanya guru",
+    "kicker": "Tinjauan",
+    "title": "Dekatkan pembelajaran yang bermanfaat",
+    "subtitle": "Tinjau apa yang memerlukan izin lain, kembali ke item yang disimpan, dan lanjutkan dari satu tempat.",
+    "dueToday": "jatuh tempo hari ini",
+    "queueTitle": "Antrian peninjauan hari ini",
+    "queueEmptyBody": "Simpan kata, frasa, koreksi, atau permainan peran dan kata-kata itu akan kembali ke sini bila berguna.",
+    "weakAreasTitle": "Area lemah terkini",
+    "practiceArea": "Area latihan",
+    "weakAreasEmpty": "Belum ada area lemah yang teridentifikasi.",
+    "abilityTitle": "Kemajuan kemampuan dunia nyata",
+    "abilityEmpty": "Kemajuan aktivitas akan muncul di sini saat Anda berlatih.",
+    "searchLabel": "Cari pembelajaran Anda",
+    "searchPlaceholder": "Cari item yang disimpan atau pelajaran kelas",
+    "savedLibraryTitle": "Perpustakaan belajar yang disimpan",
+    "savedEmptyBody": "Simpan kata-kata berguna dari kelas, kartu flash, tulisan, atau percakapan untuk membuat rak belajar Anda sendiri.",
+    "savedBanksTitle": "Bank yang disimpan",
+    "correctionsBank": "Koreksi",
+    "roleplaysBank": "Permainan peran",
+    "bookmarksBank": "Bookmark",
+    "openSource": "Sumber terbuka",
+    "spotlightHint": "Item simpanan Anda menjadi sorotan harian.",
+    "pairSetupSummary": "Pengaturan pembelajaran",
+    "pairSetupEdit": "Sunting",
+    "pairSetupUpdate": "Perbarui pasangan bahasa ini",
+    "reviewBeforeSleep": "Ulasan singkat sekarang akan membuat besok lebih ringan.",
+    "open": "Membuka",
+    "bookmark": "Penanda buku",
+    "bookmarked": "Ditandai.",
+    "bookmarkFailed": "Tidak dapat menandai item ini sekarang.",
+    "speakingTurns": "Berbicara bergantian",
+    "newSavedItems": "Item baru yang disimpan",
+    "completedLessons": "Pelajaran selesai",
+    "certificates": "Sertifikat",
+    "guidanceTitle": "Panduan",
+    "firstThreeDays": "Tiga hari pertama",
+    "dayNumber": "Hari {{day}}",
+    "goalPathTitle": "Jalur tujuan",
+    "placementTitle": "Penempatan",
+    "recentWordsTitle": "Kata-kata terkini",
+    "recentWordsEmpty": "Kata-kata baru dari kelas dan percakapan akan berkumpul di sini.",
+    "milestonesTitle": "Tonggak sejarah",
+    "savedItems": "Item yang disimpan",
+    "voiceHistoryTitle": "Sejarah latihan suara",
+    "voiceHistoryEmpty": "Giliran berbicara akan muncul di sini setelah latihan percakapan.",
+    "askWeakAreaPrompt": "Bantu saya berlatih {{area}}.",
+    "evidenceCount": "{{count}} bukti",
+    "askAbilityPrompt": "Bantu saya berlatih {{area}}.",
+    "practiceWriting": "Menulis",
+    "practiceFlashcard": "kartu flash",
+    "whyWeakArea": "Anda melihat hal ini karena area ini masih membutuhkan penguatan.",
+    "reviewBeforeSleepTitle": "Tinjau sebelum tidur",
+    "savedItem": "Disimpan",
+    "weakArea": "Lemah",
+    "reviewBeforeSleepEmpty": "Tidak ada hal mendesak yang menunggu malam ini.",
+    "miniSpeakingTitle": "Latihan berbicara mini",
+    "miniSpeakingReason": "Latihan berbicara singkat dari frasa atau koreksi yang disimpan.",
+    "practiceSpeaking": "Berbicara",
+    "miniSpeakingEmpty": "Koreksi dan frasa yang disimpan akan menjadi latihan berbicara singkat di sini.",
+    "correctionsEmpty": "Koreksi yang disimpan akan dikumpulkan di sini untuk dicoba ulang dengan cepat.",
+    "roleplaysEmpty": "Permainan peran yang disimpan akan muncul di sini saat Anda ingin menggunakannya kembali.",
+    "startLevelCheck": "Mulai pemeriksaan level",
+    "levelCheckUnavailable": "Pemeriksaan level belum siap untuk pasangan bahasa ini.",
+    "levelCheckLoadFailed": "Pemeriksaan level tidak dapat dimuat saat ini.",
+    "levelCheckTitle": "Pemeriksaan tingkat singkat",
+    "levelCheckSubtitle": "Jawab beberapa item singkat sehingga aplikasi dapat memilih titik awal yang lebih baik.",
+    "levelCheckResult": "Level awal yang disarankan",
+    "levelCheckSaved": "Titik awal ini telah disimpan untuk pasangan bahasa ini.",
+    "returnHome": "Kembali ke rumah",
+    "questionCount": "Pertanyaan {{current}} dari {{total}}",
+    "practiceAgainPrompt": "Bantu saya berlatih mengucapkan \"{{text}}\" lagi.",
+    "replayReply": "Putar ulang balasan",
+    "practiceAgain": "Berlatih lagi",
+    "practiceEverywhere": "Praktekkan ini di tempat lain",
+    "practicePronunciation": "Mendengarkan",
+    "youSaid": "Anda bilang",
+    "targetSpeech": "Sasaran pidato",
+    "replayTargetSpeech": "Dengarkan ucapan sasaran",
+    "practiceQuiz": "Tes mandiri",
+    "useRoleplayAgain": "Gunakan lagi",
+    "offlinePackInUse": "Menampilkan paket terbaru Anda saat koneksi lemah.",
+    "quickQuizKicker": "Tes mandiri",
+    "quickQuizTitle": "Tes mandiri cepat",
+    "quickQuizNoAnswer": "Ingat kembali maknanya, lalu nilailah diri Anda dengan jujur.",
+    "revealAnswer": "Ungkapkan jawabannya",
+    "studyHistoryTitle": "Pelajari sejarah",
+    "pointsCount": "{{count}} poin",
+    "studyHistoryEmpty": "Hari-hari belajar Anda akan berkumpul di sini saat Anda berlatih.",
+    "listen": "Mendengarkan",
+    "goals": {
+      "travel": "Bepergian",
+      "work": "Bekerja",
+      "school": "Sekolah",
+      "dailyLife": "Kehidupan sehari-hari",
+      "conversation": "Percakapan",
+      "family": "Keluarga",
+      "religious": "Pengaturan keagamaan",
+      "health": "Kesehatan",
+      "culture": "Budaya",
+      "exam": "Ujian",
+      "other": "Lainnya"
+    },
+    "savedBankEmptyBody": "Item yang Anda simpan untuk tujuan ini akan dikumpulkan di sini.",
+    "recentMistakesTitle": "Kesalahan baru-baru ini",
+    "recentMistakesBody": "Ini adalah item yang terlewat baru-baru ini yang layak untuk dicoba kembali selagi koreksi masih baru.",
+    "recentMistakesEmptyBody": "Item kuis yang terlewat akan muncul di sini sehingga Anda dapat mencobanya kembali dengan cepat.",
+    "firstThreeDayReviewTitle": "Tinjau apa yang Anda temui",
+    "firstThreeDaySpeakTitle": "Gunakan dengan suara keras",
+    "firstThreeDayLearnTitle": "Mulailah satu pelajaran yang dipandu",
+    "firstThreeDayReviewBody": "Kembalilah sekali ke apa yang Anda lihat kemarin sehingga item pertama mulai melekat.",
+    "firstThreeDaySpeakBody": "Gunakan giliran bicara singkat agar bahasa meninggalkan halaman lebih awal.",
+    "firstThreeDayLearnBody": "Mulailah dengan satu pelajaran kecil terpandu sehingga pasangan memiliki titik awal yang jelas."
   }
 }

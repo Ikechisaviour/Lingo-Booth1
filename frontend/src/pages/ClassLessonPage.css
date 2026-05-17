@@ -159,6 +159,63 @@
   gap: 8px;
 }
 
+.class-wrap-up {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+  margin: 0 auto 18px;
+  padding: 18px 22px;
+  border: 1px solid var(--primary-border-soft);
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--surface), var(--primary-soft));
+}
+
+.class-wrap-up h2,
+.class-wrap-up p {
+  margin: 0;
+}
+
+.class-wrap-up h2 {
+  margin-bottom: 6px;
+}
+
+.class-wrap-up p:not(.class-kicker) {
+  color: var(--text-secondary);
+}
+
+.class-wrap-up-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.class-wrap-up-stats span {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.class-wrap-up-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.class-wrap-up-actions button {
+  min-height: 42px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
 .class-agenda,
 .class-focus,
 .class-tutor {
@@ -536,6 +593,18 @@
   color: var(--text-secondary);
 }
 
+.class-example button {
+  margin-top: 10px;
+  min-height: 34px;
+  padding: 7px 10px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-weight: 800;
+}
+
 .class-breakdown h3 {
   margin: 0 0 10px;
   font-size: 0.95rem;
@@ -558,6 +627,31 @@
   flex-wrap: wrap;
   gap: 10px;
   align-items: center;
+}
+
+.class-practice-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.class-practice-links span {
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
+.class-practice-links button {
+  min-height: 36px;
+  padding: 8px 10px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-weight: 800;
 }
 
 /* Primary action: filled, prominent. Used for "Teach this" or "Next item". */
@@ -678,6 +772,13 @@
   cursor: pointer;
   font-size: 0.78rem;
   font-weight: 900;
+}
+
+.class-message-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
 }
 
 .class-speech-controls button.active {
@@ -994,6 +1095,11 @@
   .class-certificate-actions,
   .class-certificate-actions button {
     width: 100%;
+  }
+
+  .class-wrap-up {
+    align-items: stretch;
+    flex-direction: column;
   }
 
   .class-agenda {

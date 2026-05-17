@@ -10,6 +10,12 @@ const discountCodeSchema = new mongoose.Schema({
     maxlength: 40,
     index: true,
   },
+  applicationMode: {
+    type: String,
+    enum: ['code', 'automatic'],
+    default: 'code',
+    index: true,
+  },
   active: {
     type: Boolean,
     default: true,

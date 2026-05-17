@@ -657,18 +657,33 @@
   background: var(--accent-green-dark);
 }
 
+.flashcard-save-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-save-card,
 .btn-delete-card {
   background: transparent;
-  border: none;
+  border: 1px solid var(--border);
+  border-radius: 10px;
   color: var(--text-muted);
   font-size: 0.9rem;
   cursor: pointer;
-  padding: 8px;
+  padding: 8px 12px;
   transition: color 0.2s ease;
+}
+
+.btn-save-card:hover {
+  color: var(--primary);
+  border-color: var(--primary);
 }
 
 .btn-delete-card:hover {
   color: var(--accent-red);
+  border-color: var(--accent-red);
 }
 
 /* Card List Sidebar — expands inline below button, page scrolls */

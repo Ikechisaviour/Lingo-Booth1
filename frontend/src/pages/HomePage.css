@@ -157,6 +157,263 @@
   flex-shrink: 0;
 }
 
+.learning-hub-overview {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.learning-hub-card,
+.learning-plan-card,
+.pair-profile-card {
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.learning-hub-card {
+  display: flex;
+  min-height: 118px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 16px;
+}
+
+.learning-hub-card.next {
+  background: linear-gradient(135deg, var(--surface), var(--primary-soft));
+  border-color: var(--primary-border-soft);
+}
+
+.learning-hub-card span,
+.learning-hub-card small {
+  color: var(--text-secondary);
+}
+
+.learning-hub-card strong {
+  color: var(--text-primary);
+  line-height: 1.35;
+}
+
+.learning-hub-card button,
+.learning-plan-card button {
+  margin-top: auto;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 7px 10px;
+}
+
+.pair-profile-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 18px;
+  padding: 18px;
+}
+
+.pair-profile-summary {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pair-profile-card > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pair-profile-card > div span {
+  color: var(--text-secondary);
+}
+
+.pair-profile-card form {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+  gap: 10px;
+  align-items: end;
+}
+
+.pair-profile-card label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.pair-profile-card select {
+  min-height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  padding: 0 10px;
+}
+
+.pair-profile-card small {
+  color: var(--primary);
+}
+
+.learning-plan-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.learning-insight-grid,
+.learning-shelf-grid {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.learning-insight-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.learning-shelf-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.learning-insight-card {
+  display: flex;
+  min-height: 150px;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px;
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.learning-insight-card.onboarding {
+  border-color: var(--primary-border-soft);
+  background: linear-gradient(135deg, var(--surface), var(--primary-soft));
+}
+
+.learning-insight-card span,
+.learning-insight-card p {
+  color: var(--text-secondary);
+}
+
+.learning-insight-card strong {
+  color: var(--text-primary);
+}
+
+.learning-insight-card p,
+.learning-plan-card p {
+  margin: 0;
+}
+
+.learning-insight-card button {
+  margin-top: auto;
+  align-self: flex-start;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 7px 10px;
+}
+
+.learning-step-list,
+.learning-action-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.learning-step-list button {
+  display: flex;
+  min-width: 118px;
+  flex: 1 1 118px;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 0;
+  text-align: left;
+}
+
+.learning-step-list button small {
+  color: var(--text-muted);
+}
+
+.learning-step-list button.current {
+  border-color: var(--mode-accent);
+  background: var(--mode-surface);
+}
+
+.learning-step-list button.done {
+  border-color: var(--primary-border-soft);
+}
+
+.learning-action-chips button {
+  margin-top: 0;
+}
+
+.learning-plan-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px;
+}
+
+.learning-plan-card h2 {
+  margin: 0 0 2px;
+  font-size: 1rem;
+}
+
+.learning-plan-card button {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+}
+
+.learning-plan-card button span {
+  color: var(--text-muted);
+}
+
+.learning-summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--text-secondary);
+}
+
+.learning-summary-row strong {
+  color: var(--text-primary);
+}
+
+.study-history-strip {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.study-history-strip span {
+  display: flex;
+  min-height: 48px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: var(--bg-secondary);
+}
+
+.study-history-strip strong {
+  color: var(--text-primary);
+}
+
+.study-history-strip small {
+  color: var(--text-muted);
+}
+
 /* Sidebar */
 .sidebar {
   display: flex;
@@ -678,6 +935,10 @@
     grid-template-columns: 1fr;
   }
 
+  .learning-insight-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .sidebar {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -717,6 +978,14 @@
   .home-billing-strip {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .learning-hub-overview,
+  .learning-plan-grid,
+  .learning-insight-grid,
+  .learning-shelf-grid,
+  .pair-profile-card form {
+    grid-template-columns: 1fr;
   }
 
   .sidebar {

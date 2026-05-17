@@ -112,6 +112,14 @@ function classifyLesson(lesson) {
 }
 
 function lessonStats(classLesson) {
+  if (classLesson?.stats) {
+    return {
+      total: Number(classLesson.stats.total || 0),
+      vocab: Number(classLesson.stats.vocabulary || 0),
+      grammar: Number(classLesson.stats.grammar || 0),
+      dialogues: Number(classLesson.stats.dialogues || 0),
+    };
+  }
   const items = Array.isArray(classLesson.content) ? classLesson.content : [];
   return {
     total: items.length,
@@ -195,7 +203,8 @@ function ClassLessonsPage() {
 
     async function loadClassLessons() {
       try {
-        const response = await classLessonService.getClassLessons();
+        classLessonService.preparePair().catch(() => {});
+        const response = await classLessonService.getClassLessonSummaries();
         if (cancelled) return;
         const list = Array.isArray(response.data) ? [...response.data] : [];
         setClassLessons(list);

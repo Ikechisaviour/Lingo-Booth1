@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 const { OAuth2Client } = require('google-auth-library');
 const User = require('../models/User');
 const GuestSession = require('../models/GuestSession');
+const { ensureResetsApplied } = require('../utils/gamificationReset');
 const { getClientIp, getGeoInfo } = require('../utils/geo');
 const { sendVerificationEmail, sendPasswordResetEmail } = require('../utils/emailService');
 const { verifyToken } = require('../middleware/auth');
@@ -540,6 +541,7 @@ router.post('/activity', async (req, res) => {
     }
 
     user.lastActive = new Date();
+    ensureResetsApplied(user);
     if (timeSpent && typeof timeSpent === 'number' && timeSpent > 0) {
       user.totalTimeSpent = (user.totalTimeSpent || 0) + timeSpent;
       // Track daily time spent for Challenge Mode quests
